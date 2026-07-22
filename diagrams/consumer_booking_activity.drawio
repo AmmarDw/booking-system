@@ -1,0 +1,102 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Consumer Booking Activity" id="consumer-booking">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Swimlanes -->
+        <mxCell id="laneConsumer" value="Consumer" style="swimlane;startSize=30;horizontal=1;html=1;fillColor=none;swimlaneFillColor=#f5f9ff;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="330" height="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="laneSystem" value="System" style="swimlane;startSize=30;horizontal=1;html=1;fillColor=none;swimlaneFillColor=#f5fff5;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="40" width="400" height="1320" as="geometry" />
+        </mxCell>
+
+        <!-- Start -->
+        <mxCell id="start" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="185" y="70" width="40" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Consumer actions -->
+        <mxCell id="browse" value="Browse services&#10;(booking page)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="115" y="140" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="select" value="Select a service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="115" y="230" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Decision (System) -->
+        <mxCell id="auth" value="Authenticated?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="500" y="315" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Consumer sign-in branch -->
+        <mxCell id="signin" value="Sign in / sign up" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="115" y="430" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- System: show calendar -->
+        <mxCell id="calendar" value="Show calendar&#10;(availability-pressure colors,&#10;weekends shadowed)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="450" y="520" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Consumer: pick date -->
+        <mxCell id="pickdate" value="Pick a date" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="115" y="630" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- System: show provider dropdowns -->
+        <mxCell id="dropdowns" value="Show provider dropdowns&#10;with slots (booked = shadowed)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="450" y="720" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Consumer: select slot -->
+        <mxCell id="selectslot" value="Expand a provider&#10;&amp; select a slot" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="115" y="820" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Consumer: click book -->
+        <mxCell id="book" value="Click &quot;Book appointment&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="115" y="910" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- System: create booking -->
+        <mxCell id="createbooking" value="Create booking &amp; reserve slot&#10;across ALL that provider's services" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="450" y="1000" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- System: meet + email -->
+        <mxCell id="meetemail" value="Create Meet on provider's calendar&#10;(both invited) &amp; send confirmation email" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="450" y="1090" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- System: toast -->
+        <mxCell id="toast" value="Show success toast&#10;(auto-dismiss ~30s)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="470" y="1180" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- End -->
+        <mxCell id="end" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;shape=endState;" vertex="1" parent="1">
+          <mxGeometry x="550" y="1270" width="40" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="start" target="browse"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="browse" target="select"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="select" target="auth"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e4" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontStyle=1;" edge="1" parent="1" source="auth" target="signin"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e5" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontStyle=1;" edge="1" parent="1" source="auth" target="calendar"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e6" value="return to selected service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=10;" edge="1" parent="1" source="signin" target="calendar"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="calendar" target="pickdate"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="pickdate" target="dropdowns"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="dropdowns" target="selectslot"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="selectslot" target="book"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="book" target="createbooking"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="createbooking" target="meetemail"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="meetemail" target="toast"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;" edge="1" parent="1" source="toast" target="end"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

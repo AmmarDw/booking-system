@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: booking-system
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:booking_system}
+    username: ${DB_USER:bookingadmin}
+    password: ${DB_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  flyway:
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+# Booking policy defaults (seed values). The admin's live value is persisted in
+# the single-row AppSettings table and overrides this default at runtime (FR-14/FR-15).
+booking:
+  max-horizon-months: 6
+  # Providers may pre-load availability further ahead than consumers can book.
+  # Advance limit = ceil(max-horizon-months * provider-advance-multiplier). Not admin-facing.
+  provider-advance-multiplier: 1.5
+
+# Google Calendar/Meet OAuth (M6, FR-6/FR-13). Consumed once the provider-onboarding
+# controller is built; safe to bind now.
+google:
+  client-id: ${GOOGLE_CLIENT_ID:}
+  client-secret: ${GOOGLE_CLIENT_SECRET:}
+  redirect-uri: ${GOOGLE_REDIRECT_URI:http://localhost:8080/api/google/oauth2/callback}
+  scope: https://www.googleapis.com/auth/calendar.events
+  token-encryption-key: ${TOKEN_ENCRYPTION_KEY:}

@@ -1,0 +1,9 @@
+:root{
+--font-latin:'Inter',system-ui,sans-serif;
+--font-arabic:'IBM Plex Sans Arabic','Inter',system-ui,sans-serif;
+--font-sans:var(--font-latin),var(--font-arabic);
+--text-xs:12px;--text-sm:13px;--text-base:15px;--text-md:16px;--text-lg:18px;--text-xl:22px;--text-2xl:28px;--text-3xl:36px;
+--leading-tight:1.2;--leading-normal:1.5;--leading-relaxed:1.65;
+--weight-regular:400;--weight-medium:500;--weight-semibold:600;--weight-bold:700;
+}
+html[lang="ar"],[dir="rtl"]{--font-sans:var(--font-arabic),var(--font-latin);}

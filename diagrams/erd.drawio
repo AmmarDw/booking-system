@@ -1,0 +1,77 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="ERD" id="booking-system-erd">
+    <mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- app_settings (standalone, single-row) -->
+        <mxCell id="app_settings" value="&lt;table style=&quot;width:100%;border-collapse:collapse;font-family:Helvetica;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td colspan=&quot;2&quot; style=&quot;background:#0D9488;color:#fff;font-weight:bold;padding:4px 6px;&quot;&gt;app_settings &lt;i&gt;(single row)&lt;/i&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;PK&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;id : SMALLINT = 1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;max_booking_horizon_months : INT (default 6)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#0D9488;strokeWidth=1.5;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="240" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- users -->
+        <mxCell id="users" value="&lt;table style=&quot;width:100%;border-collapse:collapse;font-family:Helvetica;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td colspan=&quot;2&quot; style=&quot;background:#0D9488;color:#fff;font-weight:bold;padding:4px 6px;&quot;&gt;users&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;PK&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;id : BIGSERIAL&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;email : VARCHAR(255) UNIQUE NOT NULL&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;password_hash : VARCHAR(255) NOT NULL&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;full_name : VARCHAR(255)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;role : CONSUMER | PROVIDER | ADMIN&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;created_at : TIMESTAMPTZ&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#0D9488;strokeWidth=1.5;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="360" y="40" width="270" height="195" as="geometry" />
+        </mxCell>
+
+        <!-- services -->
+        <mxCell id="services" value="&lt;table style=&quot;width:100%;border-collapse:collapse;font-family:Helvetica;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td colspan=&quot;2&quot; style=&quot;background:#0D9488;color:#fff;font-weight:bold;padding:4px 6px;&quot;&gt;services&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;PK&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;id : BIGSERIAL&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;name : VARCHAR(255) NOT NULL&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;description : TEXT&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;duration_minutes : INT (&amp;gt; 0)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#0D9488;strokeWidth=1.5;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="720" y="40" width="230" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- user_services (junction) -->
+        <mxCell id="user_services" value="&lt;table style=&quot;width:100%;border-collapse:collapse;font-family:Helvetica;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td colspan=&quot;2&quot; style=&quot;background:#0D9488;color:#fff;font-weight:bold;padding:4px 6px;&quot;&gt;user_services &lt;i&gt;(N:M)&lt;/i&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;PK,FK&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;user_id &amp;#8594; users.id&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;PK,FK&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;service_id &amp;#8594; services.id&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#0D9488;strokeWidth=1.5;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="500" y="300" width="250" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- availability_slots -->
+        <mxCell id="availability_slots" value="&lt;table style=&quot;width:100%;border-collapse:collapse;font-family:Helvetica;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td colspan=&quot;2&quot; style=&quot;background:#0D9488;color:#fff;font-weight:bold;padding:4px 6px;&quot;&gt;availability_slots&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;PK&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;id : BIGSERIAL&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;FK&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;provider_user_id &amp;#8594; users.id&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;slot_date : DATE&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;start_time / end_time : TIME&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;status : AVAILABLE | BOOKED&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;UQ&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;(provider_user_id, slot_date, start_time)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#0D9488;strokeWidth=1.5;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="300" width="270" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- google_account_connections -->
+        <mxCell id="google_account_connections" value="&lt;table style=&quot;width:100%;border-collapse:collapse;font-family:Helvetica;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td colspan=&quot;2&quot; style=&quot;background:#0D9488;color:#fff;font-weight:bold;padding:4px 6px;&quot;&gt;google_account_connections&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;PK&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;id : BIGSERIAL&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;FK,UQ&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;user_id &amp;#8594; users.id&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;google_email : VARCHAR(255)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;refresh_token_enc : TEXT (encrypted)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;scope : VARCHAR(255)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;connected_at : TIMESTAMPTZ&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;fallback_meet_url : VARCHAR(500)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#0D9488;strokeWidth=1.5;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="800" y="300" width="280" height="220" as="geometry" />
+        </mxCell>
+
+        <!-- bookings -->
+        <mxCell id="bookings" value="&lt;table style=&quot;width:100%;border-collapse:collapse;font-family:Helvetica;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td colspan=&quot;2&quot; style=&quot;background:#0D9488;color:#fff;font-weight:bold;padding:4px 6px;&quot;&gt;bookings&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;PK&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;id : BIGSERIAL&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;FK&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;consumer_user_id &amp;#8594; users.id&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;FK&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;slot_id &amp;#8594; availability_slots.id&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;FK&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;service_id &amp;#8594; services.id&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;status : CONFIRMED | CANCELLED&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;created_at : TIMESTAMPTZ&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#0D9488;strokeWidth=1.5;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="420" y="590" width="270" height="195" as="geometry" />
+        </mxCell>
+
+        <!-- meeting_links -->
+        <mxCell id="meeting_links" value="&lt;table style=&quot;width:100%;border-collapse:collapse;font-family:Helvetica;font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td colspan=&quot;2&quot; style=&quot;background:#0D9488;color:#fff;font-weight:bold;padding:4px 6px;&quot;&gt;meeting_links&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;PK&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;id : BIGSERIAL&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;font-weight:bold;&quot;&gt;FK,UQ&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;booking_id &amp;#8594; bookings.id&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;url : VARCHAR(500)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;&lt;/td&gt;&lt;td style=&quot;padding:2px 6px;&quot;&gt;provider : VARCHAR(50) (default GOOGLE_MEET)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fillColor=#ffffff;strokeColor=#0D9488;strokeWidth=1.5;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="420" y="850" width="270" height="145" as="geometry" />
+        </mxCell>
+
+        <!-- Edges with cardinality labels -->
+        <mxCell id="e1" value="1 — N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;startArrow=none;fontSize=11;fontStyle=1;" edge="1" parent="1" source="users" target="user_services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="1 — N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;startArrow=none;fontSize=11;fontStyle=1;" edge="1" parent="1" source="services" target="user_services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="1 — N (provider)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;startArrow=none;fontSize=11;fontStyle=1;" edge="1" parent="1" source="users" target="availability_slots">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="1 — N (consumer)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;startArrow=none;fontSize=11;fontStyle=1;" edge="1" parent="1" source="users" target="bookings">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="1 — 0..1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;startArrow=none;fontSize=11;fontStyle=1;" edge="1" parent="1" source="availability_slots" target="bookings">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="1 — N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;startArrow=none;fontSize=11;fontStyle=1;exitX=0.75;exitY=1;entryX=1;entryY=0.2;" edge="1" parent="1" source="services" target="bookings">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="1 — 0..1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;startArrow=none;fontSize=11;fontStyle=1;" edge="1" parent="1" source="bookings" target="meeting_links">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="1 — 0..1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;startArrow=none;fontSize=11;fontStyle=1;" edge="1" parent="1" source="users" target="google_account_connections">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

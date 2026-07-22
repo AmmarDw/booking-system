@@ -1,0 +1,16 @@
+# IDE
+.idea/
+.vscode/
+
+# Claude Code personal/local settings (machine-specific, not shared project config)
+.claude/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Personal scratch notes (not part of the project deliverables)
+notebook.txt
+
+# Nested projects manage their own build artifacts / secrets via their own .gitignore
+# (app/backend/.gitignore, app/frontend/.gitignore)
