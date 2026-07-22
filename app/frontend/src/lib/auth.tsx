@@ -1,14 +1,23 @@
 "use client";
 
-// Minimal JWT auth store + context. Token kept in memory and hydrated from localStorage.
-// M2 wires register/login/me against /api/auth/*; guards + redirect-back (FR-2) build on this.
+// JWT auth store + context. Token kept in memory and hydrated from localStorage.
+// Wires POST /api/auth/register, POST /api/auth/login, GET /api/auth/me (M2).
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { api, ApiError } from "./api";
 
 export type Role = "CONSUMER" | "PROVIDER" | "ADMIN";
 export interface AuthUser {
   email: string;
   role: Role;
+  fullName: string | null;
+}
+
+interface AuthResponse {
+  token: string | null;
+  email: string;
+  role: Role;
+  fullName: string | null;
 }
 
 const TOKEN_KEY = "bookit.token";
@@ -30,34 +39,68 @@ export function setToken(token: string | null): void {
 interface AuthContextValue {
   user: AuthUser | null;
   loading: boolean;
-  setSession: (token: string, user: AuthUser) => void;
+  login: (email: string, password: string) => Promise<void>;
+  // fullName is optional and there is deliberately no `role` param — public sign-up always
+  // creates a CONSUMER (FR-16); the backend ignores any role sent anyway.
+  register: (email: string, password: string, fullName?: string) => Promise<void>;
   signOut: () => void;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
+
+function toUser(res: AuthResponse): AuthUser {
+  return { email: res.email, role: res.role, fullName: res.fullName };
+}
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // M2: if a token exists, call GET /api/auth/me to hydrate `user`.
-    setLoading(false);
+    let cancelled = false;
+    async function hydrate() {
+      if (!getToken()) {
+        setLoading(false);
+        return;
+      }
+      try {
+        const res = await api<AuthResponse>("/api/auth/me");
+        if (!cancelled) setUser(toUser(res));
+      } catch {
+        // Expired/invalid token — clear it silently.
+        setToken(null);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+    hydrate();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  function setSession(token: string, u: AuthUser) {
-    setToken(token);
-    setUser(u);
+  async function login(email: string, password: string) {
+    const res = await api<AuthResponse>("/api/auth/login", { method: "POST", body: { email, password } });
+    setToken(res.token);
+    setUser(toUser(res));
   }
+
+  async function register(email: string, password: string, fullName?: string) {
+    const res = await api<AuthResponse>("/api/auth/register", {
+      method: "POST",
+      body: { email, password, fullName },
+    });
+    setToken(res.token);
+    setUser(toUser(res));
+  }
+
   function signOut() {
     setToken(null);
     setUser(null);
   }
 
   return (
-    <AuthContext.Provider value={{ user, loading, setSession, signOut }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ user, loading, login, register, signOut }}>{children}</AuthContext.Provider>
   );
 }
 
@@ -66,3 +109,5 @@ export function useAuth(): AuthContextValue {
   if (!ctx) throw new Error("useAuth must be used within an AuthProvider");
   return ctx;
 }
+
+export { ApiError };

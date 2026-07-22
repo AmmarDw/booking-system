@@ -89,12 +89,17 @@ Layering per feature: `entity → repository → service → controller`, DTOs a
 
 > **Real Spring Boot 4 breaking change found & fixed:** `flyway-core` + `flyway-database-postgresql` alone do **NOT** trigger Flyway anymore — Boot 4 moved `FlywayAutoConfiguration` into its own module, **`spring-boot-flyway`**, only pulled in via **`spring-boot-starter-flyway`** (confirmed via context7 against the Spring Boot `v4.1.0` source). Without it, Flyway silently never ran — the DB stayed empty with zero errors until M1 added entities and `ddl-auto: validate` finally surfaced "missing table" errors. `pom.xml` fixed: swapped bare `flyway-core` for `spring-boot-starter-flyway` (keeping `flyway-database-postgresql` explicit, since it's `optional` inside that module).
 
-### M2 — Auth + security (Day 3)
-- [ ] **[Claude]** Add `jjwt` deps; `JWT_SECRET`, `APP_CORS_ORIGINS` → `.env`/`.env.example`.
-- [ ] **[Claude]** `SecurityConfig` (stateless, encoder, filter, method security) + `CorsConfig` + `AppUserDetailsService` + `JwtService`/`JwtAuthenticationFilter` + `GlobalExceptionHandler`.
-- [ ] **[Claude]** `AuthController`: `register` (→ CONSUMER only, FR-16), `login`, `me`; DTOs + validation.
-- [ ] **[Claude]** Frontend: `/sign-in`, `/sign-up` pages (design components), `lib/api` + `lib/auth`, redirect-back (FR-2).
-- *Acceptance:* register→login→me round-trips a Bearer token; a body-crafted `role:ADMIN` on register still yields CONSUMER (FR-16); secured route without token → 401; booking-while-logged-out routes through sign-in then back (FR-2).
+### M2 — Auth + security (Day 3) ✅ done, browser-tested
+- [x] **[Claude]** Added `jjwt-api/impl/jackson` (0.13.0, verified via context7); `JWT_SECRET` (generated), `APP_CORS_ORIGINS` → `.env`/`.env.example`/`application.yaml`.
+- [x] **[Claude]** `SecurityConfig` (stateless, BCrypt encoder, JWT filter, method security, hand-written JSON 401/403 entry points) + `CorsConfig` + `AppUserDetailsService`/`UserPrincipal` + `JwtService`/`JwtAuthenticationFilter` + `GlobalExceptionHandler` (+`ApiError`).
+- [x] **[Claude]** `AuthController`: `register` (→ CONSUMER only, FR-16 — `RegisterRequest` has no role field at all), `login`, `me`; DTOs + validation.
+- [x] **[Claude]** Frontend: `/sign-in`, `/sign-up` pages (DS `Card`/`Input`/`Button`), `lib/api` + `lib/auth` (login/register/me + localStorage token), redirect-back via `?redirect=` (FR-2).
+- *Acceptance:* ✅ all verified live (curl + chrome-devtools browser test): register→login→me round-trips a Bearer token; a body-crafted `role:"ADMIN"` on register still yields CONSUMER (FR-16); `/me` without/invalid token → 401; unmapped route → 404; sign-up → sign-in with `?redirect=/book` → lands on `/book` after login (FR-2).
+
+> **Three real bugs found & fixed while building M2** (all confirmed via live testing, not just code review):
+> 1. **jjwt 0.13.0 API drift:** context7's own snippet showed `Jwts.parserBuilder()`, which doesn't exist in this version — IDE caught it immediately; fixed to `Jwts.parser()...parseSignedClaims()`.
+> 2. **Jackson 3 relocation (Spring Boot 4):** `com.fasterxml.jackson.databind.ObjectMapper` → `NoClassDefFoundError` at runtime because this stack's Jackson is `tools.jackson.*` (seen transitively via Flyway's own Jackson dependency). Fixed by not depending on Jackson at all in `SecurityConfig`'s hand-rolled 401/403 JSON writer — simpler and avoids the version question entirely.
+> 3. **Own logic bug:** `.requestMatchers("/api/auth/**").permitAll()` accidentally also permitted `/api/auth/me`, so anonymous requests reached the controller instead of getting a clean 401 (surfaced as an opaque 500 from `CurrentUser.get()`, which is also why a bare `@ExceptionHandler(Exception.class)` with no logging is dangerous — added `log.error(...)` there so this class of bug can never hide silently again). Fixed the matcher to name `/register` and `/login` explicitly.
 
 ### M3 — Service browsing + landing (Day 4)
 - [ ] **[Claude]** Backend: `GET /api/services`, `GET /api/services/{id}` (public); admin CRUD deferred to M5.

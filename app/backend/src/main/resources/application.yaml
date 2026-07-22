@@ -12,6 +12,11 @@ spring:
   flyway:
     locations: classpath:db/migration
     baseline-on-migrate: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
 
 # Booking policy defaults (seed values). The admin's live value is persisted in
 # the single-row AppSettings table and overrides this default at runtime (FR-14/FR-15).
@@ -29,3 +34,11 @@ google:
   redirect-uri: ${GOOGLE_REDIRECT_URI:http://localhost:8080/api/google/oauth2/callback}
   scope: https://www.googleapis.com/auth/calendar.events
   token-encryption-key: ${TOKEN_ENCRYPTION_KEY:}
+
+# JWT auth (M2)
+app:
+  jwt:
+    secret: ${JWT_SECRET:}
+    expiration-ms: 86400000 # 24h
+  cors:
+    allowed-origins: ${APP_CORS_ORIGINS:http://localhost:3000}

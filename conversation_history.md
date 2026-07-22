@@ -912,3 +912,60 @@ The `/design-sync` skill is user-triggered only (can't be model-invoked), so pul
 ---
 
 ## § 54 — Prompt #27
+
+I just want to note that when using Claude Design sometimes it asks me for some details and I answer them, and sometimes provide more details and additions — so when you find some feature or detail that hasn't been originally provided by prompts, note that this is not a mistake. Now please execute the plan and develop the system.
+
+---
+
+## § 55 — Response to Prompt #27
+
+### 55.1 Noted
+Extra details/features found in the Claude Design output beyond the original report §6.4 prompts are the user's own interactive answers to Claude Design, not drift to "fix" — treated accordingly going forward.
+
+### 55.2 M0 finished — git init, commit, push
+Investigated first (root not yet a git repo): found `notebook.txt` explicitly says "*not meant for any LLM or AI usage... personal usage*" at its own header, and `.claude/settings.local.json` is machine-local tool-permission config — both excluded via a new root `.gitignore` (along with `.idea/`). Verified nothing sensitive staged (no `.env`, `node_modules`, `target`). `git init`, first commit, `git remote add origin https://github.com/AmmarDw/booking-system.git`, pushed to `main`.
+
+### 55.3 M1 — JPA entities + repositories (built, verified, real bug found & fixed)
+Built all 8 entities/enums + Spring Data repositories under feature packages (`user`, `service`, `availability`, `booking`, `google`, `settings`) matching `V1__init_schema.sql` exactly — `User`+`Role`, `Service` (+ `user_services` handled as a plain `@ManyToMany`, no separate junction entity needed), `AvailabilitySlot`+`SlotStatus` (with the `uq_provider_slot` unique constraint mirrored), `Booking`+`BookingStatus`, `MeetingLink`, `GoogleAccountConnection`, `AppSettings` (single fixed-key row, no `@GeneratedValue`).
+
+**Real bug hit and fixed:** booted the app to verify against the live schema and got `SchemaManagementException: missing table [app_settings]`. Investigation (condition-evaluation report showed **zero** Flyway mentions at all) plus a context7 lookup against the Spring Boot **v4.1.0** source confirmed: **Spring Boot 4 moved `FlywayAutoConfiguration` into its own module (`spring-boot-flyway`)** — a bare `flyway-core` + `flyway-database-postgresql` (what M6 originally set up) never triggers it, so Flyway had **silently never run**, ever, on this DB — even the earlier "Flyway ran V1/V2" claims from the M6 setup turn were never actually verified (no entities existed yet at that time, so `ddl-auto: validate` had nothing to check and couldn't have caught it). Fixed `pom.xml`: swapped bare `flyway-core` for **`org.springframework.boot:spring-boot-starter-flyway`** (keeping `flyway-database-postgresql` explicit, since it's `optional` inside that starter). Rebooted — Flyway now creates all 9 tables (8 + `flyway_schema_history`) cleanly and the app reports **"Started BookingSystemApplication"** with zero schema errors.
+
+### 55.4 Documents Affected
+`.gitignore` (new, root) · `app/backend/pom.xml` (Flyway fix) · 8 new entity files + 6 repository files under `app/backend/src/main/java/com/ammar/bookingsystem/**` · `implementation_plan.md` (M0/M1 checked, Flyway gotcha documented) · `CLAUDE.md` §B.8 (Flyway gotcha + `Service`/`@Service` name-clash note) · this file. Two commits pushed to `main` (`M0: initial scaffold…`, `M1: JPA entities…`).
+
+### 55.5 Status
+**M0 and M1 complete and verified against the real database — not just claimed.** Next: **M2 — Auth + JWT security**.
+
+---
+
+## § 56 — Prompt #28
+
+Yes.
+
+---
+
+## § 57 — Response to Prompt #28
+
+### 57.1 M2 complete — Auth + JWT security (backend + frontend, browser-tested)
+Built the full stateless JWT auth layer per the architecture decisions:
+- **Backend:** `security/` package (`JwtService`, `JwtAuthenticationFilter`, `AppUserDetailsService`, `UserPrincipal`, `CurrentUser`); `config/` (`SecurityConfig` — stateless, BCrypt, method security; `CorsConfig`; `GlobalExceptionHandler` + `common/ApiError`); `auth/` (`RegisterRequest`/`LoginRequest`/`AuthResponse` + `AuthController` with `register`/`login`/`me`).
+- **Frontend:** `/sign-in` and `/sign-up` pages built from the design system (`Card`/`Input`/`Button`), `lib/auth.tsx` wired to the real endpoints (register/login/me + localStorage token persistence), redirect-back via `?redirect=` (FR-2).
+
+### 57.2 Three real bugs found and fixed (all via live testing, not just review)
+1. **jjwt 0.13.0 API drift** — verified the library via context7 first, but even its own indexed snippet (`Jwts.parserBuilder()`) turned out stale for this version; the IDE's live diagnostics caught the mismatch immediately. Fixed to the current `Jwts.parser()...parseSignedClaims()`.
+2. **Jackson 3 relocation (Spring Boot 4)** — `com.fasterxml.jackson.databind.ObjectMapper` compiled but threw `NoClassDefFoundError` at runtime, since this stack's actual Jackson is `tools.jackson.*` (visible transitively via Flyway's own dependency tree). Framework-managed JSON (controller responses) was unaffected — only my own direct import broke. Fixed by hand-writing the small fixed-shape JSON for security-layer 401/403 responses instead of depending on Jackson there at all.
+3. **Own logic bug** — `.requestMatchers("/api/auth/**").permitAll()` accidentally also permitted `/api/auth/me`, so an anonymous request reached the controller (which then threw `IllegalStateException` from `CurrentUser.get()`) instead of getting a clean 401 from Spring Security. Compounded by a bare `@ExceptionHandler(Exception.class)` with **no logging**, which silently converted that (and an unrelated missing-route case) into opaque 500s. Fixed the matcher to name `/register`/`/login` explicitly, added `.exceptionHandling(...)` entry points for real 401/403 responses, added `NoHandlerFoundException` → 404, and added logging to the generic handler so this class of bug can never hide again.
+
+### 57.3 Verification performed
+- `curl` test matrix: register → login → `/me` round-trip; **FR-16** privilege-escalation attempt (`role:"ADMIN"` in the register body) confirmed still yields `CONSUMER`; `/me` without/with-garbage token → clean `401`; unmapped route → clean `404`; duplicate email → `409`; weak password → `400` with field error.
+- **Browser test via chrome-devtools MCP** (both dev servers running): filled and submitted the real sign-up form → success → redirected home; filled and submitted sign-in with `?redirect=/book` → correctly redirected to `/book` (confirms FR-2 end-to-end in the actual UI, not just via API); console clean (no CORS errors, no errors of any kind — only a pre-existing unrelated Next.js placeholder image warning).
+
+### 57.4 Documents Affected
+`app/backend/pom.xml`, `.env`/`.env.example`, `application.yaml` · 13 new backend Java files (`security/`, `config/`, `auth/`, `common/`) · `app/frontend/src/lib/auth.tsx` (rewritten) · `app/frontend/src/app/sign-in/page.tsx` + `sign-up/page.tsx` (new) · 11 new `.d.ts` files for the design-system components (fetched properly from DesignSync after an oversight — I'd only pulled the `.jsx` files earlier) · `implementation_plan.md` (M2 checked + bugs documented) · `CLAUDE.md` §B.8 (Jackson-3 gotcha, JWT-auth notes) · this file.
+
+### 57.5 Status
+**M0, M1, M2 all complete, verified against running systems (not just claimed), committed.** Next: **M3 — Service browsing + landing page.**
+
+---
+
+## § 58 — Prompt #29
