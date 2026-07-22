@@ -80,11 +80,14 @@ Layering per feature: `entity → repository → service → controller`, DTOs a
 
 ### M1 — Data model: JPA entities (Day 3)
 - [x] Schema via Flyway: `V1__init_schema.sql` + `V2__seed_app_settings.sql` (all 8 tables; ERD §7 / `diagrams/erd.drawio`).
-- [ ] **[Claude]** Entities + enums + repositories, one per table, **matching `V1` exactly** (`validate` fails on drift):
+- [x] **[Claude]** Entities + enums + repositories, one per table, **matching `V1` exactly** (`validate` fails on drift):
   - `User` (`id, email(unique), passwordHash, fullName, role, createdAt`) + `Role{CONSUMER,PROVIDER,ADMIN}`; `Service` (`id, name, description, durationMinutes`); provider↔service `@ManyToMany` via `user_services`; `AvailabilitySlot` (`id, providerUser(FK), slotDate, startTime, endTime, status`) + `SlotStatus{AVAILABLE,BOOKED}`; `Booking` (`id, consumerUser(FK), slot(FK), service(FK), status, createdAt`) + `BookingStatus{CONFIRMED,CANCELLED}`; `MeetingLink` (`id, booking(FK,unique), url, provider`); `GoogleAccountConnection` (`id, user(FK,unique), googleEmail, refreshTokenEnc, scope, connectedAt, fallbackMeetUrl`); `AppSettings` (`id, maxBookingHorizonMonths`).
   - `@Enumerated(EnumType.STRING)`; map DB snake_case (`@Column`/naming strategy) to camelCase fields.
   - Spring Data repositories per entity + the derived queries M4/M5 need (e.g. slots by provider+date; bookings by filters).
-- *Acceptance:* app boots with `validate` passing (entities match schema); a quick repository test persists/reads a `User`.
+  - **Note:** entity named `Service` (matches domain/ERD) shares a name with `@org.springframework.stereotype.Service` — the future `ServiceService` business class (M3) must fully-qualify that annotation.
+- *Acceptance:* app boots with `validate` passing (entities match schema) ✅ — `Started BookingSystemApplication` with no schema errors, Flyway created all 9 tables (8 + `flyway_schema_history`) on a fresh DB.
+
+> **Real Spring Boot 4 breaking change found & fixed:** `flyway-core` + `flyway-database-postgresql` alone do **NOT** trigger Flyway anymore — Boot 4 moved `FlywayAutoConfiguration` into its own module, **`spring-boot-flyway`**, only pulled in via **`spring-boot-starter-flyway`** (confirmed via context7 against the Spring Boot `v4.1.0` source). Without it, Flyway silently never ran — the DB stayed empty with zero errors until M1 added entities and `ddl-auto: validate` finally surfaced "missing table" errors. `pom.xml` fixed: swapped bare `flyway-core` for `spring-boot-starter-flyway` (keeping `flyway-database-postgresql` explicit, since it's `optional` inside that module).
 
 ### M2 — Auth + security (Day 3)
 - [ ] **[Claude]** Add `jjwt` deps; `JWT_SECRET`, `APP_CORS_ORIGINS` → `.env`/`.env.example`.
