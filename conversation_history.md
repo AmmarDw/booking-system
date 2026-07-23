@@ -1075,3 +1075,42 @@ ok start M5
 ---
 
 ## § 64 — Prompt #32
+
+yes
+
+---
+
+## § 65 — Response to Prompt #32
+
+### 65.1 M6 complete — Integrations (Google Calendar/Meet + email confirmation, backend + frontend, tested up to the manual Google-consent boundary)
+
+**Backend:**
+- `TokenCipher` — AES-256-GCM encryption for stored Google refresh tokens; the key is derived via `SHA-256(TOKEN_ENCRYPTION_KEY)` so any non-empty configured string yields a valid 256-bit key.
+- `JwtService#generateOAuthState`/`parseOAuthState` — a short-lived (10 min), purpose-tagged signed JWT carrying the initiating provider's user id. Needed because Google's OAuth callback is a plain browser redirect with no `Authorization` header, so the JWT filter can't identify "which provider" — the signed `state` param does that instead.
+- `GoogleOAuthService`/`GoogleOAuthController` (`/api/google/**`): `GET /oauth2/authorize` (provider-only, builds the consent URL with `prompt=consent` so a refresh token is issued even on reconnect); `GET /oauth2/callback` (public); `GET/DELETE /connection`; `PUT /fallback-link`.
+- `GoogleCalendarService#createMeetingEvent` — builds an authorized Calendar client from a provider's decrypted refresh token (via the deprecated-but-functional `GoogleCredential`, kept deliberately over adding an unused new dependency mid-milestone) and creates a Meet-enabled event (`conferenceDataVersion=1`, `hangoutsMeet`, both consumer and provider invited, `sendUpdates=all`). Never throws — returns `null` on any failure (NFR-4).
+- `EmailService#sendBookingConfirmation` — Gmail SMTP (port 465, implicit SSL) confirmation email with service/date/time/meeting link. Also never throws.
+- `BookingService.createBooking` wired to all of the above: rejects the booking (400) if the provider has neither a Google connection nor a fallback link (FR-13); otherwise resolves a meeting link (Google Calendar first, the provider's fallback link if not connected or if Calendar generation fails), persists a `MeetingLink` row when a link was obtained, and always attempts the confirmation email — none of this can fail the booking itself.
+- `V6__seed_demo_provider_fallback_links.sql` — gives the two M4 demo providers a fallback Meet link so the new gate doesn't regress the already-verified M4 booking flow.
+
+**Frontend:** `/dashboard/connect-google` (not-connected / connected / fallback-link form, all three states verified in-browser), a provider-only "Connect Google" nav entry, and a dashboard-wide banner for providers who've set up neither connection method.
+
+### 65.2 Real bug found and fixed
+The callback controller originally declared `code`/`state` as **required** `@RequestParam`s. Google's own most common non-happy-path — a provider clicking "Cancel" on the consent screen — redirects back with `error=access_denied` and **no `code` param at all**, which threw an uncaught `MissingServletRequestParameterException` → a raw 500 JSON page in the browser instead of a graceful bounce back to the dashboard. Caught by deliberately curling that exact shape (not just the happy path), not by review. Fixed by making both params optional and checking for a Google-supplied `error` first, before ever touching the token exchange.
+
+### 65.3 Verification performed
+The real "click Allow" step on Google's own consent screen needs the user's own Google identity and was deliberately left as a manual step (same boundary as the Google Cloud Console setup in U4) — everything on both sides of it was verified:
+- **curl:** authorize URL shape (correct client id/scopes/redirect/signed state); callback error paths (garbage state → graceful redirect, not 500; simulated consent-denial shape → graceful redirect after the fix, confirmed 500 beforehand); the not-bookable gate (created a throwaway provider with zero setup, confirmed 400 on booking attempt, confirmed success after setting a fallback link); a full booking against a fallback-link provider returned `CONFIRMED` with no error logged (email sent via the real Gmail credentials in `.env`); dependency-delete guard from M5 still correctly blocks (409) deleting a provider with bookings.
+- **Browser (chrome-devtools):** all three `/dashboard/connect-google` states rendered correctly (not-connected with pre-filled fallback URL from the seed; the dashboard-wide banner appeared for a zero-setup provider and was absent once a fallback existed); clicking "Connect Google Calendar" redirected to a real, correctly-formed Google consent screen (verified the URL params, stopped short of entering real credentials); the `error=consent_denied` toast rendered correctly. Console clean.
+
+### 65.4 Documents Affected
+`app/backend/src/main/java/com/ammar/bookingsystem/{email,google}/**` (10 new files) · `booking/BookingService.java` (wired) · `security/JwtService.java` (OAuth state methods) · `config/SecurityConfig.java` (public callback route) · `application.yaml` (`spring.mail` block, `google.scope` +`userinfo.email`) · `V6__seed_demo_provider_fallback_links.sql` (new) · `app/frontend/src/app/dashboard/connect-google/page.tsx` (new) · `dashboard/layout.tsx` (nav entry + banner) · `implementation_plan.md` (M6 checked + the bug documented) · `CLAUDE.md` §B.6/§B.8 (`userinfo.email` scope decision + 3 new gotchas: optional OAuth callback params, signed-JWT `state`, bracket-quoted `spring.mail` YAML keys) · this file.
+
+Secrets never reproduced in this log: `TOKEN_ENCRYPTION_KEY` was missing from `.env` and had to be generated — only the fact is recorded here, not the value.
+
+### 65.5 Status
+**M0–M6 complete, verified against running systems (curl + real browser) up to the manual Google-consent boundary, committed and pushed.** Next: **M7 — Testing, security, perf** (manual happy + error paths, security review of unauthorized access attempts, UX polish) or **M8 — Deploy**, per your call.
+
+---
+
+## § 66 — Prompt #33
