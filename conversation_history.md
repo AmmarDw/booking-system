@@ -1000,3 +1000,39 @@ Now please work with M3 and complete it.
 ---
 
 ## § 60 — Prompt #30
+
+*(Mid-turn instruction on the previous prompt: "after you finish M3, implement M4." No separate new prompt — this section records the M4 work done in direct continuation.)*
+
+---
+
+## § 61 — Response to Prompt #30
+
+### 61.1 M4 complete — Core booking journey (backend + frontend, browser-tested end-to-end)
+
+**Backend:**
+- `GET /api/services/{id}/availability/month?yearMonth=` — per-day available/total counts (`availability/AvailabilityService`, `availability/AvailabilityController`).
+- `GET /api/services/{id}/availability/day?date=` — providers grouped with their slots (only providers with ≥1 slot that day), sorted by name/time.
+- `GET /api/settings/booking-window` (public) — exposes `maxHorizonMonths`/`today`/`maxBookableDate` so the frontend can bound calendar navigation without trusting client clock.
+- `config/AppSettingsCache` — in-memory cache of `AppSettings.maxBookingHorizonMonths`, seeded at startup, with a `refresh()` for M5's admin update.
+- `POST /api/bookings` (`booking/BookingService`, `@Transactional`) — `SELECT ... FOR UPDATE` row-locks the slot (`findByIdForUpdate`), validates `AVAILABLE` + within the booking window + the provider actually offers the requested service, then flips the slot to `BOOKED` and creates the `Booking`. Reserves across the provider's other services since the slot belongs to the provider, not the service (FR-4's core rule).
+- **Seed data:** `V4__seed_demo_provider_and_slots.sql` — 2 demo providers + a week of availability with deliberately varied counts (high/medium/low/none) across two providers sharing a date (to test stacked dropdowns). Needed because M5 — the *real* way to create providers — doesn't exist yet. Bcrypt hashes were extracted from real registrations through the app's own `/api/auth/register` (guaranteed encoder-compatible), not hand-computed, and the temp rows were deleted before writing the migration.
+
+**Frontend `/book/[serviceId]`:** month-dropdown navigation (bounded to `[today, today+horizon]` — a simpler stand-in for the spec'd year-picker + 12-month-grid with the same functional guarantee, called out as a scope simplification, not silently substituted); calendar grid with `available/total` badges + pressure colors; stacked provider `Accordion`; disabled→primary "Book appointment" button; success toast using the exact §B.5 text pattern; auto-refreshes month/day views after a successful booking.
+
+### 61.2 Real bugs found and fixed (via actual build + browser testing)
+1. **`CalendarDayCell` didn't support "available/total"** — the design-system component only showed a single count badge, but FR-9 explicitly requires "available/total" (e.g. "3/8"). Extended it with an optional `total` prop (backward-compatible — omitting it keeps the old single-number behavior) rather than silently dropping half the requirement. Documented as a deliberate DS extension.
+2. **Locale bug** — used `toLocaleDateString(undefined, ...)` for month/date labels, which defaults to the browser/OS locale. On this test machine that rendered the month dropdown in **Arabic** ("يوليو 2026") even though no i18n has been wired up yet. Caught via the actual browser snapshot, not assumed. Fixed to explicit `"en-US"`.
+
+### 61.3 Verification performed
+- **curl matrix:** booking window endpoint; month view showing the exact seeded pressure levels (7/3/3/skip/4/1); day view showing 2 stacked providers on a shared date (FR-3); successful booking (200, `CONFIRMED`); re-booking the same slot under a *different* service still `409` (direct proof of FR-4 — the block is provider-wide); no-auth → `401`; bad service id → `404`; month/day views correctly reflected the new `BOOKED` state after the curl booking.
+- **Full browser walkthrough (chrome-devtools MCP):** signed in as `consumer2@test.com` → navigated to `/book/1` → caught and fixed the Arabic-locale bug → selected July 25 (3/3) → expanded "Dr. Demo Provider" → selected 11:00 AM → "Book appointment" enabled → clicked → toast showed the **exact** required text → month view live-updated to 2/3 → day view showed 11:00 AM as `(booked)` and disabled → toast's close button dismissed it correctly. Console clean throughout.
+
+### 61.4 Documents Affected
+`app/backend/src/main/java/com/ammar/bookingsystem/{availability,booking,config,settings}/**` (11 new files) · `AvailabilitySlotRepository.java` (pessimistic-lock + multi-provider finders) · `SecurityConfig.java` (permit `/api/settings/booking-window`) · `V4__seed_demo_provider_and_slots.sql` (new) · `app/frontend/src/app/book/[serviceId]/page.tsx` (new) · `CalendarDayCell.jsx`/`.d.ts` (`total` prop) · `implementation_plan.md` (M4 checked + both bugs documented) · `CLAUDE.md` §B.8 (locale gotcha) · this file.
+
+### 61.5 Status
+**M0–M4 complete, verified against running systems (curl + real browser), committed.** Next: **M5 — Dashboard + management** (shared provider/admin dashboard, availability CRUD + bulk generator, services CRUD, users CRUD/promote, admin settings).
+
+---
+
+## § 62 — Prompt #31

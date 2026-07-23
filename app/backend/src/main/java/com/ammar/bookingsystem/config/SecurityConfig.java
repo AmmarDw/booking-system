@@ -47,6 +47,9 @@ public class SecurityConfig {
                         .permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/services", "/api/services/**")
                         .permitAll()
+                        // FR-15 needs the horizon to render the calendar before the user signs in.
+                        .requestMatchers(HttpMethod.GET, "/api/settings/booking-window")
+                        .permitAll()
                         .anyRequest()
                         .authenticated())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

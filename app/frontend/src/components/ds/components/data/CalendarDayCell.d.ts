@@ -4,6 +4,8 @@ export interface CalendarDayCellProps {
   status?: 'high' | 'medium' | 'low' | 'none' | 'booked';
   /** Number of open slots shown as a badge (omitted for none/booked) */
   count?: number;
+  /** Total slots that day — when set, the badge reads "available/total" (e.g. "3/8") per FR-9 */
+  total?: number;
   selected?: boolean;
   onClick?: () => void;
 }
