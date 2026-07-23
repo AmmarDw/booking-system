@@ -101,10 +101,12 @@ Layering per feature: `entity → repository → service → controller`, DTOs a
 > 2. **Jackson 3 relocation (Spring Boot 4):** `com.fasterxml.jackson.databind.ObjectMapper` → `NoClassDefFoundError` at runtime because this stack's Jackson is `tools.jackson.*` (seen transitively via Flyway's own Jackson dependency). Fixed by not depending on Jackson at all in `SecurityConfig`'s hand-rolled 401/403 JSON writer — simpler and avoids the version question entirely.
 > 3. **Own logic bug:** `.requestMatchers("/api/auth/**").permitAll()` accidentally also permitted `/api/auth/me`, so anonymous requests reached the controller instead of getting a clean 401 (surfaced as an opaque 500 from `CurrentUser.get()`, which is also why a bare `@ExceptionHandler(Exception.class)` with no logging is dangerous — added `log.error(...)` there so this class of bug can never hide silently again). Fixed the matcher to name `/register` and `/login` explicitly.
 
-### M3 — Service browsing + landing (Day 4)
-- [ ] **[Claude]** Backend: `GET /api/services`, `GET /api/services/{id}` (public); admin CRUD deferred to M5.
-- [ ] **[Claude]** Frontend: landing `/` (Hero → How-it-works → Services preview → FAQ → Footer, no social proof) + `/book` list (compose from `SearchScreen`); "Book" gates on auth.
-- *Acceptance:* FR-1 (public browse) passes; logged-out "Book" → FR-2 flow.
+### M3 — Service browsing + landing (Day 4) ✅ done, browser-tested
+- [x] **[Claude]** Backend: `GET /api/services`, `GET /api/services/{id}` (public, 404 on missing id); admin CRUD deferred to M5. Seeded 4 demo services (`V3__seed_demo_services.sql` — bootcamp rule: demo data only).
+- [x] **[Claude]** Frontend: landing `/` (Hero → How-it-works → live Services preview (top 3, server-fetched, `force-dynamic` so it never bakes stale data at build time) → FAQ `Accordion` → Footer, no social proof); `/book` list (client component, all 4 services, `Card` + `Button`); "Book" gates on auth via `useAuth()` → `/sign-in?redirect=/book/{id}` when logged out, else `/book/{id}` directly (M4 builds that target page).
+- *Acceptance:* ✅ browser-verified (chrome-devtools): landing renders live service data + interactive FAQ; `/book` lists all 4 services; **logged-out "Book" click confirmed redirecting to `/sign-in?redirect=/book/3`** (FR-1 + FR-2 both pass end-to-end, not just via curl).
+
+> **Real bug found & fixed:** `Accordion.jsx` (design-system component) calls `React.useState` internally but had no `"use client"` directive. Rendering it from the landing page's Server Component tree threw `useState is not a function` at build time — Server Components can't use hooks. Fixed by adding `"use client"` to `Accordion.jsx` itself (the correct architectural fix: it's inherently an interactive component, not a page-level workaround). Checked the rest of the design-system components — none of the others use hooks internally, so this was isolated to `Accordion`.
 
 ### M4 — Core booking journey (Day 4) — dedicated page `/book/[serviceId]`
 - [ ] **[Claude]** Backend: `GET /api/services/{id}/availability?date=…` → providers offering the service, each with their slots for the date (available/booked), + per-day available/total counts for the month view. Window validation reads cached `AppSettings.maxBookingHorizonMonths` (`config/AppSettingsCache`).

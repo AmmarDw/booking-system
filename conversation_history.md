@@ -969,3 +969,34 @@ Built the full stateless JWT auth layer per the architecture decisions:
 ---
 
 ## § 58 — Prompt #29
+
+Now please work with M3 and complete it.
+
+*(Mid-turn addition: "after you finish M3, implement M4".)*
+
+---
+
+## § 59 — Response to Prompt #29
+
+### 59.1 M3 complete — Service browsing + landing page (backend + frontend, browser-tested)
+- **Backend:** `GET /api/services` (list) + `GET /api/services/{id}` (404 on missing) — public per `SecurityConfig`'s existing GET permitAll rule. Seeded 4 demo services via `V3__seed_demo_services.sql` (bootcamp rule: demo data only, never real).
+- **Frontend — landing `/`:** Hero → How-it-works (4 steps) → live Services preview (top 3, server-fetched) → FAQ (`Accordion`) → Footer, no social proof, per report §6.4 prompt B.
+- **Frontend — `/book`:** all 4 services as cards; "Book" button is auth-aware via `useAuth()` — redirects to `/sign-in?redirect=/book/{id}` when logged out, else goes straight to `/book/{id}` (M4's target page).
+
+### 59.2 Two real bugs found and fixed (via actual build + browser testing)
+1. **`Accordion.jsx` client-boundary bug** — it calls `React.useState` internally but had no `"use client"` directive. Rendering it from the landing page (a Server Component) threw `useState is not a function` at build time, since Server Components can't use hooks. Fixed at the component itself (correct architectural fix, not a page-level workaround); checked the rest of the DS components — none of the others use hooks internally.
+2. **Static-at-build-time staleness** — `/` initially built as a static (`○`) route, meaning the services preview would have baked in whatever the backend returned at *build* time, not live data. Added `export const dynamic = "force-dynamic"` so it's `ƒ` (server-rendered on demand) instead.
+
+### 59.3 Verification performed
+- curl: `GET /api/services` (4 services), `GET /api/services/1` (200), `GET /api/services/999` (404).
+- **Browser test via chrome-devtools MCP:** landing page renders live service data + interactive FAQ (toggled between items, verified via snapshot); `/book` lists all 4 services. Caught a false positive — clicking "Book" first went straight to `/book/3` (looked like the gate failed) — investigated via `evaluate_script` and found a leftover JWT in `localStorage` from earlier M2 testing (`browsertest@test.com`). Cleared it, retested, and **confirmed the real logged-out case**: clicking "Book" correctly navigated to `/sign-in?redirect=/book/3`. Console clean throughout (no errors).
+
+### 59.4 Documents Affected
+`app/backend/service/ServiceController.java` + `dto/ServiceResponse.java` (new) · `V3__seed_demo_services.sql` (new) · `app/frontend/src/app/page.tsx` (rewritten) · `app/frontend/src/app/book/page.tsx` (new) · `app/frontend/src/components/ds/components/forms/Accordion.jsx` (`"use client"` fix) · `implementation_plan.md` (M3 checked + bugs documented) · `CLAUDE.md` §B.8 (DS client-boundary + force-dynamic notes) · this file.
+
+### 59.5 Status
+**M0–M3 complete, verified against running systems, committed.** Continuing directly into **M4 — Core booking journey** per the mid-turn instruction, without stopping for confirmation.
+
+---
+
+## § 60 — Prompt #30

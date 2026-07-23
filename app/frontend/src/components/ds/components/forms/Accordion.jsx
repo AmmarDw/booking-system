@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 export function Accordion({items=[]}){
   const [open,setOpen]=React.useState(0);
