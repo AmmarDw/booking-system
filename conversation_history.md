@@ -1114,3 +1114,37 @@ Secrets never reproduced in this log: `TOKEN_ENCRYPTION_KEY` was missing from `.
 ---
 
 ## § 66 — Prompt #33
+
+When an appointment is booked I need the providers to receive an email of the booking too with the appointment details and meeting link. Also the consumers should have the ability to access the appointments page to view their own appointments only. Each appointment record in the table should be clickable so that when clicked it pops up a view window for full details of the appointment that most importantly include the meeting link!
+
+---
+
+## § 67 — Response to Prompt #33
+
+### 67.1 Three features added — provider booking-notification email, consumer "My Appointments" view, clickable appointment-details modal (backend + frontend, browser-tested)
+
+**Backend:**
+- `EmailService.sendProviderBookingNotification` — a second email sent on every booking, this one to the **provider** (names the consumer, service, date, time, meeting link), alongside the existing consumer confirmation. Same NFR-4 pattern as the rest of `EmailService` — never throws.
+- `AppointmentSummary` gained a `meetingLink` field (resolved from `MeetingLinkRepository` per booking, same in-memory-filter approach as the rest of `AppointmentQueryService` — noted as fine at bootcamp scale, same as the existing FR-10/11 comment already flagged).
+- `AppointmentQueryService` gained a **consumer** scope: `CONSUMER` callers are now allowed (previously only `PROVIDER`/`ADMIN`) and are hard-scoped server-side to their own `consumerUserId` — filter params like `providerId` can't be used to see anyone else's bookings, verified by curl.
+- `BookingController`'s `GET /api/bookings` `@PreAuthorize` opened to `hasAnyRole('CONSUMER','PROVIDER','ADMIN')`.
+
+**Frontend:**
+- New `/appointments` page ("My Appointments") — consumer-only (redirects providers/admins to `/dashboard`, mirroring the dashboard layout's own role gate), lists just that consumer's bookings, no filters (kept intentionally minimal).
+- New nav entry "My Appointments", visible only to `CONSUMER` users.
+- Design-system `Table` extended with an optional `onRowClick(row, index)` prop and `Modal` with an optional `hideActions` prop — both backward-compatible (same pattern as the earlier `CalendarDayCell` `total` prop extension), so existing usages (services/users admin modals) are unaffected.
+- New shared `AppointmentDetailsModal` component (service, date, time, consumer, provider, status badge, and — the actual point of the feature — a clickable meeting link, or "Not available yet" if none). Wired into **both** the consumer `/appointments` table and the existing provider/admin `/dashboard` table via row click, so there's exactly one details view shared across every appointment table in the app rather than two near-duplicate ones.
+
+### 67.2 Verification performed
+- **curl:** logged in as the M6-tester consumer — `GET /api/bookings` returned only their 3 bookings (never someone else's), each with the correct `meetingLink`; passing `providerId=9` as a consumer had no effect (still scoped to their own bookings only — confirms the filter can't be used to escape the scope). Booked a brand-new slot and grepped the backend log for `ERROR`/"Failed to send" — zero hits, confirming both the consumer confirmation and the new provider notification email sent cleanly via the real Gmail credentials in `.env`.
+- **Browser (chrome-devtools):** signed in as the consumer → `/appointments` showed exactly their 3 bookings with a working "My Appointments" nav link → clicked a row → modal opened with full details and a clickable Meet link. Signed in as the provider → `/dashboard` table (no "My Appointments" link, as expected) → clicked a row → same shared modal, correct data. Provider hitting `/appointments` directly was redirected to `/dashboard`, confirming the consumer-only gate. Console clean throughout.
+
+### 67.3 Documents Affected
+`AppointmentSummary.java` (`meetingLink` field) · `AppointmentQueryService.java` (consumer scope) · `BookingController.java` (opened GET to consumers) · `BookingService.java` (calls the new provider email) · `EmailService.java` (`sendProviderBookingNotification`) · `app/frontend/src/app/appointments/page.tsx` (new) · `components/AppointmentDetailsModal.tsx` (new) · `dashboard/page.tsx` (row-click wiring) · `NavBar.tsx` (My Appointments link) · `Table.jsx`/`.d.ts` (`onRowClick`) · `Modal.jsx`/`.d.ts` (`hideActions`) · `implementation_plan.md` (new M6.1 section) · `CLAUDE.md` §B.3/§B.6 (My Appointments page + shared details-modal note; email-to-both-parties note) · this file.
+
+### 67.4 Status
+**Feature complete, verified against running systems (curl + real browser, consumer and provider roles), committed and pushed.** Next: your call — M7 (testing/security/perf) or M8 (deploy), or further feature work.
+
+---
+
+## § 68 — Prompt #34
