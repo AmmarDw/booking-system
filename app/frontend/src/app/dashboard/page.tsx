@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Badge, Table } from "@/components/ds";
+import { AppointmentDetailsModal } from "@/components/AppointmentDetailsModal";
 import { api, ApiError } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 
@@ -26,6 +27,7 @@ interface AppointmentSummary {
   startTime: string;
   endTime: string;
   status: "CONFIRMED" | "CANCELLED";
+  meetingLink: string | null;
 }
 
 function formatTime(hhmmss: string) {
@@ -47,6 +49,7 @@ export default function DashboardPage() {
   const [statusFilter, setStatusFilter] = useState("");
   const [providerFilter, setProviderFilter] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [selected, setSelected] = useState<AppointmentSummary | null>(null);
 
   useEffect(() => {
     api<ServiceSummary[]>("/api/services").then(setServices).catch(() => {});
@@ -141,8 +144,11 @@ export default function DashboardPage() {
             { key: "status", label: "Status" },
           ]}
           rows={rows}
+          onRowClick={(_row, i) => setSelected(appointments![i])}
         />
       )}
+
+      <AppointmentDetailsModal appointment={selected} onClose={() => setSelected(null)} />
     </div>
   );
 }

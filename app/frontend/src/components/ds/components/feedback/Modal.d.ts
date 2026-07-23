@@ -7,5 +7,6 @@ export interface ModalProps {
   primaryLabel?: string;
   secondaryLabel?: string;
   onPrimary?: () => void;
+  hideActions?: boolean;
 }
 export declare function Modal(props: ModalProps): JSX.Element | null;

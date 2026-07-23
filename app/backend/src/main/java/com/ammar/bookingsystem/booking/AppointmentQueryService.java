@@ -8,31 +8,41 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
-// Dashboard appointments list (FR-10/FR-11): providers see only their own, admins see all and may
-// filter by provider. Fetches all bookings and filters in-memory — fine at bootcamp/demo scale;
-// would need a proper query (Specification/JPQL) before any real production volume.
+// Appointments list: providers see only their own, admins see all and may filter by provider,
+// consumers see only their own bookings (FR-10/FR-11 + the consumer "my appointments" view).
+// Fetches all bookings and filters in-memory — fine at bootcamp/demo scale; would need a proper
+// query (Specification/JPQL) before any real production volume.
 @Component
 public class AppointmentQueryService {
 
     private final BookingRepository bookingRepository;
+    private final MeetingLinkRepository meetingLinkRepository;
 
-    public AppointmentQueryService(BookingRepository bookingRepository) {
+    public AppointmentQueryService(BookingRepository bookingRepository, MeetingLinkRepository meetingLinkRepository) {
         this.bookingRepository = bookingRepository;
+        this.meetingLinkRepository = meetingLinkRepository;
     }
 
     public List<AppointmentSummary> list(User caller, Long serviceIdFilter, String statusFilter, Long providerIdFilter) {
-        Long scopedProviderId;
+        Long scopedProviderId = null;
+        Long scopedConsumerId = null;
         if (caller.getRole() == Role.PROVIDER) {
             scopedProviderId = caller.getId();
         } else if (caller.getRole() == Role.ADMIN) {
             scopedProviderId = providerIdFilter; // null = all providers
+        } else if (caller.getRole() == Role.CONSUMER) {
+            scopedConsumerId = caller.getId();
         } else {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Only providers or admins may view the dashboard");
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Not allowed to view appointments");
         }
 
+        Long finalScopedProviderId = scopedProviderId;
+        Long finalScopedConsumerId = scopedConsumerId;
         return bookingRepository.findAll().stream()
-                .filter(b -> scopedProviderId == null
-                        || b.getSlot().getProviderUser().getId().equals(scopedProviderId))
+                .filter(b -> finalScopedProviderId == null
+                        || b.getSlot().getProviderUser().getId().equals(finalScopedProviderId))
+                .filter(b -> finalScopedConsumerId == null
+                        || b.getConsumerUser().getId().equals(finalScopedConsumerId))
                 .filter(b -> serviceIdFilter == null || b.getService().getId().equals(serviceIdFilter))
                 .filter(b -> statusFilter == null || b.getStatus().name().equalsIgnoreCase(statusFilter))
                 .map(this::toSummary)
@@ -44,6 +54,7 @@ public class AppointmentQueryService {
     }
 
     private AppointmentSummary toSummary(Booking booking) {
+        String meetingLink = meetingLinkRepository.findByBookingId(booking.getId()).map(MeetingLink::getUrl).orElse(null);
         return new AppointmentSummary(
                 booking.getId(),
                 booking.getService().getName(),
@@ -53,7 +64,8 @@ public class AppointmentQueryService {
                 booking.getSlot().getSlotDate(),
                 booking.getSlot().getStartTime(),
                 booking.getSlot().getEndTime(),
-                booking.getStatus().name());
+                booking.getStatus().name(),
+                meetingLink);
     }
 
     private static String displayName(User user) {

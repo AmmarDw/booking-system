@@ -11,6 +11,7 @@ export function NavBar() {
   const { user, loading, signOut } = useAuth();
   const router = useRouter();
   const canSeeDashboard = user && (user.role === "PROVIDER" || user.role === "ADMIN");
+  const canSeeMyAppointments = user && user.role === "CONSUMER";
 
   function handleSignOut() {
     signOut();
@@ -32,6 +33,11 @@ export function NavBar() {
         {canSeeDashboard && (
           <Link href="/dashboard" style={{ color: "var(--text-secondary)" }}>
             Dashboard
+          </Link>
+        )}
+        {canSeeMyAppointments && (
+          <Link href="/appointments" style={{ color: "var(--text-secondary)" }}>
+            My Appointments
           </Link>
         )}
         {!loading && user && (

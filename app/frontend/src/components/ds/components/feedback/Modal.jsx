@@ -1,5 +1,5 @@
 import React from 'react';
-export function Modal({open,title,description,children,onClose,primaryLabel='Confirm',secondaryLabel='Cancel',onPrimary}){
+export function Modal({open,title,description,children,onClose,primaryLabel='Confirm',secondaryLabel='Cancel',onPrimary,hideActions=false}){
   if(!open) return null;
   return <div className="bk-modal-overlay" onClick={onClose}>
     <div className="bk-modal" onClick={e=>e.stopPropagation()}>
@@ -9,10 +9,10 @@ export function Modal({open,title,description,children,onClose,primaryLabel='Con
       <h2 className="bk-modal-title">{title}</h2>
       {description&&<p className="bk-modal-desc">{description}</p>}
       {children}
-      <div className="bk-modal-actions">
+      {!hideActions&&<div className="bk-modal-actions">
         <button className="bk-btn bk-btn-ghost" onClick={onClose}>{secondaryLabel}</button>
         <button className="bk-btn bk-btn-primary" onClick={onPrimary}>{primaryLabel}</button>
-      </div>
+      </div>}
     </div>
   </div>;
 }

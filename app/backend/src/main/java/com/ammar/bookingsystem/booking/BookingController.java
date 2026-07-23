@@ -36,9 +36,10 @@ public class BookingController {
         return ResponseEntity.ok(response);
     }
 
-    // Dashboard appointments list (FR-10/FR-11).
+    // Appointments list (FR-10/FR-11) — providers/admins get the dashboard view, consumers get
+    // their own "my appointments" view; scoping is enforced in AppointmentQueryService either way.
     @GetMapping
-    @PreAuthorize("hasAnyRole('PROVIDER','ADMIN')")
+    @PreAuthorize("hasAnyRole('CONSUMER','PROVIDER','ADMIN')")
     public List<AppointmentSummary> list(
             @RequestParam(required = false) Long serviceId,
             @RequestParam(required = false) String status,

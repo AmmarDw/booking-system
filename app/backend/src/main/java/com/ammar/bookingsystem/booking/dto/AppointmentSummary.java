@@ -12,4 +12,5 @@ public record AppointmentSummary(
         LocalDate date,
         LocalTime startTime,
         LocalTime endTime,
-        String status) {}
+        String status,
+        String meetingLink) {}

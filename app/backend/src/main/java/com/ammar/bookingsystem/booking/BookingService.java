@@ -123,10 +123,18 @@ public class BookingService {
             meetingLinkRepository.save(new MeetingLink(booking, meetingLink));
         }
 
-        // FR-5: confirmation email — also never allowed to fail the booking (EmailService itself
-        // catches and logs internally).
+        // FR-5: confirmation email to the consumer, plus a notification to the provider so they
+        // know a new booking landed on their calendar — neither is allowed to fail the booking
+        // itself (EmailService catches and logs internally).
         emailService.sendBookingConfirmation(
                 consumer.getEmail(), service.getName(), slot.getSlotDate(), slot.getStartTime(), meetingLink);
+        emailService.sendProviderBookingNotification(
+                slot.getProviderUser().getEmail(),
+                service.getName(),
+                slot.getSlotDate(),
+                slot.getStartTime(),
+                meetingLink,
+                displayName(consumer));
 
         return new BookingResponse(
                 booking.getId(),
