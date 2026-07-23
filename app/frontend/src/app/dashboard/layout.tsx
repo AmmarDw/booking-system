@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { api } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 
 // Shared dashboard shell (FR-10): providers and admins only. Real enforcement is server-side
@@ -12,6 +13,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const router = useRouter();
   const pathname = usePathname();
   const isAdmin = user?.role === "ADMIN";
+  const isProvider = user?.role === "PROVIDER";
+
+  const [needsGoogleSetup, setNeedsGoogleSetup] = useState(false);
 
   useEffect(() => {
     if (loading) return;
@@ -24,6 +28,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     }
   }, [loading, user, router, pathname]);
 
+  useEffect(() => {
+    if (!isProvider) return;
+    api<{ connected: boolean; fallbackMeetUrl: string | null }>("/api/google/connection")
+      .then((res) => setNeedsGoogleSetup(!res.connected && !res.fallbackMeetUrl))
+      .catch(() => {});
+  }, [isProvider]);
+
   if (loading || !user || (user.role !== "PROVIDER" && user.role !== "ADMIN")) return null;
 
   const links = [
@@ -31,6 +42,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { href: "/dashboard/availability", label: "Availability" },
     ...(isAdmin ? [{ href: "/dashboard/services", label: "Services" }] : []),
     ...(isAdmin ? [{ href: "/dashboard/users", label: "Users" }] : []),
+    ...(isProvider ? [{ href: "/dashboard/connect-google", label: "Connect Google" }] : []),
   ];
 
   return (
@@ -50,6 +62,20 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </Link>
         ))}
       </nav>
+      {needsGoogleSetup && pathname !== "/dashboard/connect-google" && (
+        <div
+          className="mb-6 px-4 py-3 rounded text-sm flex items-center justify-between gap-4"
+          style={{ background: "var(--surface-sunken)", color: "var(--text-secondary)" }}
+        >
+          <span>
+            You haven&apos;t connected Google Calendar or set a fallback meeting link — consumers can&apos;t book
+            you yet.
+          </span>
+          <Link href="/dashboard/connect-google" className="font-medium whitespace-nowrap" style={{ color: "var(--color-primary)" }}>
+            Set up now
+          </Link>
+        </div>
+      )}
       {children}
     </div>
   );

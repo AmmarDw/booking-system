@@ -50,6 +50,11 @@ public class SecurityConfig {
                         // FR-15 needs the horizon to render the calendar before the user signs in.
                         .requestMatchers(HttpMethod.GET, "/api/settings/booking-window")
                         .permitAll()
+                        // Google's redirect here is a plain browser navigation with no
+                        // Authorization header — the provider identity travels via the signed
+                        // `state` param instead (JwtService#parseOAuthState).
+                        .requestMatchers(HttpMethod.GET, "/api/google/oauth2/callback")
+                        .permitAll()
                         .anyRequest()
                         .authenticated())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

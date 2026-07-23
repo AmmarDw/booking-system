@@ -6,6 +6,10 @@ import com.ammar.bookingsystem.availability.SlotStatus;
 import com.ammar.bookingsystem.booking.dto.BookingResponse;
 import com.ammar.bookingsystem.booking.dto.CreateBookingRequest;
 import com.ammar.bookingsystem.config.AppSettingsCache;
+import com.ammar.bookingsystem.email.EmailService;
+import com.ammar.bookingsystem.google.GoogleAccountConnection;
+import com.ammar.bookingsystem.google.GoogleAccountConnectionRepository;
+import com.ammar.bookingsystem.google.GoogleCalendarService;
 import com.ammar.bookingsystem.service.Service;
 import com.ammar.bookingsystem.service.ServiceRepository;
 import com.ammar.bookingsystem.user.User;
@@ -27,18 +31,30 @@ public class BookingService {
     private final UserRepository userRepository;
     private final BookingRepository bookingRepository;
     private final AppSettingsCache appSettingsCache;
+    private final GoogleAccountConnectionRepository googleAccountConnectionRepository;
+    private final GoogleCalendarService googleCalendarService;
+    private final MeetingLinkRepository meetingLinkRepository;
+    private final EmailService emailService;
 
     public BookingService(
             AvailabilitySlotRepository availabilitySlotRepository,
             ServiceRepository serviceRepository,
             UserRepository userRepository,
             BookingRepository bookingRepository,
-            AppSettingsCache appSettingsCache) {
+            AppSettingsCache appSettingsCache,
+            GoogleAccountConnectionRepository googleAccountConnectionRepository,
+            GoogleCalendarService googleCalendarService,
+            MeetingLinkRepository meetingLinkRepository,
+            EmailService emailService) {
         this.availabilitySlotRepository = availabilitySlotRepository;
         this.serviceRepository = serviceRepository;
         this.userRepository = userRepository;
         this.bookingRepository = bookingRepository;
         this.appSettingsCache = appSettingsCache;
+        this.googleAccountConnectionRepository = googleAccountConnectionRepository;
+        this.googleCalendarService = googleCalendarService;
+        this.meetingLinkRepository = meetingLinkRepository;
+        this.emailService = emailService;
     }
 
     @Transactional
@@ -72,6 +88,16 @@ public class BookingService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "This provider does not offer that service");
         }
 
+        // FR-13: a provider isn't bookable until they've connected Google or set a fallback link.
+        GoogleAccountConnection connection =
+                googleAccountConnectionRepository.findByUserId(slot.getProviderUser().getId()).orElse(null);
+        boolean hasOAuth = connection != null && connection.getRefreshTokenEnc() != null;
+        boolean hasFallback = connection != null && connection.getFallbackMeetUrl() != null;
+        if (!hasOAuth && !hasFallback) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, "This provider hasn't set up a meeting link yet — please try another provider");
+        }
+
         // The slot belongs to the provider, not the service — booking it here reserves it across
         // every service that provider offers (PROJECT_REPORT.md §7 key rule; FR-4).
         slot.setStatus(SlotStatus.BOOKED);
@@ -80,6 +106,27 @@ public class BookingService {
         User consumer = userRepository.getReferenceById(consumerUserId);
         Booking booking = new Booking(consumer, slot, service);
         bookingRepository.save(booking);
+
+        // FR-6: generate the Meet link — via the provider's own calendar if connected, else their
+        // pasted fallback link. A failure here must not fail the booking itself (NFR-4).
+        String meetingLink = hasOAuth
+                ? googleCalendarService.createMeetingEvent(
+                        connection.getRefreshTokenEnc(),
+                        service.getName(),
+                        slot.getSlotDate(),
+                        slot.getStartTime(),
+                        slot.getEndTime(),
+                        consumer.getEmail(),
+                        slot.getProviderUser().getEmail())
+                : connection.getFallbackMeetUrl();
+        if (meetingLink != null) {
+            meetingLinkRepository.save(new MeetingLink(booking, meetingLink));
+        }
+
+        // FR-5: confirmation email — also never allowed to fail the booking (EmailService itself
+        // catches and logs internally).
+        emailService.sendBookingConfirmation(
+                consumer.getEmail(), service.getName(), slot.getSlotDate(), slot.getStartTime(), meetingLink);
 
         return new BookingResponse(
                 booking.getId(),

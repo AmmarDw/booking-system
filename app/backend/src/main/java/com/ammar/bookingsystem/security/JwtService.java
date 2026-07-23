@@ -40,4 +40,34 @@ public class JwtService {
     public Claims parseClaims(String token) {
         return Jwts.parser().verifyWith(key).build().parseSignedClaims(token).getPayload();
     }
+
+    // --- Google OAuth "state" param (FR-13) ---
+    // Google's callback redirect is a plain browser navigation, so it carries no Authorization
+    // header — there's no way to know "which provider" via the normal JWT filter. Instead we mint
+    // a short-lived, signed token embedding the initiating provider's id and pass it as `state`;
+    // Google echoes it back unmodified, and the callback verifies+decodes it. Reuses this same
+    // signing key/library — distinct claim ("purpose") keeps it from being confused with a real
+    // auth token, and the short expiry limits how long a leaked state value would be useful.
+    private static final long STATE_EXPIRATION_MS = 10 * 60 * 1000; // 10 minutes
+    private static final String STATE_PURPOSE = "google_oauth_state";
+
+    public String generateOAuthState(Long userId) {
+        Date now = new Date();
+        return Jwts.builder()
+                .subject(String.valueOf(userId))
+                .claim("purpose", STATE_PURPOSE)
+                .issuedAt(now)
+                .expiration(new Date(now.getTime() + STATE_EXPIRATION_MS))
+                .signWith(key, Jwts.SIG.HS256)
+                .compact();
+    }
+
+    /** Throws JwtException if invalid/expired/wrong purpose. */
+    public Long parseOAuthState(String state) {
+        Claims claims = parseClaims(state);
+        if (!STATE_PURPOSE.equals(claims.get("purpose", String.class))) {
+            throw new io.jsonwebtoken.JwtException("Not a Google OAuth state token");
+        }
+        return Long.valueOf(claims.getSubject());
+    }
 }

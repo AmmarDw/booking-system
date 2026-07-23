@@ -17,6 +17,16 @@ spring:
   web:
     resources:
       add-mappings: false
+  mail:
+    host: ${EMAIL_HOST:smtp.gmail.com}
+    port: ${EMAIL_PORT:465}
+    username: ${EMAIL_USER:}
+    password: ${EMAIL_PASS:}
+    properties:
+      "[mail.smtp.auth]": true
+      # Port 465 is implicit SSL (not STARTTLS on 587) — this property, not starttls.enable, is
+      # what makes JavaMail actually use SSL for the initial connection.
+      "[mail.smtp.ssl.enable]": true
 
 # Booking policy defaults (seed values). The admin's live value is persisted in
 # the single-row AppSettings table and overrides this default at runtime (FR-14/FR-15).
@@ -32,7 +42,9 @@ google:
   client-id: ${GOOGLE_CLIENT_ID:}
   client-secret: ${GOOGLE_CLIENT_SECRET:}
   redirect-uri: ${GOOGLE_REDIRECT_URI:http://localhost:8080/api/google/oauth2/callback}
-  scope: https://www.googleapis.com/auth/calendar.events
+  # calendar.events to create/manage the Meet-enabled event; userinfo.email to show which Google
+  # account is connected in the UI (report §6.4 prompt H).
+  scope: "https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/userinfo.email"
   token-encryption-key: ${TOKEN_ENCRYPTION_KEY:}
 
 # JWT auth (M2)
