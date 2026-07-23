@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth";
+import { NavBar } from "@/components/NavBar";
 
 export const metadata: Metadata = {
   title: "BookIt — Booking & Appointments",
@@ -17,7 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <NavBar />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

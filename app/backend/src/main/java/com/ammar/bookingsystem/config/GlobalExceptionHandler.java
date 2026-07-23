@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -39,6 +40,15 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ApiError> handleBadRequest(RuntimeException ex, HttpServletRequest request) {
         ApiError body = ApiError.of(400, "Bad Request", ex.getMessage(), request.getRequestURI());
         return ResponseEntity.badRequest().body(body);
+    }
+
+    // @PreAuthorize denials throw this from inside the MVC handler invocation (method-security AOP),
+    // so — unlike an unauthenticated request — it never reaches SecurityConfig's filter-level
+    // accessDeniedHandler at all; it must be caught here or it falls into the generic 500 below (FR-12).
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<ApiError> handleAccessDenied(AccessDeniedException ex, HttpServletRequest request) {
+        ApiError body = ApiError.of(403, "Forbidden", "You do not have permission to perform this action", request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(body);
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)

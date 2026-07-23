@@ -13,9 +13,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
-@org.springframework.stereotype.Service
+@Component
 public class AvailabilityService {
 
     private final ServiceRepository serviceRepository;

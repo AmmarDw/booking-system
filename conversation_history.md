@@ -1036,3 +1036,42 @@ Now please work with M3 and complete it.
 ---
 
 ## § 62 — Prompt #31
+
+ok start M5
+
+---
+
+## § 63 — Response to Prompt #31
+
+### 63.1 M5 complete — Dashboard + management (backend + frontend, browser-tested end-to-end)
+
+**Backend, all role-guarded via `@PreAuthorize`:**
+- `GET /api/bookings` appointments list with service/status filters + admin-only provider filter (`AppointmentQueryService`) — FR-10/FR-11.
+- `AvailabilityManagementController`/`Service`: bulk generate (weekdays × date range × time ranges, bound to the **advance limit** `ceil(horizon×1.5)` via `AppSettingsCache.getAdvanceLimitMonths()`, idempotent re-runs skip existing slots), list, delete (own only for providers, any for admin; blocks deleting an already-`BOOKED` slot) — FR-7.
+- `ServiceController`: admin CRUD + `PUT /{id}/providers` provider assignment — FR-8.
+- `UserController`: admin CRUD + promote-via-role-change (self-delete blocked; delete-with-dependencies → 409) — FR-8/FR-16.
+- `GET/PUT /api/settings/booking-window` (PUT admin-only, refreshes the cache) — FR-14.
+- Seeded a demo admin (`V5__seed_demo_admin.sql`) — a bootstrapping requirement, since only an admin can create/promote users and none existed yet.
+
+**Frontend:** a new `NavBar` (nothing previously linked to any of these pages), a `/dashboard` layout with an RBAC gate + role-aware sub-nav (admin-only tabs hidden for providers), and four pages: appointments+filters, bulk availability generator + slot list, services CRUD + provider-assignment checklist, users CRUD + promote with search/role filter.
+
+### 63.2 Four real bugs found and fixed (all via live curl + browser testing, not review)
+1. **`@PreAuthorize` denials returned 500, not 403** — `AccessDeniedException` from method-security is thrown inside the MVC handler invocation, so (unlike an unauthenticated request) it never reaches `SecurityConfig`'s filter-level `accessDeniedHandler`; the blanket `Exception.class` handler caught it first. Added a dedicated `@ExceptionHandler(AccessDeniedException.class)`.
+2. **Stale Hibernate first-level-cache entity** — `Service.getProviders()` is the inverse `@ManyToMany` side; after updating the owning side (`User.services`) and re-fetching `Service` by ID in the *same* persistence context, Hibernate returned the same already-loaded instance with its previously-materialized (now stale) `providers` collection. The provider-assignment PUT response showed empty providers even though the DB was correct (caught by comparing the immediate response against a follow-up GET). Fixed by building the response from the already-known new set instead of re-querying.
+3. **Native locale-dependent inputs** — `<input type="number">` rendered Arabic-Indic digits ("٣٠") and `<input type="date"/"time">` rendered Arabic day/month/hour labels, both due to this test machine's OS locale (confirmed via an actual screenshot, not just the a11y tree). Converted all of them to `type="text"` with format placeholders + regex validation — treated as a real fix, not just a cosmetic footnote, given this project's explicit RTL/Arabic i18n plans.
+4. **`void`-returning `@DeleteMapping` → 200 + empty body, not 204** — the frontend's `api()` helper only special-cased 204 before calling `res.json()`, which throws on empty text; a successful delete surfaced as a UI error (the slot was actually gone, confirmed via a follow-up list). Fixed both ends: all delete endpoints now return `ResponseEntity.noContent()` (204) consistently, and `api()` now checks response text before parsing regardless of status so this class of bug can't recur.
+
+### 63.3 Verification performed
+- **curl matrix:** full RBAC denial set (users/settings/availability-bulk all → 403 for non-admin/non-provider); bulk-generate idempotency (re-run → 0 created, all skipped); cross-provider ownership guard (403); advance-limit math verified exactly (`ceil(3×1.5)=5` months); admin bulk-generate for another provider; dashboard list scoping (provider sees only own, admin sees all + provider filter); services CRUD + provider assignment (with the stale-cache bug caught via a follow-up GET); user create/promote/self-delete-block/dependency-delete-block (409).
+- **Browser walkthrough (chrome-devtools) as admin:** dashboard appointments with live filters, services edit modal (caught the Arabic-numeral Duration bug via screenshot, fixed, re-verified), provider assignment saved and reflected live in the table, users promote flow (C2 → PROVIDER, table reordered live), availability bulk-generate (caught the Arabic date/time-picker bug via screenshot, fixed, re-verified) with correct preview count and live slot-list refresh, delete (caught the 200-vs-204 bug via network-request inspection, fixed, re-verified with no error and correct removal).
+- **Browser walkthrough as provider:** nav correctly reduced to Appointments/Availability only (no Services/Users tabs, no provider filter), appointments correctly scoped to only their own bookings. Console clean throughout every check.
+
+### 63.4 Documents Affected
+27 new/modified backend files across `availability/`, `booking/`, `config/`, `service/`, `settings/`, `user/` (+`V5__seed_demo_admin.sql`) · 6 new/modified frontend files (`NavBar.tsx`, `dashboard/layout.tsx` + 4 pages, `lib/api.ts`) · `implementation_plan.md` (M5 checked + all 4 bugs documented) · `CLAUDE.md` §B.8 (4 new gotchas: `@PreAuthorize`→403 handler, void-delete→204, Hibernate stale-cache pattern, native-locale-input avoidance) · this file.
+
+### 63.5 Status
+**M0–M5 complete, verified against running systems (curl + real browser, both admin and provider roles), committed.** Next: **M6 — Integrations** (Gmail SMTP confirmation email, provider Google OAuth onboarding, Meet-link generation on booking).
+
+---
+
+## § 64 — Prompt #32

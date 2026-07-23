@@ -44,6 +44,9 @@ export async function api<T = unknown>(path: string, init: ApiInit = {}): Promis
     throw new ApiError(res.status, message, body);
   }
 
+  // Not just status === 204: a void-returning Spring @DeleteMapping (etc.) can come back as 200
+  // with an empty body too, and res.json() throws on empty text. Check the text first, always.
   if (res.status === 204) return undefined as T;
-  return (await res.json()) as T;
+  const text = await res.text();
+  return (text ? JSON.parse(text) : undefined) as T;
 }
