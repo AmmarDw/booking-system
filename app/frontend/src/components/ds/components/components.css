@@ -57,8 +57,10 @@
 .bk-day-medium{background:var(--avail-medium-bg);color:#B45309}
 .bk-day-low{background:var(--avail-low-bg);color:#C2410C}
 .bk-day-none{background:var(--avail-none-bg);color:var(--text-tertiary);opacity:.55;cursor:not-allowed}
+.bk-day-full{background:var(--avail-none-bg);color:var(--text-tertiary)}
 .bk-day-booked{background:var(--avail-none-bg);color:var(--text-tertiary);opacity:.55;cursor:not-allowed;text-decoration:line-through}
 .bk-day-selected{outline:2px solid var(--color-primary);outline-offset:2px}
+.bk-day-today{border-color:var(--color-primary);font-weight:var(--weight-bold)}
 
 .bk-accordion{border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden}
 .bk-accordion-item+.bk-accordion-item{border-top:1px solid var(--border-default)}

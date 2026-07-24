@@ -22,13 +22,13 @@ export function NavBar() {
 
   return (
     <header
-      className="flex items-center justify-between px-6 py-3 border-b"
+      className="flex items-center justify-between gap-3 flex-wrap px-4 sm:px-6 py-3 border-b"
       style={{ borderColor: "var(--border-default)", background: "var(--surface-card)" }}
     >
       <Link href="/" className="font-bold text-lg" style={{ color: "var(--color-primary)" }}>
         BookIt
       </Link>
-      <nav className="flex items-center gap-4 text-sm">
+      <nav className="flex items-center gap-3 sm:gap-4 flex-wrap text-sm">
         <Link href="/book" style={{ color: "var(--text-secondary)" }}>
           Book
         </Link>
@@ -44,7 +44,11 @@ export function NavBar() {
         )}
         {!loading && user && (
           <>
-            <span style={{ color: "var(--text-tertiary)" }}>{user.email}</span>
+            {/* Hidden below sm: the raw email is the widest single item in this bar and is the
+                first thing to go on narrow viewports so the header doesn't overflow/wrap badly. */}
+            <span className="hidden sm:inline" style={{ color: "var(--text-tertiary)" }}>
+              {user.email}
+            </span>
             <Button size="sm" variant="ghost" onClick={handleSignOut}>
               Sign out
             </Button>
