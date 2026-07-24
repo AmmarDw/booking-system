@@ -181,15 +181,18 @@ export default function BookServicePage() {
     setError(null);
     try {
       await api("/api/bookings", { method: "POST", body: { slotId: selectedSlotId, serviceId: service.id } });
-      // Redirect to My Appointments (rather than staying here) — the confirmation toast fires
-      // there instead, carried across the navigation via query params (§B.5 text pattern).
+      // Redirect away (rather than staying here) — the confirmation toast fires on the
+      // destination instead, carried across the navigation via query params (§B.5 text pattern).
+      // Consumers land on My Appointments; providers/admins don't have that page, so they land on
+      // their dashboard instead (their own bookings-as-consumer are merged in there, marked "(You)").
       const params = new URLSearchParams({
         booked: "true",
         service: service.name,
         date: selectedDate,
         time: slot ? slot.startTime : "",
       });
-      router.push(`/appointments?${params.toString()}`);
+      const destination = user?.role === "CONSUMER" ? "/appointments" : "/dashboard";
+      router.push(`${destination}?${params.toString()}`);
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Could not complete the booking.");
       setBooking(false);

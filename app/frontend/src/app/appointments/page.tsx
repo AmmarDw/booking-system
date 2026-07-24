@@ -38,10 +38,9 @@ function formatDateLong(dateStr: string) {
   });
 }
 
-// Every role's own bookings as a consumer/patient — consumers browse services here as usual;
-// providers/admins land here too after booking someone else's service (their day-job dashboard at
-// /dashboard is a separate, provider-scoped view). Server-side scoping in
-// AppointmentQueryService#listOwnAsConsumer is the real enforcement.
+// Consumer-only "my appointments" view — providers/admins have their own bookings-as-consumer
+// merged into /dashboard instead (marked "(You)"), not a separate page. Server-side scoping in
+// AppointmentQueryService#listOwnAsConsumer is the real enforcement either way.
 function MyAppointments() {
   const { user, loading } = useAuth();
   const router = useRouter();
@@ -56,6 +55,10 @@ function MyAppointments() {
     if (loading) return;
     if (!user) {
       router.replace("/sign-in?redirect=/appointments");
+      return;
+    }
+    if (user.role !== "CONSUMER") {
+      router.replace("/dashboard");
     }
   }, [loading, user, router]);
 
@@ -80,13 +83,13 @@ function MyAppointments() {
   }, [toast]);
 
   useEffect(() => {
-    if (!user) return;
+    if (!user || user.role !== "CONSUMER") return;
     api<AppointmentSummary[]>("/api/bookings?mine=true")
       .then(setAppointments)
       .catch((err) => setError(err instanceof ApiError ? err.message : "Could not load your appointments."));
   }, [user]);
 
-  if (loading || !user) return null;
+  if (loading || !user || user.role !== "CONSUMER") return null;
 
   const rows = (appointments ?? []).map((a) => ({
     date: a.date,

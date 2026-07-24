@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Badge, Table } from "@/components/ds";
+import { Suspense, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Badge, Table, Toast } from "@/components/ds";
 import { AppointmentDetailsModal } from "@/components/AppointmentDetailsModal";
 import { api, ApiError } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
@@ -39,8 +40,20 @@ function formatTime(hhmmss: string) {
   return `${hour12}:${m} ${suffix}`;
 }
 
-export default function DashboardPage() {
+function formatDateLong(dateStr: string) {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+function DashboardAppointments() {
   const { user } = useAuth();
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const isAdmin = user?.role === "ADMIN";
 
   const [services, setServices] = useState<ServiceSummary[]>([]);
@@ -51,6 +64,27 @@ export default function DashboardPage() {
   const [providerFilter, setProviderFilter] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<AppointmentSummary | null>(null);
+  const [toast, setToast] = useState<{ title: string; description: string } | null>(null);
+
+  // Providers/admins land here (not on My Appointments) right after booking a service themselves
+  // as a consumer — carries the same §B.5 confirmation toast text across via query params.
+  useEffect(() => {
+    if (searchParams.get("booked") !== "true") return;
+    const service = searchParams.get("service") ?? "";
+    const date = searchParams.get("date");
+    const time = searchParams.get("time");
+    setToast({
+      title: "Booking confirmed",
+      description: `You have successfully booked '${service}' service on '${date ? formatDateLong(date) : ""}' at '${time ? formatTime(time) : ""}', a confirmation email have been sent.`,
+    });
+    router.replace("/dashboard");
+  }, [searchParams, router]);
+
+  useEffect(() => {
+    if (!toast) return;
+    const timer = setTimeout(() => setToast(null), 30000);
+    return () => clearTimeout(timer);
+  }, [toast]);
 
   useEffect(() => {
     api<ServiceSummary[]>("/api/services").then(setServices).catch(() => {});
@@ -91,6 +125,12 @@ export default function DashboardPage() {
 
   return (
     <div>
+      {toast && (
+        <div className="fixed top-4 end-4 z-50">
+          <Toast tone="success" title={toast.title} description={toast.description} onClose={() => setToast(null)} />
+        </div>
+      )}
+
       <h1 className="text-2xl font-semibold mb-6" style={{ color: "var(--text-primary)" }}>
         Appointments
       </h1>
@@ -158,5 +198,13 @@ export default function DashboardPage() {
 
       <AppointmentDetailsModal appointment={selected} onClose={() => setSelected(null)} />
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense>
+      <DashboardAppointments />
+    </Suspense>
   );
 }
