@@ -28,8 +28,14 @@ public class SettingsController {
     @GetMapping("/booking-window")
     public BookingWindowResponse bookingWindow() {
         int horizonMonths = appSettingsCache.getMaxHorizonMonths();
+        int advanceLimitMonths = appSettingsCache.getAdvanceLimitMonths();
         LocalDate today = LocalDate.now();
-        return new BookingWindowResponse(horizonMonths, today, today.plusMonths(horizonMonths));
+        return new BookingWindowResponse(
+                horizonMonths,
+                today,
+                today.plusMonths(horizonMonths),
+                advanceLimitMonths,
+                today.plusMonths(advanceLimitMonths));
     }
 
     @PutMapping("/booking-window")

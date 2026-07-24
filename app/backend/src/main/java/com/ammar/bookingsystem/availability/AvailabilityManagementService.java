@@ -2,16 +2,22 @@ package com.ammar.bookingsystem.availability;
 
 import com.ammar.bookingsystem.availability.dto.BulkGenerateRequest;
 import com.ammar.bookingsystem.availability.dto.BulkGenerateResponse;
+import com.ammar.bookingsystem.availability.dto.BulkPreviewResponse;
 import com.ammar.bookingsystem.availability.dto.ManagementSlotInfo;
 import com.ammar.bookingsystem.availability.dto.SlotTimeRange;
 import com.ammar.bookingsystem.config.AppSettingsCache;
 import com.ammar.bookingsystem.user.Role;
 import com.ammar.bookingsystem.user.User;
 import com.ammar.bookingsystem.user.UserRepository;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,10 +41,67 @@ public class AvailabilityManagementService {
         this.appSettingsCache = appSettingsCache;
     }
 
+    // Dry-run: what would bulkGenerate do, without writing anything. Powers the live preview.
+    public BulkPreviewResponse preview(User caller, BulkGenerateRequest request) {
+        User provider = resolveTargetProvider(caller, request.providerId());
+        validateWindow(request);
+
+        Map<DateTimeKey, SlotStatus> existing = existingByKey(provider.getId(), request.startDate(), request.endDate());
+        Set<DayOfWeek> weekdays = new HashSet<>(request.weekdays());
+
+        int totalSlots = 0;
+        int conflictSlotCount = 0;
+        int conflictBookedCount = 0;
+        Set<LocalDate> affected = new TreeSet<>();
+        Set<LocalDate> conflicts = new TreeSet<>();
+
+        for (LocalDate date = request.startDate(); !date.isAfter(request.endDate()); date = date.plusDays(1)) {
+            if (!weekdays.contains(date.getDayOfWeek())) continue;
+            for (SlotTimeRange range : effectiveRanges(request, date.getDayOfWeek())) {
+                DateTimeKey key = new DateTimeKey(date, range.startTime());
+                SlotStatus existingStatus = existing.get(key);
+                if (existingStatus != null) {
+                    conflictSlotCount++;
+                    conflicts.add(date);
+                    if (existingStatus == SlotStatus.BOOKED) conflictBookedCount++;
+                } else {
+                    totalSlots++;
+                    affected.add(date);
+                }
+            }
+        }
+        return new BulkPreviewResponse(
+                totalSlots, new ArrayList<>(affected), new ArrayList<>(conflicts), conflictSlotCount, conflictBookedCount);
+    }
+
     @Transactional
     public BulkGenerateResponse bulkGenerate(User caller, BulkGenerateRequest request) {
         User provider = resolveTargetProvider(caller, request.providerId());
+        validateWindow(request);
 
+        Map<DateTimeKey, SlotStatus> existing = existingByKey(provider.getId(), request.startDate(), request.endDate());
+        Set<DayOfWeek> weekdays = new HashSet<>(request.weekdays());
+
+        int created = 0;
+        int skipped = 0;
+        for (LocalDate date = request.startDate(); !date.isAfter(request.endDate()); date = date.plusDays(1)) {
+            if (!weekdays.contains(date.getDayOfWeek())) continue;
+            for (SlotTimeRange range : effectiveRanges(request, date.getDayOfWeek())) {
+                DateTimeKey key = new DateTimeKey(date, range.startTime());
+                if (existing.containsKey(key)) {
+                    // Non-destructive: an existing slot (available OR booked) is never overwritten.
+                    skipped++;
+                    continue;
+                }
+                availabilitySlotRepository.save(new AvailabilitySlot(provider, date, range.startTime(), range.endTime()));
+                existing.put(key, SlotStatus.AVAILABLE);
+                created++;
+            }
+        }
+        return new BulkGenerateResponse(created, skipped);
+    }
+
+    private void validateWindow(BulkGenerateRequest request) {
         if (request.startDate().isAfter(request.endDate())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Start date must be before end date");
         }
@@ -51,33 +114,24 @@ public class AvailabilityManagementService {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "End date is beyond the advance limit (" + maxAdvance + ")");
         }
+    }
 
-        Set<DateTimeKey> existing = new HashSet<>();
-        for (AvailabilitySlot slot : availabilitySlotRepository.findByProviderUserIdAndSlotDateBetween(
-                provider.getId(), request.startDate(), request.endDate())) {
-            existing.add(new DateTimeKey(slot.getSlotDate(), slot.getStartTime()));
-        }
-
-        Set<java.time.DayOfWeek> weekdays = new HashSet<>(request.weekdays());
-        int created = 0;
-        int skipped = 0;
-        for (LocalDate date = request.startDate(); !date.isAfter(request.endDate()); date = date.plusDays(1)) {
-            if (!weekdays.contains(date.getDayOfWeek())) continue;
-            for (SlotTimeRange range : request.timeRanges()) {
-                if (range.endTime().isBefore(range.startTime()) || range.endTime().equals(range.startTime())) {
-                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Each time range's end must be after its start");
-                }
-                DateTimeKey key = new DateTimeKey(date, range.startTime());
-                if (existing.contains(key)) {
-                    skipped++;
-                    continue;
-                }
-                availabilitySlotRepository.save(new AvailabilitySlot(provider, date, range.startTime(), range.endTime()));
-                existing.add(key);
-                created++;
+    private List<SlotTimeRange> effectiveRanges(BulkGenerateRequest request, DayOfWeek weekday) {
+        List<SlotTimeRange> ranges = request.rangesFor(weekday);
+        for (SlotTimeRange range : ranges) {
+            if (!range.endTime().isAfter(range.startTime())) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Each time range's end must be after its start");
             }
         }
-        return new BulkGenerateResponse(created, skipped);
+        return ranges;
+    }
+
+    private Map<DateTimeKey, SlotStatus> existingByKey(Long providerId, LocalDate from, LocalDate to) {
+        Map<DateTimeKey, SlotStatus> existing = new HashMap<>();
+        for (AvailabilitySlot slot : availabilitySlotRepository.findByProviderUserIdAndSlotDateBetween(providerId, from, to)) {
+            existing.put(new DateTimeKey(slot.getSlotDate(), slot.getStartTime()), slot.getStatus());
+        }
+        return existing;
     }
 
     public List<ManagementSlotInfo> listSlots(User caller, Long providerId, LocalDate from, LocalDate to) {

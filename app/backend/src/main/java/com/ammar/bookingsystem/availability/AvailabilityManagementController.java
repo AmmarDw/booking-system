@@ -2,6 +2,7 @@ package com.ammar.bookingsystem.availability;
 
 import com.ammar.bookingsystem.availability.dto.BulkGenerateRequest;
 import com.ammar.bookingsystem.availability.dto.BulkGenerateResponse;
+import com.ammar.bookingsystem.availability.dto.BulkPreviewResponse;
 import com.ammar.bookingsystem.availability.dto.ManagementSlotInfo;
 import com.ammar.bookingsystem.security.CurrentUser;
 import jakarta.validation.Valid;
@@ -34,6 +35,12 @@ public class AvailabilityManagementController {
     @PostMapping("/bulk")
     public BulkGenerateResponse bulkGenerate(@Valid @RequestBody BulkGenerateRequest request) {
         return availabilityManagementService.bulkGenerate(CurrentUser.get().getUser(), request);
+    }
+
+    // Dry-run for the generator's live preview — no writes.
+    @PostMapping("/bulk/preview")
+    public BulkPreviewResponse bulkPreview(@Valid @RequestBody BulkGenerateRequest request) {
+        return availabilityManagementService.preview(CurrentUser.get().getUser(), request);
     }
 
     @GetMapping
