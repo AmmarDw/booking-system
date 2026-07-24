@@ -3,12 +3,16 @@ package com.ammar.bookingsystem.booking;
 import com.ammar.bookingsystem.booking.dto.AppointmentSummary;
 import com.ammar.bookingsystem.booking.dto.BookingResponse;
 import com.ammar.bookingsystem.booking.dto.CreateBookingRequest;
+import com.ammar.bookingsystem.booking.dto.UpdateBookingStatusRequest;
 import com.ammar.bookingsystem.security.CurrentUser;
+import com.ammar.bookingsystem.security.UserPrincipal;
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,5 +56,16 @@ public class BookingController {
             return appointmentQueryService.listOwnAsConsumer(caller, serviceId, status);
         }
         return appointmentQueryService.list(caller, serviceId, status, providerId);
+    }
+
+    // Status transitions (Phase 4) — open to any authenticated role; the service enforces the real
+    // per-role, ownership, and time-gate rules (a consumer can cancel/no-show their own booking, a
+    // provider/admin can complete/no-show).
+    @PatchMapping("/{id}/status")
+    @PreAuthorize("hasAnyRole('CONSUMER','PROVIDER','ADMIN')")
+    public BookingResponse updateStatus(
+            @PathVariable Long id, @Valid @RequestBody UpdateBookingStatusRequest request) {
+        UserPrincipal caller = CurrentUser.get();
+        return bookingService.updateStatus(id, caller.getId(), caller.getUser().getRole(), request.status());
     }
 }

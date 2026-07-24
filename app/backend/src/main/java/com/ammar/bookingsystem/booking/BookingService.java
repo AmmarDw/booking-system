@@ -12,6 +12,7 @@ import com.ammar.bookingsystem.google.GoogleAccountConnectionRepository;
 import com.ammar.bookingsystem.google.GoogleCalendarService;
 import com.ammar.bookingsystem.service.Service;
 import com.ammar.bookingsystem.service.ServiceRepository;
+import com.ammar.bookingsystem.user.Role;
 import com.ammar.bookingsystem.user.User;
 import com.ammar.bookingsystem.user.UserRepository;
 import java.time.LocalDate;
@@ -157,6 +158,87 @@ public class BookingService {
                 slot.getSlotDate(),
                 slot.getStartTime(),
                 slot.getEndTime(),
+                booking.getStatus().name());
+    }
+
+    // Status transitions (Phase 4). Only a CONFIRMED booking can transition; terminal states are
+    // final. Role decides the allowed targets, and time gates decide when they're allowed:
+    //   CONSUMER          → CANCELLED (only >24h before the slot start), NO_SHOW (only after end)
+    //   PROVIDER / ADMIN  → COMPLETED (only after end),                 NO_SHOW (only after end)
+    // CANCELLED frees the slot back to AVAILABLE; COMPLETED/NO_SHOW leave it BOOKED.
+    @Transactional
+    public BookingResponse updateStatus(Long bookingId, Long callerId, Role callerRole, BookingStatus target) {
+        Booking booking = bookingRepository
+                .findById(bookingId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Booking not found"));
+
+        boolean isConsumer = booking.getConsumerUser().getId().equals(callerId);
+        boolean isProvider = booking.getSlot().getProviderUser().getId().equals(callerId);
+        boolean allowed =
+                callerRole == Role.ADMIN
+                        || (callerRole == Role.CONSUMER && isConsumer)
+                        || (callerRole == Role.PROVIDER && isProvider);
+        if (!allowed) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You can't change this appointment");
+        }
+
+        if (booking.getStatus() != BookingStatus.CONFIRMED) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT, "This appointment is already " + booking.getStatus().name().toLowerCase());
+        }
+
+        // Providers/admins act in the provider capacity here; a consumer-role caller acts as the
+        // consumer. (A provider who booked someone else's slot as a consumer is handled as a
+        // consumer by their CONSUMER-less role never matching here — they're PROVIDER globally, but
+        // for *their own* consumer bookings isConsumer is true and the consumer branch applies.)
+        boolean actingAsConsumer = callerRole == Role.CONSUMER || (isConsumer && !isProvider);
+        java.time.LocalDateTime now = java.time.LocalDateTime.now();
+        java.time.LocalDateTime slotStart =
+                java.time.LocalDateTime.of(booking.getSlot().getSlotDate(), booking.getSlot().getStartTime());
+        java.time.LocalDateTime slotEnd =
+                java.time.LocalDateTime.of(booking.getSlot().getSlotDate(), booking.getSlot().getEndTime());
+
+        switch (target) {
+            case CANCELLED -> {
+                if (!actingAsConsumer) {
+                    throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Only the consumer can cancel");
+                }
+                if (!now.isBefore(slotStart.minusHours(24))) {
+                    throw new ResponseStatusException(
+                            HttpStatus.BAD_REQUEST, "Appointments can't be cancelled within 24 hours of the start time");
+                }
+                AvailabilitySlot slot = booking.getSlot();
+                slot.setStatus(SlotStatus.AVAILABLE);
+                availabilitySlotRepository.save(slot);
+            }
+            case COMPLETED -> {
+                if (actingAsConsumer) {
+                    throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Only the provider can complete an appointment");
+                }
+                if (!now.isAfter(slotEnd)) {
+                    throw new ResponseStatusException(
+                            HttpStatus.BAD_REQUEST, "An appointment can only be completed after it has ended");
+                }
+            }
+            case NO_SHOW -> {
+                if (!now.isAfter(slotEnd)) {
+                    throw new ResponseStatusException(
+                            HttpStatus.BAD_REQUEST, "No-show can only be set after the appointment has ended");
+                }
+            }
+            default -> throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Unsupported status transition");
+        }
+
+        booking.setStatus(target);
+        bookingRepository.save(booking);
+
+        return new BookingResponse(
+                booking.getId(),
+                booking.getService().getName(),
+                displayName(booking.getSlot().getProviderUser()),
+                booking.getSlot().getSlotDate(),
+                booking.getSlot().getStartTime(),
+                booking.getSlot().getEndTime(),
                 booking.getStatus().name());
     }
 
