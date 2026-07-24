@@ -21,6 +21,7 @@ interface AppointmentSummary {
   id: number;
   serviceName: string;
   consumerName: string;
+  consumerId: number;
   providerName: string;
   providerId: number;
   date: string;
@@ -68,18 +69,25 @@ export default function DashboardPage() {
       .catch((err) => setError(err instanceof ApiError ? err.message : "Could not load appointments."));
   }, [serviceFilter, statusFilter, providerFilter, isAdmin]);
 
-  const rows = (appointments ?? []).map((a) => ({
-    date: a.date,
-    time: `${formatTime(a.startTime)} – ${formatTime(a.endTime)}`,
-    service: a.serviceName,
-    consumer: a.consumerName,
-    provider: a.providerName,
-    status: (
-      <Badge tone={a.status === "CONFIRMED" ? "success" : "neutral"} dot>
-        {a.status}
-      </Badge>
-    ),
-  }));
+  const rows = (appointments ?? []).map((a) => {
+    const isSelf = a.consumerId === user?.id;
+    return {
+      date: a.date,
+      time: `${formatTime(a.startTime)} – ${formatTime(a.endTime)}`,
+      service: a.serviceName,
+      consumer: isSelf ? (
+        <span style={{ fontWeight: 700, color: "var(--color-primary)" }}>{a.consumerName} (You)</span>
+      ) : (
+        a.consumerName
+      ),
+      provider: a.providerName,
+      status: (
+        <Badge tone={a.status === "CONFIRMED" ? "success" : "neutral"} dot>
+          {a.status}
+        </Badge>
+      ),
+    };
+  });
 
   return (
     <div>

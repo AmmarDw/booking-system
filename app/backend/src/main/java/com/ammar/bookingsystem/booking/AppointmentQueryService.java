@@ -4,14 +4,18 @@ import com.ammar.bookingsystem.booking.dto.AppointmentSummary;
 import com.ammar.bookingsystem.user.Role;
 import com.ammar.bookingsystem.user.User;
 import java.util.List;
+import java.util.stream.Stream;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
-// Appointments list: providers see only their own, admins see all and may filter by provider,
-// consumers see only their own bookings (FR-10/FR-11 + the consumer "my appointments" view).
-// Fetches all bookings and filters in-memory — fine at bootcamp/demo scale; would need a proper
-// query (Specification/JPQL) before any real production volume.
+// Appointments list: providers see their own (as the provider) PLUS any bookings they made
+// themselves as a consumer elsewhere — merged into one dashboard view, distinguished client-side
+// via consumerId (FR-10/FR-11). Admins see all (already includes their own consumer-side bookings,
+// since nothing is excluded for them). `listOwnAsConsumer` powers the separate "My Appointments"
+// page, open to every role, always scoped to bookings the caller made as a consumer regardless of
+// their primary role. Fetches all bookings and filters in-memory — fine at bootcamp/demo scale;
+// would need a proper query (Specification/JPQL) before any real production volume.
 @Component
 public class AppointmentQueryService {
 
@@ -24,25 +28,38 @@ public class AppointmentQueryService {
     }
 
     public List<AppointmentSummary> list(User caller, Long serviceIdFilter, String statusFilter, Long providerIdFilter) {
-        Long scopedProviderId = null;
-        Long scopedConsumerId = null;
         if (caller.getRole() == Role.PROVIDER) {
-            scopedProviderId = caller.getId();
+            Long providerId = caller.getId();
+            return filterMapSort(
+                    bookingRepository.findAll().stream()
+                            .filter(b -> b.getSlot().getProviderUser().getId().equals(providerId)
+                                    || b.getConsumerUser().getId().equals(providerId)),
+                    serviceIdFilter,
+                    statusFilter);
         } else if (caller.getRole() == Role.ADMIN) {
-            scopedProviderId = providerIdFilter; // null = all providers
+            return filterMapSort(
+                    bookingRepository.findAll().stream()
+                            .filter(b -> providerIdFilter == null
+                                    || b.getSlot().getProviderUser().getId().equals(providerIdFilter)),
+                    serviceIdFilter,
+                    statusFilter);
         } else if (caller.getRole() == Role.CONSUMER) {
-            scopedConsumerId = caller.getId();
-        } else {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Not allowed to view appointments");
+            return listOwnAsConsumer(caller, serviceIdFilter, statusFilter);
         }
+        throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Not allowed to view appointments");
+    }
 
-        Long finalScopedProviderId = scopedProviderId;
-        Long finalScopedConsumerId = scopedConsumerId;
-        return bookingRepository.findAll().stream()
-                .filter(b -> finalScopedProviderId == null
-                        || b.getSlot().getProviderUser().getId().equals(finalScopedProviderId))
-                .filter(b -> finalScopedConsumerId == null
-                        || b.getConsumerUser().getId().equals(finalScopedConsumerId))
+    /** Bookings the caller made as a consumer, regardless of their primary role — the "My Appointments" page. */
+    public List<AppointmentSummary> listOwnAsConsumer(User caller, Long serviceIdFilter, String statusFilter) {
+        Long consumerId = caller.getId();
+        return filterMapSort(
+                bookingRepository.findAll().stream().filter(b -> b.getConsumerUser().getId().equals(consumerId)),
+                serviceIdFilter,
+                statusFilter);
+    }
+
+    private List<AppointmentSummary> filterMapSort(Stream<Booking> stream, Long serviceIdFilter, String statusFilter) {
+        return stream
                 .filter(b -> serviceIdFilter == null || b.getService().getId().equals(serviceIdFilter))
                 .filter(b -> statusFilter == null || b.getStatus().name().equalsIgnoreCase(statusFilter))
                 .map(this::toSummary)
@@ -59,6 +76,7 @@ public class AppointmentQueryService {
                 booking.getId(),
                 booking.getService().getName(),
                 displayName(booking.getConsumerUser()),
+                booking.getConsumerUser().getId(),
                 displayName(booking.getSlot().getProviderUser()),
                 booking.getSlot().getProviderUser().getId(),
                 booking.getSlot().getSlotDate(),

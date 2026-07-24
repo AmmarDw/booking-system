@@ -70,6 +70,13 @@ public class BookingService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "This slot has already been booked");
         }
 
+        // A provider may book other providers' services as a consumer, but never their own
+        // availability — checked here (not just filtered out in the UI) so it can't be bypassed
+        // by calling the API directly.
+        if (slot.getProviderUser().getId().equals(consumerUserId)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "You cannot book your own availability");
+        }
+
         LocalDate today = LocalDate.now();
         LocalDate maxBookable = today.plusMonths(appSettingsCache.getMaxHorizonMonths());
         if (slot.getSlotDate().isBefore(today)) {
@@ -127,14 +134,21 @@ public class BookingService {
         // know a new booking landed on their calendar — neither is allowed to fail the booking
         // itself (EmailService catches and logs internally).
         emailService.sendBookingConfirmation(
-                consumer.getEmail(), service.getName(), slot.getSlotDate(), slot.getStartTime(), meetingLink);
+                consumer.getEmail(),
+                service.getName(),
+                slot.getSlotDate(),
+                slot.getStartTime(),
+                meetingLink,
+                displayName(slot.getProviderUser()),
+                slot.getProviderUser().getEmail());
         emailService.sendProviderBookingNotification(
                 slot.getProviderUser().getEmail(),
                 service.getName(),
                 slot.getSlotDate(),
                 slot.getStartTime(),
                 meetingLink,
-                displayName(consumer));
+                displayName(consumer),
+                consumer.getEmail());
 
         return new BookingResponse(
                 booking.getId(),

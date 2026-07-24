@@ -26,7 +26,13 @@ public class EmailService {
     }
 
     public void sendBookingConfirmation(
-            String toEmail, String serviceName, LocalDate date, LocalTime startTime, String meetingLink) {
+            String toEmail,
+            String serviceName,
+            LocalDate date,
+            LocalTime startTime,
+            String meetingLink,
+            String providerName,
+            String providerEmail) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(toEmail);
@@ -34,6 +40,7 @@ public class EmailService {
             StringBuilder body = new StringBuilder();
             body.append("Your booking is confirmed.\n\n");
             body.append("Service: ").append(serviceName).append('\n');
+            body.append("Provider: ").append(providerName).append(" (").append(providerEmail).append(")\n");
             body.append("Date: ").append(date.format(DATE_FMT)).append('\n');
             body.append("Time: ").append(startTime.format(TIME_FMT)).append('\n');
             if (meetingLink != null) {
@@ -52,14 +59,15 @@ public class EmailService {
             LocalDate date,
             LocalTime startTime,
             String meetingLink,
-            String consumerName) {
+            String consumerName,
+            String consumerEmail) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(toEmail);
             message.setSubject("New booking: " + serviceName);
             StringBuilder body = new StringBuilder();
             body.append("You have a new booking.\n\n");
-            body.append("Consumer: ").append(consumerName).append('\n');
+            body.append("Consumer: ").append(consumerName).append(" (").append(consumerEmail).append(")\n");
             body.append("Service: ").append(serviceName).append('\n');
             body.append("Date: ").append(date.format(DATE_FMT)).append('\n');
             body.append("Time: ").append(startTime.format(TIME_FMT)).append('\n');

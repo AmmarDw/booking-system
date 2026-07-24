@@ -36,14 +36,21 @@ public class BookingController {
         return ResponseEntity.ok(response);
     }
 
-    // Appointments list (FR-10/FR-11) — providers/admins get the dashboard view, consumers get
-    // their own "my appointments" view; scoping is enforced in AppointmentQueryService either way.
+    // Appointments list (FR-10/FR-11) — providers/admins get the dashboard view (a provider's own
+    // bookings-as-a-consumer are merged in too); `mine=true` instead always returns bookings the
+    // caller made as a consumer regardless of role — the "My Appointments" page. Scoping is
+    // enforced in AppointmentQueryService either way, never trust the client.
     @GetMapping
     @PreAuthorize("hasAnyRole('CONSUMER','PROVIDER','ADMIN')")
     public List<AppointmentSummary> list(
             @RequestParam(required = false) Long serviceId,
             @RequestParam(required = false) String status,
-            @RequestParam(required = false) Long providerId) {
-        return appointmentQueryService.list(CurrentUser.get().getUser(), serviceId, status, providerId);
+            @RequestParam(required = false) Long providerId,
+            @RequestParam(required = false, defaultValue = "false") boolean mine) {
+        var caller = CurrentUser.get().getUser();
+        if (mine) {
+            return appointmentQueryService.listOwnAsConsumer(caller, serviceId, status);
+        }
+        return appointmentQueryService.list(caller, serviceId, status, providerId);
     }
 }

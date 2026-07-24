@@ -7,6 +7,7 @@ public record AppointmentSummary(
         Long id,
         String serviceName,
         String consumerName,
+        Long consumerId,
         String providerName,
         Long providerId,
         LocalDate date,

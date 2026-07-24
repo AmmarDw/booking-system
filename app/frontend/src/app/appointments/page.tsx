@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { Badge, Table } from "@/components/ds";
+import { Suspense, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Badge, Table, Toast } from "@/components/ds";
 import { AppointmentDetailsModal } from "@/components/AppointmentDetailsModal";
 import { api, ApiError } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
@@ -28,36 +28,65 @@ function formatTime(hhmmss: string) {
   return `${hour12}:${m} ${suffix}`;
 }
 
-// Consumer-only "my appointments" view — providers/admins already have the full dashboard at
-// /dashboard, so this page is scoped to CONSUMER (server-side scoping in AppointmentQueryService
-// is the real enforcement; this is just the UI-level gate/redirect).
-export default function MyAppointmentsPage() {
+function formatDateLong(dateStr: string) {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+// Every role's own bookings as a consumer/patient — consumers browse services here as usual;
+// providers/admins land here too after booking someone else's service (their day-job dashboard at
+// /dashboard is a separate, provider-scoped view). Server-side scoping in
+// AppointmentQueryService#listOwnAsConsumer is the real enforcement.
+function MyAppointments() {
   const { user, loading } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const [appointments, setAppointments] = useState<AppointmentSummary[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<AppointmentSummary | null>(null);
+  const [toast, setToast] = useState<{ title: string; description: string } | null>(null);
 
   useEffect(() => {
     if (loading) return;
     if (!user) {
       router.replace("/sign-in?redirect=/appointments");
-      return;
-    }
-    if (user.role !== "CONSUMER") {
-      router.replace("/dashboard");
     }
   }, [loading, user, router]);
 
+  // Carries the "just booked" confirmation across the redirect from /book/[serviceId] (§B.5 text
+  // pattern) via query params, then clears them so a refresh doesn't re-show it.
   useEffect(() => {
-    if (!user || user.role !== "CONSUMER") return;
-    api<AppointmentSummary[]>("/api/bookings")
+    if (searchParams.get("booked") !== "true") return;
+    const service = searchParams.get("service") ?? "";
+    const date = searchParams.get("date");
+    const time = searchParams.get("time");
+    setToast({
+      title: "Booking confirmed",
+      description: `You have successfully booked '${service}' service on '${date ? formatDateLong(date) : ""}' at '${time ? formatTime(time) : ""}', a confirmation email have been sent.`,
+    });
+    router.replace("/appointments");
+  }, [searchParams, router]);
+
+  useEffect(() => {
+    if (!toast) return;
+    const timer = setTimeout(() => setToast(null), 30000);
+    return () => clearTimeout(timer);
+  }, [toast]);
+
+  useEffect(() => {
+    if (!user) return;
+    api<AppointmentSummary[]>("/api/bookings?mine=true")
       .then(setAppointments)
       .catch((err) => setError(err instanceof ApiError ? err.message : "Could not load your appointments."));
   }, [user]);
 
-  if (loading || !user || user.role !== "CONSUMER") return null;
+  if (loading || !user) return null;
 
   const rows = (appointments ?? []).map((a) => ({
     date: a.date,
@@ -73,6 +102,12 @@ export default function MyAppointmentsPage() {
 
   return (
     <div className="max-w-4xl mx-auto w-full px-6 py-12">
+      {toast && (
+        <div className="fixed top-4 end-4 z-50">
+          <Toast tone="success" title={toast.title} description={toast.description} onClose={() => setToast(null)} />
+        </div>
+      )}
+
       <h1 className="text-2xl font-semibold mb-6" style={{ color: "var(--text-primary)" }}>
         My appointments
       </h1>
@@ -98,5 +133,13 @@ export default function MyAppointmentsPage() {
 
       <AppointmentDetailsModal appointment={selected} onClose={() => setSelected(null)} />
     </div>
+  );
+}
+
+export default function MyAppointmentsPage() {
+  return (
+    <Suspense>
+      <MyAppointments />
+    </Suspense>
   );
 }

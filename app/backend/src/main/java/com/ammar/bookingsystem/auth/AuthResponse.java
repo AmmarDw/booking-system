@@ -1,3 +1,3 @@
 package com.ammar.bookingsystem.auth;
 
-public record AuthResponse(String token, String email, String role, String fullName) {}
+public record AuthResponse(Long id, String token, String email, String role, String fullName) {}

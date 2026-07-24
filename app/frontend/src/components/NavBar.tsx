@@ -11,7 +11,9 @@ export function NavBar() {
   const { user, loading, signOut } = useAuth();
   const router = useRouter();
   const canSeeDashboard = user && (user.role === "PROVIDER" || user.role === "ADMIN");
-  const canSeeMyAppointments = user && user.role === "CONSUMER";
+  // Every role can end up booking a service as a consumer (providers/admins included), so
+  // My Appointments isn't consumer-only.
+  const canSeeMyAppointments = !!user;
 
   function handleSignOut() {
     signOut();

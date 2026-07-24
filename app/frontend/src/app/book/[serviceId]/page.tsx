@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { Accordion, Button, Toast } from "@/components/ds";
+import { Accordion, Button } from "@/components/ds";
+import { LoadingOverlay } from "@/components/LoadingOverlay";
 import { api, ApiError } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 
@@ -89,7 +90,6 @@ export default function BookServicePage() {
   const [selectedSlotId, setSelectedSlotId] = useState<number | null>(null);
   const [booking, setBooking] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [toast, setToast] = useState<{ title: string; description: string } | null>(null);
 
   // FR-2: deep-linking here while logged out sends the user to sign in and back.
   useEffect(() => {
@@ -123,17 +123,13 @@ export default function BookServicePage() {
     setSelectedSlotId(null);
     setDayProviders(null);
     api<ProviderDaySlots[]>(`/api/services/${serviceId}/availability/day?date=${dateStr}`)
-      .then(setDayProviders)
+      .then((res) => {
+        // A provider can book other providers' services, but never their own availability —
+        // filter their own entry out of the options entirely (backend also rejects it if bypassed).
+        const filtered = user?.role === "PROVIDER" ? res.filter((p) => p.providerId !== user.id) : res;
+        setDayProviders(filtered);
+      })
       .catch(() => setDayProviders([]));
-  }
-
-  function refreshAfterBooking() {
-    if (currentMonth) {
-      api<DayAvailabilityCount[]>(`/api/services/${serviceId}/availability/month?yearMonth=${currentMonth}`)
-        .then(setMonthCounts)
-        .catch(() => {});
-    }
-    if (selectedDate) loadDay(selectedDate);
   }
 
   // Valid months for the dropdown navigation (FR-15): only months the window spans — a simpler
@@ -185,34 +181,26 @@ export default function BookServicePage() {
     setError(null);
     try {
       await api("/api/bookings", { method: "POST", body: { slotId: selectedSlotId, serviceId: service.id } });
-      setToast({
-        title: "Booking confirmed",
-        description: `You have successfully booked '${service.name}' service on '${formatDateLong(selectedDate)}' at '${slot ? formatTime(slot.startTime) : ""}', a confirmation email have been sent.`,
+      // Redirect to My Appointments (rather than staying here) — the confirmation toast fires
+      // there instead, carried across the navigation via query params (§B.5 text pattern).
+      const params = new URLSearchParams({
+        booked: "true",
+        service: service.name,
+        date: selectedDate,
+        time: slot ? slot.startTime : "",
       });
-      refreshAfterBooking();
+      router.push(`/appointments?${params.toString()}`);
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Could not complete the booking.");
-    } finally {
       setBooking(false);
     }
   }
-
-  // Auto-dismiss the success toast after ~30s (§B.5); the Toast component also has an X to close early.
-  useEffect(() => {
-    if (!toast) return;
-    const timer = setTimeout(() => setToast(null), 30000);
-    return () => clearTimeout(timer);
-  }, [toast]);
 
   if (authLoading || !user) return null;
 
   return (
     <div className="max-w-4xl mx-auto w-full px-6 py-12">
-      {toast && (
-        <div className="fixed top-4 right-4 z-50">
-          <Toast tone="success" title={toast.title} description={toast.description} onClose={() => setToast(null)} />
-        </div>
-      )}
+      <LoadingOverlay show={booking} label="Confirming your booking…" />
 
       {service && (
         <div className="mb-8">

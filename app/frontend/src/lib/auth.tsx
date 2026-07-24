@@ -8,12 +8,14 @@ import { api, ApiError } from "./api";
 
 export type Role = "CONSUMER" | "PROVIDER" | "ADMIN";
 export interface AuthUser {
+  id: number;
   email: string;
   role: Role;
   fullName: string | null;
 }
 
 interface AuthResponse {
+  id: number;
   token: string | null;
   email: string;
   role: Role;
@@ -49,7 +51,7 @@ interface AuthContextValue {
 const AuthContext = createContext<AuthContextValue | null>(null);
 
 function toUser(res: AuthResponse): AuthUser {
-  return { email: res.email, role: res.role, fullName: res.fullName };
+  return { id: res.id, email: res.email, role: res.role, fullName: res.fullName };
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {

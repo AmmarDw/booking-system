@@ -41,7 +41,8 @@ public class AuthController {
                 request.email(), passwordEncoder.encode(request.password()), request.fullName(), Role.CONSUMER);
         userRepository.save(user);
         String token = jwtService.generateToken(user.getEmail(), user.getRole().name());
-        return ResponseEntity.ok(new AuthResponse(token, user.getEmail(), user.getRole().name(), user.getFullName()));
+        return ResponseEntity.ok(
+                new AuthResponse(user.getId(), token, user.getEmail(), user.getRole().name(), user.getFullName()));
     }
 
     @PostMapping("/login")
@@ -53,13 +54,15 @@ public class AuthController {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid email or password");
         }
         String token = jwtService.generateToken(user.getEmail(), user.getRole().name());
-        return ResponseEntity.ok(new AuthResponse(token, user.getEmail(), user.getRole().name(), user.getFullName()));
+        return ResponseEntity.ok(
+                new AuthResponse(user.getId(), token, user.getEmail(), user.getRole().name(), user.getFullName()));
     }
 
     @GetMapping("/me")
     public ResponseEntity<AuthResponse> me() {
         UserPrincipal principal = CurrentUser.get();
         User user = principal.getUser();
-        return ResponseEntity.ok(new AuthResponse(null, user.getEmail(), user.getRole().name(), user.getFullName()));
+        return ResponseEntity.ok(
+                new AuthResponse(user.getId(), null, user.getEmail(), user.getRole().name(), user.getFullName()));
     }
 }
