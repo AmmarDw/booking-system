@@ -2,12 +2,16 @@ package com.ammar.bookingsystem.booking;
 
 import com.ammar.bookingsystem.booking.dto.AppointmentSummary;
 import com.ammar.bookingsystem.booking.dto.BookingResponse;
+import com.ammar.bookingsystem.booking.dto.ChartResponse;
 import com.ammar.bookingsystem.booking.dto.CreateBookingRequest;
+import com.ammar.bookingsystem.booking.dto.DashboardStats;
 import com.ammar.bookingsystem.booking.dto.UpdateBookingStatusRequest;
 import com.ammar.bookingsystem.security.CurrentUser;
 import com.ammar.bookingsystem.security.UserPrincipal;
 import jakarta.validation.Valid;
+import java.time.LocalDate;
 import java.util.List;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -67,5 +71,68 @@ public class BookingController {
             @PathVariable Long id, @Valid @RequestBody UpdateBookingStatusRequest request) {
         UserPrincipal caller = CurrentUser.get();
         return bookingService.updateStatus(id, caller.getId(), caller.getUser().getRole(), request.status());
+    }
+
+    // ---- dashboard (Phase 6): multi-value comma-separated filters + a date range ----
+
+    // Calendar + list feed: real bookings plus synthesized VACANT open-slot entries.
+    @GetMapping("/feed")
+    @PreAuthorize("hasAnyRole('PROVIDER','ADMIN')")
+    public List<AppointmentSummary> feed(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+            @RequestParam(required = false) String serviceIds,
+            @RequestParam(required = false) String statuses,
+            @RequestParam(required = false) String providerIds) {
+        return appointmentQueryService.feed(
+                CurrentUser.get().getUser(), from, to, parseLongs(serviceIds), parseStatuses(statuses), parseLongs(providerIds));
+    }
+
+    @GetMapping("/stats")
+    @PreAuthorize("hasAnyRole('PROVIDER','ADMIN')")
+    public DashboardStats stats(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+            @RequestParam(required = false) String serviceIds,
+            @RequestParam(required = false) String providerIds) {
+        return appointmentQueryService.stats(
+                CurrentUser.get().getUser(), from, to, parseLongs(serviceIds), parseLongs(providerIds));
+    }
+
+    @GetMapping("/chart")
+    @PreAuthorize("hasAnyRole('PROVIDER','ADMIN')")
+    public ChartResponse chart(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+            @RequestParam(required = false, defaultValue = "day") String granularity,
+            @RequestParam(required = false) String serviceIds,
+            @RequestParam(required = false) String statuses,
+            @RequestParam(required = false) String providerIds) {
+        return appointmentQueryService.chart(
+                CurrentUser.get().getUser(),
+                from,
+                to,
+                granularity,
+                parseLongs(serviceIds),
+                parseStatuses(statuses),
+                parseLongs(providerIds));
+    }
+
+    private static List<Long> parseLongs(String csv) {
+        if (csv == null || csv.isBlank()) return List.of();
+        return java.util.Arrays.stream(csv.split(","))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .map(Long::valueOf)
+                .toList();
+    }
+
+    private static List<BookingStatus> parseStatuses(String csv) {
+        if (csv == null || csv.isBlank()) return List.of();
+        return java.util.Arrays.stream(csv.split(","))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .map(s -> BookingStatus.valueOf(s.toUpperCase(java.util.Locale.ROOT)))
+                .toList();
     }
 }
