@@ -1224,3 +1224,33 @@ Browser-verified (chrome-devtools) as `demo.provider@bookit.test`: nav no longer
 ---
 
 ## § 72 — Prompt #36
+
+Extensive list of Claude-Design fidelity gaps across five pages (landing, services/book, availability generator, booking calendar, shared dashboard), plus a request for a full booking status lifecycle (Cancelled/Completed/No-show/Vacant with role/time gates) and a real analytics dashboard (stats cards, bookings-over-time chart, calendar month/week/day + list, one big multi-select filter system). Provided the exact Claude Design project URLs for all five pages as the source of truth.
+
+---
+
+## § 73 — Response to Prompt #36
+
+### 73.1 Approach
+
+Fetched the **actual** Claude Design source for all five linked pages via the DesignSync MCP (`get_project`/`list_files`/`get_file` against each project id — grounded, not guessed). Asked four clarifying questions up front (cancel-frees-slot vs no-show; complete/no-show gate on slot start vs end; whether the date-range filter replaces the stat cards' fixed windows; month-grid shape). User answers: **cancel frees the slot, no-show doesn't** (and it's moot since no-show only applies to past slots which can't be rebooked anyway); **complete/no-show gate on the slot's END time**; **date range fully drives the stat cards** (labels adapt); **42-cell calendar-aligned month grid**. Then planned + executed as **6 committed/pushed phases**, each browser-verified before the next.
+
+Two deliberate deviations from the literal designs, flagged not silent: kept `type="text"`+regex date/time inputs (the designs use native pickers, which this project already fixed a real OS-locale bug around — CLAUDE.md §B.8); and made bulk generation **non-destructive** (skip existing, never overwrite) instead of the design's "conflicts will be replaced" copy, which would risk deleting booked slots.
+
+### 73.2 The six phases (all verified via curl + chrome-devtools, committed separately)
+1. **Landing/Services fidelity** — icon-in-circle+numbered-badge steps, service category icons, `/book` search + duration/provider-count icons (`providerCount` added to `GET /api/services`).
+2. **Booking calendar** — horizon note, legend, Card+chevron/month-picker calendar, responsive two-column layout (verified at 1280px and 375px), multi-provider expand, distinct today highlight, and a new **`full`** day-cell bucket so fully-booked days keep their "0/N" badge and stay clickable instead of looking empty.
+3. **Bulk availability generator rebuild** — card sections, searchable provider grid, per-weekday ranges, sticky live preview (count + mini calendar) via new `POST /api/availability/bulk/preview`; `booking-window` now returns `advanceLimitMonths`/`maxAdvanceDate`.
+4. **Status lifecycle backend** — `COMPLETED`/`NO_SHOW`/`VACANT` added (V7 migration, VACANT never persisted); `PATCH /api/bookings/{id}/status` with role/time/terminal gates. Full curl matrix passed (cancel-frees-slot, 24h gate, complete/no-show after-end, 403/409 paths).
+5. **Status lifecycle frontend** — role/time-gated action buttons in the shared modal (shadowed when disallowed, with notes); all five statuses render with correct badges. Verified a real Complete transition refreshing the list live.
+6. **Shared dashboard rebuild** — `GET /api/bookings/{feed,stats,chart}` (multi-value CSV filters + date range); new `MultiSelect` component; filter bar + 4 range-driven stat cards + inline SVG chart + Calendar (42-cell month/week/day) + List, all reacting to shared filters + a Month/Week/Day granularity; VACANT open-slots surfaced only when opted in. Verified the status multi-select narrowing the chart+list together.
+
+### 73.3 Documents Affected
+**Backend:** `ServiceResponse` (providerCount) · `settings/{SettingsController,dto/BookingWindowResponse}` (advance-limit fields) · `availability/{AvailabilityManagementService,Controller,dto/BulkGenerateRequest,dto/BulkPreviewResponse}` (per-weekday + preview) · `booking/{BookingStatus,BookingService,BookingController,AppointmentQueryService}` + `dto/{UpdateBookingStatusRequest,DashboardStats,ChartResponse}` · `db/migration/V7__add_booking_statuses.sql`. **Frontend:** `app/page.tsx`, `app/book/page.tsx`, `app/book/[serviceId]/page.tsx`, `app/dashboard/page.tsx` (full rebuild), `app/dashboard/availability/page.tsx` (full rebuild), `app/appointments/page.tsx`, `components/{NavBar,AppointmentDetailsModal,MultiSelect}.tsx`, `components/ds/components/data/CalendarDayCell.{jsx,d.ts}` + `components/components.css` (`full`/`today` day states). **Docs:** `implementation_plan.md` (new M6.3 section), `CLAUDE.md` (§B.5.1 status lifecycle, §B.5.2 dashboard), this file.
+
+### 73.4 Status
+**All six phases complete, each browser-verified and committed/pushed separately.** Next: your call (M7 testing/security/perf, or M8 deploy).
+
+---
+
+## § 74 — Prompt #37
