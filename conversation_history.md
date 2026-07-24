@@ -1193,3 +1193,34 @@ The "(You)" marking (problem 4.2) was genuinely ambiguous: it only makes sense s
 ---
 
 ## § 70 — Prompt #35
+
+I don't want "My Appointments" page in either providers or admins views!! Just the small change that have been applied on the appointments UI which is the /dashboard. So remove this page only for providers and admins views
+
+---
+
+## § 71 — Response to Prompt #35
+
+### 71.1 Correction: My Appointments is consumer-only again
+
+The previous response (§69) had opened `/appointments` and its nav link to every role, with booking always redirecting there. You wanted only the dashboard-side change kept (the "(You)" merge) — `/appointments` itself should stay a consumer-only page, not something providers/admins see at all.
+
+**Reverted:**
+- `NavBar.tsx`: "My Appointments" link is consumer-only again (`user.role === "CONSUMER"`).
+- `/appointments/page.tsx`: gate restored — a provider/admin landing here (nav or direct URL) is redirected to `/dashboard`; the `?mine=true` fetch only runs for consumers.
+- `/book/[serviceId]/page.tsx`: the post-booking redirect now branches by role — consumers go to `/appointments`, providers/admins go to `/dashboard`.
+- `/dashboard/page.tsx`: gained the same query-param-carried confirmation toast `/appointments` already had (wrapped in `Suspense` for `useSearchParams`), so a provider/admin booking a service as a consumer still gets the §B.5 confirmation toast — just on their dashboard instead of a page they no longer see.
+
+Everything else from §69 (self-booking prevention, the merged "(You)" dashboard rows, richer emails, the loading overlay, `consumerId`/`GET /api/bookings?mine=true` on the backend) is untouched.
+
+### 71.2 Verification performed
+Browser-verified (chrome-devtools) as `demo.provider@bookit.test`: nav no longer shows "My Appointments"; navigating directly to `/appointments` bounces to `/dashboard`; booking another provider's service redirects to `/dashboard` with the correct confirmation toast, URL cleared after; the new booking shows up marked "Dr. Demo Provider (You)". Re-verified the consumer flow (`m6.tester@bookit.test`) is unaffected — nav shows "My Appointments", no "Dashboard" link, booking still redirects to `/appointments` with its toast. Console clean throughout.
+
+### 71.3 Documents Affected
+`NavBar.tsx`, `app/appointments/page.tsx`, `app/book/[serviceId]/page.tsx`, `app/dashboard/page.tsx` · `implementation_plan.md` (M6.2 follow-up correction note) · `CLAUDE.md` §B.3 (My Appointments is consumer-only; loading-overlay redirect branches by role) · this file.
+
+### 71.4 Status
+**Correction complete, verified against running systems (real browser, both roles), committed and pushed.** Next: your call.
+
+---
+
+## § 72 — Prompt #36
