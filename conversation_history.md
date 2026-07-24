@@ -1148,3 +1148,48 @@ When an appointment is booked I need the providers to receive an email of the bo
 ---
 
 ## § 68 — Prompt #34
+
+I need you to fix those problems:
+- After a user (consumer, provider, or admin) books an appointment, he should be redirected to my appointments page.
+- The confirmation email that is sent to the consumer must contain the provider name and email. And the email sent to the provider of receiving a booking appointment should contain the consumer name (already exist) and email (should be added).
+- It is taking quite a bit of time from clicking the book button to actually complete the booking with the toast message, so we should display a spinning waiting overlay until the booking is complete. The page should become like a blurry background, not disappear.
+- The system is allowing the provider and admin to book services:
+  1. For a provider we must not allow him to book appointments for himself from frontend by filtering out appointment options that belong to the same provider that is signed in, and from the backend by not allowing the booking and stopping it before it reaches the DB for a provider booking himself.
+  2. The appointments a provider or an admin book as a consumer should also be displayed in the appointments page but with a little UI difference that shows he is a consumer in this appointment. I am not sure what this UI should be — what do you think about highlighting the consumer name and adding "(You)" after his name for even more clarification?
+
+---
+
+## § 69 — Response to Prompt #34
+
+### 69.1 Clarifying question asked before implementing
+
+The "(You)" marking (problem 4.2) was genuinely ambiguous: it only makes sense somewhere the consumer field varies row-to-row (mostly real patients, occasionally the viewer) — which the dedicated "My Appointments" page can never be, since every row there is already the viewer by definition. Asked whether a provider/admin's own consumer-side bookings should merge into their **provider/admin dashboard** (so "(You)" distinguishes a real patient row from their own patient-role booking) or stay solely on a `/appointments` page open to all roles (no "(You)" needed, since it'd be redundant everywhere). User chose the **merged-into-dashboard** option — confirmed this also cleanly satisfies problem 1 ("redirected to my appointments page" as one uniform destination for every role) without duplicating the same data pointlessly across two pages.
+
+### 69.2 Four fixes implemented (backend + frontend, browser-tested)
+
+**Backend:**
+- `AuthResponse` (register/login/me) now includes the user's `id` — needed client-side for "is this row's consumer me" and "is this provider me" comparisons that didn't exist before.
+- `BookingService.createBooking` rejects (400, before any DB write) a provider trying to book their own availability slot; a provider booking a *different* provider's service as a consumer is still allowed.
+- Both confirmation emails enriched: the consumer's now names the provider (name + email); the provider's now includes the consumer's email (name already existed from M6.1).
+- `AppointmentSummary` gained `consumerId`. `AppointmentQueryService.list()` for a **PROVIDER** caller now unions their normal provider-scoped rows with any bookings *they* made as a consumer elsewhere (admin's "see everything" already covered this, no change needed there). A new `listOwnAsConsumer` method, exposed via `GET /api/bookings?mine=true`, always returns just the caller's own consumer-side bookings regardless of role — this is what powers `/appointments` now.
+
+**Frontend:**
+- `/appointments` ("My Appointments") opened to **every** role (previously consumer-only), now fetches `?mine=true`; nav link shows for everyone logged in, not just consumers.
+- Booking success no longer shows an in-place toast — it redirects to `/appointments`, carrying the exact §B.5 toast text across via query params, which are cleared from the URL immediately after (`router.replace`) so a refresh doesn't re-show it.
+- New `LoadingOverlay` component: full-page blur + spinner shown for the duration of the booking request (covers the real latency of the synchronous Google Calendar + email calls server-side) — content stays visible underneath, blurred, never disappears, per your spec.
+- `/book/[serviceId]`: a signed-in provider's own entry is filtered out of the day-view provider list before it's ever rendered (backend guard is the real enforcement either way).
+- Dashboard's consumer column: when a row's `consumerId` matches the signed-in user, the name renders bold + primary-teal with a trailing "(You)".
+
+### 69.3 Verification performed
+- **curl:** provider attempting to book their own slot → 400 "You cannot book your own availability"; that same provider booking a *different* provider's service → succeeds, shows up in their own merged dashboard list with `consumerId` set to their own id, and also in their `?mine=true` list; no email-send errors logged for the new booking.
+- **Browser (chrome-devtools, network-throttled to actually observe it):** the loading overlay renders correctly mid-request (blurred calendar visible underneath, spinner + "Confirming your booking…" on top); a provider's own service shows "No appointments for this date" in the day view (their only offering, now self-filtered to nothing); the provider's dashboard shows "Dr. Demo Provider (You)" in bold teal on their own cross-provider booking, mixed among real patient rows; both a provider and a plain consumer, after booking, land on `/appointments` with the correct confirmation toast, which is gone after a refresh. Console clean throughout every check.
+
+### 69.4 Documents Affected
+`AuthResponse.java`/`AuthController.java` (`id`) · `AppointmentQueryService.java` (merged provider scope + `listOwnAsConsumer`) · `BookingController.java` (`mine` param) · `BookingService.java` (self-booking guard, richer email calls) · `AppointmentSummary.java` (`consumerId`) · `EmailService.java` (provider/consumer email+name additions) · `app/frontend/src/lib/auth.tsx` (`id` threading) · `components/LoadingOverlay.tsx` (new) · `app/appointments/page.tsx` (opened to all roles, `mine=true`, redirect toast) · `book/[serviceId]/page.tsx` (self-filter, overlay, redirect) · `dashboard/page.tsx` ("(You)" marking) · `NavBar.tsx` (link for all roles) · `implementation_plan.md` (new M6.2 section) · `CLAUDE.md` §B.2/§B.3 (self-booking rule, merged-dashboard + "(You)" convention, loading-overlay convention) · this file.
+
+### 69.5 Status
+**Feature complete, verified against running systems (curl + real browser, consumer and provider roles), committed and pushed.** Next: your call.
+
+---
+
+## § 70 — Prompt #35
