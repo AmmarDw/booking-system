@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Badge, Table, Toast } from "@/components/ds";
 import { AppointmentDetailsModal } from "@/components/AppointmentDetailsModal";
@@ -11,14 +11,30 @@ interface AppointmentSummary {
   id: number;
   serviceName: string;
   consumerName: string;
+  consumerId: number;
   providerName: string;
   providerId: number;
   date: string;
   startTime: string;
   endTime: string;
-  status: "CONFIRMED" | "CANCELLED";
+  status: "CONFIRMED" | "CANCELLED" | "COMPLETED" | "NO_SHOW" | "VACANT";
   meetingLink: string | null;
 }
+
+const STATUS_TONE: Record<string, "success" | "warning" | "danger" | "neutral" | "primary"> = {
+  CONFIRMED: "primary",
+  COMPLETED: "success",
+  CANCELLED: "neutral",
+  NO_SHOW: "danger",
+  VACANT: "neutral",
+};
+const STATUS_LABEL: Record<string, string> = {
+  CONFIRMED: "Confirmed",
+  COMPLETED: "Completed",
+  CANCELLED: "Cancelled",
+  NO_SHOW: "No-show",
+  VACANT: "Vacant",
+};
 
 function formatTime(hhmmss: string) {
   const [h, m] = hhmmss.split(":");
@@ -82,12 +98,16 @@ function MyAppointments() {
     return () => clearTimeout(timer);
   }, [toast]);
 
-  useEffect(() => {
+  const loadAppointments = useCallback(() => {
     if (!user || user.role !== "CONSUMER") return;
     api<AppointmentSummary[]>("/api/bookings?mine=true")
       .then(setAppointments)
       .catch((err) => setError(err instanceof ApiError ? err.message : "Could not load your appointments."));
   }, [user]);
+
+  useEffect(() => {
+    loadAppointments();
+  }, [loadAppointments]);
 
   if (loading || !user || user.role !== "CONSUMER") return null;
 
@@ -97,8 +117,8 @@ function MyAppointments() {
     service: a.serviceName,
     provider: a.providerName,
     status: (
-      <Badge tone={a.status === "CONFIRMED" ? "success" : "neutral"} dot>
-        {a.status}
+      <Badge tone={STATUS_TONE[a.status]} dot>
+        {STATUS_LABEL[a.status]}
       </Badge>
     ),
   }));
@@ -134,7 +154,13 @@ function MyAppointments() {
         />
       )}
 
-      <AppointmentDetailsModal appointment={selected} onClose={() => setSelected(null)} />
+      <AppointmentDetailsModal
+        appointment={selected}
+        currentUserId={user.id}
+        currentUserRole={user.role}
+        onClose={() => setSelected(null)}
+        onStatusChanged={loadAppointments}
+      />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Badge, Table, Toast } from "@/components/ds";
 import { AppointmentDetailsModal } from "@/components/AppointmentDetailsModal";
@@ -28,9 +28,24 @@ interface AppointmentSummary {
   date: string;
   startTime: string;
   endTime: string;
-  status: "CONFIRMED" | "CANCELLED";
+  status: "CONFIRMED" | "CANCELLED" | "COMPLETED" | "NO_SHOW" | "VACANT";
   meetingLink: string | null;
 }
+
+const STATUS_TONE: Record<string, "success" | "warning" | "danger" | "neutral" | "primary"> = {
+  CONFIRMED: "primary",
+  COMPLETED: "success",
+  CANCELLED: "neutral",
+  NO_SHOW: "danger",
+  VACANT: "neutral",
+};
+const STATUS_LABEL: Record<string, string> = {
+  CONFIRMED: "Confirmed",
+  COMPLETED: "Completed",
+  CANCELLED: "Cancelled",
+  NO_SHOW: "No-show",
+  VACANT: "Vacant",
+};
 
 function formatTime(hhmmss: string) {
   const [h, m] = hhmmss.split(":");
@@ -93,7 +108,7 @@ function DashboardAppointments() {
     }
   }, [isAdmin]);
 
-  useEffect(() => {
+  const loadAppointments = useCallback(() => {
     const params = new URLSearchParams();
     if (serviceFilter) params.set("serviceId", serviceFilter);
     if (statusFilter) params.set("status", statusFilter);
@@ -102,6 +117,10 @@ function DashboardAppointments() {
       .then(setAppointments)
       .catch((err) => setError(err instanceof ApiError ? err.message : "Could not load appointments."));
   }, [serviceFilter, statusFilter, providerFilter, isAdmin]);
+
+  useEffect(() => {
+    loadAppointments();
+  }, [loadAppointments]);
 
   const rows = (appointments ?? []).map((a) => {
     const isSelf = a.consumerId === user?.id;
@@ -116,8 +135,8 @@ function DashboardAppointments() {
       ),
       provider: a.providerName,
       status: (
-        <Badge tone={a.status === "CONFIRMED" ? "success" : "neutral"} dot>
-          {a.status}
+        <Badge tone={STATUS_TONE[a.status]} dot>
+          {STATUS_LABEL[a.status]}
         </Badge>
       ),
     };
@@ -196,7 +215,13 @@ function DashboardAppointments() {
         />
       )}
 
-      <AppointmentDetailsModal appointment={selected} onClose={() => setSelected(null)} />
+      <AppointmentDetailsModal
+        appointment={selected}
+        currentUserId={user?.id}
+        currentUserRole={user?.role}
+        onClose={() => setSelected(null)}
+        onStatusChanged={loadAppointments}
+      />
     </div>
   );
 }
