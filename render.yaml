@@ -1,0 +1,55 @@
+databases:
+  - name: bookit-db
+    plan: free
+    region: oregon
+
+services:
+  - name: bookit-backend
+    type: web
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./app/backend/Dockerfile
+    dockerContext: ./app/backend
+    healthCheckPath: /api/services
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: bookit-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: bookit-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: bookit-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: bookit-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: bookit-db
+          property: password
+      # Deterministic since the service name above is pinned — Render assigns
+      # https://bookit-backend.onrender.com as long as that name is free.
+      - key: GOOGLE_REDIRECT_URI
+        value: https://bookit-backend.onrender.com/api/google/oauth2/callback
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: TOKEN_ENCRYPTION_KEY
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      # Set to the real Vercel URL once known (Render dashboard → env vars) — placeholder here
+      # just needs to exist so the Blueprint import prompts for it.
+      - key: APP_CORS_ORIGINS
+        sync: false

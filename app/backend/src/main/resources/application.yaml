@@ -1,3 +1,8 @@
+# Render (and most PaaS hosts) inject PORT and require the app to bind to it; defaults to 8080
+# locally where PORT is unset.
+server:
+  port: ${PORT:8080}
+
 spring:
   application:
     name: booking-system
