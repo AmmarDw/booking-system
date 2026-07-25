@@ -103,7 +103,15 @@ public class GoogleCalendarService {
                 .setClientSecrets(clientId, clientSecret)
                 .build()
                 .setRefreshToken(refreshToken);
-        return new Calendar.Builder(transport, jsonFactory, credential)
+        // Chain a timeout initializer after the credential so a slow/hung Google API call
+        // throws SocketTimeoutException (caught above) instead of blocking the booking thread
+        // indefinitely. 15 s connect + 15 s read is generous for a single Calendar insert.
+        com.google.api.client.http.HttpRequestInitializer withTimeout = request -> {
+            credential.initialize(request);
+            request.setConnectTimeout(15_000);
+            request.setReadTimeout(15_000);
+        };
+        return new Calendar.Builder(transport, jsonFactory, withTimeout)
                 .setApplicationName("BookIt")
                 .build();
     }

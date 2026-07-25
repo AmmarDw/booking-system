@@ -32,6 +32,12 @@ spring:
       # Port 465 is implicit SSL (not STARTTLS on 587) — this property, not starttls.enable, is
       # what makes JavaMail actually use SSL for the initial connection.
       "[mail.smtp.ssl.enable]": true
+      # Timeouts (ms) so a slow/hanging Gmail connection doesn't block the booking thread forever.
+      # The try-catch in EmailService can't fire until the socket actually throws — without these
+      # the SSL handshake or send can stall indefinitely (no default timeout in JavaMail).
+      "[mail.smtp.connectiontimeout]": 10000
+      "[mail.smtp.timeout]": 10000
+      "[mail.smtp.writetimeout]": 10000
 
 # Booking policy defaults (seed values). The admin's live value is persisted in
 # the single-row AppSettings table and overrides this default at runtime (FR-14/FR-15).
