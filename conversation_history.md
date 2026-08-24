@@ -1254,3 +1254,562 @@ Two deliberate deviations from the literal designs, flagged not silent: kept `ty
 ---
 
 ## § 74 — Prompt #37
+
+_(The booking-system build conversation ended here; no Prompt #37 was logged for that project.)_
+
+---
+
+<br>
+
+# ═══════════════════════════════════════════════════════════════
+# DOCUMENTATION CONVERSATION — creating `bootcamp_roadmap_and_curriculum.md`
+# سجلّ محادثة التوثيق — إنشاء ملف خارطة الطريق والمنهج
+# ═══════════════════════════════════════════════════════════════
+
+> **From this section onward**, this log covers **documenting the bootcamp and creating `bootcamp_roadmap_and_curriculum.md`** (the roadmap & curriculum) — **separate from building the booking-system project** logged above. Numbering restarts here (Doc-Prompt #1).
+>
+> **ابتداءً من هذا القسم**، هذا السجلّ خاصّ بإنشاء ملف `bootcamp_roadmap_and_curriculum.md` (خارطة الطريق والمنهج)، وهو **منفصل تمامًا عن بناء مشروع نظام الحجوزات** الموثّق أعلاه.
+
+---
+
+## § D1 — Prompt #1 (plan the curriculum file)
+
+> **Formatting note:** clean-Markdown reformat of Ammar's raw prompt; no content removed.
+
+### D1.1 Overall intent
+Create a `bootcamp_roadmap_and_curriculum.md` that holds all bootcamp details, properly formatted, as the **single source of truth**. Requirements: **entirely in Arabic** (only names + un-translatable technical terms in English); the process is **iterative and incremental** — each section/part/decision is reviewed and approved by Ammar first, with Claude's suggestions (not a one-run approve-and-implement plan), while still analyzing the related files to plan and returning to them to extract data during implementation; **numbering numeric from 1** (1.1, 2, 4.3); **bootcamp is now 10 days, 5 days/week, 4h/day = 40h**; audience is **near-beginner** (barely know frontend/backend/hosting exist) so explain even simple things — e.g. credits/tokens and the weekly & 5-hour Claude Code Pro limits as one of the very first things — with clear simple steps.
+
+### D1.2 Table-of-contents notes
+- **نبذة عن المعسكر:** same content as the PDF, maybe slightly more detail at ~same length; leave for now, revisit at the end.
+- **ماذا يقدم المعسكر؟ → ماهي أهداف المعسكر؟:** more specific outputs (learning concepts, AI/Claude skills, practical skill to build an initial product without deep code) — extracted from the PDF, PROJECT_REPORT.md, bootcamp-mvp-process.md, CLAUDE.md, conversation_history.md; include Claude Design, local-vs-global rules/skills, MCP (esp. context7) with explanations. **Separate** the ready-provided artifacts into a new **"حزمة المعسكر" (Bootcamp package)** section; rename this one to **"ماهي أهداف المعسكر؟"**. Write the goals list now (revisit at end with the overview).
+- **أسلوب التدريب + توزيع اليوم → one "أسلوب وتوزيع التدريب"** with **الأقسام اليومية** (the 4-way split; suggest improvements; decide neutrally about durations) and **ختام المعسكر** (عرض منتجات المتدربين المنشورة).
+- **Training agenda and goals:** a real roadmap/curriculum. Divide content across the 10 days (4h/day). Each day = subsection; each session = sub-subsection; each day has **goals** taken as a subset from the goals section; the agenda = **tasks** mapping to the content sections. Task types per session: **شرح المفاهيم** → (1) "understand…" (concept, ≈`①Purpose`, needs detail) + (2) "learn how to…" (steps, ≈`②Template`+`③Example`); **تطبيق مع المدرب** → follow the trainer's generic steps (impl + review) extracted from conversation_history, with **what the trainer wrote** shown separately (collapsible), not the full output as in `④Our Project`; **عمل المتدربين** → same steps with empty space to fill; **مراجعة** → the review tasks (not mandatory to push to Claude when output is good). Steps are extracted from the prompts Ammar gave Claude.
+- **Content sections** (align + improve formatting; group 4.3/4.4 and 4.5/4.6): Introduction to the MVP · Users/Stakeholders · MVP Scope · SRS · User Journey · Design · ERD · Implementation · Testing & Security Review · Deployment · Tools Used.
+- Add a **Q&A** subsection per section (e.g., "Figma instead of Claude Design?" → yes, importable into Claude Design natively).
+
+### D1.3 Keep in mind
+- Explain this file and each section as part of Day 1.
+- Even though a rule file helps with the steps, tell the trainee what the steps are (so he understands what he's doing) while focusing on leveraging Claude to build his MVP.
+- Alongside this file, create updated **Arabic replicas of `bootcamp-mvp-process.md` and `CLAUDE.md`**, built gradually and kept in sync, ready to hand to trainees.
+
+### D1.4 PROJECT_REPORT.md fixes to carry over
+- Too centered on the booking project — do **not** repeat that; focus on generic content/steps (roadmap).
+- Each requirement must have all parts together (base + user story + acceptance criteria); the tables hold only ID + title (main and priority), with "Main?"/"Priority" placed within each requirement.
+
+---
+
+## § D2 — Response to Prompt #1
+
+### D2.1 Analysis + clarifying questions
+Read all named sources (PDF, PROJECT_REPORT.md, bootcamp-mvp-process.md, CLAUDE.md, and the structure of conversation_history.md — whose `§ Prompt` blocks are the extractable trainer steps). Asked 3 clarifying questions (all answered): **durations** → qualitative in the general subsection + `~`approx per day; **build order** → one full content section at a time, agenda built last; **foundations home** → a new dedicated section "أساسيات Claude Code وبيئة العمل" after "حزمة المعسكر".
+
+### D2.2 Approved plan (iterative, gated)
+Wrote the gated plan: numbered TOC 1–17 (incl. the new foundational section), the per-section pattern (X.1 concept · X.2 steps · X.3 trainer impl+review · X.4 trainee impl+review · X.5 Q&A), the SRS self-contained-requirement rule, the genericization rule (booking specifics only in collapsible blocks), draft goals + package lists, a provisional 10-day allocation, the two Arabic handover files, and the ordered review gates.
+
+---
+
+## § D3 — Prompt #2
+
+Before Gate 2: still specify an **approximate average duration** (e.g. ~30 min) for each daily section in Section 5, modifiable at the end. Then start Gate 2 — but remember "ماهي أهداف المعسكر؟" needs further tweaking as specified later.
+
+---
+
+## § D4 — Response to Prompt #2
+
+Added approximate averages to §5.1 (~45 / ~60 / ~105 / ~30 min ≈ 4h, weighted to trainee work, marked modifiable). Drafted **Section 7 «التعريف بالـMVP»** in full as the worked pattern template (7.1–7.5 with collapsible "ما كتبه المدرب"). Left Section 2 untouched per the note. Flagged 3 judgment calls: (1) Arabic rendering of "ما كتبه المدرب"; (2) generic review steps where history is thin; (3) the "صياغة مقترحة" prompt helper in every section.
+
+---
+
+## § D5 — Prompt #3
+
+Judgment calls: all yes (1, 2, 3). Add a general note to the implementation steps — this is **brainstorming**: write down everything that comes to mind, then format per the step instructions. It's general (not section-7-specific); pick the proper place. Then move to Gate 3.
+
+---
+
+## § D6 — Response to Prompt #3
+
+Added the **brainstorming general note** to the preface (applies to all sections). Drafted **Section 8 «المستخدمون وأصحاب المصلحة»** (Gate 3) on the locked pattern. Held off creating the Arabic handover files pending filename confirmation.
+
+---
+
+## § D7 — Prompt #4
+
+- Handover files: put each `.ar.md` beside its replica (`.claude/rules/bootcamp-mvp-process.ar.md`, root `CLAUDE.ar.md`) — any problem? be honest.
+- §8.3.1 point 2 is unclear; explain it simpler. Did "كيان" mean a domain entity or a DB table? Explain it simply-but-correctly wherever "كيان" appears (§8.3.2 collapsible, §8.5 second question).
+- §8 only identifies users, not stakeholders, though it explains who stakeholders are — confusing. Refer back to the source docs (esp. conversation_history.md) instead of writing from memory; extract the booking project's actual stakeholders (which include Google Calendar — check for others), then write per the file's rules (generic + specific booking example).
+- After that, start Gate 4.
+- Log every prompt & response into conversation_history.md from the curriculum planning prompt onward; clearly state (with a separator) that from that section it's the documentation conversation, separate from the booking build. Plus put the conversation-history-maintenance logic (in Arabic) in the proper place among the two Arabic handover files.
+
+---
+
+## § D8 — Response to Prompt #4
+
+### D8.1 Handover filenames — honest answer
+`.ar.md` beside each replica is fine. `CLAUDE.ar.md` is **never auto-loaded** (only `CLAUDE.md`/`CLAUDE.local.md` are) → no conflict. `.claude/rules/bootcamp-mvp-process.ar.md` isn't auto-activated unless a loaded CLAUDE.md `@`-imports it (this project references the English one by full path) → safe; only minor caveat is co-locating a teaching copy with live config.
+
+### D8.2 Section 8 rewrite (grounded in sources)
+Grepped conversation_history (lines 155–161, 300, 326): the trainer explicitly framed this step as stakeholder modeling; real non-user stakeholders = **Google Calendar/Meet** (meeting links + calendar events), **Gmail SMTP** (confirmation email), and **the System itself** (an actor in the activity diagram). Rewrote §8 to cover users **and** stakeholders; added a simple correct definition of «كيان» (a type of thing the app stores data about → becomes a DB table; cross-ref §13); clarified 8.3.1 point 2; updated the review collapsible + Q&A.
+
+### D8.3 Gate 4 + handover files + this log
+Wrote **Section 9 «نطاق الـMVP»** (Gate 4). Created the two Arabic handover files, placing the **conversation-history maintenance logic in Arabic** in the process guide (`bootcamp-mvp-process.ar.md` §2) with a pointer from `CLAUDE.ar.md` §أ.1. Added this documentation-conversation separator and back-logged Doc-Prompts #1–#4.
+
+### D8.4 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§5.1 durations, §7 template, preface brainstorming note, §8 rewrite, §9) · `.claude/rules/bootcamp-mvp-process.ar.md` (new) · `CLAUDE.ar.md` (new) · this file.
+
+---
+
+## § D9 — Prompt #5
+
+- **§9.1 third bullet:** remove "(تُستكمل وتُعرض في اليوم الأخير)"; and **§9.5** third question: remove "تُعرض في ختام المعسكر" — at the end of the bootcamp we review the trainees' MVPs, **not** their future plans.
+- **§9.3.2 note about the 6 functionalities:** change it to clarify the trainer is a **Software Engineer** (so building that many is easier for him); trainees must stick to the specified 3–5, because it's critical they **finish their MVPs within the bootcamp time**, not be asked to work the rest of the day.
+- **`bootcamp-mvp-process.ar.md` §3:** why are there translatable English words (WHEN, WHILE, IF, THEN, Given)? Translate them to Arabic.
+- Then work on **Gate 5**, and **refer to the docs (`conversation_history.md`, `PROJECT_REPORT.md`) to extract content instead of relying on memory** — especially the implementation/review steps from `conversation_history.md`.
+
+---
+
+## § D10 — Response to Prompt #5
+
+### D10.1 The four fixes
+Removed the incorrect "presented/finalized on the last day" phrasing from §9.1 and §9.5. Rewrote the §9.3.2 collapsible note (trainer is a Software Engineer → 6 areas is easy for him; trainees stick to 3–5 to finish within bootcamp time). Translated the EARS/Gherkin keywords in `bootcamp-mvp-process.ar.md` §3 to Arabic (عندما/أثناء/إذا…فعندئذٍ, and بافتراض/عندما/فإنّ), keeping only the standard names EARS/Gherkin.
+
+### D10.2 Gate 5 — Section 10 «متطلبات النظام (SRS)» (grounded in sources)
+Grepped `conversation_history.md` (§2 notes 4–6 & 8: functionalities→FR + acceptance + main + priority + user stories; §5: FR-1…12 + NFR-1…6 + priority matrix; later iterative additions FR-10/11/12 dashboard/RBAC, FR-13 per-provider Google, FR-14/15 horizon, FR-16 consumer-only registration; §447 scope-discipline review) and `PROJECT_REPORT.md` §4. Wrote Section 10 on the locked pattern, applying the **self-contained requirement** restructuring: each requirement holds base(EARS)+user-story+acceptance together with Main?/Priority tags; the tables are **index-only (ID + title)**. Arabic EARS/Gherkin keywords used throughout for consistency. The trainer collapsible shows the 16-FR index + 3 fully-expanded FRs + the 6 NFRs.
+
+### D10.3 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§9.1, §9.3.2, §9.5 fixes; §10 SRS) · `.claude/rules/bootcamp-mvp-process.ar.md` (§3 Arabic keywords) · this file.
+
+---
+
+## § D11 — Prompt #6
+
+- 10.2 point 3: what is the malformed word "وأولوِّ"?
+- Section 10 feels **overwhelming** — it asks trainees to do a software engineer's job, while the whole point is to teach them to use Claude to do that heavy lifting. Reality check: in `conversation_history.md` the trainer **never** wrote requirements in that formal format — he wrote informal notes/details and asked Claude to format them. Formatting is Claude's job, not the trainee's. And it's contradictory: my steps ask the trainee to author everything, while my suggested prompt asks Claude to format it.
+- Proposed fix: the functionalities already in Section 9 are enough to start. Change the steps to: ask the trainee for any information/notes about the requirements he wants → Claude researches the project (with Section 9's functionalities + the trainee's notes as context) → Claude **suggests** the requirements → back-and-forth: the trainee gives notes, Claude modifies, repeat until satisfied. Add this logic to `bootcamp-mvp-process.ar.md` (noting the number of requirements should be limited), and modify Section 10's steps to match. Asked for a neutral opinion / any better idea or improvement.
+
+---
+
+## § D12 — Response to Prompt #6
+
+### D12.1 Assessment (neutral) + two improvements
+Agreed: hand-authoring EARS/user-story/Gherkin contradicts the bootcamp's premise and doesn't match what the trainer actually did (informal notes → Claude formats). Two improvements folded in: (1) **keep the concept (10.1)** — the trainee shouldn't author the format but must understand it to *review* Claude's suggestions intelligently; (2) this "provide notes/decisions → Claude drafts the formal artifact → review & refine" is a **general principle for every section**, so it was added as a first-class **golden rule** in the process guide, not just SRS-local.
+
+### D12.2 Changes
+- **Section 10:** fixed "وأولوِّ"; added a "لا تقلق" reassurance to 10.1; rewrote 10.2 / 10.3.1 / 10.4.1 into the notes→Claude-suggests→review-refine loop (kept the concept in 10.1, removed the author-each-requirement template from 10.4.1 so it no longer contradicts the suggested prompt); reframed the 10.3.1 collapsible to show the **trainer's real informal notes** (the admin-dashboard description from the history) → **what Claude produced** (the formatted FR/NFR set + index + examples); added a 10.5 Q ("do I write EARS myself?" → no).
+- **`bootcamp-mvp-process.ar.md`:** added golden rule #2 «زوّد Claude بالمعطيات، ودعه يصوغ»; added a pointer at the top of §3 and a «أبقِ عدد المتطلبات محدودًا» bullet.
+
+### D12.3 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§10.1–10.5) · `.claude/rules/bootcamp-mvp-process.ar.md` (§1 golden rules, §3) · this file.
+
+---
+
+## § D13 — Prompt #7
+
+In 10.3.2 the claim that the trainer "explicitly rejected out-of-scope expansions like provider-first browsing" is **not true** — find another true example. The real one: the trainer actually lets a provider book services, but a provider can't book a service of *himself* — the story of how he checked that this logical observation wasn't implemented without his explicit note. Replace it, then move to Gate 6 — and reflect the actual real things from `conversation_history.md` in the new Section 11.
+
+---
+
+## § D14 — Response to Prompt #7
+
+### D14.1 Fixed the false 10.3.2 example
+The "provider-first browsing" line was actually Claude's own scope analysis (conv-history §446–448), not the trainer's action. Replaced it with the true **provider self-booking** review finding (grounded in `CLAUDE.md` §B.2 + booking Prompt #34): the system allowed a provider to book his own availability; the trainer verified it wasn't prevented, and only after his explicit note was it blocked in both the UI (hiding the provider's own entry) and the server (rejecting before the DB) — illustrating that review surfaces implicit logical rules Claude won't infer on its own.
+
+### D14.2 Gate 6 — Section 11 «رحلة المستخدم» (grounded in sources)
+From `PROJECT_REPORT.md` §5 (the consumer/provider/admin journey texts) and `conversation_history.md` §6–7 (the trainer asked to draw the consumer activity diagram via the **draw.io** skill, using a swimlane/timeline per stakeholder — Consumer + System — with a decision node, coloring, kept simple; §326 records the created diagram). Wrote Section 11 on the locked pattern + the collaboration principle (trainee describes the journey in words → Claude formats it into the unified structure and draws the diagram → review). The trainer collapsible shows the real consumer journey text + the secondary journeys + the draw.io swimlane request.
+
+### D14.3 Consistency: Arabic journey-format keywords
+Translated the JOURNEY/ACTOR/START/DECISION/IF/END keywords to Arabic (الرحلة/الفاعل/البداية/قرار/إذا/النهاية) in Section 11 **and** in `bootcamp-mvp-process.ar.md` §4/§5, matching the earlier EARS/Gherkin keyword fix.
+
+### D14.4 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§10.3.2 fix, §11) · `.claude/rules/bootcamp-mvp-process.ar.md` (§4 journey format, §5 reference) · this file.
+
+---
+
+## § D15 — Prompt #8
+
+Move to Gate 7 (Section 12 «التصميم»), and reflect the actual real things that happened taken from `conversation_history.md`.
+
+---
+
+## § D16 — Response to Prompt #8
+
+### D16.1 Gate 7 — Section 12 «التصميم» (grounded in sources)
+Grounded in the booking build's real design workflow from `conversation_history.md` (§345–397) and `PROJECT_REPORT.md` §6: the **Claude Design → Design System → DesignSync** loop — a Design System project first (chosen over blank/template for consistency), Claude Code writes ready-to-paste prompts encoding tokens/rules/RTL/FRs (setup prompt A, then B–J per screen), each screen generated in a **separate** generation from the same system, then **DesignSync (`/design-sync`)** pulls components into the repo **one at a time**. Also captured the key nuance (conv-history §548): Claude Design renders the visual **states**, while behavior/logic (calendar navigation, booking-horizon enforcement) is implemented later in code.
+
+Wrote Section 12 on the locked X.1–X.5 pattern + collaboration principle: 12.1 concept (the three tools + role split), 12.2 how-to steps (ask Claude Code for the prompts, don't hand-write them), 12.3 trainer (impl + review, each with a «ما كتبه المدرب» collapsible showing the real booking design: screen inventory, teal + availability-pressure palette, R3 landing sections **without social proof**, R4 dedicated `/book/[serviceId]` calendar page not a modal), 12.4 trainee, 12.5 Q&A.
+
+### D16.2 Required Figma Q&A
+Included the explicitly-requested item in 12.5: «هل أستطيع استخدام تصميم Figma بدل Claude Design؟» → yes, Figma designs can be **imported into Claude Design** as a native functionality.
+
+### D16.3 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§12) · this file. *(No `bootcamp-mvp-process.ar.md` change needed — its §Working-with-Claude-Design content is already covered by the earlier build; the design loop was already reflected.)*
+
+---
+
+## § D17 — Prompt #9
+
+Section 12 adjustments: (1) in 12.1 «رموز (tokens)» doesn't fit — pick a clearer term. (2) The term «مولّد التوفّر الجماعي» (used in multiple sections) isn't clear to a reader — replace it with a better-explained, slightly longer phrasing (it's the functionality that adds available time slots for booking of whatever service the provider offers). (3) Tone: I'm using very heavy classical Arabic (فصحى) in places — soften slightly toward a simpler, closer-to-local Saudi tone, e.g. replace «نُفِّذا» with «تم تنفيذهم». After the adjustments, proceed to Gate 8.
+
+---
+
+## § D18 — Response to Prompt #9
+
+### D18.1 Section 12 adjustments
+1. **«رموز (tokens)» → «قيم تصميم أساسية موحّدة»** — the English «tokens» also collided with the credits/tokens meaning taught in Section 4, so it's dropped entirely; propagated the new wording everywhere it appeared in §12 (12.1 definition, 12.4.1 suggested prompt, the trainer collapsible).
+2. **«مولّد التوفّر الجماعي» → a clear longer phrase**: «شاشة إضافة أوقات التوفّر المتاحة للحجز دفعةً واحدة (يحدّد فيها مقدّم الخدمة أيامًا ونطاقات زمنية، فتُنشأ تلقائيًا المواعيد المتاحة أمام العملاء)». The term appeared only once in the doc (the §12 screen inventory), so this one edit covers it; later sections will reuse the clearer phrasing.
+3. **Tone softened**: «فيُنفَّذ لاحقًا» → «فيتم تنفيذه لاحقًا»; «نُفِّذا في الكود» → «تم تنفيذهما في الكود»; «مرمّزةً/تُرمّز» (encode) → «متضمّنةً/تتضمّن» throughout §12. Verified no flagged term remains.
+
+### D18.2 Gate 8 — Section 13 «نموذج البيانات (ERD)» (grounded in sources)
+From `conversation_history.md` (booking Prompt #14 «I prefer creating an ERD… ERD is different than a class diagram»; §254/§267 the single-`User`-with-role decision; §672/§872 the 8 entities; §862/§872 the ERD drawn with the **draw.io** skill from the **live Flyway schema** `V1__init_schema.sql`, teal headers, PK/FK/UQ annotations, plain `1 — N`/`1 — 0..1` labels, and the mid-way empty-boxes mistake caught and fixed). Wrote Section 13 on the locked X.1–X.5 pattern + collaboration principle, delivering the fuller «كيان» explanation that §8 pointed here for, plus beginner-level definitions of Field/PK/FK/Cardinality and the ERD-vs-Class-Diagram distinction the trainer explicitly drew. Trainer collapsibles show the 8 entities, the single-User decision's effect on the model, the draw.io rendering, and the real review catch. 13.5 Q&A covers ERD-vs-class-diagram, «كيان», the draw.io tool, and "don't design the DB by hand."
+
+### D18.3 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§12 adjustments, §13) · this file. *(No `bootcamp-mvp-process.ar.md` change needed — it carries no day-flow/ERD section.)*
+
+---
+
+## § D19 — Prompt #10
+
+Section 13 fixes: (1) Remove all mention of **class diagrams** (13.1 + 13.5) — trainees aren't at a level where they'd know the term; I'll answer if asked. (2) Since the trainee "describes their data in free form," they shouldn't have to mention **PK/FK** — Claude can determine those; only ask the trainee for the **relationships that come to mind**. Modify this across the steps in multiple subsections. (3) **«ملف الترحيل»** at the end of 13.3.1 is a bad translation — fix it across the section. (4) **`PROJECT_REPORT.md` must never be mentioned inside `bootcamp_roadmap_and_curriculum.md`** since it isn't given to trainees. Then continue to Gate 9.
+
+Follow-up: you keep writing from memory — add a rule to `CLAUDE.md` that explicitly requires going back to the **booking-system part of `conversation_history.md` + `PROJECT_REPORT.md`** to extract related content correctly. Especially needed for **Section 14**, where the real implementation had a lot of back-and-forth that must be mapped to `bootcamp_roadmap_and_curriculum.md` in a **general format** that systematizes my actual workflow with Claude to tell trainees what to do.
+
+---
+
+## § D20 — Response to Prompt #10
+
+### D20.1 Section 13 fixes (all four)
+1. **Removed class-diagram content** — deleted the «فرقٌ مهم» paragraph in 13.1 and the ERD-vs-class-diagram Q&A in 13.5.
+2. **Dropped PK/FK from the trainee-facing asks** — 13.1 now replaces the PK/FK bullet definitions with a reassurance note («لا تقلق بشأن التفاصيل التقنية… Claude يحدّدها»), and 13.2 / 13.3.1 / 13.3.2 / 13.4.1 were reworded so the trainee only provides entities + fields + **the relationships that come to mind**, while Claude determines the keys/links.
+3. **Fixed «ملف الترحيل»** → «ملف إنشاء الجداول» in both places it appeared (13.3.1, 13.3.2).
+4. **Removed the `PROJECT_REPORT.md` reference** from the 13.3.2 collapsible. Grep-verified the whole doc is now clean of class-diagram / PK-FK / ملف-الترحيل / PROJECT_REPORT strings.
+
+### D20.2 New standing rule in `CLAUDE.md` (A.5)
+Added **§A.5 "Building the Arabic curriculum"**: (a) ground every curriculum section in the **booking-system part of `conversation_history.md` + `PROJECT_REPORT.md`** (re-read, don't write from memory — flagged as most critical for Section 14); (b) **never name internal/graded docs** (`PROJECT_REPORT.md`, `implementation_plan.md`, …) inside the trainee-facing curriculum; (c) keep the trainee register (collaboration principle, simple/local Arabic, define terms once, no deep-technical vocabulary like class-diagram/PK-FK jargon).
+
+### D20.3 Gate 9 — Section 14 «التنفيذ» (grounded in the real build)
+Re-read `implementation_plan.md` (M0–M8 + the [You] manual steps + every "real bug found & fixed" note) and the booking build turns in `conversation_history.md`, then **systematized** them into a general, product-agnostic workflow: 14.1 concept (build in small milestones; the plan→build→**run/test**→fix→**commit** rhythm; don't accept untested code; use context7), 14.2 the ordered build sequence (one-time manual setup → 7 build phases → repeat the rhythm each phase), 14.3 trainer (impl steps + review steps) with collapsibles mapping the real M0–M6 milestone sequence and — as the key teaching content — the **real bugs that only surfaced on testing** (provider self-booking rule, the silently-non-running DB setup tool, locale-dependent inputs, the 500-instead-of-403 permission error), 14.4 trainee, 14.5 Q&A. Kept every booking specific inside «ما كتبه المدرب» blocks; simple/local tone; `PROJECT_REPORT.md`/`implementation_plan.md` not named in the doc.
+
+### D20.4 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§13 fixes, §14) · `CLAUDE.md` (new §A.5) · this file. *(No `bootcamp-mvp-process.ar.md` change needed this gate.)*
+
+---
+
+## § D21 — Prompt #11
+
+Build Gate 10 while I finish reviewing Section 14.
+
+---
+
+## § D22 — Response to Prompt #11
+
+### D22.1 Gate 10 — Section 15 «الاختبار ومراجعة الأمان» (grounded, per §A.5)
+Re-read the real testing/security work from `implementation_plan.md` (M7 target + every milestone's verification) and `conversation_history.md` (the curl + chrome-devtools test matrices at M2–M6): two testing methods used at every milestone (direct server-endpoint calls + live browser via **chrome-devtools**), always covering happy **and** error cases; the full RBAC denial matrix (non-admin/non-provider → blocked, cross-provider ownership guard); FR-16 privilege-escalation attempt still yields CONSUMER; "never trust the client" (constraints enforced server-side); secrets in git-ignored `.env` (NFR-3); BCrypt password hashing (NFR-2); calendar-month render < 2s target (NFR-1).
+
+Wrote Section 15 on the locked X.1–X.5 pattern + collaboration principle: 15.1 concept (functional testing vs security review; test error cases; don't trust the frontend; glossed chrome-devtools), 15.2 how-to (ask Claude for test cases → run both ways → lower-privilege security review → fix/retest → verify security basics), 15.3 trainer (running tests + security review) with «ما كتبه المدرب» collapsibles showing the real error-case tests and security findings, 15.4 trainee, 15.5 Q&A. Booking specifics kept in collapsibles; internal docs not named; simple/local tone.
+
+### D22.2 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§15) · this file. *(No `bootcamp-mvp-process.ar.md` change needed this gate.)*
+
+---
+
+## § D23 — Prompt #12
+
+Four concerns on Sections 14/15 and the rule files. **Answer them and give suggestions here as a response first; after I answer, then apply the fixes.**
+
+1. **The technical implementation plan (from plan mode) isn't for the trainee to review** — it's full of technical terms. Maybe add a rule that implementation plans should have a **very simple section at the beginning**, in plain language, explaining what will be implemented (for the trainee to read), while the comprehensive technical plan lives **after** that section (which the trainee shouldn't read).
+
+2. **Project/frontend/backend setup doesn't have to be the trainer's task** — Claude can generate and set them up. We should just mention that the code must be placed in a **separate folder inside the project folder**. Trainees won't ask for a specific tech stack, so what's the default you'll follow? Maybe Node.js/Next.js for both frontend and backend — and I don't know whether they must be explicitly separated into backend/frontend folders inside the code folder like in my booking project. I also don't know the easiest DB to develop with that's also easy to deploy. **Asking trainees to download Docker Desktop just to run a PostgreSQL container seems overkill — what do you suggest?** All of this setup should be written in the rule file so you already know what to do and the trainer doesn't have to specify these details himself.
+
+3. **In 14.3.2, "(لا تكتفِ بقراءة الكود)" and "راجِع كل كود مولَّد" are wrong** — the entire point of the bootcamp is to build an MVP **without writing or reading any code**! Just executing and manual testing through the built UI.
+
+4. **Server-side testing and chrome-devtools are done by Claude, not the trainee or trainer.** I only ask you to do them; I test only via the UI. You generate the test cases in the application and open the Chrome browser to test via the frontend. Clarify this as **Claude's job** and add it to the rule file — the trainer just triggers them (even indirectly: the rule states that whenever something is developed it must be tested via test cases + browser), and Claude reports to the trainee in a **non-technical report** stating what it did.
+
+> Also: there are still many things to review, but let's handle these notes, then finish the remaining sections and initially write the early "waiting" sections, then I'll review everything.
+
+---
+
+## § D24 — Response to Prompt #12 (analysis & suggestions — *nothing applied yet, pending your answers*)
+
+**Concern 1 — "simple summary first" in implementation plans → agreed.**
+My refinement: every plan Claude produces (plan-mode output *and* any `implementation_plan`-style doc) opens with a short **«ماذا سنبني الآن؟»** block — 3–6 plain-language bullets, zero tech terms — which is the only part the trainee reads and approves. All technical detail goes **after** it, under a clearly-labelled "التفاصيل التقنية (لا يلزم المتدرّب قراءتها)" heading. I'll put this rule in the process rule file (English + Arabic) and reflect it in Section 14.
+→ *Question 1:* OK as-is? Any change to the summary's length/shape?
+
+**Concern 2 — default stack / DB / folders / no-Docker.**
+You're right that Claude should scaffold everything. Your booking project used a heavy split stack (Java backend + separate Next.js + native Postgres + Docker) only because it's a rich real project — **too much for a near-beginner MVP.** For the easiest build *and* deploy I recommend a lighter default:
+- **One full-stack Next.js app (TypeScript)** — the *same* framework serves the UI *and* the server/API, so there is **no separate frontend/backend split**. (That split is only needed when the two are different languages, as in your booking project.) Result: fewer moving parts, one deploy.
+- **All app code in a single subfolder** inside the repo (e.g. `app/`); the docs stay at the project root. One code folder, not two.
+- **Database = a free hosted Postgres (Neon or Supabase): no Docker, no local install** — just a connection string in `.env`; the **same DB works in dev and after deploy**, so nothing drifts. (Docker Desktop only to run Postgres locally is indeed overkill.)
+- **Schema via Prisma** (Claude writes it from the data model). **Deploy = Vercel for the app + the already-hosted Postgres** → effectively one deploy, all free tiers.
+- *(SQLite — a local file, zero setup — is even simpler for dev, but it doesn't deploy cleanly on serverless hosts, so I'd avoid it to keep dev = prod.)*
+
+→ *Questions for you:*
+  - **(2a)** Make **full-stack Next.js (one folder, no FE/BE split)** the default? 
+  - **(2b)** DB default: **Neon** (just Postgres) vs **Supabase** (Postgres **+ built-in auth**, which would also make sign-up/sign-in much easier for beginners)? Both free, no Docker.
+  - **(2c)** Anything you'd rather force regardless (e.g., always keep a FE/BE split for teaching clarity)?
+  Whatever you pick, I'll write it into the rule file so I follow it automatically and you never re-specify it.
+
+**Concern 3 — "read/review the code" framing is wrong → agreed, will purge it.**
+The trainee builds an MVP **without reading or writing any code**; they "review" only by **using the built UI** and by reading Claude's plain-language report. I'll remove every "read/review the code" phrase from Section 14 (incl. 14.5), Section 15, **and** the golden rules of the process files — the current rule ("review every AI change / don't accept code without reading it") becomes **"review by testing the product through its UI and by reading Claude's plain report — never by reading code."**
+
+**Concern 4 — testing is Claude's job, triggered by the trainee → agreed, will reframe.**
+New rule (for the rule file): **whenever anything is developed, Claude automatically (1) writes and runs test cases against the app, (2) opens the browser via chrome-devtools to test the real UI, then (3) reports to the trainee in plain, non-technical language what it did and what it found.** The **trainee's own testing = manually using the product through its UI.** I'll rewrite Section 15's trainer/trainee split so the server + browser testing is clearly *Claude's* action that the trainee merely triggers (even implicitly by asking for a feature), with Claude's non-technical report as the trainee-facing output.
+
+**Order once you answer:** apply all four (curriculum §14/§15 + the rule files: process `.md`/`.ar.md`, and `CLAUDE.md` §A.5 where it concerns my behavior) → finish Sections 16–17 → initially write the early "waiting" sections (Section 6 agenda; revisit Section 1 + the lists) → hand everything to you for a full review.
+
+---
+
+## § D25 — Prompt #13
+
+Answers: **2a — yes** (full-stack Next.js, one folder, no FE/BE split); **2b — Supabase** (Postgres + built-in auth); **2c — nothing specific, I'll review later.** Now perform the updates and modifications.
+
+---
+
+## § D26 — Response to Prompt #13
+
+Applied all four fixes across the curriculum and the rule files.
+
+### D26.1 Default stack & setup (Concern 2) — decided & ruled
+Locked the beginner default: **one full-stack Next.js (TS) app in a single `app/` folder (no frontend/backend split) + Supabase (Postgres + built-in auth, no Docker/local install) + deploy to Vercel; Claude scaffolds the project, the trainee only creates accounts/keys.** Written into `.claude/rules/bootcamp-mvp-process.md` **§6** and the Arabic `.ar.md` **§6**, plus a pointer in `CLAUDE.md` §A.5. Section 14.2 now shows the manual part as **accounts/keys only** (GitHub, hosted DB, deploy platform, external services → `.env`), with scaffolding/DB-wiring/design-components as **Claude's** job; §14.5 adds "do I choose the tech / who sets up the project" Q&A. The booking project's heavier real stack stays inside «ما كتبه المدرب» collapsibles only.
+
+### D26.2 "Trainee never reads/writes code" (Concern 3) — purged
+Removed every "read/review the code" instruction. Golden rule reframed in both process files (EN #4, AR #5): *review by using the product's UI + reading Claude's plain report — never by reading code.* Section 14 (14.1/14.3.2/14.4/14.5) and the 14.3.2 collapsible "lesson" line rewritten accordingly. Grep-verified the only remaining "code" mentions are the intended negations ("أنت لا تكتب الكود ولا تقرؤه").
+
+### D26.3 Testing is Claude's job (Concern 4) — reframed
+New process-file section (EN/AR **§7**) + a new golden rule (EN #8 / AR #10): whenever anything is built, **Claude writes+runs test cases, browser-tests via chrome-devtools, then reports to the trainee in non-technical language**; the trainee's own testing = using the UI; the trainee/trainer merely trigger it (even implicitly — any development entails its testing). Section 15 rewritten end-to-end so 15.1 "who does what", 15.2–15.3 steps, and 15.5 Q&A all attribute testing to Claude with the trainee testing via the UI.
+
+### D26.4 Simple-summary-first plans (Concern 1) — ruled
+Process-file **§7** (EN/AR) requires every implementation plan to open with a jargon-free **"ماذا سنبني الآن؟" / "What we'll build now"** summary (3–6 bullets) the trainee approves, with technical detail after it under a "need not read" heading. Reflected in §14 (the per-phase rhythm and the 14.4.1 suggested prompt).
+
+### D26.5 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§14, §15) · `.claude/rules/bootcamp-mvp-process.ar.md` (rule #5 reframe, new rule #10, new §6/§7) · `.claude/rules/bootcamp-mvp-process.md` (rule #4 reframe, new rule #8, new §6/§7) · `CLAUDE.md` (§A.5 default-stack + no-read-code/testing pointers) · this file.
+
+### D26.6 Next
+Per your plan: finish **Section 16 (النشر)** and **Section 17 (الأدوات المستخدمة)**, then initially draft the early "waiting" sections (Section 6 agenda; revisit Section 1 + the lists), then hand everything to you for a full review.
+
+---
+
+## § D27 — Prompt #14
+
+Three notes: (1) The 15.5 answer "we don't write automated tests in an MVP" is **wrong** — Claude **should** write automatically-triggerable test cases for **each functionality after building it** (like the ones in my booking project), *in addition* to command-line/curl server testing and browser testing via chrome-devtools. (2) **Password hashing** should be an explicit rule telling Claude to hash passwords, with the trainer just checking they actually got hashed. (3) Add to the handed **`CLAUDE.ar.md`** that Claude should start/stop servers itself while testing and **explicitly terminate them when done**, so the trainee doesn't hit "port occupied" errors when starting the servers to test.
+
+---
+
+## § D28 — Response to Prompt #14
+
+### D28.1 Automated tests are the standard now (Note 1) — with an honesty flag
+Reframed testing everywhere as **three layers Claude runs after each function it builds: (1) automated, re-runnable test cases per functionality; (2) direct command-line/server testing; (3) browser via chrome-devtools** — then a plain-language report. Updated curriculum §15.1 (who-does-what), §15.2 step 1, §15.5 Q&A (the wrong "automated tests are later" answer replaced), and rule-file **§7** (EN + AR).
+**Honesty flag:** checked the booking backend — it has **only the default scaffold test** (`BookingSystemApplicationTests.java`); the per-functionality automated tests (planned for M7: booking transaction/FR-4, security guard/FR-16, window/FR-15) were **never written** (M7 unchecked). So I did **not** claim them in the «ما كتبه المدرب» collapsible — it now truthfully says the booking testing used command-line + browser, with a note that the (now-recommended) automated re-runnable tests weren't completed in that project. **Open question for you below.**
+
+### D28.2 Password hashing (Note 2) — ruled
+Added an explicit rule (EN/AR **§7**): Claude always stores passwords **hashed**, never plaintext; the trainer's only job is to verify they're actually hashed. Reflected in curriculum §15.4.2 (trainee check) and a new §15.5 Q&A.
+
+### D28.3 Server lifecycle during testing (Note 3) — added to CLAUDE.ar.md (+rule files)
+Added to the handed **`CLAUDE.ar.md`** §أ.3: when Claude runs a server/app to test, it starts it and **explicitly stops it when done** so the trainee never hits a "port occupied" error. Also mirrored in rule-file §7 (EN + AR) for coverage. While there, aligned `CLAUDE.ar.md` §أ.3's stale lines with the earlier reframe ("review by using the UI, not by reading code"; "أثناء البناء" not "كتابة الكود"; plan opens with a simple summary).
+
+### D28.4 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§15) · `.claude/rules/bootcamp-mvp-process.ar.md` (§7) · `.claude/rules/bootcamp-mvp-process.md` (§7) · `CLAUDE.ar.md` (§أ.3) · this file.
+
+### D28.5 Open question
+Your booking project doesn't actually have the per-functionality automated tests you referenced — only the scaffold test. Do you want me to **write them now** (a real coding task — plan mode — e.g. tests for the booking transaction/FR-4, the register-role guard/FR-16, and the booking-window validation/FR-15), which would make the reference real and complete M7? Or leave the booking example as command-line + browser testing and keep the automated-tests rule forward-looking only?
+
+---
+
+## § D29 — Prompt #15
+
+Proceed to Sections 16 and 17. But first: **refer back to `conversation_history.md` and extract the entire Vercel-deployment portion** — the steps taken and the obstacles I hit — and register it clearly in **all three docs**: display simple trainee steps in `bootcamp_roadmap_and_curriculum.md` (what the trainee does so Claude can access his Vercel account/project to deploy, then Claude creates the `.vercel` directory and the rest), all of which must also be documented in `.claude/rules/bootcamp-mvp-process.ar.md`. Smooth the process as much as possible so trainees don't hit the same problems I had — extract those from the history.
+
+---
+
+## § D30 — Response to Prompt #15
+
+### D30.1 Extracted the real Vercel journey (grounded, per §A.5)
+`conversation_history.md` only had scattered deploy mentions, so I parsed the **session transcript `.jsonl`** for the full Vercel journey. Real facts recovered: the split-stack deploy (Vercel = frontend, Render = backend + Postgres); the user standing in the Vercel dashboard unsure what to do; **Vercel CLI installed (`vercel 50.39.0`) but not logged in** (`vercel whoami` → "token is not valid, use `vercel login`"); **`vercel login` needs an interactive browser confirmation Claude cannot complete** — so Claude runs it, hands the user the exact URL/code, then drives the rest; then `vercel link` (creates `.vercel`) → set **Root Directory** (`app/frontend` there) → `vercel env add NEXT_PUBLIC_API_URL production` → `vercel --prod`; after deploy, **update `APP_CORS_ORIGINS` + the Google redirect URI** to the real Vercel URL; `.vercel` is git-ignored; **no Vercel MCP** so it's CLI-driven; the deploy was paused mid-flight and the user finished it himself.
+
+### D30.2 Section 16 «النشر» (curriculum)
+Wrote §16 on the X.1–X.5 pattern with the obstacles pre-smoothed: **Claude drives the deploy; the trainee's only step is confirming `vercel login` in the browser** (this is how Claude gains access to their account). Then Claude does `vercel link` (creates `.vercel`), adds production env vars, `vercel --prod`, and updates external-service URLs. The «ما كتبه المدرب» collapsible lists the **five real obstacles** and marks them "smoothed," and notes the booking split-stack (Vercel + Render) vs. the simpler default (one Next.js app on Vercel + Supabase). 16.5 Q&A covers "do I deploy myself / why the browser confirmation / what is `.vercel` / is it free / redeploy after edits."
+
+### D30.3 Section 17 «الأدوات المستخدمة»
+A live tools table for the default stack (Claude Code, context7, draw.io, Claude Design, DesignSync, GitHub, chrome-devtools, Next.js, Supabase, Vercel) + a «ما كتبه المدرب» collapsible with the booking project's real heavier set (Spring Boot/Security/JPA, Flyway, PostgreSQL, Next.js/React/TS/Tailwind, Framer Motion/Embla/Lucide, Gmail SMTP, Google Meet/Calendar, Render + Vercel).
+
+### D30.4 Documented in all three handover docs
+- **`bootcamp_roadmap_and_curriculum.md`** — §16 trainee steps + obstacles collapsible.
+- **`.claude/rules/bootcamp-mvp-process.ar.md`** — new **§8 «النشر على Vercel»** (the CLI flow Claude follows + the 5 prevented obstacles). Mirrored in the English `bootcamp-mvp-process.md` §8.
+- **`CLAUDE.ar.md`** — a §أ.3 deploy pointer (trainee confirms `vercel login`; Claude creates `.vercel`, sets env, deploys; details in the process file §8).
+
+### D30.5 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§16, §17) · `.claude/rules/bootcamp-mvp-process.ar.md` (§8) · `.claude/rules/bootcamp-mvp-process.md` (§8) · `CLAUDE.ar.md` (§أ.3) · this file.
+
+### D30.6 Next
+All 11 content sections (7–17) are now drafted. Remaining per the plan: **Section 6 (day-by-day agenda)** built last with task-links, then **revisit Section 1 (نبذة) + the lists** and a final consistency pass — then your full review. *(Still-open item from §D28.5: whether to actually write the per-functionality automated tests into the booking project.)*
+
+---
+
+## § D31 — Prompt #16
+
+You didn't tell me there's a Vercel MCP to set up — you went all-CLI. If a Vercel MCP exists that eases/improves and makes deployment more accurate, it's better to use it. If true, tell me so we add it to the curriculum and the other docs and mention it as one of the prerequisites to set up and connect before starting deployment. — Also: no, don't write the per-functionality automated tests into the booking project; it's already finished.
+
+---
+
+## § D32 — Response to Prompt #16
+
+### D32.1 Verified: the official Vercel MCP exists (checked the docs, not memory)
+`https://mcp.vercel.com` — a hosted, OAuth remote MCP; Claude Code is an officially supported client (`claude mcp add --transport http vercel https://mcp.vercel.com` → `/mcp` to authorize once in the browser). It **manages projects & deployments, reads/analyzes deployment logs, searches Vercel docs, queries analytics**. Honest caveat surfaced to you: it has **no environment-variable tools** (a known, still-open gap) and isn't the tool for pushing local code — so **env vars + the actual deploy stay on the CLI**. In the booking session no Vercel MCP was connected (ToolSearch was empty), which is why that run was all-CLI.
+
+### D32.2 Decision: MCP + CLI hybrid (you chose it)
+Asked you how to frame it; you picked **MCP + CLI hybrid**: connect the Vercel MCP as a **one-time prerequisite** (project/deploy management + reading deploy logs to debug failures + docs), with the CLI still doing `login → link → env add → --prod`. The one browser step becomes two one-time confirmations (MCP OAuth connect + `vercel login`).
+
+### D32.3 Applied across all deployment docs
+- **`bootcamp_roadmap_and_curriculum.md` §16** — added a **"المتطلّبات المسبقة"** block (Vercel account + connect the Vercel MCP with the exact `claude mcp add …` command + browser authorize); reframed 16.2 to the two-tool flow (MCP for management/logs/docs, CLI for login/link/env/deploy); updated 16.3.1 + its collapsible (noting the booking run had no MCP, now recommended); added a 16.5 "what is Vercel MCP" Q&A.
+- **`.claude/rules/bootcamp-mvp-process.ar.md` §8** and **`.md` §8** — added the MCP prerequisite bullet + the exact command; **fixed the now-wrong "no Vercel MCP available" note** → the tool-split explanation (MCP manages/reads-logs/docs; CLI does env + deploy).
+- **`CLAUDE.ar.md` §أ.3** — deploy pointer updated to the two-tool flow (connect MCP prerequisite, then CLI login/link/env/deploy).
+- Also dropped the §D28.5 open item — per your instruction, not writing automated tests into the finished booking project.
+
+Sources verified: Vercel MCP docs (`vercel.com/docs/agent-resources/vercel-mcp`), plus the env-var-gap note from community coverage.
+
+### D32.4 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§16) · `.claude/rules/bootcamp-mvp-process.ar.md` (§8) · `.claude/rules/bootcamp-mvp-process.md` (§8) · `CLAUDE.ar.md` (§أ.3) · this file.
+
+### D32.5 Next
+Remaining per the plan: **Section 6 (10-day agenda)** built last with task-links, then **revisit Section 1 + the lists** and a final consistency pass, then your full review.
+
+---
+
+## § D33 — Prompt #17
+
+You forgot to add the new Vercel MCP tool to Section 17! Add it. And add a rule in `CLAUDE.md` to register tools there whenever we add one in the project (I'll review the whole document again and might flag a missing tool, though unlikely). After that, refresh Section 1 — brief and concise, without much detail — and the goals list in Section 2. **Don't do Section 6 yet.** Note for Section 6: the goals referenced per day don't have to be a full goal from Section 2, but rather **part of a goal**, depending on what we want to achieve that day.
+
+---
+
+## § D34 — Response to Prompt #17
+
+### D34.1 Vercel MCP added to Section 17 + a registration rule in CLAUDE.md
+Added a **Vercel MCP** row to the §17 tools table ("إدارة النشر وقراءة سجلّاته وتشخيص الأعطال (يُربط قبل النشر)"). In `CLAUDE.md` §A.4: added Vercel MCP to the "Tools available" list **and** a new **"Rule — register new tools"**: whenever a tool/MCP/skill is introduced/used, add it **both** to that list **and** to the curriculum's Section 17 table (+ booking collapsible if booking-specific), kept in sync.
+
+### D34.2 Section 1 «نبذة» refreshed (brief)
+Dropped the "seed / revisit later" note and tightened it to one concise paragraph: 10 days/40h, build a usable+deployable MVP with Claude/Claude Code, the full journey (requirements → design → build → test → deploy to a real URL), no deep coding needed.
+
+### D34.3 Section 2 goals refreshed (aligned with all decisions)
+Reworded to match the locked decisions: requirements are **produced with Claude** (not hand-authored); build the product **"دون كتابة الكود أو قراءته"**; testing framed as **Claude tests + reports, trainee verifies via the UI**; MCP list now includes **Vercel MCP**; design goal names Claude Design/Design System/DesignSync; deploy goal names **Vercel**; methodology goal now = work in stages with a simple pre-stage summary + review-by-trying-in-the-UI + save to GitHub (no "review every change/code").
+
+### D34.4 Noted for Section 6 (not built yet)
+Recorded your instruction: **each day's referenced goals are a *part* of a Section-2 goal, not necessarily a whole goal** — chosen by what that day actually works on. I'll apply this when building Section 6.
+
+### D34.5 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§1, §2, §17) · `CLAUDE.md` (§A.4) · this file.
+
+### D34.6 Status
+All content sections 7–17 done; §1, §2, §17 refreshed. **Still pending:** Section 6 (10-day agenda — hold per your instruction), Section 4 «أساسيات Claude Code» (still a stub), and a final consistency pass — then your full review.
+
+---
+
+## § D35 — Prompt #18
+
+There is no «خطة التطوير المستقبلية» — remove it from Section 2 and any place that implies **we will do work on future planning**.
+
+**Clarification (after I over-removed):** I did not mean remove all future-planning logic — only the *doing work on* future planning. **Categorizing** whether something is future work is still required; we simply must not **work on** (build) that future work.
+
+---
+
+## § D36 — Response to Prompt #18
+
+### D36.1 Corrected understanding
+Rule: **categorizing** a feature as future/deferred work is required (part of scoping); **working on / building** that future work is not done. So future-work *lists* stay; we never implement them.
+
+### D36.2 What actually changed (nothing over-removed)
+- **Section 2 goals** — removed the trailing "وخطة التطوير المستقبلية" from the deploy goal (per your explicit "remove it from section 2"). You chose to **leave it removed** (not reframe). Goal now: «نشر المنتج على رابط فعلي عبر Vercel، وإعداد العرض النهائي.»
+- **Section 9 (النطاق) — untouched.** My edit that dropped the future-work bucket was **rejected**, so the three lists (داخل النطاق / خارج النطاق / خطة التطوير المستقبلية) remain intact — that's categorization, which stays.
+- **Rule files — untouched.** «اقترح الإضافات كتطوير مستقبلي دون بنائها الآن» (ar §5), "propose extras as future work, don't build them yet" (en), «الإضافات = تطوير مستقبلي» (CLAUDE.ar.md) all stay — categorize-and-don't-build is exactly the intent.
+
+### D36.3 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§2 goals only) · this file.
+
+---
+
+## § D37 — Prompt #19
+
+Write Section 4. Notes: (1) MCP has costs — explain what that cost is, that each prompt sends the list of tools you have (which takes up tokens), and list everything that consumes tokens along with MCP in general. (2) Add the **context window** principle — that when it hits the window limit (specify it) it compacts, and what compaction is. (3) The attached image (Claude Code's config file structure: global `~/.claude/` vs project `.claude/`) is a good source for understanding the structure — include the file structure Claude Code understands, but **limit** the parts we teach so trainees aren't overwhelmed by every file/directory.
+
+---
+
+## § D38 — Response to Prompt #19
+
+### D38.1 Verified the token/context facts (skill, not memory)
+Loaded the `claude-api` skill for authoritative numbers: **Opus 4.8 / Sonnet 5 = 1M-token** context window, **Haiku 4.5 = 200K**; input tokens = **tool/MCP definitions → system → full conversation history → files** (render order), and every connected MCP server's tool definitions are sent on **every** request (token cost even when unused). Compaction: Claude Code auto-summarizes older context near the window limit; `/compact` triggers it manually.
+
+### D38.2 Section 4 «أساسيات Claude Code وبيئة العمل» written
+Replaced the stub with: 4.1 Claude vs Claude Code; **4.2 tokens/cost** with the full list of what consumes tokens (your prompt, the whole re-sent conversation history, opened files, loaded CLAUDE.md/rules, **the tool/MCP definitions sent every message**, and Claude's own output); 4.3 Pro limits (rolling 5-hour + weekly); **4.4 MCP + context7** with the explicit "each MCP adds its tool definitions to every request → costs tokens even before use → connect only what you need"; 4.5 rules/skills + local-vs-global; **4.6 context window (hundreds-of-thousands up to 1M tokens) + compaction** (auto-summarize near the limit, `/compact`, why conversation_history.md survives it); **4.7 a trimmed file-structure tree** (global `~/.claude/` vs project `.claude/`, limited to CLAUDE.md / rules / skills / .mcp.json — noting there's more we don't need); 4.8 Q&A. Simple/local tone, terms defined once.
+
+### D38.3 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§4) · this file. *(No new tool to register in §17/CLAUDE.md A.4 — all MCPs named were already listed.)*
+
+### D38.4 Status
+Remaining: **Section 6** (the 10-day agenda — still held per your instruction), then a final consistency pass, then your full review.
+
+---
+
+## § D39 — Prompt #20
+
+Section 4 is too short and doesn't deliver the concept/intended information. Specifically: (1) What exactly is MCP (what it consists of)? Why and how was it invented? (Pre-MCP, people connected things to AI the hard way — automating everything and wiring APIs individually; the market noticed and each major provider started supporting MCP to ease communication between models and their products.) (2) Explain **why** each connected MCP adds its tool definitions to every message — because in each prompt Claude reads the available tools to see if any matches the request. (3) The concept of **sessions** hasn't been explained. (4) In 4.3 you didn't specify the exact 5-hour and weekly limit — state how many tokens the limit is! (5) Why didn't you state the exact token limit in 4.6 at which it auto-compacts?
+
+---
+
+## § D40 — Response to Prompt #20
+
+### D40.1 Verified the numbers (web, not memory) — with an honesty correction
+Searched the current sources. **Anthropic does not publish a fixed token count** for the Pro 5-hour/weekly limits — capacity scales by model + message size; the public rough guide is **~45 short messages per rolling 5-hour window** (plus a weekly cap), checkable in-app via **`/usage`**. So I could not "state how many tokens" as an exact figure — I said so plainly in the doc rather than invent one, and gave the real guide + the `/usage` command. Auto-compact: default trigger is **~85% of the context window** (`CLAUDE_AUTOCOMPACT_PCT_OVERRIDE`-adjustable); the window is 200K→1M tokens by model (Opus 4.8 = 1M). Sources: [morphllm](https://www.morphllm.com/claude-code-usage-limits), [claude support (Pro plan)](https://support.claude.com/en/articles/8325606-what-is-the-pro-plan), [BSWEN auto-compact](https://docs.bswen.com/blog/2026-03-21-claude-code-auto-compact-settings/), [claude-code issue #66475](https://github.com/anthropics/claude-code/issues/66475).
+
+### D40.2 Rewrote Section 4 far more thoroughly (10 subsections)
+- **4.2 الجلسة (Session)** — new: what a session is, that Claude has no memory between sessions, why that's exactly why `conversation_history.md` exists, and the "session" vs 5-hour-window terminology overlap.
+- **4.3 tokens** — now leads with "the model is stateless between messages, so the whole session context is re-sent every message," which explains *why* everything (history, files, tool defs) costs tokens each time.
+- **4.4 Pro limits** — the honest treatment above (no published token number + ~45 msgs/5h + weekly + `/usage`).
+- **4.5 what MCP is** — full: Model Context Protocol; its components (server exposing tools/resources/prompts + client/host like Claude Code); the **history** (pre-MCP custom M×N integrations built by hand → MCP standardizes to one server per tool usable by any compatible model → market/providers adopted it).
+- **4.6 why MCP costs tokens every message** — the mechanism you asked for: stateless model → tool definitions must be in-message → **Claude reads the tool list each prompt to decide if any matches the request** → connect only what you need.
+- 4.7 rules/skills (local vs global), **4.8 context window + compaction** (window 200K→1M; auto-compact ~85%, `/compact`), 4.9 trimmed file tree, 4.10 expanded Q&A.
+
+### D40.3 Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§4 fully rewritten) · this file.
+
+---
+
+## § D41 — Prompt #21
+
+Use Anthropic's native docx skill (`anthropic-skills:docx`) to convert `bootcamp_roadmap_and_curriculum.md` into a professional Microsoft Word file with a complete working TOC and clean styling.
+
+---
+
+## § D42 — Response to Prompt #21
+
+The exact name `anthropic-skills:docx` wasn't registered; found the real skill at `…/plugins/marketplaces/anthropic-agent-skills/skills/docx`. `pandoc`/LibreOffice/`pdftoppm` were absent, so I used the skill's primary **"Create → docx-js"** path: tokenized the Markdown with `marked` and emitted **docx-js** with real Word heading styles so the TOC field works. Wrote `bootcamp_roadmap_and_curriculum.docx` — cover page, a live updatable `TOC \h \o "1-3"` field (+`updateFields`), all 21 «ما كتبه المدرب» callouts, 5 tables, code blocks, 34 numbered lists. Validated the OOXML + python-docx (couldn't render a visual proof — LibreOffice/pdftoppm not installed).
+
+---
+
+## § D43 — Prompt #22
+
+The file is all LTR — I had to align everything right manually, English collapses into Arabic, and there are a million spelling squiggles.
+
+---
+
+## § D44 — Response to Prompt #22
+
+Root cause: direction was set only at the paragraph level (`<w:bidi/>`), not on the **runs**. Regenerated with **run-level `<w:rtl/>`** on every Arabic run (1700), code/inline-code kept LTR (`rtl w:val="false"`, 94), **section-level `<w:bidi/>`** injected into `sectPr` via a safe zip rewrite, docDefaults RTL, RTL `TOC1/2/3` styles, and **correct proofing language** (`w:bidi="ar-SA"` on Arabic, `en-US` on Latin) — which removes the false spelling squiggles. Overwrote the docx in place; re-verified via python-docx.
+
+---
+
+## § D45 — Prompt #23
+
+Come back to `bootcamp_roadmap_and_curriculum.md` and build **Section 6** from start to finish following the previously provided notes.
+
+---
+
+## § D46 — Response to Prompt #23
+
+Built **Section 6 «الأجندة والأهداف التدريبية» (الأيام 1–10)** on the agreed structure. Intro explains the three conventions: each day's **objectives are *parts* of the Section-2 goals** (per your note), the **four daily sessions** carry the ~45/60/105/30 split from 5.1, and each task **points to the numbered subsection** it works on. Locked the session→subsection mapping (شرح←X.1/X.2 · تطبيق مع المدرب←X.3.1/X.3.2 · عمل المتدربين←X.4.1 · مراجعة←X.4.2). The 10-day map: **Day1** توجيه+§4+تهيئة الحسابات/MCP+§7 · **Day2** §7/§8 · **Day3** §9+بدء §10 · **Day4** §10 إكمال+§11 · **Day5** §12+§13 · **Days6–9** §14 (المراحل 1–3 / 4–5 / 6 / 7) with **Day9** adding §15 · **Day10** §16+§17+الختام (5.2). Also finalized §5.2 «ختام المعسكر» (removed its stub → عرض المنتجات المنشورة + مراجعة ختامية). All references are bold numeric (robust in both Markdown and the Word export; anchor links don't survive the docx conversion). Reflects all locked decisions (Claude scaffolds/tests, no code-reading, Supabase/Vercel, Vercel-MCP prerequisite).
+
+### Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§6 built, §5.2 finalized) · this file.
+
+### Status
+**All sections of `bootcamp_roadmap_and_curriculum.md` are now drafted (1–17).** Remaining is your full review; the `.docx` can be regenerated after any edits.
+
+---
+
+## § D47 — Prompt #24
