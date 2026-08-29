@@ -1813,3 +1813,1174 @@ Built **Section 6 «الأجندة والأهداف التدريبية» (الأ
 ---
 
 ## § D47 — Prompt #24
+
+In `bootcamp_roadmap_and_curriculum.md`, after reviewing Section 2 «ماهي أهداف المعسكر؟», rename it to **«المهارات التي يكتسبها المتدرب»** and simplify it further for the trainees. Provided the final skills list, each mapped to a previously existing goal, with the instruction to keep some skills simple on the visible line and put the mapped goal's extra detail as a comment/note in the md file. One new skill was flagged as missing and should be added before the SRS skill: **«تحديد المستخدمين وأصحاب المصلحة واحتياجاتهم»**.
+
+Also: the current «أهداف اليوم» for each day in Section 6 isn't formatted/organized properly. Keep the "أهداف اليوم" name. For each day, list all the skills worked on that day as copy-pasted text from the new «المهارات التي يكتسبها المتدرب» section (to keep trainee familiarity with the skills — same exact text). When a skill isn't fully covered in a given day, add a note/nested sub-item describing the part of that skill covered that day.
+
+---
+
+## § D48 — Response to Prompt #24
+
+**Section 2 renamed** to «المهارات التي يكتسبها المتدرب» and rebuilt exactly per your mapping: each skill line kept short, with the corresponding goal detail moved into a `>` note directly beneath it. Inserted the new skill **«تحديد المستخدمين وأصحاب المصلحة واحتياجاتهم»** right before the SRS skill, as instructed — it has no extra note since you gave none.
+
+One ambiguity from your mapping: the old last goal (plan mode / simple-summary-per-phase / review-via-UI / GitHub save) was reduced to only its GitHub-save fragment as a skill, dropping the rest. Asked you whether to drop the methodology portion entirely or add it as its own skill — you chose **drop it** (it's process guidance covered elsewhere — rule files / Section 14 — not a discrete trainee skill).
+
+**Section 6 rebuilt:** every day's «أهداف اليوم» is now a bulleted list of skills copy-pasted **verbatim** from Section 2 (grep-verified character-for-character match), with an indented note under any skill only partially covered that day, naming the specific part and pointing to the day that finishes it. Mapped using Section 14.2's actual 7-phase build order (confirmed by re-reading that section): Day 6 = phases 1–2 (init/DB tables) + phase 3 (auth/roles); Day 7 = phases 4–5 (browsing + core function); Day 8 = phase 6 (dashboard) + an RBAC-review note; Day 9 = phase 7 (external integration) + testing/security. Days 1–5 split the MVP-concept/scope, stakeholders, SRS, journey, design, and ERD skills across their existing day boundaries, unchanged from the prior day-to-content map. Also updated Section 6's intro sentence describing "أهداف اليوم" to reflect the new verbatim-skills-with-notes format instead of the old "parts of Section 2 goals" prose description.
+
+### Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§2 renamed/rebuilt, §6 daily objectives rebuilt) · this file.
+
+### Status
+All 17 sections remain drafted; §2 and §6 now reflect the finalized skills framing. The `.docx` export is stale again (pending regeneration whenever you're ready). Full review of the curriculum is still pending on your end.
+
+---
+
+## § D49 — Prompt #25
+
+Correction on Section 2: my reading of the instruction was shallow and literal. The intent was that **some** skills summarize their mapped goal, and for **only those where the goal has real extra detail not captured in the shorter skill phrase**, that excess detail should go into a **Markdown comment that doesn't render** (`<!-- -->`) — not a visible blockquote showing the full original goal text (which is what I did, and which also cut/altered some goals in the process). The `>` in the original note meant "extracted from," not literal Markdown blockquote syntax.
+
+---
+
+## § D50 — Response to Prompt #24 (correction)
+
+Re-did Section 2 correctly. Removed all visible `>` blockquote notes. Went skill-by-skill and compared each short phrase against its originally-mapped goal to judge whether the goal actually carried extra, non-redundant detail:
+
+- **Real extra detail → added an invisible `<!--` comment:** sessions/tokens (Pro plan's weekly + 5-hour limits), MCP/skills/rules (the specific tools: context7, chrome-devtools, GitHub, Vercel MCP, and local-vs-global), SRS (EARS format + User Stories + Gherkin), journey (the "activity diagram" term), design (Claude Design + Design System + DesignSync by name), build UI+DB and login/roles (the "without writing/reading code, relying on Claude" constraint), testing (Claude tests alone and reports; trainee only verifies via UI).
+- **Goal was just a restatement, no extra info → left the skill line bare:** MVP, idea→plan, Claude Code, ERD, external API, env keys, GitHub save, deploy.
+
+Section 2's intro paragraph now explains this convention (short visible skill + optional invisible source-comment) instead of describing a visible note. Section 6 needed no changes since its daily skill bullets only reference the visible skill phrases, which are unchanged.
+
+### Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§2 corrected) · this file.
+
+### Status
+§2 now matches the actual intent. `.docx` remains stale pending regeneration.
+
+---
+
+## § D51 — Prompt #26
+
+In `bootcamp_roadmap_and_curriculum.md`: (1) the preface «كيف تستخدم هذا الدليل» has no section number while every other section does — number it as **Section 1** for traceability. (2) Sections 1, 2, 3, 5, 6 (old numbering) hold information *about* the bootcamp, while Section 4 (old numbering, Claude Code fundamentals) is actual curriculum *content to be taught* — move it so it sits **after** «الأجندة والأهداف التدريبية» and **just before** the methodical sections (old §7 onward). So the intro sections stay 1–5 (now including the newly-numbered preface), the agenda stays §6, old §4 becomes the new **§7** (a standalone "foundational section" called out separately in the preface, between the agenda and the methodical sections), and the methodical sections shift from 7–17 to **8–18**. Update every reference across all docs, not just the curriculum file.
+
+---
+
+## § D52 — Response to Prompt #26
+
+Renumbered and **physically reordered** the whole document. Map: old preface → **§1**; old 1→2, 2→3, 3→4 (intro sections, unchanged content); old 5→5, 6→6 (unchanged); **old 4 → §7**, moved to sit physically between §6 and the methodical sections; old 7–17 → **8–18** (shifted by one throughout, including every `X.1`–`X.5` subsection).
+
+Did the header renumbering with a Perl regex pass (`## N.` / `### N.M`, old→new via a lookup table) rather than 100+ manual edits, then physically reordered the file by splitting it into blocks (intro content / old-§4 block / old-§5+§6 block / rest) and reassembling in the new order, fixing the `---` separators at each new join so the `blank/---/blank/header` convention stayed intact throughout. Rewrote the preface's three bullet points (intro sections, agenda, now a fourth bullet for the new standalone §7, methodical sections 8–18) and the full table of contents to match.
+
+Then swept the entire body for **inline cross-references** that don't auto-update with header renumbering: every bolded `**N.x**` task-link in Section 6 (agenda), every `القسم N` prose mention, and bare self-references like "(انظر 4.4)" or "(كما في 4.2)". Found and fixed all of them, including several old-§4-internal self-references that pointed at sibling subsections by their old number (e.g. §4.3's own text pointing at "4.6", now corrected to "7.6" since that whole section moved to §7 as a block). Verified with a final grep pass that no bare `4.N` pattern remains except two legitimate model-version mentions ("Haiku 4.5", "Opus 4.8") which aren't section references.
+
+Cross-checked other repo docs: `CLAUDE.md` had one stale reference ("curriculum's Section 17 «الأدوات المستخدمة» table") — updated to **Section 18**. `.claude/rules/bootcamp-mvp-process.ar.md`'s "القسم 2" reference is to its own internal section (conversation-history rule), unaffected by this renumbering. Left all historical entries in this file (`conversation_history.md`) untouched — they're a chronological log of what was true when each entry was written, not live documentation, so retroactively rewriting their section numbers would misrepresent history rather than reflect it.
+
+### Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (full renumber + reorder: §1 preface, §7 relocated, §8–18 shifted) · `CLAUDE.md` (§17→18 reference fixed) · this file.
+
+### Status
+Full renumbering complete and internally consistent (verified via grep across headers, bold cross-refs, `القسم N` mentions, and bare self-references). `.docx` export remains stale pending regeneration. Ready for your notes now that the section numbering is stable.
+
+---
+
+## § D53 — Prompt #27
+
+Section 6's execution was poor — the content is mixed up, mostly one font size, hard to distinguish parts. I reformatted the block between the §6 heading and 6.1 (don't change it — learn the formatting from it), and reformatted the first portion of 6.1. Adapt that exact pattern to all days: how the headers «أهداف اليوم», «شرح المفاهيم:», «تطبيق مباشر مع المدرب:», «عمل المتدربين على المشاريع:», «مراجعة وعرض التقدم:» are formatted, and how the content under «شرح المفاهيم:» is formatted — all tasks under all four daily sections must follow it. Where a section spans more than one day, keep the same format and add, after the link, which part is covered that day.
+
+But 6.1's three remaining daily sections need their **content** changed:
+- Creating GitHub/Supabase/Vercel accounts are **bootcamp prerequisites** (trainees arrive with them) — remove and replace.
+- Wiring all the MCP integrations on day 1 is wasted, tedious time; each day must deliver real value and effort must be spread across the bootcamp. Set each tool up **when we come to work with it**: context7 among the steps in 15.2, chrome-devtools in 16.2, Vercel MCP already in 17.2.
+
+Add the few day-1 setup steps that are heavier than a basic sign-up as **§7.10**, pushing «أسئلة شائعة» to 7.11: install Claude Code (<https://code.claude.com/docs/en/overview>); install Antigravity IDE (Standalone) from <https://antigravity.google/download> (pick OS → Antigravity IDE (Standalone) → download → sign in); then in the editor's Extensions install «Claude Code for VS Code» and sign in.
+
+(The `.docx` is deferred until all notes are done, so it's updated once.)
+
+---
+
+## § D54 — Response to Prompt #27
+
+**Bug found and fixed first.** While reading §15.2 I noticed the earlier renumbering had missed every `####` header — my regex only covered `##`/`###`, so all 40 four-level headers (`8.3.1`, `9.4.2`, …) still carried the **old** numbering, sitting one below their parent (`### 8.3 تطبيق المدرب` containing `#### 7.3.1`). Fixed all 40 in one pass and verified each now matches its parent section.
+
+**§7.10 «تهيئة أدوات العمل» added** with your three setup steps verbatim, FAQ pushed to **7.11**. Framed it as day-one-only work and stated explicitly that account creation is a *prerequisite*, not bootcamp work. Closed it with a note explaining **why** the rest of the tooling isn't wired on day 1, linking to where each integration actually gets set up.
+
+**Setup distributed as you asked:** context7 now opens §15.2 as a pre-build step (with the reason — current library docs, versions move fast); chrome-devtools now opens §16.2 as a pre-testing step (with the reason — Claude drives a real browser instead of only the server). Vercel MCP was already in 17.2.
+
+**Section 6 reformatted across all ten days** to your 6.1 pattern: `### **أهداف اليوم**` then skills, then each of the four daily sections as its own `### **…:**` header, with tasks as section links. Convention followed from your example: a fully-covered section is a **link on its own line**; a partially-covered one is the section title as **plain text** with its subsections indented beneath as `&nbsp;&nbsp; - [link]`, each line separated by `<br>`. Where a section spans days I appended the covered part after the link (e.g. «اليوم **المراحل 1–3** فقط من ترتيب البناء (بقيّة المراحل في الأيام 7–9)»). Dropped the redundant `> القسم 15 مع التركيز على…` blockquotes on days 6–9 since that information now lives in the link notes — they were part of the "mixed up" feel.
+
+**6.1's three sections rewritten:** trainer-led = 7.10 (installing the tools together); trainee work = 7.10 on their own machine + starting 8.4.1 (free-form notes on their product idea, completed day 2); review = confirm Claude Code responds inside the editor + present the initial idea. The review section is plain bullets because nothing numbered exists to link to on day 1 — flagged for your call.
+
+**Anchors generated programmatically, not by hand** — I implemented github-slugger's rules (lowercase, strip punctuation, each space → one hyphen, so an em-dash leaves a double hyphen) and verified: **86 links, 0 broken.**
+
+Also registered **Antigravity IDE** in the §18.2 tools table per the CLAUDE.md tool-registration rule, since 7.10 introduces it.
+
+### Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (40 `####` headers fixed; new §7.10 + FAQ→7.11; §15.2 context7; §16.2 chrome-devtools; §6 all ten days reformatted; §18.2 table row) · this file.
+
+### Status
+Section 6 now follows one consistent pattern end to end. Open for your call: 6.1's review section (plain bullets, no numbered target) and whether starting 8.4.1 on day 1 is right. `.docx` still deferred until your notes are finished.
+
+---
+
+## § D55 — Prompt #28
+
+Launch a **separate QA agent** (to avoid biased results) and pass it `bootcamp_roadmap_and_curriculum.md`. It should produce a **realistic time estimate for every task in the four daily sessions of each day** — realistic meaning not just reading time from slides, but the weight of the topic being explained, and more importantly the weight of the trainee tasks: the time to understand, think, and figure out what to do — not only what the task requires but what they actually want for their own MVP, and deciding on it.
+
+The current distribution feels wrong: too much time on the first few days, while the later days look much busier and hard to finish within the same day. I want **more practical productivity with Claude from the first few days** — trainees should feel hands-on with Claude from the beginning rather than being pressured at the end.
+
+Note the **updated session timing** (a 25-min break was taken out of «عمل المتدربين»): شرح المفاهيم ~45د · تطبيق مع المدرب ~60د · عمل المتدربين ~80د · مراجعة ~30د.
+
+Also, some tasks you invented yourself are wrong — e.g. «اعرض فكرة منتجك المبدئية على المجموعة»: **there is no group.** If a trainee presents their initial idea it would be to the **trainer**, for review, reassurance, and advice on whether they're on the right path.
+
+**The most important output is evaluating the current split of tasks across days** — I need to finalize it. Then an approximate per-task duration estimate, unbiased by the current session timing. Log the analysis in `conversation_history.md`; and if displaying the estimates directly in the curriculum is better for readability, do that too, properly formatted.
+
+---
+
+## § D56 — Response to Prompt #28 — QA analysis (independent agent)
+
+Ran an independent QA agent with cold-start context (no exposure to my reasoning): the bootcamp model, the "trainee never reads/writes code" rule, the 45/60/80/30 containers, the trainer-only (no cohort) setting, and the three hypotheses **to test, not assume**. It read all 1,753 lines — §6 plus every referenced content section, since §6's tasks are only links.
+
+### D56.1 Roll-up — estimated load vs the 215-min container
+
+| اليوم | التقدير | مقابل 215 |
+|---|---|---|
+| 1 | 205 | −10 |
+| 2 | 164 | **−51** |
+| 3 | 182 | **−33** |
+| 4 | 205 | −10 |
+| 5 | 303 | **+88** |
+| 6 | 332 | **+117** |
+| 7 | 255 | **+40** |
+| 8 | 178 | **−37** |
+| 9 | 286 | **+71** |
+| 10 | 272 | **+57** |
+| **المجموع** | **2,382** | **+232 مقابل 2,150** |
+
+### D56.2 Verdict on my three hypotheses
+
+- **H1 «days 1–5 too light» — PARTLY FALSE, and misdiagnosed.** Days 1–5 total 1,059 min against 1,075 capacity — a 16-min deficit, essentially exactly full. Only Days 2 and 3 are genuinely light (−84 combined). **Day 5 is the second-most overloaded day in the file (+88)** and sits inside the block I believed was padded — §13 Design alone is a ~140-min trainee task sharing an 80-min slot with the ERD. Day 1 isn't light either; it's **mis-shaped**: an 89-min concept load in a 45-min slot, next to 140 min budgeted for installing three programs.
+  - **Consequence:** the later days cannot be fixed by moving work out of the earlier ones — 84 transferable minutes against a 248-min deficit. Rebalancing must be paired with ~210 min of real content cuts.
+- **H2 «days 6–10 overloaded» — TRUE, strongly.** +248 min, every day over. Breaking points: **Day 6** asks a beginner to do accounts, keys, `.env`, an MCP connection, full scaffold, DB tables and auth+RBAC in one 80-min slot (176 min of work in 80). **Day 7** puts the entire core function (stage 5, ~110 min alone) in the same 80-min slot as stage 4.
+- **H3 «hands-on with Claude from day one» — TRUE as a goal, and the file violates it.** Nothing runs before **Day 6**; the first live URL is **Day 10**, the last day, with zero recovery time — the largest delivery risk to the bootcamp's headline promise. (Fairly: trainees do *use* Claude from Day 1 via 8.4.1, so it isn't "five days without Claude" — it's five days without anything that runs.)
+
+### D56.3 Root cause
+
+§6's mapping rule (concepts←X.1/X.2 · trainer←X.3.1/X.3.2 · trainee←X.4.1 · review←X.4.2) gives **every content section a full day's four slots regardless of its actual weight**. §10 (Scope, ~20 min of concept) and §13 (Design, ~140 min of trainee work) receive the same nominal day-share. The schedule was built by **dividing sections across days, not by estimating work** — that single rule generates every imbalance. Secondary: the 30-min review slot is assigned X.4.2, work X.4.1 already contains ("كرّر حتى ترضى"), which is why review comes out UNDER on Days 1, 2, 3, 4 and 8 without exception.
+
+### D56.4 Defects found (independent of any rebalancing)
+
+- **Ordering bug:** 13.2 step 4 / 13.3.1 step 5 run DesignSync into "your project repo" on **Day 5** — but the repo doesn't exist until **Day 6** stage 1. Also duplicated: 15.2 stage 1 already has Claude pull the design components.
+- **Concept/practice inversion:** §16 testing concepts land Day 9, but 15.3.2/15.4.2 make trainees depend on Claude's testing from Day 6. chrome-devtools is connected Day 9 though 16.2 claims browser testing happens "مع كل وظيفة يبنيها". MCP (7.5/7.6) is taught Day 1 but first connected Day 6.
+- **Missing content, while Days 7–8 hold 65 min of empty concept slots:** 
+  - (1) **no lesson on how to prompt Claude and correct it when the output is wrong** — the whole model rests on this loop, yet every X.4.1 gives one canned phrasing then says "كرّر حتى ترضى" 🧐
+  - (2) **plan mode is never instructed** in the curriculum despite being Golden Rule 3 in the rule file. 🧐
+  - (3) `conversation_history.md` is explained (7.2) but never operationalized as a task. 🧐
+  - (4) commit/push doesn't appear before Day 6, contradicting "save daily"
+  - (5) no catch-up/buffer mechanism across five sequential build days. 🧐❓
+- **Group-audience violations (my note confirmed, plus two more):** §6.1 review «على المجموعة»; **§5.2 ختام المعسكر** «أمام المجموعة» (also the source of Day 10's +30 review overrun); §2 نبذة «وعرضه» implying a showcase. **All three fixed this turn** → 1:1 with the trainer.
+- **Model violations:** 
+  - 16.4.2 asks the trainee to confirm passwords are hashed and keys are out of the code — neither is verifiable through the UI; should be "ask Claude to show evidence in its report".
+  - 15.2 has the trainee hand-edit `.env` (the reliably-breaking step for non-technical people) while §17 has Claude run `vercel env add` — should be uniform: trainee pastes the key into chat, Claude writes the file.
+
+### D56.5 Rebalancing proposal (the agent's)
+
+**Pivot:** the scaffold depends on no document — with a fixed stack Claude can stand up a running, authenticated shell from "my product is about X". So **build stage 1 → Day 1** (every trainee ends Day 1 with their app running locally) and **first deploy → Day 3** (live URL on Day 3, redeploys on 7/9/10 as routine). Deployment becomes a habit instead of a last-afternoon cliff; the DesignSync ordering bug dissolves because the repo now exists from Day 1. 🧐
+
+**Cuts required (~210 min — rebalancing alone is insufficient):** 
+- tool installation (7.10) → pre-bootcamp prerequisite, Day 1 trainer slot becomes a 10-min fix-it clinic (**45**)
+- merge §8 objectives with §10 in-scope, they're the same list produced twice (**25**)
+- drop the §8 and §11 two-day concept splits (**20**)
+- cap Claude Design at **3 generated screens**, Claude Code codes the rest from the Design System (**55**)
+- DesignSync into the build stage (**15**)
+- cap trainees at **8–10 FR / 4–5 NFR** (**20**)
+- replace both group demos with 1:1 walkthroughs (**30**). Plus: fold X.4.2 into X.4.1 and reserve the 30-min review slot for trainer 1:1 rounds. Escape valve: make stage 7 explicitly optional when the MVP needs no external service (0–80).
+
+**Proposed allocation:** 
+- D1 orientation + Claude Code basics + **scaffold runs locally** (~198)
+- D2 MVP definition + users + **MCP/context7 taught the day it's connected** (~188)
+- D3 scope + **first deploy** (~205)
+- D4 requirements taught once, capped (~196)
+- D5 journey + ERD, design moved off (~206)
+- D6 design (own day) + DB tables (~207)
+- D7 auth/roles + browse/home, **fills the empty concept slot with RBAC + 7.8/7.9** (~202)
+- D8 **core function gets a whole day** + the new prompting/iteration lesson (~206)
+- D9 dashboard + external integration, stage 7 optional (~209)
+- D10 testing + security + final redeploy + 1:1 closing (~207).
+
+**Net:** pre-build documentation phase 5 days → ~3.5 days of equivalent effort, and **never more than 2 consecutive days without something running.**
+
+### D56.6 Risks flagged by the agent
+
+Day 1 becomes the new pressure point (a first-day scaffold failure is psychologically worse than a day-six one — mitigation: trainer's demo repo as fallback) · scaffolding before requirements risks a feeling of thrown-away work (frame as "day 1 builds the empty house, day 6 furnishes it") · Day 8 stays tightest (~103 min available vs ~110 estimated) · stage-7 optionality creates two tracks needing a defined use for the freed hour · **the 30-min review slot doesn't scale past ~6 trainees** (an existing, unaddressed constraint) · **§7.4's Pro five-hour limit is taught but never budgeted for** — a cohort all building in the same 80-min window is the realistic case · estimates are analytic, not observed: relative ordering is far more reliable than absolute minutes, and the agent recommends piloting **Day 6** with two real beginners as the sharpest calibration test (its model and the file disagree most violently there: 176 vs 80).
+
+### D56.7 Full per-day / per-session breakdown (for verification)
+
+> Containers: Concepts 45m · Trainer hands-on 60m · Trainee work 80m · Review 30m · Day 215m. ⚠ = high variance.
+> **Read this section to check where the minutes come from before accepting any conclusion above.**
+
+**Day 1 — Orientation + Claude Code basics (205m)**
+- *Concepts (45m) → **89m, OVER by 44m***:
+  - §1 how to use the guide — 10m
+  - 7.1 Claude vs Claude Code — 4m
+  - 7.2 sessions — 6m
+  - 7.3 tokens — 8m
+  - 7.4 Pro limits — 5m
+  - 7.5 MCP — 9m
+  - 7.6 why MCP costs tokens — 6m
+  - 7.7 rules/skills — 5m
+  - 7.8 context window — 6m
+  - 7.9 file structure — 5m
+  - 8.1+8.2 MVP concept — 13m
+  - beginner Q&A overhead — 12m
+  - *(Even if 8.1/8.2 slide to Day 2, it's still 76m = OVER by 31m.)*
+- *Trainer hands-on (60m) → **38m, UNDER by 22m***:
+  - install Claude Code — 10m
+  - install Antigravity — 8m
+  - extension + sign-in — 7m
+  - first trivial prompt — 5m
+  - questions — 8m
+- *Trainee work (80m) → **65m, UNDER by 15m***:
+  - install on own machine — 35m ⚠(15–80m)
+  - 8.4.1 free-form idea notes — 30m ⚠
+- *Review (30m) → **13m, UNDER by 17m***:
+  - verify Claude Code responds — 5m
+  - present the idea — 8m
+- **The defect:** volume is roughly right, **shape is wrong** — concepts +44m, the other three −54m; **140m budgeted to install three programs.**
+
+**Day 2 — Product definition + users (164m, UNDER by 51m)**
+- *Concepts → 34m (−11m)*:
+  - finish 8.1/8.2 — 10m
+  - 9.1 — 12m
+  - 9.2 — 6m
+  - Q&A — 6m
+- *Trainer → 45m (−15m)*:
+  - 8.3.1 — 15m
+  - 8.3.2 — 6m
+  - 9.3.1 — 18m
+  - 9.3.2 — 6m
+- *Trainee → 70m (fits)*:
+  - 8.4.1 with ~2 Claude rounds — 35m ⚠
+  - 9.4.1 — 35m ⚠
+- *Review → 15m (−15m)*:
+  - 8.4.2 — 7m
+  - 9.4.2 — 8m
+
+**Day 3 — Scope + start of requirements (182m, UNDER by 33m)**
+- *Concepts → 46m (fits)*:
+  - §10 scope — 20m
+  - 11.1 first half — 14m
+  - 11.2 skim — 6m
+  - Q&A — 6m
+- *Trainer → 45m (−15m)*:
+  - 10.3.1+10.3.2 — 20m
+  - 11.3.1 partial — 25m
+- *Trainee → 75m (fits)*:
+  - **10.4.1 scope decision — 40m ⚠ (slowest decision in the doc phase)**
+  - 11.4.1 start — 35m ⚠
+- *Review → 16m (−14m)*:
+  - 10.4.2 — 8m
+  - 11.4.2 preliminary — 8m
+
+**Day 4 — Finish requirements + user journey (205m) — best-balanced day in the file**
+- *Concepts → 46m (fits)*:
+  - finish 11.1 SRS concept (second half) — 14m
+  - 11.2 steps — 6m
+  - 12.1 user-journey concept — 12m
+  - 12.2 steps — 8m
+  - Q&A — 6m
+- *Trainer → 54m (−6m)*:
+  - 11.3.2 review pass over the completed requirement set — 18m
+  - 12.3.1 journey steps incl. draw.io render — 28m
+  - 12.3.2 review — 8m
+- *Trainee → 85m (+5m)*:
+  - 11.4.1 with 2–3 revision rounds — 45m ⚠
+  - 12.4.1 journey + draw.io — 40m
+- *Review → 20m (−10m)*:
+  - 11.4.2 — 10m
+  - 12.4.2 diagram-vs-text check — 10m
+
+**Day 5 — Design + ERD (303m, OVER by 88m)**
+- *Concepts → 50m (+5m)*:
+  - 13.1 — 14m
+  - 13.2 — 8m
+  - 14.1 — 14m
+  - 14.2 — 7m
+  - Q&A — 7m
+- *Trainer (60m) → **86m, OVER by 26m***:
+  - 13.3.1 five steps incl. live Claude Design generations — 45m
+  - 13.3.2 — 8m
+  - 14.3.1 incl. ERD render — 25m
+  - 14.3.2 — 8m
+- *Trainee (80m) → **140m, OVER by 60m***:
+  - 13.4.1 total = 95m:
+    - screens list — 10m
+    - visual prefs — 5m
+    - get prompts — 10m
+    - build Design System project — 10m
+    - **generate ~5 screens with visual review — 60m ⚠**
+  - 14.4.1 total = 45m:
+    - entities/fields/relations — 20m
+    - Claude proposal + review — 15m
+    - draw.io ERD — 10m
+- *Review → 27m (fits)*:
+  - 13.4.2 visual + RTL check — 15m
+  - 14.4.2 — 12m
+- **Plus an ordering bug:** DesignSync runs against a repo that doesn't exist before Day 6.
+
+**Day 6 — Build stages 1–3 (332m, OVER by 117m) — worst day in the file**
+- *Concepts → 43m (fits)*:
+  - 15.1 build rhythm + glossary — 14m
+  - 15.2 pre-build setup — 14m
+  - stages 1–3 overview — 8m
+  - Q&A — 7m
+- *Trainer (60m) → **93m, OVER by 33m***:
+  - accounts/keys demo — 12m
+  - connect context7 — 6m
+  - stage 1 (scaffold + DB wire + design components) — 25m
+  - stage 2 tables — 15m
+  - stage 3 auth+RBAC — 25m
+  - 15.3.2 — 10m
+- *Trainee (80m) → **176m, OVER by 96m***:
+  - GitHub repo — 10m
+  - Supabase project + key — 15m ⚠
+  - Vercel account — 5m
+  - `.env` — 8m ⚠
+  - connect context7 — 8m
+  - **stage 1 — 45m ⚠**
+  - **stage 2 — 25m**
+  - **stage 3 — 45m ⚠**
+  - 3 commits (first-ever git) — 15m
+- *Review → 20m (fits)*:
+  - 15.4.2, try sign-up / sign-in / a blocked page — 20m
+
+**Day 7 — Build stages 4–5 (255m, OVER by 40m)**
+- *Concepts (45m) → **12m, UNDER by 33m***: points back at 15.2 already taught Day 6 — **no new content**.
+- *Trainer → 65m (+5m)*:
+  - stage 4 — 20m
+  - stage 5 — 35m
+  - 15.3.2 — 10m
+- *Trainee (80m) → **158m, OVER by 78m***:
+  - stage 4 — 40m
+  - **stage 5, the core function end-to-end — 110m ⚠**
+  - commits — 8m
+- *Review → 20m*:
+  - 15.4.2, try the browsing + core-function flow end-to-end — 20m
+- **The irony:** 33m of empty concept time sitting beside a 78m deficit in the very next session.
+
+**Day 8 — Build stage 6 (178m, UNDER by 37m)**
+- *Concepts (45m) → **13m, UNDER by 32m*** — also no new content.
+- *Trainer → 50m (−10m)*:
+  - dashboard + CRUD + permissions — 40m
+  - 15.3.2 — 10m
+- *Trainee → 90m (+10m)*:
+  - stage 6 — 85m ⚠(55–110m)
+  - commit — 5m
+- *Review → 25m*:
+  - 15.4.2, full journey in the UI including the dashboard — 25m
+- **The only build day with net slack — and all of it trapped in an empty concept slot.**
+
+**Day 9 — Stage 7 + testing + security (286m, OVER by 71m) — highest variance in the file**
+- *Concepts → 44m (fits)*:
+  - 15.2 stage 7 — 10m
+  - 16.1 testing/security concept — 18m
+  - 16.2 + connect chrome-devtools — 10m
+  - Q&A — 6m
+- *Trainer → 70m (+10m)*:
+  - external service — 35m
+  - 15.3.2 — 8m
+  - 16.3.1 — 15m
+  - 16.3.2 — 12m
+- *Trainee (80m) → **145m, OVER by 65m***:
+  - **external-service signup + keys + OAuth screens — 50m ⚠(20–120m)**
+  - wiring stage 7 + fix loop — 50m ⚠
+  - 16.4.1 test + security + fixes — 40m
+  - commit — 5m
+- *Review → 27m*:
+  - 15.4.2 — 12m
+  - 16.4.2, read the report and verify hashing/keys — 15m
+
+**Day 10 — Deploy + closing (272m, OVER by 57m)**
+- *Concepts → 35m (−10m)*:
+  - 17.1 — 10m
+  - 17.2 — 14m
+  - 18.1/18.2 — 6m
+  - Q&A — 5m
+- *Trainer → 60m (**fits, but zero margin for a failed deploy during the demo**)*:
+  - full 17.3.1 — 50m
+  - 17.3.2 — 10m
+- *Trainee (80m) → **117m, OVER by 37m***:
+  - Vercel account + MCP connect — 20m
+  - login+link+root dir — 15m
+  - production keys — 15m
+  - **first deploy + at least one build failure + fix — 45m ⚠**
+  - update callback URLs — 12m
+  - 18.2 — 5m
+  - final commit — 5m
+- *Review/closing (30m) → **60m, OVER by 30m***:
+  - 17.4.2 — 15m
+  - §5.2 group demo + retro — 45m ⚠ *(now fixed to 1:1 — see D56 fixes)*
+
+### D56.8 Decision "A" — how far do we restructure the days? (nothing applied)
+
+**The premise all three options build on:** the app's initial scaffold **depends on no document**. With a fixed stack (Next.js + Supabase + Vercel), Claude can stand up a genuinely running app with login from one sentence: "my product is about X." This is the technical fact that opens the options below — verify it first, since everything else rests on it.
+
+---
+
+**Option A-1 — Full pivot** *(the agent's recommendation)*
+
+*What actually happens:*
+- **Day 1:** after the concepts session, every trainee asks Claude to scaffold their app; the day ends with **the app running on their machine** (empty home page + working Supabase login).
+- **Day 3:** after scoping, **every trainee deploys their shell to a live URL.** They have a link they can open from their phone by day three.
+- **Days 7, 9, 10:** redeploying becomes a routine `git push`, not a frightening event.
+- The documentation phase (definition, users, scope, requirements, journey, design, ERD) isn't cut — it's **spread across days where the product is already running**, shrinking to roughly 3.5 days of effort instead of 5.
+
+*What it fixes:*
+- Removes the Day-10 cliff: deployment is no longer attempted for the first time on the last afternoon — it was tried on Day 3 and repeated three times since. This is **the single biggest risk to the bootcamp's headline promise** ("a product deployed on a real link").
+- Dissolves the DesignSync ordering bug automatically, since the repo exists from Day 1.
+- Delivers the feeling you want — "I am building something with Claude" from day one — and **no two consecutive days pass without something running.**
+
+*What it costs / risks:*
+- **Day 1 becomes the new pressure point.** A scaffold failure on day one (a bad Supabase key, a Node version mismatch) leaves a trainee visibly behind **on the very first day** — psychologically worse than falling behind on day six. Mitigation: keep the trainer's own demo repo ready to hand to anyone stuck.
+- **A feeling of wasted work:** a shell built Day 1 may not match the data model drawn on Day 5. Technically cheap to fix (Claude regenerates the tables), but **the trainee may feel Day 1's work was thrown away.** Mitigation: frame it explicitly — "Day 1 builds the empty house, Day 6 furnishes it."
+- Requires rewriting §6 in full, and moving part of §17 (deployment) to be taught on Day 3.
+
+---
+
+**Option A-2 — Early scaffold, deployment stays late**
+
+*What happens:* Day 1 as in A-1 (app runs locally), but **deployment stays on Day 10.**
+
+*What it fixes:* delivers the early feeling of productivity with Claude, relieves Day 6 substantially (since setup and accounts moved to Day 1), and resolves the DesignSync bug.
+
+*What stays broken:* **the file's riskiest task stays on the last day with no recovery time.** The agent estimated Day 10 at +57 minutes, 45 of which ⚠ are for a first deploy with at least one build failure. If a trainee's deploy fails on the afternoon of the last day, **there is no day eleven.**
+
+---
+
+**Option A-3 — Keep the day order, cut only**
+
+*What happens:* the documentation phase stays 5 days in its current order; the +232 overrun is absorbed through cuts alone.
+
+*What it fixes:* least disruptive to what you've already reviewed; no large rewrite of §6.
+
+*What stays broken:*
+- **Still nothing runs before Day 6, still no live URL before Day 10** — hypothesis H3, which the agent confirmed, remains untreated.
+- Cuts alone **may not add up arithmetically**: the overrun is +232, the proposed cuts total ~210, but they aren't evenly distributed — Days 6, 7 and 9 alone need +228, while most of the proposed cuts (tool install 45, merge §8/§10 25, requirement cap 20) free time in **Days 1–4**, which aren't the congested days. **This specific point needs verifying before choosing A-3.**
+
+### D56.9 Decision "B" — the proposed cuts (~210 min, nothing applied)
+
+> Important: the total overrun is **+232**, so even adopting every cut below still leaves a deficit unless paired with a restructure — because the cuts and the overrun **don't fall on the same days.**
+
+**B-1 — Cap Design at 3 generated screens (saves 55 min)**
+- *What changes:* the trainee visually generates in Claude Design **only the 3 core-journey screens**; Claude Code then builds the remaining screens **in code** from the same Design System.
+- *Why:* the per-screen generation loop is **the single largest uncontrolled cost in the documentation phase** (the agent estimated 60 min ⚠ for five screens at one generation each — an optimistic estimate, since a screen is rarely accepted on the first generation).
+- *What is actually lost:* fine-grained visual control over secondary screens. The trainee sees them after Claude builds them and requests changes in words, not through visual generation.
+- *How to verify:* open 13.3.1 and 13.4.1 and estimate for yourself how many screens a typical trainee product needs, and how many generation rounds one screen takes before it satisfies you.
+
+**B-2 — Move tool installation (§7.10) to a prerequisite (saves 45 min)**
+- *What changes:* the trainee installs Claude Code, Antigravity, and the extension **before** the bootcamp starts — exactly like creating accounts already is. Day 1's trainer-hands-on slot becomes a **10-minute fix-it clinic** for anyone stuck.
+- *Why:* the current design budgets **140 minutes (60 trainer + 80 trainee) to install three programs**, demoed once and then repeated.
+- *What is actually lost:* the assurance that everyone starts from the same point. The real risk: **anyone who fails the pre-install arrives on day one unready** — which is why the 10-minute clinic stays necessary, and may need more.
+- *How to verify:* this is an operational risk only you can judge — will your trainees actually complete a technical prerequisite before showing up? If the answer is no, **reject this cut** and substitute another.
+
+**B-3 — Merge §8 objectives into §10 in-scope (saves 25 min)**
+- *What changes:* one list is produced instead of two, on two different days.
+- *Why:* "3–5 objectives" in §8 and "3–5 in-scope areas" in §10 are effectively **the same list**, written twice in different wording.
+- *What is actually lost:* the conceptual distinction between "the product's goal" and "its scope" — a real distinction even if the outputs converge. You may consider the repetition **pedagogically intentional.**
+- *How to verify:* read 8.4.1 and 10.4.1 side by side and ask: would what the trainee writes in the second genuinely differ from what they wrote in the first?
+
+**B-4 — Cap requirements at 8–10 FR / 4–5 NFR (saves 20 min)**
+- *What changes:* an explicit ceiling in §11 on the requirement count.
+- *Why:* the trainer's own project reached **16 functional and 6 non-functional requirements**; §10.3.2 already warns the trainee not to mimic the trainer's scale — but §11 **carries no equivalent warning**, so the trainee copies the count.
+- *What is actually lost:* less detailed coverage; some edge cases may go unaddressed. But every extra requirement also costs time later, in building and testing it — not only in writing it.
+- *How to verify:* look at the requirement index in 11.3.1 and decide: how many requirements does a product with three to five features actually need?
+
+**Other cuts the agent proposed (dependent on restructuring, not independent decisions):** drop the two-day split of §8 and §11 (20 min) · move DesignSync into the build stage (15 min) · replace both group demos with 1:1 sessions (30 min — **already implemented this turn, since it's an error fix, not a choice**) · fold X.4.2 into the X.4.1 loop and free the review slot for 1:1 trainer rounds (+25 reallocated) · make stage 7 (external integration) **explicitly optional** for anyone whose product needs no external service (a pressure valve worth 0–80 min depending on the product).
+
+### D56.10 How to verify these results before adopting them
+
+The agent itself stated its **estimates are analytic, not observed** — built from task decomposition and beginner-friction multipliers, not from an actual bootcamp run. It said the **relative ordering** (which session is over, which is under, and roughly by how much) is **far more reliable than the absolute minutes.** Checkpoints:
+
+1. **The cheapest, most decisive calibration test:** run **Day 6 exactly as written** with two real beginner trainees. This is the day where the agent's estimate and the file disagree most sharply (**176 minutes vs. 80**). If it finishes in 80, the whole model is inflated; if it takes ~170, the analysis is confirmed.
+2. **The assumption every build estimate rests on:** trainee product scale = 3–5 features, 8–10 requirements, 3–6 screens, 4–6 entities. The trainer's own project is roughly double that (16 requirements, 8 entities, 9 screens). **If your trainees will build larger than this, every build-phase number scales up linearly with it.**
+3. **Actual Claude wall-clock time:** assumed 5–20 minutes per build stage, 1–3 minutes per document generation. **The file teaches the Pro plan's five-hour limit in 7.4 but never budgets for it in the schedule** — and a very realistic case is ten trainees building in the same 80-minute window, some of them hitting the limit. This risk is unpriced both in the analysis and in the file.
+4. **Iteration rounds:** assumed an average of 2–3 rounds for documents and 1–2 fix loops per build stage. A trainee with a vague idea doubles this; one who arrives with a clear idea halves it. **Days 2–4's estimates carry the widest spread for this reason.**
+5. **A constraint no option addresses:** the 30-minute review slot **doesn't scale with cohort size** — at 8 trainees that's under 4 minutes each. This constraint exists in the current file too and is unaddressed there; past roughly 6 trainees the slot needs a rotating schedule, not a daily round.
+
+### Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (three group-audience fixes only: §2, §5.2, §6.1) · this file.
+
+### Status
+**Analysis and all options logged; nothing else applied.** No day was restructured, no content was cut, and no inline durations were added — all of that waits on your review of D56.7–D56.10. The only curriculum edits this turn were the three group-audience corrections, which are error fixes rather than proposals. Decisions still open: **Decision A** (A-1 / A-2 / A-3, restructuring) and **Decision B** (B-1 … B-4, content cuts — each independently acceptable or rejectable).
+
+---
+
+## § D57 — Prompt #29
+
+Notes on the QA analysis, while still reviewing the per-day/per-session breakdown:
+
+- **Confirmed the ordering bug** — the repo should exist and be ready from Day 1, since it carries both code and docs. The first few days work on §8–§12 (documentation), so the trainee should push at the end of each day regardless of whether that day's work was documentation or code, **and** whenever a code iteration finishes (a functionality can finish multiple times in one day). This should satisfy missing-content item (4) (no commits before Day 6).
+- **Confirmed the design-pull duplication** — the real flow: design *only* the components in §13, then implement each designed page/component one at a time with Claude Code in §15 — not "pull twice" (once via DesignSync in §13, once again during scaffolding in §15, which doesn't make sense).
+- **Confirmed the concept/practice inversion on implementation:** each §15 iteration = pull that functionality's specific design piece → build it full-stack (wired to the DB, even on a single server — "full-stack" here means the concept, not literal separate services) → test it (automated cases + browser via chrome-devtools). Uncertain how to span this across bootcamp days, since the same iteration logically repeats across multiple days, and there should be one final testing round before deployment across all functionalities together. Asked whether §15/§16 should be merged across days for the iteration concept, or whether §16 should be explained as a final round focused on testing functionalities *together* (multiple operations across the system) rather than individually (already covered inside the iterations).
+- **Confirmed MCP (7.5/7.6)** should be taught right before first use on Day 6, not Day 1.
+- Both points above "clearly show the plan divides sections across days instead of following a logical flow."
+- **16.4.2 violation:** fix per the suggested rewording (verify via Claude's report, not by opening files).
+- **`.env` violation:** agreed it's not a big risk for the trainee to paste the key into chat for Claude to write the file — correct this everywhere.
+- **Agreed to drop** the §8/§11 two-day concept splits.
+- **Formatting confusion in D56.7:** some sessions on some days (e.g. Day 4: "Concepts → 46m", "Trainer → 54m") show only a duration with no task list, unexplained.
+
+---
+
+## § D58 — Response to Prompt #29
+
+**§16's role resolved** — asked which of three models §16 should follow, given every §15 iteration already tests itself (automated cases + chrome-devtools, per the existing 15.2/15.3.2 rhythm): (a) §16 becomes a **final integration-test day only** — a dedicated pass where Claude runs multi-step scenarios across functionalities together (e.g. book → cancel → confirm the slot re-opens) to catch bugs no single iteration would surface, plus a whole-app security sweep; (b) fold testing entirely into §15 and drop §16 as a section; (c) keep §16's current content but teach it earlier. **You chose (a).** This is a clean split: §15 = does this piece work alone (per-iteration, already correct as written), §16 = does everything still work together (final pass, near deployment). This directly answers your open question — §15 doesn't need to "span" the iteration concept explicitly across days in its text; the iteration unit already exists in 15.2's stage rhythm, and your DesignSync correction (below) is what was actually missing from it.
+
+**Two model violations fixed in the curriculum** (both are error corrections, applied immediately, independent of the pending restructuring decisions):
+- **16.4.2:** reworded so the trainee verifies role-blocking, password hashing, and key placement **from Claude's report**, explicit that they don't open any file themselves.
+- **`.env` handling**, fixed everywhere it appeared (15.2's prerequisite list, 15.3.1's trainer steps, 15.5's FAQ): the trainee now **pastes each key into the chat for Claude to write into `.env`**, never opens or hand-edits the file themselves. Previously this was the one place in the curriculum that broke the "trainee never touches project files" model, and inconsistent with §17 where Claude already runs `vercel env add` on the trainee's behalf.
+
+**Confirmed, not yet applied (waiting on the §6 restructure since they're entangled with Decision A):**
+- Repo exists from Day 1, carrying docs and code both.
+- Push cadence becomes **end-of-day (any work) + end-of-functionality-iteration (possibly several times a day)** — not just "after each stage" as 15.2 currently says.
+- §13 becomes design-only (visually generate + review all components/screens, nothing pulled into code yet); §15's per-functionality iteration is what actually runs `/design-sync` for *that iteration's* specific piece, then wires it to working code. This removes 13.2 step 4 doing the pull and 15.2 stage 1 doing it again.
+- §8/§11 two-day splits dropped.
+- MCP (7.5/7.6) taught immediately before first use (Day 6 in the current file; day number shifts once Decision A is picked).
+
+*Why these four are held rather than applied now:* all of them touch §6's day boundaries or §13/§15's task sequencing, which are exactly what Decision A (D56.8) and Decision B (D56.9) are still deciding between. Editing §13/§15's step-by-step text now, before knowing whether Option A-1's "scaffold Day 1 / deploy Day 3" pivot is adopted, risks writing the sequencing twice. Flag if you'd rather these four go in immediately regardless of which restructuring option wins.
+
+**D56.7 formatting gap explained and fixed.** You're right that it was a real gap, not intentional: unlike every other day, the source agent report collapsed Day 4's Concepts and Trainer lines into one dense sentence without itemizing tasks, and my later reformatting pass (turning `·` separators into bullets) carried that gap forward instead of catching it. Reconstructed both from the actual curriculum sections it covers:
+
+- **Day 4 Concepts (46m):** completing 11.1 SRS concept (the second half, ~14m) + 11.2 steps (~6m) + 12.1 user-journey concept (~12m) + 12.2 steps (~8m) + Q&A (~6m).
+- **Day 4 Trainer hands-on (54m):** 11.3.2 review pass over the trainee's completed requirement set (~18m) + 12.3.1 journey steps including the draw.io render (~28m) + 12.3.2 review (~8m).
+
+Re-verified the rest of D56.7 line by line against the source report — no other day has this gap; Day 4 was the only one affected.
+
+### Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (16.4.2 reworded; `.env` handling fixed in 15.2, 15.3.1, 15.5) · `conversation_history.md` (D56.7 Day 4 gap filled) · this file.
+
+### Status
+Two violations fixed outright. §16's role decided (final integration-test pass). Four confirmed changes (Day-1 repo, push cadence, design/DesignSync split, MCP timing) are logged as agreed but **held pending the Decision A restructuring choice**, to avoid writing the day sequencing twice. Still awaiting your review of Decision A (D56.8) and Decision B (D56.9) before any §6 rewrite begins.
+
+---
+
+## § D59 — Prompt #30
+
+Answered Decision A and Decision B, plus the remaining notes on the QA analysis, then asked for the rebalanced plan to be produced under plan mode.
+
+**Decision A — Option A-1**, with notes: the "trainer's demo repo handed to anyone stuck" mitigation is **not approved**; context7 must be connected *before* anything code-related, which is exactly what the Day-1 scaffold needs — so **MCP (7.5/7.6) is taught Day 1, not Day 6**; and since Supabase login must work on Day 1, **Supabase MCP** is added too (`https://supabase.com/docs/guides/ai-tools/mcp`) and registered in the tools section. §8 will not finish in one day, especially with §10 folded in — keep that in mind when planning the days.
+
+**Decision B:** B-1 **no** (do not cap design). B-2 **no** (tool-install time was overestimated). B-3 **yes but differently** — fold *all* of §10's work and subsections into §8 **without losing the conceptual distinction between the product's goal and its scope**; the scope content must be preserved, just relocated. This forces renumbering §11→10 and everything after, parsed across all docs. B-4 **no** — the control is requirement *weight* (via limited functionalities + daily review), not a count cap.
+
+**Review session:** not a 1:1 30-minute block — the trainer circulates while trainees work, a few minutes each, because reviewing is continuous, not a separate session. Asked for per-session **averages plus min/max across the 10 days** so §5.1 can show ranges instead of a rigid 30m.
+
+**External integration:** not mandatory — only for MVPs that need it; others keep building their own MVP in that slot.
+
+**On D56.4's missing-content items:** (1) the prompting/correcting lesson will be delivered by the trainer demonstrating live — showing real prompts and reviews, possibly starting a fresh project in front of the trainees; (2) mention **plan mode** in the `X.2` steps sections and anywhere else it applies; (3) `conversation_history.md` is not a task — it is a **rule in the handed package** (record every prompt and response there, summary only in chat); (5) was not understood → explained, and **trainer-assisted catch-up during work time** was chosen.
+
+---
+
+## § D60 — Response to Prompt #30
+
+Everything below is applied. **The full per-day/per-session breakdown now lives in §6 of `bootcamp_roadmap_and_curriculum.md` and is deliberately NOT duplicated here** — one source of truth, so a future timing change is a single edit.
+
+### D60.1 Renumbering — §10 folded into §8
+
+`## 10. نطاق الـMVP` merged into `## 8. التعريف بالـMVP ونطاقه`, preserving every subsection and all content. 8.1 now presents the two ideas as distinct-but-linked, with an explicit note on the difference (**a goal** = the outcome you want, *why* you are building; **a scope item** = a concrete feature that will be built, *what* you are building — one measured by impact, the other by built/not-built). Both trainer `<details>` blocks merged; trainee blanks merged; Q&A merged.
+
+Shift applied: **11→10, 12→11, 13→12, 14→13, 15→14, 16→15, 17→16, 18→17.** Sections 1–9 unchanged.
+
+**Two traps handled** (a naive find-replace would have broken the file):
+
+- **Self-healing refs:** 16 lines read `اتبع خطوات N.3.1` / `طبّق خطوات المراجعة في N.3.2` where N was already one *less* than the containing section (residue from the previous renumber). Inside §11–§15 these became **correct** by the shift and were left untouched; inside §8/§9 they stayed broken and were fixed explicitly (→ 8.3.1/8.3.2, 9.3.1/9.3.2).
+- **Anchor collision:** old `10.3.1` and `11.3.1` both slug to `#1031-خطوات-التنفيذ`; resolved because §10's headings were folded into `8.x` in the same pass.
+
+Also fixed a **pre-existing bug** found en route: line 65 said `القسم 3 «حزمة المعسكر»` but حزمة المعسكر is §4.
+
+### D60.2 Section changes
+
+| Section | Change |
+|---|---|
+| §4 حزمة المعسكر | Added the **`conversation_history.md` rule** to the handed package — explicitly *not a task*, it works automatically because it ships in the rule files |
+| §5.1 | Fixed durations → **ranges + averages** table; added a note explaining the review block is continuous (prompt → review → feedback → next), kept separate only for planning clarity, and that the trainer circulates during work time prioritising anyone who fell behind |
+| §6 | **Rebuilt entirely** — new day structure, per-task durations, session totals. Sole home of the breakdown |
+| §7.10 | Added step 4: connect **context7 + Supabase MCP** on Day 1 (with the exact `claude mcp add` command and the OAuth confirmation), and reworded the closing note to explain why the *rest* is deferred |
+| §8 | Merged with §10 (above) |
+| §8.2, §14.2 | **Plan mode** now referenced in the steps |
+| §12 التصميم | **Design-only** — removed the DesignSync pull from 12.2 step 4, 12.3.1 step 5, 12.4.1 and the generic example; each now points at 14.2 for when the pull actually happens |
+| §14 التنفيذ | Added the **per-functionality iteration cycle** (pull that piece's design → build full-stack wired to the DB → test with cases + chrome-devtools → try it → push). chrome-devtools moved here as a prerequisite. Push cadence stated as **end-of-functionality *and* end-of-day**. Stage 3 reworded (login already exists from Day 1, so it is *roles/permissions*). Stage 7 marked **conditional**. Removed the duplicate "Claude pulls design components" from stage 1 |
+| §15 الاختبار | Reframed as the **final cross-functionality integration + security pass**. Opens by stating this is *not* the first test — each function was tested alone during the build — and contrasts the two questions being asked. Steps, trainer steps, trainee blanks and Q&A all rewritten around connected multi-step scenarios |
+| §17 الأدوات | Added **Supabase MCP** row |
+| `CLAUDE.md` | Tools-registration rule → **Section 17** |
+
+### D60.3 Session ranges (now in §5.1)
+
+| Session | Min | Max | Average |
+|---|---|---|---|
+| شرح المفاهيم | 40 | 50 | ~45 |
+| تطبيق مباشر مع المدرب | 56 | 64 | ~59 |
+| عمل المتدربين على المشاريع | 82 | 90 | ~85 |
+| مراجعة وعرض التقدم | 23 | 33 | ~26 |
+| **Day total** | | | **215** |
+
+### D60.4 What the new shape achieves
+
+- **Day 1 ends with the app running locally** (scaffold + Supabase login) — trainees are hands-on with Claude producing real output from hour one.
+- **Day 3 ends with a live URL.** Deployment stops being a last-afternoon cliff and becomes a habit; later deploys are ~12 min instead of a 45-min panic.
+- **Never more than two consecutive days without something running.**
+- The two previously-empty concept slots (Days 7–8, ~65 min of dead time) now carry real content: **RBAC + context window/compaction** on Day 7, and the **prompting-and-correcting lesson** on Day 8 — taught by live demonstration, as requested.
+- **Day 8 gives the core function a whole day** (was half a day shared with browsing).
+- The DesignSync ordering bug is gone: the repo exists from Day 1, and the pull happens per-functionality during the build.
+
+### D60.5 Verification run
+
+- **Anchors: 105 links, 0 broken** (github-slugger rules: lowercase, strip punctuation, each space → one hyphen).
+- **Section sequence:** 1→17, no gaps, no duplicates.
+- **Day math:** all 10 days total exactly **215 د**; computed min/max/avg per session match the §5.1 table exactly.
+- **No stale refs:** no `القسم 15/16/17/18` remain; all `####` headers align with their parent section.
+- Deleted the stray `bootcamp_roadmap_and_curriculum.md.tmp1` (untracked leftover from an earlier script run).
+
+### Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (fold + renumber + §6 rebuild + §4/§5.1/§7.10/§12/§14/§15/§17 edits) · `CLAUDE.md` (§17 reference) · this file.
+
+### Status
+Curriculum restructure complete and verified. **`bootcamp_roadmap_and_curriculum.docx` is now stale** — regeneration deliberately deferred until you finish your notes, per your instruction, so it is rebuilt once at the end.
+
+---
+
+## § D61 — Prompt #31
+
+In `bootcamp_roadmap_and_curriculum.md`, section 7.10, point "1) ثبّت Claude Code" needed proper beginner-level installation details. Instructions:
+
+- Fetch `https://code.claude.com/docs/en/overview#terminal` for the correct/current Claude Code CLI install steps, and reproduce the same steps with more detail.
+- Give separate steps per OS, including beginner-level actions like how to open the terminal or command prompt to run the install command.
+- After that, add steps to install the **Claude Desktop app** — with OS-specific instructions chosen from `https://code.claude.com/docs/en/overview#desktop-app` — explaining it lets the trainee check their **5-hour and weekly usage limits**.
+- This likely requires adding a new numbered point to section 7.10, making it **5** points instead of 4.
+
+---
+
+## § D62 — Response to Prompt #31
+
+### D62.1 What changed in §7.10
+
+Fetched the current install steps from `code.claude.com/docs/en/overview`. Point 1 ("ثبّت Claude Code") was rewritten with full per-OS beginner detail:
+
+- **Windows:** open PowerShell via the Start menu (with the `PS C:\` vs plain `C:\` disambiguation so a trainee can tell PowerShell from Command Prompt), run `irm https://claude.ai/install.ps1 | iex`, and a note recommending Git for Windows (so Claude Code can use its Bash tool; otherwise it falls back to PowerShell).
+- **macOS:** open Terminal via Spotlight (`Cmd+Space`), run `curl -fsSL https://claude.ai/install.sh | bash`.
+- **Linux:** open the distro's terminal, same `curl` command.
+- A verification step (`cd` into the project, run `claude`, log in) and a link to the official troubleshooting page for install errors.
+
+A **new point 2** was inserted for the **Claude Desktop app**, explaining it exists to track the account's 5-hour and weekly usage limits, with download links/instructions per OS (Windows x64/ARM64, macOS, Linux beta via apt), and a closing line to check usage from inside the app periodically during the bootcamp. The old points 2–4 (Antigravity IDE, VS Code extension, MCP connections) shifted down to **3–5**, so the section now has 5 points as anticipated.
+
+### D62.2 Consistency updates
+- §6's Day 1 timing line for 7.10 was updated to note the install bundle now covers "Claude Code، Claude Desktop، Antigravity، الإضافة" (kept at the same 18 د budget — the added Desktop step is a quick download+sign-in, not a heavy install).
+- Added a **Claude Desktop** row to the §17 tools table (per the CLAUDE.md rule that any newly introduced tool must be registered there), noting it's installed in 7.10 alongside Antigravity IDE.
+
+### Documents Affected
+`bootcamp_roadmap_and_curriculum.md` (§7.10 rewrite, §6 timing note, §17 tools table row).
+
+### Status
+Applied directly (no plan mode — this was a scoped content edit to an existing subsection, not a structural/build task).
+
+---
+
+## § D63 — Prompt #32
+
+Two problems flagged in `project-package/CLAUDE.md` (at the time still `CLAUDE.ar.md` at the project root):
+
+1. Line 18 wrote a placeholder path `[مسار ملف requirements-standards]` instead of pointing directly at the real content — which at the time lived only as a summary inside `.claude/rules/bootcamp-mvp-process.ar.md` section 3 ("معيار كتابة المتطلبات").
+2. Line 19 referenced "قاعدة الاتجاه والتعريب (RTL/العربية)" with a placeholder path `[مسار قاعدة i18n]` — but no such file actually existed anywhere in the project.
+
+Rather than just pointing line 18 at bootcamp-mvp-process.ar.md §3, a better option was proposed and adopted: create **two dedicated, fully-translated Arabic rule files** — `requirements-standards.md` and an i18n/RTL rule (better-named than a literal "قاعدة الاتجاه والتعريب") — as real standalone files, mirroring `C:\Users\ammar\.claude\rules\`. This makes each rule independently reachable/discoverable by Claude when a trainee's request needs it, rather than being buried as a subsection inside another file.
+
+A third file was added to the same idea: **`git-commit-attribution.md`**, translated to Arabic, so trainees don't run into the same "Claude added itself as a co-author" problem the trainer had personally hit and fixed globally.
+
+All three are sourced from `C:\Users\ammar\.claude\rules\` (`requirements-standards.md`, `i18n-directionality.md`, `git-commit-attribution.md` — `requirements-standards` already existed translated/summarized inside `bootcamp-mvp-process.ar.md` §3, the other two did not exist in Arabic anywhere).
+
+To make the trainee handoff easy and fast to set up, everything gets assembled into one ready-to-copy folder at the project root:
+
+- New folder **`project-package/`**, containing a **`.claude/`** folder, containing a **`rules/`** folder.
+- **Move** (not copy) the current `.claude/rules/bootcamp-mvp-process.ar.md` into that new rules folder, **renamed** to drop `.ar` (→ `bootcamp-mvp-process.md`), with all references to its old location/name updated.
+- **Move** `CLAUDE.ar.md` (currently at the project root) into `project-package/` at its root, **renamed** to drop `.ar` (→ `CLAUDE.md`), with all references updated.
+- Place the three newly-translated rule files inside `project-package/.claude/rules/`.
+
+---
+
+## § D64 — Response to Prompt #32
+
+### D64.1 New folder assembled
+
+```
+project-package/
+├── CLAUDE.md                          (was CLAUDE.ar.md — moved via `git mv`, .ar dropped)
+└── .claude/
+    └── rules/
+        ├── bootcamp-mvp-process.md    (was .claude/rules/bootcamp-mvp-process.ar.md — moved via `git mv`, .ar dropped)
+        ├── requirements-standards.md  (new — full Arabic translation)
+        ├── i18n-directionality.md     (new — full Arabic translation)
+        └── git-commit-attribution.md  (new — Arabic translation, generalized)
+```
+
+`bootcamp-mvp-process.md` moved with content **unchanged** — it had no self-references to `CLAUDE.ar.md` or to the two other rules by exact path, so no internal edits were needed beyond the move itself.
+
+### D64.2 `project-package/CLAUDE.md` — the two broken references fixed
+
+- Line 18 (`[مسار ملف requirements-standards]`) → now points at the real file: `.claude/rules/requirements-standards.md`.
+- Line 19 (`[مسار قاعدة i18n]`, describing a rule that didn't exist) → now points at the real file: `.claude/rules/i18n-directionality.md`.
+- Also fixed the two `bootcamp-mvp-process.ar.md` path mentions (lines 14 and 17) to drop `.ar` now that the file lives at `.claude/rules/bootcamp-mvp-process.md`.
+- Added a new bullet for `.claude/rules/git-commit-attribution.md`.
+
+### D64.3 Filename choice (judgment call, flagging for review)
+
+Kept the same base filenames as the global originals (`requirements-standards.md`, `i18n-directionality.md`, `git-commit-attribution.md`) rather than inventing Arabic names. Reasoning: it keeps a 1:1 traceable mapping to `C:\Users\ammar\.claude\rules\`, and matches the existing convention already in this repo where `bootcamp-mvp-process.md` carries fully Arabic content under an English kebab-case filename. "Better naming than 'قاعدة الاتجاه والتعريب'" was read as: give it a real, stable filename at all (it previously had none) — not necessarily an Arabic one. Open to renaming if a different name is preferred.
+
+### D64.4 Translation notes
+
+- **`requirements-standards.md`** — full translation, reusing the exact Arabic EARS/Gherkin/User-Story phrasing already established in `bootcamp-mvp-process.md` §3, so terminology stays consistent across both files instead of introducing a second translation of the same terms.
+- **`i18n-directionality.md`** — full translation of all 5 sections + checklist. Code identifiers, file paths, and CSS class names were left untranslated (e.g. `text-start`, `getDirection`, `app/[locale]/layout.tsx`) since those are literal syntax, not prose. Dropped one clause from the original's scope note — "improves the legacy `i18n_context_system.md` blueprint" — since that file is the trainer's own private history and doesn't exist for a trainee to reference; the rest of the rule is unaffected.
+- **`git-commit-attribution.md`** — the rule and rationale were translated in full, but the **specific incident** (MessageMe repo, commit hashes, exact date) was generalized into "a real incident occurred where..." rather than reproduced verbatim, since those specifics belong to the trainer's own project history, not a trainee's. Added one bootcamp-specific closing line explaining why this matters for the trainee's own repo.
+
+### D64.5 Curriculum update (§4 حزمة المعسكر)
+
+Rewrote §4 to show the actual `project-package/` tree (matching D64.1) instead of the old flat bullet list, and added the `git-commit-attribution.md` row (previously absent — B was only mentioned as "قواعد إضافية عند الحاجة" without naming it). The `conversation_history.md` rule bullet was reworded to point at its real home (`bootcamp-mvp-process.md` §2) instead of standing alone. No other section of the curriculum names these files by path, so no further cross-references needed updating.
+
+### D64.6 Verification
+- `grep` confirmed `CLAUDE.ar.md` and `bootcamp-mvp-process.ar.md` were referenced nowhere else in the repo except each other and this history file (which stays untouched, as an append-only historical log).
+- `git status` after the moves shows clean renames (`R`) for both moved files, not delete+add pairs — history is preserved for `git blame`/`git log --follow`.
+- Confirmed content of the two moved files was byte-identical pre/post move except for the intentional reference fixes in `CLAUDE.md`.
+
+### Documents Affected
+`project-package/CLAUDE.md` (new, moved+edited) · `project-package/.claude/rules/bootcamp-mvp-process.md` (new, moved) · `project-package/.claude/rules/requirements-standards.md` (new) · `project-package/.claude/rules/i18n-directionality.md` (new) · `project-package/.claude/rules/git-commit-attribution.md` (new) · `bootcamp_roadmap_and_curriculum.md` (§4 rewrite) · this file. Old paths `CLAUDE.ar.md` and `.claude/rules/bootcamp-mvp-process.ar.md` no longer exist.
+
+### Status
+All moves and new files are staged in git (not committed — no commit was requested). `bootcamp_roadmap_and_curriculum.docx` remains stale from the §4 change, still deliberately deferred per your standing instruction until you're done with notes.
+
+---
+
+## § D65 — Prompt #33
+
+Move `bootcamp_roadmap_and_curriculum.md` and `bootcamp_roadmap_and_curriculum.docx` from the project root into `project-package/`, and update all references throughout the repo.
+
+---
+
+## § D66 — Response to Prompt #33
+
+### D66.1 Files moved
+
+Both files moved via `git mv` (preserving history) from project root → `project-package/`:
+- `bootcamp_roadmap_and_curriculum.md` → `project-package/bootcamp_roadmap_and_curriculum.md`
+- `bootcamp_roadmap_and_curriculum.docx` → `project-package/bootcamp_roadmap_and_curriculum.docx`
+
+This consolidates the entire trainee handoff package (`project-package/`) into one folder.
+
+### D66.2 References updated
+
+Searched for all references in the repo:
+- **`CLAUDE.md` (main project)**
+  - Line 33: `### A.5 Building the Arabic curriculum (...)` heading → updated path from `bootcamp_roadmap_and_curriculum.md` to `project-package/bootcamp_roadmap_and_curriculum.md`
+  - Line 34: removed the backtick-quoted filename and replaced with generic "the curriculum file" since the path is now in the heading
+  - Line 37: updated reference to `bootcamp-mvp-process.md` (from `.claude/rules/bootcamp-mvp-process.md` to `project-package/.claude/rules/bootcamp-mvp-process.md`) and removed the stale comment about `Arabic .ar.md` version (that file no longer exists)
+
+- **`project-package/CLAUDE.md` (trainee template)**
+  - No updates needed — it references `conversation_history.md` without a full path (trainee creates it in their project root) and `.claude/rules/bootcamp-mvp-process.md` with a relative path that still resolves correctly within the package
+
+- **`project-package/.claude/rules/bootcamp-mvp-process.md`**
+  - No updates needed — it references the curriculum file generically (no hardcoded path) and internal sections
+
+- **`conversation_history.md`**
+  - Unchanged — this file stays at the repo root; each trainee creates their own copy in their project root when they copy `project-package/` to start
+
+### D66.3 Result structure
+
+```
+project-package/
+├── CLAUDE.md                          (trainee template)
+├── bootcamp_roadmap_and_curriculum.md (the curriculum)
+├── bootcamp_roadmap_and_curriculum.docx (curriculum DOCX version)
+└── .claude/
+    └── rules/
+        ├── bootcamp-mvp-process.md
+        ├── requirements-standards.md
+        ├── i18n-directionality.md
+        └── git-commit-attribution.md
+```
+
+Everything the trainee needs is now in this one folder, ready to copy to their project root + unpack.
+
+### Documents Affected
+`CLAUDE.md` (path references updated) · `bootcamp_roadmap_and_curriculum.md` (moved) · `bootcamp_roadmap_and_curriculum.docx` (moved) · this file.
+
+### Status
+All moves and updates staged in git (not committed). `conversation_history.md` remains at repo root for this project and stays as a historical log. Trainees will create their own `conversation_history.md` in their project root when they begin.
+
+---
+
+## § D67 — Prompt #34
+
+> **Note on scope.** A preceding prompt in the same session — "remove the duplicate `## 3. معيار كتابة المتطلبات` section from the process file" — was explicitly marked *"No need to log this in conversation_history.md"* and is therefore not recorded as its own prompt. Its effect (process-file sections renumbered 4→3, 5→4, 6→5, 7→6, 8→7) is folded into the response below because the restructure builds on it.
+
+There is a duplicate section between `project-package/CLAUDE.md` "### أ.3 أسلوب العمل" line 22 and `project-package/.claude/rules/bootcamp-mvp-process.md` "## 4. تعليمات ثابتة تعطيها لـ Claude (جاهزة للّصق)" line 66. Please keep only the section in `project-package/CLAUDE.md` since it is the better place for such a section, and just make sure if there are parts that were mentioned in `project-package/.claude/rules/bootcamp-mvp-process.md` to be parsed to `project-package/CLAUDE.md`.
+
+I noticed that "## 1. القواعد الذهبية (اقرأها أولًا)" line 11 in `project-package/.claude/rules/bootcamp-mvp-process.md` has also some duplicate content with the above two sections such as "منتجك من 3 إلى 5 خصائص أساسية".
+
+Additionally, this flagged that there is no distinction between those two files causing duplicate and overlapping sections, vague roles for each file and what it is responsible of. Since we are going to fix this issue, I also need to flag to you another big misunderstanding that must be understood and fixed:
+
+**Neither of those files will be read by trainees.** The only file that trainees should read is `project-package/bootcamp_roadmap_and_curriculum.md`. So those files are only for Claude to help the trainee with his project throughout the bootcamp. I will give you some notes of the role distinction between those two files and I need you to understand it then help me with it if something isn't clear or needs further investigation, and if you have suggestions or options give them to me to discuss them and for you to understand clearly.
+
+I will be referring to `project-package/CLAUDE.md` as **CLAUDE file**, to `project-package/.claude/rules/bootcamp-mvp-process.md` as **process file**, and to `project-package/bootcamp_roadmap_and_curriculum.md` as **roadmap file**.
+
+I see that the CLAUDE file should be responsible for rules generally and trainee-specific project logic to be filled throughout the bootcamp (by you, not him), while the process file is for detailed steps of how to perform certain parts of the project.
+
+I need that when I provide this package to the trainee, Claude reads and understands the provided files in this package and acts as the trainee's bootcamp assistant. Meaning that I will be telling the trainees on the first day — after they finish the setup and open Claude in the directory of this package on their local machine — to first give Claude a prompt like «انت مين» or «اهلا» or «السلام عليكم». Then Claude should natively read the CLAUDE file before answering, where in this file we must tell Claude that:
+
+- You are the bootcamp trainee assistant, and your responsibility is to guide the trainee throughout the bootcamp by referring to each day's work plan from section 6 in the roadmap file, the steps and details written in the process file, and the current day of the bootcamp — to understand the status of the project, whether the previous tasks and steps are done, and what tasks are to be done now and today.
+- This should be determined through the trainee's project-specific progress status, which should be documented correctly in the CLAUDE file and the trainee's project report file.
+- In case the project directory contains only the provided package and the trainee is starting a fresh session, Claude should understand that this is Day 1.
+- Finally, answer the trainee by first introducing itself and start guiding the trainee with the tasks and steps of Day 1 — through first asking the trainee to make sure he finished the tasks in 6.1 from «شرح المفاهيم» up to «4) أضِف إضافة Claude Code إلى المحرّر» from «عمل المتدربين على المشاريع» of 7.10 included (of course here you should display the previous tasks nicely formatted in your own way, where you still maintain the section reference number along with title/description of that task), and telling him that if he finished those tasks, you are ready to help him with the rest of the tasks starting from «5) اربط تكاملَي MCP اللذين نحتاجهما من اليوم الأول».
+
+This generally means that both you (the assistant) and the trainee work together and drive the process of building the project — meaning that you should tell him the next steps and guide him, but at the same time he might tell you what to do. And if there was something else to be done or worked on other than what the trainee is prompting for, be honest with him and tell him about those things or tasks, depending on how demanding those tasks are compared with whether they are prerequisites for what the trainee is currently asking for — and tell him that we can work on what he prompted if there is no serious dependency, then come back to those tasks afterwards.
+
+**On the project report file.** I am honestly not sure about the idea of having a project report file to be generated for each trainee that contains purely the readable simple logic of the trainee's MVP, to be easier for the trainee to track his project instead of going each time into the roadmap file that already contains lots of content regarding steps, instructions, roadmap plan, and examples — to dig for his own project's content. I am thinking of making the roadmap file a curriculum where it might log the trainee's executed work briefly and refer to the project report for clean full content. Be neutral and tell me what you think. Does it make the project cleaner, or complicate it more by adding more files, knowing that the trainee should initially be only concerned with the roadmap file and his conversation history file?
+
+**On slides.** Keep in mind that I need to make presentable content for the bootcamp through converting the content in the roadmap file into some sort of slides. I don't know what specifically will be turned into slides from the roadmap file — thus if it is better for the trainees to only refer to the slides without the roadmap file, that makes the roadmap file hold the content as the best format for LLM analysis and quick modification with low effort, which will produce the slides that the trainer will use for explaining and demoing and the trainees will use for referencing the content the trainer explained along with the steps the trainee needs to perform. And what is the best slides format given all of those details and how they can possibly be used? Is it better to be a single HTML file with embedded CSS styling and JS if needed? Or just normal PowerPoint or Google Slides? Or a rigid PDF (inefficient if we want to fill the blanks for trainer brief of execution)?
+
+**On registering task steps.** Throughout my review in the roadmap file of "6. الأجندة والأهداف التدريبية" and sections 7 to 17, I will provide you with some notes of the tasks of the sections, which you need to register in the process file — so that throughout guiding the trainee in performing those tasks, he is mostly required to enter his pure input without having to copy a prompt from the roadmap file and tell you what you should do. Instead, he reads what you and he should do, and when you provide him with the guidance he makes sure that you and he are on the right path and provides his input straight up (of course following the «منهجية العمل مع الخطوات» note at the beginning of the roadmap file, so he doesn't literally provide you with raw unfiltered input).
+
+**That being said, this is what I think of the current sections in each file and I want your opinion about it — process file:**
+
+- Sections 1 and 4 don't seem to fit here, especially given that the trainee won't read this file, and logic like:
+  - **plan mode:** should exist both as part of the steps the trainee is given in the roadmap file, and as part of the steps or instructions written in the process file that correspond to a specific section from the roadmap file.
+  - **context7:** should be a generic rule added to the CLAUDE file instead of asking the trainee explicitly to paste it in each prompt, especially since it already appears in the list of MCP tools that takes part of the tokens of each prompt.
+
+**I will start providing my notes of sections 7 to 17 with the following:**
+
+- **context7** — «5) اربط تكاملَي MCP اللذين نحتاجهما من اليوم الأول» under 7.10: there are absolutely no details for the trainee of what he should do. You need to add steps for the trainee in the roadmap file to first go to <https://context7.com/>, sign up and get his API key (don't just say what I just said straight up — provide proper details like you do when I ask you for detailed steps of how to do it). Afterwards, as in the context7 docs <https://context7.com/docs/resources/all-clients#remote-server-connection> under Claude Code connection options, I suppose Remote Server Connection is the right option. The question is: can you execute the command `claude mcp add --scope user --header "Authorization: Bearer YOUR_API_KEY" --transport http context7 https://mcp.context7.com/mcp` to set up the MCP tool after the trainee provides you with his API key, or does he need to execute it manually? If you can do it (which I suppose you can), then add the details of the steps to help the trainee set up context7 as part of «5) اربط تكاملَي MCP» under section 7.10 inside the process file that the trainee doesn't see — for your internal reference instructions of helping the trainee with this task — where the steps shouldn't be rigid or strict in general, because sometimes for example commands might differ between different OS. But since you have the proper reference of the setup, you should be able to know what each OS needs and choose the corresponding one, since you have access to the computer and are able to determine the OS that is using you.
+
+- **Supabase MCP** — same concept, where you add the details of the steps that the trainee explicitly should take in the roadmap file that you point out in the chat to guide the trainee, while the helping steps that you can do are written in the process file, where you mention to the trainee that you would do those steps after he does his own to help him complete the setup. You might need to research properly on the specific actual up-to-date steps.
+
+<details>
+<summary><strong>Pasted reference</strong> — a ~4,000-word beginner walkthrough ("Detailed Beginner Setup: Connect Claude Code to Supabase Using MCP"), derived from a YouTube video, supplied by the user with the caveat: <em>"this is a steps summary I took from a youtube video that might help you (but don't depend fully on it)"</em>.</summary>
+
+The pasted block covered: what MCP is; prerequisites (a Supabase project + Claude Code installed); opening the Supabase **Connect** dialog → **MCP** tab → selecting **Claude Code** as client; the **read-only** toggle and its trade-offs (the video disables it to allow table creation); **feature groups** and the principle of enabling only what you need (Storage off by default); copying the project-scoped MCP configuration; adding it in Claude Code; running `/mcp` and choosing among "use for this project" / "use for all projects" / "continue without"; completing browser OAuth and reviewing requested permissions; verifying with "List all the tables in my Supabase database"; testing a write with "Create a table called customers…"; refreshing the Supabase dashboard to confirm; a 20-step checklist; and beginner security precautions (start minimal, understand read vs write, review permission prompts, be careful with destructive requests, keep project scope tight, verify changes in the dashboard).
+
+*Elided verbatim here for length, and because — per the user's own caveat — it was **superseded during the response** by the official Supabase and context7 documentation, which was fetched and verified. The verified commands and flow are recorded in §D68 below. Ask if the verbatim text is wanted inline.*
+
+</details>
+
+---
+
+## § D68 — Response to Prompt #34
+
+### D68.1 What this milestone is
+
+A **structural rebuild of the trainee package**, not a content edit. The package went from three files with overlapping, undefined roles to **four surfaces that each answer exactly one question**, plus a fifth per-trainee file. Two discoveries during investigation reshaped the plan.
+
+### D68.2 The two discoveries
+
+**1. Rule files are re-sent on every single message.** Confirmed against the [official memory docs](https://code.claude.com/docs/en/memory): *"Rules without a `paths` field are loaded unconditionally"*, at the same priority as `CLAUDE.md`. The package was therefore costing **~34KB of context on every turn** before the trainee typed a word — on a Pro plan whose 5-hour limit the curriculum itself warns about in 7.3/7.6. `@import` does not help: *"imported files still load and enter the context window at launch."*
+
+**2. The lazy-loading mechanism the user intuited exists — but it is skills, not rules.** The user's hypothesis was that rule files should carry a short description that Claude evaluates per turn, like MCP tool definitions. That is exactly how **skills** work, and the docs say so explicitly: *"For task-specific instructions that don't need to be in context all the time, use skills instead, which only load when you invoke them or when Claude determines they're relevant to your prompt."* A skill is `.claude/skills/<name>/SKILL.md` with `name` + `description` frontmatter; only the description sits in context.
+
+An earlier proposal in this session — a hand-rolled `playbooks.md` that Claude would be told to read on demand — was **withdrawn**: it reinvented, worse, what the platform already does natively. Path-scoped rules (`paths:` frontmatter) were also evaluated and rejected as the primary mechanism because of open bugs ([#16299](https://github.com/anthropics/claude-code/issues/16299), [#21858](https://github.com/anthropics/claude-code/issues/21858)); they are used only for `i18n-directionality.md`, where the worst case degrades to today's behaviour.
+
+### D68.3 Decisions taken
+
+| # | Decision | Rationale |
+|---|---|---|
+| 1 | **Per-trainee `PRODUCT.md`** | Roadmap fill-in blanks become read-only templates; the trainee's real answers live in one clean file. Keeps the roadmap file **identical for every trainee** — mandatory once it becomes the deck's source. |
+| 2 | **Lean rules + skills** | Always-loaded rules hold only the operating contract; per-section detail becomes skills. Cost stays flat as §7–§17 notes land. |
+| 3 | **Deck = single self-contained HTML, dual-mode** (`عرض`/`مرجع`) | RTL-native, offline, code blocks and links survive, regenerates in one pass. Concepts render as projector slides; steps render as a searchable document with copy buttons. Rejected: PowerPoint (lossy regeneration, poor RTL), Google Slides (weakest RTL, needs internet), PDF (rigid). |
+| 4 | **Deck deferred to a later pass** | Built once §7–§17 content stops moving. Claude Design will first produce a design system, then the deck is built against it. |
+| 5 | **Roadmap file stays the master source** | The user edits it; Claude reads it; the deck is generated from it. |
+
+### D68.4 The four-file contract
+
+The rule that prevents the duplication from recurring — each file answers **one** question:
+
+| File | Answers | Audience | Loaded |
+|---|---|---|---|
+| `CLAUDE.md` | *Who am I, where are we, what do I read next?* | Claude only | Every message |
+| `.claude/rules/bootcamp-mvp-process.md` | *How do I behave, always?* | Claude only | Every message |
+| `.claude/skills/<name>/SKILL.md` | *How do I execute this section?* | Claude only | Description only; body on demand |
+| `bootcamp_roadmap_and_curriculum.md` | *What does the trainee see and do?* | **Trainee** | On demand |
+| `PRODUCT.md` | *What is THIS trainee building?* | Trainee + Claude | On demand |
+| `conversation_history.md` | *How did we get here?* | Trainee + Claude | On demand |
+
+**Deliberate redundancy, preserved by design:** template prompts live in **both** the skill (so Claude drives correctly from free-form trainee input) **and** the trainee-facing material (a copyable fallback). Neither is the sole source. This is written into the process file §2 so a future pass does not "helpfully" delete one — a direct instruction from the user.
+
+### D68.5 Context budget
+
+| | Before | After |
+|---|---|---|
+| `CLAUDE.md` | 4.4KB | 8.5KB (gains identity + ledger) |
+| `bootcamp-mvp-process.md` | 15.6KB | 8.4KB (contract only) |
+| `git-commit-attribution.md` | 3.1KB | 3.1KB |
+| `requirements-standards.md` | 5.3KB | **0** → skill |
+| `i18n-directionality.md` | 6.4KB | **0** → `paths:`-scoped |
+| **Per message** | **~34KB** | **~20KB** |
+
+Crucially it **stays ~20KB** as §7–§17 playbooks are added, because each new playbook contributes only a one-line description. `CLAUDE.md` is 108 lines (docs recommend under 200).
+
+### D68.6 The Day-1 bootstrap
+
+The heart of the change, written into `CLAUDE.md` §أ. On **any** opening message, Claude introduces itself, determines the day, and begins guiding — it does not wait to be asked. Day detection order: (1) the progress ledger in §ج; (2) which of `PRODUCT.md` / `conversation_history.md` / app code exist; (3) **package files only → Day 1, fresh start**. It then reads *only* §6.N for that day, never the whole 164KB roadmap.
+
+On Day 1 specifically: introduce itself → render the already-due tasks (§6.1 «شرح المفاهيم» through 7.10 point **4**, keeping every section reference number and title) → ask the trainee to confirm → state that work resumes at 7.10 point **5**.
+
+Ongoing: Claude proposes the next step, but the trainee may redirect. When asked for something out of sequence, Claude **names what is pending and says whether it is a real prerequisite** — if not, it does what was asked and returns to the pending work afterwards.
+
+### D68.7 Verified capabilities (context7 + Supabase MCP)
+
+Answering the user's direct question — **yes, Claude can run the setup commands itself**; confirmed by running `claude mcp --help` in-session.
+
+- ✅ `claude mcp add …` — Claude runs it. context7: `--scope user` (docs useful across all the trainee's projects). Supabase: `--scope project` (database belongs to this project only), optionally `?project_ref=<REF>` to scope to one project.
+- ✅ OS detection and shell/quoting selection — the skill instructs Claude to detect rather than hardcode.
+- ✅ Verification via `claude mcp list`.
+- ❌ `/mcp` → **Authenticate** — interactive TUI needing the trainee's browser identity. **Trainee-only.**
+- ⚠️ A newly added server is **not live in the current session**; Claude must tell the trainee to restart, or they will think it failed.
+
+context7 setup verified against [context7.com/docs](https://context7.com/docs/resources/all-clients); Supabase against [supabase.com/docs](https://supabase.com/docs/guides/ai-tools/mcp) (OAuth, **no** personal access token — correcting the pasted reference, which described a PAT-based flow).
+
+**New secret-hygiene rule** (`CLAUDE.md` §ب, process file §3, both skills): a pasted API key is used in the command or written to `.env` **only** — never echoed back, never written to `conversation_history.md` or `PRODUCT.md`; log `<تم استلام المفتاح>` instead. Without this, the "log every prompt" rule would have captured the trainee's key verbatim.
+
+### D68.8 Files created / changed
+
+**Created — skills** (`project-package/.claude/skills/`): `bootcamp-setup` (7.10 MCP setup, the new context7/Supabase playbooks) · `writing-requirements` (absorbs the deleted `requirements-standards.md`) · `user-journey` (absorbs process-file §3) · `building-features` (build stages, per-feature loop, three testing layers) · `deploying` (absorbs process-file §7 Vercel).
+
+**Created:** `project-package/PRODUCT.md` — Arabic, mirrors the curriculum's section order (1→10), written by Claude from the trainee's free-form input, **rewritten in place** (current state, never a log).
+
+**Rewritten:** `project-package/CLAUDE.md` — identity, Day-1 bootstrap, standing rules, progress ledger. · `project-package/.claude/rules/bootcamp-mvp-process.md` — reduced to the operating contract; §1 «القواعد الذهبية» and §4 «تعليمات ثابتة» **deleted** (the duplication originally flagged); header rewritten to state plainly that the trainee never reads it.
+
+**Deleted:** `project-package/.claude/rules/requirements-standards.md` (→ skill). **Path-scoped:** `i18n-directionality.md` gains `paths:` frontmatter for UI files.
+
+**Roadmap file:** §7.10 point 5 rewritten from a two-bullet stub into full beginner steps for both integrations · §4 package tree rebuilt, adding *why* rules and skills are separate · §7.7 corrected (it still listed requirements-standards as a rule and described skills as only `/name`-invoked) · §7.9 file-structure diagram corrected.
+
+**Root `CLAUDE.md`:** stale `§6–§7` reference fixed to `§4`; Supabase MCP registered in the tools list; a new **trainee package architecture** block added under §A.5 recording the four-surface contract, so future sessions put new playbooks in `skills/` and not `rules/`.
+
+### D68.9 Verification performed
+
+- Anchors: **105 links, 0 broken** — and a before/after diff against the staged index confirms **no anchor was newly broken**. (An initial run reported false positives; the checker mishandled Arabic `؟` U+061F, which sits inside the Arabic Unicode block but is stripped by github-slugger.)
+- Top-level section sequence **1→17**, no gaps or repeats.
+- Duplication: «3 إلى 5 خصائص» and «plan mode» now appear **exactly once** across all always-loaded files.
+- No dangling references to the deleted `requirements-standards.md` or to removed process-file section numbers.
+- YAML frontmatter valid on all five skills and on the path-scoped rule.
+
+### D68.10 Not done / next
+
+- **Live Day-1 bootstrap test** — copy the package to an empty folder, open Claude Code, type «السلام عليكم», and confirm the introduction → day detection → task list → resume-point sequence. Not yet run.
+- **The HTML deck** — deferred by decision 3/4.
+- **`bootcamp_roadmap_and_curriculum.docx`** — now stale; regeneration still deferred until content settles.
+- **§7–§17 notes** — the context7/Supabase batch is the first; skills for §8/§9/§12/§13/§15 are deliberately **not** created yet (an empty skill wastes a description slot and can misfire) and land with their notes.
+
+### Documents Affected
+`project-package/CLAUDE.md` · `project-package/PRODUCT.md` (new) · `project-package/.claude/rules/bootcamp-mvp-process.md` · `project-package/.claude/rules/i18n-directionality.md` · `project-package/.claude/rules/requirements-standards.md` (deleted) · `project-package/.claude/skills/{bootcamp-setup,writing-requirements,user-journey,building-features,deploying}/SKILL.md` (new) · `project-package/bootcamp_roadmap_and_curriculum.md` (§4, §7.7, §7.9, §7.10) · `CLAUDE.md` (§A.4, §A.5) · this file.
+
+### Status
+All changes written to disk; `requirements-standards.md` removal staged via `git rm`. Nothing committed.
+
+---
+
+## § D69 — Prompt #35
+
+**A.** `.claude/rules/bootcamp-mvp-process.md` either needs to be dropped or updated, I don't know what is best since I am not aware of its current role to this project.
+
+**B.** `AI_MVP_Bootcamp_6_Days_AR.pdf` is old, the new one is `SAG_Tech_Claude_MVP_AR.pdf` — though some of our package content might not have been aligned properly to its content, so you can flag those parts that we need to work on through your answer in `conversation_history.md`.
+
+---
+
+## § D70 — Response to Prompt #35
+
+### D70.1 Part A — the English root rule file: **drop it**
+
+**Its current role.** `.claude/rules/bootcamp-mvp-process.md` sits in the *trainer's own* project root, so Claude Code auto-loads it **in full, on every message** of every authoring session in this repo (~14.4KB of permanent context). It is the original English 6-day trainee guide, written before the Arabic package existed.
+
+**Why dropping beats updating.**
+
+1. **It contradicts the canon on the single most load-bearing fact.** It is headed «The 6-Day Flow» with `Day 1`…`Day 6`. Both the new SAG brochure and `project-package/bootcamp_roadmap_and_curriculum.md` are **10 days**. That contradiction is permanently in context, and the Claude Code docs are explicit about the consequence: *"if two rules contradict each other, Claude may pick one arbitrarily."*
+2. **Every section of it is already covered in Arabic** — verified section by section, not assumed:
+
+   | English section | Where it now lives |
+   |---|---|
+   | §1 Requirements standard (EARS/Gherkin) | `writing-requirements` skill |
+   | §2 JOURNEY/DECISION format | `user-journey` skill |
+   | §3 Day-by-day flow | curriculum §6 (10 days) |
+   | §3 Claude Design iteration loop | **curriculum §12** — verified: design-system-first, per-screen prompts, DesignSync one component at a time, tokens as single source of truth |
+   | §4 Standing instructions | package `CLAUDE.md` §ب |
+   | §5 Tools table | curriculum §17 |
+   | §6 Default tech stack | package process file §4 |
+   | §7 How Claude builds / three testing layers | process file §5 + `building-features` skill |
+   | §8 Vercel deploy + the 5 obstacles | `deploying` skill |
+
+3. **Only two fragments would actually be lost**, and the new SAG brochure requires neither: *"write a short user guide"* and *"add basic analytics"* (both from its Day 6). Neither appears among SAG's 12 build stages or its §08 outputs. Grep confirms both are absent from the Arabic package today.
+4. **Updating it to 10 days would recreate the exact problem just solved** — a second always-loaded copy of the operating rules, drifting against the Arabic canon.
+
+**Action:** delete the file, and fix the now-dangling reference at root `CLAUDE.md` §A.2 line 16 (*"Local: `.claude/rules/bootcamp-mvp-process.md` (generic 6-day trainee guide)"*). If the user-guide / analytics items are wanted, they belong in curriculum §16, not in a resurrected rule file.
+
+### D70.2 Part B — alignment audit against `SAG_Tech_Claude_MVP_AR.pdf`
+
+Extracted the new brochure and compared it against the package section by section.
+
+**Already aligned — no action:**
+
+- **Format:** 10 أيام تدريبية · 40 ساعة · 4 ساعات يوميًا · أسبوعان من الأحد إلى الخميس ✓
+- **Skills (§03):** all **17** skills match our §3 one-for-one (ordering differs only) ✓
+- **Outputs (§08):** منتج قابل للاستخدام · توثيق وتصميم متكامل · رابط فعلي ✓
+- **Stack:** Claude + Claude Code, GitHub, Supabase, Vercel, draw.io ✓
+- **Pedagogy (§06):** the six elements (شرح المفهوم → الخطوات العملية → تطبيق مع المدرب → عمل المتدربين → المراجعة → نماذج وأسئلة شائعة) map cleanly onto our X.1–X.5 structure ✓
+
+**Misaligned — work needed:**
+
+**M1 — Day split contradicts the brochure.** *(Highest severity: touches all 10 day plans in §6.)*
+
+| Session | SAG official | Our §5.1 | Δ |
+|---|---|---|---|
+| شرح المفاهيم | 45 | 40–50 (~45) | ok |
+| تطبيق مباشر مع المدرب | 60 | 56–64 (~59) | ok |
+| عمل المتدربين على المشاريع | **105** | 82–90 (~85) | **−20** |
+| المراجعة وحل العوائق | 30 | 23–33 (~26) | ok |
+| استراحة | **absent** | 25 (ثابتة) | **+25** |
+| **Total** | **240** | 215 + 25 = 240 | — |
+
+SAG's four blocks sum to exactly 240 minutes **with no break**. We carve 25 minutes out for a break, leaving 215 working minutes and cutting hands-on trainee time to ~85. The published brochure promises **105 minutes** of hands-on work. Decision required: either the training day actually runs 4h25 (240 working + 25 break), or trainee work drops to ~85 and the brochure over-promises. Whichever way this goes, **every per-task duration in §6.1–§6.10 was budgeted against 215 and would need rebalancing.**
+
+**M2 — No target-audience section.** SAG §02 defines 7 audience categories (IT/CS students and graduates; entrepreneurs; beginner–intermediate developers; product/UX designers; innovation and digital-transformation staff and product managers; people interested in building with Claude; business owners) plus an explicit prerequisite-knowledge statement: *no applied programming experience required, but a basic conceptual grasp of domain, hosting, front-end, back-end, and API is expected.* The curriculum has no equivalent section. Trainees arriving from the brochure will look for it.
+
+**M3 — No consolidated technical-prerequisites section.** SAG §08 lists: a development-capable laptop, stable internet, a Claude account supporting Claude Code, GitHub/Supabase/Vercel accounts, an active email, and in-room display equipment. Our §7.10 mentions account creation in passing as «متطلّبات مسبقة» but never lists these together.
+
+**M4 — Two SAG build stages have no dedicated curriculum section.** SAG presents **12 numbered stages**; we have 10 sections (§8–§17).
+
+- SAG stage **9 «الدخول والصلاحيات»** → ours is buried as stage 3 inside §14 التنفيذ.
+- SAG stage **11 «إدارة الإصدارات»** (GitHub versioning) → ours is scattered as push-cadence guidance inside §14.
+- Also: SAG keeps stage **1 «تعريف الفكرة ومفهوم MVP»** separate from stage **3 «نطاق النسخة الأولية»**, whereas we deliberately merged them into §8. The merge is pedagogically defensible but now diverges from the published stage list.
+
+**M5 — Two of the 13 promised package deliverables do not exist.**
+
+- SAG item **9 «قوالب نموذج البيانات ERD»** — no ERD skill or template ships in the package.
+- SAG item **12 «قوائم مراجعة لاختبار المنتج والأمان والصلاحيات»** — no testing/security checklist ships.
+
+Both correspond to curriculum sections (§13, §15) that intentionally have no skill yet under the "skills land with their notes" decision — but the brochure lists them as things the trainee *receives*.
+
+**M6 — Package item 3 is now a skill, not a file.** SAG promises «ملف معايير كتابة متطلبات النظام». `requirements-standards.md` was deleted from `rules/` and folded into the `writing-requirements` skill. Functionally delivered, but there is no longer a file the trainee can point at. Low severity — decide whether to restore a trainee-visible copy purely to satisfy the deliverables list.
+
+**M7 — No provider attribution.** SAG is branded «شركة ساج التقنية» with contact details (`www.sag.sa`, `info@sag.sa`, `0530097954`). The curriculum carries no provider identity. Matters mainly for the HTML deck.
+
+**M8 — The superseded PDF is still in the repo.** `AI_MVP_Bootcamp_6_Days_AR.pdf` is what caused every "surprising connection" in the graphify run — the old 6-day plan mapping onto the new 10-day curriculum. It should be archived or deleted so it stops polluting future graph runs and context reads.
+
+### D70.3 Suggested order of work
+
+1. **M1** first — it is the only item that invalidates existing content (all of §6).
+2. **M4** next — it changes section numbering, so it must land before the deck is generated.
+3. **M2 + M3 + M7** together — three additive front-matter sections, cheap.
+4. **M5 + M6** — new skills for §13 and §15, which were already queued behind the §7–§17 notes.
+5. **M8** — housekeeping, any time.
+
+### Documents Affected
+None modified yet — this entry is analysis only. Pending user decisions on **M1** and **M4** before editing `project-package/bootcamp_roadmap_and_curriculum.md`, and on **Part A** before deleting `.claude/rules/bootcamp-mvp-process.md` + fixing `CLAUDE.md` §A.2.
+
+### Status
+Analysis complete; no files changed.
+
+---
+
+## § D71 — Prompt #36
+
+Our project work is more updated than the SAG PDF, so the training day is 4 hours **including** the break, just like we divided the time slots. The SAG PDF will be updated later.
+
+For **M4** it is ok, since all of those building stages are included — they don't have to carry a dedicated section.
+
+For **M5**, those 2 promised packages kind of exist or will exist: for the ERD there should be an equivalent logic when we build the skill for the Claude steps for section 13; same for security when we write its corresponding section 15 skill; and for testing, when we define the types of testing to be done in the iterations.
+
+It is ok for **M6**.
+
+No need for a targeted-audience section in the package, since this is just used to bring the correct trainees through the brochure.
+
+Didn't understand what you are suggesting for **M8**.
+
+---
+
+## § D72 — Response to Prompt #36
+
+### D72.1 Resolutions — the audit is now closed except M3, M7, M8
+
+| Item | Decision | Work needed |
+|---|---|---|
+| **M1** day split | **Our division is canonical.** The training day is 4 hours **including** the 25-minute break → 215 working minutes. The SAG brochure's 105-minute trainee block and missing break are the *brochure's* error; SAG will be updated later to match us. | **None.** §5.1 and all of §6 stand as written. |
+| **M2** target audience | **Not needed in the package.** The audience list exists to attract the right trainees *through the brochure*; a trainee already in the room does not need it. | **None.** |
+| **M4** 12 stages vs 10 sections | **Fine as-is.** Every SAG build stage is covered; a stage does not have to own a dedicated section. «الدخول والصلاحيات» inside §14 stage 3 and «إدارة الإصدارات» as push cadence both stand. | **None.** No renumbering — §8–§17 are stable, and the deck can be generated against them. |
+| **M5** missing deliverables | **Deferred, not missing.** The ERD templates arrive with the **§13 skill**; the security checklist with the **§15 skill**; the testing checklist is satisfied by defining the **testing types performed inside each build iteration**. | Folded into the queued §7–§17 skill work — no separate task. |
+| **M6** requirements file → skill | **Accepted.** `writing-requirements` as a skill is sufficient; no standalone file restored. | **None.** |
+
+**Still open:** **M3** (consolidated technical-prerequisites list) and **M7** (provider attribution) were not addressed — both are cheap and additive, and neither blocks anything. Flagged here so they are not lost.
+
+### D72.2 M8 explained
+
+**What the file is doing right now**, verified rather than asserted:
+
+- `AI_MVP_Bootcamp_6_Days_AR.pdf` is **committed to the repo** (tracked by git).
+- It is **listed in `graphify-out/manifest.json`**, so every future `/graphify --update` re-reads and re-indexes it.
+- It contributed **29 nodes** to the current knowledge graph, and it is the sole source of **all five** "surprising connections" the graph reported — every one of them just the old 6-day plan mapping onto the new 10-day curriculum. That is noise dressed as insight.
+
+**Why it matters beyond the graph.** It is a superseded specification sitting in the repo root looking authoritative, and it says **6 days**. Any future session, subagent, or graph query that reaches for "the bootcamp spec" can pick it up and treat it as current — the same class of always-available contradiction that made the English rule file worth deleting.
+
+**A related inversion worth fixing at the same time:** the **superseded** PDF is committed, while the **authoritative** one — `SAG_Tech_Claude_MVP_AR.pdf` — is still **untracked**. That is backwards.
+
+**Recommendation:** `git mv AI_MVP_Bootcamp_6_Days_AR.pdf archive/`, and commit `SAG_Tech_Claude_MVP_AR.pdf` as the current spec. Archiving rather than deleting keeps the original 6-day plan recoverable as history while removing its claim to being current; git history would preserve it either way, but a visible `archive/` folder is self-documenting for anyone browsing the repo. A follow-up `/graphify --update` then drops its 29 nodes and the five false surprises.
+
+### D72.3 Remaining work queue
+
+1. **Part A** — delete `.claude/rules/bootcamp-mvp-process.md`, fix root `CLAUDE.md` §A.2 line 16. *(Awaiting go-ahead.)*
+2. **M8** — archive the old PDF, track the new one. *(Awaiting go-ahead.)*
+3. **M3 + M7** — technical-prerequisites section and «ساج التقنية» attribution. *(Unanswered; cheap.)*
+4. **§7–§17 notes** — the remaining per-section skills, now explicitly including ERD templates (§13), the security checklist (§15), and the per-iteration testing types (§14/§15).
+5. **The HTML deck** — unblocked by the M4 decision, since section numbering is now stable.
+
+### Documents Affected
+`conversation_history.md` (this entry). No other files changed.
+
+### Status
+Audit closed on M1/M2/M4/M5/M6. M3, M7, M8 and Part A pending.
+
+---
+
+## § D73 — Prompt #37
+
+Go ahead and archive it. [M3/M7 later: "I already deleted the english rule file so fix the root CLAUDE.md. Ignore M3/M7"]
+
+---
+
+## § D74 — Response to Prompt #37
+
+### D74.1 M8 — archived
+
+- `AI_MVP_Bootcamp_6_Days_AR.pdf` → `git mv` to `archive/` (history preserved, no longer reads as current).
+- `SAG_Tech_Claude_MVP_AR.pdf` staged as the tracked, authoritative spec — fixing the tracked/untracked inversion flagged in §D72.
+- Added `.graphifyignore` (`archive/`) so future `/graphify --update` runs stop re-indexing superseded specs.
+- Pruned the live graph artifacts of the old PDF's footprint: removed its 29-node/66-edge cache file, stripped cross-edges referencing those ids from the remaining cache, dropped its manifest entry, and pruned `graphify-out/graph.json` (1400→1371 nodes, 2297→2231 links, 27→24 hyperedges). One legitimate node was kept — `conversation_history_bootcamp_pdf`, which records that the PDF *was consulted*, sourced from `conversation_history.md` itself, not from the PDF's content. `graph.html` and `GRAPH_REPORT.md` still show stale counts until the next full `/graphify` regeneration; not rebuilt now since it wasn't asked for.
+
+### D74.2 Part A — resolved (user deleted it directly)
+
+The user deleted `.claude/rules/bootcamp-mvp-process.md` themselves outside this conversation, before this turn began. Found unexpectedly while verifying M8's git status (its absence predated my archive commands) — flagged rather than assumed, then confirmed by the user's follow-up. Staged the deletion (`git rm --cached`) and fixed the dangling reference at root `CLAUDE.md` §A.2 (old line 16: *"Local: `.claude/rules/bootcamp-mvp-process.md` (generic 6-day trainee guide)"*) — removed outright rather than repointed, since its content has no live successor at the trainer-root level (it's fully absorbed into the `project-package/` surfaces per §D70's mapping table).
+
+**Swept for other dangling references** rather than trusting the one line:
+- `CLAUDE.md` §A.5 line 36 already pointed at `project-package/.claude/rules/bootcamp-mvp-process.md` §4 (the surviving Arabic package file) — not the deleted root file. No fix needed.
+- `PROJECT_REPORT.md` had two live references to the deleted file (§5 User Journey, §6.3 Claude Design Workflow) — these are a graded document, not history, so fixed rather than left: repointed to the `user-journey` skill and to curriculum §12 respectively, the two places that content now actually lives.
+- `conversation_history.md`'s own references (12 lines, D-numbered entries recording work done against the file when it existed) were left untouched — append-only historical log, per standing convention.
+- `graphify-out/GRAPH_REPORT.md` still names the file in two edges; not hand-edited, since the next `/graphify` run regenerates it from the graph, which itself needs re-indexing now that the file is gone.
+
+### D74.3 M3 / M7 — dropped
+
+User confirmed no action wanted. Audit item closed with no work.
+
+### D74.4 Outstanding
+
+Everything from the SAG alignment audit (§D70–§D72) is now closed. The queue is:
+1. §7–§17 skill notes, as the user sends them — now explicitly covering the §13 ERD templates, §15 security checklist, and per-iteration testing types folded into M5's resolution.
+2. The HTML deck — unblocked since M4 confirmed §8–§17 numbering is stable.
+3. A full `/graphify` re-run once the skill work lands, to fold the archive/root cleanup into the graph properly (current graph.json prune was surgical, not a full rebuild).
+
+### Documents Affected
+`CLAUDE.md` (§A.2) · `PROJECT_REPORT.md` (§5, §6.3) · `.gitignore`-equivalent `.graphifyignore` (new) · `archive/AI_MVP_Bootcamp_6_Days_AR.pdf` (moved) · `SAG_Tech_Claude_MVP_AR.pdf` (newly tracked) · `.claude/rules/bootcamp-mvp-process.md` (deletion staged) · `graphify-out/graph.json`, `graphify-out/manifest.json`, `graphify-out/cache/semantic/*` (pruned) · this file.
+
+### Status
+All staged, nothing committed. `graph.html` / `GRAPH_REPORT.md` regeneration deferred to the next full graphify run.
+
+---
+
+## § D75 — Prompt #38

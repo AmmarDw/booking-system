@@ -1,0 +1,626 @@
+{
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\mvnw": {
+    "mtime": 1784693220.0,
+    "hash": "ab50dd89da7da2346b28003352eeeeeb"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\BookingSystemApplication.java": {
+    "mtime": 1784693220.0,
+    "hash": "eb0538513b49966a984b32a63285ad8f"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\auth\\AuthController.java": {
+    "mtime": 1784877125.6566153,
+    "hash": "3fbc29831386cc3a4b338ad834b0faf7"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\auth\\AuthResponse.java": {
+    "mtime": 1784877110.651722,
+    "hash": "933a588e9c06c00b6fa984bf6b3b1997"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\auth\\LoginRequest.java": {
+    "mtime": 1784733446.109812,
+    "hash": "a2d16ce0a25542e83be3948674b3a9ff"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\auth\\RegisterRequest.java": {
+    "mtime": 1784733441.4168684,
+    "hash": "f6ad786138f7849b7ed5b96a2c1ac9bb"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\availability\\AvailabilityController.java": {
+    "mtime": 1784765341.8036704,
+    "hash": "271462b1303c2e20fd01ca44ee6ea9a5"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\availability\\AvailabilityManagementController.java": {
+    "mtime": 1784891252.2689302,
+    "hash": "c810e2b714ab4ddfd9dbfca7b3324fda"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\availability\\AvailabilityManagementService.java": {
+    "mtime": 1784891233.8860326,
+    "hash": "3023e84a0f7495436a8f6d11a278f755"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\availability\\AvailabilityService.java": {
+    "mtime": 1784781363.2950923,
+    "hash": "d2f47f2005024aa6ae10303118d95554"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\availability\\AvailabilitySlot.java": {
+    "mtime": 1784731086.8549023,
+    "hash": "9a25cc76d1cb510185d0e033a581138a"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\availability\\AvailabilitySlotRepository.java": {
+    "mtime": 1784765297.567843,
+    "hash": "4c52ac5beebcd2cbee99bbe733dd42ca"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\availability\\SlotStatus.java": {
+    "mtime": 1784731076.526127,
+    "hash": "27f40b35d0437e12b4fcf22e428cf3fd"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\availability\\dto\\BulkGenerateRequest.java": {
+    "mtime": 1784891143.356043,
+    "hash": "561eea9279db068915aa31fa43c32ee1"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\availability\\dto\\BulkGenerateResponse.java": {
+    "mtime": 1784781618.0423987,
+    "hash": "5adb50df65890aaa013d0feca0106805"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\availability\\dto\\BulkPreviewResponse.java": {
+    "mtime": 1784891151.9806345,
+    "hash": "2c2aaf66e056834bfca431fbf94fe24a"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\availability\\dto\\DayAvailabilityCount.java": {
+    "mtime": 1784765302.7350593,
+    "hash": "76ac4233e4bacf936ff9ddd8a3e35d9e"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\availability\\dto\\ManagementSlotInfo.java": {
+    "mtime": 1784781629.2978027,
+    "hash": "6e587346e7a4a0667db9d5bf19d907c0"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\availability\\dto\\ProviderDaySlots.java": {
+    "mtime": 1784765314.5628204,
+    "hash": "d4fbf067971555cdc374a1b57e37c2d6"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\availability\\dto\\SlotInfo.java": {
+    "mtime": 1784765309.1432385,
+    "hash": "ef6a3e29741292b776209cde7895e18d"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\availability\\dto\\SlotTimeRange.java": {
+    "mtime": 1784781591.6317842,
+    "hash": "23ebc8ad42785c379747d96d8585cf44"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\booking\\AppointmentQueryService.java": {
+    "mtime": 1784892455.7257583,
+    "hash": "c3a73bac8a17b2b4507399f1c672e0c1"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\booking\\Booking.java": {
+    "mtime": 1784731114.7164848,
+    "hash": "e596c5bf1a71fef02ba4e162954bce76"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\booking\\BookingController.java": {
+    "mtime": 1784892508.749162,
+    "hash": "1f56a7dfa0bf7989c5b6fb9c6c954c77"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\booking\\BookingRepository.java": {
+    "mtime": 1784731120.1188765,
+    "hash": "a4bf72bcc77b0448195e7485e6a21ea2"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\booking\\BookingService.java": {
+    "mtime": 1784891794.090872,
+    "hash": "7114a6aab587f2ed46ee72541d82963b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\booking\\BookingStatus.java": {
+    "mtime": 1784891713.6449506,
+    "hash": "755acf547e61b0ba18342ef350f17e83"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\booking\\MeetingLink.java": {
+    "mtime": 1784731130.7943277,
+    "hash": "d03cae25f62f2ac7baf70770b4e3ee1e"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\booking\\MeetingLinkRepository.java": {
+    "mtime": 1784731135.4635468,
+    "hash": "c967941afec6e5ee7aa934465986b191"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\booking\\dto\\AppointmentSummary.java": {
+    "mtime": 1784877136.0632467,
+    "hash": "e5abb94375c5677d45360a1040a084eb"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\booking\\dto\\BookingResponse.java": {
+    "mtime": 1784765395.4133077,
+    "hash": "674dfecca48f1bdca6b0421e43f5eef0"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\booking\\dto\\ChartResponse.java": {
+    "mtime": 1784892389.3488657,
+    "hash": "0e3f5bb3c41b8c2a662dd261835af16c"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\booking\\dto\\CreateBookingRequest.java": {
+    "mtime": 1784765382.8621433,
+    "hash": "72307fcf73e6241bb0b15d1dc4a16f23"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\booking\\dto\\DashboardStats.java": {
+    "mtime": 1784892381.717355,
+    "hash": "82b1b286bf88d692bc482c500c63bac2"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\booking\\dto\\UpdateBookingStatusRequest.java": {
+    "mtime": 1784891750.7251415,
+    "hash": "2684b4f8550a242893f893c34f4250de"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\common\\ApiError.java": {
+    "mtime": 1784733403.0886166,
+    "hash": "35a8a073c5fc4c56bdfed80c106f97f8"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\config\\AppSettingsCache.java": {
+    "mtime": 1784781567.9048958,
+    "hash": "ebebd19e06a1c80b5c4681833561234c"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\config\\CorsConfig.java": {
+    "mtime": 1784733421.287261,
+    "hash": "70f5dc88fb360357a1e8d534beb769da"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\config\\GlobalExceptionHandler.java": {
+    "mtime": 1784782004.0591056,
+    "hash": "128979b5fae67661c947d14690b4707f"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\config\\SecurityConfig.java": {
+    "mtime": 1784787349.9692106,
+    "hash": "570b1a764bd103a2f7051fb197e81c34"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\email\\EmailService.java": {
+    "mtime": 1784877191.5365107,
+    "hash": "5f546c7dcd55a29bfe29dd0967efafe6"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\google\\GoogleAccountConnection.java": {
+    "mtime": 1784731146.023746,
+    "hash": "b950d7004a3680f0b60013415553c1a1"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\google\\GoogleAccountConnectionRepository.java": {
+    "mtime": 1784731151.9051795,
+    "hash": "a1541b3d6be614c5d553207816b28ba0"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\google\\GoogleCalendarService.java": {
+    "mtime": 1784981865.1693358,
+    "hash": "44ed6440a92d29d22ffaa45550fab7c9"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\google\\GoogleOAuthController.java": {
+    "mtime": 1784787567.7523675,
+    "hash": "c3c2bf35475da986f5c50f89b9659b60"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\google\\GoogleOAuthService.java": {
+    "mtime": 1784786914.493138,
+    "hash": "5011d38c1626353b2921afd153a417c9"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\google\\GoogleUserInfo.java": {
+    "mtime": 1784786884.2050083,
+    "hash": "a7ba99a53f9cd6c0164eb51d71e7df5d"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\google\\TokenCipher.java": {
+    "mtime": 1784786812.8098755,
+    "hash": "d2d625a543db699cd394d53e93f63401"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\google\\dto\\AuthorizeResponse.java": {
+    "mtime": 1784786863.583544,
+    "hash": "f607a2992f08140ab29425b9dd33c2b8"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\google\\dto\\ConnectionStatusResponse.java": {
+    "mtime": 1784786848.7666163,
+    "hash": "b5fbe1f425ad35d07d18826887a38d99"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\google\\dto\\FallbackLinkRequest.java": {
+    "mtime": 1784786855.9575047,
+    "hash": "5a511e893c9bd2aef5aee04de8e90df9"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\security\\AppUserDetailsService.java": {
+    "mtime": 1784733316.279672,
+    "hash": "4a5961f678234220543f15cb2d196d4b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\security\\CurrentUser.java": {
+    "mtime": 1784733394.345664,
+    "hash": "75a231dd03b677ad5206e4100b9169e1"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\security\\JwtAuthenticationFilter.java": {
+    "mtime": 1784733387.8093767,
+    "hash": "abbc2fad0ea820e538c5a52ea93c5c61"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\security\\JwtService.java": {
+    "mtime": 1784786835.1247067,
+    "hash": "c08aa760452e543927f97f3b80f3f4bb"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\security\\UserPrincipal.java": {
+    "mtime": 1784733301.9620438,
+    "hash": "a50baacb12929a0dfa42ea8a641e14dc"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\service\\Service.java": {
+    "mtime": 1784731065.7875433,
+    "hash": "f87cd006725b8e8c4a3bc0e574427f59"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\service\\ServiceController.java": {
+    "mtime": 1784785955.3393693,
+    "hash": "457b4578ff1592eb8718b5ee36fd62c8"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\service\\ServiceRepository.java": {
+    "mtime": 1784731071.1461236,
+    "hash": "4c35bd6b8aa3985e36a909e28b7b9838"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\service\\dto\\AssignProvidersRequest.java": {
+    "mtime": 1784781479.5604186,
+    "hash": "949385f99855fca1e789653614bd591f"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\service\\dto\\CreateServiceRequest.java": {
+    "mtime": 1784781470.885474,
+    "hash": "5ca482af195a1fb87eb204d98924713b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\service\\dto\\ProviderSummary.java": {
+    "mtime": 1784781487.349951,
+    "hash": "24b86bc0f94afd9cd3da2a66d9cb3155"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\service\\dto\\ServiceAdminResponse.java": {
+    "mtime": 1784781495.141802,
+    "hash": "521cb40cc5b8af9adfbc33fb82ef674a"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\service\\dto\\ServiceResponse.java": {
+    "mtime": 1784890137.249298,
+    "hash": "f2ad79cbebfd1b9e05c04c53ccedff89"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\settings\\AppSettings.java": {
+    "mtime": 1784731161.4137204,
+    "hash": "2c595d648f9e83d27d449de06e4f5cf6"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\settings\\AppSettingsRepository.java": {
+    "mtime": 1784731165.798415,
+    "hash": "aa93548af46a7002453a94f757bb8601"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\settings\\SettingsController.java": {
+    "mtime": 1784891114.385964,
+    "hash": "04df8c953985ff85e8a3b24e09e7133c"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\settings\\dto\\BookingWindowResponse.java": {
+    "mtime": 1784891105.0459294,
+    "hash": "12ec843970690d51a2b218f94cdc858f"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\settings\\dto\\UpdateBookingWindowRequest.java": {
+    "mtime": 1784781372.829512,
+    "hash": "17b12c6a0c4b796c303b15ba9de2efc0"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\user\\Role.java": {
+    "mtime": 1784731033.943166,
+    "hash": "819743b9e98393b5022b3526fbadf6b8"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\user\\User.java": {
+    "mtime": 1784731051.9281662,
+    "hash": "dd83d606f4a34ac5d4378d1dda3469de"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\user\\UserController.java": {
+    "mtime": 1784781448.6038392,
+    "hash": "376ead683b284230baf0e8720742bb9c"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\user\\UserRepository.java": {
+    "mtime": 1784781461.6913302,
+    "hash": "eceb3de52d4885bbfc0c64a2adad1218"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\user\\dto\\CreateUserRequest.java": {
+    "mtime": 1784781410.3728578,
+    "hash": "209cb20216375c7b5869a1f1c02418d5"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\user\\dto\\UpdateUserRequest.java": {
+    "mtime": 1784781431.5124676,
+    "hash": "68109819137cdf2be0a5fe520cf16b4e"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\java\\com\\ammar\\bookingsystem\\user\\dto\\UserSummary.java": {
+    "mtime": 1784781398.842114,
+    "hash": "40a58228f2853a6904300cda9148154b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\resources\\db\\migration\\V1__init_schema.sql": {
+    "mtime": 1784704179.9205568,
+    "hash": "6314c3b45be79fe5ed387703bba9e41e"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\resources\\db\\migration\\V2__seed_app_settings.sql": {
+    "mtime": 1784704184.8532407,
+    "hash": "55e6dc2a7887a29e7dbf4e359a2de6ec"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\resources\\db\\migration\\V3__seed_demo_services.sql": {
+    "mtime": 1784764654.243891,
+    "hash": "be56ecfa1ea38bbb80f20ecdec2b8c0c"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\resources\\db\\migration\\V4__seed_demo_provider_and_slots.sql": {
+    "mtime": 1784765288.504479,
+    "hash": "b5e50b4206c4cc7115befd6427d9fb5b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\resources\\db\\migration\\V5__seed_demo_admin.sql": {
+    "mtime": 1784781897.443976,
+    "hash": "3593f8301789ab3b650c96b77643faf6"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\resources\\db\\migration\\V6__seed_demo_provider_fallback_links.sql": {
+    "mtime": 1784787364.3696709,
+    "hash": "83f743266cfcf507cddbc157ca4d8ea9"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\resources\\db\\migration\\V7__add_booking_statuses.sql": {
+    "mtime": 1784891721.6658516,
+    "hash": "0da799be2d4e6ff43f5dc86a8bd7a1e5"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\test\\java\\com\\ammar\\bookingsystem\\BookingSystemApplicationTests.java": {
+    "mtime": 1784693220.0,
+    "hash": "2fcfe230dcf98a2a105a8a7ee581f01f"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\eslint.config.mjs": {
+    "mtime": 1784729009.6112175,
+    "hash": "dfa1f5f6a7037bf39dc510f30b180002"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\next-env.d.ts": {
+    "mtime": 1784972671.9258516,
+    "hash": "d0f8375ae1199dc7acd3977fc33b78b8"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\next.config.ts": {
+    "mtime": 1784729009.7405999,
+    "hash": "9b77af189a21a7a64e4bd7a426f64176"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\postcss.config.mjs": {
+    "mtime": 1784729009.6393943,
+    "hash": "239f3ebf717465dc636818a1a619398d"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\app\\layout.tsx": {
+    "mtime": 1784785106.1093254,
+    "hash": "e5e5a2ab2e513bf78ed42dab9a848df2"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\app\\page.tsx": {
+    "mtime": 1784890353.1796281,
+    "hash": "84c58e73cb403736d773af21c24ad93d"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\app\\appointments\\page.tsx": {
+    "mtime": 1784892103.3168702,
+    "hash": "ae8733092cda52f08b8883a1dbc031a4"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\app\\book\\page.tsx": {
+    "mtime": 1784890383.9264479,
+    "hash": "ae9fa249474d18f2cad31b1805c2517e"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\app\\book\\[serviceId]\\page.tsx": {
+    "mtime": 1784890870.6347852,
+    "hash": "590ea43d5b54e84118c58890654deb5a"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\app\\dashboard\\layout.tsx": {
+    "mtime": 1784788036.734958,
+    "hash": "634dbc551134231e4e941961ea70259b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\app\\dashboard\\page.tsx": {
+    "mtime": 1784894584.2001579,
+    "hash": "82b1ef043b07a124619e2b62c9b5deb7"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\app\\dashboard\\availability\\page.tsx": {
+    "mtime": 1784891426.8938742,
+    "hash": "7cf0d97a47751162d8f639311eaf3262"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\app\\dashboard\\connect-google\\page.tsx": {
+    "mtime": 1784788015.1059682,
+    "hash": "ec3b0b62a380ee3e4e860e1640a256c1"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\app\\dashboard\\services\\page.tsx": {
+    "mtime": 1784785492.9416244,
+    "hash": "d8bf1c7ca4aa9dc9e50be2303989a0c1"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\app\\dashboard\\users\\page.tsx": {
+    "mtime": 1784785270.5857165,
+    "hash": "2a4140b07286c5fac3b45bb82314d84c"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\app\\sign-in\\page.tsx": {
+    "mtime": 1784734159.4132092,
+    "hash": "a04b2ea0d503334fedd357106b9e1fab"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\app\\sign-up\\page.tsx": {
+    "mtime": 1784734170.1644728,
+    "hash": "4f2b7875b505e45ce92579988794b948"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\AppointmentDetailsModal.tsx": {
+    "mtime": 1784892053.2554643,
+    "hash": "a2185968db04ec8a8623d38ea4caa7bd"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\LoadingOverlay.tsx": {
+    "mtime": 1784877362.5184493,
+    "hash": "7fcb412f03dafff6ed6c68f7c50f1b3a"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\MultiSelect.tsx": {
+    "mtime": 1784894473.9545074,
+    "hash": "02ef404b9d41abef0f5fa828039a7cb3"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\NavBar.tsx": {
+    "mtime": 1784890898.464922,
+    "hash": "f10ba2c17c7295a5906ed534bebf2205"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\index.ts": {
+    "mtime": 1784729599.5123222,
+    "hash": "aec0cb1aec99f3805cfab95293bf84ee"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\data\\Badge.d.ts": {
+    "mtime": 1784734252.4249525,
+    "hash": "942cba5e8531e970a9ddea8afdbe3230"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\data\\Badge.jsx": {
+    "mtime": 1784729436.078065,
+    "hash": "9028beb2a8dab9c4446e5e4ee9c145aa"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\data\\CalendarDayCell.d.ts": {
+    "mtime": 1784890748.7933187,
+    "hash": "6966495132b26880a05f21b010ae7d71"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\data\\CalendarDayCell.jsx": {
+    "mtime": 1784890733.8320718,
+    "hash": "d41dd8ebe3648c5d074da79f3f656393"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\data\\Card.d.ts": {
+    "mtime": 1784734259.009221,
+    "hash": "8fb9a2314ecb948846ed675c4f49a593"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\data\\Card.jsx": {
+    "mtime": 1784729441.2501893,
+    "hash": "3e99a2b4c17254d0c8351e2137992b46"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\data\\Table.d.ts": {
+    "mtime": 1784793462.2926319,
+    "hash": "20723a4cbd5d15abd62a891d65d8e68f"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\data\\Table.jsx": {
+    "mtime": 1784793455.8791642,
+    "hash": "05228885e8303e9f8cb2ef0d822216e1"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\data\\Tabs.d.ts": {
+    "mtime": 1784734274.5997963,
+    "hash": "9f4251ef39d3d9a1314d877d9affd8a8"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\data\\Tabs.jsx": {
+    "mtime": 1784729477.5526717,
+    "hash": "ee3cafa9ecf6a3cca375fb19a7b2f6e3"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\feedback\\Modal.d.ts": {
+    "mtime": 1784793473.7923572,
+    "hash": "e8cea3128ae4138bab734ee7c2392626"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\feedback\\Modal.jsx": {
+    "mtime": 1784793468.7543175,
+    "hash": "8e1cb4f8d811ac3783fcfc14bc68d127"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\feedback\\Toast.d.ts": {
+    "mtime": 1784734285.1330118,
+    "hash": "9f423ed9e775d9752ad7d04aa126178d"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\feedback\\Toast.jsx": {
+    "mtime": 1784729493.9380808,
+    "hash": "d3a4794489f5fe642adf3808bf3cd064"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\forms\\Accordion.d.ts": {
+    "mtime": 1784734247.8064628,
+    "hash": "77fdfa9d8d11ad63261cb53a11199a94"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\forms\\Accordion.jsx": {
+    "mtime": 1784764787.1420605,
+    "hash": "e1c43909da02158ea4706c1d4857beef"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\forms\\Button.d.ts": {
+    "mtime": 1784734238.0425773,
+    "hash": "0dd30ae286fd64cfa67663bdade52a32"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\forms\\Button.jsx": {
+    "mtime": 1784729408.6895068,
+    "hash": "fc1fdc4293475e28891acd7cfdfd68d8"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\forms\\Input.d.ts": {
+    "mtime": 1784734230.7076433,
+    "hash": "eb2e688911e17c3a35d49950bb563665"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\forms\\Input.jsx": {
+    "mtime": 1784729415.4437127,
+    "hash": "cfcb95c1f53d29e38dee5320af66771b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\forms\\Select.d.ts": {
+    "mtime": 1784734243.282954,
+    "hash": "d44fbee21a905ae0f5f6fbed0251c754"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\components\\forms\\Select.jsx": {
+    "mtime": 1784729421.3261354,
+    "hash": "49e0893d81f0f7b2483f92e533ecec41"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\screens-reference\\BookingsScreen.jsx": {
+    "mtime": 1784729548.811129,
+    "hash": "493cfa46b764c34870ab5a3a7d1536ca"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\screens-reference\\NavShell.jsx": {
+    "mtime": 1784729508.408177,
+    "hash": "46cd134c0419c609afe138267526e22e"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\screens-reference\\ProviderScreen.jsx": {
+    "mtime": 1784729537.323941,
+    "hash": "0b26fb5e92da153ed706a76275e74b41"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\screens-reference\\SearchScreen.jsx": {
+    "mtime": 1784729522.5958145,
+    "hash": "1aa274ccf9a77e136efa092f3dd24f3f"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\lib\\api.ts": {
+    "mtime": 1784785978.2389379,
+    "hash": "b78885d326803a7a43f234363d9fbc90"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\lib\\auth.tsx": {
+    "mtime": 1784877350.8984807,
+    "hash": "aedd0d068d454f541a67a9ff349b57c4"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\CLAUDE.md": {
+    "mtime": 1787844152.5885043,
+    "hash": "890647852b95c54708f029b20bd04236"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\conversation_history.md": {
+    "mtime": 1787844270.912035,
+    "hash": "e3caaaadc3da7bc6d1a7bf0e582ac444"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\implementation_plan.md": {
+    "mtime": 1784894802.9530766,
+    "hash": "e3d7e8445d3eb51b846894b51bd480ee"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\notebook.txt": {
+    "mtime": 1787923412.3250597,
+    "hash": "8f86bfa61e7151a6815a082d9b433865"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\PROJECT_REPORT.md": {
+    "mtime": 1784729953.6367712,
+    "hash": "0c74bae679ca524b3f6a03d215dfc06b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\render.yaml": {
+    "mtime": 1784973093.6879284,
+    "hash": "707dfbf9a78aec8c4f5908491446e7f5"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\research_plan.md": {
+    "mtime": 1784635227.6022496,
+    "hash": "bc36ee0f6e674113a026496721e45db6"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\HELP.md": {
+    "mtime": 1784693220.0,
+    "hash": "f4184b32d4357c5389d3eb50480eab89"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\backend\\src\\main\\resources\\application.yaml": {
+    "mtime": 1784981849.7752283,
+    "hash": "d45e4c635b3053d7439118f64d0900f0"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\AGENTS.md": {
+    "mtime": 1784729067.1581776,
+    "hash": "9e09241799026ac05be315a2f0b50055"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\CLAUDE.md": {
+    "mtime": 1784729067.1581776,
+    "hash": "5c27369b226fcf2be8a6cfe52224e767"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\README.md": {
+    "mtime": 1784729009.5881016,
+    "hash": "f15aaa42d5d299d091b1171097ea56ad"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\src\\components\\ds\\README.md": {
+    "mtime": 1784729637.138764,
+    "hash": "964ac89e590ca883748716c83a4f142a"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\graphify-out\\converted\\bootcamp_roadmap_and_curriculum_19f7902c.md": {
+    "mtime": 1787923399.6755996,
+    "hash": "ecce69adbbf7adb43a3c317be7817871"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\bootcamp_roadmap_and_curriculum.md": {
+    "mtime": 1787844018.559918,
+    "hash": "e01a87ba63738147c41aef417419d7ee"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\CLAUDE.md": {
+    "mtime": 1787843854.0680735,
+    "hash": "9d5971606f0290c9c245d73f1af6996b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\PRODUCT.md": {
+    "mtime": 1787843875.7440245,
+    "hash": "02dd70ffa793b76f2aa88b13e8afbb6b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\public\\file.svg": {
+    "mtime": 1784729009.6533575,
+    "hash": "d09f95206c3fa0bb9bd9fefabfd0ea71"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\public\\globe.svg": {
+    "mtime": 1784729009.667359,
+    "hash": "2aaafa6a49b6563925fe440891e32717"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\public\\next.svg": {
+    "mtime": 1784729009.6803565,
+    "hash": "8e061864f388b47f33a1c3780831193e"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\public\\vercel.svg": {
+    "mtime": 1784729009.6954153,
+    "hash": "c0af2f507b369b085b35ef4bbe3bcf1e"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\public\\window.svg": {
+    "mtime": 1784729009.708601,
+    "hash": "a2760511c65806022ad20adf74370ff3"
+  }
+}

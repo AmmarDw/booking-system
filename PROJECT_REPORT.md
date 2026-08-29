@@ -166,7 +166,7 @@
 
 ## 5. User Journey
 
-**① Purpose.** A text description of the main journey (Day 1) that converts to an **activity diagram** (Day 2, draw.io skill). Write it in the JOURNEY/DECISION format from `.claude/rules/bootcamp-mvp-process.md` §2.
+**① Purpose.** A text description of the main journey (Day 1) that converts to an **activity diagram** (Day 2, draw.io skill). Write it in the JOURNEY/DECISION format from the trainee package's `user-journey` skill (`project-package/.claude/skills/user-journey/SKILL.md`).
 
 **② Template.** `JOURNEY / ACTOR / START / numbered steps / DECISION branches / END`.
 
@@ -265,7 +265,7 @@ END
 
 #### 6.3 Claude Design Workflow (Design-System-first + DesignSync)
 
-We start by building a **Design System** project in Claude Design (tokens + core components), generate each screen from it, then pull the components into `app/frontend` via **DesignSync** (`/design-sync`, one component at a time). The generic step-by-step for trainees is in `.claude/rules/bootcamp-mvp-process.md` (Day 2). Paste the prompts below in order.
+We start by building a **Design System** project in Claude Design (tokens + core components), generate each screen from it, then pull the components into `app/frontend` via **DesignSync** (`/design-sync`, one component at a time). The generic step-by-step for trainees is in curriculum §12 (`project-package/bootcamp_roadmap_and_curriculum.md`). Paste the prompts below in order.
 
 #### 6.4 Ready-to-Paste Claude Design Prompts
 
