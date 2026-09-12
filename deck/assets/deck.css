@@ -1,0 +1,1005 @@
+/* ── deck layer ──────────────────────────────────────────────────────
+   Everything the design system deliberately left to the consuming project:
+   viewport scaling, slide-to-slide navigation, and the real brand artwork
+   (the system shipped type-set placeholders because no logo files reached it).
+   Nothing here overrides a design token. */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #0B1220;
+  height: 100%
+}
+
+body {
+  overflow: hidden
+}
+
+/* ── stage: scales the fixed 1920×1080 frame to whatever screen we present on ── */
+/* transform:scale() does NOT shrink the layout box — a scaled 1080px-tall element
+   still reserves 1080px and overflows a shorter viewport. Take the scaler out of
+   flow and centre it by translate, so only the visual size matters. */
+.deck-stage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden
+}
+
+.deck-scaler {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  width: var(--slide-w);
+  height: var(--slide-h);
+  transform: translate(50%, -50%) scale(var(--deck-scale, 1));
+  transform-origin: center center
+}
+
+/* one slide at a time — never a scroll */
+.deck-slide {
+  display: none
+}
+
+.deck-slide[data-active="true"] {
+  display: flex
+}
+
+/* ── real brand artwork ──────────────────────────────────────────────
+   Replaces LogoZone / EndorsementMark placeholders. Clear space still comes
+   from --logo-clear, so the system's spacing rule is preserved. */
+.deck-logo {
+  display: inline-block;
+  padding: var(--logo-clear);
+  line-height: 0
+}
+
+.deck-logo img {
+  display: block;
+  height: auto;
+  width: 100%
+}
+
+.deck-logo[data-size="hero"] {
+  width: 340px
+}
+
+.deck-logo[data-size="standard"] {
+  width: 280px
+}
+
+.deck-logo[data-size="footnote"] {
+  width: 160px
+}
+
+.deck-endorse {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--logo-clear);
+  line-height: 0
+}
+
+.deck-endorse img {
+  display: block;
+  height: auto
+}
+
+.deck-endorse[data-size="footnote"] img {
+  height: 52px
+}
+
+.deck-endorse[data-size="standard"] img {
+  height: 76px
+}
+
+/* Both marks are navy artwork. On a dark surface, knock them to white rather
+   than shipping a second file — the marks are single-colour so this is exact. */
+[data-surface="dark"] .deck-logo img,
+[data-surface="dark"] .deck-endorse img {
+  filter: brightness(0) invert(1)
+}
+
+/* ── title slide ─────────────────────────────────────────────────── */
+.deck-title__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3)
+}
+
+.deck-fact {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: 10px var(--sp-3);
+  border-radius: var(--radius-pill);
+  background: rgba(56, 182, 217, .18);
+  color: var(--brand-white);
+  font: var(--fw-medium) var(--fs-caption)/1 var(--font-arabic);
+  white-space: nowrap
+}
+
+.deck-fact--lat {
+  font-family: var(--font-latin);
+  direction: ltr;
+  unicode-bidi: isolate
+}
+
+.deck-title__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  min-width: 0
+}
+
+.deck-title__aside .sag-presenter__role {
+  font-size: 20px;
+  white-space: nowrap
+}
+
+.deck-title__aside .sag-presenter__name {
+  font-size: 28px
+}
+
+.deck-title__aside .sag-presenter__photo {
+  width: 140px;
+  height: 140px
+}
+
+.deck-title__credit {
+  display: flex;
+  flex-direction: column;
+  gap: 6px
+}
+
+.deck-title__credit-kicker {
+  font: var(--fw-semibold) 20px/1.4 var(--font-arabic);
+  color: var(--brand-sky);
+  letter-spacing: 0
+}
+
+.deck-title__byline {
+  font: var(--type-caption);
+  color: var(--text-caption);
+  max-width: 32ch
+}
+
+.deck-title__org {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--brand-deep-line);
+  width: 100%
+}
+
+.deck-title__org-label {
+  font: var(--type-caption);
+  color: var(--text-caption)
+}
+
+.deck-title__bio {
+  margin: 0;
+  font: var(--type-caption);
+  color: var(--text-caption);
+  text-wrap: pretty
+}
+
+/* ── presenter photo: system sizes it, we only supply the image ──── */
+.sag-presenter__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block
+}
+
+/* ── footer ──────────────────────────────────────────────────────── */
+.deck-foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--sp-4)
+}
+
+.deck-foot__side {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3)
+}
+
+.deck-foot__num {
+  font-family: var(--font-latin);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-caption);
+  color: var(--text-caption);
+  direction: ltr;
+  unicode-bidi: isolate
+}
+
+/* ── presenter-only chrome: never projected, only on the operator screen ── */
+.deck-hud {
+  position: fixed;
+  inset-block-end: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font: 500 13px/1 var(--font-latin);
+  color: #8FA3C4;
+  background: rgba(11, 18, 32, .86);
+  border: 1px solid #24365C;
+  border-radius: 999px;
+  padding: 8px 14px;
+  direction: ltr;
+  transition: opacity .45s ease, transform .45s ease
+}
+
+.deck-hud button {
+  all: unset;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: #CFE0F5
+}
+
+.deck-hud button:hover {
+  background: var(--brand-sky-soft);
+  color: var(--brand-primary)
+}
+
+.deck-hud[hidden] {
+  display: none
+}
+
+/* Idle: after 2s with no input the HUD fades and slides down out of the frame,
+   so the bottom band of every slide is fully usable. Note it lives OUTSIDE
+   .deck-slide, so the overflow guard has never measured it — content sitting
+   behind it was never counted as overflow, and still isn't.
+   The translateX(-50%) is the centring transform and must be carried through. */
+.deck-hud[data-idle="true"] {
+  opacity: 0;
+  transform: translateX(-50%) translateY(180%);
+  pointer-events: none
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .deck-hud {
+    transition: opacity .2s linear
+  }
+
+  .deck-hud[data-idle="true"] {
+    transform: translateX(-50%)
+  }
+}
+
+/* ── overflow guard: makes a broken slide impossible to miss ─────── */
+.sag-slide[data-overflow="true"] {
+  outline: 6px solid #E11D48;
+  outline-offset: -6px
+}
+
+.sag-slide[data-overflow="true"]::after {
+  content: "OVERFLOW — split this slide";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  z-index: 20;
+  background: #E11D48;
+  color: #fff;
+  font: 700 18px/1 var(--font-latin);
+  padding: 10px 16px;
+  border-end-start-radius: 10px;
+  direction: ltr
+}
+
+@media print {
+
+  html,
+  body {
+    background: #fff
+  }
+
+  .deck-hud {
+    display: none
+  }
+
+  .deck-stage {
+    position: static;
+    display: block
+  }
+
+  .deck-scaler {
+    transform: none
+  }
+
+  .deck-slide {
+    display: flex !important;
+    break-after: page
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   DECK OVERRIDES — resolved after the design system, deliberately.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── type: bumped for the room ─────────────────────────────────────
+   The system's scale is legible but leaves content-light slides sparse.
+   Raising the floor lets slides fill their frame honestly instead of
+   padding them out. Only ever raised, never lowered — the system's rule. */
+:root {
+  --fs-body: 26px;
+  --fs-body-lead: 33px;
+  --fs-caption: 24px;
+  /* was 20 — audited: only one slide needed a trim */
+  --fs-slide-title: 46px;
+  --fs-display: 76px;
+}
+
+/* ── numerals: Latin everywhere ────────────────────────────────────
+   Overrides the design system's "Arabic-Indic inside Arabic prose" rule.
+   Trainees match these against a printed guide and a terminal, so one
+   numeral system throughout — decided by the author. */
+.sag-slide {
+  font-variant-numeric: lining-nums tabular-nums
+}
+
+.tok-num-ar {
+  font-feature-settings: normal
+}
+
+/* ── bento / cards ─────────────────────────────────────────────────
+   Replaces bullet lists as the default way to carry structured content. */
+.bento {
+  display: grid;
+  gap: var(--sp-3);
+  flex: 1 1 auto;
+  min-height: 0
+}
+
+.bento[data-cols="2"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+}
+
+.bento[data-cols="3"] {
+  grid-template-columns: repeat(3, minmax(0, 1fr))
+}
+
+.bento[data-cols="4"] {
+  grid-template-columns: repeat(4, minmax(0, 1fr))
+}
+
+.bento[data-rows="6"] {
+  grid-template-rows: repeat(6, minmax(0, 1fr))
+}
+
+.bento__span-2 {
+  grid-column: span 2
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  min-width: 0;
+  min-height: 0;
+  background: var(--surface-card);
+  border: var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--sp-3);
+  box-shadow: var(--lift-1)
+}
+
+.card--plain {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0
+}
+
+.card--accent {
+  border-inline-start: 5px solid var(--accent-structure)
+}
+
+.card--state {
+  border-inline-start: 5px solid var(--accent-state)
+}
+
+.card__top {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0
+}
+
+.card__icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: var(--brand-sky-soft);
+  color: var(--brand-primary);
+  font-size: 26px
+}
+
+.card__num {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  min-width: 46px;
+  height: 46px;
+  padding: 0 12px;
+  white-space: nowrap;
+  border-radius: var(--radius-sm);
+  background: var(--brand-primary);
+  color: #fff;
+  font: var(--fw-bold) 22px/1 var(--font-latin);
+  direction: ltr
+}
+
+.card__title {
+  font: var(--fw-semibold) var(--fs-body-lead)/1.35 var(--font-arabic);
+  color: var(--text-heading);
+  min-width: 0;
+  text-wrap: pretty
+}
+
+.card__title--sm {
+  font-size: var(--fs-body)
+}
+
+.card__note {
+  font: var(--type-body);
+  color: var(--text-body);
+  text-wrap: pretty
+}
+
+.card__note--sm {
+  font-size: var(--fs-caption);
+  line-height: 1.6
+}
+
+[data-surface="dark"] .card {
+  background: #1B2E56;
+  border-color: var(--brand-deep-line)
+}
+
+[data-surface="dark"] .card__icon {
+  background: rgba(56, 182, 217, .18);
+  color: var(--brand-sky)
+}
+
+[data-surface="dark"] .card__num {
+  background: var(--brand-sky);
+  color: var(--brand-deep)
+}
+
+/* index cell — compact, one curriculum section per line */
+.idx {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0;
+  background: var(--surface-card);
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+  padding: 10px var(--sp-2)
+}
+
+.idx__n {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--brand-primary);
+  color: #fff;
+  font: var(--fw-bold) 20px/1 var(--font-latin);
+  direction: ltr
+}
+
+.idx__t {
+  font: var(--fw-medium) 23px/1.3 var(--font-arabic);
+  color: var(--text-heading);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.idx[data-group="build"] .idx__n {
+  background: var(--accent-structure);
+  color: var(--brand-deep)
+}
+
+/* stat tile — one number, one label */
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  background: var(--surface-card);
+  border: var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--sp-3);
+  box-shadow: var(--lift-1)
+}
+
+.stat__v {
+  font: var(--fw-bold) 62px/1 var(--font-latin);
+  color: var(--brand-primary);
+  text-align: start
+}
+
+.stat__l {
+  font: var(--fw-medium) var(--fs-body)/1.4 var(--font-arabic);
+  color: var(--text-body)
+}
+
+[data-surface="dark"] .stat {
+  background: #1B2E56;
+  border-color: var(--brand-deep-line)
+}
+
+[data-surface="dark"] .stat__v {
+  color: var(--brand-sky)
+}
+
+/* ── title slide, rebalanced ───────────────────────────────────────
+   The programme title leads; the ساج لاب mark supports it. */
+.sag-title__inner {
+  grid-template-columns: 1.25fr .75fr;
+  gap: var(--sp-6)
+}
+
+.deck-logo[data-size="hero"] {
+  width: 210px
+}
+
+.sag-title__display {
+  font-size: 88px;
+  line-height: 1.3
+}
+
+.deck-title__facts {
+  margin-top: var(--sp-4)
+}
+
+.deck-fact {
+  font-size: 21px;
+  padding: 12px var(--sp-3)
+}
+
+/* presenter sits on a light card so the photo is not lost in the navy —
+   and every line in it is centered, photo included, rather than the photo
+   sitting flush to the start edge while the text centers around it. */
+.deck-presenter-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  background: var(--brand-snow);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-4);
+  box-shadow: var(--lift-2-dark);
+  width: 100%;
+  text-align: center
+}
+
+/* Photo takes a row of its own above the text, rather than sharing a row with
+   the name — which frees the horizontal space the type needed to grow. */
+.deck-presenter-card .sag-presenter {
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3)
+}
+
+.deck-presenter-card .sag-presenter__photo {
+  width: 240px;
+  height: 240px;
+  align-self: center;
+  background: var(--brand-ink);
+  border: 4px solid var(--brand-white);
+  box-shadow: var(--lift-1)
+}
+
+.deck-presenter-card .sag-presenter__text {
+  align-items: center;
+  gap: 8px
+}
+
+.deck-presenter-card .deck-title__credit-kicker {
+  color: var(--brand-primary);
+  font-size: 23px
+}
+
+.deck-presenter-card .sag-presenter__name {
+  color: var(--brand-primary);
+  font-size: 38px;
+  line-height: 1.25
+}
+
+.deck-presenter-card .sag-presenter__role {
+  color: var(--brand-ink);
+  font-size: 25px;
+  white-space: nowrap
+}
+
+.deck-presenter-card .sag-presenter__org {
+  color: var(--brand-ink);
+  font-size: 22px
+}
+
+.deck-presenter-card .deck-title__org {
+  align-items: center
+}
+
+.deck-presenter-card .deck-title__org-label {
+  font-size: 22px
+}
+
+.deck-presenter-card .deck-title__org {
+  border-top-color: var(--brand-snow-line)
+}
+
+.deck-presenter-card .deck-title__org-label {
+  color: var(--brand-ink)
+}
+
+/* the new bio paragraph sits in its own .deck-title__org block, between the
+   credit block and the sponsor line — turning the one divider that used to
+   separate them into two, with the bio framed by both. */
+.deck-presenter-card .deck-title__bio {
+  font-size: 21px;
+  line-height: 1.6;
+  color: var(--brand-ink)
+}
+
+.deck-presenter-card .deck-endorse img {
+  filter: none
+}
+
+/* Photo fill: percentage height on the <img> was resolving to auto (rendering
+   270px inside a 210px circle and getting clipped). Absolute-fill removes the
+   dependency on percentage-height resolution entirely. */
+.sag-presenter__photo {
+  position: relative
+}
+
+.sag-presenter__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%
+}
+
+/* the hero wordmark needs air above it on the cover */
+/* .sag-title__inner > div > .deck-logo[data-size="hero"]{margin-block-end:var(--sp-3)} */
+
+/* the cover's byline sits flush against the bottom edge by default
+   (.sag-slide__foot is align-items:flex-end) — lift it off the edge a little */
+.sag-title .sag-slide__foot {
+  padding-block-end: var(--sp-2)
+}
+
+/* ── agenda rows (§5.1) ────────────────────────────────────────── */
+.agenda {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--surface-card);
+  border: var(--border-hairline);
+  border-radius: var(--radius-md)
+}
+
+.agenda__t {
+  font: var(--fw-semibold) var(--fs-body-lead)/1.3 var(--font-arabic);
+  color: var(--text-heading);
+  white-space: nowrap
+}
+
+.agenda__n {
+  font: var(--type-body);
+  color: var(--text-body);
+  font-size: var(--fs-caption)
+}
+
+.agenda__d {
+  font: var(--fw-bold) var(--fs-body)/1 var(--font-arabic);
+  color: var(--brand-primary);
+  background: var(--brand-sky-soft);
+  border-radius: var(--radius-pill);
+  padding: 10px var(--sp-3);
+  white-space: nowrap
+}
+
+.agenda--main {
+  border-inline-start: 5px solid var(--accent-state)
+}
+
+.agenda--main .agenda__d {
+  background: var(--brand-teal-soft)
+}
+
+.agenda--break {
+  background: transparent;
+  border-style: dashed
+}
+
+.agenda--break .agenda__d {
+  background: transparent;
+  color: var(--text-caption);
+  font-weight: var(--fw-medium)
+}
+
+/* directory tree — forced LTR, per the system's own rule */
+.deck-tree {
+  margin: 0;
+  direction: ltr;
+  text-align: left;
+  font: var(--type-mono);
+  color: var(--brand-primary);
+  background: var(--surface-card);
+  border: var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--sp-3);
+  white-space: pre;
+  overflow: hidden;
+  font-size: 21px;
+  line-height: 1.75
+}
+
+/* "1 / 2" part marker in a split-slide title */
+.deck-part {
+  font-family: var(--font-latin);
+  font-size: .62em;
+  color: var(--text-caption);
+  direction: ltr;
+  unicode-bidi: isolate;
+  margin-inline-start: var(--sp-2)
+}
+
+/* Media placeholders name the file to drop in; a filename starting with digits
+   gets bidi-reordered inside RTL text ("06-desktop-usage.png" → "desktop-usage.png-06").
+   Isolate it so the instruction stays readable. */
+.sag-media-frame__ph span {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-family: var(--font-mono);
+  font-size: 20px
+}
+
+/* Bento rows size to their content and the block centres in the frame.
+   They used to stretch to full frame height, which made every card a tall box
+   holding a short band of centred text — measured at ~121px of dead space in
+   the median card, and that, not the type size, is what read as "half-empty".
+   Content-height rows cut it to ~42px. Cards in a row still match each other.
+
+   `safe` matters: plain `center` overflows EQUALLY in both directions when the
+   content is taller than the box, so a card a few px too full pushes half of
+   that out through the TOP of the frame, where no amount of trimming below
+   will catch it. `safe center` falls back to `start` in exactly that case and
+   centres normally the rest of the time. */
+.bento {
+  align-content: safe center
+}
+
+.bento>.card {
+  justify-content: safe center
+}
+
+.bento>.card>.card__top {
+  flex: 0 0 auto
+}
+
+/* Media side column: width is set with the type block above (560px). */
+.sag-media__side {
+  gap: var(--sp-2)
+}
+
+.sag-media__side .card {
+  padding: var(--sp-2) var(--sp-3)
+}
+
+/* ── the day's own agenda (§6.N) ────────────────────────────────────
+   Every day's deck repeats this block for its own 6.N section: the four
+   sessions and the items inside them. A ✓ marks what the room has already
+   covered by the time the slide is on screen, so trainees can place
+   themselves in the day at a glance. */
+.sess {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  min-width: 0;
+  min-height: 0
+}
+
+.sess__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  padding-block-end: 10px;
+  border-block-end: 2px solid var(--accent-structure)
+}
+
+.sess__name {
+  font: var(--fw-bold) var(--fs-body-lead)/1.3 var(--font-arabic);
+  color: var(--text-heading)
+}
+
+.sess__d {
+  font: var(--fw-bold) var(--fs-body)/1 var(--font-arabic);
+  color: var(--brand-primary);
+  background: var(--brand-sky-soft);
+  border-radius: var(--radius-pill);
+  padding: 8px var(--sp-2);
+  white-space: nowrap
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0
+}
+
+/* Task rows are live checkboxes the trainee ticks through the day (A.6.9),
+   so they need to look pressable — not like static list items. */
+.task {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 10px var(--sp-2);
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+  border: var(--border-hairline);
+  cursor: pointer;
+  user-select: none;
+  transition: border-color .15s ease, background .15s ease
+}
+
+.task:hover {
+  border-color: var(--accent-state)
+}
+
+.task:hover .task__mark {
+  border-color: var(--accent-state)
+}
+
+.task:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px
+}
+
+.task__mark {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid var(--surface-card-line);
+  background: transparent;
+  color: transparent;
+  font-size: 19px
+}
+
+.task__t {
+  font: var(--fw-medium) var(--fs-body)/1.35 var(--font-arabic);
+  color: var(--text-heading);
+  min-width: 0;
+  text-wrap: pretty
+}
+
+.task__d {
+  font: var(--fw-semibold) var(--fs-caption)/1 var(--font-arabic);
+  color: var(--text-caption);
+  white-space: nowrap
+}
+
+.task[data-done="true"] {
+  background: var(--brand-teal-soft);
+  border-color: var(--accent-state)
+}
+
+.task[data-done="true"] .task__mark {
+  background: var(--accent-state);
+  border-color: var(--accent-state);
+  color: #fff
+}
+
+.task--free {
+  border-style: dashed
+}
+
+.task--free .task__d {
+  color: var(--accent-state);
+  font-weight: var(--fw-bold)
+}
+
+/* ── pausable GIF ───────────────────────────────────────────────────
+   A GIF has no playback API, so "pause" is done by drawing the <img> into
+   a canvas: drawImage captures the frame CURRENTLY on screen, which freezes
+   the animation where the viewer sees it rather than snapping to frame 0. */
+.sag-media-frame[data-ratio="screen"] .sag-media-frame__box {
+  aspect-ratio: 1280/758;
+  flex: 0 0 auto
+}
+
+.gifbox {
+  position: absolute;
+  inset: 0;
+  cursor: pointer
+}
+
+.gifbox img,
+.gifbox canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block
+}
+
+.gifbox canvas {
+  display: none
+}
+
+.gifbox[data-paused="true"] img {
+  visibility: hidden
+}
+
+.gifbox[data-paused="true"] canvas {
+  display: block
+}
+
+.gifbox__btn {
+  position: absolute;
+  inset-block-end: var(--sp-2);
+  inset-inline-end: var(--sp-2);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  cursor: pointer;
+  background: rgba(20, 36, 71, .86);
+  color: var(--brand-white);
+  border-radius: var(--radius-pill);
+  padding: 10px var(--sp-3);
+  font: var(--fw-semibold) var(--fs-caption)/1 var(--font-arabic);
+  box-shadow: var(--lift-2)
+}
+
+.gifbox__btn:hover {
+  background: var(--brand-primary)
+}
+
+.gifbox__btn .i {
+  font-size: 18px
+}
+
+/* ── media side column ──────────────────────────────────────────────
+   The side notes carry real instructions, not footnotes, so they follow
+   --fs-caption (24px) like every other small note. At that size the old
+   480px column forced wraps that pushed slides 36 and 38 out of frame;
+   560px absorbs them without shrinking any type. */
+.sag-media__inner {
+  grid-template-columns: minmax(0, 1fr) 560px
+}
+
+.sag-media__side .card__note--sm {
+  line-height: 1.6
+}

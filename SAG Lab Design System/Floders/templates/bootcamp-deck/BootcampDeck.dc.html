@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Bootcamp day deck" description="Four-slide RTL starting deck for one day of the MVP Bootcamp: cover, content, media, closing." -->
+<helmet><script src="./ds-base.js"></script><style>html,body{margin:0;background:#0C1730}</style></helmet>
+<div style="display:flex;flex-direction:column;align-items:center;gap:40px;padding:40px 0;direction:rtl">
+
+<section class="sag-slide sag-title" dir="rtl" data-surface="dark" data-screen-label="01 — الغلاف" style="box-shadow:0 2px 6px rgba(0,0,0,.45)">
+<div class="sag-slide__body">
+<div class="sag-title__inner">
+<div>
+<span class="sag-logo" data-size="hero" dir="rtl"><span class="sag-logo__wordmark"><span>ساج</span><span>لاب</span></span></span>
+<h1 class="sag-title__display">معمل بناء المنتج الأدنى القابل للتطبيق</h1>
+<p class="sag-title__program">اليوم السابع — عشرة أيام مع Claude Code</p>
+</div>
+<div class="sag-presenter" dir="rtl">
+<div class="sag-presenter__photo"><span class="sag-presenter__ph">صورة المدرّب</span></div>
+<div class="sag-presenter__text">
+<span class="sag-presenter__name">م. عبدالله السعيد</span>
+<span class="sag-presenter__role">مدرّب معمل بناء المنتج</span>
+<span class="sag-presenter__org">ساج لاب — بإشراف ساج التقنية</span>
+</div>
+</div>
+</div>
+</div>
+<div class="sag-slide__foot"><x-import component-from-global-scope="SAGLabDesignSystem_5a6e2d.FooterBar" day="اليوم السابع" slide-number="1" hint-size="100%,60px"></x-import></div>
+</section>
+
+<section class="sag-slide" dir="rtl" data-screen-label="02 — شريحة محتوى" style="box-shadow:0 2px 6px rgba(0,0,0,.45)">
+<div class="sag-slide__body">
+<div class="sag-slide__head">
+<x-import component-from-global-scope="SAGLabDesignSystem_5a6e2d.SectionBadge" kind="القسم" number="7.10" hint-size="180px,44px"></x-import>
+<h2 class="sag-slide__title">ماذا يقرؤه Claude من مستودعك؟</h2>
+<span class="sag-slide__rule"></span>
+<p class="sag-slide__lead">الترتيب ليس عشوائيًا — وهذا ما يجعل الوصف الدقيق مهمًا.</p>
+</div>
+<ul class="sag-bullets">
+<li class="sag-bullets__item">ملفات الإعداد أولاً: <span class="tok-code">package.json</span> ثم <span class="tok-code">README.md</span></li>
+<li class="sag-bullets__item">ثم بنية المجلدات، لا محتوى كل ملف</li>
+<li class="sag-bullets__item">ثم الملفات التي ذكرتها أنت في الطلب</li>
+<li class="sag-bullets__item">ثم الملفات المرتبطة بها عبر الاستيراد</li>
+<li class="sag-bullets__item">ما لم يُذكر ولم يُستورد يبقى خارج السياق</li>
+</ul>
+<x-import component-from-global-scope="SAGLabDesignSystem_5a6e2d.Callout" tone="rule" hint-size="100%,110px">اذكر المسار كاملاً في طلبك ولا تعتمد على التخمين.</x-import>
+</div>
+<div class="sag-slide__foot"><x-import component-from-global-scope="SAGLabDesignSystem_5a6e2d.FooterBar" day="اليوم السابع" slide-number="2" progress="{{ progressNode }}" hint-size="100%,60px"></x-import></div>
+</section>
+
+<section class="sag-slide" dir="rtl" data-screen-label="03 — شريحة وسائط" style="box-shadow:0 2px 6px rgba(0,0,0,.45)">
+<div class="sag-slide__body">
+<div class="sag-slide__head">
+<x-import component-from-global-scope="SAGLabDesignSystem_5a6e2d.SectionBadge" kind="المهمة" number="14.1" hint-size="190px,44px"></x-import>
+<h2 class="sag-slide__title">أول تشغيل داخل المشروع</h2>
+</div>
+<div class="sag-media__inner">
+<x-import component-from-global-scope="SAGLabDesignSystem_5a6e2d.MediaFrame" placeholder="لقطة شاشة — نافذة Claude Code بعد /init" caption="الخطة تظهر قبل التنفيذ، ويمكنك رفضها." hint-size="100%,100%"></x-import>
+<div class="sag-media__side">
+<p class="sag-media__instruction">اكتب الأمر، ثم اقرأ الخطة كاملة قبل الموافقة عليها.</p>
+</div>
+</div>
+</div>
+<div class="sag-slide__foot"><x-import component-from-global-scope="SAGLabDesignSystem_5a6e2d.FooterBar" day="اليوم السابع" slide-number="3" hint-size="100%,60px"></x-import></div>
+</section>
+
+<section class="sag-slide" dir="rtl" data-surface="dark" data-screen-label="04 — نهاية اليوم" style="box-shadow:0 2px 6px rgba(0,0,0,.45)">
+<div class="sag-slide__body">
+<div class="sag-slide__head">
+<h2 class="sag-slide__title">نهاية اليوم السابع</h2>
+<span class="sag-slide__rule"></span>
+</div>
+<div class="sag-closing__inner">
+<div class="sag-closing__group">
+<h3 class="sag-closing__label">ما أنجزناه اليوم</h3>
+<div class="sag-skill-grid" style="--cols:1">
+<x-import component-from-global-scope="SAGLabDesignSystem_5a6e2d.SkillCard" state="done" icon="terminal" text="شغّلت أول أمر داخل المشروع" hint-size="100%,110px"></x-import>
+<x-import component-from-global-scope="SAGLabDesignSystem_5a6e2d.SkillCard" state="done" icon="git-branch" text="ربطت المستودع بـ GitHub" hint-size="100%,110px"></x-import>
+<x-import component-from-global-scope="SAGLabDesignSystem_5a6e2d.SkillCard" state="done" icon="rocket" text="نشرت نسخة تعمل على الإنترنت" hint-size="100%,110px"></x-import>
+</div>
+</div>
+<div class="sag-closing__group">
+<h3 class="sag-closing__label">ما ينتظرنا غدًا</h3>
+<ul class="sag-bullets">
+<li class="sag-bullets__item">ربط المشروع بقاعدة بيانات Supabase</li>
+<li class="sag-bullets__item">أول اختبار مع مستخدم حقيقي</li>
+<li class="sag-bullets__item">تجهيز عرض اليوم العاشر</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sag-slide__foot"><x-import component-from-global-scope="SAGLabDesignSystem_5a6e2d.FooterBar" day="اليوم السابع" slide-number="4" progress="{{ progressNode }}" hint-size="100%,60px"></x-import></div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:2000,&quot;height&quot;:1200},&quot;showProgress&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Footer&quot;},&quot;activeDay&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:7,&quot;min&quot;:1,&quot;max&quot;:10,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Footer&quot;},&quot;totalDays&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:10,&quot;min&quot;:1,&quot;max&quot;:20,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Footer&quot;},&quot;withinDay&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:45,&quot;min&quot;:0,&quot;max&quot;:100,&quot;step&quot;:5,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Footer&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    if (!document.getElementById("sag-lucide")) {
+      const s = document.createElement("script");
+      s.id = "sag-lucide";
+      s.src = "https://unpkg.com/lucide@0.446.0/dist/umd/lucide.js";
+      s.onload = () => this.forceUpdate();
+      document.head.appendChild(s);
+    }
+  }
+  renderVals() {
+    const DS = window.SAGLabDesignSystem_5a6e2d;
+    const show = this.props.showProgress ?? true;
+    const progressNode = show && DS
+      ? React.createElement(DS.DayProgress, {
+          activeDay: this.props.activeDay ?? 7,
+          totalDays: this.props.totalDays ?? 10,
+          within: this.props.withinDay ?? 45
+        })
+      : null;
+    return { progressNode };
+  }
+}
+</script>
+</body>
+</html>

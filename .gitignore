@@ -14,3 +14,18 @@ notebook.txt
 
 # Nested projects manage their own build artifacts / secrets via their own .gitignore
 # (app/backend/.gitignore, app/frontend/.gitignore)
+
+# Word lock files (created while a .docx is open, deleted on close)
+~$*
+
+# Machine-specific: absolute path to the local Python interpreter
+graphify-out/.graphify_python
+
+# Transient backup of the previous graphify run
+graphify-out/.chunks_prev_run/
+
+# Distribution archives: byte-for-byte duplicates of tracked directories
+# (LOGO_Sag/, project-package/). Committing them means a stale zip can be
+# handed out after the folder has moved on — rebuild instead of tracking.
+/LOGO_Sag.zip
+/project-package.zip

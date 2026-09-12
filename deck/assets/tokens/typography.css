@@ -1,0 +1,36 @@
+:root{
+  /* Scale is authored against a 1920x1080 slide frame — projector-legible.
+     Never override a component's font-size downward to fit content;
+     split the slide into 1/2 and 2/2 instead. */
+  --fs-display:68px;
+  --fs-slide-title:42px;
+  --fs-section-number:20px;
+  --fs-body-lead:29px;
+  --fs-body:23px;
+  --fs-caption:18px;
+  --fs-mono:20px;
+
+  --fw-regular:400; /* @kind font */
+  --fw-medium:500; /* @kind font */
+  --fw-semibold:600; /* @kind font */
+  --fw-bold:700; /* @kind font */
+
+  /* Arabic needs air: ascenders + diacritics collide below 1.7 */
+  --lh-arabic:1.75; /* @kind font */
+  --lh-lead:1.7; /* @kind font */
+  --lh-title:1.28; /* @kind font */
+  --lh-display:1.2; /* @kind font */
+  --lh-mono:1.6; /* @kind font */
+
+  --ls-latin-caps:0.06em; /* @kind font */
+  --ls-arabic:0; /* @kind font */
+
+  --type-display:var(--fw-bold) var(--fs-display)/var(--lh-display) var(--font-arabic);
+  --type-slide-title:var(--fw-bold) var(--fs-slide-title)/var(--lh-title) var(--font-arabic);
+  --type-body-lead:var(--fw-medium) var(--fs-body-lead)/var(--lh-lead) var(--font-arabic);
+  --type-body:var(--fw-regular) var(--fs-body)/var(--lh-arabic) var(--font-arabic);
+  /* Cairo's glyph box is taller than its em: at 1.6 the ink box overflows the
+     line box by ~2px and the guard flags every media caption. 1.75 fits it. */
+  --type-caption:var(--fw-regular) var(--fs-caption)/1.75 var(--font-arabic);
+  --type-mono:var(--fw-regular) var(--fs-mono)/var(--lh-mono) var(--font-mono);
+}

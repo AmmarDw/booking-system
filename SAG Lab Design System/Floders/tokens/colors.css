@@ -1,0 +1,58 @@
+:root{
+  /* base palette */
+  --brand-primary:#223A71;
+  --brand-deep:#142447;
+  --brand-sky:#38B6D9;
+  --brand-snow:#EEF2F8;
+  --brand-white:#FFFFFF;
+  --brand-ink:#333B48;
+  --brand-teal:#16C7B7;
+
+  /* derived, kept in-family (used for rules, hovers, pressed states) */
+  --brand-primary-hover:#1B2F5C;
+  --brand-primary-press:#152647;
+  --brand-sky-hover:#2A9DBE;
+  --brand-sky-soft:#DCEFF6;
+  --brand-teal-soft:#DDF6F3;
+  --brand-deep-line:#2B3F6B;
+  --brand-snow-line:#D3DDEC;
+
+  /* intentional addition: the amber tone required by callout(warning) */
+  --state-warning:#A96504;
+  --state-warning-soft:#FBF0DC;
+
+  /* semantic aliases — components reference these, never the raw palette */
+  --surface-slide:var(--brand-white);
+  --surface-slide-dark:var(--brand-deep);
+  --surface-card:var(--brand-snow);
+  --surface-card-line:var(--brand-snow-line);
+  --surface-table-head:var(--brand-snow);
+
+  --text-heading:var(--brand-primary);
+  --text-body:var(--brand-ink);
+  --text-caption:var(--brand-ink);
+  --text-invert:var(--brand-white);
+  --text-link:var(--brand-primary);
+  --text-link-hover:var(--brand-sky-hover);
+
+  --accent-structure:var(--brand-sky);   /* rules, buttons, technical accents */
+  --accent-state:var(--brand-teal);      /* active / done / progress ONLY */
+  --rule-hairline:var(--brand-snow-line);
+  --focus-ring:var(--brand-sky);
+}
+
+/* dark slide surface: title, section dividers, closing */
+[data-surface="dark"]{
+  --surface-slide:var(--brand-deep);
+  --surface-card:#1B2E56;
+  --surface-card-line:var(--brand-deep-line);
+  --surface-table-head:#1B2E56;
+  --text-heading:var(--brand-white);
+  --text-body:#DCE3F0;
+  --text-caption:#B9C5DC;
+  --text-link:var(--brand-sky);
+  --rule-hairline:var(--brand-deep-line);
+}
+
+a{color:var(--text-link);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--text-link-hover)}

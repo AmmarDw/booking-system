@@ -2984,3 +2984,962 @@ All staged, nothing committed. `graph.html` / `GRAPH_REPORT.md` regeneration def
 ---
 
 ## § D75 — Prompt #38
+
+Commit and push following `project-package/.claude/rules/git-commit-attribution.md`. Then: flag of two big curriculum problems (sections split across days with no addressable boundary; X.2/X.3.1 duplication and X.3.1 showing polished output instead of the real conversation), followed by approval to restructure around tasks and to begin with §8.
+
+---
+
+## § D76 — Response to Prompt #38
+
+> **Logging gap acknowledged.** Entries stopped after §D74 and resumed here; the graphify run, the commit, and the §8 pilot were done without being logged as they happened. This entry covers them.
+
+### D76.1 Commit + push
+
+Commit `2153419` (pushed `e52dfa8..2153419`). Author `AmmarDw`, **no `Co-Authored-By` trailer** — verified against the attribution rule. Covered the package restructure, the archive/PDF cleanup, and the graphify outputs. Also removed a stray empty `app/graphify-out/` before staging.
+
+### D76.2 Knowledge graph
+
+`/graphify` over the project: **1,371 nodes · 2,231 edges · 125 communities**, ~34× token reduction per query vs. reading the corpus. Outputs in `graphify-out/`. This is what supplied the measurements used in D76.3 — the multi-day span analysis and the X.2/X.3.1 overlap were derived from it plus direct extraction, not from impression.
+
+### D76.3 Curriculum restructure — analysis and approved plan
+
+**Two defects, measured:**
+
+1. **13 subsections span multiple days** with no addressable boundary. Worst case §14: `14.2`, `14.3.1`, `14.4.1`, `14.4.2` each span **five days** (1, 6, 7, 8, 9), separated only by a parenthetical in §6.
+2. **X.2 and X.3.1 are near-parallel step lists.** §11's step 1 is *literally identical* in both; §13 has «حدّد الكيانات» vs «استخرج الكيانات»; step counts don't align (§14: 12 vs 4) — which is why `X.4.1`'s «اتبع خطوات X.3.1» reads as confusing. And every `X.3.1` collapsible held only the **polished final output**, never how it was reached.
+
+**Key finding:** the task boundaries already exist in the content. §8.1 already splits internally into «أولًا — التعريف» / «ثانيًا — النطاق» — exactly its Day 1 / Day 2 split. §14 already names «المراحل السبع» and §6 already cites them. This is **surfacing latent structure**, not inventing it.
+
+**Decisions:** tasks are **vertical slices** (section keeps shared concept + FAQ; everything else becomes self-contained tasks carrying their own steps, real trainer conversation, trainee turn, review) · IDs are **section-scoped «المهمة X.N»** · applies to **all of §8–§17** · order **§8 pilot → §14 → rest → §6 last**. Rejected: global flat «المهمة 12» (insertion renumbers everything downstream — this project already paid that cost when the §10→§8 fold required fixing ~106 anchor sites) and `8.1.1` (implies a task is a child of `8.1`, which it is not).
+
+**Conversation sourcing, verified before committing to the approach:** `conversation_history.md` holds **37 build-era prompts (6,003w) + 36 responses (11,680w)**. Three constraints recorded: prompts are chronological and multi-topic (Prompt #1 alone is 57% of the prompt corpus), the **38 `D`-numbered prompts are curriculum-authoring and must be excluded** from trainer examples, and short prompts are *high* value («Why don't we have a provider filter?» is a better teaching artifact than a long one).
+
+Full plan: `C:\Users\ammar\.claude\plans\refer-to-prompt-in-jiggly-rainbow.md`.
+
+### D76.4 §8 rebuilt — the pilot
+
+**Changes are all in `project-package/bootcamp_roadmap_and_curriculum.md`.**
+
+Old §8 (`8.1` … `8.5`, five parallel subsections) → new shape:
+
+- `### 8 — المفهوم العام` — shared concept, taught once (was `8.1`, minus the parts that belonged to tasks)
+- `### 8 — مهامّ هذا القسم` — index table: task → output → day
+- `#### المهمة 8.1 — تعريف المشكلة والهدف والغايات` (day 1 → 2) — steps 1–5, **each with the real conversation attached**, then `نفّذها أنت` and `راجع نتيجتك`
+- `#### المهمة 8.2 — تحديد النطاق` (day 2) — same shape
+- `### 8 — أسئلة شائعة`
+
+`8.2` / `8.3.1` / `8.3.2` / `8.4.1` / `8.4.2` no longer exist as headings; their content was redistributed into the two tasks, which is what removes the duplication.
+
+**The trainer example is now the real conversation**, mined from §2 Prompt #1 and §4 Prompt #2 and translated: the free-form description of *pages*, Claude's conversion of it into problem/goal/objectives, then the plain-language correction round (drop the separate `Provider` entity, bulk-generation is for providers too, add the dashboard). Framed with «لاحظ الفرق: المدرب كتب وصفًا حرًّا… وأخرج Claude منه مشكلة/هدف/غايات مصاغة» — the mess is the lesson.
+
+**Two gaps recorded honestly rather than filled with invented prompts:** «خارج النطاق» and «خطة التطوير المستقبلية» had no standalone documented prompt (extracted during the same drafting round), and the trainer's six core areas exceed the 3–5 rule — kept, with the reason stated and the trainee told to hold to 3–5.
+
+**§6 touched minimally:** its 8 links into old §8 subsections were repointed to the new task anchors so nothing dangles. **Durations were carried across unchanged, not recomputed.** §6's full rewrite is still the last step.
+
+### D76.5 Verification
+
+- Anchors: **111 links, 0 broken** (checker handles Arabic `؟` U+061F and per-space hyphenation, both of which produced false positives earlier).
+- Day budgets: all **10 days still exactly 215 د**.
+- Duplication: **0** step texts appear in both a task's `الخطوات` and its trainer collapsible.
+- Authenticity: all **8** quoted prompt excerpts traced back to real non-`D` sections (§2 Prompt #1, §4 Prompt #2) — no fabrication, no curriculum-authoring prompt leaked in.
+
+### Documents Affected
+`project-package/bootcamp_roadmap_and_curriculum.md` (§8 rebuilt; §6 day-1/day-2 links repointed) · `graphify-out/*` (new) · `.graphifyignore`, `archive/`, `CLAUDE.md`, `PROJECT_REPORT.md` (in commit `2153419`) · this file.
+
+### Status
+§8 done and verified. **Next: §14** — the 5-day, seven-stage worst case, where `المراحل السبع` become `المهمة 14.1`…`14.7`.
+
+---
+
+## § D77 — Prompt #39
+
+Proceed to section 14, taking your time with it.
+
+---
+
+## § D78 — Response to Prompt #39
+
+### D78.1 §14 rebuilt — the hard case
+
+All changes in `project-package/bootcamp_roadmap_and_curriculum.md`.
+
+The seven `المراحل` that §6 already cited informally are now **addressable tasks** `المهمة 14.1`…`14.7`. The payoff: **no §14 task spans multiple days any more.** Previously `14.2`/`14.3.1`/`14.4.1`/`14.4.2` each spanned five days (1, 6, 7, 8, 9) separated only by a parenthetical; now each task lands on exactly one day (day 7 and day 9 carry two tasks each, stated explicitly).
+
+| المهمة | المخرَج | اليوم |
+|---|---|---|
+| 14.1 التهيئة والهيكل | تطبيق يعمل بتسجيل دخول | 1 |
+| 14.2 نموذج البيانات | الجداول مُنشأة | 6 |
+| 14.3 الأدوار والصلاحيات | كل صفحة مقيّدة بالدور | 7 |
+| 14.4 تصفّح المحتوى والصفحة الرئيسية | هبوط + تصفّح عام | 7 |
+| 14.5 الوظيفة الأساسية | الرحلة من طرفها إلى طرفها | 8 |
+| 14.6 لوحة التحكم والإدارة | CRUD بحسب الدور | 9 |
+| 14.7 الربط بخدمة خارجية (مشروطة) | خدمة خارجية أو خصائص إضافية | 9 |
+
+**Structural choices made while decomposing:**
+
+- The **per-feature cycle** (`دورة العمل الواحدة`) and **how to review any task** moved to the section-level concept — they apply to all seven tasks, so repeating them per task would have reintroduced duplication.
+- The **account/key prerequisites** were absorbed into `المهمة 14.1` (it is literally "التهيئة"), and the **chrome-devtools connection** became step 1 of `المهمة 14.2` — the day it actually happens, and the point from which testing needs it. No artificial "task 0".
+- Each task carries `المخرَج` / `تعتمد على` / `يليها` / `اليوم`, so the dependency chain is explicit rather than implied by ordering.
+
+### D78.2 The real conversation
+
+**19 quoted excerpts, mined from 13 distinct build-era prompts** and translated. The seven stages map 1:1 onto the real build milestones M0–M6, which is what made the mining tractable.
+
+The excerpts deliberately keep the trainer's confusion visible, because that is the teaching content — «لم أفهم ما تقصده بـ monorepo layout» (Prompt #12), «لا أفهم ما الذي ينبغي أن أضيفه أو أحذفه في Scopes» (Prompt #22), «لم أفهم إطلاقًا ما تقصده بـ…» (Prompt #23). Each is framed with the lesson it teaches rather than left bare.
+
+Also preserved: the security question that prevented a real leak (Prompt #19, «أليس من المفترض أن نخزّن قيم قاعدة البيانات السرّية في .env؟»), the design pushback (Prompt #9, «لماذا لا توجد تصفية بحسب مقدّم الخدمة؟» — where the answer turned out to be "no, and here is why"), and the very short commands (Prompt #31 «ok start M5», Prompt #32 «yes») used to make the point that **طول الأمر ليس مقياس جودته**.
+
+The four real bugs from the old 14.3.2 were **distributed to the tasks where they occurred** rather than left in one lump: the silent migration failure → 14.2, the provider-books-own-slot rule and the 500-instead-of-403 → 14.3, the OS-locale date fields → 14.5.
+
+**One honest gap recorded:** `المهمة 14.3` (الأدوار والصلاحيات) has no standalone documented prompt — it was built inside a continuous sequence. Stated plainly, with the earlier single-User-entity decision quoted as the decision that shaped it. No prompt invented.
+
+### D78.3 Verification
+
+- Anchors: **144 links, 0 broken** (up from 111 — the task cross-links added 33).
+- Day budgets: all **10 days still exactly 215 د**.
+- Duplication: **0** of §14's 36 step headings appear inside a trainer collapsible.
+- Orphans: all 9 tasks defined (`8.1`, `8.2`, `14.1`–`14.7`) are cited in §6; none unreferenced.
+- Authenticity: **19/19** quotes traced to real non-`D` prompts (§14 through §70).
+
+### D78.4 §6 and cross-references
+
+27 day-plan links repointed to task anchors, **durations carried across unchanged**. Five cross-references elsewhere also fixed: §7.10 and §15 now point at `المهمة 14.2` for chrome-devtools, §12's two DesignSync mentions point at `دورة العمل الواحدة`, and a bad `#13-نموذج-البيانات` link (the heading carries `(ERD)`) was corrected.
+
+§6 still has its old one-item-per-subsection shape; only the link targets changed. Its full rewrite remains the last step.
+
+### Documents Affected
+`project-package/bootcamp_roadmap_and_curriculum.md` (§14 rebuilt; §6 day-1/6/7/8/9 links repointed; §7.10, §12, §15 cross-refs fixed) · this file.
+
+### Status
+§8 and §14 done — the pilot and the worst case. Remaining: §9, §10, §11, §12, §13, §15, §16, §17, then the §6 rewrite.
+
+---
+
+## § D79 — Prompt #40
+
+Flag: the §8.1 trainer example mixes product-building logic with bootcamp/curriculum-building logic, which will confuse trainees — that logic is already embedded in the delivered package. Exclude such content in future refactoring and ask when in doubt. Also: complete the Claude-side skills alongside each section restructure (starting with §8 and §14), including GitHub account/repo creation with the fields to fill, and creating the DB.
+
+---
+
+## § D80 — Response to Prompt #40
+
+### D80.1 De-contamination
+
+A scan of every trainer collapsible in §8 and §14 for bootcamp-meta terms found the leak confined to **exactly two blocks**.
+
+**§8 — two quotes cut.** The bootcamp-process quote («وقد اخترته من النماذج المقترحة… سنتبع عملية الأجندة التدريبية… ملف تقرير واحد مع فهرس محتويات») is gone; only the product-naming clause survives, and the block now leads with the free-form *product* description, which was always the teaching content. The «ملف التقرير» quote was replaced with the clean fragment from the same prompt — «تحلّل أولًا ملاحظاتي عن المشروع وتمضي خطوة خطوة مع سؤالي» — reframed as *he asked for a conversation, not a finished output*.
+
+**§14.1 — one exchange swapped.** Cut «في خطة التنفيذ» (a doc trainees don't have) and the monorepo Q&A plus the Spring Boot `Group`/`Artifact` metadata — all specific to the trainer's split backend/frontend stack, which the trainee's single Next.js app will never hit. Kept the *second clause of the same prompt*, which is universal and now ties directly to the new GitHub walkthrough: «هل هناك شيء آخر غير اسم المستودع ووصفه ينبغي أن أضبطه عند إنشاء مستودع جديد؟» The lesson survives intact, on a question every trainee will actually face.
+
+**Standing rule added** to root `CLAUDE.md` §A.5. Two points in it matter beyond this fix: excluding the `D`-numbered prompts is **necessary but not sufficient** (build-era prompts mix product and process inside a single message, so excerpting must happen at the **clause** level), and excerpts specific to the trainer's heavier stack are dropped too. It ends with an instruction to ask when unsure.
+
+### D80.2 Skills — now completed alongside the section, not after
+
+**New `defining-mvp`** (§8). Elicit free-form, never demand formal wording. Carries a quality bar with teeth — a problem statement that describes a *solution* gets pushed back, and «سهل»/«سريع» without a number is rejected with a reason. Scope is **derived** from the definition rather than collected separately (which is what actually happened in the real build, and why 8.2 depends on 8.1). The 3–5 limit is enforced by asking «أيّ هذه لو غاب لما صار للمنتج معنى؟» and moving the surplus to the future-plan list, not by refusing. Four failure modes named, including the most common: «خارج النطاق» left empty.
+
+**`building-features` rewritten** from a flat stage list to the seven tasks. Shared material (per-feature cycle, three testing layers, save cadence, secret safety) is stated once; each task then gets only what is specific to it. The three real bugs are attached where they occur as explicit warnings — the silently-failing migration in 14.2 («لم يظهر خطأ» لا تعني «نجح»), the provider-books-own-slot rule and the 500-instead-of-403 in 14.3, the OS-locale date fields in 14.5.
+
+**GitHub repo walkthrough** added to 14.1, verified against GitHub's own docs rather than memory: owner · name (ASCII, ≤100 chars, advise lowercase-with-hyphens) · description · Private · and the gotcha that actually bites — **leave README/.gitignore/license unchecked**, because GitHub's documentation warns these cause a merge conflict when pushing an existing project.
+
+**`bootcamp-setup` extended** with Supabase **project** creation, placed deliberately *before* the MCP section since the MCP needs a project to point at. Fields verified against Supabase docs: organization · project name · **database password (save it now — not shown again)** · region · Free plan. Accounts are stated as pre-bootcamp prerequisites; only the *project* and the *repo* are created on Day 1. Its `description` was widened so Claude matches the skill for project creation, not only MCP work.
+
+### D80.3 Verification
+
+- Contaminated collapsibles in §8/§14: **0**.
+- Anchors: **144 links, 0 broken** (unchanged — edits were inside collapsibles).
+- Day budgets: all **10 days still exactly 215 د**.
+- Quote authenticity: **8/8** remaining quotes trace to real non-`D` prompts, including the §14.1 replacement (§24 Prompt #12).
+- Skills: all six have valid `name` + `description` frontmatter.
+- **Always-loaded budget unchanged at ~26KB** (~20KB effective, i18n being path-scoped) while skills grew ~15KB — exactly the intended behaviour, since only skill *descriptions* enter context.
+
+### Documents Affected
+`project-package/bootcamp_roadmap_and_curriculum.md` (§8.1, §14.1 collapsibles) · `project-package/.claude/skills/defining-mvp/SKILL.md` (new) · `.../building-features/SKILL.md` (rewritten) · `.../bootcamp-setup/SKILL.md` (extended) · `CLAUDE.md` §A.5 · this file.
+
+### Status
+§8 and §14 complete — curriculum **and** skills. Remaining: §9, §10, §11, §12, §13, §15, §16, §17 (each with its skill), then the §6 rewrite, then the deck.
+
+---
+
+## § D81 — Prompt #41
+
+Add the Supabase project-creation steps to the roadmap too (less detail than the skill). Then: finish the remaining sections first — review notes will come later, in one pass or section by section. For now, plan §9.
+
+---
+
+## § D82 — Response to Prompt #41
+
+### D82.1 Supabase project creation in the roadmap
+
+`ب) Supabase MCP` assumed the project already existed. It is now `ب) قاعدة البيانات (Supabase) — أنشئ المشروع ثم اربط الـMCP`, split into two phases: creation (steps 1–4 — name, region, Free plan, and the one thing that bites: **save the DB password now, it is not shown again**) then the MCP connection (5–11). Brief by design; the full field table stays in `bootcamp-setup`.
+
+**Also fixed an ambiguity found while editing:** §7.10's preamble listed «قاعدة البيانات المستضافة» among pre-bootcamp prerequisites, which read as though the whole DB setup happened in advance — the same confusion. It now draws the line explicitly: the **account** is pre-bootcamp; the **project** and the **GitHub repo** are created on Day 1, with pointers to both places.
+
+§6's two descriptions updated to «إنشاء مشروع Supabase وربط الـMCP». **Durations unchanged.** Flagged to Ammar that creation + connection now share the same 8 د / 12 د, which is tight but plausible since provisioning runs while the trainer explains the next part.
+
+### D82.2 §9 restructured
+
+**Changes in `project-package/bootcamp_roadmap_and_curriculum.md`.**
+
+§9 declared its own seam — «نحدّد فيه أمرين: (1) الأدوار … (2) أصحاب المصلحة الآخرين» — so the decomposition was read out of the text, not imposed:
+
+| المهمة | المخرَج | اليوم |
+|---|---|---|
+| 9.1 أدوار المستخدمين واحتياجاتها | جدول: الدور · الوصف · الاحتياجات | 2 |
+| 9.2 أصحاب المصلحة الآخرون | الخدمات الخارجية والأطراف المتأثّرة | 2 |
+
+Durations carried across exactly: 13+6 concepts · 15+8 trainer · 27 trainee · 8 review = **77 د**, unchanged.
+
+**Fresh conversation material — no quote reused.** §8.1 already carries Prompt #2, so §9 draws on two prompts unused anywhere: **Prompt #34** for 9.1 (the late discovery that a provider could book their own slots, enforced in *both* UI and server) and **Prompt #3** for 9.2 (the Google host-account question that changed the architecture to per-provider connections). Prompt #3's sentence is split at the **clause** level — the stakeholder clause serves §9; the drawing instruction is reserved for §11, which has only four candidate prompts and cannot afford to lose one.
+
+**One pedagogical improvement, agreed in advance:** the roles-overlap question moved from build time to planning time. §9.1's review now asks «هل يمكن لشخص واحد أن يحمل دورَين؟ وما الذي يجب ألّا يفعله بنفسه؟» — the exact question whose absence caused the §14.3 bug. Planning catches it; §14.3 keeps its enforcement warning.
+
+**Consistency fix found by verification, not by eye:** the cross-section quote check flagged that §14.3 **re-quoted** the single-entity decision already in §8.1 — the very thing decision A-2 forbids. §14.3 now cross-references **§9.1** instead (its proper home, since that is where roles are decided) and its `تعتمد على` line was repointed from the whole §9 to `المهمة 9.1`. The replacement text turns the absence of a prompt into the lesson: when roles are settled in planning, this task becomes direct implementation — and what *wasn't* settled shows up as the bug in step 4.
+
+### D82.3 New skill — `defining-users`
+
+Sibling to `defining-mvp`. Elicits roles from the product description rather than asking for them abstractly; states plainly that the entity-representation decision is **Claude's**, defaulting to one `User` + `role` and never dragging the trainee into tables or keys; makes the overlap question mandatory; and for stakeholders insists on asking **«كيف ستعمل فعليًّا؟»** rather than recording a service name — because in the real build that single question changed the product's architecture. Cross-links to `bootcamp-setup` and `building-features` for where its output is consumed.
+
+### D82.4 Verification
+
+- Anchors: **155 links, 0 broken**.
+- Day budgets: all **10 days = 215 د**; Day-2 §9 items total **77 د**.
+- Tasks: 11 defined (`8.1–8.2`, `9.1–9.2`, `14.1–14.7`), **0 orphans**.
+- Duplication: 15 §9 steps, **0** appearing inside a collapsible.
+- Contamination: **0** flagged collapsibles in §9.
+- Authenticity: **6/6** §9 quotes trace to real non-`D` prompts (§68 Prompt #34, §6 Prompt #3).
+- Cross-section reuse: **§8∩§9 = 0, §14∩§9 = 0, §8∩§14 = 0** — no quote appears twice anywhere.
+
+### Documents Affected
+`project-package/bootcamp_roadmap_and_curriculum.md` (§7.10 «ب» + preamble · §9 rebuilt · §6 Day-2 links · §14.3 cross-reference) · `project-package/.claude/skills/defining-users/SKILL.md` (new) · this file.
+
+### Status
+§8, §9, §14 converted with their skills. Remaining: **§10, §11, §12, §13, §15, §16, §17**, then the §6 rewrite, then the deck. Ammar's review notes on converted sections are pending.
+
+---
+
+## § D83 — Prompt #42
+
+Plan §10, and log both the §9 and §10 updates to the history file in summary.
+
+---
+
+## § D84 — Response to Prompt #42
+
+> **Logging note:** §9 was already logged in full at **§D82**; this entry covers **§10** and carries a short §9 recap so both sit together, as asked.
+
+### D84.1 §9 recap (full detail in §D82)
+
+Split into `المهمة 9.1` (الأدوار) and `9.2` (أصحاب المصلحة) — a seam the section already declared («أمرين»). 77 د on Day 2 unchanged. Fresh quotes from Prompt #34 and Prompt #3, nothing reused. The roles-overlap question moved from build time to planning time. Verification also caught §14.3 **re-quoting** §8.1, which was replaced with a cross-reference to §9.1.
+
+### D84.2 §10 restructured
+
+**Changes in `project-package/bootcamp_roadmap_and_curriculum.md`.**
+
+§10 had the vaguest split in the curriculum — four subsections spanning Days 3–4, separated only by «بداية» and «**إكمال**». Two structural moves fixed it:
+
+**Two addressable concept blocks** replace the split concept: `10 — المفهوم العام` (Day 3, 14 د — what an SRS is, FR vs NFR, what a requirement carries) and `10 — صيغ كتابة المتطلبات` (Day 4, 26 د — EARS ×4, user story, Gherkin, priorities, the quality check). Day 4's two former concept items (12 + 14) merged into this one block, so each day now cites a distinct anchor and no «إكمال» remains for §10.
+
+**Three tasks:**
+
+| المهمة | المخرَج | اليوم |
+|---|---|---|
+| 10.1 جمع ملاحظاتك عن وظائف المنتج | ملاحظات حرّة | 3 |
+| 10.2 صياغة المتطلبات الوظيفية (FR) | مجموعة FR مكتملة | 3 (بدء) · 4 (إكمال) |
+| 10.3 المتطلبات غير الوظيفية (NFR) | مجموعة NFR بمقاييس | 4 |
+
+Only `10.2` spans days, and it now says so explicitly. Durations carried across exactly: Day 3 §10 = **57 د**, Day 4 = **112 د**.
+
+**NFR was made its own task deliberately.** It is the requirement type everyone skips — and the evidence is in our own history: no prompt ever asked for NFRs; Claude produced them because the standards rule demanded it. Rather than invent a prompt, `المهمة 10.3` states that plainly and uses the absence as the argument: *«لو بقيت خطوةً صغيرة داخل مهمّة أخرى لتخطّاها الجميع»*.
+
+**Three fresh quote sources**, all previously unused:
+
+- **10.1 — Prompt #1's admin-dashboard note.** The ideal specimen of a free-form note: no formal syntax, an open admission of uncertainty («بطريقة جميلة ينبغي أن نناقشها»), and one concrete sketch that later became a whole requirement.
+- **10.2 — Prompt #13.** A requirement *gap* caught in review, which then births a brand-new requirement (the booking horizon) in the same message. Excerpted at clause level, excluding its internal-doc reference.
+- **10.2 review — Prompt #16, second paragraph.** The strongest example in the curriculum for why review is not optional: **Claude proposed a rule that contradicted an existing requirement** («عطلة نهاية الأسبوع تُتخطّى» vs. the provider's freedom to choose days), caught only because the trainer read the proposal against what had already been agreed.
+
+Both Prompt #13 and Prompt #16 had *other* clauses already spent (§14.1 and §14.5) — clause-level excerpting per the standing rule, verified non-overlapping.
+
+### D84.3 `writing-requirements` extended
+
+It was a pure standards reference; it now has the process layer its siblings have — a new §5 covering the three tasks: elicit rather than demand format (10.1), formalise and expect two or three rounds (10.2), and **propose NFRs unprompted** (10.3), since the trainee will not ask.
+
+The centrepiece is **§5.2.1 — افحص التعارض قبل أن تعرض**, written from the weekend bug: before presenting any self-proposed rule, check it against scope, roles, and existing requirements, state where it was derived from, and **say so if it conflicts rather than silently overriding**.
+
+### D84.4 Verification
+
+- Anchors: **169 links, 0 broken**.
+- Day budgets: all **10 days = 215 د**; §10 = **57 د** (Day 3) + **112 د** (Day 4).
+- Tasks: **14 defined**, 0 orphans.
+- Duplication: **0** across §8, §9, §10, §14. *(An initial run flagged 3 in §10; those were false positives — a numbered list inside a collapsible being matched against its own container. The checker now strips collapsibles before extracting steps.)*
+- Contamination: **0** in §10.
+- Authenticity: **7/7** quotes trace to real non-`D` prompts (§2, §26, §32).
+- Cross-section reuse: **0 across all six pairs** of converted sections.
+
+### Documents Affected
+`project-package/bootcamp_roadmap_and_curriculum.md` (§10 rebuilt · §6 Days 3–4 links) · `project-package/.claude/skills/writing-requirements/SKILL.md` (process layer added) · this file.
+
+### Status
+Converted: **§8, §9, §10, §14** with their skills. Remaining: **§11, §12, §13, §15, §16, §17**, then the §6 rewrite, then the deck.
+
+> **§11 caution:** only **four** candidate prompts exist for it, and Prompt #3's drawing clause is reserved. Do not spend it elsewhere.
+
+---
+
+## § D85 — Prompt #43
+
+Plan §11 and do it.
+
+---
+
+## § D86 — Response to Prompt #43
+
+### D86.1 §11 restructured — the scarcity section
+
+**Changes in `project-package/bootcamp_roadmap_and_curriculum.md`.** All 89 د stay on Day 4.
+
+| المهمة | المخرَج |
+|---|---|
+| 11.1 كتابة رحلتك الأساسية نصًّا | نصّ الرحلة بالصيغة الموحّدة (+ رحلات ثانوية عند الحاجة) |
+| 11.2 تحويلها إلى مخطط نشاط | مخطط مقروء يطابق النص |
+
+Secondary journeys stayed a **step inside 11.1** rather than a third task — writing one is the same activity, and the curriculum marks it «عند الحاجة».
+
+### D86.2 The scarcity problem, and what it produced
+
+§11 had **four candidate prompts and only one usable**. Prompts #1 and #2 discuss the journey purely as *bootcamp process* («at this step it should introduce a text description… converts to a diagram on the second day») — excluded by the trainer-examples rule; `D1` is curriculum authoring. That left Prompt #3's drawing instruction alone.
+
+Rather than pad it, `المهمة 11.1` **documents the gap and turns it into the section's best idea**: no prompt asked for the journey text because the journey was *already written inside the product description* given in §8 — the booking page, the sign-in redirect, the calendar. So the task says plainly: **الرحلة ليست معلومة جديدة — هي ما قلته أصلًا، مُعادًا ترتيبه بالتسلسل الذي يعيشه المستخدم فعلًا.** A trainee who feels they have nothing to write is told exactly where to look.
+
+The real journey text is shown as the *output*, with attention drawn to step 4 — «ثم العودة إلى الخدمة المختارة» — because return-after-interruption is the single most-missed branch in any journey, and it only survived here because the trainer had stated it explicitly while describing the product.
+
+### D86.3 The two quotes
+
+**`11.2` — Prompt #3**, the clause reserved since the §9 pass:
+
+> «ارسم مخطط نشاط المستهلك، واستخدم مسارات زمنية… فقط **حاول ألّا تُعقّده**… **وإن رأيته مبالغًا فيه، فاكتفِ بالألوان**.»
+
+Read for what the trainer *did*: stated the preferred form, constrained it by **purpose not shape** («تُسهّل فهم المخطط»), and **offered a fallback in advance** rather than insisting. Lesson: ask for the diagram you can read, not the most complete one.
+
+**`11.2` review — Prompt #34**, an unused clause:
+
+> «يأخذ وقتًا طويلًا نسبيًّا من ضغط زرّ الحجز حتى يكتمل… فينبغي أن نعرض طبقة انتظار… **كخلفية ضبابية، لا أن تختفي**.»
+
+Step 7 of the journey was **correct in both text and diagram** and still *felt* broken. Lesson: the diagram proves the steps are right; walking the journey shows how it feels — and the walk itself comes in §15.
+
+Both prompts had other clauses already spent (§9.2 and §14.7). Clause-level excerpting per the standing rule, verified non-overlapping by the pairwise check.
+
+### D86.4 `user-journey` extended
+
+Was the smallest skill (3.3 KB) and a pure format reference. Added a §3 process layer: elicit by **walking** («ماذا يرى أولًا؟ … ثم ماذا يفعل؟») instead of asking for a format; a checklist of the branches trainees always omit, with **return-after-interruption** singled out; the readability-over-completeness rule for diagrams with the colour fallback; six failure modes; and a closing note that a correct step can still feel broken, so any step waiting on an external service should get a waiting indicator proposed unprompted.
+
+**One repair during execution:** the insert landed on the wrong heading, leaving two `## 4` and the diagram-conversion steps sitting under «أين تُكتب النتيجة». Caught by reading the heading list back; renumbered to a clean 1–6.
+
+### D86.5 Verification
+
+- Anchors: **182 links, 0 broken**.
+- Day budgets: all **10 days = 215 د**; §11's Day-4 items total **89 د**.
+- Tasks: **16 defined**, 0 orphans.
+- Duplication: **0** across §8/§9/§10/§11/§14 (steps extracted outside collapsibles).
+- Contamination: **0** in every converted section — mattering most here, since two of §11's four candidate prompts were pure bootcamp-process.
+- Authenticity: **5/5** §11 quotes trace to real non-`D` prompts (§6, §68).
+- Cross-section reuse: **0 across all 10 pairs**.
+
+### Documents Affected
+`project-package/bootcamp_roadmap_and_curriculum.md` (§11 rebuilt · §6 Day-4 links) · `project-package/.claude/skills/user-journey/SKILL.md` (process layer) · this file.
+
+### Status
+Converted: **§8, §9, §10, §11, §14** with their skills. Remaining: **§12, §13, §15, §16, §17**, then the §6 rewrite, then the deck.
+
+---
+
+## § D87 — Prompt #44
+
+Plan §12 — with a correction: you cannot natively extract generated pages from Claude Design, only the design system; pages required sharing the URL, or downloading the HTML/JS files into a temp folder. Unsure which to adopt. Also MUST: if Claude Design asks form questions and the trainee answers them, those answers must be copied to Claude Code, otherwise Claude treats un-prompted design detail as ignorable.
+
+---
+
+## § D88 — Response to Prompt #44
+
+### D88.1 The correction, verified
+
+Ammar's correction was right and I verified it two independent ways before planning around it:
+
+- The **`DesignSync` tool contract** states it operates on projects of type `PROJECT_TYPE_DESIGN_SYSTEM`, and *"that type is immutable at creation, so pushing to a regular project never makes it a design system."*
+- Calling `list_projects` here returned that DesignSync requires an interactive `/design-login` — available in the trainee's local terminal, not in this environment — and surfaced a third path I had not known, **"Send to Claude Code Web"**, which applies to `claude.ai/code` rather than the local CLI.
+
+**Conclusion:** the design **system** syncs natively; **generated pages do not**. The curriculum implied otherwise, which would have left trainees waiting for screens that never arrive. Two new rules were added as a result (D88.3).
+
+### D88.2 §12 restructured
+
+**187 د — the heaviest single-day section**, all Day 5, durations unchanged. Four tasks, split by **who executes each**, which is what makes the section legible:
+
+| المهمة | المخرَج | مَن ينفّذها |
+|---|---|---|
+| 12.1 جرد الشاشات وتفضيلاتك البصرية | قائمة الشاشات + الألوان والقواعد | **المتدرّب** |
+| 12.2 إعداد أوامر Claude Design | أوامر جاهزة للّصق | **Claude Code** |
+| 12.3 بناء نظام التصميم | مشروع Design System | **Claude Design** |
+| 12.4 توليد الشاشات وتكرارها | الشاشات مولّدة من النظام | **Claude Design** |
+
+The 12.3/12.4 split is not arbitrary: Prompts #5 and #6 are *precisely* about that seam («هل ألصق الأمر في المحادثة نفسها أم أفتح محادثة جديدة وأختار نظام التصميم؟»).
+
+### D88.3 Two new rules
+
+**⚠ حدود DesignSync** — stated explicitly in the concept: components transfer, screens do not, and the technical reason (project type is immutable at creation). Used to make a point that was previously invisible: **نظام تصميمك الغنيّ هو وحده ما ينتقل إلى مشروعك** — so investing in components pays, investing in screens does not.
+
+**⚠ قاعدة نسخ إجابات النموذج (Ammar's MUST)** — and sharpened past his original note. Prompt #27 told Claude Code that un-prompted design detail «ليس خطأً»; but tolerating it is not enough, because Claude Code still *does not know what it is*. The rule is now: after each screen, the trainee copies their form answers back — and the skill instructs Claude to **ask for them explicitly rather than wait**.
+
+**Page handoff — hybrid with a trigger.** URL by default; download the page's files when **any** of three named signals holds: the result came back not matching, the screen has many visual states (a calendar), or the screen is dense (a dashboard). Crucially the skill puts the diagnosis on Claude: if a share-URL reading came back wrong, **Claude asks for the download** rather than making the trainee work out why.
+
+### D88.4 New skill — `designing-screens`
+
+Sixth-to-last skill; opens with the DesignSync boundary as §0 because it governs everything after it. Covers: extracting screens by walking the journey (every screen must trace to a step or a requirement); Claude writing the design prompts, never the trainee; researching conventions before prompting (the landing-page research really did change its section list, dropping social proof as inappropriate for an MVP); the ordering that prevents inconsistency; the form-answers rule; the handoff rule of thumb; and the division of labour — Claude Design renders **visual states**, behaviour is coded later, with the calendar as the worked example.
+
+### D88.5 Verification
+
+- Anchors: **201 links, 0 broken**.
+- Day budgets: all **10 days = 215 د**; §12's Day-5 items total **187 د**.
+- Tasks: **20 defined, 0 orphans** — after a fix: two §6 lines cited tasks as bare `[12.2]`, which read fine to a human but broke the orphan check. Now every citation is explicit.
+- Duplication: **0** across all six converted sections. *(An initial run flagged 1 in §12 — `دعم RTL`, a two-word phrase appearing in both a review step and a trainer note. Not a restated step; the checker now ignores matches under 20 characters.)*
+- Contamination: **0** everywhere.
+- Authenticity: **6/6** §12 quotes trace to real non-`D` prompts (§8, §10, §12, §54).
+- Cross-section reuse: **0 across all 15 pairs**.
+
+### Documents Affected
+`project-package/bootcamp_roadmap_and_curriculum.md` (§12 rebuilt · §6 Day-5 links) · `project-package/.claude/skills/designing-screens/SKILL.md` (new) · this file.
+
+### Status
+Converted: **§8, §9, §10, §11, §12, §14** with their skills. Remaining: **§13, §15, §16, §17**, then the §6 rewrite, then the deck.
+
+---
+
+## § D89 — Prompt #45
+
+Go ahead with §13 — and copy my global draw.io skill into the project package skills so it is ready to be used.
+
+---
+
+## § D90 — Response to Prompt #45
+
+### D90.1 A broken promise, found while planning
+
+Before touching §13 I checked the draw.io skill it depends on. **The package promised a skill it did not contain.** §4's list said «مهارة (skill) draw.io — لرسم المخططات», and both §11 and §13 instruct the trainee to use it — but it existed only as `~/.claude/skills/drawio.skill` on Ammar's machine, and inspection showed that file is a **ZIP archive** wrapping `drawio/SKILL.md`, not a directory-based skill. That is why it never appears in the loaded-skills listing. **A trainee following §11 or §13 would have found no such skill.**
+
+Now extracted to `project-package/.claude/skills/drawio/SKILL.md` as a proper directory skill. Ammar's global copy untouched.
+
+**One deliberate deviation from a verbatim copy**, flagged for approval: the skill's troubleshooting told the user to install the draw.io desktop app when the CLI is missing — sending a trainee to install software they do not need. That row now also carries the **verified** fallback: `.drawio` files open at <https://app.diagrams.net> (File → Open From → Device) with **no install and no sign-in** for a local file, confirmed against drawio.com's own documentation.
+
+**And the tree now matches reality in both directions** — a check confirms no skill on disk is missing from §4's tree, and nothing in the tree is missing from disk. Four skills built during this conversion (`defining-mvp`, `defining-users`, `designing-screens`, `drawio`) had never been added to it.
+
+### D90.2 §13 restructured
+
+**99 د on Day 6**, unchanged, sharing the day with `المهمة 14.2` — the model is designed and then built the same day, which the section now states up front.
+
+| المهمة | المخرَج | مَن ينفّذها |
+|---|---|---|
+| 13.1 وصف بياناتك بصيغة حرّة | ما تحفظه وما تحفظه عنه وكيف يترابط | **المتدرّب** |
+| 13.2 اقتراح النموذج الكامل | كيانات وحقول وعلاقات ومفاتيح | **Claude** |
+| 13.3 رسم الـERD ومراجعته | مخطط مطابق للنموذج | **draw.io** |
+
+The 13.2/13.3 split exists because the two failures are different in kind: a model can be *wrong*, and a diagram can be *incomplete* — as it actually was.
+
+### D90.3 The thinnest section, and what it taught
+
+§13's only unused verbatim source is **four words**: «ارسم الـERD بمهارة draw.io.» (Prompt #14's «a whole table for one value» clause — ideal here — is already spent in §14.5.)
+
+Rather than repeat §11's move, the lesson is deliberately different. §11's gap taught that *the journey is a re-ordering of what you already said*. §13's teaches that **the model is a consequence of decisions already made**: four words sufficed because the roles were settled in §9 and the requirements in §10. The section says so directly — «إن وجدت نفسك تتجادل طويلًا في الكيانات، فالنقص ليس هنا — بل فيما قبله».
+
+Two documented incidents carry the rest, both described and explicitly not quoted:
+
+- **Empty boxes.** Some entity boxes rendered with **no fields at all** while the diagram looked correct from a distance — boxes placed, arrows joined, relations wired. Only opening each box revealed it. Lesson: **a diagram can be structurally sound and missing its content.**
+- **Drawn from the real schema.** The trainer built the ERD from the working table-creation file, not from prose. This became decision A-2: after the tables exist in `المهمة 14.2`, regenerate the diagram **from the real tables** — «ومخطّط لا يطابق الواقع أسوأ من عدمه، لأنك ستثق به وهو مخطئ».
+
+One more thing worth surfacing that was invisible before: `user_services` — the join table — was never requested by the trainer. Claude added it because a many-to-many relation requires one. §13.2 now uses that as the concrete illustration of *why keys and link tables are Claude's job, not the trainee's*.
+
+### D90.4 No new skill
+
+`drawio` covers the drawing mechanics; the *modelling* guidance went into **`building-features`**, which already owns `المهمة 14.2`. Keeping model → tables in one skill rather than splitting them across two. It carries the empty-boxes check as a pre-flight rule («قبل أن تعرض أي مخطط ERD، افتح كل صندوق»), the redraw-from-tables rule, and three modelling failure modes.
+
+### D90.5 Verification
+
+- Anchors: **219 links, 0 broken**.
+- Day budgets: all **10 days = 215 د**; §13's Day-6 items total **99 د**.
+- Tasks: **23 defined, 0 orphans**.
+- Duplication: **0** across all seven converted sections.
+- Contamination: **0** everywhere.
+- Authenticity: §13's single quote traces to §50 Prompt #25. *(The quote collector reports 0 for §13 because it only counts excerpts over 45 characters — this one is four words. Not a defect.)*
+- Cross-section reuse: **0 across all 21 pairs**.
+- Package integrity: **§4's tree ↔ disk match exactly, both directions**; all **9** skills have valid frontmatter.
+
+### Documents Affected
+`project-package/bootcamp_roadmap_and_curriculum.md` (§13 rebuilt · §4 tree · §6 Day-6 links) · `project-package/.claude/skills/drawio/SKILL.md` (new, extracted) · `.../building-features/SKILL.md` (modelling guidance) · this file.
+
+### Status
+Converted: **§8, §9, §10, §11, §12, §13, §14** with their skills. Remaining: **§15, §16, §17**, then the §6 rewrite, then the deck.
+
+---
+
+## § D91 — Prompt #46
+
+Plan for §15.
+
+---
+
+## § D92 — Response to Prompt #46
+
+### D92.1 §15 restructured — zero quotes, richest facts
+
+**135 د on Day 10**, unchanged. §15 is the extreme case for source material: **no usable verbatim prompt exists at all.** Every remaining unused build-era prompt fails a standing exclusion — `#10`/`#11`/`#17` are Spring Boot and Docker specific (trainer stack), `#15`/`#26` name internal documents, `#28`/`#32` are one word, `#36` survives only as a summary.
+
+But §15 carries the **richest documented material** of any section, so it is written entirely as documented narrative — the approach already used for §12's fidelity gaps and §13's empty boxes.
+
+| المهمة | المخرَج | مَن ينفّذها |
+|---|---|---|
+| 15.1 تحديد رحلاتك الكاملة | المسارات + **العمليات المتتابعة** | **المتدرّب** |
+| 15.2 سيناريوهات التكامل | تقرير: ما اختُبر، ما ظهر، ما أُصلح | **Claude** |
+| 15.3 مراجعة الأمان | تقرير: **محاولات ونتائجها** | **Claude** |
+
+15.1 is not a copy of §11 — it adds what §11 never had: **sequences that change shared state** (أنشئ ← عدّل ← ألغِ ← هل عادت الحالة سليمة؟), the class of bug the per-feature round structurally cannot catch.
+
+### D92.2 The sharpest material
+
+**The double-booking case is the best illustration of integration testing in the whole curriculum.** Booking the same slot twice was refused — *including under a different service for the same provider*. That could never surface from testing the booking function alone; it appeared only because the scenario crossed **two different services for one person**. §15.2 uses it to define what integration testing even means.
+
+**The browser round earned its own lesson:** Arabic-locale digits and month names appeared in fields while the site language was English — invisible to every command-line check. «بعض الأعطال موجودة فيما يراه المستخدم فقط».
+
+**Security got a sharper rule than the section had before.** §15.3 now distinguishes a claim from a result: «تقرير يقول *الصلاحيات مطبَّقة* لا قيمة له. التقرير المفيد يقول: دخلتُ بحساب عميل وحاولت فتح صفحة المشرف — فمُنعت». The trainer's own notes already read as attempt-and-outcome, so the section points at that phrasing as the model.
+
+### D92.3 The automated-tests gap, surfaced
+
+It was a parenthetical buried in a collapsible; it is now its own block titled «ولماذا تشدّد القاعدة على الاختبارات الآليّة؟». Stated plainly: the reference project **never completed** re-runnable automated tests and relied on command-line and browser checks — which cost manual retesting after every change and left nothing guarding against a fixed bug returning. **That gap is why the rule exists.** A trainee asking «هل طُبّق هذا فعلًا في مشروع المدرب؟» now gets: «لا — وهذا سبب وجود القاعدة». The FAQ answer was updated to match rather than left contradicting it.
+
+### D92.4 New skill — `testing-and-security`
+
+`building-features` owns per-feature testing; this owns the final pass. Its centrepiece is **§3.1 حاوِل فعلًا — لا تدّعِ**: the most dangerous thing the report can contain is the sentence "permissions are enforced", because that is an assertion, not a test result. Also carries the mandatory error-case table, the browser requirement, re-running the scenario after every fix, and — per the decision above — an instruction to **be honest if asked** whether the reference project actually wrote automated tests.
+
+It ends with a gate: **do not move to deployment while any scenario is still failing** — say so plainly.
+
+### D92.5 Verification
+
+- Anchors: **232 links, 0 broken**.
+- Day budgets: all **10 days = 215 د**; §15's Day-10 items total **135 د**.
+- Tasks: **26 defined, 0 orphans**.
+- Duplication: **0** across all eight converted sections.
+- Contamination: **0** everywhere.
+- **No fabricated speech** — the check that mattered most here: §15 contains **0 blockquote lines** inside its collapsibles, and all four are titled «ملاحظة موثّقة» / «ما حدث في مشروع المدرب» rather than «الحوار الحقيقي» or «ما كتبه المدرب». With rich facts and no quotes available, the risk was phrasing a fact as if it had been said; it did not happen.
+- Cross-section reuse: **0 across all 28 pairs**.
+- Package integrity: §4's tree ↔ disk **match**, both directions; **10** skills now shipped.
+
+### Documents Affected
+`project-package/bootcamp_roadmap_and_curriculum.md` (§15 rebuilt · §4 tree · §6 Day-10 links) · `project-package/.claude/skills/testing-and-security/SKILL.md` (new) · this file.
+
+### Status
+Converted: **§8–§15 except §16/§17** — i.e. §8, §9, §10, §11, §12, §13, §14, §15 with their skills. Remaining: **§16, §17**, then the **§6 rewrite**, then the deck.
+
+---
+
+## § D93 — Prompt #47
+
+now plan for section 16
+
+---
+
+## § D94 — Response to Prompt #47
+
+### D94.1 Why §16 was the sharpest case for the task shape
+
+§16 is the **only section the bootcamp returns to twice** — Day 3 (first deploy) and Day 10 (final redeploy) — and both days linked to the **same two anchors** (`16.3.1`, `16.4.1`). A trainee on Day 10 clicking «خطوات التنفيذ» landed on account creation, MCP connection and `vercel login`, none of which apply then. It also carried the usual `16.2` ↔ `16.3.1` duplication (the same flow listed as five steps, then as four).
+
+### D94.2 Source material — the first usable verbatim prompt in three sections
+
+`conversation_history.md` held only scattered deploy mentions, so the source is the session transcript (as in D30.1). Re-verified this session:
+
+- **The quote (clause-level excerpt).** «الآن أنا واقف على لوحة Vercel ولا أعرف ماذا أفعل. أعطني خطة للنشر بأكبر قدر ممكن من الخطوات التي تنفّذها أنت بنفسك — ربّما عبر أداة MCP — وما عليّ أن أفعله يدويًّا اشرحه لي بالتفصيل.» The split-stack clause («vercel next.js frontend and render for backend and DB») was dropped — the trainee's fixed stack never reaches it. The quote **earned two of the section's decisions**, so it sits where they were made: the response literally replaced the dashboard step with a CLI-driven flow (→ «أنت تؤكّد وClaude ينفّذ»), and the trainer's own guess «ربّما عبر أداة MCP» proved right (→ the Vercel MCP prerequisite). Trainee lesson drawn: **«لا أعرف ماذا أفعل» أمرٌ صالح — صِف موقفك بدقّة، لا الحلّ.**
+- **The five obstacles, re-verified:** CLI installed (`50.39.0`) but not logged in (`vercel whoami` → «token is not valid»); interactive login Claude cannot complete; Root Directory unset; production keys added late; `.vercel` must stay git-ignored. Plus the secrets rule the real session actually followed (keys written to local files, never into the chat).
+- **Excluded, with reason:** the host-choice prompt (`.jar`, Render vs Vercel, 10s background limit — the trainee never chooses a host) and the Render blueprint prompt (trainer stack). Noted that **«standing in a dashboard with no next step» happened twice**, which strengthens the narrative even though the second quote is excluded.
+
+### D94.3 The gap — why the bootcamp deploys on Day 3
+
+Stated plainly, as §15 did for automated tests: the reference project **deployed only at the very end**, and that deploy session **did not complete** — part was done, then it stopped and the trainer finished the rest himself outside the session. The point is not the lost hour but that any fault in the deployment pipeline would have surfaced **at the last possible moment**. Hence the early first deploy: we ship the *pipeline* before the product. «فإن سألت: هل جرى الأمر هكذا في مشروع المدرب؟ فالجواب الصريح: لا — ومن هذا النقص وُلدت القاعدة.»
+
+Paired with it, the ⚠ note that prevents the obvious misreading: **on Day 3 the live link will look nearly empty, and that is the intended result** — the deliverable is a link that opens, not a finished product.
+
+### D94.4 §16 in the task shape — three tasks, split on the day boundary
+
+| المهمة | المخرَج | مَن | اليوم |
+|---|---|---|---|
+| **16.1** تهيئة النشر | Claude يملك صلاحية النشر على حسابك | **المتدرّب** | 3 |
+| **16.2** أوّل نشر على رابط حيّ | رابط إنتاج يعمل | **Claude** | 3 |
+| **16.3** إعادة النشر النهائية | الرابط نفسه بالنسخة النهائية | **Claude** | 10 |
+
+`16.1` is the trainee's only work in the whole section: an account and two one-time browser confirmations. `16.3` is deliberately short — everything was set up on Day 3, which is exactly what the early deploy buys.
+
+**Durations carried across unchanged** (170 د total): Day 3 = 143 (10 + 14 concepts · 42 + 10 trainer · 15 + 40 trainees · 12 review), Day 10 = 27 (15 + 12). The old single 55 د trainee line was split along **its own parenthetical** into `16.1` = 15 and `16.2` = 40 — no recomputation.
+
+**9 links repointed:** 6 in §6.3, 2 in §6.10, and one in §7.10 — the latter also a correctness fix, since «Vercel MCP في 16.2» now points at `المهمة 16.1`, where connecting the MCP actually happens.
+
+### D94.5 `deploying` skill — rebuilt around the two moments
+
+The skill predated the task shape and read as a single deploy event. Added: **§0 «لحظتان لا واحدة»** with the explicit instruction **not to re-run `16.1`'s steps on Day 10** (asking again implies something broke); the task IDs throughout; **§3.1** telling Claude to warn the trainee *before* they open the link that it will look empty; **§6.1** on external-service callback URLs — including the improvement that both the local and production redirect URIs should be registered **when the service is first connected in `14.7`**, since the production URL has been known since Day 3, rather than patched at redeploy; **§6.2** "verify on the live URL, not locally"; and a common-mistakes list. Secret handling kept as it was — it already matched the real session's behaviour.
+
+### D94.6 Verification
+
+- Anchors: **249 links, 0 broken** (was 232).
+- Day budgets: all **10 days = 215 د**; §16 = **143** (Day 3) + **27** (Day 10).
+- Tasks: **29 defined, 0 orphans**.
+- **§16-specific — day/anchor collision: 0.** Day 3 now points at `16 — المفهوم العام`, `16 — مهامّ هذا القسم`, `المهمة 16.1`, `المهمة 16.2`; Day 10 points at `المهمة 16.3` alone. The intersection is empty — the defect this section was converted for is gone.
+- Duplication: **0** new. (The scan flags §14's «احفظ (commit وpush).» six times — that is the deliberate save step closing each build task, not a defect.)
+- Contamination: the scan's one hit on «المعسكر» is the same trainee-addressed framing already accepted in §8, §13 and §14; no bootcamp-authoring content.
+- Cross-section reuse: **0 across all 36 pairs**.
+- Quote fidelity: every kept clause maps to the transcript; the account URL was generalised to «لوحة Vercel». The other two §16 collapsibles are titled «ملاحظة موثّقة», not «الحوار الحقيقي».
+- Package integrity: §4 tree ↔ disk **match**, both directions; **10** skills, all frontmatter valid.
+
+### Documents Affected
+`project-package/bootcamp_roadmap_and_curriculum.md` (§16 rebuilt · §6.3 + §6.10 + §7.10 links) · `project-package/.claude/skills/deploying/SKILL.md` (rebuilt) · this file.
+
+### Status
+Converted: **§8, §9, §10, §11, §12, §13, §14, §15, §16** with their skills. Remaining: **§17**, then the **§6 rewrite** (every task ID final), then the deck.
+
+---
+
+## § D95 — Prompt #48
+
+since section 17 is quite different, what do you think we should do about it? plan for that and give me your proposal
+
+---
+
+## § D96 — Response to Prompt #48
+
+### D96.1 The diagnosis — why §17 does not take the task shape
+
+Every section from §8 to §16 **produces** something that did not exist before, which is what makes a task meaningful: a unit of production with an owner and an output. **§17 produces nothing** — it *records* what the other nine sections already did. Forcing `المهمة 17.1` onto it would manufacture busywork, and a Day-10 "task" would contradict the section's own rule («حدّثه أوّلًا بأوّل — لا تتركه للنهاية»).
+
+**Decision: no tasks.** §17 keeps reference headings in the converted register (`17 — X`), so §6 gets clean anchors without pretending a table is a deliverable. *(Considered and rejected: dropping §17 entirely in favour of `PRODUCT.md` §10 — the deck needs it, and a trainee who cannot name their stack cannot present their project.)*
+
+### D96.2 What the audit actually found
+
+1. **The «when» column was vague and stale** — «يُثبَّت في اليوم الأول», «يُربط قبل النشر» — while the restructure had meanwhile produced a precise, linkable answer for every tool.
+2. **⚠ The «update as you go» promise was not wired in.** Only **3 of 10 skills** told Claude to record a tool (`bootcamp-setup`, `building-features`, `deploying`). The curriculum promised a habit the package only half-implemented.
+3. **§17 was the only section in 8–17 with no «أسئلة شائعة»**, and it blurred the two tables — §17.1 said «الأدوات التي استخدمتها في مشروعك» and then displayed the *generic package* table.
+
+### D96.3 §17 rebuilt as a reference — and as an index
+
+```
+17 — المفهوم العام                 [5 د]
+17 — جدول أدوات الحزمة الافتراضية
+17 — كيف يبقى جدولك محدَّثًا        [5 د]
+17 — أسئلة شائعة
+```
+
+- **New third column «أين تُهيَّأ»**, task-linked — the section's main upgrade, and only possible now that task IDs exist. It answers «متى أربط هذه الأداة؟», a question a trainee on Day 7 previously had nowhere to look up: `7.10` · `المهمة 11.2` + `13.3` · `12.3` · `14.1` · `14.2` · `16.1` · and DesignSync at build time in `14. التنفيذ`.
+- **The two tables separated explicitly** — the curriculum's is a fixed reference for the default package; the trainee's in `PRODUCT.md` §10 is theirs (package **plus** whatever their product dragged in) and is the one that must stay current.
+- **«كيف يبقى جدولك محدَّثًا»** — Claude records, the trainee reviews; what Claude cannot know is the product's own external services; the Day-10 slot is framed as a **check, not a task** («إن وجدت فيه نقصًا فالعادة هي التي تعثّرت، لا الجدول»).
+- **Trainer collapsible strengthened from its own evidence:** Gmail SMTP, Google Calendar/Meet, Flyway and the UI libraries were **none of them day-one decisions** — every one entered mid-build. Hence: «قائمة أدواتك في نهاية المشروع لن تشبه ما تتوقّعه في بدايته.» *(Excluded: the «you forgot to add Vercel MCP to Section 17» exchange — that is about building this curriculum, not the product.)*
+
+Day-10 durations carried across unchanged (**10 د**); both §6 links repointed.
+
+### D96.4 The skills fix — with one correction to the approved plan
+
+The plan named `testing-and-security` as needing a chrome-devtools registration line. **That was wrong:** chrome-devtools is already connected and recorded in `المهمة 14.2` via `building-features` §ط, so adding it there would register the same tool twice. Corrected allocation:
+
+| المهارة | ما أُضيف |
+|---|---|
+| `user-journey` | تسجيل **draw.io** (أوّل استعمال فعلي) |
+| `designing-screens` | تسجيل **Claude Design** و**DesignSync** |
+| `deploying` | **§9.1 جديد** — مراجعة الجدول كلّه |
+
+`deploying` turned out to be the right home for the completeness review: deployment is the **last step that adds a tool**, and §17's review immediately follows it on Day 10. Its §9.1 now tells Claude to reconcile the table against what was actually used, to **ask the trainee explicitly about their product's external services** (Claude knows it connected them; only the trainee knows their purpose in his own words), and to keep the purposes in the trainee's language since he is the one who will present them.
+
+`drawio/SKILL.md` was **not** touched — it stays the verbatim copy of your global skill, and that deviation is still pending your review.
+
+### D96.5 `PRODUCT.md` §10 — deviation from the plan, with reason
+
+The plan said to mirror the third column into the trainee's table. **Not done, deliberately:** «أين تُهيَّأ» answers a *curriculum* question (which task connects this), which is meaningless for a trainee's own product-specific tools — a payments API has no task ID. Symmetry would have bought a column they could not fill. Instead the stub gained the guidance that actually matters: this is *your* table (package + your product's own), purposes in your language because you will present them, reviewed on Day 10.
+
+### D96.6 Verification
+
+- Anchors: **267 links, 0 broken** (was 249).
+- Day budgets: all **10 days = 215 د**; §17's Day-10 share unchanged at **10 د**.
+- **Tool→task index: all 14 rows resolve** to real headings, each pointing at the task that genuinely sets that tool up.
+- **Coverage both ways: 0 gaps** — every tool in the table appears in the curriculum body, and vice versa. This is the check that would have caught the missing-skills defect in the first place.
+- **No fake tasks: `#### المهمة 17.` appears 0 times**; §6's Day-10 links resolve to reference headings.
+- Skills mechanism: every skill that *first* introduces a tool now records it. The two remaining `False` results are correct by design — `drawio` (verbatim, covered by `user-journey`) and `testing-and-security` (chrome-devtools already recorded at `14.2`).
+- Structure: §17 has «أسئلة شائعة»; **0 blockquote lines** inside its single collapsible (no fact dressed as speech); the closing `</div>` survives as the last line.
+- Package integrity: §4 tree ↔ disk **match**, both directions; **10** skills.
+
+### Documents Affected
+`project-package/bootcamp_roadmap_and_curriculum.md` (§17 rebuilt · §6.10 links) · `project-package/.claude/skills/{user-journey,designing-screens,deploying}/SKILL.md` · `project-package/PRODUCT.md` (§10) · this file.
+
+### Status
+**All content sections converted: §8–§17.** Remaining: the **§6 rewrite** (every task ID is now final), then the dual-mode HTML deck. Your review notes on the converted sections are still pending.
+
+---
+
+## § D97 — Prompt #49
+
+plan for section 6 update
+
+---
+
+## § D98 — Response to Prompt #49
+
+### D98.1 The audit said "update", not "rewrite"
+
+Because each section's conversion repointed its own §6 links as it went, the ten day-blocks turned out healthy: **40/40 declared session totals matched their item sums**, all ten days = **215 د**, all four session bands held, all 29 tasks were cited with **0 orphans**, and every task's `**اليوم:**` matched the day-block citing it (the two apparent exceptions, `8.1` and `10.2`, genuinely span two days and say so). **So no duration and no day assignment was touched.**
+
+### D98.2 The serious defect — §6's own reading key was obsolete
+
+«ربط الأقسام بالمهامّ» still mapped the four daily sessions onto **`X.1` · `X.2` · `X.3.1` · `X.3.2` · `X.4.1` · `X.4.2`** — **none of which exist any more**, having been deleted across nine conversions. A trainee reading §6's instructions on how to read §6 was sent hunting for subsections that are gone. The adjacent line cited «مثل 7.1، **7.3.1**», and `7.3.1` never existed either.
+
+Replaced with the real anatomy, verified against every converted section:
+
+| الجلسة | الجزء |
+|---|---|
+| شرح المفاهيم | «N — المفهوم العام» و«N — مهامّ هذا القسم» |
+| تطبيق مع المدرب | «الخطوات» + الصناديق المطويّة (الحوار الحقيقي للمدرب) |
+| عمل المتدربين | «نفّذها أنت» |
+| مراجعة | «راجع نتيجتك» |
+
+### D98.3 «شكلان للإشارة» — making a real distinction visible
+
+§6 mixes two link shapes and **both are correct**, but nothing said so, which read as sloppiness: **91 links** use `المهمة N.M` (§8–§17, the task chapters) and **13** use bare `N.M` (§7 and §5 — *reference* chapters that produce no output and were correctly never converted). One short block now states the rule.
+
+### D98.4 «خريطة المهامّ الكاملة» — the thing the conversion made possible
+
+A single 29-row table (المهمة · مَن ينفّذها · اليوم) after the intro, so any task's day and owner is one lookup instead of a scan across ten day-blocks. `8.1` and `10.2` carry their spans («1 (بداية) · 2 (إكمال)», «3 (بدء) · 4 (إكمال)») rather than a single day.
+
+### D98.5 The retrofit — and a correction to my own plan
+
+The per-section task tables disagreed on columns: **§12, §13, §15, §16 had «مَن ينفّذها»; §8, §9, §10, §11, §14 did not** (the column was introduced at §12 and never backfilled). Added to **16 rows** across those five sections. All nine tables now share one header.
+
+**Correction to the approved plan:** it proposed a **binary** أنت/Claude assignment and a headline of «12 أنت / 17 Claude». That was wrong — §12 and §13 already use **richer executor labels** (`Claude Code` for 12.2, `Claude Design` for 12.3/12.4, `مهارة draw.io` for 13.3), and my binary map would have **contradicted the sections it was summarising**. Caught by the verification step, not by eye: the owner-consistency check failed. Fixed by regenerating the map's owner column **from the section tables themselves** as the single source of truth, and rewriting the summary note to the true distribution:
+
+**أنت 10 · Claude 15 · Claude Design 2 · Claude Code 1 · مهارة draw.io 1 = 29**
+
+> «**10 مهامّ فقط هي عملك أنت** — وفيها تصف وتقرّر لا أكثر. أمّا التسع عشرة الباقية فينفّذها Claude، أو أداة تعمل بأوامر يكتبها لك Claude. و**القسم 14 كلّه — مهامّ البناء السبع — عمل Claude**.»
+
+**Not done:** the plan's optional item B (normalising §14's one-line task metadata to the four-line shape used by the other 22 tasks) — it was offered conditionally and not requested, so §14's formatting is unchanged. It remains the last structural inconsistency in the task chapters.
+
+### D98.6 Verification
+
+- Anchors: **298 links, 0 broken** (was 267; +29 map links, +2 example links).
+- **Durations byte-identical to the pre-change baseline** — all 40 session totals and all 10 day totals, compared against a snapshot taken before editing. A regression guard, not a recount.
+- Task map ↔ reality: **29 rows · 0 owner mismatches · 0 day mismatches** against both the section tables and each task's own metadata.
+- Task tables: **1 distinct header** across all nine sections.
+- Dead references in §6: `X.3.1` **0** · `X.4.1` **0** · `7.3.1` **0`.
+- Citation shapes: all 13 `N.M` links resolve to §7/§5; all 91 `المهمة N.M` links resolve to `#### المهمة` headings.
+- Package integrity: §4 tree ↔ disk **match**, both directions.
+
+### Documents Affected
+`project-package/bootcamp_roadmap_and_curriculum.md` (§6 intro rewritten + task map added · «مَن ينفّذها» retrofitted into §8/§9/§10/§11/§14) · this file.
+
+### Status
+**The curriculum restructure is complete** — §6 through §17 all consistent. Remaining: the **dual-mode HTML deck** (عرض/مرجع). Still pending your decision: your review notes on the converted sections, the `drawio` skill's one deviation from your global copy, and optional item B (§14 metadata formatting).
+
+---
+
+## § D99 — Prompt #50
+
+now I need you to update graphify and @project-package/bootcamp_roadmap_and_curriculum.docx
+
+---
+
+## § D100 — Response to Prompt #50
+
+### D100.1 graphify — incremental update
+
+`detect_incremental` found **7 changed files** and 0 deletions. But the manifest revealed a structural gap: **graphify skips dot-directories, so `project-package/.claude/` had never been in the graph at all** — the 10 skills and 3 rules that are the substance of the trainee package were invisible. Added them explicitly to this run (17 files extracted, 4 cache hits).
+
+Six extraction subagents ran in parallel: `conversation_history.md` split at line 1300 (product build / package work), the curriculum, the four core docs, the ten skills, and the SAG PDF. Two agents (chunks 02 and 05) were terminated mid-reply by a session limit, **but both had already written their chunk files** — the skill treats the file on disk as the success signal, and both were valid JSON. No chunk was lost.
+
+Also guarded a real hazard: the previous run's nine `.graphify_chunk_*.json` files were still on disk, and the merge step globs that pattern. Moved them to `graphify-out/.chunks_prev_run/` first so stale data could not be folded into this run.
+
+**Result: 1371 → 2068 nodes, 2231 → 3487 edges, 179 communities** (52 hand-labelled, 127 derived from each community's highest-degree node). Benchmark: **25× token reduction** vs. reading the corpus naively.
+
+The god nodes are now the *skills*, not the documents — `building-features` (56 edges), `deploying` (34), `writing-requirements` (33). That is the package's real centre of gravity showing up in the graph for the first time.
+
+### D100.2 ⚠ `notebook.txt` — an instruction we were violating
+
+Its **first line reads: «not meant for any LLM or AI usage or analysis… don't analyze this file and waste tokens.»** graphify had been ingesting all 92 KB of it, in this run and the previous one. Actions taken:
+
+- Added `notebook.txt` to `.graphifyignore` with the reason, so no future run re-ingests it.
+- **Pruned the 24 notebook-sourced nodes** from the graph and regenerated all three outputs. `graphify-out/graph.json` initially refused the write (graphify guards against a shrinking graph, suspecting missing chunks) — since this prune was deliberate, re-wrote with `force=True` and verified **0 notebook-sourced nodes remain** across report, JSON and HTML.
+
+**Security note (low urgency):** the file contains a live-looking Google OAuth client ID and secret in plaintext. It is **git-ignored and untracked**, so nothing was ever pushed — but those credentials are sitting unencrypted on disk and are worth rotating.
+
+### D100.3 The docx — rebuilt from scratch
+
+The existing file dated to **27 Aug**, before the entire restructure. No build script had been kept from last time, so it was rewritten: a line-based Markdown→docx-js converter tuned to this document rather than a generic pipeline, because the file's constructs are specific (45 `<details>` callouts, 193 `<br>`/`&nbsp;` agenda lines, 289 blockquote lines, mixed Arabic/Latin inline code).
+
+Handled: cover page · live `TOC` field with `updateFields` · built-in Heading 1–4 styles so the TOC populates · RTL throughout (`bidirectional` paragraphs, `rightToLeft` runs, `visuallyRightToLeft` tables) · `<details>` rendered as teal-topped shaded callouts (Word has no collapsibles) · blockquotes as right-bordered shaded blocks · fenced code LTR in monospace · tables with DXA dual widths per the skill's Google-Docs caveat · footer page numbers.
+
+**Verification — structural, not visual.** LibreOffice, `pdftoppm` and `pandoc` are all absent on this machine, so the skill's render-and-look step could not run; this was the same limitation as the previous build. What was checked with python-docx:
+
+| فحص | النتيجة |
+|---|---|
+| Headings vs. source | **18 / 110 / 31 / 88 — exact match** |
+| Tables vs. source | **21 — exact match** |
+| TOC field + `updateFields` | present |
+| RTL | 2044 bidi paragraphs, 4713 RTL runs |
+| 29-row task map | 30 rows × 3 cols, header and both end rows correct, two-day spans preserved |
+| §17 tools table | 15 rows × 3 cols (14 tools + header) |
+
+116 KB, 1664 paragraphs. The old file was backed up before replacement.
+
+### Documents Affected
+`graphify-out/` (graph.json · graph.html · GRAPH_REPORT.md · cost.json · manifest.json) · `.graphifyignore` · `project-package/bootcamp_roadmap_and_curriculum.docx` · this file.
+
+### Status
+Graph and docx both current as of the completed §6–§17 restructure. The docx build script is at `scratchpad/docxbuild/build.js` — **not yet saved into the repo**, which is why it had to be rewritten this time; worth committing if the docx will be regenerated again.
+
+---
+
+## § D101 — Prompt #51
+
+**[صورة مرفقة: لوحة ألوان «ساج لاب — الأزرق والسماوي»]**
+
+الآن نحتاج إلى إنشاء العرض التقديمي (deck) بدءًا من اليوم الأول، عبر Claude Design: نبني أوّلًا نظام التصميم وفق متطلباتي، ثم ننشئ العرض بناءً عليه. فالمطلوب تجهيز **أوامر شاملة** تُعطى لـClaude Design لتوليد نظام التصميم والعرض. وحيرتي: هل أختار قالبًا من قوالب Claude Design، وأيّها؟ (Blank · Mobile app design · Slides · Document · Wireframe · Animation · UI mockups · Résumé · 3D object · Research · HTML email · Color + type pairing · Diagram · Flier). ربّما «Slides» هو الأقرب، لكنّي لست متأكدًا من توافقه مع قرارنا بإنشاء العرض بـHTML. وفي كل الأحوال يجب أن يكون المحتوى **قابلًا للعرض**: ألّا يوجد محتوى فائض يستدعي التمرير (scroll) لإظهار بقيّته، بل الانتقال إلى القسم/الشريحة التالية — مع تقييم محايد لما إذا كان التمرير أفضل في بعض الحالات.
+
+**ملاحظات عامة:**
+- سأصف أقسام العرض بوصفها **شرائح** أيًّا كان الأسلوب المتّبع.
+- يجب أن تكون هناك **شريحة أولى** تعرّف بالمعسكر، **وبي** كمدرّب ومُعِدّ لكامل محتوى المعسكر ومنهجه (مع صورتي)، وبالشركة وشعاراتها. وتشمل — دون حصر: برنامج تدريبي تطبيقي لبناء المنتجات الرقمية · من الفكرة إلى منتج منشور · بناء مشاريع تقنية أولية (MVP) باستخدام Claude · رحلة تطبيقية متكاملة لتحويل الفكرة إلى منتج تقني قابل للاستخدام والاختبار والنشر · Claude + Claude Code · أسبوعان، من الأحد إلى الخميس · 40 ساعة تدريبية · 10 أيام تدريبية · مقدم من شركة ساج التقنية.
+
+**ملاحظات نظام تصميم العرض:**
+- للشركة شعارات متعدّدة، الرئيسي `SAG_Lab_Logo_Transparent.png`، مع الاستفادة من بقيّة الشعارات في مجلّد `LOGO_Sag` — والأفضل أن تستكشف الصور بداخله وتسجّل وصفًا موجزًا لكل صورة لتقرّر لاحقًا أيّها تستخدم. اقتصر على المجلّدات الفرعية JPG وPNG وSVG (أمّا AI وPDF فلا يبدو أنها تفيدنا).
+- ألوان الهوية البصرية في الصورة المرفقة، وأضِف إليها `#16C7B7`.
+
+**ملاحظات محتوى اليوم الأول:** وضعتَ القسم 1 «كيف تستخدم هذا الدليل — 8 د» ثم قفزتَ مباشرةً إلى القسم 7 دون ذكر: **فهرس المحتويات** (ذكر الأقسام الرئيسية فقط، بلا أقسام فرعية) · **2. نبذة عن المعسكر** (ربّما تندمج مع شريحة التعريف) · **3. المهارات** (تُعرض بشكل جميل لا كقائمة بسيطة، مع القول إن كل يوم يحقّق جزءًا منها) · **4. حزمة المعسكر** (بسرعة: ما الملفات التي يقرؤها المتدرّب ويتفاعل معها، وأن البقيّة لتوجيه Claude، وأنه ينزّل المجلّد ويفتح Claude Code داخله — وأضِف `conversation_history.md` تحت `project-package/`، ووجّهه للعودة إلى هذا القسم كمرجع) · **5. أسلوب وتوزيع التدريب** (الجلسات والاستراحة ومدّة كل جلسة تقريبًا — بلا نطاقات، فقط المتوسّط مقرّبًا لأعلى، مع أن المدد تتفاوت) · **6. الأجندة** (بإيجاز وبلا تكرار لما سبق شرحه). ويجب أن يشير العرض إلى **أرقام الأقسام الصحيحة** ليعود إليها المتدرّبون.
+
+ولا أريد إعادة تخطيط المعسكر كلّه — فقط **اضبط توقيت اليوم الأول** وواقعية مدد مهامّه، **ولا تضع مدّة محدّدة على المهمة 8.1** بل قل له أن يبدأ بها إن بقي لديه وقت. وتذكّر أن شرائح التعريف يجب أن تأخذ وقتًا كافيًا لنبدأ مع المتدرّبين بشكل صحيح دون افتراض أنهم يفهمون ما يجري.
+
+**7.10:** (١) ويندوز، البند iv: هل Git مطلوب لويندوز فقط؟ وهل يأتي مدمجًا في macOS وLinux؟ لا أظنّه خيارًا بل **ضرورة** لأننا سنستخدم Git وGitHub. (٣) «ثبّت محرّر Antigravity IDE»: لا توجد تعليمات تفصيلية إطلاقًا، خصوصًا **خطوات الإعداد بعد التثبيت** وهي غائبة تمامًا.
+
+وأخيرًا: من الأفضل تقديم **محتوى بصري** في الشرائح بدل النص وحده — لقطات شاشة أو GIF أو مقاطع قصيرة لخطوات التهيئة، خاصةً في 7.10.
+
+*(ثم عبر أسئلة التوضيح: بناء العرض = نظام التصميم من Claude Design وأنا أبني الـHTML · الهوية = ساج لاب في المقدّمة وساج التقنية كجهة مقدِّمة · العرض واحد يمتدّ عبر الأيام · الاسم الحقيقي **م. عمار محمد أنمار دويدري** مع لقب «م./Eng.» · لا حاجة للاسم النظامي «شركة سهر عبد العزيز الغلاييني».)*
+
+---
+
+## § D102 — Response to Prompt #51
+
+### D102.1 قراران قبل أي عمل
+
+- **Claude Design ينتج نظام التصميم فقط، وأنا أبني الـHTML في المستودع.** السبب: DesignSync ينقل **المكوّنات لا الشاشات** — فـ44 شريحة عربية كثيفة يجب أن تلاحق أرقام الأقسام والمدد ومعرّفات المهامّ كانت ستنحرف عبر عشرات جولات النقل اليدوي.
+- **الهوية:** «ساج لاب» علامة صدارة، و«ساج التقنية» جهة مقدِّمة — لأن الأصول تحمل **علامتين مختلفتين لا نسختين من علامة واحدة**، وهو ما لم يكن ظاهرًا قبل فتح الملفات.
+
+### D102.2 جرد الأصول — `LOGO_Sag/ASSETS.md` (جديد)
+
+فُتحت **كل** صورة ووُصفت من الرسم نفسه لا من اسم الملف. أهمّ ما ظهر:
+
+- `SAG_Lab_Logo_Transparent.png` هو **«ساج لاب»** — كلمة عربية خطّية بلا أيقونة ولا نصّ لاتيني.
+- كل ما في `LOGO_Sag/` هو **«ساج التقنية / SAG TECH»** — أيقونة دائرية (حلزون يُقرأ S ينتهي بنقطة) + النصّ.
+- **`Logo_Full.svg` مستبعد نهائيًّا:** الاسم النظامي «شركة سهر عبد العزيز الغلاييني» **مطبوع داخل الرسم**، ولا يمكن إزالته منه — فحُذف من الاستخدام كلّه بعد قرارك.
+- **ملفات JPG لها خلفيات مطبوعة** (سوداء/بيضاء) وستظهر كمستطيل على أي شريحة ملوّنة ← **SVG هي الخيار الصحيح للعرض**.
+- تنبيه لوني: `#38B6D9` و`#16C7B7` متقاربان — خُصّص **السماوي للبنية** و**الفيروزي للحالة** فقط، حتى لا يتنافسا على شريحة واحدة.
+
+### D102.3 جواب سؤالَي القالب والتمرير
+
+**القالب:** لا «Slides» ولا قالب عام — بل **مشروع من نوع `Design System`** (وهو شرط `/design-sync`، ويُحدَّد عند الإنشاء ولا يتغيّر)، ومن القائمة التي ذكرتها فإن **«Color + type pairing»** هو البذرة الصحيحة بداخله. «Slides» كان سيدفع Claude Design نحو شاشات جاهزة قرّرنا ألّا ننقلها.
+
+**التمرير:** **الشريحة المعروضة لا تُمرَّر أبدًا** — المقدّم لا يستطيع التمرير وسط جملة، والعارض يقصّ ما تحت الطيّة. القاعدة: إطار ثابت 16:9، وميزانية ≤7 نقاط أو ~90 كلمة، وما تجاوزها **يُقسَّم إلى ١/٢ و٢/٢ لا يُصغَّر خطّه**. الاستثناء الوحيد ملحق «مرجع» (خريطة المهامّ 29، جدول الأدوات) لأنه يُراجَع لا يُعرَض.
+
+### D102.4 هيكل العرض — رأيي بدل الموافقة الصامتة
+
+طلبتَ رأيي في «عرض واحد يمتدّ» — وأتفق مع المبدأ، لكن **نظامًا واحدًا بملفّ لكل يوم** لا ملفًّا عملاقًا: `deck/assets/deck.css` مشترك (فلا انحراف بصري ممكن)، و`day-01.html`، `day-02.html`… وتنقّل بين الأيام في الزاوية وترقيم متّصل. **السبب:** عشرة أيام ≈ 340 شريحة في ملف واحد تثقل حاسوب العرض، والأهمّ أن **خطأً في اليوم 7 يكسر عرض اليوم 1 صباح تقديمه**. الاتّصال الذي أردتَه يوفّره اشتراك الأنماط لا اشتراك الملف.
+
+### D102.5 مراجعة اليوم الأول — والمقايضة التي لا أخفيها
+
+أُضيفت الأقسام الستّة الناقصة (**فهرس · 2 · 3 · 4 · 5 · 6**) وسُحب الوقت المخصّص للمهمة 8.1. لكن اليوم **مثبَّت على 215 د** (240 − 25 استراحة)، فلم يكن ممكنًا إضافة ~25 د وزيادة وقت المهامّ معًا:
+
+| الجلسة | قبل | بعد |
+|---|---|---|
+| شرح المفاهيم | 45 | **62** |
+| تطبيق مع المدرب | 62 | **62** |
+| عمل المتدربين | 85 | **79** |
+| مراجعة | 23 | **12** |
+
+**التكلفة الصريحة:** عمل المتدربين نزل **85 ← 79 د**، وشرح اليوم الأول (62) يتجاوز نطاق 5.1 (40–50). فبدل التظاهر بأنه يتّسع، **أُضيف نصّ في 5.1 يعترف بذلك**: اليوم الأول محمّل عمدًا لأن التعريف يحدث مرّة واحدة. و7.10 أخذ 27 ← **30 د** في جلسة المتدربين لأن التثبيت يتفاوت فعلًا.
+
+المهمة 8.1 صارت: «**بلا وقت مخصّص** — إن أنهيت ما سبق وبقي وقت، ابدأ بجمع ملاحظاتك الحرّة… والإكمال غدًا».
+
+### D102.6 القسم 4 و7.10
+
+- **§4:** أُضيف `conversation_history.md` و`app/` **داخل** شجرة `project-package/` بوسم «يُنشئه Claude»، وصُحّحت صياغة «خارج الحزمة» — فالمتدرّب يفتح Claude Code **داخل** المجلّد، فهو جذر المشروع. وأُضيف سطر البداية («نزّل ← افتح المحادثة بالداخل») وسطر «هذا القسم مرجعك».
+- **§7.10 — Git:** قراءتك صحيحة والنصّ كان مخطئًا مرّتين: قدّم Git كـ**توصية لويندوز** بينما اليوم الأول نفسه يُنشئ المستودع ويحفظ أول نسخة. صار **بندًا مستقلًّا (2) إلزاميًّا على الأنظمة الثلاثة**، مع التصحيح الدقيق: **macOS لا يأتي بـGit مثبّتًا** بل يُطلب Xcode Command Line Tools عند أول `git --version`. **وثغرة لم يصطدم بها أحد بعد:** `git config --global user.name/user.email` كانت **غائبة عن المنهج كلّه** — وبدونها يفشل أول حفظ أو يُنسب لهوية خاطئة؛ أُضيفت هنا **وأُضيف فحصٌ لها في مهارة `building-features` قبل المهمة 14.1**.
+- **§7.10 — Antigravity:** كانت ثلاث نقاط تنتهي عند التنزيل. صارت سبع خطوات موثّقة (تسجيل دخول Google · اختيار السمة · **تجاوز «Connect Plugins»** · فتح المجلّد الصحيح · اشتراط Chrome). وخطوة الـPlugins مهمّة تحديدًا: تفعيل حزمة Chrome DevTools من هناك **يكرّر ما نربطه في 14.2** ويستهلك الرصيد في كل رسالة.
+- **إعادة الترقيم 1–6** استلزمت تحديث إشارتين في `project-package/CLAUDE.md` (البند 4 ← 5، و5 ← 6) — وقد حُدّثتا.
+
+### D102.7 مخرجات العرض (جديدة)
+
+- **`deck/DESIGN_SYSTEM_PROMPT.md`** — أمر جاهز للّصق: RTL كشرط أوّل لا كخيار، والخصائص المنطقية بدل left/right، والألوان بأدوارها، وسلّم خطوط **مقاس عارض لا شاشة** (لا شيء دون 22px)، و**20 مكوّنًا مسمّى** (تسعة إطارات شرائح + `media-frame` + `section-badge` + `step-chip` + …) — مع قاعدة `designing-screens`: **انسخ لي إجاباتك على أي نموذج يسألك إيّاه Claude Design**، وإلّا حسبتُها زائدة وأسقطتها.
+- **`deck/DECK_BRIEF.md`** — 44 شريحة لليوم الأول: لكلٍّ قالبها ومرجع قسمها ومدّتها وفتحة الوسائط، وتفصيل الغلاف الحرفي (سطورك + **م. عمار محمد أنمار دويدري** مع الاسم اللاتيني في `dir="ltr"` كي لا ينعكس + صورتك دائرية).
+- **`deck/MEDIA_SHOTLIST.md`** — 17 لقطة مطلوبة منك باسم ملفّ محدّد، مع تحذير صريح بعدم تصوير أي مفتاح حقيقي، وسلوك تراجع رشيق إن نقصت لقطة.
+
+### D102.8 التحقّق
+
+- الروابط: **309 · 0 مكسور**.
+- الأيام: كلّها **215 د**؛ والأيام 2–10 **مطابقة حرفيًّا** لما قبل التعديل (حارس انحدار — هذا التعديل يخصّ اليوم الأول وحده). اليوم 1 = 62/62/79/12.
+- خريطة المهامّ: **29 صفًّا سليمة**، والمهمة 8.1 تحتفظ بمداها «1 (بداية) · 2 (إكمال)» رغم زوال مدّتها من اليوم 1.
+- 7.10: البنود **1–6** بالترتيب، ولا إشارة قديمة متبقّية.
+- الأصول: **12 مسارًا فُحصت، لا مفقود**. ومراجع الأقسام في الموجز: **كلّها تُحلّ**، ومهامّ اليوم الأول كلّها ممثَّلة.
+
+### Documents Affected
+`LOGO_Sag/ASSETS.md` (جديد) · `deck/DESIGN_SYSTEM_PROMPT.md` · `deck/DECK_BRIEF.md` · `deck/MEDIA_SHOTLIST.md` (جديدة) · `project-package/bootcamp_roadmap_and_curriculum.md` (§4 · §5.1 · §6.1 · §7.10) · `project-package/CLAUDE.md` · `project-package/.claude/skills/building-features/SKILL.md` · هذا الملف.
+
+### Status
+الأوامر جاهزة للّصق في Claude Design. الخطوة التالية بعد عودة نظام التصميم: `/design-sync` للمكوّنات ثم بناء `deck/day-01.html`. ولم يُبنَ أي HTML بعد. ما زال معلّقًا: ملاحظاتك على الأقسام 8–17، وانحراف مهارة `drawio` عن نسختك العامة.
+
+---
+
+## § D103 — Prompt #58
+> **حالة التوثيق:** جولات بناء العرض التقديمي (من بعد D102 حتى تسليم شرائح اليوم الأول، وخطّ Cairo، وقرار أحجام الخطوط، ونقل 6.1 والبند 2 إلى ملف Word) **لم تُوثَّق بعد بالتفصيل** — القيد أدناه يغطّي التصحيح التقني وحده وما لزمه من تعديلات.
+
+**ملاحظتك:** قبل نقل محتوى «وبعد أول تشغيل تظهر خطوات إعداد لا تتخطّاها» من 7.10 إلى ملف Word، أعد النظر فيما كتبتَه: هذه الحزم كلّها تخصّ **وكلاء Antigravity ونماذجه (Gemini وغيرها)**، وتُخزَّن في مكان مختلف تمامًا عن مكان Claude. والصواب أن نكتفي بالتنبيه إلى أن هذه الإعدادات **لنماذج Antigravity لا لـClaude**. حلّل الملاحظة والمواضع المتعلّقة في الملفين وفي شريحة العرض 34، ثم اقترح الحلّ.
+
+---
+
+## § D103 — تصحيح: حزم «Connect Plugins» لا تكلّف رصيد Claude
+
+### D103.1 الدليل من الجهاز نفسه
+
+سجلّان منفصلان تمامًا للتكاملات، لا سجلّ واحد:
+
+| | Claude Code | Antigravity |
+|---|---|---|
+| ملف الإعداد | `~/.claude.json` | `~/.gemini/antigravity/mcp_config.json` |
+| المسجَّل فيه فعلًا | `chrome-devtools` · `github` · `sequential-thinking` | `context7` · `firecrawl` · `stitch` · `chrome-devtools-mcp` · `github-mcp-server` |
+
+الحاسم أن **لكلٍّ منهما نسخته الخاصة من تكامل Chrome DevTools وGitHub**، باسمين مختلفين، ولا يرى أحدهما الآخر. ولو كانا يتشاركان سجلًّا واحدًا لتطابقت القائمتان. ومسار Antigravity تحت `‎.gemini/‎` — أي في نطاق Google لا Anthropic.
+
+### D103.2 ما كان خطأً في النصّ
+
+- **«ويستهلك من رصيدك في كل رسالة»** — خطأ. آليّة 7.6 صحيحة، لكنها تخصّ تعريفات الأدوات المرفقة برسائل **Claude**؛ وحزم Antigravity تُرفَق برسائل Gemini، فلا تكلّف رصيد Claude شيئًا.
+- **«يكرّر ما سنربطه»** — مضلّل. ليس تكرارًا داخل مساعد واحد، بل مساعدان مستقلّان لكلٍّ نسخته — وهو ما لا يكلّف شيئًا من جهة Claude.
+- والأسوأ أن الإحالة إلى **7.6** أعارت قاعدةً صحيحة لاستنتاج خاطئ، فمن فهم 7.6 جيّدًا كان سيخرج بنتيجة مغلوطة.
+
+### D103.3 ما بقي صحيحًا — بصياغة أفضل
+
+التعليمة «تجاوزها» تبقى صائبة، لكن **كمعلومة لا كتحذير**. وصياغتك تفتح بابًا تعليميًّا أنفع مما استبدلته: **Antigravity يأتي بمساعد ذكاء اصطناعي خاصّ به، ونحن لا نستخدمه.** فالمتدرّب سيجد لوحة Gemini داخل المحرّر ويحتاج أن يعرف لماذا يتجاهلها — وهو ما لم يكن النصّ القديم يقوله إطلاقًا.
+
+### D103.4 ما تغيّر
+
+- **`bootcamp_roadmap_and_curriculum.md` — 7.10 بند 4/6:** حُذف `⚠` وحُذفت إحالة 7.6 كتبرير. النصّ الجديد يشرح أن الحزم إعدادات لمساعد المحرّر (Gemini) تُحفَظ مستقلّةً ولا يراها Claude، وأننا نستخدم المحرّر **كمحرّر فقط**. وأُضيف سطر ثانٍ يحصر قاعدة «اربط ما تحتاجه فقط» في تكاملات Claude وحدها، منعًا للتعميم الخاطئ.
+- **`deck/day-01.html` شريحة 34:** كانت مؤطّرة كخطر (خطّ كهرماني `--state-warning` وأيقونة تحذير وعنوان «تنبيه»). صارت شريحة شرح: العنوان «هذه الحزم لمساعد المحرّر — لا لـClaude»، والخطّ `--accent-structure`، وبطاقتان بدل ادّعاء الرصيد. وأُدمج سطر التوجيه في عنوان البطاقة الأولى لأن العمود الجانبي تجاوز الإطار بـ112 بكسل بعد إضافة البطاقة الثانية.
+- **`bootcamp_roadmap_and_curriculum.docx` — 7.10 بند 4:** كان ثلاث نقاط تنتهي عند التنزيل. صار العنوان «… وأكمل خطوات البدء» مع الخطوات 1–3 (التثبيت) و4–7 (ما بعد أول تشغيل) واقتباسَي «Connect Plugins» **بالنصّ المصحَّح** وتنبيه Chrome. أُعيد بناء الفقرات من قوالب الملف نفسه، ولم يُعَد توليده من `build.js` حفاظًا على تعديلاتك داخل Word.
+- **`deck/DECK_BRIEF.md`:** رُقّمت الشرائح من جديد 13–44 ← 16–47، وأُضيفت صفوف 6.1 الثلاثة، وتبادل الصفّان 8 و9، وصارا يشيران إلى `.docx`. وصفّ 7.6 لم يعد يقول إنه «يبرّر تخطّي Connect Plugins».
+- **`deck/MEDIA_SHOTLIST.md`:** كل إشارات الشرائح كانت متأخّرة ثلاثة أرقام بعد إدراج شرائح 6.1؛ صُحّحت (18 خلية)، و`06-desktop-usage` صار GIF مُسلَّمًا.
+
+### D103.5 التحقّق
+
+- العرض: **47 شريحة · 0 تجاوز للإطار**.
+- ملف Word: **21 جدولًا · 18 عنوانًا رئيسيًّا · 110 عناوين فرعية · 159 إشارة مرجعية · 159 رابطًا · كل مراسي الفهرس تُحلّ · `jc=right` = 0**. و14 مُدخلًا من أصل 15 في الأرشيف **مطابقة بايت ببايت**.
+- فحص نصّي: لا أثر لـ«يستهلك من رصيدك» ولا «يكرّر ما سنربطه» في أيٍّ من الملفات.
+
+### Documents Affected
+`project-package/bootcamp_roadmap_and_curriculum.md` · `project-package/bootcamp_roadmap_and_curriculum.docx` · `deck/day-01.html` · `deck/DECK_BRIEF.md` · `deck/MEDIA_SHOTLIST.md`
+
+### Status
+مُنجَز. ويبقى في ملف Word تأخّرٌ في ثلاثة مواضع أخرى عن ملف Markdown: القسم 4 (الشجرة) · 5.1 (ملاحظة اليوم الأول) · 6 (خريطة المهامّ).
+
+---
+
+## § D104 — Prompt #59

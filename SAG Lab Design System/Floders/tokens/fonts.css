@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+/* Webfonts are served from Google Fonts. No binaries shipped with this system.
+   Arabic-first stacks always end in a system Arabic face. */
+:root{
+  --font-arabic:"IBM Plex Sans Arabic","Noto Sans Arabic","Segoe UI",Tahoma,"Geeza Pro","Arabic Typesetting",sans-serif;
+  --font-latin:"IBM Plex Sans","IBM Plex Sans Arabic",system-ui,-apple-system,Segoe UI,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --font-core:var(--font-arabic);
+}

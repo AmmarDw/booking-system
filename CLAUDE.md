@@ -32,6 +32,7 @@ Project memory for Claude. Read this before working. It has two parts: **(A)** h
 ### A.5 Building the Arabic curriculum (`project-package/bootcamp_roadmap_and_curriculum.md`)
 - **Ground every section in the sources, not memory.** Before writing or updating **any** section of the curriculum file, **re-read the booking-system part of `conversation_history.md` together with `PROJECT_REPORT.md`** (and `implementation_plan.md` where relevant) and extract the *real* content — decisions, the order they happened in, the steps taken, and the gotchas. Do **not** write from memory. This matters most for **Section 14 (التنفيذ)**: the real build had heavy back-and-forth (M0–M6) that must be **systematized** into a general, product-agnostic workflow telling trainees *what to do*, with booking specifics only inside collapsible «ما كتبه المدرب» blocks.
 - **Never name internal/graded docs inside the curriculum.** `PROJECT_REPORT.md`, `implementation_plan.md`, `research_plan.md` etc. are **extraction sources only** — they are not handed to trainees, so never reference them by name inside the curriculum file (or the Arabic handover files). Cite our real work generically instead.
+- **Trainer examples show product-building only.** When mining `conversation_history.md` for a «ما كتبه المدرب» / «الحوار الحقيقي» block, exclude anything about building *this bootcamp*: choosing the project from the brochure, the training agenda, the report/curriculum file structure, or tooling for authoring. That logic is already delivered inside the trainee's package, so repeating it teaches nothing and blurs what the task is asking. Excluding the `D`-numbered prompts is necessary but **not sufficient** — build-era prompts mix product and process in the same message, so excerpt at the *clause* level, not the prompt level. Also drop excerpts that are specific to the trainer's heavier stack (Spring Boot metadata, backend/frontend split, monorepo layout) when the trainee's default stack would never hit them. **When unsure whether an excerpt qualifies, ask.**
 - **Keep the trainee register.** Follow the collaboration principle (trainee gives free-form info → Claude formats/decides the technical parts → trainee reviews); use simple, slightly-local-leaning Arabic (avoid heavy فصحى); define each non-obvious term once; and don't introduce deep-technical vocabulary trainees aren't expected to know (e.g. no "class diagram"; keep PK/FK/keys as *Claude's* job, not something the trainee must specify).
 - **Generic default stack for the curriculum's product-agnostic content** (decided with the user): **full-stack Next.js (TS) in one `app/` folder — no frontend/backend split — + Supabase (Postgres + built-in auth, no Docker/local install) + deploy to Vercel; Claude scaffolds everything, the trainee only creates accounts/keys.** Full definition in `project-package/.claude/rules/bootcamp-mvp-process.md` §4 (and the `deploying` skill for Vercel). The booking project's heavier *real* stack (Spring Boot + separate Next.js + native Postgres + Docker/Render) is the trainer's example only — keep it inside «ما كتبه المدرب» collapsibles, never in the generic steps.
 - **Trainee package architecture (`project-package/`) — four surfaces, each answering one question.** Never let two of them cover the same ground:
@@ -41,6 +42,41 @@ Project memory for Claude. Read this before working. It has two parts: **(A)** h
   - `bootcamp_roadmap_and_curriculum.md` + `PRODUCT.md` — the only two files the **trainee** reads. The roadmap must stay identical for every trainee (it is the deck's source); the trainee's own answers go in `PRODUCT.md`.
   - **Deliberate redundancy:** template prompts live in both the skill *and* the trainee-facing material — belt and braces. Do not "deduplicate" them.
 - **Trainee never reads/writes code; testing is Claude's job.** Generic steps must never tell the trainee to read/review code or run tests themselves — the trainee reviews by *using the UI* + reading Claude's plain report; Claude writes+runs test cases and browser-tests (chrome-devtools) automatically on every build and reports non-technically. Plans open with a plain-language "what we'll build now" summary before any technical detail.
+
+### A.6 The deck is the curriculum — standards for every slide (`deck/day-NN.html`)
+
+Decided in review, **2026-09-12**. These are standing rules: apply them to any slide work without asking for confirmation.
+
+**A.6.1 The deck is the only thing trainees read.**
+Trainees do **not** open `bootcamp_roadmap_and_curriculum.md` or the `.docx` — they follow the slides and nothing else. So every piece of trainee-facing content must be *on a slide*, complete, with no "see section N of the guide" dependency. The `.md`/`.docx` are now **authoring sources and trainer references only**; nothing may live there that a trainee needs.
+
+**A.6.2 Completing a slide must not multiply slides.**
+Making a slide self-contained means growing the content *inside its existing frame* — richer cards, a real example, a flow line — not splitting it into ١/٢ + ٢/٢. The deck's slide count is a budget: adding one is a deliberate, requested change, never a side effect of filling content in. (This does not forbid slides the user explicitly asks for.)
+
+**A.6.3 Tone: plain, spoken-leaning Arabic — never compressed.**
+The failure mode to avoid is the one we shipped: telegraphic phrases where each word is meant to carry a paragraph, which read as obfuscated rather than concise. Write the way you would say it out loud. Lean **closer to colloquial than to فصحى**; short sentences; no rhetorical compression; no clever em-dash constructions standing in for an explanation.
+
+**A.6.4 Pitch to the real trainee level.**
+Assume the trainee has *heard* words like backend, frontend, server, hosting — and does **not** know how any of them work. For every such term give only: **what it is · what it does · when you'd use it.** Stop there. Depth beyond that is Claude's job, not the trainee's, and putting it on a slide costs comprehension without buying anything.
+
+**A.6.5 Concrete examples, never vague ones.**
+"مثلًا لو عندك متجر وتبغى تعرف كم طلب وصلك اليوم" beats "مثال على استعلام البيانات". If an example cannot be made concrete, it is not yet understood well enough to teach.
+
+**A.6.6 Show the flow before the work.**
+Never drop trainees into a sequence of steps without first telling them, plainly, what the sequence is for and what order it runs in — e.g. before §7.10: "بنسوي الحين خطوات تجهيز نظّفت الجهاز للمشروع، وهي بالترتيب: …". **Be neutral about the medium:** some of these framings belong on a slide, others are just something the trainer says. Decide per case and say which you chose; do not reflexively add a slide for every one.
+
+**A.6.7 Vocabulary — fixed choices.**
+- **مشروع, not منتج.** «مشاريع رقمية» not «منتجات رقمية»; «مشروعك» not «منتجك». Applies everywhere in trainee-facing text.
+- **Do not call anything «دليل».** The deck *is* the curriculum, so there is no separate guide to refer to. Say «المعسكر» / «القسم N» / «الحزمة» instead.
+
+**A.6.8 Day structure — tasks first, goals last.**
+Every day opens with **that day's tasks** (its §6.N block) so trainees know the plan before any content. **«أهداف اليوم» comes at the end of that block**, after the tasks are on the table — not before them. Day 1 is the only exception to "tasks first": it opens with the cover slide and the project-package brief, *then* the tasks.
+
+**A.6.9 Task checkboxes are live.**
+Task rows in a §6.N block ship **unchecked** and are **clickable** — trainees tick them off as they finish. State persists per deck in `localStorage`. Never pre-check them in the markup.
+
+**A.6.10 Working method.**
+Slides are revised **gradually, a few at a time**. When asked to fix a slide, fix *that* slide against A.6.1–A.6.9 and leave the rest alone; then say which slides most need the same treatment next.
 
 ---
 

@@ -1,2 +1,6 @@
 # Superseded specs kept for history only - not part of the current project.
 archive/
+
+# Owner: raw personal draft notebook - explicitly marked "not meant for any LLM or AI
+# usage or analysis" on its first line. Excluded so graphify never re-ingests it.
+notebook.txt

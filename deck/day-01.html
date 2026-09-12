@@ -1,0 +1,2268 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>اليوم 1 — التوجيه وأساسيات Claude Code | معسكر بناء المنتجات الأولية</title>
+  <link rel="icon" href="assets/brand/mark-sag-tech-icon.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+
+  <div class="deck-stage">
+    <div class="deck-scaler">
+
+      <!-- ═══ 1 — الغلاف ══════════════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-title deck-slide" data-surface="dark">
+        <div class="sag-title__inner">
+          <div>
+            <div class="deck-logo" data-size="hero">
+              <img src="assets/brand/logo-sag-lab.png" alt="ساج لاب">
+            </div>
+            <h1 class="sag-title__display">معسكر تدريبي لبناء مشاريع تقنية أولية (<span class="tok-lat">MVP</span>)
+              باستخدام <span class="tok-lat">Claude</span></h1>
+            <p class="sag-title__program">من الفكرة إلى مشروع منشور</p>
+            <div class="deck-title__facts">
+              <span class="deck-fact deck-fact--lat">Claude + Claude Code</span>
+              <span class="deck-fact">أسبوعان، من الأحد إلى الخميس</span>
+              <span class="deck-fact">40 ساعة تدريبية</span>
+              <span class="deck-fact">10 أيام تدريبية</span>
+            </div>
+          </div>
+
+          <aside class="deck-title__aside">
+            <div class="deck-presenter-card">
+              <div class="sag-presenter">
+                <div class="sag-presenter__photo"><img src="assets/brand/presenter.png" alt="م. عمار محمد أنمار دويدري">
+                </div>
+                <div class="sag-presenter__text">
+                  <span class="deck-title__credit-kicker">إعداد وتقديم</span>
+                  <span class="sag-presenter__name">م. عمار محمد أنمار دويدري</span>
+                  <span class="sag-presenter__role tok-lat">Eng. Ammar Mohamed Anmar Dwidari</span>
+                  <span class="sag-presenter__org">صمّم محتوى المعسكر ومنهجه بالكامل</span>
+                </div>
+              </div>
+              <div class="deck-title__org">
+                <p class="deck-title__bio">مهندس برمجيات في شركة ساج، متخصص في بناء أنظمة آمنة ومتكاملة على مستوى
+                  المؤسسات، يوظّف الذكاء الاصطناعي في هندسة وتصميم هذه الأنظمة وبنائها.</p>
+              </div>
+              <div class="deck-title__org">
+                <span class="deck-title__org-label">مقدم من شركة ساج التقنية</span>
+                <div class="deck-endorse" data-size="standard">
+                  <img src="assets/brand/logo-sag-tech-horizontal.png" alt="ساج التقنية — SAG TECH">
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <span class="deck-title__org-label">رحلة تطبيقية متكاملة لتحويل الفكرة إلى مشروع تقني قابل للاستخدام
+              والاختبار والنشر</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 2 — حزمة المشروع: نظرة سريعة (4) ════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-quote deck-slide" data-tone="rule" data-surface="dark">
+        <div class="sag-quote__inner">
+          <div class="sag-quote__mark"></div>
+          <p class="sag-quote__text">وصلتكم حزمة المشروع؟</p>
+          <p class="sag-quote__attr">الحزمة فيها منطق المشروع وقوانينه وسياقه. أول ما تفتح محادثة <span
+              class="tok-lat">Claude</span> جوّاها، يصير مساعدك الشخصي طول المعسكر — تقدر تعتبرها نسخة مصغّرة منّي.
+            وبنرجع لها بالتفصيل في <strong>القسم 4</strong>.</p>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <span class="sag-badge"><span class="sag-badge__num">4</span> حزمة المشروع</span>
+            </div>
+            <span class="deck-foot__num">2</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 3 — أجندة اليوم: جلسة شرح المفاهيم (6.1) ════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">6.1</span> أجندة اليوم 1</span>
+          <h2 class="sag-slide__title">الجلسة الأولى — شرح المفاهيم <span class="deck-part">62 د</span></h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
+              <strong>اليوم الأول أطول في الشرح من بقيّة الأيام</strong> — لأن التعريف بالمعسكر وبدليله لا يتكرّر بعد
+              اليوم.
+            </p>
+          </div>
+          <div class="bento" data-cols="2">
+            <div class="sess">
+              <div class="sess__head"><span class="sess__name">التعريف بالمعسكر ودليله</span><span class="sess__d">25
+                  د</span></div>
+              <div class="tasks">
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">فهرس المحتويات</span><span class="task__d">2 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">1 · كيف تستخدم دليل المعسكر</span><span class="task__d">5 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">2 · نبذة عن المعسكر</span><span class="task__d">3 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">3 · المهارات التي تكتسبها</span><span class="task__d">4 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">4 · حزمة المعسكر</span><span class="task__d">4 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">5 · أسلوب وتوزيع التدريب</span><span class="task__d">5 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">6 · الأجندة والأهداف التدريبية</span><span class="task__d">2 د</span>
+                </div>
+              </div>
+            </div>
+            <div class="sess">
+              <div class="sess__head"><span class="sess__name">أساسيات Claude Code — والـMVP</span><span
+                  class="sess__d">37 د</span></div>
+              <div class="tasks">
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">7.1 · ما Claude و Claude Code؟</span><span class="task__d">3 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">7.2 · الجلسة وذاكرة Claude</span><span class="task__d">5 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">7.3 · الرصيد والـtokens</span><span class="task__d">7 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">7.4 · حدود خطة Pro</span><span class="task__d">4 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">7.5 · ما التكاملات (MCP)؟</span><span class="task__d">8 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">7.6 · لماذا للـMCP تكلفة في كل رسالة؟</span><span class="task__d">4 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">8 · المفهوم العام للـMVP</span><span class="task__d">6 د</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">3</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 4 — أجندة اليوم: الجلسات الثلاث الباقية (6.1) ═══════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">6.1</span> أجندة اليوم 1</span>
+          <h2 class="sag-slide__title">وبقيّة اليوم — تطبيق، فعملك، فمراجعة</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="3">
+            <div class="sess">
+              <div class="sess__head"><span class="sess__name">تطبيق مع المدرب</span><span class="sess__d">62
+                  د</span></div>
+              <div class="tasks">
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">7.10 · تهيئة أدوات العمل</span><span class="task__d">32 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">14.1 · إنشاء المستودع ورفع الوثائق</span><span class="task__d">8 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">14.1 · Claude يهيّئ التطبيق ويشغّله</span><span class="task__d">22 د</span>
+                </div>
+              </div>
+            </div>
+            <div class="sess">
+              <div class="sess__head"><span class="sess__name">عملك على مشروعك</span><span class="sess__d">79
+                  د</span></div>
+              <div class="tasks">
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">7.10 · إكمال التهيئة والربط</span><span class="task__d">30 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">14.1 · مستودعك، وتطبيقك يعمل</span><span class="task__d">39 د</span>
+                </div>
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">أول حفظ ورفع (commit وpush)</span><span class="task__d">10 د</span>
+                </div>
+              </div>
+            </div>
+            <div class="sess">
+              <div class="sess__head"><span class="sess__name">مراجعة وعرض التقدم</span><span class="sess__d">12
+                  د</span></div>
+              <div class="tasks">
+                <div class="task"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">14.1 · تطبيقك يعمل وتسجيل الدخول يفتح</span><span class="task__d">12 د</span>
+                </div>
+                <div class="task task--free"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">8.1 · ابدأ بجمع ملاحظاتك عن فكرتك</span><span class="task__d">إن بقي وقت</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
+              المدد تقريبية — و<strong>المهمة 8.1 بلا وقت مخصّص</strong>: إن أنهيت ما سبق فابدأ بها، والإكمال غدًا.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">4</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 5 — أجندة اليوم: أهداف اليوم (6.1) ══════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">6.1</span> أجندة اليوم 1</span>
+          <h2 class="sag-slide__title">أهداف اليوم — وأين نقف من كل مهارة</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="3">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
+                <h3 class="card__title card__title--sm">إدارة المشروع بـ Claude Code</h3>
+              </div>
+              <p class="card__note">تستخدم <span class="tok-lat">Claude Code</span> و<span class="tok-lat">Claude</span>
+                في إدارة مشروعك وتنفيذه.</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-clock"></span></span>
+                <h3 class="card__title card__title--sm">الجلسات والرصيد</h3>
+              </div>
+              <p class="card__note">اليوم الجلسات والرصيد؛ ونافذة السياق والضغط في <strong>اليوم 7</strong>.</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-wrench"></span></span>
+                <h3 class="card__title card__title--sm">التكاملات وبيئة العمل</h3>
+              </div>
+              <p class="card__note">اليوم نفهم الـ<span class="tok-lat">MCP</span> ونربط <span
+                  class="tok-lat">context7</span> و<span class="tok-lat">Supabase</span>؛ والقواعد والمهارات في
+                <strong>اليوم 5</strong>.
+              </p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-database"></span></span>
+                <h3 class="card__title card__title--sm">واجهة تعمل بقاعدة بيانات</h3>
+              </div>
+              <p class="card__note">اليوم المرحلة 1 فقط: يعمل تطبيقك على جهازك بتسجيل دخول جاهز.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-git-branch"></span></span>
+                <h3 class="card__title card__title--sm">حفظ المشروع على GitHub</h3>
+              </div>
+              <p class="card__note">تحفظ مشروعك وتدير إصداراته من أوّل يوم.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-rocket"></span></span>
+                <h3 class="card__title card__title--sm">مفهوم الـMVP</h3>
+              </div>
+              <p class="card__note">اليوم تعريف الـ<span class="tok-lat">MVP</span> فقط؛ وتحديد النطاق في
+                <strong>اليوم 2</strong>.
+              </p>
+            </article>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">5</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 6 — فهرس المحتويات ══════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge">فهرس المحتويات</span>
+          <h2 class="sag-slide__title">سبعة عشر قسمًا — دليل المعسكر كاملًا</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="3" data-rows="6">
+            <div class="idx"><span class="idx__n">1</span><span class="idx__t">كيف تستخدم دليل المعسكر</span></div>
+            <div class="idx"><span class="idx__n">2</span><span class="idx__t">نبذة عن المعسكر</span></div>
+            <div class="idx"><span class="idx__n">3</span><span class="idx__t">المهارات التي تكتسبها</span></div>
+            <div class="idx"><span class="idx__n">4</span><span class="idx__t">حزمة المعسكر</span></div>
+            <div class="idx"><span class="idx__n">5</span><span class="idx__t">أسلوب وتوزيع التدريب</span></div>
+            <div class="idx"><span class="idx__n">6</span><span class="idx__t">الأجندة والأهداف التدريبية</span></div>
+            <div class="idx"><span class="idx__n">7</span><span class="idx__t">أساسيات Claude Code</span></div>
+            <div class="idx" data-group="build"><span class="idx__n">8</span><span class="idx__t">التعريف بالـMVP
+                ونطاقه</span></div>
+            <div class="idx" data-group="build"><span class="idx__n">9</span><span class="idx__t">المستخدمون وأصحاب
+                المصلحة</span></div>
+            <div class="idx" data-group="build"><span class="idx__n">10</span><span class="idx__t">متطلبات النظام</span>
+            </div>
+            <div class="idx" data-group="build"><span class="idx__n">11</span><span class="idx__t">رحلة المستخدم</span>
+            </div>
+            <div class="idx" data-group="build"><span class="idx__n">12</span><span class="idx__t">التصميم</span></div>
+            <div class="idx" data-group="build"><span class="idx__n">13</span><span class="idx__t">نموذج البيانات</span>
+            </div>
+            <div class="idx" data-group="build"><span class="idx__n">14</span><span class="idx__t">التنفيذ</span></div>
+            <div class="idx" data-group="build"><span class="idx__n">15</span><span class="idx__t">الاختبار ومراجعة
+                الأمان</span></div>
+            <div class="idx" data-group="build"><span class="idx__n">16</span><span class="idx__t">النشر</span></div>
+            <div class="idx" data-group="build"><span class="idx__n">17</span><span class="idx__t">الأدوات
+                المستخدمة</span></div>
+            <div class="idx card--plain" style="background:transparent;border:0">
+              <span class="card__note card__note--sm">الأزرق: التعريف والتخطيط · السماوي: بناء المنتج</span>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">6</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 7 — كيف تستخدم دليل المعسكر ═════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">1</span> كيف تستخدم دليل المعسكر</span>
+          <h2 class="sag-slide__title">دليل المعسكر مقسوم إلى أربع كتل — كلٌّ لها دور</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="2">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">1–5</span>
+                <h3 class="card__title">الأقسام التعريفية</h3>
+              </div>
+              <p class="card__note">ما المعسكر، وما المهارات التي تخرج بها، وما الحزمة التي تستلمها، وكيف نعمل معًا كل
+                يوم.</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">6</span>
+                <h3 class="card__title">الأجندة</h3>
+              </div>
+              <p class="card__note">خارطة الأيام العشرة: أهداف كل يوم، ومهامّه موزّعة على جلسات اليوم الأربع، ومدّة كل
+                مهمّة.</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">7</span>
+                <h3 class="card__title">القسم التأسيسي</h3>
+              </div>
+              <p class="card__note">أداة <span class="tok-lat">Claude Code</span> وبيئة العمل: الجلسة، والرصيد،
+                والتكاملات، وتهيئة أدواتك.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__num">8–17</span>
+                <h3 class="card__title">الأقسام المنهجية</h3>
+              </div>
+              <p class="card__note">المحتوى الفعلي لبناء منتجك — <strong>29 مهمّة</strong>، لكل مهمّة مخرَج ومنفّذ ويوم
+                محدّد.</p>
+            </article>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-lightbulb" style="color:var(--accent-structure)"></span>
+              كل مهمّة في الأجندة <strong>ترتبط برابط</strong> إلى قسمها المنهجي — لا تبحث، اضغط.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">7</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 8 — منهجية العصف الذهني ═════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-quote deck-slide" data-tone="rule" data-surface="dark">
+        <div class="sag-quote__inner">
+          <div class="sag-quote__mark"></div>
+          <p class="sag-quote__text">اكتب كل ما يخطر ببالك أوّلًا، ثم رتّبه.</p>
+          <p class="sag-quote__attr">لا تفكّر وتنسّق في آنٍ واحد — أفرِغ أفكارك، ثم صُغها. قاعدة تسري على كل أقسام
+            دليل المعسكر.</p>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <span class="sag-badge"><span class="sag-badge__num">1</span> كيف تستخدم دليل المعسكر</span>
+            </div>
+            <span class="deck-foot__num">8</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 9 — نبذة عن المعسكر ═════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">2</span> نبذة عن المعسكر</span>
+          <h2 class="sag-slide__title">عشرة أيام، ومنتج منشور على رابط فعلي</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="4">
+            <div class="stat"><span class="stat__v">10</span><span class="stat__l">أيام تدريبية</span></div>
+            <div class="stat"><span class="stat__v">40</span><span class="stat__l">ساعة تطبيقية</span></div>
+            <div class="stat"><span class="stat__v">29</span><span class="stat__l">مهمّة لها مخرَج</span></div>
+            <div class="stat"><span class="stat__v">1</span><span class="stat__l">منتج منشور باسمك</span></div>
+          </div>
+          <div class="bento" data-cols="2">
+            <article class="card">
+              <div class="card__top">
+                <span class="card__icon"><span class="i i-layers"></span></span>
+                <h3 class="card__title">الرحلة كاملة، لا جزءًا منها</h3>
+              </div>
+              <p class="card__note">من تحديد المتطلبات والنطاق، إلى التصميم والبناء والاختبار، وصولًا إلى النشر ومراجعته
+                مع المدرب.</p>
+            </article>
+            <article class="card">
+              <div class="card__top">
+                <span class="card__icon"><span class="i i-terminal"></span></span>
+                <h3 class="card__title">بلا خبرة برمجية عميقة</h3>
+              </div>
+              <p class="card__note">لن تقرأ كودًا ولن تكتبه. <span class="tok-lat">Claude</span> يبني ويختبر، وأنت تصف
+                وتقرّر وتجرّب النتيجة في الواجهة.</p>
+            </article>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">9</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 10 — المهارات 1/2 ═══════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">3</span> المهارات التي تكتسبها</span>
+          <h2 class="sag-slide__title">ما ستخرج به — التخطيط والتصميم <span class="deck-part">1 / 2</span></h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="3">
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
+                <h3 class="card__title card__title--sm">تعريف الـMVP ونطاقه</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
+                <h3 class="card__title card__title--sm">تحويل الفكرة إلى متطلبات وخطة</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
+                <h3 class="card__title card__title--sm">إدارة المشروع بـ Claude Code</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-clock"></span></span>
+                <h3 class="card__title card__title--sm">إدارة الجلسات والرصيد والـtokens</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-layers"></span></span>
+                <h3 class="card__title card__title--sm">استخدام MCP و Skills و Rules</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-users"></span></span>
+                <h3 class="card__title card__title--sm">تحديد المستخدمين وأصحاب المصلحة</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-file-text"></span></span>
+                <h3 class="card__title card__title--sm">كتابة متطلبات النظام ومعايير القبول</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-git-branch"></span></span>
+                <h3 class="card__title card__title--sm">رسم رحلة المستخدم ومخططات السير</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-palette"></span></span>
+                <h3 class="card__title card__title--sm">تصميم الواجهات وبناء نظام تصميم</h3>
+              </div>
+            </article>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">10</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 11 — المهارات 2/2 ═══════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">3</span> المهارات التي تكتسبها</span>
+          <h2 class="sag-slide__title">ما ستخرج به — البناء والإطلاق <span class="deck-part">2 / 2</span></h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="3">
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-database"></span></span>
+                <h3 class="card__title card__title--sm">إعداد نموذج البيانات (ERD)</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-layers"></span></span>
+                <h3 class="card__title card__title--sm">بناء الواجهات وربطها بقاعدة البيانات</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-shield-check"></span></span>
+                <h3 class="card__title card__title--sm">تسجيل الدخول والأدوار والصلاحيات</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-wrench"></span></span>
+                <h3 class="card__title card__title--sm">الربط بخدمات خارجية وواجهات API</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-shield-check"></span></span>
+                <h3 class="card__title card__title--sm">إدارة المفاتيح ومتغيرات البيئة بأمان</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-git-branch"></span></span>
+                <h3 class="card__title card__title--sm">حفظ المشروع وإصداراته على GitHub</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-circle-check"></span></span>
+                <h3 class="card__title card__title--sm">اختبار المنتج ومراجعة الأمان</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-cloud-upload"></span></span>
+                <h3 class="card__title card__title--sm">نشر المنتج على رابط فعلي</h3>
+              </div>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-calendar"></span></span>
+                <h3 class="card__title card__title--sm">كل يوم يحقّق جزءًا من هذه المهارات</h3>
+              </div>
+            </article>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">11</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 12 — حزمة المعسكر: من أين تبدأ ══════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">4</span> حزمة المعسكر</span>
+          <h2 class="sag-slide__title">نزّل المجلّد، وافتح Claude Code بداخله</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="2">
+            <div class="card card--plain">
+              <pre class="deck-tree" dir="ltr">project-package/
+├── bootcamp_roadmap_and_curriculum.docx
+├── PRODUCT.md
+├── CLAUDE.md
+├── .claude/
+│   ├── rules/
+│   └── skills/
+├── conversation_history.md   ← ينشئه Claude
+└── app/                      ← ينشئه Claude</pre>
+            </div>
+            <div class="bento" data-cols="1" style="gap:var(--sp-3)">
+              <article class="card card--accent">
+                <div class="card__top"><span class="card__num">1</span>
+                  <h3 class="card__title">نزّل مجلّد الحزمة كما هو</h3>
+                </div>
+              </article>
+              <article class="card card--accent">
+                <div class="card__top"><span class="card__num">2</span>
+                  <h3 class="card__title">افتح Claude Code <strong>داخل هذا المجلّد</strong></h3>
+                </div>
+                <p class="card__note card__note--sm">هو جذر مشروعك — كل ما يأتي بعد ذلك يحدث بداخله.</p>
+              </article>
+              <article class="card card--state">
+                <div class="card__top"><span class="card__icon"><span class="i i-book-open"></span></span>
+                  <h3 class="card__title card__title--sm">ارجع إلى القسم 4 كلّما التبس عليك شيء</h3>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">12</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 13 — حزمة المعسكر: ما تقرؤه أنت ═════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">4</span> حزمة المعسكر</span>
+          <h2 class="sag-slide__title">ملفّان تقرؤهما أنت — والباقي تعليمات لـ Claude</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="2">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-book-open"></span></span>
+                <h3 class="card__title">تقرؤه أنت</h3>
+              </div>
+              <p class="card__note"><strong class="tok-code">bootcamp_roadmap_and_curriculum.docx</strong><br>
+                خارطة الطريق والمنهج.</p>
+              <p class="card__note"><strong class="tok-code">PRODUCT.md</strong><br>
+                ملف منتجك: قراراتك كلّها في مكان واحد.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
+                <h3 class="card__title">يقرؤه Claude</h3>
+              </div>
+              <p class="card__note"><strong class="tok-code">CLAUDE.md</strong> — هويّته وقواعده وسجلّ تقدّمك.</p>
+              <p class="card__note"><strong class="tok-code">.claude/rules/</strong> و<strong
+                  class="tok-code">.claude/skills/</strong> — كيف يتصرّف، وكيف ينفّذ كل قسم.</p>
+              <p class="card__note card__note--sm">لا حاجة بك إلى فتحها إطلاقًا.</p>
+            </article>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">13</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 14 — أسلوب التدريب: جلسات اليوم ═════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">5</span> أسلوب وتوزيع التدريب</span>
+          <h2 class="sag-slide__title">يومك التدريبي — أربع جلسات واستراحة</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="1" style="gap:var(--sp-2)">
+            <div class="agenda"><span class="agenda__t">شرح المفاهيم</span>
+              <span class="agenda__n">نفهم ما سنبنيه اليوم ولماذا</span><span class="agenda__d">45 دقيقة</span>
+            </div>
+            <div class="agenda"><span class="agenda__t">تطبيق مباشر مع المدرب</span>
+              <span class="agenda__n">ننفّذ الخطوات أمامك خطوة بخطوة</span><span class="agenda__d">ساعة</span>
+            </div>
+            <div class="agenda agenda--break"><span class="agenda__t">استراحة</span>
+              <span class="agenda__n"></span><span class="agenda__d">25 دقيقة</span>
+            </div>
+            <div class="agenda agenda--main"><span class="agenda__t">عملك على مشروعك</span>
+              <span class="agenda__n">أطول جلسة — تبني منتجك أنت والمدرب يمرّ عليك</span><span class="agenda__d">ساعة
+                ونصف</span>
+            </div>
+            <div class="agenda"><span class="agenda__t">مراجعة وعرض التقدم</span>
+              <span class="agenda__n">نثبّت ما أنجزته ونحلّ ما تعثّر</span><span class="agenda__d">نصف ساعة</span>
+            </div>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-clock" style="color:var(--accent-structure)"></span>
+              <strong>هذه مدد تقريبية</strong> — تتفاوت من يوم لآخر بحسب ما نُنجزه فيه.
+            </p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">14</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 15 — المراجعة ليست جلسة منفصلة ══════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-quote deck-slide" data-tone="rule" data-surface="dark">
+        <div class="sag-quote__inner">
+          <div class="sag-quote__mark"></div>
+          <p class="sag-quote__text">المراجعة ليست جلسة في آخر اليوم — بل إيقاع عملك كلّه.</p>
+          <p class="sag-quote__attr">تطلب شيئًا ← تقرأ النتيجة ← تعطي ملاحظاتك ← تنتقل. ونفصلها في الجدول لوضوح التخطيط
+            فقط.</p>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side"><span class="sag-badge"><span class="sag-badge__num">5</span> أسلوب وتوزيع
+                التدريب</span></div>
+            <span class="deck-foot__num">15</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 16 — الأجندة ════════════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">6</span> الأجندة والأهداف التدريبية</span>
+          <h2 class="sag-slide__title">أين تجد مهامّ كل يوم</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="3">
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-calendar"></span></span>
+                <h3 class="card__title">أهداف اليوم</h3>
+              </div>
+              <p class="card__note">أي جزء من مهارات القسم 3 نحقّقه في هذا اليوم تحديدًا.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-clock"></span></span>
+                <h3 class="card__title">مهامّ الجلسات الأربع</h3>
+              </div>
+              <p class="card__note">كل بند وبجانبه مدّته التقديرية، موزّعًا على جلسات اليوم.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
+                <h3 class="card__title">خريطة المهامّ الكاملة</h3>
+              </div>
+              <p class="card__note">29 مهمّة في جدول واحد: مَن ينفّذها، وفي أي يوم.</p>
+            </article>
+          </div>
+          <div class="bento" data-cols="2">
+            <div class="stat"><span class="stat__v">10</span><span class="stat__l">مهامّ تنفّذها أنت — تصف وتقرّر</span>
+            </div>
+            <div class="stat"><span class="stat__v">19</span><span class="stat__l">مهمّة ينفّذها Claude — البناء
+                كلّه</span></div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">16</span>
+          </div>
+        </footer>
+      </section>
+
+
+      <!-- ═══ 17 — ما Claude و Claude Code؟ (7.1) ═════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">7.1</span> ما Claude و Claude Code؟</span>
+          <h2 class="sag-slide__title">العقل — والأداة التي تصله بمشروعك</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="2">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
+                <h3 class="card__title"><span class="tok-lat">Claude</span></h3>
+              </div>
+              <p class="card__note">نموذج الذكاء الاصطناعي نفسه — <strong>العقل الذي يفهم ويفكّر ويكتب</strong>.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
+                <h3 class="card__title"><span class="tok-lat">Claude Code</span></h3>
+              </div>
+              <p class="card__note">الأداة التي تعمل في <strong>الطرفية (terminal)</strong> وتصل بين <span
+                  class="tok-lat">Claude</span> ومشروعك.</p>
+              <p class="card__note">فيستطيع أن <strong>يقرأ ملفاتك ويكتبها، ويشغّل الأوامر، ويستخدم أدوات
+                  إضافية</strong>.</p>
+            </article>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
+              الفرق جوهري: <span class="tok-lat">Claude Code</span> ليس محادثة نصّية — بل <strong>يدٌ تعمل داخل
+                مشروعك</strong>.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">17</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 18 — الجلسة وذاكرة Claude (7.2) ═════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">7.2</span> الجلسة وذاكرة Claude</span>
+          <h2 class="sag-slide__title">Claude لا يتذكّر بين الجلسات</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="3">
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
+                <h3 class="card__title">ما الجلسة؟</h3>
+              </div>
+              <p class="card__note">محادثتك المتّصلة من لحظة بدئها حتى تُنهيها. كل ما يجري فيها يتراكم في
+                ذاكرة مؤقّتة واحدة.</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-alert-triangle"></span></span>
+                <h3 class="card__title">تُفقد الجلسة بانتهائها</h3>
+              </div>
+              <p class="card__note">جلسة جديدة = بداية من الصفر. لا يتذكّر شيئًا ممّا سبق.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-file-text"></span></span>
+                <h3 class="card__title">ولهذا نكتب — ذاكرة دائمة مكتوبة</h3>
+              </div>
+              <p class="card__note"><span class="tok-code">conversation_history.md</span> يكتبه Claude
+                تلقائيًّا، ويقرؤه في أي جلسة جديدة ليستعيد السياق.</p>
+            </article>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
+              <strong>تنبيه على المصطلح:</strong> «جلسة» تُستعمل أيضًا في حدود الاستخدام لتعني نافذة الـ5 ساعات (القسم
+              7.4) — والمعنيان مختلفان.
+            </p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">18</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 19 — الرصيد والـtokens 1/2 (7.3) ════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">7.3</span> الرصيد والـtokens</span>
+          <h2 class="sag-slide__title">ما الذي يستهلك رصيدك في كل رسالة؟ <span class="deck-part">1 / 2</span></h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <p class="sag-slide__lead">النموذج <strong>بلا ذاكرة بين الرسائل</strong> — فيُعاد إرسال كل سياق الجلسة إليه
+            في كل مرّة.</p>
+          <div class="bento" data-cols="3">
+            <article class="card">
+              <div class="card__top"><span class="card__num">1</span>
+                <h3 class="card__title card__title--sm">رسالتك (الأمر)</h3>
+              </div>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">2</span>
+                <h3 class="card__title card__title--sm">سجلّ المحادثة كاملًا</h3>
+              </div>
+              <p class="card__note card__note--sm">يكبر ويثقل مع طول الجلسة.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__num">3</span>
+                <h3 class="card__title card__title--sm">محتوى الملفات المفتوحة</h3>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__num">4</span>
+                <h3 class="card__title card__title--sm">ملفات التعليمات المحمّلة</h3>
+              </div>
+              <p class="card__note card__note--sm">مثل <span class="tok-code">CLAUDE.md</span> والقواعد (<span
+                  class="tok-lat">rules</span>).</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">5</span>
+                <h3 class="card__title card__title--sm">تعريفات أدوات MCP</h3>
+              </div>
+              <p class="card__note card__note--sm">ولماذا؟ القسم 7.6.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__num">6</span>
+                <h3 class="card__title card__title--sm">ردّ Claude نفسه</h3>
+              </div>
+            </article>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">19</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 20 — الرصيد والـtokens 2/2 — وسائط (7.3) ════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">تابع استهلاكك بنفسك <span class="deck-part">2 / 2</span></h2>
+          <span class="sag-badge"><span class="sag-badge__num">7.3</span> الرصيد والـtokens</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="sag-media__inner">
+            <div class="sag-media-frame" data-ratio="screen">
+              <div class="sag-media-frame__box">
+                <div class="gifbox" data-paused="false">
+                  <img src="media/06-desktop-usage.gif" alt="فتح Settings ثم Usage في تطبيق Claude Desktop">
+                  <canvas></canvas>
+                  <button class="gifbox__btn" type="button"><span class="i i-clock"></span><span
+                      class="gifbox__label">إيقاف مؤقّت</span></button>
+                </div>
+              </div>
+              <p class="sag-media-frame__caption">من المحادثة ← <span class="tok-lat">Settings</span> ← <span
+                  class="tok-lat">Usage</span>: نافذة الـ‏5 ساعات والحدّ الأسبوعي. انقر على الصورة لإيقافها.</p>
+            </div>
+            <div class="sag-media__side">
+              <p class="sag-media__instruction">افتح <span class="tok-lat">Settings ← Usage</span> لترى ما تبقّى لك.</p>
+              <article class="card">
+                <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
+                  <h3 class="card__title card__title--sm">أو من داخل Claude Code</h3>
+                </div>
+                <p class="card__note card__note--sm">اكتب <span class="tok-code">/usage</span> فترى أشرطة تقدّم
+                  لاستهلاكك ومواعيد التجديد.</p>
+              </article>
+              <article class="card card--state">
+                <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
+                  <h3 class="card__title card__title--sm">نصيحة</h3>
+                </div>
+                <p class="card__note card__note--sm">أبقِ الجلسة مركّزة، وابدأ جلسة جديدة للمهامّ المنفصلة، ولا تربط MCP
+                  لا تحتاجها.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">20</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 21 — حدود خطة Pro (7.4) ═════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">7.4</span> حدود خطة Pro</span>
+          <h2 class="sag-slide__title">حدّان يتجدّدان — لا رصيد لا نهائي</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="2">
+            <div class="stat"><span class="stat__v">5</span><span class="stat__l">نافذة متحرّكة كل 5 ساعات</span></div>
+            <div class="stat"><span class="stat__v">7</span><span class="stat__l">حدّ أسبوعي يتجدّد في وقت ثابت</span>
+            </div>
+          </div>
+          <div class="bento" data-cols="2">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-info"></span></span>
+                <h3 class="card__title card__title--sm">كم بالضبط؟ لنكن صريحين</h3>
+              </div>
+              <p class="card__note card__note--sm"><strong>لا يوجد رقم ثابت منشور</strong> — الحدّ يعتمد على النموذج
+                وعلى حجم كل رسالة. رسالة تقرأ ملفات كثيرة تستهلك أضعاف سؤال قصير.</p>
+              <p class="card__note card__note--sm">كدليل تقريبي فقط: نحو <strong>45 رسالة قصيرة</strong> في نافذة الـ5
+                ساعات.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-circle-check"></span></span>
+                <h3 class="card__title card__title--sm">كيف تعرف رصيدك الفعلي</h3>
+              </div>
+              <p class="card__note card__note--sm"><strong>من الموقع أو التطبيق:</strong> <span class="tok-lat">Settings
+                  ← Usage</span></p>
+              <p class="card__note card__note--sm"><strong>من Claude Code:</strong> <span class="tok-code">/usage</span>
+                أو <span class="tok-code">/status</span></p>
+            </article>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">21</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 22 — ما التكاملات MCP؟ 1/2 (7.5) ════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">7.5</span> ما التكاملات (MCP)؟</span>
+          <h2 class="sag-slide__title">معيار موحّد يصل النموذج بالأدوات <span class="deck-part">1 / 2</span></h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <p class="sag-slide__lead"><span class="tok-lat">MCP</span> = <span class="tok-lat">Model Context
+              Protocol</span> — بروتوكول مفتوح أطلقته <span class="tok-lat">Anthropic</span> ليتّصل الذكاء الاصطناعي
+            بالأدوات والبيانات بطريقة موحّدة.</p>
+          <div class="bento" data-cols="2">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-database"></span></span>
+                <h3 class="card__title">خادم MCP <span class="tok-lat">(server)</span></h3>
+              </div>
+              <p class="card__note">برنامج يمثّل خدمة خارجية ويقدّم للنموذج ثلاث قدرات:</p>
+              <p class="card__note card__note--sm"><strong>أدوات</strong> إجراءات ينفّذها · <strong>موارد</strong>
+                بيانات يقرؤها · <strong>قوالب</strong> جاهزة</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
+                <h3 class="card__title">العميل <span class="tok-lat">(client)</span></h3>
+              </div>
+              <p class="card__note">التطبيق الذي يستعمل الذكاء الاصطناعي — مثل <span class="tok-lat">Claude Code</span>
+                — ويتّصل بالخادم ليستفيد من قدراته.</p>
+            </article>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">22</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 23 — ما التكاملات MCP؟ 2/2 (7.5) ════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">7.5</span> ما التكاملات (MCP)؟</span>
+          <h2 class="sag-slide__title">لماذا اختُرع أصلًا؟ <span class="deck-part">2 / 2</span></h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="2">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-alert-triangle"></span></span>
+                <h3 class="card__title card__title--sm">قبل MCP — الطريقة الصعبة</h3>
+              </div>
+              <p class="card__note">لكل أداة <strong>تكامل مخصّص يُبنى يدويًّا</strong>. والمشكلة: <strong>كل نموذج × كل
+                  أداة = تكامل منفصل</strong> يصعب بناؤه وصيانته.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-layers"></span></span>
+                <h3 class="card__title card__title--sm">بعد MCP</h3>
+              </div>
+              <p class="card__note">تبني <strong>خادمًا واحدًا</strong> للأداة، فيستطيع <strong>أي نموذج متوافق</strong>
+                استخدامه مباشرةً. ولمّا لمس السوق الفائدة، دعمه كبار المزوّدين فصار معيارًا واسعًا.</p>
+            </article>
+          </div>
+          <div class="bento" data-cols="4">
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-book-open"></span></span>
+                <h3 class="card__title card__title--sm">context7</h3>
+              </div>
+              <p class="card__note card__note--sm">توثيق محدّث</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-layers"></span></span>
+                <h3 class="card__title card__title--sm">chrome-devtools</h3>
+              </div>
+              <p class="card__note card__note--sm">المتصفّح</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-cloud-upload"></span></span>
+                <h3 class="card__title card__title--sm">Vercel MCP</h3>
+              </div>
+              <p class="card__note card__note--sm">النشر</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-git-branch"></span></span>
+                <h3 class="card__title card__title--sm">GitHub</h3>
+              </div>
+              <p class="card__note card__note--sm">المستودعات</p>
+            </article>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">23</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 24 — لماذا للـMCP تكلفة في كل رسالة؟ (7.6) ══════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">7.6</span> لماذا للـMCP تكلفة في كل رسالة؟</span>
+          <h2 class="sag-slide__title">كل أداة تربطها تُرفَق بكل رسالة ترسلها</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="3">
+            <article class="card">
+              <div class="card__top"><span class="card__num">1</span>
+                <h3 class="card__title card__title--sm">النموذج بلا ذاكرة</h3>
+              </div>
+              <p class="card__note card__note--sm">لا «يعرف» أن أداةً متاحة إلا إذا رأى تعريفها في نفس الرسالة.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__num">2</span>
+                <h3 class="card__title card__title--sm">فتُرفَق التعريفات كلّها</h3>
+              </div>
+              <p class="card__note card__note--sm">اسم كل أداة ووصفها وكيف تُستخدم — في كل أمر ترسله.</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">3</span>
+                <h3 class="card__title card__title--sm">فيثقل كل شيء</h3>
+              </div>
+              <p class="card__note card__note--sm">تستهلك tokens <strong>حتى قبل أن تستخدمها فعليًّا</strong>.</p>
+            </article>
+          </div>
+          <div class="sag-quote__inner" style="flex:0 0 auto;gap:var(--sp-2)">
+            <div class="sag-quote__mark" style="background:var(--accent-state)"></div>
+            <p class="sag-quote__text" style="font-size:42px">اربط ما تحتاجه فقط.</p>
+            <p class="sag-quote__attr">كثرة الأدوات تعني رسائل أثقل وأغلى وأبطأ.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">24</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 25 — ما المنتج الأولي (MVP)؟ (8) ════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">8</span> التعريف بالـMVP ونطاقه</span>
+          <h2 class="sag-slide__title">ما المنتج الأوّلي القابل للتطبيق؟</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="3">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">M</span>
+                <h3 class="card__title card__title--sm"><span class="tok-lat">Minimum</span></h3>
+              </div>
+              <p class="card__note">الحدّ الأدنى — <strong>أقلّ ما يمكن بناؤه</strong>.</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">V</span>
+                <h3 class="card__title card__title--sm"><span class="tok-lat">Viable</span></h3>
+              </div>
+              <p class="card__note">قابل للتطبيق — <strong>يعمل فعليًّا ويقدّم قيمة حقيقية</strong>، لا نموذجًا شكليًّا.
+              </p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">P</span>
+                <h3 class="card__title card__title--sm"><span class="tok-lat">Product</span></h3>
+              </div>
+              <p class="card__note">منتج — <strong>يستطيع مستخدم حقيقي أن يجرّبه</strong> ويستفيد منه.</p>
+            </article>
+          </div>
+          <div class="sag-quote__inner" style="flex:0 0 auto;gap:var(--sp-2)">
+            <div class="sag-quote__mark"></div>
+            <p class="sag-quote__text" style="font-size:40px">أصغر نسخة تعمل من منتجك وتقدّم قيمة قابلة للاختبار.</p>
+            <p class="sag-quote__attr">تبنيها بسرعة لتتعلّم منها قبل التوسّع.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">25</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 26 — الغايات مقابل النطاق (8) ═══════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">8</span> التعريف بالـMVP ونطاقه</span>
+          <h2 class="sag-slide__title">الغاية تُقاس بالأثر — وعنصر النطاق بأنه بُني</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="2">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
+                <h3 class="card__title">الغاية — <strong>لماذا</strong> تبنيه</h3>
+              </div>
+              <p class="card__note">نتيجة تريد أن يحقّقها منتجك.</p>
+              <p class="card__note card__note--sm"><strong>مثال:</strong> «تقليل أخطاء الجرد».</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
+                <h3 class="card__title">عنصر النطاق — <strong>ماذا</strong> ستبني</h3>
+              </div>
+              <p class="card__note">خاصية ملموسة ستُبنى فعلًا.</p>
+              <p class="card__note card__note--sm"><strong>مثال:</strong> «شاشة إضافة/تعديل منتج».</p>
+            </article>
+          </div>
+          <div class="bento" data-cols="2">
+            <article class="card card--plain">
+              <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
+                وقد تخدم <strong>عدّة عناصر نطاق</strong> غايةً واحدة.</p>
+            </article>
+            <article class="card" style="border-inline-start:5px solid var(--state-warning)">
+              <div class="card__top"><span class="card__icon"
+                  style="background:var(--state-warning-soft);color:var(--state-warning)"><span
+                    class="i i-alert-triangle"></span></span>
+                <h3 class="card__title card__title--sm">قاعدة المعسكر</h3>
+              </div>
+              <p class="card__note">أبقِ منتجك ضمن <strong>3 إلى 5 خصائص أساسية</strong> فقط — هذا ما يضمن أن تُنهيه.
+              </p>
+            </article>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">26</span>
+          </div>
+        </footer>
+      </section>
+
+
+      <!-- ═══ 27 — خريطة التهيئة (7.10) ═══════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
+          <h2 class="sag-slide__title">ستّة بنود — ننجزها معًا الآن، مرّة واحدة</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="3">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">1</span>
+                <h3 class="card__title card__title--sm">Claude Code</h3>
+              </div>
+              <p class="card__note card__note--sm">أداة سطر الأوامر.</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">2</span>
+                <h3 class="card__title card__title--sm">Git وهويّتك</h3>
+              </div>
+              <p class="card__note card__note--sm">إلزامي على كل الأنظمة.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__num">3</span>
+                <h3 class="card__title card__title--sm">Claude Desktop</h3>
+              </div>
+              <p class="card__note card__note--sm">لمتابعة سقف استخدامك.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__num">4</span>
+                <h3 class="card__title card__title--sm">محرّر Antigravity</h3>
+              </div>
+              <p class="card__note card__note--sm">التثبيت وخطوات البدء.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__num">5</span>
+                <h3 class="card__title card__title--sm">إضافة Claude Code</h3>
+              </div>
+              <p class="card__note card__note--sm">داخل المحرّر.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__num">6</span>
+                <h3 class="card__title card__title--sm">تكاملان: context7 و Supabase</h3>
+              </div>
+              <p class="card__note card__note--sm">أوّل مهمّة ننفّذها معًا.</p>
+            </article>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
+              <strong>البنود 1 إلى 5 تُنجزها أنت قبل أن نبدأ معًا</strong> — والبند 6 ننفّذه سويًّا.
+            </p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">27</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 28 — 1) تثبيت Claude Code ═══════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">1) ثبّت Claude Code</h2>
+          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="sag-media__inner">
+            <div class="sag-media-frame">
+              <div class="sag-media-frame__box">
+                <div class="sag-media-frame__ph">
+                  <span class="i i-terminal" style="font-size:40px"></span><span>01-claudecode-install-win.gif</span>
+                </div>
+              </div>
+              <p class="sag-media-frame__caption">التثبيت من PowerShell على ويندوز</p>
+            </div>
+            <div class="sag-media__side">
+              <article class="card">
+                <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
+                  <h3 class="card__title card__title--sm">Windows</h3>
+                </div>
+                <p class="card__note card__note--sm">افتح <strong>PowerShell</strong> والصق:</p>
+                <p class="card__note"><span class="tok-code">irm https://claude.ai/install.ps1 | iex</span></p>
+              </article>
+              <article class="card">
+                <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
+                  <h3 class="card__title card__title--sm">macOS و Linux</h3>
+                </div>
+                <p class="card__note"><span class="tok-code">curl -fsSL https://claude.ai/install.sh | bash</span></p>
+              </article>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">28</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 29 — 1) تسجيل الدخول والتحقّق ═══════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">1) سجّل الدخول وتحقّق</h2>
+          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="sag-media__inner">
+            <div class="sag-media-frame">
+              <div class="sag-media-frame__box">
+                <div class="sag-media-frame__ph">
+                  <span class="i i-circle-check" style="font-size:40px"></span><span>02-claudecode-login.gif</span>
+                </div>
+              </div>
+              <p class="sag-media-frame__caption">أول تشغيل: تسجيل الدخول في المتصفّح ثم العودة</p>
+            </div>
+            <div class="sag-media__side">
+              <p class="sag-media__instruction">انتقل إلى مجلّد مشروعك واكتب <span class="tok-code">claude</span></p>
+              <article class="card card--state">
+                <div class="card__top"><span class="card__icon"><span class="i i-info"></span></span>
+                  <h3 class="card__title card__title--sm">إن ظهر خطأ</h3>
+                </div>
+                <p class="card__note card__note--sm">رسالة أن <span class="tok-code">irm</span> غير معروفة تعني أنك في
+                  <strong>Command Prompt</strong> لا PowerShell — أعِد فتح PowerShell.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">29</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 30 — 2) Git إلزامي ══════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
+          <h2 class="sag-slide__title">2) Git — إلزامي على كل الأنظمة، لا خاصّ بويندوز</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <p class="sag-slide__lead">ستُنشئ مستودعك وتحفظ أول نسخة من مشروعك <strong>اليوم نفسه</strong> — وبدون Git لا
+            يتمّ ذلك.</p>
+          <div class="bento" data-cols="3">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-git-branch"></span></span>
+                <h3 class="card__title card__title--sm">Windows</h3>
+              </div>
+              <p class="card__note card__note--sm">نزّل <strong>Git for Windows</strong> وثبّته بالإعدادات الافتراضية.
+                يمنحك Git <strong>و Bash</strong> الذي يستعمله Claude Code.</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-git-branch"></span></span>
+                <h3 class="card__title card__title--sm">macOS</h3>
+              </div>
+              <p class="card__note card__note--sm"><strong>ليس مثبّتًا مسبقًا.</strong> اكتب <span class="tok-code">git
+                  --version</span> فيظهر طلب تثبيت Xcode Command Line Tools — وافق.</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-git-branch"></span></span>
+                <h3 class="card__title card__title--sm">Linux</h3>
+              </div>
+              <p class="card__note card__note--sm">غالبًا مثبّت. تحقّق بـ <span class="tok-code">git --version</span>،
+                وإلّا <span class="tok-code">sudo apt install git</span></p>
+            </article>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">30</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 31 — 2) اضبط هويّتك في Git ══════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">2) اضبط هويّتك — مرّة واحدة</h2>
+          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="sag-media__inner">
+            <div class="sag-media-frame">
+              <div class="sag-media-frame__box">
+                <div class="sag-media-frame__ph">
+                  <span class="i i-terminal" style="font-size:40px"></span><span>05-git-config.png</span>
+                </div>
+              </div>
+              <p class="sag-media-frame__caption">ضبط الاسم والبريد ثم التأكّد منهما</p>
+            </div>
+            <div class="sag-media__side">
+              <p class="card__note"><span class="tok-code">git config --global user.name "اسمك"</span></p>
+              <p class="card__note"><span class="tok-code">git config --global user.email "بريدك"</span></p>
+              <article class="card" style="border-inline-start:5px solid var(--state-warning)">
+                <div class="card__top"><span class="card__icon"
+                    style="background:var(--state-warning-soft);color:var(--state-warning)"><span
+                      class="i i-alert-triangle"></span></span>
+                  <h3 class="card__title card__title--sm">بدونها يفشل أول حفظ</h3>
+                </div>
+                <p class="card__note card__note--sm">أو يُنسب عملك إلى هويّة خاطئة. استخدم <strong>نفس بريد
+                    GitHub</strong>.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">31</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 32 — 3) Claude Desktop ══════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
+          <h2 class="sag-slide__title">3) ثبّت Claude Desktop — لمتابعة سقفك</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <p class="sag-slide__lead">تطبيق منفصل عن أداة سطر الأوامر، وفائدته أن يعرض لك <strong>كم تبقّى من
+              سقفك</strong> حتى لا تُفاجَأ بتوقّف الجلسة أثناء العمل.</p>
+          <div class="bento" data-cols="3">
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-cloud-upload"></span></span>
+                <h3 class="card__title card__title--sm">Windows</h3>
+              </div>
+              <p class="card__note card__note--sm">نزّل المثبّت وشغّله، ثم سجّل الدخول بنفس حسابك.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-cloud-upload"></span></span>
+                <h3 class="card__title card__title--sm">macOS</h3>
+              </div>
+              <p class="card__note card__note--sm">نزّل ملف <span class="tok-lat">dmg</span> وشغّله، ثم سجّل الدخول.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-info"></span></span>
+                <h3 class="card__title card__title--sm">Linux</h3>
+              </div>
+              <p class="card__note card__note--sm">نسخة تجريبية لتوزيعتَي Ubuntu و Debian.</p>
+            </article>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">32</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 33 — 4) تثبيت Antigravity ═══════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">4) ثبّت محرّر Antigravity</h2>
+          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="sag-media__inner" data-layout="stacked">
+            <div class="sag-media-frame">
+              <div class="sag-media-frame__box">
+                <div class="sag-media-frame__ph">
+                  <span class="i i-cloud-upload" style="font-size:40px"></span><span>07-antigravity-download.png</span>
+                </div>
+              </div>
+              <p class="sag-media-frame__caption">صفحة التنزيل — اختر نظامك ثم <span class="tok-lat">Antigravity IDE
+                  (Standalone)</span></p>
+            </div>
+            <p class="sag-media__instruction">افتح <span class="tok-code">antigravity.google/download</span> ← اختر نظام
+              التشغيل ← نزّل نسخة <strong>Standalone</strong> وشغّل المثبّت.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">33</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 34 — 4) خطوات البدء بعد التثبيت ═════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
+          <h2 class="sag-slide__title">4) وبعد أول تشغيل — خطوات لا تتخطّاها</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="2">
+            <div class="bento" data-cols="1" style="gap:var(--sp-2)">
+              <article class="card card--accent">
+                <div class="card__top"><span class="card__num">1</span>
+                  <h3 class="card__title card__title--sm">سجّل الدخول بحساب Google</h3>
+                </div>
+                <p class="card__note card__note--sm">يلزم حساب Gmail شخصي في الفترة التجريبية.</p>
+              </article>
+              <article class="card card--accent">
+                <div class="card__top"><span class="card__num">2</span>
+                  <h3 class="card__title card__title--sm">اختر السمة</h3>
+                </div>
+                <p class="card__note card__note--sm">System أو Light أو Dark — تغيّرها لاحقًا متى شئت.</p>
+              </article>
+              <article class="card card--state">
+                <div class="card__top"><span class="card__num">3</span>
+                  <h3 class="card__title card__title--sm">افتح مجلّد مشروعك</h3>
+                </div>
+                <p class="card__note card__note--sm"><span class="tok-lat">File ← Open Folder</span> واختر مجلّد الحزمة
+                  نفسه — <strong>لا</strong> مجلّدًا أعلى منه.</p>
+              </article>
+            </div>
+            <div class="sag-media-frame">
+              <div class="sag-media-frame__box">
+                <div class="sag-media-frame__ph">
+                  <span class="i i-palette" style="font-size:40px"></span><span>09-antigravity-theme.png</span>
+                </div>
+              </div>
+              <p class="sag-media-frame__caption">شاشة اختيار السمة</p>
+            </div>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
+              تحتاج أيضًا متصفّح <strong>Chrome</strong> مثبّتًا — بعض ميزات المحرّر تعتمد عليه.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">34</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 35 — «Connect Plugins» تخصّ مساعد المحرّر ═══════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-surface="dark">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
+          <h2 class="sag-slide__title">هذه الحزم لمساعد المحرّر — لا لـClaude</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="sag-media__inner">
+            <div class="sag-media-frame">
+              <div class="sag-media-frame__box">
+                <div class="sag-media-frame__ph">
+                  <span class="i i-info" style="font-size:40px"></span><span>10-antigravity-plugins.png</span>
+                </div>
+              </div>
+              <p class="sag-media-frame__caption">كل المفاتيح مُطفأة</p>
+            </div>
+            <div class="sag-media__side">
+              <article class="card card--accent">
+                <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
+                  <h3 class="card__title card__title--sm">تجاوزها كلّها — للمحرّر مساعده الخاص</h3>
+                </div>
+                <p class="card__note card__note--sm">يأتي <span class="tok-lat">Antigravity</span> بمساعد ذكاء اصطناعي
+                  خاصّ به (<span class="tok-lat">Gemini</span>)، وهذه الحزم إعداداتٌ <strong>له هو</strong> — تُحفَظ في
+                  مكان مستقلّ تمامًا عن إعدادات Claude، ولا يراها Claude إطلاقًا.</p>
+              </article>
+              <article class="card card--state">
+                <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
+                  <h3 class="card__title card__title--sm">ونحن نعمل مع Claude</h3>
+                </div>
+                <p class="card__note card__note--sm">نستخدم المحرّر <strong>كمحرّر فقط</strong>، وتكاملاتنا نربطها
+                  لـClaude في البند 6 وفي المهمة 14.2.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <span class="deck-foot__num">35</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 36 — 5) إضافة Claude Code للمحرّر ═══════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">5) أضِف إضافة Claude Code إلى المحرّر</h2>
+          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="sag-media__inner" data-layout="stacked">
+            <div class="sag-media-frame">
+              <div class="sag-media-frame__box">
+                <div class="sag-media-frame__ph">
+                  <span class="i i-layers" style="font-size:40px"></span><span>11-extension-install.gif</span>
+                </div>
+              </div>
+              <p class="sag-media-frame__caption">لوحة <span class="tok-lat">Extensions</span> ← البحث ← التثبيت</p>
+            </div>
+            <p class="sag-media__instruction">افتح <span class="tok-lat">Extensions</span> داخل المحرّر ← ابحث عن
+              <strong>Claude Code for VS Code</strong> ← ثبّتها ← سجّل الدخول.
+            </p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">36</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 37 — 6أ) ربط context7 ═══════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">6أ) اربط context7 — التوثيق المحدّث</h2>
+          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="sag-media__inner">
+            <div class="sag-media-frame">
+              <div class="sag-media-frame__box">
+                <div class="sag-media-frame__ph">
+                  <span class="i i-book-open" style="font-size:40px"></span><span>12-context7-apikey.png</span>
+                </div>
+              </div>
+              <p class="sag-media-frame__caption">لوحة context7 ← <span class="tok-lat">API Keys</span></p>
+            </div>
+            <div class="sag-media__side">
+              <article class="card">
+                <div class="card__top"><span class="card__num">1</span>
+                  <h3 class="card__title card__title--sm">أنشئ حسابًا وانسخ المفتاح</h3>
+                </div>
+                <p class="card__note card__note--sm">يبدأ بـ <span class="tok-code">ctx7sk-</span></p>
+              </article>
+              <article class="card card--state">
+                <div class="card__top"><span class="card__num">2</span>
+                  <h3 class="card__title card__title--sm">ألصقه في المحادثة</h3>
+                </div>
+                <p class="card__note card__note--sm"><strong>Claude هو من يكتب أمر الربط</strong> — لا تكتب أمرًا واحدًا
+                  بنفسك.</p>
+              </article>
+              <article class="card">
+                <div class="card__top"><span class="card__num">3</span>
+                  <h3 class="card__title card__title--sm">أعِد تشغيل Claude Code</h3>
+                </div>
+                <p class="card__note card__note--sm">التكامل الجديد لا يعمل في الجلسة الحالية.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">37</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 38 — 6ب) إنشاء مشروع Supabase ═══════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">6ب) أنشئ مشروع قاعدة بياناتك أوّلًا</h2>
+          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="sag-media__inner">
+            <div class="sag-media-frame">
+              <div class="sag-media-frame__box">
+                <div class="sag-media-frame__ph">
+                  <span class="i i-database" style="font-size:40px"></span><span>13-supabase-newproject.png</span>
+                </div>
+              </div>
+              <p class="sag-media-frame__caption">نموذج <span class="tok-lat">New project</span></p>
+            </div>
+            <div class="sag-media__side">
+              <p class="sag-media__instruction">اسم المشروع · أقرب <span class="tok-lat">Region</span> · خطة
+                <strong>Free</strong> تكفي المعسكر كاملًا.
+              </p>
+              <article class="card" style="border-inline-start:5px solid var(--state-warning)">
+                <div class="card__top"><span class="card__icon"
+                    style="background:var(--state-warning-soft);color:var(--state-warning)"><span
+                      class="i i-alert-triangle"></span></span>
+                  <h3 class="card__title card__title--sm">كلمة مرور القاعدة</h3>
+                </div>
+                <p class="card__note card__note--sm"><strong>انسخها واحفظها فورًا</strong> — لا تُعرض مرّة أخرى.</p>
+              </article>
+              <article class="card card--plain">
+                <p class="card__note card__note--sm">
+                  المشروع <strong>قبل</strong> الـMCP — لأن الـMCP يحتاج مشروعًا يشير إليه.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">38</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 39 — 6ب) ربط Supabase MCP ═══════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">6ب) ثم اربط الـMCP</h2>
+          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="sag-media__inner">
+            <div class="sag-media-frame">
+              <div class="sag-media-frame__box">
+                <div class="sag-media-frame__ph">
+                  <span class="i i-database" style="font-size:40px"></span><span>14-supabase-mcp.png</span>
+                </div>
+              </div>
+              <p class="sag-media-frame__caption">التكامل ظاهرًا متّصلًا بعد <span class="tok-code">/mcp</span></p>
+            </div>
+            <div class="sag-media__side">
+              <p class="sag-media__instruction"><span class="tok-lat">Connect</span> ← تبويب <span
+                  class="tok-lat">MCP</span> ← العميل <span class="tok-lat">Claude Code</span></p>
+              <article class="card card--accent">
+                <div class="card__top"><span class="card__icon"><span class="i i-shield-check"></span></span>
+                  <h3 class="card__title card__title--sm">خياران مهمّان</h3>
+                </div>
+                <p class="card__note card__note--sm"><span class="tok-code">read-only</span> <strong>مُطفأ</strong> —
+                  Claude ينشئ الجداول لا يقرأها فقط.</p>
+                <p class="card__note card__note--sm"><span class="tok-code">Storage</span> <strong>مُطفأة</strong> — لا
+                  تمنح صلاحيات لا تحتاجها.</p>
+              </article>
+              <article class="card card--state">
+                <div class="card__top"><span class="card__icon"><span class="i i-users"></span></span>
+                  <h3 class="card__title card__title--sm">هذه الخطوة لك وحدك</h3>
+                </div>
+                <p class="card__note card__note--sm"><span class="tok-code">/mcp</span> ← <span
+                    class="tok-lat">Authenticate</span> ← وافق في متصفّحك. يحتاج هويّتك أنت.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">39</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 40 — 14.1 إنشاء مستودعك ═════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">أنشئ مستودعك على GitHub</h2>
+          <span class="sag-badge"><span class="sag-badge__num">14.1</span> التهيئة والهيكل</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="sag-media__inner">
+            <div class="sag-media-frame">
+              <div class="sag-media-frame__box">
+                <div class="sag-media-frame__ph">
+                  <span class="i i-git-branch" style="font-size:40px"></span><span>15-github-new-repo.png</span>
+                </div>
+              </div>
+              <p class="sag-media-frame__caption">نموذج <span class="tok-lat">github.com/new</span></p>
+            </div>
+            <div class="sag-media__side">
+              <p class="sag-media__instruction">المستودع يحمل <strong>وثائقك وكودك معًا</strong>.</p>
+              <article class="card card--state">
+                <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
+                  <h3 class="card__title card__title--sm">لا تتظاهر بالفهم</h3>
+                </div>
+                <p class="card__note card__note--sm">في النموذج خيارات تبدو بريئة (مثل «أضِف <span
+                    class="tok-lat">README</span>») لكنها تُسبّب تعارضًا عند رفع مشروع موجود.</p>
+                <p class="card__note card__note--sm"><strong>اسأل Claude عمّا تتركه فارغًا</strong> — «لم أفهم ما تقصده
+                  بـ…» أمر مشروع تمامًا.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">40</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 41 — 14.1 Claude يهيّئ تطبيقك ═══════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">14.1</span> التهيئة والهيكل</span>
+          <h2 class="sag-slide__title">صِف فكرتك بجملة — ودع Claude يهيّئ الباقي</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="4">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">1</span>
+                <h3 class="card__title card__title--sm">ألصق مفاتيحك في المحادثة</h3>
+              </div>
+              <p class="card__note card__note--sm">Claude يكتبها في ملف الأسرار — <strong>لا تفتحه أنت</strong>.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__num">2</span>
+                <h3 class="card__title card__title--sm">اطلب تهيئة الهيكل</h3>
+              </div>
+              <p class="card__note card__note--sm">وربطه بقاعدة البيانات.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__num">3</span>
+                <h3 class="card__title card__title--sm">شغّل التطبيق</h3>
+              </div>
+              <p class="card__note card__note--sm">وافتح صفحة تسجيل الدخول.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__num">4</span>
+                <h3 class="card__title card__title--sm">احفظ وارفع</h3>
+              </div>
+              <p class="card__note card__note--sm">commit ثم push.</p>
+            </article>
+          </div>
+          <article class="card">
+            <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
+              <h3 class="card__title card__title--sm">صياغة مقترحة تعطيها لـ Claude</h3>
+            </div>
+            <p class="card__note">«هيّئ هيكل تطبيقي واربطه بقاعدة البيانات. هذه مفاتيحي: […]. <strong>اعرض لي أولًا
+                ملخّصًا بسيطًا بلا مصطلحات لأوافق</strong>، ثم نفّذه وشغّل التطبيق وأخبرني كيف أفتحه.»</p>
+          </article>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">41</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 42 — ماذا سترى حين يعمل ═════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">هذا ما سترى حين يعمل</h2>
+          <span class="sag-badge"><span class="sag-badge__num">14.1</span> التهيئة والهيكل</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="sag-media__inner" data-layout="stacked">
+            <div class="sag-media-frame">
+              <div class="sag-media-frame__box">
+                <div class="sag-media-frame__ph">
+                  <span class="i i-circle-check" style="font-size:40px"></span><span>16-app-running.png</span>
+                </div>
+              </div>
+              <p class="sag-media-frame__caption">التطبيق يعمل محلّيًّا وصفحة تسجيل الدخول مفتوحة</p>
+            </div>
+            <p class="sag-media__instruction"><strong>مخرَج اليوم:</strong> تطبيقك يعمل على جهازك، وصفحة تسجيل الدخول
+              تفتح. لم يعمل من أول مرّة؟ <strong>هذا طبيعي</strong> — أخبر Claude بالخطأ وسيصلحه.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">42</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 43 — دورك الآن 1/2 ══════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-surface="dark">
+        <div class="sag-slide__head">
+          <span class="sag-badge">عمل المتدربين</span>
+          <h2 class="sag-slide__title">دورك الآن — أكمل تهيئتك <span class="deck-part">1 / 2</span></h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="3">
+            <article class="card">
+              <div class="card__top"><span class="card__num">1</span>
+                <h3 class="card__title card__title--sm">أكمل التثبيت</h3>
+              </div>
+              <p class="card__note card__note--sm">البنود 1 إلى 5.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__num">2</span>
+                <h3 class="card__title card__title--sm">أنشئ مشروع Supabase</h3>
+              </div>
+              <p class="card__note card__note--sm">واحفظ كلمة المرور.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__num">3</span>
+                <h3 class="card__title card__title--sm">اربط التكاملَين</h3>
+              </div>
+              <p class="card__note card__note--sm">context7 و Supabase MCP.</p>
+            </article>
+          </div>
+          <article class="card card--accent">
+            <div class="card__top"><span class="card__icon"><span class="i i-clock"></span></span>
+              <h3 class="card__title card__title--sm">30 دقيقة — وتتفاوت بحسب جهازك</h3>
+            </div>
+            <p class="card__note">التثبيت قد يستغرق خمس دقائق أو أربعين. <strong>إن تعثّرت فارفع يدك</strong> — المدرب
+              يمرّ عليكم ويعطي الأولوية لمن تعثّر.</p>
+          </article>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot"><span class="deck-foot__num">43</span></div>
+        </footer>
+      </section>
+
+      <!-- ═══ 44 — دورك الآن 2/2 ══════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-surface="dark">
+        <div class="sag-slide__head">
+          <span class="sag-badge">عمل المتدربين</span>
+          <h2 class="sag-slide__title">دورك الآن — شغّل تطبيقك <span class="deck-part">2 / 2</span></h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="3">
+            <article class="card">
+              <div class="card__top"><span class="card__num">1</span>
+                <h3 class="card__title card__title--sm">أنشئ مستودعك</h3>
+              </div>
+              <p class="card__note card__note--sm">واسأل عن أي حقل لا تفهمه.</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">2</span>
+                <h3 class="card__title card__title--sm">صِف فكرتك بجملة واحدة</h3>
+              </div>
+              <p class="card__note card__note--sm">ودع Claude يهيّئ التطبيق.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__num">3</span>
+                <h3 class="card__title card__title--sm">شغّله وافتح صفحة الدخول</h3>
+              </div>
+              <p class="card__note card__note--sm">ثم احفظ وارفع.</p>
+            </article>
+          </div>
+          <div class="bento" data-cols="2">
+            <div class="stat"><span class="stat__v">39</span><span class="stat__l">دقيقة للبناء</span></div>
+            <div class="stat"><span class="stat__v">10</span><span class="stat__l">دقائق لأول حفظ ورفع</span></div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot"><span class="deck-foot__num">44</span></div>
+        </footer>
+      </section>
+
+      <!-- ═══ 45 — أول حفظ ورفع ═══════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">أول حفظ ورفع</h2>
+          <span class="sag-badge"><span class="sag-badge__num">14.1</span> التهيئة والهيكل</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="sag-media__inner">
+            <div class="sag-media-frame">
+              <div class="sag-media-frame__box">
+                <div class="sag-media-frame__ph">
+                  <span class="i i-git-branch" style="font-size:40px"></span><span>17-first-commit.png</span>
+                </div>
+              </div>
+              <p class="sag-media-frame__caption">الملفات ظاهرة على GitHub بعد أول رفع</p>
+            </div>
+            <div class="sag-media__side">
+              <p class="sag-media__instruction">Claude يحفظ ويرفع نيابةً عنك — وأنت تتأكّد من النتيجة.</p>
+              <article class="card" style="border-inline-start:5px solid var(--state-warning)">
+                <div class="card__top"><span class="card__icon"
+                    style="background:var(--state-warning-soft);color:var(--state-warning)"><span
+                      class="i i-shield-check"></span></span>
+                  <h3 class="card__title card__title--sm">تأكّد من هذا تحديدًا</h3>
+                </div>
+                <p class="card__note card__note--sm">ملف الأسرار <span class="tok-code">.env</span> <strong>غير
+                    مرفوع</strong> إلى GitHub.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">45</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 46 — مراجعة اليوم ═══════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge">مراجعة وعرض التقدم</span>
+          <h2 class="sag-slide__title">مخرَج اليوم — تحقّق من هذه الثلاثة</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="3">
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-circle-check"></span></span>
+                <h3 class="card__title card__title--sm">تطبيقك يعمل</h3>
+              </div>
+              <p class="card__note card__note--sm">وصفحة تسجيل الدخول تفتح في متصفّحك.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-git-branch"></span></span>
+                <h3 class="card__title card__title--sm">مستودعك يحوي الكود والوثائق</h3>
+              </div>
+              <p class="card__note card__note--sm">معًا في مكان واحد.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-shield-check"></span></span>
+                <h3 class="card__title card__title--sm">ملف الأسرار غير مرفوع</h3>
+              </div>
+              <p class="card__note card__note--sm">تأكّد بنفسك من صفحة المستودع.</p>
+            </article>
+          </div>
+          <div class="sag-quote__inner" style="flex:0 0 auto;gap:var(--sp-2)">
+            <div class="sag-quote__mark" style="background:var(--accent-state)"></div>
+            <p class="sag-quote__text" style="font-size:40px">هذه الثلاثة = يومك الأول ناجح.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">46</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 47 — إن بقي لديك وقت (8.1) ══════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">8.1</span> تعريف المشكلة والهدف والغايات</span>
+          <h2 class="sag-slide__title">إن بقي لديك وقت — ابدأ بفكرتك</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <p class="sag-slide__lead"><strong>بلا وقت مخصّص</strong> — إن أنهيت ما سبق فابدأ بجمع ملاحظاتك الحرّة عن فكرة
+            منتجك. والإكمال غدًا.</p>
+          <div class="bento" data-cols="2">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
+                <h3 class="card__title card__title--sm">اكتب بحرّية</h3>
+              </div>
+              <p class="card__note">ما المشكلة التي يحلّها منتجك؟ ولمن؟ وما الذي يجعله مفيدًا؟ <strong>بلا صيغة
+                  رسمية</strong> — كلام عاديّ.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-info"></span></span>
+                <h3 class="card__title card__title--sm">وما لست متأكّدًا منه — قُله</h3>
+              </div>
+              <p class="card__note">«لا أعرف بعد كيف يُعرض هذا» <strong>معلومة مفيدة لا نقص</strong>. وClaude هو من يصوغ
+                لاحقًا.</p>
+            </article>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">47</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 48 — غدًا ═══════════════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-closing deck-slide" data-surface="dark">
+        <div class="sag-slide__head">
+          <h2 class="sag-slide__title">غدًا — اليوم الثاني</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="sag-closing__inner">
+            <div class="sag-closing__group">
+              <p class="sag-closing__label"><span class="i i-circle-check"></span> ما أنجزناه اليوم</p>
+              <article class="card card--plain">
+                <p class="card__note">أدواتك مهيّأة · تكاملاك مربوطان · تطبيقك يعمل · مستودعك جاهز</p>
+              </article>
+            </div>
+            <div class="sag-closing__group">
+              <p class="sag-closing__label"><span class="i i-calendar"></span> ما ننجزه غدًا</p>
+              <article class="card card--plain">
+                <p class="card__note">تعريف منتجك ونطاقه، ومستخدموه وأصحاب المصلحة — الأقسام 8 و9.</p>
+              </article>
+            </div>
+          </div>
+          <div class="deck-logo" data-size="standard" style="align-self:center">
+            <img src="assets/brand/logo-sag-lab.png" alt="ساج لاب">
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+            </div>
+            <span class="deck-foot__num">48</span>
+          </div>
+        </footer>
+      </section>
+
+
+    </div><!-- /deck-scaler -->
+  </div><!-- /deck-stage -->
+
+  <div class="deck-hud">
+    <button data-act="prev" title="السابق">‹</button>
+    <span class="deck-hud__pos">1 / 47</span>
+    <button data-act="next" title="التالي">›</button>
+    <button data-act="full" title="ملء الشاشة">⛶</button>
+  </div>
+
+  <script src="assets/deck.js"></script>
+</body>
+
+</html>

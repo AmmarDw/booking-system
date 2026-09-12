@@ -1,0 +1,17 @@
+/* Direction utilities. RTL is the default and only direction of this system. */
+:root{--dir-flip:-1 /* @kind other */}
+
+.sag-rtl{direction:rtl;text-align:start}
+
+/* Wrap every Latin fragment sitting inside an Arabic line. */
+.tok-lat{direction:ltr;unicode-bidi:isolate;font-family:var(--font-latin);font-weight:var(--fw-semibold)}
+/* Shell commands, paths, file names inline in Arabic prose. */
+.tok-code{direction:ltr;unicode-bidi:isolate;font-family:var(--font-mono);font-size:.92em;
+  background:var(--brand-snow);color:var(--brand-primary);border-radius:6px;padding:.06em .38em}
+[data-surface="dark"] .tok-code{background:#1B2E56;color:#CFE8F3}
+/* Digits: Arabic-Indic numerals in Arabic copy, Latin digits in code/tables. */
+.tok-num-ar{font-feature-settings:"lnum" 0}
+.tok-num-lat{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+
+/* Directional glyphs are the only physical thing allowed, and they mirror. */
+.sag-chevron-forward{display:inline-block;transform:scaleX(var(--dir-flip))}

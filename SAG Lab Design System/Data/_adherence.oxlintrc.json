@@ -1,0 +1,481 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/elements/**",
+              "components/frames/**",
+              "slides/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:IBM Plex Sans Arabic|IBM Plex Sans|IBM Plex Mono))/i]",
+        "message": "Font not provided by the design system. Available: IBM Plex Sans Arabic, IBM Plex Sans, IBM Plex Mono."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='AgendaRow'] > JSXAttribute > JSXIdentifier[name!=/^(?:name|what|duration|state|className|style|key|ref|className|style|children)$/]",
+        "message": "<AgendaRow> doesn't accept that prop. Declared props: name, what, duration, state, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='AgendaRow'] > JSXAttribute[name.name='state'] > Literal[value!=/^(?:default|active|done)$/]",
+        "message": "<AgendaRow> state must be one of 'default' | 'active' | 'done'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Callout'] > JSXAttribute > JSXIdentifier[name!=/^(?:tone|label|children|icon|className|style|key|ref|className|style|children)$/]",
+        "message": "<Callout> doesn't accept that prop. Declared props: tone, label, children, icon, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Callout'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:info|warning|rule)$/]",
+        "message": "<Callout> tone must be one of 'info' | 'warning' | 'rule'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DayProgress'] > JSXAttribute > JSXIdentifier[name!=/^(?:totalDays|activeDay|within|label|className|style|key|ref|className|style|children)$/]",
+        "message": "<DayProgress> doesn't accept that prop. Declared props: totalDays, activeDay, within, label, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='EndorsementMark'] > JSXAttribute > JSXIdentifier[name!=/^(?:size|showText|className|style|key|ref|className|style|children)$/]",
+        "message": "<EndorsementMark> doesn't accept that prop. Declared props: size, showText, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='EndorsementMark'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:hero|standard|footnote)$/]",
+        "message": "<EndorsementMark> size must be one of 'hero' | 'standard' | 'footnote'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FileTree'] > JSXAttribute > JSXIdentifier[name!=/^(?:tree|notes|className|style|key|ref|className|style|children)$/]",
+        "message": "<FileTree> doesn't accept that prop. Declared props: tree, notes, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FooterBar'] > JSXAttribute > JSXIdentifier[name!=/^(?:day|slideNumber|progress|showMark|className|style|key|ref|className|style|children)$/]",
+        "message": "<FooterBar> doesn't accept that prop. Declared props: day, slideNumber, progress, showMark, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Icon'] > JSXAttribute > JSXIdentifier[name!=/^(?:name|size|strokeWidth|className|style|key|ref|className|style|children)$/]",
+        "message": "<Icon> doesn't accept that prop. Declared props: name, size, strokeWidth, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LogoZone'] > JSXAttribute > JSXIdentifier[name!=/^(?:size|lines|showNote|className|style|key|ref|className|style|children)$/]",
+        "message": "<LogoZone> doesn't accept that prop. Declared props: size, lines, showNote, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LogoZone'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:hero|standard|footnote)$/]",
+        "message": "<LogoZone> size must be one of 'hero' | 'standard' | 'footnote'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MediaCallout'] > JSXAttribute > JSXIdentifier[name!=/^(?:n|x|y|key|ref|className|style|children)$/]",
+        "message": "<MediaCallout> doesn't accept that prop. Declared props: n, x, y."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PresenterBlock'] > JSXAttribute > JSXIdentifier[name!=/^(?:name|role|org|photo|alt|size|className|style|key|ref|className|style|children)$/]",
+        "message": "<PresenterBlock> doesn't accept that prop. Declared props: name, role, org, photo, alt, size, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PresenterBlock'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:default|compact)$/]",
+        "message": "<PresenterBlock> size must be one of 'default' | 'compact'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SectionBadge'] > JSXAttribute > JSXIdentifier[name!=/^(?:kind|number|tone|className|style|key|ref|className|style|children)$/]",
+        "message": "<SectionBadge> doesn't accept that prop. Declared props: kind, number, tone, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SectionBadge'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:solid|outline)$/]",
+        "message": "<SectionBadge> tone must be one of 'solid' | 'outline'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SkillCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:text|icon|iconNode|state|className|style|key|ref|className|style|children)$/]",
+        "message": "<SkillCard> doesn't accept that prop. Declared props: text, icon, iconNode, state, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SkillCard'] > JSXAttribute[name.name='state'] > Literal[value!=/^(?:default|done)$/]",
+        "message": "<SkillCard> state must be one of 'default' | 'done'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ClosingSkill'] > JSXAttribute > JSXIdentifier[name!=/^(?:text|icon|key|ref|className|style|children)$/]",
+        "message": "<ClosingSkill> doesn't accept that prop. Declared props: text, icon."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideContent'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|lead|bullets|focusIndex|badge|children|surface|day|slideNumber|progress|key|ref|className|style|children)$/]",
+        "message": "<SlideContent> doesn't accept that prop. Declared props: title, lead, bullets, focusIndex, badge, children, surface, day, slideNumber, progress."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideContent'] > JSXAttribute[name.name='surface'] > Literal[value!=/^(?:light|dark)$/]",
+        "message": "<SlideContent> surface must be one of 'light' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideFrame'] > JSXAttribute > JSXIdentifier[name!=/^(?:surface|day|slideNumber|progress|footer|showMark|className|children|style|key|ref|className|style|children)$/]",
+        "message": "<SlideFrame> doesn't accept that prop. Declared props: surface, day, slideNumber, progress, footer, showMark, className, children, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideFrame'] > JSXAttribute[name.name='surface'] > Literal[value!=/^(?:light|dark)$/]",
+        "message": "<SlideFrame> surface must be one of 'light' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideMedia'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|instruction|media|badge|layout|surface|day|slideNumber|key|ref|className|style|children)$/]",
+        "message": "<SlideMedia> doesn't accept that prop. Declared props: title, instruction, media, badge, layout, surface, day, slideNumber."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideMedia'] > JSXAttribute[name.name='layout'] > Literal[value!=/^(?:stacked|side)$/]",
+        "message": "<SlideMedia> layout must be one of 'stacked' | 'side'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideMedia'] > JSXAttribute[name.name='surface'] > Literal[value!=/^(?:light|dark)$/]",
+        "message": "<SlideMedia> surface must be one of 'light' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideQuote'] > JSXAttribute > JSXIdentifier[name!=/^(?:text|attribution|tone|surface|day|slideNumber|key|ref|className|style|children)$/]",
+        "message": "<SlideQuote> doesn't accept that prop. Declared props: text, attribution, tone, surface, day, slideNumber."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideQuote'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:default|warning|rule)$/]",
+        "message": "<SlideQuote> tone must be one of 'default' | 'warning' | 'rule'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideQuote'] > JSXAttribute[name.name='surface'] > Literal[value!=/^(?:light|dark)$/]",
+        "message": "<SlideQuote> surface must be one of 'light' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideSection'] > JSXAttribute > JSXIdentifier[name!=/^(?:number|title|subtitle|surface|day|slideNumber|key|ref|className|style|children)$/]",
+        "message": "<SlideSection> doesn't accept that prop. Declared props: number, title, subtitle, surface, day, slideNumber."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideSection'] > JSXAttribute[name.name='surface'] > Literal[value!=/^(?:light|dark)$/]",
+        "message": "<SlideSection> surface must be one of 'light' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SplitColumn'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|items|children|key|ref|className|style|children)$/]",
+        "message": "<SplitColumn> doesn't accept that prop. Declared props: label, items, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideStep'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|note|thumb|state|key|ref|className|style|children)$/]",
+        "message": "<SlideStep> doesn't accept that prop. Declared props: title, note, thumb, state."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideStep'] > JSXAttribute[name.name='state'] > Literal[value!=/^(?:upcoming|active|done)$/]",
+        "message": "<SlideStep> state must be one of 'upcoming' | 'active' | 'done'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TableColumn'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|width|numeric|key|ref|className|style|children)$/]",
+        "message": "<TableColumn> doesn't accept that prop. Declared props: label, width, numeric."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideTitle'] > JSXAttribute > JSXIdentifier[name!=/^(?:program|subtitle|presenter|surface|day|slideNumber|wordmarkLines|key|ref|className|style|children)$/]",
+        "message": "<SlideTitle> doesn't accept that prop. Declared props: program, subtitle, presenter, surface, day, slideNumber, wordmarkLines."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SlideTitle'] > JSXAttribute[name.name='surface'] > Literal[value!=/^(?:light|dark)$/]",
+        "message": "<SlideTitle> surface must be one of 'light' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StepChip'] > JSXAttribute > JSXIdentifier[name!=/^(?:n|state|size|className|style|key|ref|className|style|children)$/]",
+        "message": "<StepChip> doesn't accept that prop. Declared props: n, state, size, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StepChip'] > JSXAttribute[name.name='state'] > Literal[value!=/^(?:upcoming|active|done)$/]",
+        "message": "<StepChip> state must be one of 'upcoming' | 'active' | 'done'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StepChip'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:default|sm)$/]",
+        "message": "<StepChip> size must be one of 'default' | 'sm'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TimingPill'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|tone|icon|className|style|key|ref|className|style|children)$/]",
+        "message": "<TimingPill> doesn't accept that prop. Declared props: label, tone, icon, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TimingPill'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:default|accent)$/]",
+        "message": "<TimingPill> tone must be one of 'default' | 'accent'."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "AgendaRow": {
+        "replaces": []
+      },
+      "Callout": {
+        "replaces": []
+      },
+      "DayProgress": {
+        "replaces": []
+      },
+      "EndorsementMark": {
+        "replaces": []
+      },
+      "FileTree": {
+        "replaces": []
+      },
+      "FooterBar": {
+        "replaces": []
+      },
+      "Icon": {
+        "replaces": []
+      },
+      "LogoZone": {
+        "replaces": []
+      },
+      "MediaCallout": {
+        "replaces": []
+      },
+      "PresenterBlock": {
+        "replaces": []
+      },
+      "SectionBadge": {
+        "replaces": []
+      },
+      "SkillCard": {
+        "replaces": []
+      },
+      "ClosingSkill": {
+        "replaces": []
+      },
+      "SlideContent": {
+        "replaces": []
+      },
+      "SlideFrame": {
+        "replaces": []
+      },
+      "SlideMedia": {
+        "replaces": []
+      },
+      "SlideQuote": {
+        "replaces": []
+      },
+      "SlideSection": {
+        "replaces": []
+      },
+      "SplitColumn": {
+        "replaces": []
+      },
+      "SlideStep": {
+        "replaces": []
+      },
+      "TableColumn": {
+        "replaces": []
+      },
+      "SlideTitle": {
+        "replaces": []
+      },
+      "StepChip": {
+        "replaces": []
+      },
+      "TimingPill": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--accent-state",
+      "--accent-structure",
+      "--border-hairline",
+      "--brand-deep",
+      "--brand-deep-line",
+      "--brand-ink",
+      "--brand-primary",
+      "--brand-primary-hover",
+      "--brand-primary-press",
+      "--brand-sky",
+      "--brand-sky-hover",
+      "--brand-sky-soft",
+      "--brand-snow",
+      "--brand-snow-line",
+      "--brand-teal",
+      "--brand-teal-soft",
+      "--brand-white",
+      "--dir-flip",
+      "--focus-ring",
+      "--font-arabic",
+      "--font-core",
+      "--font-latin",
+      "--font-mono",
+      "--fs-body",
+      "--fs-body-lead",
+      "--fs-caption",
+      "--fs-display",
+      "--fs-mono",
+      "--fs-section-number",
+      "--fs-slide-title",
+      "--fw-bold",
+      "--fw-medium",
+      "--fw-regular",
+      "--fw-semibold",
+      "--lh-arabic",
+      "--lh-display",
+      "--lh-lead",
+      "--lh-mono",
+      "--lh-title",
+      "--lift-0",
+      "--lift-1",
+      "--lift-2",
+      "--lift-2-dark",
+      "--logo-clear",
+      "--ls-arabic",
+      "--ls-latin-caps",
+      "--radius-lg",
+      "--radius-md",
+      "--radius-pill",
+      "--radius-sm",
+      "--rule-hairline",
+      "--slide-footer-h",
+      "--slide-gap",
+      "--slide-h",
+      "--slide-safe",
+      "--slide-w",
+      "--sp-0",
+      "--sp-1",
+      "--sp-2",
+      "--sp-3",
+      "--sp-4",
+      "--sp-5",
+      "--sp-6",
+      "--sp-7",
+      "--sp-8",
+      "--state-warning",
+      "--state-warning-soft",
+      "--stroke-icon",
+      "--surface-card",
+      "--surface-card-line",
+      "--surface-slide",
+      "--surface-slide-dark",
+      "--surface-table-head",
+      "--text-body",
+      "--text-caption",
+      "--text-heading",
+      "--text-invert",
+      "--text-link",
+      "--text-link-hover",
+      "--type-body",
+      "--type-body-lead",
+      "--type-caption",
+      "--type-display",
+      "--type-mono",
+      "--type-slide-title"
+    ],
+    "tokenKinds": {
+      "--font-arabic": "font",
+      "--font-latin": "font",
+      "--font-mono": "font",
+      "--font-core": "font",
+      "--brand-primary": "color",
+      "--brand-deep": "color",
+      "--brand-sky": "color",
+      "--brand-snow": "color",
+      "--brand-white": "color",
+      "--brand-ink": "color",
+      "--brand-teal": "color",
+      "--brand-primary-hover": "color",
+      "--brand-primary-press": "color",
+      "--brand-sky-hover": "color",
+      "--brand-sky-soft": "color",
+      "--brand-teal-soft": "color",
+      "--brand-deep-line": "color",
+      "--brand-snow-line": "color",
+      "--state-warning": "color",
+      "--state-warning-soft": "color",
+      "--surface-slide": "color",
+      "--surface-slide-dark": "color",
+      "--surface-card": "color",
+      "--surface-card-line": "color",
+      "--surface-table-head": "color",
+      "--text-heading": "font",
+      "--text-body": "font",
+      "--text-caption": "font",
+      "--text-invert": "font",
+      "--text-link": "font",
+      "--text-link-hover": "font",
+      "--accent-structure": "color",
+      "--accent-state": "color",
+      "--rule-hairline": "color",
+      "--focus-ring": "color",
+      "--fs-display": "spacing",
+      "--fs-slide-title": "spacing",
+      "--fs-section-number": "spacing",
+      "--fs-body-lead": "spacing",
+      "--fs-body": "spacing",
+      "--fs-caption": "spacing",
+      "--fs-mono": "spacing",
+      "--fw-regular": "font",
+      "--fw-medium": "font",
+      "--fw-semibold": "font",
+      "--fw-bold": "font",
+      "--lh-arabic": "font",
+      "--lh-lead": "font",
+      "--lh-title": "font",
+      "--lh-display": "font",
+      "--lh-mono": "font",
+      "--ls-latin-caps": "font",
+      "--ls-arabic": "font",
+      "--type-display": "font",
+      "--type-slide-title": "font",
+      "--type-body-lead": "font",
+      "--type-body": "font",
+      "--type-caption": "font",
+      "--type-mono": "font",
+      "--sp-0": "spacing",
+      "--sp-1": "spacing",
+      "--sp-2": "spacing",
+      "--sp-3": "spacing",
+      "--sp-4": "spacing",
+      "--sp-5": "spacing",
+      "--sp-6": "spacing",
+      "--sp-7": "spacing",
+      "--sp-8": "spacing",
+      "--slide-w": "spacing",
+      "--slide-h": "spacing",
+      "--slide-safe": "spacing",
+      "--slide-footer-h": "spacing",
+      "--slide-gap": "spacing",
+      "--logo-clear": "spacing",
+      "--lift-0": "shadow",
+      "--lift-1": "shadow",
+      "--lift-2": "shadow",
+      "--lift-2-dark": "shadow",
+      "--radius-sm": "radius",
+      "--radius-md": "radius",
+      "--radius-lg": "radius",
+      "--radius-pill": "radius",
+      "--border-hairline": "color",
+      "--stroke-icon": "spacing",
+      "--dir-flip": "other"
+    },
+    "fontFamilies": [
+      "IBM Plex Mono",
+      "IBM Plex Sans",
+      "IBM Plex Sans Arabic"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+/* SAG Lab — Bootcamp Presentation Design System
+   Pulled from the Claude Design project "SAG Lab Design System".
+   DesignSync was unavailable (design-consent 403), so this is the exported copy.
+   Framework-free: the components are plain .sag-* classes, so the deck is plain HTML. */
+@import url("tokens/fonts.css");
+@import url("tokens/colors.css");
+@import url("tokens/typography.css");
+@import url("tokens/spacing.css");
+@import url("tokens/elevation.css");
+@import url("tokens/rtl.css");
+@import url("components/frames.css");
+@import url("components/elements.css");
+@import url("icons.css");
+@import url("deck.css");
