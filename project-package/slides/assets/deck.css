@@ -380,10 +380,13 @@ body {
   grid-column: span 2
 }
 
+/* Block flow, NOT flex. A <p> keeps its UA `margin: 1em 0`, and margins do
+   not collapse inside a flex container — so every extra .card__note paid the
+   16px gap PLUS ~18px above PLUS ~18px below, and a card with three notes
+   read as half air. Block flow with the margins zeroed and one explicit rule
+   between siblings gives exactly the intended 16px and nothing more. */
 .card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-2);
+  display: block;
   min-width: 0;
   min-height: 0;
   background: var(--surface-card);
@@ -391,6 +394,14 @@ body {
   border-radius: var(--radius-md);
   padding: var(--sp-3);
   box-shadow: var(--lift-1)
+}
+
+.card>* {
+  margin-block: 0
+}
+
+.card>*+* {
+  margin-block-start: var(--sp-2)
 }
 
 .card--plain {
@@ -794,12 +805,10 @@ body {
   align-content: safe center
 }
 
+/* `align-content` is what centres children of a BLOCK container; the old
+   `justify-content` only did anything while .card was a flex column. */
 .bento>.card {
-  justify-content: safe center
-}
-
-.bento>.card>.card__top {
-  flex: 0 0 auto
+  align-content: safe center
 }
 
 /* Media side column: width is set with the type block above (560px). */
@@ -847,6 +856,16 @@ body {
   white-space: nowrap
 }
 
+/* One plain line under a session heading saying what actually happens in it —
+   the session name alone ("تطبيق مع المدرب") does not tell a trainee who has
+   never sat one what they will be doing. */
+.sess__note {
+  margin: -6px 0 0;
+  font: var(--fw-regular) var(--fs-caption)/1.5 var(--font-arabic);
+  color: var(--text-body);
+  text-wrap: pretty
+}
+
 .tasks {
   display: flex;
   flex-direction: column;
@@ -857,6 +876,10 @@ body {
 /* Task rows are live checkboxes the trainee ticks through the day (A.6.9),
    so they need to look pressable — not like static list items. */
 .task {
+  /* containing block for the tooltip child: without this, the tip's
+     `bottom: calc(100% + 10px)` resolves against the SLIDE and lands 1090px
+     up, outside the frame — visible in the DOM, invisible on screen. */
+  position: relative;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
@@ -1002,4 +1025,666 @@ body {
 
 .sag-media__side .card__note--sm {
   line-height: 1.6
+}
+/* ══ interaction layer: tooltips · ؟ term window · deep-link affordance ══
+   Task rows now describe what a section DOES rather than naming it, which
+   reads far better but loses two things: the canonical name, and any way to
+   reach the slide that delivers it. These three affordances give both back
+   without costing a single line of vertical space on the slide. */
+
+/* ── tooltip ────────────────────────────────────────────────────────
+   Absolutely positioned, so the overflow guard skips it (it checks static
+   boxes only) and it can spill outside its row without widening anything.
+   Lives INSIDE its host, so the deck's scale transform places it for free. */
+.tip {
+  position: absolute;
+  inset-inline-start: 50%;
+  bottom: calc(100% + 10px);
+  transform: translateX(50%) translateY(4px) translateX(var(--tip-dx, 0px));
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: max-content;
+  max-width: 460px;
+  padding: 12px var(--sp-2);
+  border-radius: var(--radius-md);
+  background: var(--brand-deep);
+  border: 1px solid var(--brand-deep-line);
+  box-shadow: var(--lift-2-dark);
+  text-align: start;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .14s ease, transform .14s ease, visibility 0s linear .14s
+}
+
+/* A row near the top of the frame would have its tip clipped by the frame, so
+   deck.js flips those below instead. */
+.tip[data-place="below"] {
+  bottom: auto;
+  top: calc(100% + 10px);
+  transform: translateX(50%) translateY(-4px) translateX(var(--tip-dx, 0px))
+}
+
+.task:hover > .tip,
+.task:focus-visible > .tip,
+[data-tip]:hover > .tip,
+[data-tip]:focus-visible > .tip,
+[data-ref]:hover > .tip,
+[data-ref]:focus-visible > .tip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(50%) translateY(0) translateX(var(--tip-dx, 0px));
+  transition-delay: 0s
+}
+
+.tip__kicker {
+  font: var(--fw-bold) 19px/1.2 var(--font-arabic);
+  color: var(--brand-sky)
+}
+
+.tip__name {
+  font: var(--fw-semibold) 23px/1.35 var(--font-arabic);
+  color: var(--brand-white)
+}
+
+.tip__body {
+  font: var(--fw-regular) 21px/1.5 var(--font-arabic);
+  color: #DCE3F0;
+  text-wrap: pretty
+}
+
+.tip__hint {
+  margin-block-start: 6px;
+  padding-block-start: 6px;
+  border-block-start: 1px solid var(--brand-deep-line);
+  font: var(--fw-regular) 18px/1.3 var(--font-arabic);
+  color: #B9C5DC
+}
+
+/* The i-icon variant: a defined term, not a navigation hint, so the name leads
+   in the accent colour and the body sits under it. */
+.tip--term {
+  max-width: 520px;
+  border-color: var(--brand-sky)
+}
+
+.tip--term .tip__name {
+  color: var(--brand-sky)
+}
+
+/* ── the underlined hover target ────────────────────────────────────
+   A word carrying a tooltip has to look like it carries one, or nobody hovers. */
+.ttip {
+  position: relative;
+  border-block-end: 2px dotted var(--accent-structure);
+  cursor: help
+}
+
+/* A deep link inside flowing text — the same Ctrl+نقر a task row carries,
+   but inline. Dashed rather than dotted so it does not read as a plain
+   tooltip word. */
+.reflink {
+  position: relative;
+  color: var(--accent-structure);
+  font-weight: var(--fw-semibold);
+  border-block-end: 2px dashed var(--accent-structure);
+  cursor: pointer
+}
+
+.reflink:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px
+}
+
+/* ── the ؟ button ───────────────────────────────────────────────────
+   A real Arabic ؟ rather than a Lucide mask: the icon set has no question
+   mark, and a mirrored Latin "?" is the wrong glyph in an RTL deck. isolate
+   keeps the bidi algorithm from dragging it into a neighbouring Latin run. */
+.qmark {
+  unicode-bidi: isolate;
+  display: inline-grid;
+  place-items: center;
+  width: 1.45em;
+  height: 1.45em;
+  margin-inline-start: .3em;
+  padding: 0;
+  vertical-align: -.28em;
+  border-radius: 50%;
+  border: 2px solid var(--accent-structure);
+  background: transparent;
+  color: var(--accent-structure);
+  font: var(--fw-bold) .82em/1 var(--font-arabic);
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, transform .15s ease
+}
+
+.qmark:hover {
+  background: var(--accent-structure);
+  color: var(--brand-white);
+  transform: scale(1.08)
+}
+
+.qmark:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px
+}
+
+[data-surface="dark"] .qmark {
+  border-color: var(--brand-sky);
+  color: var(--brand-sky)
+}
+
+/* ── the term window ────────────────────────────────────────────────
+   Fixed to the viewport, NOT inside the scaled frame: it is presenter/reader
+   chrome, and it must stay legible at whatever scale the projector forces. */
+.termwin {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center
+}
+
+.termwin[hidden] {
+  display: none
+}
+
+.termwin__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 36, 71, .55);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity .2s ease
+}
+
+.termwin[data-open="true"] .termwin__scrim {
+  opacity: 1
+}
+
+.termwin__panel {
+  position: relative;
+  width: min(760px, 88vw);
+  max-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  background: var(--brand-white);
+  border: 1px solid var(--brand-snow-line);
+  box-shadow: 0 18px 48px rgba(20, 36, 71, .30);
+  overflow: hidden;
+  /* grows out of the ؟ that opened it, so the origin is visible not inferred */
+  transform-origin: var(--from-x, 50%) var(--from-y, 50%);
+  transform: scale(.86);
+  opacity: 0;
+  transition: transform .22s cubic-bezier(.2, .9, .3, 1.15), opacity .18s ease
+}
+
+.termwin[data-open="true"] .termwin__panel {
+  transform: scale(1);
+  opacity: 1
+}
+
+.termwin__bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border-block-end: 3px solid var(--accent-structure);
+  background: var(--brand-snow)
+}
+
+.termwin__title {
+  margin: 0;
+  font: var(--fw-bold) 27px/1.3 var(--font-arabic);
+  color: var(--text-heading)
+}
+
+.termwin__x {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--brand-snow-line);
+  background: var(--brand-white);
+  color: var(--text-body);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease
+}
+
+.termwin__x:hover {
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: var(--brand-white)
+}
+
+.termwin__x:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px
+}
+
+/* The one place in the deck where scrolling is correct: this is consulted,
+   not presented, and it never covers the slide permanently. */
+.termwin__body {
+  overflow-y: auto;
+  padding: var(--sp-3) var(--sp-4) var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2)
+}
+
+.termwin__item {
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  border-inline-start: 4px solid var(--brand-snow-line);
+  transition: background .2s ease, border-color .2s ease
+}
+
+.termwin__item[data-current="true"] {
+  background: var(--brand-sky-soft);
+  border-inline-start-color: var(--accent-structure)
+}
+
+.termwin[data-wide="true"] .termwin__panel {
+  width: min(1320px, 94vw);
+  max-height: 86vh
+}
+
+.termwin__term {
+  margin: 0 0 6px;
+  font: var(--fw-bold) 24px/1.3 var(--font-arabic);
+  color: var(--text-heading)
+}
+
+.termwin__def {
+  margin: 0;
+  font: var(--fw-regular) 22px/1.65 var(--font-arabic);
+  color: var(--text-body);
+  text-wrap: pretty
+}
+
+/* ── the 29-task map ──────────────────────────────────────
+   Lives inside the ؟ window, not on a slide: it is a reference a trainee
+   consults, and what matters on the day is that day's own tasks. */
+.tmap__lead {
+  margin: 0 0 var(--sp-2);
+  font: var(--fw-regular) 22px/1.6 var(--font-arabic);
+  color: var(--text-body)
+}
+
+.tmap__key {
+  margin: 0 0 var(--sp-3);
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px
+}
+
+.tmap__key li {
+  font: var(--fw-regular) 21px/1.5 var(--font-arabic);
+  color: var(--text-body)
+}
+
+.tmap__b {
+  display: inline-block;
+  min-width: 168px;
+  margin-inline-end: 10px;
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  text-align: center;
+  font: var(--fw-bold) 19px/1.4 var(--font-arabic);
+  white-space: nowrap
+}
+
+.tmap__b--decide {
+  background: var(--brand-teal-soft);
+  color: var(--brand-primary)
+}
+
+.tmap__b--review {
+  background: var(--brand-sky-soft);
+  color: var(--brand-primary)
+}
+
+.tmap__b--try {
+  background: var(--brand-snow);
+  color: var(--text-heading);
+  border: 1px solid var(--brand-snow-line)
+}
+
+.tmap {
+  width: 100%;
+  border-collapse: collapse;
+  font: var(--fw-regular) 21px/1.45 var(--font-arabic)
+}
+
+.tmap th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 10px 14px;
+  text-align: start;
+  background: var(--brand-snow);
+  border-block-end: 2px solid var(--accent-structure);
+  font: var(--fw-bold) 20px/1.3 var(--font-arabic);
+  color: var(--text-heading)
+}
+
+.tmap td {
+  padding: 9px 14px;
+  border-block-end: 1px solid var(--brand-snow-line);
+  vertical-align: middle
+}
+
+.tmap th:nth-child(1) {
+  width: auto
+}
+
+.tmap th:nth-child(2),
+.tmap td:nth-child(2),
+.tmap th:nth-child(3),
+.tmap td:nth-child(3) {
+  width: 1%;
+  text-align: center;
+  white-space: nowrap
+}
+
+.tmap tbody tr:hover {
+  background: var(--brand-snow)
+}
+
+/* inline-block with a floor width, so the numbers form their own column and
+   the names all start at the same place. A plain inline span with a margin
+   collapses against the bidi isolate boundary and reads as "8.1المشكلة". */
+.tmap__n {
+  display: inline-block;
+  min-width: 62px;
+  font: var(--fw-bold) 20px/1 var(--font-latin);
+  color: var(--accent-structure);
+  direction: ltr;
+  unicode-bidi: isolate;
+  /* end == right inside this ltr box: the number hugs the far edge of its
+     62px column and the Arabic name starts clear of it. With start it sat
+     flush against the name and read as "8.1المشكلة". */
+  text-align: end
+}
+
+.tmap__day {
+  white-space: nowrap;
+  font-weight: var(--fw-medium);
+  color: var(--text-heading)
+}
+
+.tmap__foot {
+  margin: var(--sp-3) 0 0;
+  font: var(--fw-regular) 20px/1.55 var(--font-arabic);
+  color: var(--text-caption)
+}
+
+/* ── the legend slide ───────────────────────────────────────────────
+   Each card demonstrates its affordance instead of describing it, so the demo
+   element needs to sit apart from the explanation above it. */
+.legend__demo {
+  margin-block-start: 10px;
+  padding-block-start: 10px;
+  border-block-start: 1px dashed var(--surface-card-line);
+  font: var(--fw-medium) var(--fs-body)/1.5 var(--font-arabic);
+  color: var(--text-heading)
+}
+
+.legend__demo .task {
+  margin-block-start: 10px
+}
+
+.legend__try {
+  display: block;
+  margin-block-end: 8px;
+  font: var(--fw-bold) var(--fs-caption)/1 var(--font-arabic);
+  color: var(--accent-state)
+}
+
+.kbd {
+  unicode-bidi: isolate;
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--surface-card-line);
+  border-block-end-width: 3px;
+  background: var(--brand-white);
+  font: var(--fw-semibold) .88em/1.5 var(--font-mono);
+  color: var(--text-heading)
+}
+
+/* The i-icon carrying a term tooltip. Needs its own box because .i is a CSS
+   mask — anything nested inside an .i element is invisible, so the tooltip
+   hangs off this wrapper instead. */
+.ttip--icon {
+  border-block-end: 0;
+  display: inline-grid;
+  place-items: center;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: -.3em;
+  border-radius: 50%;
+  color: var(--accent-structure);
+  transition: background .15s ease, color .15s ease
+}
+
+.ttip--icon:hover,
+.ttip--icon:focus-visible {
+  background: var(--accent-structure);
+  color: var(--brand-white)
+}
+
+.ttip--icon > .i {
+  font-size: 1.05em
+}
+
+/* ══ slide header on one row ════════════════════════════════════════
+   The badge used to sit on its own line above the title, spending ~75px of
+   every slide's height on a pill and two gaps. Setting the reference and the
+   title on one baseline gives that height back to the content — which is the
+   right way to resolve an overflow: reclaim empty space before cutting words.
+   The rule then spans the full width underneath, as before. */
+.sag-slide__head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: var(--sp-3);
+  row-gap: var(--sp-2)
+}
+
+/* Placement is explicit on BOTH axes because a few slides author the title
+   before the badge. Relying on source order (or :first-child) put those two
+   on separate rows and silently gave back the height this rule just saved. */
+.sag-slide__head > .sag-badge {
+  grid-row: 1;
+  grid-column: 1;
+  align-self: center
+}
+
+.sag-slide__head > .sag-slide__title {
+  grid-row: 1;
+  grid-column: 2
+}
+
+/* a head with no badge at all: the title takes the whole row */
+.sag-slide__head:not(:has(> .sag-badge)) > .sag-slide__title {
+  grid-column: 1 / -1
+}
+
+.sag-slide__head > .sag-slide__rule,
+.sag-slide__head > .sag-slide__lead {
+  grid-row: 2;
+  grid-column: 1 / -1;
+  justify-self: start
+}
+
+/* Four demo cards in a 2×2 need ~13px more than the default 32px grid gap
+   leaves them. Reclaim it from the gap rather than from the copy — the cards
+   have to stay legible enough to actually teach the affordance. */
+[data-anchor="legend"] .bento {
+  gap: var(--sp-2)
+}
+
+/* Card 1 carries a full task row in its demo, so it needs ~25px more than the
+   equal-height grid track gives it. Take it from the cards' own padding and
+   the demo's internal gap — the four explanations all stay intact. */
+[data-anchor="legend"] .card {
+  padding: var(--sp-2) var(--sp-3);
+  gap: 10px
+}
+
+[data-anchor="legend"] .legend__demo {
+  margin-block-start: 8px;
+  padding-block-start: 8px
+}
+
+/* A stat whose value is a word, not a number. --font-latin at 62px would fall
+   back for Arabic and read as a different typeface beside its neighbours. */
+.stat__v--word {
+  font-family: var(--font-arabic);
+  font-size: 44px;
+  line-height: 1.25
+}
+
+/* Pull-quotes are short and centred, so an unbalanced break is very visible —
+   slide 9 was splitting «في بالك» across lines and orphaning the preposition.
+   `balance` evens the line lengths; it only applies to a handful of lines, which
+   is exactly what a quote is. */
+.sag-quote__text {
+  text-wrap: balance
+}
+
+/* ══ project-package tree (slide 13) ════════════════════════════════
+   26 rows, each: a monospace path (LTR) + an Arabic one-liner + a ؟.
+   A <pre> cannot do this — inline buttons destroy the column alignment —
+   so it is a two-column grid and the paths align because the column does
+   the aligning, not the whitespace. */
+.pkg-layout {
+  display: grid;
+  grid-template-columns: 700px minmax(0, 1fr);
+  gap: var(--sp-4);
+  align-items: start;
+  min-height: 0
+}
+
+/* The deck's second deliberate scroller, after the ؟ window — and for the
+   same reason: this slide is CONSULTED, not presented. Twenty-six rows at a
+   size that reads from the back of a room cannot fit 1080px, and shrinking
+   them until they do defeats the slide. So the tree scrolls inside its own
+   box and the slide itself never moves. */
+.pkgtree {
+  display: grid;
+  /* Centred pair of content-width columns. The width is filled by making the
+     TYPE big, not by stretching a column: a 1fr description column only pushes
+     empty space to one side, and short descriptions leave its tail bare. The
+     font size below is tuned so the widest row nearly spans the card. */
+  grid-template-columns: max-content max-content;
+  justify-content: center;
+  column-gap: var(--sp-4);
+  row-gap: 0;
+  align-items: baseline;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-md);
+  background: var(--surface-card);
+  border: var(--border-hairline)
+}
+
+.pkgtree::-webkit-scrollbar {
+  width: 10px
+}
+
+.pkgtree::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: var(--surface-card-line)
+}
+
+.pkgtree::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-structure)
+}
+
+.pkgtree__p {
+  font: var(--fw-medium) 37px/1.5 var(--font-mono);
+  color: var(--text-heading);
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  unicode-bidi: isolate
+}
+
+.pkgtree__d {
+  font: var(--fw-regular) 38px/1.5 var(--font-arabic);
+  color: var(--text-body);
+  min-width: 0
+}
+
+.pkgtree__d--mute {
+  color: var(--text-caption);
+  font-style: italic
+}
+
+/* the ؟ is repeated 24 times here, so it has to recede until wanted */
+.pkgtree .qmark {
+  margin-inline-start: .3em;
+  width: 1.3em;
+  height: 1.3em;
+  font-size: .78em;
+  vertical-align: -.2em;
+  border-width: 1px;
+  opacity: .55;
+  transition: opacity .15s ease, background .15s ease, color .15s ease
+}
+
+.pkgtree .qmark:hover,
+.pkgtree .qmark:focus-visible {
+  opacity: 1
+}
+
+/* Says WHICH steps happen now and which wait for the setup section, before
+   the trainee reads the four cards. */
+.pkg-when {
+  margin: 0;
+  padding: 10px var(--sp-3);
+  border-radius: var(--radius-sm);
+  background: var(--brand-sky-soft);
+  border-inline-start: 5px solid var(--accent-structure);
+  font: var(--fw-regular) var(--fs-body)/1.55 var(--font-arabic);
+  color: var(--text-body)
+}
+
+/* Repeats the ribbon's timing on the two cards it applies to, so a reader
+   scanning only the cards still sees the prerequisite. */
+.pkg-after {
+  font-style: normal;
+  font-weight: var(--fw-bold);
+  color: var(--accent-structure)
+}
+
+.pkg-after::after {
+  content: " · "
+}
+
+.pkg-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  min-height: 0
+}
+
+.pkg-steps .card {
+  padding: var(--sp-2) var(--sp-3)
 }

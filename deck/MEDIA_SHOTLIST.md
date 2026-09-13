@@ -1,7 +1,7 @@
 # Media shot list — Day 1
 
 I cannot capture these: they are installers, browser dialogs and account screens on your machine.
-**You record them, drop them in `deck/media/` with the exact filename below, and I wire them in.**
+**You record them, drop them in `project-package/slides/media/` with the exact filename below, and I wire them in.**
 
 **Format rules**
 
@@ -15,9 +15,9 @@ I cannot capture these: they are installers, browser dialogs and account screens
   itself — the slide only needs to show *where* the button is, not the value.
 - Prefer **light OS theme** — it matches the deck's light surfaces and reads better projected.
 
-## ⚠ Reconciled against the built deck (47 slides)
+## ⚠ Reconciled against the built deck (50 slides)
 
-`deck/day-01.html` consumes **14 media slots**. Capture these 14 first — they each have a slide waiting:
+`project-package/slides/day-01.html` consumes **14 media slots**. Capture these 14 first — they each have a slide waiting:
 
 `01-claudecode-install-win.gif` · `02-claudecode-login.gif` · `05-git-config.png` ·
 ~~`06-desktop-usage.gif`~~ (تم) · `07-antigravity-download.png` · `09-antigravity-theme.png` ·
@@ -29,9 +29,9 @@ I cannot capture these: they are installers, browser dialogs and account screens
 
 | Shot | Why it has no slot |
 |---|---|
-| `03-git-install-win.gif` · `04-git-macos-clt.png` | Slide 29 covers Git as **three OS cards**, not a screenshot — it reads better as a comparison than as one platform's installer |
-| `08-antigravity-signin.png` | Slide 33 shows only the theme step; sign-in is one line of text |
-| `01-claudecode-install-mac.gif` | Slide 27 shows the Windows GIF with the macOS/Linux command as text |
+| `03-git-install-win.gif` · `04-git-macos-clt.png` | Slide 32 covers Git as **three OS cards**, not a screenshot — it reads better as a comparison than as one platform's installer |
+| `08-antigravity-signin.png` | Slide 36 shows only the theme step; sign-in is one line of text |
+| `01-claudecode-install-mac.gif` | Slide 30 shows the Windows GIF with the macOS/Linux command as text |
 
 Tell me if you'd rather any of those four become a real media slide and I'll restructure the slide to hold it.
 
@@ -39,24 +39,24 @@ Tell me if you'd rather any of those four become a real media slide and I'll res
 
 | # | Filename | Type | OS | What must be visible | Slide |
 |---|---|---|---|---|---|
-| 1 | `01-claudecode-install-win.gif` | GIF | Windows | PowerShell open (prompt shows `PS C:\`), the `irm …` command pasted, install running to success | 27 |
-| 1b | `01-claudecode-install-mac.gif` | GIF | macOS | Terminal, the `curl …` command, install completing | 27 |
-| 2 | `02-claudecode-login.gif` | GIF | any | Typing `claude`, the login prompt appearing, browser auth, returning to a ready prompt | 28 |
-| 3 | `03-git-install-win.gif` | GIF | Windows | Git for Windows installer — the **default Next-through** path, ending on Finish | 29 |
-| 4 | `04-git-macos-clt.png` | PNG | macOS | The **Xcode Command Line Tools** prompt that appears after `git --version` | 29 |
-| 5 | `05-git-config.png` | PNG | any | Terminal showing both `git config --global user.name` / `user.email` set, then echoed back. **Use a demo name/email** | 30 |
-| 6 | ✅ `06-desktop-usage.gif` | GIF | any | Claude Desktop usage screen showing the 5-hour window and the weekly limit | 31, 19 |
-| 7 | `07-antigravity-download.png` | PNG | any | `antigravity.google/download` with the OS selected and **Antigravity IDE (Standalone)** visible | 32 |
-| 8 | `08-antigravity-signin.png` | PNG | any | The welcome screen's **Google sign-in** step | 33 |
-| 9 | `09-antigravity-theme.png` | PNG | any | The **theme picker** (System / Light / Dark) | 33 |
-| 10 | `10-antigravity-plugins.png` | PNG | any | The **«Connect Plugins»** step with the plugin sets listed and **all toggles off** — this frame is the point of slide 31 | 34 |
-| 11 | `11-extension-install.gif` | GIF | any | Extensions panel → search **Claude Code for VS Code** → Install → signed in | 35 |
-| 12 | `12-context7-apikey.png` | PNG | any | context7 dashboard, **API Keys** page, the create-key button. **Key value blurred or cropped** | 36 |
-| 13 | `13-supabase-newproject.png` | PNG | any | Supabase new-project form with the fields filled (project name, region, DB password field — **not the password**) | 37 |
-| 14 | `14-supabase-mcp.png` | PNG | any | Claude Code showing Supabase MCP **connected** after `/mcp` | 38 |
-| 15 | `15-github-new-repo.png` | PNG | any | `github.com/new` with the fields visible: name, private, **and README/gitignore left unchecked** | 39 |
-| 16 | `16-app-running.png` | PNG | any | The scaffolded app running in a browser on `localhost`, **sign-in page open** | 41 |
-| 17 | `17-first-commit.png` | PNG | any | Terminal after a successful first `commit` + `push`, and the repo showing the files on GitHub | 44 |
+| 1 | `01-claudecode-install-win.gif` | GIF | Windows | PowerShell open (prompt shows `PS C:\`), the `irm …` command pasted, install running to success | 30 |
+| 1b | `01-claudecode-install-mac.gif` | GIF | macOS | Terminal, the `curl …` command, install completing | 30 |
+| 2 | `02-claudecode-login.gif` | GIF | any | Typing `claude`, the login prompt appearing, browser auth, returning to a ready prompt | 31 |
+| 3 | `03-git-install-win.gif` | GIF | Windows | Git for Windows installer — the **default Next-through** path, ending on Finish | 32 |
+| 4 | `04-git-macos-clt.png` | PNG | macOS | The **Xcode Command Line Tools** prompt that appears after `git --version` | 32 |
+| 5 | `05-git-config.png` | PNG | any | Terminal showing both `git config --global user.name` / `user.email` set, then echoed back. **Use a demo name/email** | 33 |
+| 6 | ✅ `06-desktop-usage.gif` | GIF | any | Claude Desktop usage screen showing the 5-hour window and the weekly limit | 34, 22 |
+| 7 | `07-antigravity-download.png` | PNG | any | `antigravity.google/download` with the OS selected and **Antigravity IDE (Standalone)** visible | 35 |
+| 8 | `08-antigravity-signin.png` | PNG | any | The welcome screen's **Google sign-in** step | 36 |
+| 9 | `09-antigravity-theme.png` | PNG | any | The **theme picker** (System / Light / Dark) | 36 |
+| 10 | `10-antigravity-plugins.png` | PNG | any | The **«Connect Plugins»** step with the plugin sets listed and **all toggles off** — this frame is the point of slide 37 | 37 |
+| 11 | `11-extension-install.gif` | GIF | any | Extensions panel → search **Claude Code for VS Code** → Install → signed in | 38 |
+| 12 | `12-context7-apikey.png` | PNG | any | context7 dashboard, **API Keys** page, the create-key button. **Key value blurred or cropped** | 39 |
+| 13 | `13-supabase-newproject.png` | PNG | any | Supabase new-project form with the fields filled (project name, region, DB password field — **not the password**) | 40 |
+| 14 | `14-supabase-mcp.png` | PNG | any | Claude Code showing Supabase MCP **connected** after `/mcp` | 41 |
+| 15 | `15-github-new-repo.png` | PNG | any | `github.com/new` with the fields visible: name, private, **and README/gitignore left unchecked** | 42 |
+| 16 | `16-app-running.png` | PNG | any | The scaffolded app running in a browser on `localhost`, **sign-in page open** | 44 |
+| 17 | `17-first-commit.png` | PNG | any | Terminal after a successful first `commit` + `push`, and the repo showing the files on GitHub | 47 |
 
 ## Optional but worth it
 

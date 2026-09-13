@@ -43,7 +43,7 @@ Project memory for Claude. Read this before working. It has two parts: **(A)** h
   - **Deliberate redundancy:** template prompts live in both the skill *and* the trainee-facing material — belt and braces. Do not "deduplicate" them.
 - **Trainee never reads/writes code; testing is Claude's job.** Generic steps must never tell the trainee to read/review code or run tests themselves — the trainee reviews by *using the UI* + reading Claude's plain report; Claude writes+runs test cases and browser-tests (chrome-devtools) automatically on every build and reports non-technically. Plans open with a plain-language "what we'll build now" summary before any technical detail.
 
-### A.6 The deck is the curriculum — standards for every slide (`deck/day-NN.html`)
+### A.6 The deck is the curriculum — standards for every slide (`project-package/slides/day-NN.html`)
 
 Decided in review, **2026-09-12**. These are standing rules: apply them to any slide work without asking for confirmation.
 
@@ -53,8 +53,9 @@ Trainees do **not** open `bootcamp_roadmap_and_curriculum.md` or the `.docx` —
 **A.6.2 Completing a slide must not multiply slides.**
 Making a slide self-contained means growing the content *inside its existing frame* — richer cards, a real example, a flow line — not splitting it into ١/٢ + ٢/٢. The deck's slide count is a budget: adding one is a deliberate, requested change, never a side effect of filling content in. (This does not forbid slides the user explicitly asks for.)
 
-**A.6.3 Tone: plain, spoken-leaning Arabic — never compressed.**
-The failure mode to avoid is the one we shipped: telegraphic phrases where each word is meant to carry a paragraph, which read as obfuscated rather than concise. Write the way you would say it out loud. Lean **closer to colloquial than to فصحى**; short sentences; no rhetorical compression; no clever em-dash constructions standing in for an explanation.
+**A.6.3 Tone: plain, spoken-leaning Arabic — never compressed, and never heavily dialectal.**
+Two edges, not one. The first failure mode is the one we shipped: telegraphic phrases where each word is meant to carry a paragraph, which read as obfuscated rather than concise. Write the way you would say it out loud; short sentences; no rhetorical compression; no clever em-dash constructions standing in for an explanation.
+The second is the opposite edge. Lean **closer to colloquial than to فصحى** — but stay inside **المحكية البيضاء**: spoken words any Arabic reader parses, not Gulf-only ones. يقدّم / يعمل / ينفّذ not يسوّي; ايش not وش; يحتاج / يبي not يبغى; «كل ما احتجت» not «وقت ما التبس». Colloquial *connectives* stay (اللي، عشان، بس، مو) — they are what keeps the register spoken; it is the dialect *verbs* that shut a non-Gulf reader out.
 
 **A.6.4 Pitch to the real trainee level.**
 Assume the trainee has *heard* words like backend, frontend, server, hosting — and does **not** know how any of them work. For every such term give only: **what it is · what it does · when you'd use it.** Stop there. Depth beyond that is Claude's job, not the trainee's, and putting it on a slide costs comprehension without buying anything.
@@ -67,7 +68,11 @@ Never drop trainees into a sequence of steps without first telling them, plainly
 
 **A.6.7 Vocabulary — fixed choices.**
 - **مشروع, not منتج.** «مشاريع رقمية» not «منتجات رقمية»; «مشروعك» not «منتجك». Applies everywhere in trainee-facing text.
+- **The colloquial «what» is «ايش», not «وايش».** The و is a separate conjunction: keep it only where the sentence genuinely joins something (a list, two clauses), and never at the start of a title, a task row, or a clause after an em-dash or colon.
 - **Do not call anything «دليل».** The deck *is* the curriculum, so there is no separate guide to refer to. Say «المعسكر» / «القسم N» / «الحزمة» instead.
+
+**A.6.7.1 Address ONE trainee, always in the singular.**
+Every trainee builds **their own project, alone**. There is no group work, no pair work, and no «نحن» that includes Claude — Claude is a tool the trainee operates, not the other half of a team. So trainee-facing text never uses a second-person plural or dual: no «تشتغلون»، «وصلتم»، «توصلون»، «أنتم»، «سوا»، «معًا» *when the other party is Claude*. Say what the trainee does and name Claude separately: «في كل مهمّة عليك شغل، وعلى Claude شغل» — not «تشتغلون سوا». The one place a plural is correct is the **trainer** and the trainees in a live session («ننجزها معًا الآن» in §7.10), because that really is a room working through something together.
 
 **A.6.8 Day structure — tasks first, goals last.**
 Every day opens with **that day's tasks** (its §6.N block) so trainees know the plan before any content. **«أهداف اليوم» comes at the end of that block**, after the tasks are on the table — not before them. Day 1 is the only exception to "tasks first": it opens with the cover slide and the project-package brief, *then* the tasks.
