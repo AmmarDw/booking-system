@@ -535,21 +535,237 @@
     "mtime": 1784877350.8984807,
     "hash": "aedd0d068d454f541a67a9ff349b57c4"
   },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\slides\\assets\\deck.js": {
+    "mtime": 1789449997.7390816,
+    "hash": "c3f9a43917ee60dae5b99666b70488ea"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\AgendaRow.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "9c17219e9ef9378ac0f67525d3da7e97"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\AgendaRow.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "e661e5136cdf49b4b1d304a5a229566f"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\Callout.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "fdf543a053e6fff8cc57cb9cbb835c00"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\Callout.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "93148f9bb03d95a35f62d2f97365bedd"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\DayProgress.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "ce8441204f381d9f9b54ad903bb7c672"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\DayProgress.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "8ef78e76d31663be7159ebbc49da7497"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\EndorsementMark.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "56d60d68c0d3b9c3979bc7d03b503608"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\EndorsementMark.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "bbb0abebb3a8b02106502338890ecfb7"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\FileTree.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "b5abacf6eb86cf3546dc1b3aab67cff0"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\FileTree.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "a4e3375b2c60196d375294f4ec43571e"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\FooterBar.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "4dfaf22efa580ba280080fe55a73221d"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\FooterBar.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "01cc38a287d26c49e1e1cdcf9033827b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\Icon.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "57955666289c6051217beefc4fd081c8"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\Icon.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "530eef504cc02aee3b5d74bc7017db03"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\LogoZone.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "34c98fb10a64a8b128ef9cd24ff82c32"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\LogoZone.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "0289aa1297bf16e345fb379405af18c5"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\MediaFrame.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "6c265d29d18af64136b11547871a6433"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\MediaFrame.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "226a17da67f555b8c6ae6e35abc48826"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\PresenterBlock.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "03f63d7aff8b9482332f84a02ec30abe"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\PresenterBlock.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "2c6376498f9eab1705d89b33de430701"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\SectionBadge.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "b95d1317f5c0d6551bca52eec4d76d74"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\SectionBadge.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "7fc4516c1492c9820d7f69e907c50a47"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\SkillCard.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "45f67628a770e5d19ec729db029d2e7f"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\SkillCard.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "7ad4fc8dc7c64a1b5a865cb4df46ce33"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\StepChip.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "3df0c527448231e2222dc0097024ec0e"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\StepChip.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "092b5c1522b2e0556eea9356f7793c61"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\TimingPill.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "69d08deffbbc2adb659fe7baf86d5cde"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\TimingPill.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "b3e5e79a4ab4efab6d99554f564bc461"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideClosing.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "d8047d428f28faa5d14cd5fff904efe6"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideClosing.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "97e0477a65d9ce48a9fb78e936f1cc23"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideContent.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "e369b3ee51a9ea891ff0abccadde4524"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideContent.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "65554d654090da78b6645f2cc7ae93e6"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideFrame.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "fbce0864231bb3a4fee439c343ce7ec2"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideFrame.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "affd494aa4a23249f3469daa8aaec7e5"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideMedia.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "2bc900833ed3678bd99256ad0de85be8"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideMedia.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "1856e42a774d4afc2a0063cb86811ae6"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideQuote.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "2e2d53687ac880a1f4b33de466beedd2"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideQuote.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "229b57bafbf9d448cf5967b812c7daad"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideSection.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "6298350bfb2b6e0ec3f3b4194b17e491"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideSection.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "09c1183466bdf130957d89171ec86f67"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideSplit.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "682d034f60722bebc55ab6857398c83c"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideSplit.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "536c0f986bc5667ef5195759ff8fb619"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideSteps.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "cc66bc26cf0b5b08fa4bbd7c1314866b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideSteps.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "449a3aec9d2f0a0a7970cf4fe5475e71"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideTable.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "fb36c05b37e11973c8a41b3d12953b01"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideTable.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "20fbb8210547a8bd54af16f0ff5d6865"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideTitle.d.ts": {
+    "mtime": 1788863553.0,
+    "hash": "713d9d07917379b733cffdee03bd6890"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideTitle.jsx": {
+    "mtime": 1788863553.0,
+    "hash": "3e9fa6ac67aa423ae790bf0ebe5b1f97"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\slides\\deck.data.js": {
+    "mtime": 1788863597.0,
+    "hash": "95c1ddce3170649532f858b964861871"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\templates\\bootcamp-deck\\ds-base.js": {
+    "mtime": 1788863599.0,
+    "hash": "a10629f1017f31cd686266e2fa942243"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\templates\\bootcamp-deck\\support.js": {
+    "mtime": 1788863599.0,
+    "hash": "951ae391b8ae72ef12e671c2fad23353"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Scripts\\_ds_bundle.js": {
+    "mtime": 1788863915.585842,
+    "hash": "4ec0bfea545e799089d9d8f38f17a459"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\tools\\docx\\build.js": {
+    "mtime": 1789669929.4179478,
+    "hash": "f25eab7e53c8666af91c1a9a72e2d2f7"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\tools\\docx\\rtl_patch.py": {
+    "mtime": 1788688403.2399013,
+    "hash": "90398ded971a21d66a34d2854f2192b2"
+  },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\CLAUDE.md": {
-    "mtime": 1788033801.5306296,
-    "hash": "fea5d618302953124e97a7ce35606746"
+    "mtime": 1789669929.4134338,
+    "hash": "f756c279ff278c0d2ef4e1efa562f9a1"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\conversation_history.md": {
-    "mtime": 1788617384.3650072,
-    "hash": "a1f3a6324ce4de8b1e30710b0e0ce720"
+    "mtime": 1789690415.9231982,
+    "hash": "c7462bd15f7c6dd09cedca225b37f005"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\implementation_plan.md": {
     "mtime": 1784894802.9530766,
     "hash": "e3d7e8445d3eb51b846894b51bd480ee"
-  },
-  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\notebook.txt": {
-    "mtime": 1788646152.6039605,
-    "hash": "8b16308448288229cb3b4a0e06f236b0"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\PROJECT_REPORT.md": {
     "mtime": 1787988306.3368797,
@@ -587,21 +803,281 @@
     "mtime": 1784729637.138764,
     "hash": "964ac89e590ca883748716c83a4f142a"
   },
-  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\graphify-out\\converted\\bootcamp_roadmap_and_curriculum_19f7902c.md": {
-    "mtime": 1788633378.4656873,
-    "hash": "ecce69adbbf7adb43a3c317be7817871"
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\deck\\DECK_BRIEF.md": {
+    "mtime": 1789690305.1147573,
+    "hash": "2c83cef7258ea0678e573eea2d76ca17"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\deck\\DESIGN_SYSTEM_PROMPT.md": {
+    "mtime": 1788966766.7390473,
+    "hash": "0a486ccc49bb7fb367b421896ff3307e"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\deck\\MEDIA_SHOTLIST.md": {
+    "mtime": 1789690318.8115535,
+    "hash": "2ddfb3628b75a39d5b753e312690d896"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\deck\\handout\\index.html": {
+    "mtime": 1789669929.4179478,
+    "hash": "65964751cf8be764aa09a2a448a7a785"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\LOGO_Sag\\ASSETS.md": {
+    "mtime": 1788864662.4921343,
+    "hash": "e5ef88cdce5b2ee8d87695852a8c73d2"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\bootcamp_roadmap_and_curriculum.md": {
-    "mtime": 1788641565.518439,
-    "hash": "db25a6ea89c66c98d4009ac1fa07eb1f"
+    "mtime": 1789690150.3316953,
+    "hash": "60c4c27c3c66676e401125e64181e857"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\CLAUDE.md": {
-    "mtime": 1787843854.0680735,
-    "hash": "9d5971606f0290c9c245d73f1af6996b"
+    "mtime": 1789690177.9318476,
+    "hash": "ac7d7e6357943841547ef684c01e32ef"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\PRODUCT.md": {
-    "mtime": 1788616373.572366,
-    "hash": "de2b3a2e9d3a5c3ee3ecef9747bcffcb"
+    "mtime": 1789669929.4074528,
+    "hash": "d14cfa3c5599d9b40f82608caae727b1"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\slides\\day-01.html": {
+    "mtime": 1789690002.1046703,
+    "hash": "e403edbeaa7655b926f9fa3399cc07d3"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Documents\\readme.md": {
+    "mtime": 1788863949.0202525,
+    "hash": "e7871564bc0290ddea35374e892fffe1"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Documents\\SKILL.md": {
+    "mtime": 1788863951.732839,
+    "hash": "e466c96d43eb81b32f9667bba31ff31b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\assets\\readme.md": {
+    "mtime": 1788863545.0,
+    "hash": "6aad362a9e47e8f1aa600497363b0544"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\AgendaRow.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "d03f554c886cde8adc25be7ee4685d47"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\Callout.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "6d28dabba588a9ee8ba99efe7022558f"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\DayProgress.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "65be527fcb10680a03f4f082895b375a"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\elements.card.html": {
+    "mtime": 1788863553.0,
+    "hash": "abfb0f830fb12c02f51de06f05c3ec54"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\EndorsementMark.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "b7819019db65422a8bf904e62f5f7247"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\FileTree.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "7545650a415705784c9070168cd86f68"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\FooterBar.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "f21f05b595cbbf30a4cba6081dd1c2c9"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\Icon.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "7788a2d82b1b363cdab6c97165596211"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\LogoZone.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "0f043f3e230fc3c5099a7deef016cc44"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\MediaFrame.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "d6cff6d23e6a451219e163cf73bc823c"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\PresenterBlock.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "8b6a7585e2ae937b98ba607554c891f6"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\SectionBadge.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "5d238e867e364afdf2d49b9621a6df7e"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\SkillCard.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "35518f8f1c60298d8b22e226454d8902"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\StepChip.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "819e5811ab0b6146db74e12040b9fc55"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\TimingPill.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "39bd4c33d26441a76814385d5eb679a1"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\frames.card.html": {
+    "mtime": 1788863553.0,
+    "hash": "6397a988d045ec9de0a7842909666fc5"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideClosing.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "4e3282544e74f765222e89d5ff2a16d0"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideContent.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "ba8cd292875e8f0a08d7839887441872"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideFrame.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "59b3b4fc76665429583c2ddc7d3b0071"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideMedia.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "5caab9630bab467bbd6e2b9024927527"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideQuote.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "65113ee3e934a52db662b2b268a9ca97"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideSection.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "f1e7108e6fd6afe0d665e1373912e364"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideSplit.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "c589317a2608e720e4f4d3b8695c0758"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideSteps.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "51e032f176de6e85c8c1a1f505ad57ae"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideTable.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "3156c4d7890c79dcc0d00807401191ac"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\frames\\SlideTitle.prompt.md": {
+    "mtime": 1788863553.0,
+    "hash": "19a7eb0b1ea4388fd942436c6494a1be"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\brand-endorsement.html": {
+    "mtime": 1788863594.0,
+    "hash": "226522caad2918fa99170d975667035c"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\brand-wordmark.html": {
+    "mtime": 1788863594.0,
+    "hash": "e891fabf2e95beb20211c7a35a7073cd"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\colors-brand.html": {
+    "mtime": 1788863594.0,
+    "hash": "4d8ce397f35c01328e5fb1bf3a50ebe3"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\colors-semantic.html": {
+    "mtime": 1788863594.0,
+    "hash": "96b2b95f9b5b04a8a8f0be7acc408908"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\colors-sky-vs-teal.html": {
+    "mtime": 1788863594.0,
+    "hash": "3abc9a633985eb61d95da045f4f6933d"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\colors-surfaces.html": {
+    "mtime": 1788863594.0,
+    "hash": "837ed6ca78d87126efc0e47be7f84cb5"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\colors-text.html": {
+    "mtime": 1788863594.0,
+    "hash": "6076c4d3d3c285e5f57ef8765bf0aec0"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\colors-warning.html": {
+    "mtime": 1788863594.0,
+    "hash": "285834382a60cba5bba6819fd68a19a5"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\elevation.html": {
+    "mtime": 1788863594.0,
+    "hash": "2978d260579b9a83720ee4a36143915b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\rtl-logical.html": {
+    "mtime": 1788863594.0,
+    "hash": "1584023119c4d2039117d8e2c1107557"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\spacing-scale.html": {
+    "mtime": 1788863594.0,
+    "hash": "3a05ae7ce526d18544b47f9e93612307"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\spacing-slide.html": {
+    "mtime": 1788863594.0,
+    "hash": "8176525fec0268b06992b2852d240587"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\type-body.html": {
+    "mtime": 1788863594.0,
+    "hash": "1bbd371d315c2e1b8c2ec176d9b0fd0d"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\type-caption-mono.html": {
+    "mtime": 1788863594.0,
+    "hash": "7d4168f20453eb6bc74aa80e22ddac59"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\type-display.html": {
+    "mtime": 1788863594.0,
+    "hash": "70b316bfc8c9c9725d3e3ca6f6d14958"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\type-lineheight.html": {
+    "mtime": 1788863594.0,
+    "hash": "43e9e08867f5b9b6f65ed384beb72e76"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\type-mixed.html": {
+    "mtime": 1788863594.0,
+    "hash": "7aef13a40fdc3a1210ed5e3f446a2000"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\guidelines\\type-scale.html": {
+    "mtime": 1788863594.0,
+    "hash": "e1f2ce3519077a2edb313148a9d22dd6"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\slides\\closing.html": {
+    "mtime": 1788863597.0,
+    "hash": "57943317e72654bcfb9c3dd1606ea5c1"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\slides\\content.html": {
+    "mtime": 1788863597.0,
+    "hash": "b5cc80212398e8989a2a8cfa0c80234b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\slides\\index.html": {
+    "mtime": 1788863597.0,
+    "hash": "723b6a0298b49fac016a1996882754fe"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\slides\\media.html": {
+    "mtime": 1788863597.0,
+    "hash": "6f492f9f1b4ae95219572a8a0f8b078b"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\slides\\quote.html": {
+    "mtime": 1788863597.0,
+    "hash": "0e736236f6fd24245929f8f879816260"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\slides\\section.html": {
+    "mtime": 1788863597.0,
+    "hash": "11f77dfd6879863e6c917cb73f7289c6"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\slides\\split.html": {
+    "mtime": 1788863597.0,
+    "hash": "19b9fbe78d318612b321aeac93bd7bbc"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\slides\\steps.html": {
+    "mtime": 1788863597.0,
+    "hash": "336318415ea30b7b4f010745da0d9216"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\slides\\table.html": {
+    "mtime": 1788863597.0,
+    "hash": "32ba54ee4086dd9e27ba8e2e8cd300e6"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\slides\\title.html": {
+    "mtime": 1788863597.0,
+    "hash": "90384c0e110cf628cfa36f8c925f67e3"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\templates\\bootcamp-deck\\BootcampDeck.dc.html": {
+    "mtime": 1788863599.0,
+    "hash": "2ccd97b0a39c1a7cd0c50da896b818e0"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Pages\\thumbnail.html": {
+    "mtime": 1788863847.268106,
+    "hash": "9f6c38080d7cd1b066b9c29020a733e9"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\tools\\docx\\README.md": {
+    "mtime": 1788688403.2618618,
+    "hash": "b202fbcc8357ff35b48fbfe1087cdf86"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG_Tech_Claude_MVP_AR.pdf": {
     "mtime": 1787484791.3487775,

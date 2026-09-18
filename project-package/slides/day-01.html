@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>اليوم 1 — التوجيه وأساسيات Claude Code | معسكر بناء المنتجات الأولية</title>
+  <title>اليوم 1 — التوجيه وأساسيات Claude Code | دورة بناء المنتجات الأولية</title>
   <link rel="icon" href="assets/brand/mark-sag-tech-icon.svg">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
@@ -14,14 +14,14 @@
   <div class="deck-stage">
     <div class="deck-scaler">
 
-      <!-- ═══ 1 — الغلاف ══════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 1 — الغلاف ═══════════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-title deck-slide" data-surface="dark">
         <div class="sag-title__inner">
           <div>
             <div class="deck-logo" data-size="hero">
               <img src="assets/brand/logo-sag-lab.png" alt="ساج لاب">
             </div>
-            <h1 class="sag-title__display">معسكر تدريبي لبناء مشاريع تقنية أولية (<span class="tok-lat">MVP</span>)
+            <h1 class="sag-title__display">دورة تدريبية لبناء مشاريع تقنية أولية (<span class="tok-lat">MVP</span>)
               باستخدام <span class="tok-lat">Claude</span></h1>
             <p class="sag-title__program">من الفكرة إلى مشروع منشور</p>
             <div class="deck-title__facts">
@@ -41,7 +41,7 @@
                   <span class="deck-title__credit-kicker">إعداد وتقديم</span>
                   <span class="sag-presenter__name">م. عمار محمد أنمار دويدري</span>
                   <span class="sag-presenter__role tok-lat">Eng. Ammar Mohamed Anmar Dwidari</span>
-                  <span class="sag-presenter__org">صمّم منهج المعسكر بالكامل</span>
+                  <span class="sag-presenter__org">صمّم منهج الدورة بالكامل</span>
                 </div>
               </div>
               <div class="deck-title__org">
@@ -59,32 +59,32 @@
         </div>
         <footer class="sag-slide__foot">
           <div class="deck-foot">
-            <span class="deck-title__org-label">رحلة تطبيقية متكاملة لتحويل الفكرة إلى مشروع تقني قابل للاستخدام
-              والاختبار والنشر</span>
+            <span class="deck-title__org-label">رحلة تطبيقية متكاملة لتعلم استخدام claude code وتحويل فكرة إلى مشروع
+              تقني قابل للاستخدام والاختبار والنشر</span>
           </div>
         </footer>
       </section>
 
-      <!-- ═══ 2 — حزمة المشروع: نظرة سريعة (4) ════════════════════════════════════════════════════ -->
+      <!-- ═══ 2 — حزمة المشروع: نظرة سريعة (6) ═════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-quote deck-slide" data-tone="rule" data-surface="dark">
         <div class="sag-quote__inner">
           <div class="sag-quote__mark"></div>
           <p class="sag-quote__text">وصلتكم حزمة المشروع؟</p>
           <p class="sag-quote__attr">الحزمة فيها منطق المشروع وقوانينه وسياقه. أول ما تفتح محادثة <span
-              class="tok-lat">Claude</span> جوّاها، يصير مساعدك الشخصي طول المعسكر — تقدر تعتبرها نسخة مصغّرة منّي.
-            وبنرجع لها بالتفصيل في <strong>القسم 4</strong>.</p>
+              class="tok-lat">Claude</span> جوّاها، يصير مساعدك الشخصي طول الدورة — تقدر تعتبرها نسخة مصغّرة منّي.
+            وبنرجع لها بالتفصيل في <strong>القسم 6</strong>.</p>
         </div>
         <footer class="sag-slide__foot">
           <div class="deck-foot">
             <div class="deck-foot__side">
-              <span class="sag-badge"><span class="sag-badge__num">4</span> حزمة المشروع</span>
+              <span class="sag-badge"><span class="sag-badge__num">6</span> حزمة المشروع</span>
             </div>
             <span class="deck-foot__num">2</span>
           </div>
         </footer>
       </section>
 
-      <!-- ═══ 3 — رموز الشرائح ══════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 3 — رموز الشرائح ═════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-anchor="legend">
         <div class="sag-slide__head">
           <span class="sag-badge">قبل ما نبدأ</span>
@@ -102,7 +102,7 @@
                 يرجّعك.</p>
               <div class="legend__demo"><span class="legend__try">جرّبها الحين:</span>
                 <div class="task" data-ref="فهرس"><span class="task__mark"><span class="i i-check"></span></span>
-                  <span class="task__t">الفهرس · نمرّ سريع على أقسام المعسكر</span><span class="task__d">مثال</span>
+                  <span class="task__t">الفهرس · نمرّ سريع على أقسام الدورة</span><span class="task__d">مثال</span>
                 </div>
               </div>
             </article>
@@ -163,40 +163,112 @@
         </footer>
       </section>
 
-      <!-- ═══ 4 — أجندة اليوم: جلسة شرح المفاهيم (6.1) ════════════════════════════════════════════ -->
+      <!-- ═══ 4 — أسلوب التدريب: جلسات اليوم ═══════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">6.1</span> أجندة اليوم 1</span>
+          <span class="sag-badge"><span class="sag-badge__num">1</span> أسلوب وتوزيع التدريب</span>
+          <h2 class="sag-slide__title">يومك التدريبي — أربع جلسات واستراحة</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="1" style="gap:var(--sp-2)">
+            <div class="agenda"><span class="agenda__t">شرح المفاهيم</span>
+              <span class="agenda__n">نفهم ما سنبنيه اليوم ولماذا</span><span class="agenda__d">45 دقيقة</span>
+            </div>
+            <div class="agenda"><span class="agenda__t">تطبيق مباشر مع المدرب</span>
+              <span class="agenda__n">ننفّذ الخطوات أمامك خطوة بخطوة</span><span class="agenda__d">ساعة</span>
+            </div>
+            <div class="agenda agenda--break"><span class="agenda__t">استراحة</span>
+              <span class="agenda__n"></span><span class="agenda__d">25 دقيقة</span>
+            </div>
+            <div class="agenda agenda--main"><span class="agenda__t">عملك على مشروعك</span>
+              <span class="agenda__n">أطول جلسة — تبني مشروعك أنت، والمدرب يمرّ عليك<button class="qmark" type="button"
+                  data-term="trainer" aria-label="شرح: المدرب يمرّ عليك">؟</button></span><span class="agenda__d">ساعة
+                ونصف</span>
+            </div>
+            <div class="agenda"><span class="agenda__t">مراجعة وعرض التقدم</span>
+              <span class="agenda__n">تعرض اللي وصلت له، ونشوف سوا اللي وقف معك</span><span class="agenda__d">نصف
+                ساعة</span>
+            </div>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-clock" style="color:var(--accent-structure)"></span>
+              <strong>هذه فترات تقريبية</strong> — تتفاوت من يوم لآخر بحسب ما نُنجزه فيه.
+              و<strong>اليوم الأول أطول في الشرح</strong> (62 دقيقة) لأن التعريف بالدورة لا يتكرّر بعد اليوم.
+            </p>
+          </div>
+          <template class="terms" data-title="المدرب يمرّ عليك — كيف؟">
+            <div data-term="trainer" data-title="المدرب يمرّ عليك">أمرّ على الجميع أثناء العمل. وإذا وقفت عند
+              مشكلة، الترتيب اللي يفيدك: جرّب خطوات الشريحة ← اسأل <span class="tok-lat">Claude</span> ووصف له
+              المشكلة بالتفصيل ← إن ما وضح جوابه، اطلب منه يشرح أكثر. وبعدها نشوفها سوا. المقصود تتعوّد على
+              <span class="tok-lat">Claude</span>، لأنه راح يبقى معك بعد الدورة.
+            </div>
+          </template>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">16</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 5 — المراجعة ليست جلسة منفصلة ════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-quote deck-slide" data-tone="rule" data-surface="dark">
+        <div class="sag-quote__inner">
+          <div class="sag-quote__mark"></div>
+          <p class="sag-quote__text">المراجعة ليست جلسة في آخر اليوم — بل إيقاع عملك كلّه.</p>
+          <p class="sag-quote__attr">تطلب من <span class="tok-lat">Claude</span> شي ← ينفّذه ← تجرّبه بنفسك
+            ← تقول له ايش تبي تعدّل ← تكمّل للي بعده. وحطّيناها في الجدول جلسة مستقلّة عشان يبان وقتها،
+            بس هي تصير طول اليوم.</p>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side"><span class="sag-badge"><span class="sag-badge__num">1</span> أسلوب وتوزيع
+                التدريب</span></div>
+            <span class="deck-foot__num">17</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 6 — أجندة اليوم: جلسة شرح المفاهيم (2.1) ═════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">2.1</span> أجندة اليوم 1</span>
           <h2 class="sag-slide__title">الجلسة الأولى — شرح المفاهيم <span class="deck-part">62 د</span></h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
           <div class="bento" data-cols="2">
             <div class="sess">
-              <div class="sess__head"><span class="sess__name">التعريف بالمعسكر</span><span class="sess__d">25
+              <div class="sess__head"><span class="sess__name">التعريف بالدورة</span><span class="sess__d">25
                   د</span></div>
               <div class="tasks">
-                <div class="task" data-ref="فهرس"><span class="task__mark"><span class="i i-check"></span></span>
-                  <span class="task__t">الفهرس · نمرّ سريع على أقسام المعسكر كلها</span><span class="task__d">2 د</span>
-                </div>
                 <div class="task" data-ref="1"><span class="task__mark"><span class="i i-check"></span></span>
-                  <span class="task__t">1 · تقسيمة المنهج وكيف نشتغل عليه</span><span class="task__d">5 د</span>
+                  <span class="task__t">1 · كيف يمشي اليوم: أربع جلسات واستراحة</span><span class="task__d">5 د</span>
                 </div>
                 <div class="task" data-ref="2"><span class="task__mark"><span class="i i-check"></span></span>
-                  <span class="task__t">2 · فكرة مختصرة عن المعسكر: ايش نبني فيه وليش</span><span class="task__d">3
-                    د</span>
+                  <span class="task__t">2 · أين تجد مهامّ كل يوم من أيام الدورة</span><span class="task__d">2 د</span>
+                </div>
+                <div class="task" data-ref="فهرس"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">الفهرس · نمرّ سريع على أقسام الدورة كلها</span><span class="task__d">2 د</span>
                 </div>
                 <div class="task" data-ref="3"><span class="task__mark"><span class="i i-check"></span></span>
-                  <span class="task__t">3 · المهارات التي تخرج بها من المعسكر</span><span class="task__d">4 د</span>
+                  <span class="task__t">3 · تقسيمة المنهج وكيف نشتغل عليه</span><span class="task__d">5 د</span>
                 </div>
-                <div class="task" data-ref="package"><span class="task__mark"><span class="i i-check"></span></span>
-                  <span class="task__t">4 · محتويات حزمة المشروع وكيف تستخدمها</span><span class="task__d">4 د</span>
+                <div class="task" data-ref="4"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">4 · فكرة مختصرة عن الدورة: ايش نبني فيه وليش</span><span class="task__d">3
+                    د</span>
                 </div>
                 <div class="task" data-ref="5"><span class="task__mark"><span class="i i-check"></span></span>
-                  <span class="task__t">5 · كيف يمشي اليوم: أربع جلسات واستراحة</span><span class="task__d">5 د</span>
+                  <span class="task__t">5 · المهارات التي تخرج بها من الدورة</span><span class="task__d">4 د</span>
                 </div>
-                <div class="task" data-ref="6"><span class="task__mark"><span class="i i-check"></span></span>
-                  <span class="task__t">6 · أين تجد مهامّ كل يوم من أيام المعسكر</span><span class="task__d">2 د</span>
+                <div class="task" data-ref="package"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">6 · محتويات حزمة المشروع وكيف تستخدمها</span><span class="task__d">4 د</span>
                 </div>
               </div>
             </div>
@@ -248,10 +320,10 @@
         </footer>
       </section>
 
-      <!-- ═══ 5 — أجندة اليوم: الجلسات الثلاث الباقية (6.1) ═══════════════════════════════════════ -->
+      <!-- ═══ 7 — أجندة اليوم: الجلسات الثلاث الباقية (2.1) ════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">6.1</span> أجندة اليوم 1</span>
+          <span class="sag-badge"><span class="sag-badge__num">2.1</span> أجندة اليوم 1</span>
           <h2 class="sag-slide__title">بقيّة اليوم — ثلاث جلسات: تطبيق، ثم عملك، ثم مراجعة</h2>
           <div class="sag-slide__rule"></div>
         </div>
@@ -345,10 +417,10 @@
         </footer>
       </section>
 
-      <!-- ═══ 6 — أجندة اليوم: أهداف اليوم (6.1) ══════════════════════════════════════════════════ -->
+      <!-- ═══ 8 — أجندة اليوم: أهداف اليوم (2.1) ═══════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">6.1</span> أجندة اليوم 1</span>
+          <span class="sag-badge"><span class="sag-badge__num">2.1</span> أجندة اليوم 1</span>
           <h2 class="sag-slide__title">في نهاية اليوم — تكون قادر على هذا كلّه</h2>
           <div class="sag-slide__rule"></div>
         </div>
@@ -411,21 +483,257 @@
         </footer>
       </section>
 
-      <!-- ═══ 7 — فهرس المحتويات ══════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 9 — الأجندة ══════════════════════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">2</span> الأجندة والأهداف التدريبية</span>
+          <h2 class="sag-slide__title">مهامّ كل يوم — وين تلقاها</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <p class="pkg-when">كل يوم من العشرة يبدأ في هذه الشرائح بمجموعة شرائح خاصّة به: <strong>مهامّ ذلك
+              اليوم أولًا</strong>، وبعدها <strong>أهداف اليوم</strong>. تشوفها في أول اليوم، وترجع لها كل ما
+            احتجت تعرف وين وصلت.</p>
+          <div class="bento" data-cols="3">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-clock"></span></span>
+                <h3 class="card__title card__title--sm">مهامّ اليوم، بالترتيب</h3>
+              </div>
+              <p class="card__note card__note--sm">كل مهمّة في سطر، وبجنبها كم دقيقة تاخذ تقريبًا، وموزّعة على
+                جلسات اليوم الأربع. والسطر نفسه تنقر عليه فيتعلّم ✓ لما تخلّص.</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-circle-check"></span></span>
+                <h3 class="card__title card__title--sm">أهداف اليوم، في آخر المجموعة</h3>
+              </div>
+              <p class="card__note card__note--sm">ايش تطلع به من هذا اليوم بالذات — مثلًا في اليوم الأول:
+                مشروعك يشتغل على جهازك، ونسخة منه محفوظة على <span class="tok-lat">GitHub</span>.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-calendar"></span></span>
+                <h3 class="card__title card__title--sm">خريطة المهامّ الكاملة<button class="qmark" type="button"
+                    data-term="taskmap" aria-label="افتح خريطة المهامّ الكاملة">؟</button></h3>
+              </div>
+              <p class="card__note card__note--sm">الـ29 مهمّة كلها في جدول واحد: ايش دورك في كل وحدة، وفي أي
+                يوم تجي. انقر على <strong>؟</strong> وتفتح لك.</p>
+            </article>
+          </div>
+          <div class="bento" data-cols="2">
+            <div class="stat"><span class="stat__v">29</span><span class="stat__l">مهمّة على مدى الدورة —
+                لك دور في كل وحدة منها</span></div>
+            <div class="stat"><span class="stat__v">10</span><span class="stat__l">منها ما تمشي إلا بعد ما تعطي
+                جوابك أنت</span></div>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
+              اللي يهمّك كل يوم هو مهامّ ذلك اليوم. والخريطة الكاملة للرجوع فقط، لو حبّيت تشوف وين توصل بعدين.
+            </p>
+          </div>
+        </div>
+        <template class="terms" data-title="خريطة المهامّ الكاملة (29 مهمّة)" data-wide="true">
+          <div data-term="taskmap" data-title="كيف تقرأ الجدول">
+            <p class="tmap__lead">في كل مهمّة عليك شغل، وعلى <span class="tok-lat">Claude</span> شغل. اللي يتغيّر من
+              مهمّة لمهمّة هو <strong>نوع شغلك أنت</strong> فيها:</p>
+            <ul class="tmap__key">
+              <li><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span> المهمّة ما تمشي إلا بعد ما تعطي جوابك.
+                تحكي بكلامك العادي، و <span class="tok-lat">Claude</span> يصيغها ويرتّبها. <strong>(10
+                  مهامّ)</strong></li>
+              <li><span class="tmap__b tmap__b--review">تراجع وتصحّح</span> <span class="tok-lat">Claude</span>
+                يكتب لك ورقة أو مخطّطًا ويشرحه لك بلغة بسيطة، وأنت تقول ايش ناقص أو غلط. <strong>(7
+                  مهامّ)</strong></li>
+              <li><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span> <span class="tok-lat">Claude</span> يبني
+                شيئًا شغّالًا ويختبره بنفسه، وأنت تفتحه وتجرّبه وتطلب التعديل. <strong>(12 مهمّة)</strong></li>
+            </ul>
+            <table class="tmap">
+              <thead>
+                <tr>
+                  <th>المهمّة</th>
+                  <th>دورك فيها</th>
+                  <th>اليوم</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="tmap__n">8.1</span>تحديد المشكلة والهدف والغايات</td>
+                  <td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td>
+                  <td class="tmap__day">1 ثم 2</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">8.2</span>تحديد نطاق مشروعك: ايش يدخل فيه وايش ما يدخل</td>
+                  <td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td>
+                  <td class="tmap__day">2</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">9.1</span>تحديد مين يستخدم مشروعك، وايش يحتاج كل واحد</td>
+                  <td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td>
+                  <td class="tmap__day">2</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">9.2</span>تحديد الخدمات الخارجية والأطراف المتأثّرة بمشروعك</td>
+                  <td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td>
+                  <td class="tmap__day">2</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">10.1</span>جمع ملاحظاتك الحرّة عن وظائف مشروعك</td>
+                  <td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td>
+                  <td class="tmap__day">3</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">10.2</span>صياغة المتطلبات الوظيفية <span class="tok-lat">FR</span></td>
+                  <td><span class="tmap__b tmap__b--review">تراجع وتصحّح</span></td>
+                  <td class="tmap__day">3 ثم 4</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">10.3</span>صياغة المتطلبات غير الوظيفية <span class="tok-lat">NFR</span>
+                  </td>
+                  <td><span class="tmap__b tmap__b--review">تراجع وتصحّح</span></td>
+                  <td class="tmap__day">4</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">11.1</span>كتابة رحلة المستخدم بكلامك أنت</td>
+                  <td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td>
+                  <td class="tmap__day">4</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">11.2</span>تحويل الرحلة إلى مخطّط مرسوم</td>
+                  <td><span class="tmap__b tmap__b--review">تراجع وتصحّح</span></td>
+                  <td class="tmap__day">4</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">12.1</span>جرد الشاشات وتفضيلاتك في الشكل والألوان</td>
+                  <td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td>
+                  <td class="tmap__day">5</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">12.2</span>تجهيز أوامر <span class="tok-lat">Claude Design</span></td>
+                  <td><span class="tmap__b tmap__b--review">تراجع وتصحّح</span></td>
+                  <td class="tmap__day">5</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">12.3</span>بناء نظام التصميم: الألوان والخطوط والعناصر</td>
+                  <td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td>
+                  <td class="tmap__day">5</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">12.4</span>توليد الشاشات وتكرارها حتى تعجبك</td>
+                  <td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td>
+                  <td class="tmap__day">5</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">13.1</span>وصف البيانات اللي يحفظها مشروعك، بكلامك</td>
+                  <td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td>
+                  <td class="tmap__day">6</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">13.2</span>اقتراح نموذج البيانات كاملًا</td>
+                  <td><span class="tmap__b tmap__b--review">تراجع وتصحّح</span></td>
+                  <td class="tmap__day">6</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">13.3</span>رسم مخطّط البيانات <span class="tok-lat">ERD</span></td>
+                  <td><span class="tmap__b tmap__b--review">تراجع وتصحّح</span></td>
+                  <td class="tmap__day">6</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">14.1</span>تهيئة المشروع وتشغيله أول مرّة على جهازك</td>
+                  <td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td>
+                  <td class="tmap__day">1</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">14.2</span>بناء نموذج البيانات في قاعدة البيانات</td>
+                  <td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td>
+                  <td class="tmap__day">6</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">14.3</span>بناء الأدوار والصلاحيات: مين يشوف ايش</td>
+                  <td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td>
+                  <td class="tmap__day">7</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">14.4</span>بناء تصفّح المحتوى والصفحة الرئيسية</td>
+                  <td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td>
+                  <td class="tmap__day">7</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">14.5</span>بناء الوظيفة الأساسية لمشروعك</td>
+                  <td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td>
+                  <td class="tmap__day">8</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">14.6</span>بناء لوحة التحكّم والإدارة</td>
+                  <td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td>
+                  <td class="tmap__day">9</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">14.7</span>الربط بخدمة خارجية، إن احتاجها مشروعك</td>
+                  <td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td>
+                  <td class="tmap__day">9</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">15.1</span>تحديد الرحلات الكاملة اللي لازم تُختبر</td>
+                  <td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td>
+                  <td class="tmap__day">10</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">15.2</span>اختبار الرحلات من أولها إلى آخرها</td>
+                  <td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td>
+                  <td class="tmap__day">10</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">15.3</span>مراجعة الأمان: ما أحد يشوف بيانات مو له</td>
+                  <td><span class="tmap__b tmap__b--review">تراجع وتصحّح</span></td>
+                  <td class="tmap__day">10</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">16.1</span>تهيئة النشر وفتح الحسابات اللازمة</td>
+                  <td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td>
+                  <td class="tmap__day">3</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">16.2</span>أول نشر على رابط حيّ يفتح لأي أحد</td>
+                  <td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td>
+                  <td class="tmap__day">3</td>
+                </tr>
+                <tr>
+                  <td><span class="tmap__n">16.3</span>إعادة النشر النهائية في آخر يوم</td>
+                  <td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td>
+                  <td class="tmap__day">10</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="tmap__foot">ومهمّتان بس تمتدّان على يومين — <span class="tok-lat">8.1</span> و <span
+                class="tok-lat">10.2</span> — تبدأ كل وحدة في يوم وتكمل في اللي بعده. وما عداهما تخلص في يومها.
+            </p>
+          </div>
+        </template>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div>
+            <span class="deck-foot__num">18</span>
+          </div>
+        </footer>
+      </section>
+
+
+      <!-- ═══ 10 — فهرس المحتويات ══════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-anchor="فهرس">
         <div class="sag-slide__head">
           <span class="sag-badge">فهرس المحتويات</span>
-          <h2 class="sag-slide__title">سبعة عشر قسمًا — هذا كل المعسكر</h2>
+          <h2 class="sag-slide__title">سبعة عشر قسمًا — هذي كل الدورة</h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
           <div class="bento" data-cols="3" data-rows="6">
-            <div class="idx"><span class="idx__n">1</span><span class="idx__t">كيف نشتغل في المعسكر</span></div>
-            <div class="idx"><span class="idx__n">2</span><span class="idx__t">نبذة عن المعسكر</span></div>
-            <div class="idx"><span class="idx__n">3</span><span class="idx__t">المهارات التي تكتسبها</span></div>
-            <div class="idx"><span class="idx__n">4</span><span class="idx__t">حزمة المشروع</span></div>
-            <div class="idx"><span class="idx__n">5</span><span class="idx__t">أسلوب وتوزيع التدريب</span></div>
-            <div class="idx"><span class="idx__n">6</span><span class="idx__t">الأجندة والأهداف التدريبية</span></div>
+            <div class="idx"><span class="idx__n">1</span><span class="idx__t">أسلوب وتوزيع التدريب</span></div>
+            <div class="idx"><span class="idx__n">2</span><span class="idx__t">الأجندة والأهداف التدريبية</span></div>
+            <div class="idx"><span class="idx__n">3</span><span class="idx__t">كيف نشتغل في الدورة</span></div>
+            <div class="idx"><span class="idx__n">4</span><span class="idx__t">نبذة عن الدورة</span></div>
+            <div class="idx"><span class="idx__n">5</span><span class="idx__t">المهارات التي تكتسبها</span></div>
+            <div class="idx"><span class="idx__n">6</span><span class="idx__t">حزمة المشروع</span></div>
             <div class="idx"><span class="idx__n">7</span><span class="idx__t">أساسيات Claude Code</span></div>
             <div class="idx" data-group="build"><span class="idx__n">8</span><span class="idx__t">التعريف بالـMVP
                 ونطاقه</span></div>
@@ -461,29 +769,29 @@
         </footer>
       </section>
 
-      <!-- ═══ 8 — كيف نشتغل في المعسكر ═════════════════════════════════════════════════════════ -->
+      <!-- ═══ 11 — كيف نشتغل في الدورة ═════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">1</span> كيف نشتغل في المعسكر</span>
+          <span class="sag-badge"><span class="sag-badge__num">3</span> كيف نشتغل في الدورة</span>
           <h2 class="sag-slide__title">المنهج مقسوم إلى أربع أقسام — كلٌّ لها دور</h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
           <div class="bento" data-cols="2">
             <article class="card card--accent">
-              <div class="card__top"><span class="card__num">1–5</span>
-                <h3 class="card__title">الأقسام التعريفية</h3>
+              <div class="card__top"><span class="card__num">1–2</span>
+                <h3 class="card__title">كيف يسير التدريب</h3>
               </div>
-              <p class="card__note">ما المعسكر، وما المهارات التي تخرج بها، وما الحزمة التي تستلمها، وكيف نعمل معًا كل
-                يوم.</p>
+              <p class="card__note">شكل يومك التدريبي، وخارطة الأيام العشرة: أهداف كل يوم، ومهامّه موزّعة على <span
+                  class="ttip" data-tip="شرح المفاهيم، تطبيق مع المدرب، عمل المتدربين، مراجعة">جلسات اليوم
+                  الأربع</span>، ومدّة كل مهمّة.</p>
             </article>
             <article class="card card--accent">
-              <div class="card__top"><span class="card__num">6</span>
-                <h3 class="card__title">الأجندة</h3>
+              <div class="card__top"><span class="card__num">3–6</span>
+                <h3 class="card__title">الأقسام التعريفية</h3>
               </div>
-              <p class="card__note">خارطة الأيام العشرة: أهداف كل يوم، ومهامّه موزّعة على <span class="ttip"
-                  data-tip="شرح المفاهيم، تطبيق مع المدرب، عمل المتدربين، مراجعة">جلسات اليوم الأربع</span>،
-                ومدّة كل مهمّة.</p>
+              <p class="card__note">كيف تقرأ هذا المنهج، وما الدورة، وما المهارات التي تخرج بها، وما الحزمة التي
+                تستلمها.</p>
             </article>
             <article class="card card--accent">
               <div class="card__top"><span class="card__num">7</span>
@@ -517,29 +825,29 @@
         </footer>
       </section>
 
-      <!-- ═══ 9 — منهجية العصف الذهني ═════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 12 — منهجية العصف الذهني ═════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-quote deck-slide" data-tone="rule" data-surface="dark">
         <div class="sag-quote__inner">
           <div class="sag-quote__mark"></div>
           <p class="sag-quote__text">اكتب كل اللي في&nbsp;بالك أوّل، وبعدين رتّبه.</p>
-          <p class="sag-quote__attr">هذي قاعدة تمشي معك في كل خطوة من خطوات المعسكر. لا تفكّر وترتّب في نفس
+          <p class="sag-quote__attr">هذي قاعدة تمشي معك في كل خطوة من خطوات الدورة. لا تفكّر وترتّب في نفس
             الوقت — لأنك بتنشغل بالترتيب وتضيع منك أفكار. اكتب كل شي يجي في بالك بأي شكل، وبعدها رتّبه حسب اللي
             طلبته الخطوة، وبعدين سلّمه لـ<span class="tok-lat">Claude</span>.</p>
         </div>
         <footer class="sag-slide__foot">
           <div class="deck-foot">
             <div class="deck-foot__side">
-              <span class="sag-badge"><span class="sag-badge__num">1</span> كيف نشتغل في المعسكر</span>
+              <span class="sag-badge"><span class="sag-badge__num">3</span> كيف نشتغل في الدورة</span>
             </div>
             <span class="deck-foot__num">9</span>
           </div>
         </footer>
       </section>
 
-      <!-- ═══ 10 — نبذة عن المعسكر ═════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 13 — نبذة عن الدورة ══════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">2</span> نبذة عن المعسكر</span>
+          <span class="sag-badge"><span class="sag-badge__num">4</span> نبذة عن الدورة</span>
           <h2 class="sag-slide__title">عشرة أيام، ومشروع منشور على رابط فعلي</h2>
           <div class="sag-slide__rule"></div>
         </div>
@@ -589,10 +897,10 @@
         </footer>
       </section>
 
-      <!-- ═══ 11 — المهارات 1/2 ═══════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 14 — المهارات 1/2 ════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">3</span> المهارات</span>
+          <span class="sag-badge"><span class="sag-badge__num">5</span> المهارات</span>
           <h2 class="sag-slide__title">المهارات التي ستخرج بها — التخطيط والتصميم <span class="deck-part">1 / 2</span>
           </h2>
           <div class="sag-slide__rule"></div>
@@ -684,10 +992,10 @@
         </footer>
       </section>
 
-      <!-- ═══ 12 — المهارات 2/2 ═══════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 15 — المهارات 2/2 ════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">3</span> المهارات</span>
+          <span class="sag-badge"><span class="sag-badge__num">5</span> المهارات</span>
           <h2 class="sag-slide__title">المهارات التي ستخرج بها — البناء والإطلاق <span class="deck-part">2 / 2</span>
           </h2>
           <div class="sag-slide__rule"></div>
@@ -722,9 +1030,9 @@
             </article>
             <article class="card">
               <div class="card__top"><span class="card__icon"><span class="i i-shield-check"></span></span>
-                <h3 class="card__title card__title--sm"><span class="ttip"
-                    data-tip="المفاتيح كلمات سرّ تعطي مشروعك حقّ استخدام خدمة خارجية. ومتغيّرات البيئة مكان نحفظها فيه بعيد عن ملفات المشروع، عشان ما ترتفع على GitHub ويشوفها أحد.">إدارة
-                    المفاتيح ومتغيرات البيئة</span> بطريقة آمنة</h3>
+                <h3 class="card__title card__title--sm">إدارة مفاتيح <span class="tok-lat">API</span><button
+                    class="qmark" type="button" data-term="apikey" aria-label="شرح: API Key">؟</button> ومتغيّرات
+                  البيئة بطريقة آمنة</h3>
               </div>
             </article>
             <article class="card">
@@ -752,6 +1060,17 @@
               </div>
             </article>
           </div>
+          <template class="terms" data-title="مصطلحات هذه الشريحة">
+            <div data-term="apikey" data-title="API Key">مفتاح API كلمة سرّ تعطيك إياها خدمة خارجية، عشان مشروعك
+              يقدر يستخدمها.
+              <br><strong>مثال:</strong> لو ربطت مشروعك ببوابة دفع عشان يقبل بطاقات ائتمان، تعطيك البوابة مفتاح
+              API خاص بمشروعك، يمرّ فيه كل طلب دفع.
+              <br>لو وصل هذا المفتاح لشخص ثاني، يقدر يستخدم حساب الدفع نفسه — يسحب أموال، أو يشوف بيانات عملائك —
+              بدون ما يحتاج كلمة مرورك أصلًا.
+              <br>عشان كذا نحفظه في متغيّرات البيئة، بعيد عن ملفات مشروعك، حتى ما يرتفع بالخطأ إلى GitHub ويشوفه
+              أحد.
+            </div>
+          </template>
         </div>
         <footer class="sag-slide__foot">
           <div class="deck-foot">
@@ -765,11 +1084,12 @@
         </footer>
       </section>
 
-      <!-- ═══ 13 — حزمة المشروع: الشجرة ═══════════════════════════════════════════════════════ -->
+      <!-- ═══ 16 — حزمة المشروع: الشجرة ════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-anchor="package">
         <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">4</span> حزمة المشروع</span>
-          <h2 class="sag-slide__title">ايش الملفات اللي تحتويها الحزمة</h2>
+          <span class="sag-badge"><span class="sag-badge__num">6</span> حزمة المشروع</span>
+          <h2 class="sag-slide__title">ايش الملفات اللي تحتويها الحزمة — <span class="sag-slide__title--note">الملفات
+              الملوّنة هي اللي تقرأها أنت، ركّز عليها — قابلة لإعادة الاستخدام</span></h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
@@ -777,23 +1097,23 @@
             <code class="pkgtree__p">project-package/</code>
             <span class="pkgtree__d">جذر مشروعك — كل شي يصير جوّاه<button class="qmark" type="button"
                 data-term="pkg-root" aria-label="شرح">؟</button></span>
-            <code class="pkgtree__p">├── slides/</code>
-            <span class="pkgtree__d">الشرائح: منهجك ومرجعك الوحيد<button class="qmark" type="button"
+            <code class="pkgtree__p  pkgtree__p--read">├── slides/</code>
+            <span class="pkgtree__d  pkgtree__d--read">الشرائح: منهجك ومرجعك الوحيد<button class="qmark" type="button"
                 data-term="pkg-slides" aria-label="شرح">؟</button></span>
-            <code class="pkgtree__p">│   ├── day-01.html</code>
-            <span class="pkgtree__d">شرائح اليوم الأول — افتحها بالمتصفّح<button class="qmark" type="button"
-                data-term="pkg-day" aria-label="شرح">؟</button></span>
+            <code class="pkgtree__p pkgtree__p--read">│   ├── day-01.html</code>
+            <span class="pkgtree__d pkgtree__d--read">شرائح اليوم الأول — افتحها بالمتصفّح<button class="qmark"
+                type="button" data-term="pkg-day" aria-label="شرح">؟</button></span>
             <code class="pkgtree__p">│   ├── assets/</code>
             <span class="pkgtree__d pkgtree__d--mute"><span class="ttip"
-                data-tip="ملفات تشغيل الشرائح (خطوط وألوان ورموز). ما تحتاج تفتحها، ولا Claude يحتاجها.">ما يخصّك —
-                ملفات تشغيل الشرائح</span></span>
+                data-tip="ملفات تشغيل الشرائح (خطوط وألوان ورموز). ما تحتاج تفتحها، ولا Claude يحتاجها.">ملفات تشغيل
+                الشرائح فقط</span></span>
             <code class="pkgtree__p">│   └── media/</code>
             <span class="pkgtree__d pkgtree__d--mute"><span class="ttip"
-                data-tip="صور ومقاطع تظهر داخل الشرائح. ما تحتاج تفتحها، ولا Claude يحتاجها.">ما يخصّك — ملفات تشغيل
-                الشرائح</span></span>
-            <code class="pkgtree__p">├── PRODUCT.md</code>
-            <span class="pkgtree__d">ملف مشروعك: قراراتك في مكان واحد<button class="qmark" type="button"
-                data-term="pkg-product" aria-label="شرح">؟</button></span>
+                data-tip="صور ومقاطع تظهر داخل الشرائح. ما تحتاج تفتحها، ولا Claude يحتاجها.">ملفات تشغيل
+                الشرائح فقط</span></span>
+            <code class="pkgtree__p pkgtree__p--read">├── PRODUCT.md</code>
+            <span class="pkgtree__d pkgtree__d--read">ملف توثيق مشروعك: قراراتك في مكان واحد<button class="qmark"
+                type="button" data-term="pkg-product" aria-label="شرح">؟</button></span>
             <code class="pkgtree__p">├── CLAUDE.md</code>
             <span class="pkgtree__d">هويّة المساعد وقواعده وسجلّ تقدّمك<button class="qmark" type="button"
                 data-term="pkg-claudemd" aria-label="شرح">؟</button></span>
@@ -848,8 +1168,8 @@
             <code class="pkgtree__p">│       └── deploying/</code>
             <span class="pkgtree__d">النشر على Vercel — القسم 16<button class="qmark" type="button"
                 data-term="sk-deploy" aria-label="شرح">؟</button></span>
-            <code class="pkgtree__p">├── conversation_history.md</code>
-            <span class="pkgtree__d">سجلّ المحادثة — ينشئه Claude<button class="qmark" type="button"
+            <code class="pkgtree__p pkgtree__p--read">├── conversation_history.md</code>
+            <span class="pkgtree__d pkgtree__d--read">سجلّ المحادثة — ينشئه Claude<button class="qmark" type="button"
                 data-term="pkg-history" aria-label="شرح">؟</button></span>
             <code class="pkgtree__p">└── app/</code>
             <span class="pkgtree__d">مجلّد تطبيقك — ينشئه Claude<button class="qmark" type="button" data-term="pkg-app"
@@ -859,14 +1179,18 @@
         <template class="terms" data-title="ملفات الحزمة — وظيفة كل ملف">
           <div data-term="pkg-root" data-title="project-package/">هذا هو جذر مشروعك. تفتح <span class='tok-lat'>Claude
               Code</span> داخله، وكل ملف يُنشأ لاحقًا يجي هنا. لا تنقل محتوياته لمكان ثاني ولا تغيّر أسماءها — <span
-              class='tok-lat'>Claude</span> يدوّر عليها بأسمائها.</div>
-          <div data-term="pkg-slides" data-title="slides/">شرائح المعسكر. هي منهجك ومرجعك الوحيد — ما فيه ملف ثاني تقرؤه
+              class='tok-lat'>Claude</span> يدوّر عليها بأسمائها.
+            <br>وهذه الحزمة قابلة لإعادة الاستخدام: إن حبّيت تبدأ مشروعًا آخر لاحقًا، خذ نسخة فارغة منها (زي ما
+            استلمتها أوّل مرّة) وحطّها في مجلّد جديد، وابدأ فيها من الصفر مافي مشكلة.
+          </div>
+          <div data-term="pkg-slides" data-title="slides/">شرائح الدورة. هي منهجك ومرجعك الوحيد — ما فيه ملف ثاني تقرؤه
             غيرها. كل يوم له ملف مستقلّ، وتفتحها بالمتصفّح مباشرة بدون إنترنت.</div>
           <div data-term="pkg-day" data-title="day-01.html">شرائح اليوم الأول. انقر عليها مرّتين فتفتح في المتصفّح.
             الأسهم تنقّلك بين الشرائح، وحرف <span class='tok-lat'>F</span> يفتح ملء الشاشة. وبقيّة الأيام تجيك بنفس
             الشكل.</div>
-          <div data-term="pkg-product" data-title="PRODUCT.md">ملف مشروعك: فكرته، ومين يستخدمه، والوظائف اللي
-            يقدّمها — والوظائف اللي قرّرت ما تدخل في النسخة الأولى. تكتبه مع <span class='tok-lat'>Claude</span> خطوة بخطوة، وهو الملف الوحيد اللي فيه قراراتك أنت. ارجع له كل
+          <div data-term="pkg-product" data-title="PRODUCT.md">هذا ملف توثيق مشروعك: فكرته، ومين يستخدمه، والوظائف
+            اللي يقدّمها — والوظائف اللي قرّرت ما تدخل في النسخة الأولى. تكتبه مع <span class='tok-lat'>Claude</span>
+            خطوة بخطوة، وهو الملف الوحيد اللي فيه قراراتك أنت. ارجع له كل
             ما نسيت قرارًا أخذته.</div>
           <div data-term="pkg-claudemd" data-title="CLAUDE.md">يقرؤه <span class='tok-lat'>Claude</span> أول ما تفتح
             محادثة: مين هو، وايش دوره معك، ووين وصل مشروعك. فيه كمان سجلّ تقدّمك يوم بيوم. ما تحتاج تفتحه.</div>
@@ -927,10 +1251,10 @@
         </footer>
       </section>
 
-      <!-- ═══ 14 — حزمة المشروع: من وين تبدأ ═══════════════════════════════════════════════════ -->
+      <!-- ═══ 17 — حزمة المشروع: من وين تبدأ ═══════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">4</span> حزمة المشروع</span>
+          <span class="sag-badge"><span class="sag-badge__num">6</span> حزمة المشروع</span>
           <h2 class="sag-slide__title">من وين تبدأ — أربع خطوات وتكون جاهز</h2>
           <div class="sag-slide__rule"></div>
         </div>
@@ -939,7 +1263,8 @@
             و<strong>2</strong> تنفّذهما الحين. أمّا <strong>3</strong> و<strong>4</strong> فما تقدر
             تبدأهما إلا بعد ما تخلّص تهيئة جهازك — وبالتحديد
             <span class="reflink" data-ref="extension" tabindex="0">البند 5) إضافة Claude Code إلى
-              المحرّر</span> — لأن من المحرّر تفتح المحادثة.</p>
+              المحرّر</span> — لأن من المحرّر تفتح المحادثة.
+          </p>
           <div class="bento" data-cols="2">
             <article class="card card--accent">
               <div class="card__top"><span class="card__num">1</span>
@@ -961,7 +1286,8 @@
               <div class="card__top"><span class="card__num">3</span>
                 <h3 class="card__title card__title--sm">افتح <span class="tok-lat">Claude Code</span> داخل المجلّد</h3>
               </div>
-              <p class="card__note card__note--sm"><em class="pkg-after">بعد البند 5</em> افتح المحرّر
+              <p class="card__note card__note--sm"><em class="pkg-after"><span class="reflink" data-ref="extension"
+                    tabindex="0">بعد البند 5) إضافة Claude Code</span></em> افتح المحرّر
                 على <strong>هذا المجلّد بالذات</strong>، مو المجلّد اللي فوقه — وإلا ما راح يشوف ملفات
                 الحزمة. وبعدها افتح محادثة <span class="tok-lat">Claude Code</span> من داخل المحرّر.</p>
             </article>
@@ -969,7 +1295,8 @@
               <div class="card__top"><span class="card__num">4</span>
                 <h3 class="card__title card__title--sm">اكتب «السلام عليكم» وأرسل</h3>
               </div>
-              <p class="card__note card__note--sm"><em class="pkg-after">بعد البند 5</em> في نفس
+              <p class="card__note card__note--sm"><em class="pkg-after"><span class="reflink" data-ref="extension"
+                    tabindex="0">بعد البند 5) إضافة Claude Code</span></em> في نفس
                 المحادثة اللي فتحتها فوق، أي رسالة تكفي. <span class="tok-lat">Claude</span> راح يعرّفك
                 بنفسه، ويعرف من الملفات أي يوم أنت فيه، ويسألك عن المهامّ اللي المفروض خلّصتها قبل — ما
                 تحتاج تشرح له شي.</p>
@@ -992,12 +1319,13 @@
         </footer>
       </section>
 
-      <!-- ═══ 15 — حزمة المشروع: ما تقرؤه أنت ═════════════════════════════════════════════════════ -->
+      <!-- ═══ 18 — حزمة المشروع: ما تقرؤه أنت ══════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">4</span> حزمة المشروع</span>
-          <h2 class="sag-slide__title">ايش الملفات التي تقرأها أنت — وايش الملفات التي يقرأها
-            <span class="tok-lat">Claude</span></h2>
+          <span class="sag-badge"><span class="sag-badge__num">6</span> حزمة المشروع</span>
+          <h2 class="sag-slide__title">ايش الملفات اللي تقرأها أنت، وايش اللي يقرأها
+            <span class="tok-lat">Claude</span>
+          </h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
@@ -1015,11 +1343,12 @@
               </p>
               <p class="card__note card__note--sm"><strong class="tok-code">conversation_history.md</strong><br>
                 سجلّ كل أمر وكل ردّ، يكتبه <span class="tok-lat">Claude</span> بنفسه بعد أول رسالة.
-                ما هو مطلوب منك تتابعه، لكنه مرجعك لو احتجت تعرف كيف وصلتوا لقرار.</p>
+                ما هو مطلوب منك تتابعه، لكنه مرجعك لو احتجت تعرف كيف استقرّ قرار معيّن.</p>
             </article>
             <article class="card card--state">
               <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
-                <h3 class="card__title">يقرؤه <span class="tok-lat">Claude</span></h3>
+                <h3 class="card__title">يقرؤه <span class="tok-lat">Claude</span><button class="qmark" type="button"
+                    data-term="claude-files" aria-label="شرح: من وين تجي هذي الملفات">؟</button></h3>
               </div>
               <p class="card__note card__note--sm"><strong class="tok-code">CLAUDE.md</strong><br>
                 مين هو، وايش دوره معك، ووين وصل مشروعك. يقرؤه أول ما تفتح محادثة.</p>
@@ -1040,6 +1369,20 @@
             </p>
           </div>
         </div>
+        <template class="terms" data-title="من وين تجي ملفات Claude؟">
+          <div data-term="claude-files" data-title="بنية يفهمها Claude — بس ما تجي جاهزة">
+            <span class="tok-lat">Claude</span> يفهم هذي البنية تلقائيًّا: أي مشروع فيه
+            <span class="tok-code">CLAUDE.md</span> أو مجلّد <span class="tok-code">.claude/</span> يقرأها بنفسه
+            أول ما تفتح المحادثة، بدون ما تطلب منه.
+            <br>لكنها <strong>ما تجي مع أي مشروع جديد</strong> — إحنا جهّزناها لك داخل هذي الحزمة. في أي مشروع
+            ثاني تبدأه، تطلب من <span class="tok-lat">Claude</span> ينشئها، وهو يكتبها بنفسه.
+            <br><strong>مثال لقاعدة:</strong> «أنشئ لي ملف قاعدة لشكل الواجهة: خلّي كل الأزرار بنفس اللون
+            والحجم، والعناوين بنفس الخط…»
+            <br><strong>مثال لمهارة:</strong> «حوّل خطوات إضافة صفحة جديدة إلى مهارة: تسحب التصميم، تبني
+            الصفحة، تربطها بقاعدة البيانات، تختبرها…»
+            <br><strong>نشرح هذا بالتفصيل في اليوم 5.</strong>
+          </div>
+        </template>
         <footer class="sag-slide__foot">
           <div class="deck-foot">
             <div class="deck-foot__side">
@@ -1052,197 +1395,7 @@
         </footer>
       </section>
 
-      <!-- ═══ 16 — أسلوب التدريب: جلسات اليوم ═════════════════════════════════════════════════════ -->
-      <section class="sag-slide deck-slide">
-        <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">5</span> أسلوب وتوزيع التدريب</span>
-          <h2 class="sag-slide__title">يومك التدريبي — أربع جلسات واستراحة</h2>
-          <div class="sag-slide__rule"></div>
-        </div>
-        <div class="sag-slide__body">
-          <div class="bento" data-cols="1" style="gap:var(--sp-2)">
-            <div class="agenda"><span class="agenda__t">شرح المفاهيم</span>
-              <span class="agenda__n">نفهم ما سنبنيه اليوم ولماذا</span><span class="agenda__d">45 دقيقة</span>
-            </div>
-            <div class="agenda"><span class="agenda__t">تطبيق مباشر مع المدرب</span>
-              <span class="agenda__n">ننفّذ الخطوات أمامك خطوة بخطوة</span><span class="agenda__d">ساعة</span>
-            </div>
-            <div class="agenda agenda--break"><span class="agenda__t">استراحة</span>
-              <span class="agenda__n"></span><span class="agenda__d">25 دقيقة</span>
-            </div>
-            <div class="agenda agenda--main"><span class="agenda__t">عملك على مشروعك</span>
-              <span class="agenda__n">أطول جلسة — تبني مشروعك أنت، والمدرب يمرّ عليك<button class="qmark" type="button"
-                  data-term="trainer" aria-label="شرح: المدرب يمرّ عليك">؟</button></span><span class="agenda__d">ساعة
-                ونصف</span>
-            </div>
-            <div class="agenda"><span class="agenda__t">مراجعة وعرض التقدم</span>
-              <span class="agenda__n">تعرض اللي وصلت له، ونشوف سوا اللي وقف معك</span><span class="agenda__d">نصف ساعة</span>
-            </div>
-          </div>
-          <div class="card card--plain">
-            <p class="card__note"><span class="i i-clock" style="color:var(--accent-structure)"></span>
-              <strong>هذه فترات تقريبية</strong> — تتفاوت من يوم لآخر بحسب ما نُنجزه فيه.
-              و<strong>اليوم الأول أطول في الشرح</strong> (62 دقيقة) لأن التعريف بالمعسكر لا يتكرّر بعد اليوم.
-            </p>
-          </div>
-          <template class="terms" data-title="المدرب يمرّ عليك — كيف؟">
-            <div data-term="trainer" data-title="المدرب يمرّ عليك">أمرّ على الجميع أثناء العمل. وإذا وقفت عند
-              مشكلة، الترتيب اللي يفيدك: جرّب خطوات الشريحة ← اسأل <span class="tok-lat">Claude</span> ووصف له
-              المشكلة بالتفصيل ← إن ما وضح جوابه، اطلب منه يشرح أكثر. وبعدها نشوفها سوا. المقصود تتعوّد على
-              <span class="tok-lat">Claude</span>، لأنه راح يبقى معك بعد المعسكر.
-            </div>
-          </template>
-        </div>
-        <footer class="sag-slide__foot">
-          <div class="deck-foot">
-            <div class="deck-foot__side">
-              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
-                  alt="ساج التقنية"></div>
-              <span class="deck-foot__num">اليوم 1</span>
-            </div>
-            <span class="deck-foot__num">16</span>
-          </div>
-        </footer>
-      </section>
-
-      <!-- ═══ 17 — المراجعة ليست جلسة منفصلة ══════════════════════════════════════════════════════ -->
-      <section class="sag-slide sag-quote deck-slide" data-tone="rule" data-surface="dark">
-        <div class="sag-quote__inner">
-          <div class="sag-quote__mark"></div>
-          <p class="sag-quote__text">المراجعة ليست جلسة في آخر اليوم — بل إيقاع عملك كلّه.</p>
-          <p class="sag-quote__attr">تطلب من <span class="tok-lat">Claude</span> شي ← ينفّذه ← تجرّبه بنفسك
-            ← تقول له ايش تبي تعدّل ← تكمّل للي بعده. وحطّيناها في الجدول جلسة مستقلّة عشان يبان وقتها،
-            بس هي تصير طول اليوم.</p>
-        </div>
-        <footer class="sag-slide__foot">
-          <div class="deck-foot">
-            <div class="deck-foot__side"><span class="sag-badge"><span class="sag-badge__num">5</span> أسلوب وتوزيع
-                التدريب</span></div>
-            <span class="deck-foot__num">17</span>
-          </div>
-        </footer>
-      </section>
-
-      <!-- ═══ 18 — الأجندة ════════════════════════════════════════════════════════════════════════ -->
-      <section class="sag-slide deck-slide">
-        <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">6</span> الأجندة والأهداف التدريبية</span>
-          <h2 class="sag-slide__title">مهامّ كل يوم — وين تلقاها</h2>
-          <div class="sag-slide__rule"></div>
-        </div>
-        <div class="sag-slide__body">
-          <p class="pkg-when">كل يوم من العشرة يبدأ في هذه الشرائح بمجموعة شرائح خاصّة به: <strong>مهامّ ذلك
-              اليوم أولًا</strong>، وبعدها <strong>أهداف اليوم</strong>. تشوفها في أول اليوم، وترجع لها كل ما
-            احتجت تعرف وين وصلت.</p>
-          <div class="bento" data-cols="3">
-            <article class="card card--accent">
-              <div class="card__top"><span class="card__icon"><span class="i i-clock"></span></span>
-                <h3 class="card__title card__title--sm">مهامّ اليوم، بالترتيب</h3>
-              </div>
-              <p class="card__note card__note--sm">كل مهمّة في سطر، وبجنبها كم دقيقة تاخذ تقريبًا، وموزّعة على
-                جلسات اليوم الأربع. والسطر نفسه تنقر عليه فيتعلّم ✓ لما تخلّص.</p>
-            </article>
-            <article class="card card--accent">
-              <div class="card__top"><span class="card__icon"><span class="i i-circle-check"></span></span>
-                <h3 class="card__title card__title--sm">أهداف اليوم، في آخر المجموعة</h3>
-              </div>
-              <p class="card__note card__note--sm">ايش تطلع به من هذا اليوم بالذات — مثلًا في اليوم الأول:
-                مشروعك يشتغل على جهازك، ونسخة منه محفوظة على <span class="tok-lat">GitHub</span>.</p>
-            </article>
-            <article class="card card--state">
-              <div class="card__top"><span class="card__icon"><span class="i i-calendar"></span></span>
-                <h3 class="card__title card__title--sm">خريطة المهامّ الكاملة<button class="qmark" type="button"
-                    data-term="taskmap" aria-label="افتح خريطة المهامّ الكاملة">؟</button></h3>
-              </div>
-              <p class="card__note card__note--sm">الـ29 مهمّة كلها في جدول واحد: ايش دورك في كل وحدة، وفي أي
-                يوم تجي. انقر على <strong>؟</strong> وتفتح لك.</p>
-            </article>
-          </div>
-          <div class="bento" data-cols="2">
-            <div class="stat"><span class="stat__v">29</span><span class="stat__l">مهمّة على مدى المعسكر —
-                لك دور في كل وحدة منها</span></div>
-            <div class="stat"><span class="stat__v">10</span><span class="stat__l">منها ما تمشي إلا بعد ما تعطي
-                جوابك أنت</span></div>
-          </div>
-          <div class="card card--plain">
-            <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
-              اللي يهمّك كل يوم هو مهامّ ذلك اليوم. والخريطة الكاملة للرجوع فقط، لو حبّيت تشوف وين توصل بعدين.
-            </p>
-          </div>
-        </div>
-        <template class="terms" data-title="خريطة المهامّ الكاملة (29 مهمّة)" data-wide="true">
-          <div data-term="taskmap" data-title="كيف تقرأ الجدول">
-            <p class="tmap__lead">في كل مهمّة عليك شغل، وعلى <span class="tok-lat">Claude</span> شغل. اللي يتغيّر من
-              مهمّة لمهمّة هو <strong>نوع شغلك أنت</strong> فيها:</p>
-            <ul class="tmap__key">
-              <li><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span> المهمّة ما تمشي إلا بعد ما تعطي جوابك.
-                تحكي بكلامك العادي، و <span class="tok-lat">Claude</span> يصيغها ويرتّبها. <strong>(10
-                  مهامّ)</strong></li>
-              <li><span class="tmap__b tmap__b--review">تراجع وتصحّح</span> <span class="tok-lat">Claude</span>
-                يكتب لك ورقة أو مخطّطًا ويشرحه لك بلغة بسيطة، وأنت تقول ايش ناقص أو غلط. <strong>(7
-                  مهامّ)</strong></li>
-              <li><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span> <span class="tok-lat">Claude</span> يبني
-                شيئًا شغّالًا ويختبره بنفسه، وأنت تفتحه وتجرّبه وتطلب التعديل. <strong>(12 مهمّة)</strong></li>
-            </ul>
-            <table class="tmap">
-              <thead>
-                <tr>
-                  <th>المهمّة</th>
-                  <th>دورك فيها</th>
-                  <th>اليوم</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td><span class="tmap__n">8.1</span>المشكلة والهدف والغايات</td><td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td><td class="tmap__day">1 ثم 2</td></tr>
-                <tr><td><span class="tmap__n">8.2</span>نطاق مشروعك: ايش يدخل فيه وايش ما يدخل</td><td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td><td class="tmap__day">2</td></tr>
-                <tr><td><span class="tmap__n">9.1</span>مين يستخدم مشروعك، وايش يحتاج كل واحد</td><td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td><td class="tmap__day">2</td></tr>
-                <tr><td><span class="tmap__n">9.2</span>بقيّة أصحاب المصلحة حول المشروع</td><td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td><td class="tmap__day">2</td></tr>
-                <tr><td><span class="tmap__n">10.1</span>ملاحظاتك الحرّة عن وظائف مشروعك</td><td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td><td class="tmap__day">3</td></tr>
-                <tr><td><span class="tmap__n">10.2</span>صياغة المتطلبات الوظيفية <span class="tok-lat">FR</span></td><td><span class="tmap__b tmap__b--review">تراجع وتصحّح</span></td><td class="tmap__day">3 ثم 4</td></tr>
-                <tr><td><span class="tmap__n">10.3</span>المتطلبات غير الوظيفية <span class="tok-lat">NFR</span></td><td><span class="tmap__b tmap__b--review">تراجع وتصحّح</span></td><td class="tmap__day">4</td></tr>
-                <tr><td><span class="tmap__n">11.1</span>رحلة المستخدم مكتوبة بكلامك أنت</td><td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td><td class="tmap__day">4</td></tr>
-                <tr><td><span class="tmap__n">11.2</span>تحويل الرحلة إلى مخطّط مرسوم</td><td><span class="tmap__b tmap__b--review">تراجع وتصحّح</span></td><td class="tmap__day">4</td></tr>
-                <tr><td><span class="tmap__n">12.1</span>جرد الشاشات وتفضيلاتك في الشكل والألوان</td><td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td><td class="tmap__day">5</td></tr>
-                <tr><td><span class="tmap__n">12.2</span>تجهيز أوامر <span class="tok-lat">Claude Design</span></td><td><span class="tmap__b tmap__b--review">تراجع وتصحّح</span></td><td class="tmap__day">5</td></tr>
-                <tr><td><span class="tmap__n">12.3</span>بناء نظام التصميم: الألوان والخطوط والعناصر</td><td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td><td class="tmap__day">5</td></tr>
-                <tr><td><span class="tmap__n">12.4</span>توليد الشاشات وتكرارها حتى تعجبك</td><td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td><td class="tmap__day">5</td></tr>
-                <tr><td><span class="tmap__n">13.1</span>وصف البيانات اللي يحفظها مشروعك، بكلامك</td><td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td><td class="tmap__day">6</td></tr>
-                <tr><td><span class="tmap__n">13.2</span>اقتراح نموذج البيانات كاملًا</td><td><span class="tmap__b tmap__b--review">تراجع وتصحّح</span></td><td class="tmap__day">6</td></tr>
-                <tr><td><span class="tmap__n">13.3</span>رسم مخطّط البيانات <span class="tok-lat">ERD</span></td><td><span class="tmap__b tmap__b--review">تراجع وتصحّح</span></td><td class="tmap__day">6</td></tr>
-                <tr><td><span class="tmap__n">14.1</span>تهيئة المشروع وتشغيله أول مرّة على جهازك</td><td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td><td class="tmap__day">1</td></tr>
-                <tr><td><span class="tmap__n">14.2</span>بناء نموذج البيانات في قاعدة البيانات</td><td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td><td class="tmap__day">6</td></tr>
-                <tr><td><span class="tmap__n">14.3</span>الأدوار والصلاحيات: مين يشوف ايش</td><td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td><td class="tmap__day">7</td></tr>
-                <tr><td><span class="tmap__n">14.4</span>تصفّح المحتوى والصفحة الرئيسية</td><td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td><td class="tmap__day">7</td></tr>
-                <tr><td><span class="tmap__n">14.5</span>الوظيفة الأساسية اللي قام عليها المشروع</td><td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td><td class="tmap__day">8</td></tr>
-                <tr><td><span class="tmap__n">14.6</span>لوحة التحكّم والإدارة</td><td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td><td class="tmap__day">9</td></tr>
-                <tr><td><span class="tmap__n">14.7</span>الربط بخدمة خارجية، إن احتاجها مشروعك</td><td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td><td class="tmap__day">9</td></tr>
-                <tr><td><span class="tmap__n">15.1</span>تحديد الرحلات الكاملة اللي لازم تُختبر</td><td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td><td class="tmap__day">10</td></tr>
-                <tr><td><span class="tmap__n">15.2</span>اختبار الرحلات من أولها إلى آخرها</td><td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td><td class="tmap__day">10</td></tr>
-                <tr><td><span class="tmap__n">15.3</span>مراجعة الأمان: ما أحد يشوف بيانات مو له</td><td><span class="tmap__b tmap__b--review">تراجع وتصحّح</span></td><td class="tmap__day">10</td></tr>
-                <tr><td><span class="tmap__n">16.1</span>تهيئة النشر وفتح الحسابات اللازمة</td><td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td><td class="tmap__day">3</td></tr>
-                <tr><td><span class="tmap__n">16.2</span>أول نشر على رابط حيّ يفتح لأي أحد</td><td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td><td class="tmap__day">3</td></tr>
-                <tr><td><span class="tmap__n">16.3</span>إعادة النشر النهائية في آخر يوم</td><td><span class="tmap__b tmap__b--try">تجرّب وتعدّل</span></td><td class="tmap__day">10</td></tr>
-              </tbody>
-            </table>
-            <p class="tmap__foot">ومهمّتان بس تمتدّان على يومين — <span class="tok-lat">8.1</span> و<span
-                class="tok-lat">10.2</span> — تبدأ كل وحدة في يوم وتكمل في اللي بعده. وما عداهما تخلص في يومها.
-            </p>
-          </div>
-        </template>
-        <footer class="sag-slide__foot">
-          <div class="deck-foot">
-            <div class="deck-foot__side">
-              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
-                  alt="ساج التقنية"></div>
-              <span class="deck-foot__num">اليوم 1</span>
-            </div>
-            <span class="deck-foot__num">18</span>
-          </div>
-        </footer>
-      </section>
-
-
-      <!-- ═══ 19 — ما هو Claude و Claude Code؟ (7.1) ═════════════════════════════════════════════════ -->
+      <!-- ═══ 19 — ما هو Claude و Claude Code؟ (7.1) ═══════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">7.1</span> ما هو Claude و Claude Code؟</span>
@@ -1271,13 +1424,13 @@
             </article>
             <article class="card card--accent bento__span-2">
               <div class="card__top"><span class="card__icon"><span class="i i-book-open"></span></span>
-              <h3 class="card__title card__title--sm">مثال يقرّب الفكرة</h3>
-            </div>
-            <p class="card__note">تخيّل طبّاخًا ماهرًا تكلّمه بالتلفون: يعطيك الوصفة خطوة بخطوة، لكن أنت اللي
-              تفتح الثلاجة وتطبخ وتذوّق. ونفس الطبّاخ لو دخل مطبخك، يفتح الثلاجة بنفسه ويطبخ ويذوّق ويعدّل الملح.
-              <strong><span class="tok-lat">Claude</span> هو الطبّاخ</strong>، و <strong><span
-                  class="tok-lat">Claude Code</span> هو دخوله المطبخ</strong> — والمطبخ هنا مجلّد مشروعك.
-            </p>
+                <h3 class="card__title card__title--sm">مثال يقرّب الفكرة</h3>
+              </div>
+              <p class="card__note">تخيّل طبّاخًا ماهرًا تكلّمه بالتلفون: يعطيك الوصفة خطوة بخطوة، لكن أنت اللي
+                تفتح الثلاجة وتطبخ وتذوّق. ونفس الطبّاخ لو دخل مطبخك، يفتح الثلاجة بنفسه ويطبخ ويذوّق ويعدّل الملح.
+                <strong><span class="tok-lat">Claude</span> هو الطبّاخ</strong>، و <strong><span class="tok-lat">Claude
+                    Code</span> هو دخوله المطبخ</strong> — والمطبخ هنا مجلّد مشروعك.
+              </p>
             </article>
           </div>
         </div>
@@ -1293,7 +1446,7 @@
         </footer>
       </section>
 
-      <!-- ═══ 20 — الجلسة وذاكرة Claude (7.2) ═════════════════════════════════════════════════════ -->
+      <!-- ═══ 20 — الجلسة وذاكرة Claude (7.2) ══════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">7.2</span> الجلسة وذاكرة Claude</span>
@@ -1324,7 +1477,8 @@
                     data-term="history" aria-label="شرح: من أين يأتي هذا الملف">؟</button></h3>
               </div>
               <p class="card__note card__note--sm">كل رسالة أرسلتها وكل ردّ وصلك، مكتوبة بالترتيب
-                في ملف <span class="tok-code">conversation_history.md</span>. يقرؤه <span class="tok-lat">Claude</span> في
+                في ملف <span class="tok-code">conversation_history.md</span>. يقرؤه <span class="tok-lat">Claude</span>
+                في
                 أول كل محادثة جديدة، فيرجع يعرف وين وصلت.</p>
             </article>
           </div>
@@ -1360,52 +1514,98 @@
         </footer>
       </section>
 
-      <!-- ═══ 21 — الرصيد والـtokens 1/2 (7.3) ════════════════════════════════════════════════════ -->
+      <!-- ═══ 21 — الرصيد والـtokens 1/2 (7.3) ═════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">7.3</span> الرصيد والـtokens</span>
-          <h2 class="sag-slide__title">ما الذي يستهلك رصيدك في كل رسالة؟ <span class="deck-part">1 / 2</span></h2>
+          <h2 class="sag-slide__title">ايش اللي يستهلك رصيدك في كل رسالة؟ <span class="sag-slide__title--note">— يُحسب
+              الرصيد باستخدام الـ<span class="tok-lat">token</span></span> <span class="deck-part">1 / 2</span></h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
-          <p class="sag-slide__lead">النموذج <strong>بلا ذاكرة بين الرسائل</strong> — فيُعاد إرسال كل سياق الجلسة إليه
-            في كل مرّة.</p>
-          <div class="bento" data-cols="3">
+          <article class="card card--accent">
+            <div class="card__top">
+              <h3 class="card__title card__title--sm">قبل أي شي: ايش هو الـ<span class="tok-lat">token</span>؟</h3>
+            </div>
+            <p class="card__note">هو وحدة قياس النصّ اللي يقرأ ويكتب فيها النموذج — قطعة صغيرة من الكلمة. كل شي يدخل
+              لـ<span class="tok-lat">Claude</span> وكل شي يطلع منه ينحسب بالـ<span class="tok-lat">tokens</span>، وهذا
+              بالضبط اللي
+              يستهلك رصيدك. <strong>وعشان تتخيّل الحجم:</strong> الكلمة الإنجليزية القصيرة غالبًا <span
+                class="tok-lat">token</span> واحد، والكلمة العربية من اثنين لأربعة، وملف كود من 300 سطر يقارب 4 آلاف
+              token.
+            </p>
+            <p class="card__note card__note--sm">والنموذج <strong>ما عنده ذاكرة بين الرسائل</strong>، فـ<strong><span
+                  class="tok-lat">Claude Code</span> يجمع كل هذا ويرسله عنك في كل مرّة</strong> — شغل خلفي ما تتدخّل
+              فيه. وأمرك واحد من ستّة:</p>
+          </article>
+          <div class="bento" data-cols="4">
             <article class="card">
               <div class="card__top"><span class="card__num">1</span>
                 <h3 class="card__title card__title--sm">رسالتك (الأمر)</h3>
               </div>
+              <p class="card__note card__note--sm">أمر زي «اكتب لي صفحة دخول» ما يتعدّى 15 <span
+                  class="tok-lat">token</span> — أرخص
+                جزء فيها.</p>
             </article>
             <article class="card card--accent">
               <div class="card__top"><span class="card__num">2</span>
                 <h3 class="card__title card__title--sm">سجلّ المحادثة كاملًا</h3>
               </div>
-              <p class="card__note card__note--sm">يكبر ويثقل مع طول الجلسة.</p>
+              <p class="card__note card__note--sm">بعد ثلاثين رسالة يصير أثقل من أمرك بمرّات، وينرسل كامل كل مرّة.</p>
             </article>
             <article class="card">
               <div class="card__top"><span class="card__num">3</span>
                 <h3 class="card__title card__title--sm">محتوى الملفات المفتوحة</h3>
               </div>
+              <p class="card__note card__note--sm">أحيانًا يقرأ الملف كامل، وأحيانًا الجزء اللي يحتاجه بس.</p>
             </article>
             <article class="card">
               <div class="card__top"><span class="card__num">4</span>
                 <h3 class="card__title card__title--sm">ملفات التعليمات المحمّلة</h3>
               </div>
-              <p class="card__note card__note--sm">مثل <span class="tok-code">CLAUDE.md</span> والقواعد (<span
-                  class="tok-lat">rules</span>).</p>
+              <p class="card__note card__note--sm"><span class="tok-code">CLAUDE.md</span> والقواعد (<span
+                  class="tok-lat">rules</span>)، ووصف كل مهارة (<span class="tok-lat">skill</span>) بسطر<button
+                  class="qmark" type="button" data-term="claudemd" aria-label="شرح: ملفات التعليمات">؟</button>.</p>
             </article>
-            <article class="card card--accent">
+            <article class="card card--accent bento__span-3">
               <div class="card__top"><span class="card__num">5</span>
-                <h3 class="card__title card__title--sm">تعريفات أدوات MCP</h3>
+                <h3 class="card__title card__title--sm">تعريفات أدوات <span class="tok-lat">MCP</span></h3>
               </div>
-              <p class="card__note card__note--sm">ولماذا؟ القسم 7.6.</p>
+              <p class="card__note card__note--sm">لمّا تربط <span class="tok-lat">Claude</span> ببريدك في <span
+                  class="tok-lat">Gmail</span>، ما يعرف إنه يقدر يفتحه إلا إذا وصله وصف كل أداة — مع كل رسالة. وهذا
+                <strong>نصّ حقيقي</strong> من أدوات <span class="tok-lat">Gmail</span>، مكتوب بالإنجليزي لأنه موجّه
+                للنموذج لا لك — ويتكرّر لكل أداة مربوطة، في كل أمر ترسله (<span class="reflink" data-ref="7.6"
+                  tabindex="0">القسم 7.6</span>):
+              </p>
+              <pre class="snip" dir="ltr">search_emails
+  "Searches for emails using Gmail search syntax"</pre>
             </article>
             <article class="card">
               <div class="card__top"><span class="card__num">6</span>
-                <h3 class="card__title card__title--sm">ردّ Claude نفسه</h3>
+                <h3 class="card__title card__title--sm">ردّ <span class="tok-lat">Claude</span> نفسه</h3>
               </div>
+              <p class="card__note card__note--sm">اللي يطلع منه ينحسب زيّ اللي يدخل له، وصفحة شرح كاملة تقارب 800 <span
+                  class="tok-lat">token</span> في المتوسّط.</p>
             </article>
           </div>
+          <template class="terms" data-title="مصطلحات هذه الشريحة">
+            <div data-term="claudemd" data-title="CLAUDE.md — ذاكرة المشروع">ملف يقرؤه <span
+                class="tok-lat">Claude</span> قبل ما يبدأ، فيه سياق مشروعك وقراراته — عشان ما تعيد شرحها في كل جلسة
+              جديدة.
+              <br><strong>نشرحه بالتفصيل في اليوم 5.</strong>
+            </div>
+            <div data-term="rules" data-title="Rules — القواعد">قواعد ثابتة يقرأها <span class="tok-lat">Claude</span>
+              في كل رسالة، تحدّد كيف يشتغل معك دائمًا. مثال: «اكتب الواجهة بالعربي دائمًا» — يلتزم بها بدون ما
+              تكرّرها.
+              <br>ولأنّها تُحمّل مع كل رسالة، تستهلك من رصيدك دائمًا — فخلّها قصيرة.
+              <br><strong>نشرحها بالتفصيل في اليوم 5.</strong>
+            </div>
+            <div data-term="skills" data-title="Skills — المهارات">أدلّة تنفيذ جاهزة لمهامّ تتكرّر. والفرق عن
+              القواعد: <strong>ما يُرسل من المهارة إلا وصفها بسطر واحد</strong>، وما يُفتح الدليل كامل إلا لمّا
+              يلقى طلبك يحتاجه. فعشر مهارات تكلّفك عشرة أسطر في كل رسالة، لا عشرة أدلّة كاملة.
+              <br><strong>نشرحها بالتفصيل في اليوم 5.</strong>
+            </div>
+          </template>
         </div>
         <footer class="sag-slide__foot">
           <div class="deck-foot">
@@ -1419,43 +1619,69 @@
         </footer>
       </section>
 
-      <!-- ═══ 22 — الرصيد والـtokens 2/2 — وسائط (7.3) ════════════════════════════════════════════ -->
+      <!-- ═══ 22 — الرصيد والـtokens 2/2 — وسائط (7.3) ═════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide">
         <div class="sag-slide__head sag-media__head">
           <h2 class="sag-slide__title">تابع استهلاكك بنفسك <span class="deck-part">2 / 2</span></h2>
           <span class="sag-badge"><span class="sag-badge__num">7.3</span> الرصيد والـtokens</span>
         </div>
         <div class="sag-slide__body">
-          <div class="sag-media__inner">
-            <div class="sag-media-frame" data-ratio="screen">
-              <div class="sag-media-frame__box">
-                <div class="gifbox" data-paused="false">
-                  <img src="media/06-desktop-usage.gif" alt="فتح Settings ثم Usage في تطبيق Claude Desktop">
-                  <canvas></canvas>
-                  <button class="gifbox__btn" type="button"><span class="i i-clock"></span><span
-                      class="gifbox__label">إيقاف مؤقّت</span></button>
-                </div>
+          <div class="stepvid">
+            <div class="stepvid__video">
+              <video class="stepvid__player" controls preload="metadata" src="media/06-desktop-usage.mp4"></video>
+            </div>
+            <div class="stepvid__steps">
+              <ol class="stepvid__list">
+                <li class="stepvid__step" data-t="0">
+                  <button class="stepvid__time" type="button">0:00</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">افتح القائمة الجانبية</h4>
+                    <p class="stepvid__p">من زر القائمة (☰) أعلى يسار محادثتك في <span class="tok-lat">Claude
+                        Desktop</span>.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="3">
+                  <button class="stepvid__time" type="button">0:03</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">افتح Settings من اسم حسابك</h4>
+                    <p class="stepvid__p">اضغط على اسمك أسفل القائمة، تظهر قائمة صغيرة فيها <span
+                        class="tok-lat">Settings</span> — اخترها.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="6">
+                  <button class="stepvid__time" type="button">0:06</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">اختر Usage من القائمة اليسرى</h4>
+                    <p class="stepvid__p">تفتح نافذة الإعدادات على تبويب <span class="tok-lat">General</span> —
+                      اضغط <span class="tok-lat">Usage</span> من القائمة الجانبية.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="8">
+                  <button class="stepvid__time" type="button">0:08</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">اقرأ أشرطة استهلاكك</h4>
+                    <p class="stepvid__p">شريطان: <strong>الجلسة الحالية</strong> (تتجدّد خلال ساعات قليلة)
+                      و<strong>الحدّ الأسبوعي</strong> — وتحت كل واحد وقت تجدّده بالضبط.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+          <div class="bento" data-cols="2">
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
+                <h3 class="card__title card__title--sm">أو من داخل Claude Code</h3>
               </div>
-              <p class="sag-media-frame__caption">من المحادثة ← <span class="tok-lat">Settings</span> ← <span
-                  class="tok-lat">Usage</span>: نافذة الـ‏5 ساعات والحدّ الأسبوعي. انقر على الصورة لإيقافها.</p>
-            </div>
-            <div class="sag-media__side">
-              <p class="sag-media__instruction">افتح <span class="tok-lat">Settings ← Usage</span> لترى ما تبقّى لك.</p>
-              <article class="card">
-                <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
-                  <h3 class="card__title card__title--sm">أو من داخل Claude Code</h3>
-                </div>
-                <p class="card__note card__note--sm">اكتب <span class="tok-code">/usage</span> فترى أشرطة تقدّم
-                  لاستهلاكك ومواعيد التجديد.</p>
-              </article>
-              <article class="card card--state">
-                <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
-                  <h3 class="card__title card__title--sm">نصيحة</h3>
-                </div>
-                <p class="card__note card__note--sm">أبقِ الجلسة مركّزة، وابدأ جلسة جديدة للمهامّ المنفصلة، ولا تربط MCP
-                  لا تحتاجها.</p>
-              </article>
-            </div>
+              <p class="card__note card__note--sm">اكتب <span class="tok-code">/usage</span> فترى أشرطة تقدّم
+                لاستهلاكك ومواعيد التجديد.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
+                <h3 class="card__title card__title--sm">نصيحة</h3>
+              </div>
+              <p class="card__note card__note--sm">أبقِ الجلسة مركّزة، وابدأ جلسة جديدة للمهامّ المنفصلة، ولا تربط
+                أدوات MCP لا تحتاجها.</p>
+            </article>
           </div>
         </div>
         <footer class="sag-slide__foot">
@@ -1470,39 +1696,91 @@
         </footer>
       </section>
 
-      <!-- ═══ 23 — حدود خطة Pro (7.4) ═════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 23 — حدود خطة Pro (7.4) ══════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">7.4</span> حدود خطة Pro</span>
-          <h2 class="sag-slide__title">حدّان يتجدّدان — لا رصيد لا نهائي</h2>
+          <h2 class="sag-slide__title">رصيدك يتجدّد لحاله، بس فيه حدّين لازم تعرفهم</h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
           <div class="bento" data-cols="2">
-            <div class="stat"><span class="stat__v">5</span><span class="stat__l">نافذة متحرّكة كل 5 ساعات</span></div>
-            <div class="stat"><span class="stat__v">7</span><span class="stat__l">حدّ أسبوعي يتجدّد في وقت ثابت</span>
-            </div>
+            <div class="stat"><span class="stat__v">5</span><span class="stat__l">نافذة تتجدّد كل 5 ساعات، تبدأ من أوّل
+                رسالة ترسلها</span></div>
+            <div class="stat"><span class="stat__v">7</span><span class="stat__l">حدّ أسبوعي فوقها، يتجدّد في يوم وساعة
+                ثابتين لحسابك</span></div>
           </div>
           <div class="bento" data-cols="2">
             <article class="card card--accent">
               <div class="card__top"><span class="card__icon"><span class="i i-info"></span></span>
-                <h3 class="card__title card__title--sm">كم بالضبط؟ لنكن صريحين</h3>
+                <h3 class="card__title card__title--sm">كم تقريبًا في نافذة الـ‏5 ساعات؟</h3>
               </div>
-              <p class="card__note card__note--sm"><strong>لا يوجد رقم ثابت منشور</strong> — الحدّ يعتمد على النموذج
-                وعلى حجم كل رسالة. رسالة تقرأ ملفات كثيرة تستهلك أضعاف سؤال قصير.</p>
-              <p class="card__note card__note--sm">كدليل تقريبي فقط: نحو <strong>45 رسالة قصيرة</strong> في نافذة الـ5
-                ساعات.</p>
+              <p class="card__note card__note--sm"><strong>قرابة 90 ألف <span class="tok-lat">token</span></strong>،
+                وهذا
+                <strong>تقدير غير رسمي</strong><button class="qmark" type="button" data-term="raqam"
+                  aria-label="شرح: من وين جاء الرقم">؟</button>؛ <span class="tok-lat">Anthropic</span> ما تنشر رقمًا،
+                لأن الحدّ
+                يعتمد على النموذج وعلى حجم كل رسالة.
+              </p>
+              <p class="card__note card__note--sm">وعشان تتخيّله: ملف كود من 300 سطر يقارب 4 آلاف <span
+                  class="tok-lat">token</span>، فالنافذة تكفي لعشرات الملفات مع ردود <span class="tok-lat">Claude</span>
+                عليها. بس رسالة وحدة تقرأ نصّ مشروعك تاكل منها أضعاف سؤال قصير.</p>
             </article>
             <article class="card card--state">
               <div class="card__top"><span class="card__icon"><span class="i i-circle-check"></span></span>
                 <h3 class="card__title card__title--sm">كيف تعرف رصيدك الفعلي</h3>
               </div>
-              <p class="card__note card__note--sm"><strong>من الموقع أو التطبيق:</strong> <span class="tok-lat">Settings
-                  ← Usage</span></p>
-              <p class="card__note card__note--sm"><strong>من Claude Code:</strong> <span class="tok-code">/usage</span>
-                أو <span class="tok-code">/status</span></p>
+              <p class="card__note card__note--sm"><strong>من الموقع أو التطبيق:</strong> افتح <span
+                  class="tok-lat">Settings</span> ثم اختر <span class="tok-lat">Usage</span> من القائمة.</p>
+              <p class="card__note card__note--sm"><strong>من داخل <span class="tok-lat">Claude Code</span>:</strong>
+                اكتب
+                <span class="tok-code">/usage</span> أو <span class="tok-code">/status</span> داخل سطر الأوامر.
+              </p>
+              <p class="card__note card__note--sm">وفيه خطط ثانية غير <span class="tok-lat">Pro</span>، وفيه طريقة
+                دفع ثانية تحاسبك على قد ما تستهلك<button class="qmark" type="button" data-term="khutat"
+                  aria-label="شرح: الخطط والتكلفة">؟</button>.</p>
             </article>
           </div>
+          <template class="terms" data-title="الأرقام والخطط والتكلفة" data-wide="true">
+            <div data-term="raqam" data-title="من وين جاء رقم الـ‏90 ألف؟"><span class="tok-lat">Anthropic</span> ما
+              تنشر عدد <span class="tok-lat">tokens</span> لأي خطة، تنشر نِسَب بس: خطة <span class="tok-lat">Pro</span>
+              تعطيك 5 أضعاف المجّانية في الجلسة الواحدة، و <span class="tok-lat">Max</span> تعطيك 5 أو 20 ضعف <span
+                class="tok-lat">Pro</span>.
+              <br>والرقم اللي نستخدمه تقدير جاي من تجارب المستخدمين: كان يدور حول 44 ألف <span
+                class="tok-lat">token</span>، وفي 6 مايو 2026 ضاعفت <span class="tok-lat">Anthropic</span> حدود الـ‏5
+              ساعات
+              لـ<span class="tok-lat">Claude Code</span> في خطط <span class="tok-lat">Pro</span> و <span
+                class="tok-lat">Max</span> و <span class="tok-lat">Team</span>، وألغت تخفيض ساعات الذروة — فصار التقدير
+              قرابة 90 ألف.
+              <br>خذه كمؤشّر لا كرقم مضمون، والمرجع الأكيد يبقى <span class="tok-lat">Settings</span> ثم <span
+                class="tok-lat">Usage</span> من التطبيق.
+            </div>
+            <div data-term="khutat" data-title="الخطط الرسمية وأسعارها">
+              <strong><span class="tok-lat">Free</span></strong> — مجّانية، وأقل استخدام، وما فيها <span
+                class="tok-lat">Claude Code</span>.
+              <br><strong><span class="tok-lat">Pro</span></strong> — 20$ شهريًا (أو 17$ لو دفعت سنويًا)، 5 أضعاف
+              المجّانية في الجلسة، ومعها <span class="tok-lat">Claude Code</span>. وهذي خطّتنا في الدورة.
+              <br><strong><span class="tok-lat">Max 5x</span></strong> — 100$ شهريًا، 5 أضعاف <span
+                class="tok-lat">Pro</span>.
+              <br><strong><span class="tok-lat">Max 20x</span></strong> — 200$ شهريًا، 20 ضعف <span
+                class="tok-lat">Pro</span>.
+              <br><strong><span class="tok-lat">Team</span></strong> — من 25$ للمقعد شهريًا (20$ لو سنويًا)، وفيه مقعد
+              مميّز بـ125$ يعطي 5 أضعاف المقعد العادي.
+              <br><strong><span class="tok-lat">Enterprise</span></strong> — حسب الاتفاق مع الشركة.
+              <br>وكل الخطط المدفوعة عندها نفس الشي: نافذة 5 ساعات وحدّ أسبوعي. واستهلاكك مشترك
+              بين الموقع والتطبيق و <span class="tok-lat">Claude Code</span> — كلها تسحب من رصيد واحد.
+            </div>
+            <div data-term="daf3" data-title="الدفع بالاستخدام (pay as you go)">غير الاشتراك الشهري، فيه
+              طريقة ثانية: تفتح حساب مطوّر وتدفع على قد ما تستهلك فعلًا، بلا نافذة 5 ساعات ولا حدّ
+              أسبوعي. والسعر يتحسب لكل مليون <span class="tok-lat">token</span>، ويختلف بين نموذج وآخر،
+              والمخرجات أغلى من المدخلات بخمسة أضعاف:
+              <pre class="snip" dir="ltr">Opus 5      $5  / 1M in    $25 / 1M out
+Sonnet 5    $2  / 1M in    $10 / 1M out
+Haiku 4.5   $1  / 1M in    $5  / 1M out</pre>
+              واللي يهمّك من هذا حتى وأنت على <span class="tok-lat">Pro</span>: اختيار النموذج يغيّر سرعة
+              استهلاك رصيدك — النموذج الأقوى ياكل أكثر، والردّ الطويل أغلى من السؤال الطويل.
+            </div>
+          </template>
         </div>
         <footer class="sag-slide__foot">
           <div class="deck-foot">
@@ -1516,33 +1794,47 @@
         </footer>
       </section>
 
-      <!-- ═══ 24 — ما التكاملات MCP؟ 1/2 (7.5) ════════════════════════════════════════════════════ -->
+      <!-- ═══ 24 — قبل التعريف: مثال ربط البريد (7.5) ══════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">7.5</span> ما التكاملات (MCP)؟</span>
-          <h2 class="sag-slide__title">معيار موحّد يصل النموذج بالأدوات <span class="deck-part">1 / 2</span></h2>
+          <span class="sag-badge"><span class="sag-badge__num">7.5</span> ربط Claude بأدواتك</span>
+          <h2 class="sag-slide__title">مثال قبل أي تعريف: وصلك إيميل من عميلك وتبي Claude يلخّصه <span
+              class="deck-part">1 / 2</span></h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
-          <p class="sag-slide__lead"><span class="tok-lat">MCP</span> = <span class="tok-lat">Model Context
-              Protocol</span> — بروتوكول مفتوح أطلقته <span class="tok-lat">Anthropic</span> ليتّصل الذكاء الاصطناعي
-            بالأدوات والبيانات بطريقة موحّدة.</p>
+          <p class="sag-slide__lead">نفس الطلب، ومرّتين مختلفتين تمامًا. شوف الفرق بين العمودين،
+            وبعدين نسمّي السبب.</p>
           <div class="bento" data-cols="2">
             <article class="card card--accent">
-              <div class="card__top"><span class="card__icon"><span class="i i-database"></span></span>
-                <h3 class="card__title">خادم MCP <span class="tok-lat">(server)</span></h3>
+              <div class="card__top"><span class="card__icon"><span class="i i-alert-triangle"></span></span>
+                <h3 class="card__title card__title--sm">قبل ما تربط بريدك</h3>
               </div>
-              <p class="card__note">برنامج يمثّل خدمة خارجية ويقدّم للنموذج ثلاث قدرات:</p>
-              <p class="card__note card__note--sm"><strong>أدوات</strong> إجراءات ينفّذها · <strong>موارد</strong>
-                بيانات يقرؤها · <strong>قوالب</strong> جاهزة</p>
+              <ol class="flow">
+                <li>تفتح <span class="tok-lat">Gmail</span> بنفسك.</li>
+                <li>تدوّر على رسالة العميل بين باقي الرسائل.</li>
+                <li>تنسخ نصّها.</li>
+                <li>تلصقها في المحادثة وتقول «لخّص لي هذا».</li>
+                <li>وصلتك رسالة ثانية؟ تعيد الخطوات كلّها من أوّلها.</li>
+              </ol>
             </article>
             <article class="card card--state">
-              <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
-                <h3 class="card__title">العميل <span class="tok-lat">(client)</span></h3>
+              <div class="card__top"><span class="card__icon"><span class="i i-circle-check"></span></span>
+                <h3 class="card__title card__title--sm">بعد ما تربطه</h3>
               </div>
-              <p class="card__note">التطبيق الذي يستعمل الذكاء الاصطناعي — مثل <span class="tok-lat">Claude Code</span>
-                — ويتّصل بالخادم ليستفيد من قدراته.</p>
+              <ol class="flow">
+                <li>تكتب سطر واحد: «شوف آخر إيميل وصلني من العميل ولخّص لي طلبه».</li>
+                <li><span class="tok-lat">Claude</span> يفتح بريدك بنفسه.</li>
+                <li>يدوّر على الرسالة ويقرأها.</li>
+                <li>يعطيك الخلاصة، وأنت ما فتحت البريد أصلًا.</li>
+              </ol>
             </article>
+          </div>
+          <div class="sag-quote__inner" style="flex:0 0 auto;gap:var(--sp-2)">
+            <div class="sag-quote__mark" style="background:var(--accent-state)"></div>
+            <p class="sag-quote__text" style="font-size:38px">الفرق مو في ذكاء Claude، الفرق إنك أعطيته طريق
+              يوصل فيه لبريدك.</p>
+            <p class="sag-quote__attr">والطريقة اللي صار فيها هذا الربط اسمها MCP — وهذا موضوع الشريحة الجاية.</p>
           </div>
         </div>
         <footer class="sag-slide__foot">
@@ -1557,56 +1849,72 @@
         </footer>
       </section>
 
-      <!-- ═══ 25 — ما التكاملات MCP؟ 2/2 (7.5) ════════════════════════════════════════════════════ -->
+      <!-- ═══ 25 — ما التكاملات MCP؟ (7.5) ═════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">7.5</span> ما التكاملات (MCP)؟</span>
-          <h2 class="sag-slide__title">لماذا اختُرع أصلًا؟ <span class="deck-part">2 / 2</span></h2>
+          <h2 class="sag-slide__title">طيب ايش هو الـMCP بالضبط؟ <span class="deck-part">2 / 2</span></h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
+          <p class="sag-slide__lead sag-slide__lead--wide"><span class="tok-lat">MCP</span> اختصار <span
+              class="tok-lat">Model Context
+              Protocol</span>: طريقة موحّدة تعرّف <span class="tok-lat">Claude</span> على أداة خارجية وتخلّيه
+            يشتغل عليها بنفسه<button class="qmark" type="button" data-term="tarafan"
+              aria-label="شرح: الخادم والعميل">؟</button>. وفي مثالنا: هو اللي خلّى <span class="tok-lat">Claude</span>
+            يقدر يفتح <span class="tok-lat">Gmail</span> بنفسه.</p>
           <div class="bento" data-cols="2">
             <article class="card card--accent">
-              <div class="card__top"><span class="card__icon"><span class="i i-alert-triangle"></span></span>
-                <h3 class="card__title card__title--sm">قبل MCP — الطريقة الصعبة</h3>
+              <div class="card__top"><span class="card__icon"><span class="i i-wrench"></span></span>
+                <h3 class="card__title card__title--sm">الأداة (<span class="tok-lat">tool</span>) = إجراء واحد يعرف
+                  ينفّذه</h3>
               </div>
-              <p class="card__note">لكل أداة <strong>تكامل مخصّص يُبنى يدويًّا</strong>. والمشكلة: <strong>كل نموذج × كل
-                  أداة = تكامل منفصل</strong> يصعب بناؤه وصيانته.</p>
+              <p class="card__note">كل خدمة تربطها تجي معها قائمة إجراءات، لكل واحد اسم ووصف.
+                وأدوات <span class="tok-lat">Gmail</span> اللي استخدمناها في المثال:</p>
+              <pre class="snip" dir="ltr">search_emails
+   "Searches for emails using Gmail search syntax"
+read_email
+   "Retrieves the content of a specific email"
+send_email
+   "Sends a new email"</pre>
+              <p class="card__note">«شوف آخر إيميل من العميل» ترجمها <span class="tok-lat">Claude</span>
+                إلى <span class="tok-code">search_emails</span> ثم <span class="tok-code">read_email</span>، وكلّها بأمر
+                واحد منك.</p>
             </article>
             <article class="card card--state">
               <div class="card__top"><span class="card__icon"><span class="i i-layers"></span></span>
-                <h3 class="card__title card__title--sm">بعد MCP</h3>
+                <h3 class="card__title card__title--sm">وليش معيار موحّد؟</h3>
               </div>
-              <p class="card__note">تبني <strong>خادمًا واحدًا</strong> للأداة، فيستطيع <strong>أي نموذج متوافق</strong>
-                استخدامه مباشرةً. ولمّا لمس السوق الفائدة، دعمه كبار المزوّدين فصار معيارًا واسعًا.</p>
+              <p class="card__note">قبل <span class="tok-lat">MCP</span> كان لازم يُبنى ربط خاصّ لكل
+                أداة مع كل نموذج على حِدة. والحين الخدمة تبني ربطًا واحدًا، وأي نموذج يفهم <span
+                  class="tok-lat">MCP</span> يستخدمه<button class="qmark" type="button" data-term="lish"
+                  aria-label="شرح: ليش اختُرع MCP">؟</button>.</p>
+              <p class="card__note"><strong>واللي نربطه في الدورة:</strong> <span class="tok-lat">context7</span>
+                للتوثيق المحدّث، و <span class="tok-lat">chrome-devtools</span>
+                للمتصفّح،
+                و <span class="tok-lat">Vercel MCP</span> للنشر، و <span class="tok-lat">GitHub</span> للمستودعات.</p>
+              <p class="card__note">وكل واحد تربطه يثقّل كل رسالة ترسلها، فاربط اللي تحتاجه فقط.
+                وليش؟ <span class="reflink" data-ref="7.6" tabindex="0">القسم 7.6</span>.</p>
             </article>
           </div>
-          <div class="bento" data-cols="4">
-            <article class="card">
-              <div class="card__top"><span class="card__icon"><span class="i i-book-open"></span></span>
-                <h3 class="card__title card__title--sm">context7</h3>
-              </div>
-              <p class="card__note card__note--sm">توثيق محدّث</p>
-            </article>
-            <article class="card">
-              <div class="card__top"><span class="card__icon"><span class="i i-layers"></span></span>
-                <h3 class="card__title card__title--sm">chrome-devtools</h3>
-              </div>
-              <p class="card__note card__note--sm">المتصفّح</p>
-            </article>
-            <article class="card">
-              <div class="card__top"><span class="card__icon"><span class="i i-cloud-upload"></span></span>
-                <h3 class="card__title card__title--sm">Vercel MCP</h3>
-              </div>
-              <p class="card__note card__note--sm">النشر</p>
-            </article>
-            <article class="card">
-              <div class="card__top"><span class="card__icon"><span class="i i-git-branch"></span></span>
-                <h3 class="card__title card__title--sm">GitHub</h3>
-              </div>
-              <p class="card__note card__note--sm">المستودعات</p>
-            </article>
-          </div>
+          <template class="terms" data-title="مصطلحات هذه الشريحة">
+            <div data-term="tarafan" data-title="ممّ يتكوّن الربط: خادم وعميل">أي ربط <span class="tok-lat">MCP</span>
+              له طرفان يتكلّمون نفس اللغة:
+              <br><strong>الخادم (<span class="tok-lat">server</span>):</strong> برنامج تقدّمه الخدمة نفسها — خادم <span
+                class="tok-lat">Gmail</span> هو اللي يعرف يفتح بريدك.
+              <br><strong>العميل (<span class="tok-lat">client</span>):</strong> التطبيق اللي تستخدمه أنت، مثل <span
+                class="tok-lat">Claude Code</span>، يتّصل بالخادم ويستفيد من قدراته.
+              <br>والخادم يقدر يقدّم ثلاثة أنواع: <strong>أدوات</strong> (إجراءات ينفّذها)،
+              و<strong>موارد</strong> (بيانات يقرؤها)، و<strong>قوالب</strong> جاهزة. واللي يهمّك في الدورة هي
+              الأدوات.
+            </div>
+            <div data-term="lish" data-title="ليش اختُرع MCP أصلًا؟">قبله، ربط أي نموذج بأي أداة كان
+              شغلًا مخصّصًا يُبنى يدويًا، فكل نموذج × كل أداة = ربط منفصل يصعب بناؤه وصيانته.
+              <br>فجاء <span class="tok-lat">MCP</span> ليوحّد الطريقة: خادم واحد للأداة، وأي نموذج متوافق
+              يستخدمه مباشرةً. أطلقته <span class="tok-lat">Anthropic</span> كمعيار مفتوح، ولمّا لمس السوق
+              الفائدة دعمه كبار المزوّدين فصار معيارًا واسعًا.
+            </div>
+          </template>
         </div>
         <footer class="sag-slide__foot">
           <div class="deck-foot">
@@ -1620,37 +1928,57 @@
         </footer>
       </section>
 
-      <!-- ═══ 26 — لماذا للـMCP تكلفة في كل رسالة؟ (7.6) ══════════════════════════════════════════ -->
+      <!-- ═══ 26 — لماذا للـMCP تكلفة في كل رسالة؟ (7.6) ═══════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">7.6</span> لماذا للـMCP تكلفة في كل رسالة؟</span>
-          <h2 class="sag-slide__title">كل أداة تربطها تُرفَق بكل رسالة ترسلها</h2>
+          <span class="sag-badge"><span class="sag-badge__num">7.6</span> ليش للـMCP تكلفة؟</span>
+          <h2 class="sag-slide__title">كل أداة تربطها تُرسَل مع كل رسالة، حتى لو ما استخدمتها</h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
           <div class="bento" data-cols="3">
             <article class="card">
               <div class="card__top"><span class="card__num">1</span>
-                <h3 class="card__title card__title--sm">النموذج بلا ذاكرة</h3>
+                <h3 class="card__title card__title--sm">النموذج ما يحفظ أدواتك</h3>
               </div>
-              <p class="card__note card__note--sm">لا «يعرف» أن أداةً متاحة إلا إذا رأى تعريفها في نفس الرسالة.</p>
+              <p class="card__note card__note--sm">ما يعرف إن عندك أداة إلا إذا شاف وصفها <strong>داخل الرسالة
+                  نفسها</strong>. ربطته أمس بـ<span class="tok-lat">Gmail</span>؟ لازم يعرف من جديد اليوم، وفي كل رسالة.
+              </p>
+            </article>
+            <article class="card card--accent bento__span-2">
+              <div class="card__top"><span class="card__num">2</span>
+                <h3 class="card__title card__title--sm">فيُرفَق وصف <strong>كل</strong> أداة مربوطة</h3>
+              </div>
+              <p class="card__note card__note--sm">الوصف هو هذا — اسم الأداة، وسطر يقول ايش تعمل، وايش تحتاج منه:</p>
+              <pre class="snip" dir="ltr">read_email   "Retrieves the content of a specific email"
+             messageId  "The ID of the email to retrieve"</pre>
+              <p class="card__note card__note--sm">وهذا وصف أداة وحدة. خادم <span class="tok-lat">Gmail</span> فيه أكثر
+                من
+                عشر أدوات، وكلّها تمشي مع كل أمر ترسله.</p>
+            </article>
+            <article class="card card--state bento__span-2">
+              <div class="card__top"><span class="card__num">3</span>
+                <h3 class="card__title card__title--sm">ويقرأ القائمة قبل ما يردّ عليك</h3>
+              </div>
+              <p class="card__note card__note--sm">أوّل شي يعمله النموذج: يمرّ على القائمة ويسأل نفسه <strong>هل فيه
+                  أداة
+                  تنفع للي طلبه المستخدم؟</strong> — فإن لقيها استدعاها، وإن ما لقي ردّ عليك بنفسه.</p>
+              <p class="card__note card__note--sm">وعشان يقدر يسأل هذا السؤال، لازم يكون قرأ القائمة كلّها أصلًا.
+                وقراءتها تنحسب عليك <strong>سواء استخدم أداة أو ما استخدم</strong>.</p>
             </article>
             <article class="card">
-              <div class="card__top"><span class="card__num">2</span>
-                <h3 class="card__title card__title--sm">فتُرفَق التعريفات كلّها</h3>
+              <div class="card__top"><span class="card__num">4</span>
+                <h3 class="card__title card__title--sm">وما عليك من هذا شي</h3>
               </div>
-              <p class="card__note card__note--sm">اسم كل أداة ووصفها وكيف تُستخدم — في كل أمر ترسله.</p>
-            </article>
-            <article class="card card--accent">
-              <div class="card__top"><span class="card__num">3</span>
-                <h3 class="card__title card__title--sm">فيثقل كل شيء</h3>
-              </div>
-              <p class="card__note card__note--sm">تستهلك tokens <strong>حتى قبل أن تستخدمها فعليًّا</strong>.</p>
+              <p class="card__note card__note--sm">التركيب والإرسال شغل <span class="tok-lat">Claude Code</span> في
+                الخلفية (زي ما في <span class="reflink" data-ref="7.3" tabindex="0">القسم 7.3</span>). أنت ما تكتب إلا
+                أمرك؛
+                يكفي تفهم <strong>ليش كثرة الأدوات تغلي عليك</strong>.</p>
             </article>
           </div>
           <div class="sag-quote__inner" style="flex:0 0 auto;gap:var(--sp-2)">
             <div class="sag-quote__mark" style="background:var(--accent-state)"></div>
-            <p class="sag-quote__text" style="font-size:42px">اربط ما تحتاجه فقط.</p>
+            <p class="sag-quote__text" style="font-size:40px">اربط اللي تحتاجه فقط.</p>
             <p class="sag-quote__attr">كثرة الأدوات تعني رسائل أثقل وأغلى وأبطأ.</p>
           </div>
         </div>
@@ -1666,11 +1994,12 @@
         </footer>
       </section>
 
-      <!-- ═══ 27 — ما المنتج الأولي (MVP)؟ (8) ════════════════════════════════════════════════════ -->
+      <!-- ═══ 27 — ما المنتج الأولي (MVP)؟ (8) ═════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">8</span> التعريف بالـMVP ونطاقه</span>
-          <h2 class="sag-slide__title">ما المنتج الأوّلي القابل للتطبيق؟</h2>
+          <h2 class="sag-slide__title">ما هو المنتج الأوّلي القابل للتطبيق (<span class="tok-lat">MVP</span>)؟ <span
+              class="sag-slide__title--note">— اختصار <span class="tok-lat">Minimum Viable Product</span></span></h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
@@ -1713,45 +2042,55 @@
         </footer>
       </section>
 
-      <!-- ═══ 28 — الغايات مقابل النطاق (8) ═══════════════════════════════════════════════════════ -->
-      <section class="sag-slide deck-slide">
+      <!-- ═══ 28 — سؤالا القسم: الغاية والخاصية (8) ════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-anchor="mvp-scope">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">8</span> التعريف بالـMVP ونطاقه</span>
-          <h2 class="sag-slide__title">الغاية تُقاس بالأثر — وعنصر النطاق بأنه بُني</h2>
+          <h2 class="sag-slide__title">هذا القسم يجاوب على سؤالين: ليش تبني مشروعك، وايش بالضبط بتبنيه</h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
+          <p class="sag-slide__lead sag-slide__lead--wide">وهو أوّل قسم تكتبه عن مشروعك. لكل سؤال منهما
+            مهمّة مستقلّة، والفرق بينهما هو اللي يخلّيك تعرف وين تحطّ كل فكرة تجيك.</p>
           <div class="bento" data-cols="2">
             <article class="card card--accent">
               <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
-                <h3 class="card__title">الغاية — <strong>لماذا</strong> تبنيه</h3>
+                <h3 class="card__title">الغاية — ليش تبنيه</h3>
               </div>
-              <p class="card__note">نتيجة تريد أن يحقّقها مشروعك.</p>
-              <p class="card__note card__note--sm"><strong>مثال:</strong> «تقليل أخطاء الجرد».</p>
+              <p class="card__note">نتيجة تبي مشروعك يوصّلها للناس. تُقاس بالأثر: صار ولّا ما صار؟</p>
+              <p class="card__note card__note--sm"><strong>من مشروع الحجوزات:</strong> «يحجز العميل بنفسه على
+                وقت متاح فعلًا، بدون ما يتراسل مع أحد».</p>
             </article>
             <article class="card card--state">
               <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
-                <h3 class="card__title">عنصر النطاق — <strong>ماذا</strong> ستبني</h3>
+                <h3 class="card__title">الخاصية — ايش بتبني</h3>
               </div>
-              <p class="card__note">خاصية ملموسة ستُبنى فعلًا.</p>
-              <p class="card__note card__note--sm"><strong>مثال:</strong> «شاشة إضافة/تعديل منتج».</p>
+              <p class="card__note">شي ملموس يُبنى فعلًا. يُقاس بوجوده: انبنى ولّا ما انبنى؟</p>
+              <p class="card__note card__note--sm"><strong>من مشروع الحجوزات:</strong> «تقويم يعرض أيّام كل شهر
+                وكم موعد متاح في كل يوم».</p>
             </article>
           </div>
-          <div class="bento" data-cols="2">
-            <article class="card card--plain">
-              <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
-                وقد تخدم <strong>عدّة عناصر نطاق</strong> غايةً واحدة.</p>
-            </article>
-            <article class="card" style="border-inline-start:5px solid var(--state-warning)">
-              <div class="card__top"><span class="card__icon"
-                  style="background:var(--state-warning-soft);color:var(--state-warning)"><span
-                    class="i i-alert-triangle"></span></span>
-                <h3 class="card__title card__title--sm">قاعدة المعسكر</h3>
-              </div>
-              <p class="card__note">أبقِ مشروعك ضمن <strong>3 إلى 5 خصائص أساسية</strong> فقط — هذا ما يضمن أن تُنهيه.
-              </p>
-            </article>
-          </div>
+          <article class="card card--accent">
+            <div class="card__top"><span class="card__icon"><span class="i i-rocket"></span></span>
+              <h3 class="card__title card__title--sm">وهذي غايات مشروع الحجوزات الأربع، بترتيب تجربة العميل</h3>
+            </div>
+            <ol class="flow flow--row">
+              <li>يشوف العميل مواعيد الخدمات المتاحة ويحجز بنفسه.</li>
+              <li>ما يقدر اثنين يحجزون نفس الموعد عند نفس مقدّم الخدمة.</li>
+              <li>مقدّم الخدمة يفتح مواعيد لشهر كامل بخطوة وحدة.</li>
+              <li>كل حجز يوصل منه إيميل تأكيد وفيه رابط الاجتماع.</li>
+            </ol>
+            <p class="card__note card__note--sm">لاحظ إن كل وحدة <strong>نتيجة</strong> يعيشها المستخدم، مو شاشة ولا
+              زرّ.
+              والشاشات والأزرار تجي بعدين في <strong>النطاق</strong>، اللي يُشتقّ من هذه الغايات نفسها.</p>
+          </article>
+          <article class="card" style="border-inline-start:5px solid var(--state-warning)">
+            <p class="card__note"><span class="i i-alert-triangle" style="color:var(--state-warning)"></span>
+              <strong>قاعدة الدورة:</strong> تكتب من <strong>3 إلى 5 غايات</strong> توضّح ليش تبني
+              مشروعك، ثم نحولها ل <strong>3 إلى 5 خصائص</strong> والي هي نطاقك الفعلي. أي شي زيادة يروح
+              لـ«خطة التطوير المستقبلية» — هذا اللي يضمن إنك تخلّص مشروعك في وقت الدورة.
+            </p>
+          </article>
         </div>
         <footer class="sag-slide__foot">
           <div class="deck-foot">
@@ -1766,36 +2105,60 @@
       </section>
 
 
-      <!-- ═══ 29 — خريطة التهيئة (7.10) ═══════════════════════════════════════════════════════════ -->
+      <!-- ═══ 29 — بداية جلسة تطبيق مع المدرب ══════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-quote deck-slide" data-tone="rule" data-surface="dark">
+        <div class="sag-quote__inner">
+          <div class="sag-quote__mark"></div>
+          <p class="sag-quote__text">من هنا نبدأ: تطبيق مع المدرب</p>
+          <p class="sag-quote__attr">نعرض عليك خطوات تجهيز جهازك أمامك، خطوة بخطوة — بعضها مقاطع
+            مسجّلة، وبعضها تنفيذ مباشر معك.</p>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <span class="sag-badge">تطبيق مع المدرب</span>
+            </div>
+            <span class="deck-foot__num">29</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 30 — خريطة التهيئة (7.10) ════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
-          <h2 class="sag-slide__title">ستّة بنود — ننجزها معًا الآن، مرّة واحدة</h2>
+          <h2 class="sag-slide__title">قبل ما نبدأ: ستّ أدوات تُجهّز على جهازك، مرّة واحدة بس</h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
           <div class="bento" data-cols="3">
             <article class="card card--accent">
               <div class="card__top"><span class="card__num">1</span>
-                <h3 class="card__title card__title--sm">Claude Code</h3>
+                <h3 class="card__title card__title--sm">Claude Desktop</h3>
               </div>
-              <p class="card__note card__note--sm">أداة سطر الأوامر.</p>
+              <p class="card__note card__note--sm">تطبيق شات، بلا أي متطلّبات — يساعدك تسأله عن بقيّة الخطوات.</p>
             </article>
             <article class="card card--accent">
               <div class="card__top"><span class="card__num">2</span>
-                <h3 class="card__title card__title--sm">Git وهويّتك</h3>
+                <h3 class="card__title card__title--sm">Claude Code<span class="ttip ttip--icon" tabindex="0"
+                    data-tip-title="سطر الأوامر"
+                    data-tip="تكتب له أوامر نصّية بدل ما تنقر بالفأرة — هذا شكل Claude Code، يفتح جنب مشروعك في نافذة سوداء."><span
+                      class="i i-info"></span></span></h3>
               </div>
-              <p class="card__note card__note--sm">إلزامي على كل الأنظمة.</p>
+              <p class="card__note card__note--sm">التثبيت وتسجيل الدخول.</p>
             </article>
-            <article class="card">
+            <article class="card card--accent">
               <div class="card__top"><span class="card__num">3</span>
-                <h3 class="card__title card__title--sm">Claude Desktop</h3>
+                <h3 class="card__title card__title--sm">Git</h3>
               </div>
-              <p class="card__note card__note--sm">لمتابعة سقف استخدامك.</p>
+              <p class="card__note card__note--sm">تحتاجه اليوم لحفظ أوّل نسخة من مشروعك.</p>
             </article>
             <article class="card">
               <div class="card__top"><span class="card__num">4</span>
-                <h3 class="card__title card__title--sm">محرّر Antigravity</h3>
+                <h3 class="card__title card__title--sm">محرّر<span class="ttip ttip--icon" tabindex="0"
+                    data-tip-title="المحرّر"
+                    data-tip="برنامج تفتح فيه ملفات مشروعك وتشوف ما يكتبه Claude فيها لحظة بلحظة."><span
+                      class="i i-info"></span></span> Antigravity</h3>
               </div>
               <p class="card__note card__note--sm">التثبيت وخطوات البدء.</p>
             </article>
@@ -1807,14 +2170,15 @@
             </article>
             <article class="card card--state">
               <div class="card__top"><span class="card__num">6</span>
-                <h3 class="card__title card__title--sm">تكاملان: context7 و Supabase</h3>
+                <h3 class="card__title card__title--sm">ربط context7 و Supabase</h3>
               </div>
-              <p class="card__note card__note--sm">أوّل مهمّة ننفّذها معًا.</p>
+              <p class="card__note card__note--sm">الأولى بمقطع مسجّل، والثانية معي مباشرة.</p>
             </article>
           </div>
           <div class="card card--plain">
             <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
-              <strong>البنود 1 إلى 5 تُنجزها أنت قبل أن نبدأ معًا</strong> — والبند 6 ننفّذه سويًّا.
+              أمشي معك على الستّة كلّها، بمقاطع مسجّلة جاهزة لأغلبها، وأنفّذ ربط <span class="tok-lat">Supabase</span>
+              مباشرة أمامك.
             </p>
           </div>
         </div>
@@ -1829,75 +2193,50 @@
         </footer>
       </section>
 
-      <!-- ═══ 30 — 1) تثبيت Claude Code ═══════════════════════════════════════════════════════════ -->
+      <!-- ═══ 31 — 1) Claude Desktop ═══════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide">
         <div class="sag-slide__head sag-media__head">
-          <h2 class="sag-slide__title">1) ثبّت Claude Code</h2>
+          <h2 class="sag-slide__title">1) ثبّت Claude Desktop</h2>
           <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
         </div>
         <div class="sag-slide__body">
+          <p class="sag-slide__lead sag-slide__lead--wide">أوّل شي تثبّته لأنه بلا أي متطلّبات — تقدر تفتح فيه محادثة من
+            الآن وتسأل
+            <span class="tok-lat">Claude</span> عن أي خطوة تالية تتوقّف فيها. وفائدته الأخرى: يعرض لك
+            <strong>كم تبقّى من رصيدك</strong> حتى لا تُفاجَأ بتوقّف الجلسة أثناء العمل.
+          </p>
           <div class="sag-media__inner">
             <div class="sag-media-frame">
               <div class="sag-media-frame__box">
-                <div class="sag-media-frame__ph">
-                  <span class="i i-terminal" style="font-size:40px"></span><span>01-claudecode-install-win.gif</span>
-                </div>
+                <video controls preload="metadata" src="media/claude-desktop.mp4"></video>
               </div>
-              <p class="sag-media-frame__caption">التثبيت من PowerShell على ويندوز</p>
+              <p class="sag-media-frame__caption">التثبيت وتسجيل الدخول، من التنزيل حتى أوّل محادثة</p>
             </div>
             <div class="sag-media__side">
               <article class="card">
-                <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
+                <div class="card__top"><span class="card__icon"><span class="i i-cloud-upload"></span></span>
                   <h3 class="card__title card__title--sm">Windows</h3>
                 </div>
-                <p class="card__note card__note--sm">افتح <strong>PowerShell</strong> والصق:</p>
-                <p class="card__note"><span class="tok-code">irm https://claude.ai/install.ps1 | iex</span></p>
+                <p class="card__note card__note--sm">نزّل المثبّت، شغّله، ثم سجّل الدخول بنفس حسابك.</p>
+                <a class="dlbtn" href="https://claude.ai/api/desktop/win32/x64/setup/latest/redirect" target="_blank"
+                  rel="noopener"><span class="i i-download"></span> نزّل لويندوز</a>
               </article>
               <article class="card">
-                <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
-                  <h3 class="card__title card__title--sm">macOS و Linux</h3>
+                <div class="card__top"><span class="card__icon"><span class="i i-cloud-upload"></span></span>
+                  <h3 class="card__title card__title--sm">macOS</h3>
                 </div>
-                <p class="card__note"><span class="tok-code">curl -fsSL https://claude.ai/install.sh | bash</span></p>
+                <p class="card__note card__note--sm">نزّل الملف، شغّله، ثم سجّل الدخول بنفس حسابك.</p>
+                <a class="dlbtn" href="https://claude.ai/api/desktop/darwin/universal/dmg/latest/redirect"
+                  target="_blank" rel="noopener"><span class="i i-download"></span> نزّل لـmacOS</a>
               </article>
-            </div>
-          </div>
-        </div>
-        <footer class="sag-slide__foot">
-          <div class="deck-foot">
-            <div class="deck-foot__side">
-              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
-                  alt="ساج التقنية"></div>
-              <span class="deck-foot__num">اليوم 1</span>
-            </div><span class="deck-foot__num">30</span>
-          </div>
-        </footer>
-      </section>
-
-      <!-- ═══ 31 — 1) تسجيل الدخول والتحقّق ═══════════════════════════════════════════════════════ -->
-      <section class="sag-slide sag-media deck-slide">
-        <div class="sag-slide__head sag-media__head">
-          <h2 class="sag-slide__title">1) سجّل الدخول وتحقّق</h2>
-          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
-        </div>
-        <div class="sag-slide__body">
-          <div class="sag-media__inner">
-            <div class="sag-media-frame">
-              <div class="sag-media-frame__box">
-                <div class="sag-media-frame__ph">
-                  <span class="i i-circle-check" style="font-size:40px"></span><span>02-claudecode-login.gif</span>
-                </div>
-              </div>
-              <p class="sag-media-frame__caption">أول تشغيل: تسجيل الدخول في المتصفّح ثم العودة</p>
-            </div>
-            <div class="sag-media__side">
-              <p class="sag-media__instruction">انتقل إلى مجلّد مشروعك واكتب <span class="tok-code">claude</span></p>
               <article class="card card--state">
                 <div class="card__top"><span class="card__icon"><span class="i i-info"></span></span>
-                  <h3 class="card__title card__title--sm">إن ظهر خطأ</h3>
+                  <h3 class="card__title card__title--sm">Linux — تجريبي، بلا تنزيل مباشر</h3>
                 </div>
-                <p class="card__note card__note--sm">رسالة أن <span class="tok-code">irm</span> غير معروفة تعني أنك في
-                  <strong>Command Prompt</strong> لا PowerShell — أعِد فتح PowerShell.
-                </p>
+                <p class="card__note card__note--sm">افتح الرابط تحت، وانقر <strong>القائمة بجانب العنوان</strong>،
+                  واختر <strong>«Open in Claude»</strong> ليرشدك Claude بالتثبيت.</p>
+                <a href="https://code.claude.com/docs/en/desktop-linux" target="_blank" rel="noopener"
+                  class="reflink">صفحة تثبيت Linux</a>
               </article>
             </div>
           </div>
@@ -1913,11 +2252,121 @@
         </footer>
       </section>
 
-      <!-- ═══ 32 — 2) Git إلزامي ══════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 32 — 2) تثبيت Claude Code وتسجيل الدخول ══════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">2) ثبّت Claude Code وسجّل الدخول</h2>
+          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="stepvid">
+            <div class="stepvid__video">
+              <video class="stepvid__player" controls preload="metadata" src="media/claude-code.mp4"></video>
+            </div>
+            <div class="stepvid__steps">
+              <ol class="stepvid__list">
+                <li class="stepvid__divider">التثبيت</li>
+                <li class="stepvid__step" data-t="0">
+                  <button class="stepvid__time" type="button">0:00</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">انسخ أمر التثبيت المناسب لنظامك</h4>
+                    <p class="stepvid__p">Windows:</p>
+                    <div class="snipbox">
+                      <pre class="snip" dir="ltr">irm https://claude.ai/install.ps1 | iex</pre>
+                      <button class="snipbox__copy" type="button" aria-label="نسخ الأمر"><span
+                          class="i i-copy"></span></button>
+                    </div>
+                    <p class="stepvid__p">macOS و Linux:</p>
+                    <div class="snipbox">
+                      <pre class="snip" dir="ltr">curl -fsSL https://claude.ai/install.sh | bash</pre>
+                      <button class="snipbox__copy" type="button" aria-label="نسخ الأمر"><span
+                          class="i i-copy"></span></button>
+                    </div>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="2">
+                  <button class="stepvid__time" type="button">0:02</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">شغّل الأمر</h4>
+                    <p class="stepvid__p">افتح موجه الأوامر داخل مجلّد مشروعك — تقدر تفتحها من داخل المحرّر نفسه
+                      (<span class="tok-lat">View ← Terminal</span>) — الصق الأمر واضغط
+                      <span class="tok-lat">Enter</span>.
+                    </p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="13">
+                  <button class="stepvid__time" type="button">0:13</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">لو ظهر خطأ عند كتابة <span class="tok-code">claude</span></h4>
+                    <p class="stepvid__p">يعني الجهاز ما تعرّف على البرنامج بعد؛ الخطوتين الجايتين يوضّحون
+                      الحل. اشتغل عندك من أول مرّة؟ تجاوزهما وأكمل من الخطوة اللي بعدهما.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="24">
+                  <button class="stepvid__time" type="button">0:24</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">أضِف مسار البرنامج للجهاز</h4>
+                    <p class="stepvid__p">من إعدادات ويندوز افتح <span class="tok-lat">Environment
+                        Variables</span>، وأضف المسار اللي يظهر لك في ملاحظات التثبيت (شكله شبيه
+                      <span class="tok-code">C:\Users\اسمك\.local\bin</span>) إلى متغيّر
+                      <span class="tok-lat">Path</span> تحت <span class="tok-lat">User variables</span>.
+                    </p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="44">
+                  <button class="stepvid__time" type="button">0:44</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">أعِد فتح موجه الأوامر</h4>
+                    <p class="stepvid__p">أغلق نافذة موجه الأوامر وافتح وحدة جديدة من نفس المجلّد، ثم جرّب الأمر
+                      <span class="tok-code">claude</span> مرّة ثانية — التغيير ما يشتغل إلا بعد نافذة
+                      جديدة.
+                    </p>
+                  </div>
+                </li>
+                <li class="stepvid__divider">تسجيل الدخول</li>
+                <li class="stepvid__step" data-t="51">
+                  <button class="stepvid__time" type="button">0:51</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">اختر شكل الواجهة وطريقة الدخول</h4>
+                    <p class="stepvid__p">أوّل تشغيل يسألك سؤالين بسيطين، ثم يفتح لك المتصفّح تلقائيًا.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="60">
+                  <button class="stepvid__time" type="button">1:00</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">سجّل الدخول في المتصفّح</h4>
+                    <p class="stepvid__p">اختر حسابك، ووافق على طلب السماح لـ<span class="tok-lat">Claude
+                        Code</span> باستخدام حساب <span class="tok-lat">Claude</span> الخاص بك.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="70">
+                  <button class="stepvid__time" type="button">1:10</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">ارجع للموجه أوامر وأكمل</h4>
+                    <p class="stepvid__p">تشوف رسالة نجاح الدخول، تجاوز ملاحظات الأمان، وأكّد أن هذا
+                      المجلّد <strong>مساحة عمل موثوقة</strong>. من هنا Claude Code جاهز.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">30</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 33 — 3) جهّز Git ═════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
-          <h2 class="sag-slide__title">2) Git — إلزامي على كل الأنظمة، لا خاصّ بويندوز</h2>
+          <h2 class="sag-slide__title">3) جهّز Git على جهازك</h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
@@ -1928,22 +2377,27 @@
               <div class="card__top"><span class="card__icon"><span class="i i-git-branch"></span></span>
                 <h3 class="card__title card__title--sm">Windows</h3>
               </div>
-              <p class="card__note card__note--sm">نزّل <strong>Git for Windows</strong> وثبّته بالإعدادات الافتراضية.
-                يمنحك Git <strong>و Bash</strong> الذي يستعمله Claude Code.</p>
+              <p class="card__note card__note--sm">نزّل المثبّت من الزرّ تحت، شغّله، واقبل كل الإعدادات
+                الافتراضية بالضغط على Next حتى Finish.</p>
+              <a class="dlbtn" href="https://git-scm.com/download/win" target="_blank" rel="noopener"><span
+                  class="i i-download"></span> نزّل لويندوز</a>
             </article>
             <article class="card card--accent">
               <div class="card__top"><span class="card__icon"><span class="i i-git-branch"></span></span>
                 <h3 class="card__title card__title--sm">macOS</h3>
               </div>
               <p class="card__note card__note--sm"><strong>ليس مثبّتًا مسبقًا.</strong> اكتب <span class="tok-code">git
-                  --version</span> فيظهر طلب تثبيت Xcode Command Line Tools — وافق.</p>
+                  --version</span> في موجه الأوامر — يظهر طلب تثبيت أدوات Xcode، اضغط
+                <strong>Install</strong> وانتظر حتى يكتمل.
+              </p>
             </article>
             <article class="card card--accent">
               <div class="card__top"><span class="card__icon"><span class="i i-git-branch"></span></span>
                 <h3 class="card__title card__title--sm">Linux</h3>
               </div>
-              <p class="card__note card__note--sm">غالبًا مثبّت. تحقّق بـ <span class="tok-code">git --version</span>،
-                وإلّا <span class="tok-code">sudo apt install git</span></p>
+              <p class="card__note card__note--sm">غالبًا مثبّت مسبقًا. تحقّق بـ <span class="tok-code">git
+                  --version</span>، وإن لم يظهر رقم إصدار نفّذ <span class="tok-code">sudo apt install
+                  git</span> (أو مدير الحزم في توزيعتك).</p>
             </article>
           </div>
         </div>
@@ -1958,34 +2412,120 @@
         </footer>
       </section>
 
-      <!-- ═══ 33 — 2) اضبط هويّتك في Git ══════════════════════════════════════════════════════════ -->
+      <!-- ═══ 34 — 3) من التثبيت إلى ضبط الهويّة ═══════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide">
         <div class="sag-slide__head sag-media__head">
-          <h2 class="sag-slide__title">2) اضبط هويّتك — مرّة واحدة</h2>
+          <h2 class="sag-slide__title">3) من التثبيت إلى ضبط الهويّة</h2>
           <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
         </div>
         <div class="sag-slide__body">
-          <div class="sag-media__inner">
-            <div class="sag-media-frame">
-              <div class="sag-media-frame__box">
-                <div class="sag-media-frame__ph">
-                  <span class="i i-terminal" style="font-size:40px"></span><span>05-git-config.png</span>
-                </div>
-              </div>
-              <p class="sag-media-frame__caption">ضبط الاسم والبريد ثم التأكّد منهما</p>
+          <p class="sag-slide__lead sag-slide__lead--wide">التسجيل هنا بويندوز — خطوات التثبيت لباقي الأنظمة في
+            الشريحة السابقة. أوامر ضبط الهويّة تحت نفسها على كل نظام.</p>
+          <div class="stepvid">
+            <div class="stepvid__video">
+              <video class="stepvid__player" controls preload="metadata" src="media/git-setup.mp4"></video>
             </div>
-            <div class="sag-media__side">
-              <p class="card__note"><span class="tok-code">git config --global user.name "اسمك"</span></p>
-              <p class="card__note"><span class="tok-code">git config --global user.email "بريدك"</span></p>
-              <article class="card" style="border-inline-start:5px solid var(--state-warning)">
-                <div class="card__top"><span class="card__icon"
-                    style="background:var(--state-warning-soft);color:var(--state-warning)"><span
-                      class="i i-alert-triangle"></span></span>
-                  <h3 class="card__title card__title--sm">بدونها يفشل أول حفظ</h3>
-                </div>
-                <p class="card__note card__note--sm">أو يُنسب عملك إلى هويّة خاطئة. استخدم <strong>نفس بريد
-                    GitHub</strong>.</p>
-              </article>
+            <div class="stepvid__steps">
+              <ol class="stepvid__list">
+                <li class="stepvid__divider">التثبيت (Windows)</li>
+                <li class="stepvid__step" data-t="0">
+                  <button class="stepvid__time" type="button">0:00</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">نزّل المثبّت</h4>
+                    <p class="stepvid__p">من الرابط في الشريحة السابقة — يكتشف نظامك 64-بت تلقائيًا ويجهّز
+                      أحدث نسخة.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="7">
+                  <button class="stepvid__time" type="button">0:07</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">شغّل المثبّت</h4>
+                    <p class="stepvid__p">افتحه من قائمة التنزيلات بالمتصفّح، ووافق على طلب ويندوز (UAC)
+                      للسماح بالتثبيت.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="11">
+                  <button class="stepvid__time" type="button">0:11</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">أكمل المعالج بإعداداته الافتراضية</h4>
+                    <p class="stepvid__p">اضغط <span class="tok-lat">Next</span> على كل الشاشات بإعداداتها
+                      الافتراضية — وهي ما تخلّي أمر <span class="tok-code">git</span> يشتغل من أي موجه أوامر
+                      (<span class="tok-lat">PowerShell</span> و <span class="tok-lat">CMD</span>) لا من
+                      <span class="tok-lat">Git Bash</span> فقط — <strong>إلا شاشة واحدة:</strong> فعّل
+                      «<span class="tok-lat">Override the default branch name</span>» واكتب
+                      <span class="tok-code">main</span> بدل الاسم الافتراضي، مطابقةً للمعيار الحالي في
+                      <span class="tok-lat">GitHub</span>.
+                    </p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="31">
+                  <button class="stepvid__time" type="button">0:31</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">اضغط Install وانتظر</h4>
+                    <p class="stepvid__p">بعد اكتمال التثبيت، ألغِ تحديد «<span class="tok-lat">View Release
+                        Notes</span>» واضغط <span class="tok-lat">Finish</span>.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="40">
+                  <button class="stepvid__time" type="button">0:40</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">تحقّق من التثبيت</h4>
+                    <p class="stepvid__p">افتح نافذة موجه أوامر <strong>جديدة</strong> (<span
+                        class="tok-lat">PowerShell</span> من قائمة ابدأ)، واكتب <span class="tok-code">git
+                        --version</span> — يظهر رقم إصدار Git. ما تعرّف عليه؟ أغلق موجه الأوامر وافتحها من
+                      جديد.</p>
+                  </div>
+                </li>
+                <li class="stepvid__divider">اضبط هويّتك</li>
+                <li class="stepvid__step" data-t="51">
+                  <button class="stepvid__time" type="button">0:51</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">افتح موجه الأوامر</h4>
+                    <p class="stepvid__p">نفس نافذة PowerShell.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="53">
+                  <button class="stepvid__time" type="button">0:53</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">سجّل اسمك</h4>
+                    <div class="snipbox">
+                      <pre class="snip" dir="ltr">git config --global user.name "Your Name"</pre>
+                      <button class="snipbox__copy" type="button" aria-label="نسخ الأمر"><span
+                          class="i i-copy"></span></button>
+                    </div>
+                    <p class="stepvid__p">بدّل «Your Name» باسمك الحقيقي، فهو يظهر كمؤلّف على كل حفظ (<span
+                        class="tok-lat">commit</span>) تنفّذه.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="67">
+                  <button class="stepvid__time" type="button">1:07</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">سجّل بريدك</h4>
+                    <div class="snipbox">
+                      <pre class="snip" dir="ltr">git config --global user.email "your-github-email@example.com"</pre>
+                      <button class="snipbox__copy" type="button" aria-label="نسخ الأمر"><span
+                          class="i i-copy"></span></button>
+                    </div>
+                    <p class="stepvid__p"><strong>مهم:</strong> استخدم نفس بريد <span class="tok-lat">GitHub</span>
+                      بالضبط، وإلا ما يربط الحفظ باسمك ويظهر من شخص
+                      مجهول.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="76">
+                  <button class="stepvid__time" type="button">1:16</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">تأكّد من الحفظ</h4>
+                    <div class="snipbox">
+                      <pre class="snip" dir="ltr">git config --global --list</pre>
+                      <button class="snipbox__copy" type="button" aria-label="نسخ الأمر"><span
+                          class="i i-copy"></span></button>
+                    </div>
+                    <p class="stepvid__p">تلقى بالنتيجة <span class="tok-code">user.name=</span> واسمك، و
+                      <span class="tok-code">user.email=</span> وبريدك.
+                    </p>
+                  </div>
+                </li>
+              </ol>
             </div>
           </div>
         </div>
@@ -2000,67 +2540,133 @@
         </footer>
       </section>
 
-      <!-- ═══ 34 — 3) Claude Desktop ══════════════════════════════════════════════════════════════ -->
-      <section class="sag-slide deck-slide">
-        <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
-          <h2 class="sag-slide__title">3) ثبّت Claude Desktop — لمتابعة سقفك</h2>
-          <div class="sag-slide__rule"></div>
-        </div>
-        <div class="sag-slide__body">
-          <p class="sag-slide__lead">تطبيق منفصل عن أداة سطر الأوامر، وفائدته أن يعرض لك <strong>كم تبقّى من
-              سقفك</strong> حتى لا تُفاجَأ بتوقّف الجلسة أثناء العمل.</p>
-          <div class="bento" data-cols="3">
-            <article class="card">
-              <div class="card__top"><span class="card__icon"><span class="i i-cloud-upload"></span></span>
-                <h3 class="card__title card__title--sm">Windows</h3>
-              </div>
-              <p class="card__note card__note--sm">نزّل المثبّت وشغّله، ثم سجّل الدخول بنفس حسابك.</p>
-            </article>
-            <article class="card">
-              <div class="card__top"><span class="card__icon"><span class="i i-cloud-upload"></span></span>
-                <h3 class="card__title card__title--sm">macOS</h3>
-              </div>
-              <p class="card__note card__note--sm">نزّل ملف <span class="tok-lat">dmg</span> وشغّله، ثم سجّل الدخول.</p>
-            </article>
-            <article class="card">
-              <div class="card__top"><span class="card__icon"><span class="i i-info"></span></span>
-                <h3 class="card__title card__title--sm">Linux</h3>
-              </div>
-              <p class="card__note card__note--sm">نسخة تجريبية لتوزيعتَي Ubuntu و Debian.</p>
-            </article>
-          </div>
-        </div>
-        <footer class="sag-slide__foot">
-          <div class="deck-foot">
-            <div class="deck-foot__side">
-              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
-                  alt="ساج التقنية"></div>
-              <span class="deck-foot__num">اليوم 1</span>
-            </div><span class="deck-foot__num">34</span>
-          </div>
-        </footer>
-      </section>
-
-      <!-- ═══ 35 — 4) تثبيت Antigravity ═══════════════════════════════════════════════════════════ -->
+      <!-- ═══ 35 — 4) ثبّت Antigravity وجهّزه للعمل ════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide">
         <div class="sag-slide__head sag-media__head">
-          <h2 class="sag-slide__title">4) ثبّت محرّر Antigravity</h2>
+          <h2 class="sag-slide__title">4) ثبّت Antigravity وجهّزه للعمل</h2>
           <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
         </div>
         <div class="sag-slide__body">
-          <div class="sag-media__inner" data-layout="stacked">
-            <div class="sag-media-frame">
-              <div class="sag-media-frame__box">
-                <div class="sag-media-frame__ph">
-                  <span class="i i-cloud-upload" style="font-size:40px"></span><span>07-antigravity-download.png</span>
-                </div>
-              </div>
-              <p class="sag-media-frame__caption">صفحة التنزيل — اختر نظامك ثم <span class="tok-lat">Antigravity IDE
-                  (Standalone)</span></p>
+          <p class="sag-slide__lead sag-slide__lead--wide">التسجيل يعرض كل الاحتمالات اللي قد تواجهك — بعضها ما
+            يصير معك، مثل التحقّق بالجوال. تحتاج أيضًا متصفّح Chrome مثبّتًا لبعض ميزات المحرّر.</p>
+          <div class="stepvid">
+            <div class="stepvid__video">
+              <video class="stepvid__player" controls preload="metadata" src="media/antigravity-ide.mp4"></video>
             </div>
-            <p class="sag-media__instruction">افتح <span class="tok-code">antigravity.google/download</span> ← اختر نظام
-              التشغيل ← نزّل نسخة <strong>Standalone</strong> وشغّل المثبّت.</p>
+            <div class="stepvid__steps">
+              <ol class="stepvid__list">
+                <li class="stepvid__divider">التنزيل والتثبيت</li>
+                <li class="stepvid__step" data-t="0">
+                  <button class="stepvid__time" type="button">0:00</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">افتح صفحة التنزيل ونزّل النسخة المناسبة</h4>
+                    <p class="stepvid__p">افتح <a class="tok-code tok-link" href="https://antigravity.google/download"
+                        target="_blank" rel="noopener">antigravity.google/download</a>، انزل إلى <span
+                        class="tok-lat">Antigravity
+                        IDE (Standalone)</span>، واضغط <span class="tok-lat">Download for x64</span>.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="7">
+                  <button class="stepvid__time" type="button">0:07</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">أكمل معالج التثبيت بإعداداته الافتراضية</h4>
+                    <p class="stepvid__p">اضغط <span class="tok-lat">Next</span> على رخصة الاستخدام والمسار
+                      الافتراضي ومجلّد قائمة ابدأ بلا تغيير — فعّل <span class="tok-lat">Create a desktop
+                        icon</span> إن حبّيت، ثم اضغط <span class="tok-lat">Install</span>.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="28">
+                  <button class="stepvid__time" type="button">0:28</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">اضغط Finish</h4>
+                    <p class="stepvid__p">بعد اكتمال التثبيت، أبقِ <span class="tok-lat">Launch Antigravity
+                        IDE</span> مفعّلة ليشتغل المحرّر مباشرة.</p>
+                  </div>
+                </li>
+                <li class="stepvid__divider">تسجيل الدخول والتحقّق</li>
+                <li class="stepvid__step" data-t="44">
+                  <button class="stepvid__time" type="button">0:44</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">سجّل الدخول بحساب Google</h4>
+                    <p class="stepvid__p">اضغط <span class="tok-lat">Continue with Google</span>، واختر حسابك
+                      في المتصفّح — يلزم حساب Gmail شخصي في الفترة التجريبية الحالية.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="57">
+                  <button class="stepvid__time" type="button">0:57</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">لو طُلب منك تحقّق إضافي</h4>
+                    <p class="stepvid__p">بعض الحسابات تحتاج خطوة تحقّق بالجوال: اضغط <span
+                        class="tok-lat">Verify</span>، امسح رمز <span class="tok-lat">QR</span> اللي يظهر
+                      بكاميرا جوالك، ووافق على طلب الدخول من هناك.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="73">
+                  <button class="stepvid__time" type="button">1:13</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">سجّل الدخول مرّة ثانية إن لزم</h4>
+                    <p class="stepvid__p">أحيانًا المحرّر ما يتحدّث تلقائيًا بعد التحقّق — اضغط <span
+                        class="tok-lat">Sign in again</span>، اختر حسابك من جديد، ووافق على فتح المحرّر من
+                      المتصفّح.</p>
+                  </div>
+                </li>
+                <li class="stepvid__divider">الإعداد الأوّل</li>
+                <li class="stepvid__step" data-t="93">
+                  <button class="stepvid__time" type="button">1:33</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">اختر السمة</h4>
+                    <p class="stepvid__p"><span class="tok-lat">System</span> أو <span class="tok-lat">Light</span> أو
+                      <span class="tok-lat">Dark</span> — تقدر تغيّرها
+                      لاحقًا من الإعدادات.
+                    </p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="97">
+                  <button class="stepvid__time" type="button">1:37</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">أكمل شاشتَي الإعداد الافتراضيتين</h4>
+                    <p class="stepvid__p">طريقة عمل المساعد (<span class="tok-lat">Review-driven
+                        development</span>)، وإعدادات المحرّر (<span class="tok-lat">Keybindings &
+                        Extensions</span>) — <span class="tok-lat">Next</span> بلا تغيير على الاثنتين.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="100">
+                  <button class="stepvid__time" type="button">1:40</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">تجاوز شاشة الحزم (Build with Google)</h4>
+                    <p class="stepvid__p"><strong>مهم:</strong> لا تفعّل شيئًا منها. هذه حزم لمساعد
+                      Antigravity الخاص (<span class="tok-lat">Gemini</span>) — تُحفَظ في مكان مستقلّ تمامًا
+                      عن إعدادات Claude، ولا يراها Claude إطلاقًا.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="101">
+                  <button class="stepvid__time" type="button">1:41</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">شاشة الخصوصية</h4>
+                    <p class="stepvid__p">ألغِ تحديد مربّع «<span class="tok-lat">Yes, I agree to help
+                        improve Antigravity IDE</span>» إن ما تحب مشاركة بياناتك، ثم اضغط <span
+                        class="tok-lat">Next</span>.</p>
+                  </div>
+                </li>
+                <li class="stepvid__divider">افتح مشروعك</li>
+                <li class="stepvid__step" data-t="107">
+                  <button class="stepvid__time" type="button">1:47</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">افتح مجلّد مشروعك</h4>
+                    <p class="stepvid__p">من الشاشة الترحيبية اضغط <span class="tok-lat">Open Folder</span>،
+                      واختر مجلّد الحزمة نفسه — <strong>لا</strong> مجلّدًا أعلى منه.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="114">
+                  <button class="stepvid__time" type="button">1:54</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">وافق على الثقة بالملفات</h4>
+                    <p class="stepvid__p">يظهر تنبيه يسألك إن كنت تثق بمالكي هذا المجلّد — اضغط <span
+                        class="tok-lat">Yes, I trust the authors</span> ليحمّل المحرّر ملفّاتك.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
           </div>
         </div>
         <footer class="sag-slide__foot">
@@ -2074,123 +2680,80 @@
         </footer>
       </section>
 
-      <!-- ═══ 36 — 4) خطوات البدء بعد التثبيت ═════════════════════════════════════════════════════ -->
-      <section class="sag-slide deck-slide">
-        <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
-          <h2 class="sag-slide__title">4) وبعد أول تشغيل — خطوات لا تتخطّاها</h2>
-          <div class="sag-slide__rule"></div>
-        </div>
-        <div class="sag-slide__body">
-          <div class="bento" data-cols="2">
-            <div class="bento" data-cols="1" style="gap:var(--sp-2)">
-              <article class="card card--accent">
-                <div class="card__top"><span class="card__num">1</span>
-                  <h3 class="card__title card__title--sm">سجّل الدخول بحساب Google</h3>
-                </div>
-                <p class="card__note card__note--sm">يلزم حساب Gmail شخصي في الفترة التجريبية.</p>
-              </article>
-              <article class="card card--accent">
-                <div class="card__top"><span class="card__num">2</span>
-                  <h3 class="card__title card__title--sm">اختر السمة</h3>
-                </div>
-                <p class="card__note card__note--sm">System أو Light أو Dark — تغيّرها لاحقًا متى شئت.</p>
-              </article>
-              <article class="card card--state">
-                <div class="card__top"><span class="card__num">3</span>
-                  <h3 class="card__title card__title--sm">افتح مجلّد مشروعك</h3>
-                </div>
-                <p class="card__note card__note--sm"><span class="tok-lat">File ← Open Folder</span> واختر مجلّد الحزمة
-                  نفسه — <strong>لا</strong> مجلّدًا أعلى منه.</p>
-              </article>
-            </div>
-            <div class="sag-media-frame">
-              <div class="sag-media-frame__box">
-                <div class="sag-media-frame__ph">
-                  <span class="i i-palette" style="font-size:40px"></span><span>09-antigravity-theme.png</span>
-                </div>
-              </div>
-              <p class="sag-media-frame__caption">شاشة اختيار السمة</p>
-            </div>
-          </div>
-          <div class="card card--plain">
-            <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
-              تحتاج أيضًا متصفّح <strong>Chrome</strong> مثبّتًا — بعض ميزات المحرّر تعتمد عليه.</p>
-          </div>
-        </div>
-        <footer class="sag-slide__foot">
-          <div class="deck-foot">
-            <div class="deck-foot__side">
-              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
-                  alt="ساج التقنية"></div>
-              <span class="deck-foot__num">اليوم 1</span>
-            </div><span class="deck-foot__num">36</span>
-          </div>
-        </footer>
-      </section>
-
-      <!-- ═══ 37 — «Connect Plugins» تخصّ مساعد المحرّر ═══════════════════════════════════════════ -->
-      <section class="sag-slide deck-slide" data-surface="dark">
-        <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
-          <h2 class="sag-slide__title">هذه الحزم لمساعد المحرّر — لا لـClaude</h2>
-          <div class="sag-slide__rule"></div>
-        </div>
-        <div class="sag-slide__body">
-          <div class="sag-media__inner">
-            <div class="sag-media-frame">
-              <div class="sag-media-frame__box">
-                <div class="sag-media-frame__ph">
-                  <span class="i i-info" style="font-size:40px"></span><span>10-antigravity-plugins.png</span>
-                </div>
-              </div>
-              <p class="sag-media-frame__caption">كل المفاتيح مُطفأة</p>
-            </div>
-            <div class="sag-media__side">
-              <article class="card card--accent">
-                <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
-                  <h3 class="card__title card__title--sm">تجاوزها كلّها — للمحرّر مساعده الخاص</h3>
-                </div>
-                <p class="card__note card__note--sm">يأتي <span class="tok-lat">Antigravity</span> بمساعد ذكاء اصطناعي
-                  خاصّ به (<span class="tok-lat">Gemini</span>)، وهذه الحزم إعداداتٌ <strong>له هو</strong> — تُحفَظ في
-                  مكان مستقلّ تمامًا عن إعدادات Claude، ولا يراها Claude إطلاقًا.</p>
-              </article>
-              <article class="card card--state">
-                <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
-                  <h3 class="card__title card__title--sm">ونحن نعمل مع Claude</h3>
-                </div>
-                <p class="card__note card__note--sm">نستخدم المحرّر <strong>كمحرّر فقط</strong>، وتكاملاتنا نربطها
-                  لـClaude في البند 6 وفي المهمة 14.2.</p>
-              </article>
-            </div>
-          </div>
-        </div>
-        <footer class="sag-slide__foot">
-          <div class="deck-foot">
-            <span class="deck-foot__num">37</span>
-          </div>
-        </footer>
-      </section>
-
-      <!-- ═══ 38 — 5) إضافة Claude Code للمحرّر ═══════════════════════════════════════════════════ -->
+      <!-- ═══ 36 — 5) أضِف إضافة Claude Code وقل السلام عليكم ══════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide" data-anchor="extension">
         <div class="sag-slide__head sag-media__head">
-          <h2 class="sag-slide__title">5) أضِف إضافة Claude Code إلى المحرّر</h2>
+          <h2 class="sag-slide__title">5) أضِف إضافة Claude Code وقل السلام عليكم</h2>
           <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
         </div>
         <div class="sag-slide__body">
-          <div class="sag-media__inner" data-layout="stacked">
-            <div class="sag-media-frame">
-              <div class="sag-media-frame__box">
-                <div class="sag-media-frame__ph">
-                  <span class="i i-layers" style="font-size:40px"></span><span>11-extension-install.gif</span>
-                </div>
-              </div>
-              <p class="sag-media-frame__caption">لوحة <span class="tok-lat">Extensions</span> ← البحث ← التثبيت</p>
+          <div class="stepvid">
+            <div class="stepvid__video">
+              <video class="stepvid__player" controls preload="metadata" src="media/claude-code-extension.mp4"></video>
             </div>
-            <p class="sag-media__instruction">افتح <span class="tok-lat">Extensions</span> داخل المحرّر ← ابحث عن
-              <strong>Claude Code for VS Code</strong> ← ثبّتها ← سجّل الدخول.
-            </p>
+            <div class="stepvid__steps">
+              <ol class="stepvid__list">
+                <li class="stepvid__step" data-t="0">
+                  <button class="stepvid__time" type="button">0:00</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">افتح Extensions وابحث عن الإضافة</h4>
+                    <p class="stepvid__p">من داخل المحرّر افتح لوحة <span class="tok-lat">Extensions</span>،
+                      واكتب <span class="tok-lat">Claude Code for VS Code</span> في البحث.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="8">
+                  <button class="stepvid__time" type="button">0:08</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">ثق بالناشر</h4>
+                    <p class="stepvid__p">أوّل مرّة تثبّت فيها إضافة من <span class="tok-lat">Anthropic</span>
+                      يسألك المحرّر «<span class="tok-lat">Do you trust the publisher؟</span>» — اضغط
+                      <span class="tok-lat">Trust Publisher & Install</span>.
+                    </p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="16">
+                  <button class="stepvid__time" type="button">0:16</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">افتح Claude Code من شريط الأدوات</h4>
+                    <p class="stepvid__p">تظهر أيقونة جديدة أعلى المحرّر، تفتح لك لوحة
+                      <span class="tok-lat">Claude Code</span> — مستقلّة تمامًا عن لوحة «<span
+                        class="tok-lat">Agent</span>» الخاصّة بمساعد <span class="tok-lat">Antigravity</span>
+                      (<span class="tok-lat">Gemini</span>) على اليمين؛ تشتغلان جنبًا لجنب، لكن أنت تعمل مع
+                      <span class="tok-lat">Claude Code</span> فقط.
+                    </p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="32">
+                  <button class="stepvid__time" type="button">0:32</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">اكتب أوّل رسالة</h4>
+                    <p class="stepvid__p">جرّب تكتب «السلام عليكم» وأرسلها — هذي أوّل رسالة توصل لـ<span
+                        class="tok-lat">Claude Code</span> داخل مشروعك.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="37">
+                  <button class="stepvid__time" type="button">0:37</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">راقب Claude وهو يتحقّق من ملفّاتك</h4>
+                    <p class="stepvid__p">قبل ما يردّ، يفتح ملفّاتك (<span class="tok-code">PRODUCT.md</span>،
+                      <span class="tok-code">conversation_history.md</span>، وملف المنهج) عشان يعرف وين
+                      وصلت — سلوك حقيقي مبرمَج له في <span class="tok-code">CLAUDE.md</span>، مو ردّ
+                      جاهز.
+                    </p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="48">
+                  <button class="stepvid__time" type="button">0:48</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">اقرأ ردّه الأوّل كاملًا</h4>
+                    <p class="stepvid__p">يرحّب بك أوّلًا («وعليكم السلام، أهلًا بك! أنا مساعدك في دورة بناء
+                      وإطلاق المنتجات التقنية...»)، ثم يسرد كل ما يفترض أنك أنهيته بنفسك قبل الآن — من شرح
+                      المفاهيم (6.1) إلى نفس هذا البند (5). أكّد له إنك خلّصتها، ويخبرك وقتها بأوّل شي
+                      بيسويه لك (ربط تكاملَي MCP في البند 6).</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
           </div>
         </div>
         <footer class="sag-slide__foot">
@@ -2204,42 +2767,72 @@
         </footer>
       </section>
 
-      <!-- ═══ 39 — 6أ) ربط context7 ═══════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 37 — 6أ) ربط context7 ════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide">
         <div class="sag-slide__head sag-media__head">
           <h2 class="sag-slide__title">6أ) اربط context7 — التوثيق المحدّث</h2>
           <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
         </div>
         <div class="sag-slide__body">
-          <div class="sag-media__inner">
-            <div class="sag-media-frame">
-              <div class="sag-media-frame__box">
-                <div class="sag-media-frame__ph">
-                  <span class="i i-book-open" style="font-size:40px"></span><span>12-context7-apikey.png</span>
-                </div>
-              </div>
-              <p class="sag-media-frame__caption">لوحة context7 ← <span class="tok-lat">API Keys</span></p>
+          <div class="stepvid">
+            <div class="stepvid__video">
+              <video class="stepvid__player" controls preload="metadata" src="media/context7-redacted.mp4"></video>
             </div>
-            <div class="sag-media__side">
-              <article class="card">
-                <div class="card__top"><span class="card__num">1</span>
-                  <h3 class="card__title card__title--sm">أنشئ حسابًا وانسخ المفتاح</h3>
-                </div>
-                <p class="card__note card__note--sm">يبدأ بـ <span class="tok-code">ctx7sk-</span></p>
-              </article>
-              <article class="card card--state">
-                <div class="card__top"><span class="card__num">2</span>
-                  <h3 class="card__title card__title--sm">ألصقه في المحادثة</h3>
-                </div>
-                <p class="card__note card__note--sm"><strong>Claude هو من يكتب أمر الربط</strong> — لا تكتب أمرًا واحدًا
-                  بنفسك.</p>
-              </article>
-              <article class="card">
-                <div class="card__top"><span class="card__num">3</span>
-                  <h3 class="card__title card__title--sm">أعِد تشغيل Claude Code</h3>
-                </div>
-                <p class="card__note card__note--sm">التكامل الجديد لا يعمل في الجلسة الحالية.</p>
-              </article>
+            <div class="stepvid__steps">
+              <ol class="stepvid__list">
+                <li class="stepvid__step" data-t="16">
+                  <button class="stepvid__time" type="button">0:16</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">اطلب من Claude يعطيك خطوات الربط</h4>
+                    <p class="stepvid__p">قل له مثلاً «خلصت واحتاجك تساعدني اربط context7 وتعطيني الخطوات» —
+                      يردّ عليك بنفس الخطوات اللي تحت.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="35">
+                  <button class="stepvid__time" type="button">0:35</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">سجّل الدخول في context7.com</h4>
+                    <p class="stepvid__p">افتح <span class="tok-lat">context7.com</span>، اضغط <span
+                        class="tok-lat">Sign up</span>، وسجّل بحساب Google أو GitHub.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="50">
+                  <button class="stepvid__time" type="button">0:50</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">أنشئ مفتاح API وانسخه</h4>
+                    <p class="stepvid__p">من لوحة التحكّم افتح <span class="tok-lat">API Keys</span>، اضغط
+                      <span class="tok-lat">Create API Key</span>، وانسخ المفتاح — يبدأ بـ <span
+                        class="tok-code">ctx7sk-</span>.
+                    </p>
+                    <p class="stepvid__p"><strong>ملاحظة:</strong> الفيديو من هنا حتى ١:٤٦ مموَّه عمدًا —
+                      ظهر مفتاح حقيقي أثناء التسجيل، والخطوات المكتوبة هنا تكفي لمتابعته.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="61">
+                  <button class="stepvid__time" type="button">1:01</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">الصق المفتاح في محادثة Claude</h4>
+                    <p class="stepvid__p">ارجع لمحادثتك، والصق المفتاح — <strong>Claude هو من يكتب أمر
+                        الربط</strong>. يكفي المفتاح وحده غالبًا؛ ولو ما تحرّك، قل له صراحةً إنك تبي تربطه.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="78">
+                  <button class="stepvid__time" type="button">1:18</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">أعِد تشغيل المحرّر بالكامل</h4>
+                    <p class="stepvid__p">أغلق Antigravity كاملاً وشغّله من جديد من اختصار سطح المكتب —
+                      التكامل الجديد لا يعمل في الجلسة الحالية.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="101">
+                  <button class="stepvid__time" type="button">1:41</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">تأكّد من الربط</h4>
+                    <p class="stepvid__p">اطلب من Claude يتأكّد أن context7 شغّال — يفحص الاتصال، وحتى
+                      يجرّبه فعليًّا بسؤال عن توثيق حقيقي، قبل ما يقول لك «تأكّدت».</p>
+                  </div>
+                </li>
+              </ol>
             </div>
           </div>
         </div>
@@ -2254,38 +2847,115 @@
         </footer>
       </section>
 
-      <!-- ═══ 40 — 6ب) إنشاء مشروع Supabase ═══════════════════════════════════════════════════════ -->
+      <!-- ═══ 38 — 6ب) أنشئ مشروع Supabase واربط الـMCP ════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide">
         <div class="sag-slide__head sag-media__head">
-          <h2 class="sag-slide__title">6ب) أنشئ مشروع قاعدة بياناتك أوّلًا</h2>
+          <h2 class="sag-slide__title">6ب) أنشئ مشروع Supabase واربط الـMCP</h2>
           <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
         </div>
         <div class="sag-slide__body">
-          <div class="sag-media__inner">
-            <div class="sag-media-frame">
-              <div class="sag-media-frame__box">
-                <div class="sag-media-frame__ph">
-                  <span class="i i-database" style="font-size:40px"></span><span>13-supabase-newproject.png</span>
-                </div>
-              </div>
-              <p class="sag-media-frame__caption">نموذج <span class="tok-lat">New project</span></p>
+          <div class="stepvid">
+            <div class="stepvid__video">
+              <video class="stepvid__player" controls preload="metadata" src="media/supabase.mp4"></video>
             </div>
-            <div class="sag-media__side">
-              <p class="sag-media__instruction">اسم المشروع · أقرب <span class="tok-lat">Region</span> · خطة
-                <strong>Free</strong> تكفي المعسكر كاملًا.
-              </p>
-              <article class="card" style="border-inline-start:5px solid var(--state-warning)">
-                <div class="card__top"><span class="card__icon"
-                    style="background:var(--state-warning-soft);color:var(--state-warning)"><span
-                      class="i i-alert-triangle"></span></span>
-                  <h3 class="card__title card__title--sm">كلمة مرور القاعدة</h3>
-                </div>
-                <p class="card__note card__note--sm"><strong>انسخها واحفظها فورًا</strong> — لا تُعرض مرّة أخرى.</p>
-              </article>
-              <article class="card card--plain">
-                <p class="card__note card__note--sm">
-                  المشروع <strong>قبل</strong> الـMCP — لأن الـMCP يحتاج مشروعًا يشير إليه.</p>
-              </article>
+            <div class="stepvid__steps">
+              <ol class="stepvid__list">
+                <li class="stepvid__divider">أنشئ مشروع قاعدة بياناتك</li>
+                <li class="stepvid__step" data-t="0">
+                  <button class="stepvid__time" type="button">0:00</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">اطلب من Claude يعطيك خطوات الربط</h4>
+                    <p class="stepvid__p">قل له مثلاً «احتاجك تعطيني خطوات مفصّلة عشان أسجّل دخول كمستخدم
+                      على Supabase وأنشئ مشروعًا جديدًا وأربطه معاك».</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="15">
+                  <button class="stepvid__time" type="button">0:15</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">سجّل الدخول في Supabase</h4>
+                    <p class="stepvid__p">افتح <span class="tok-lat">supabase.com</span>، وسجّل بحساب
+                      GitHub (أو Google).</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="31">
+                  <button class="stepvid__time" type="button">0:31</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">أنشئ منظّمة (Organization) إن طُلب منك</h4>
+                    <p class="stepvid__p">أوّل مرّة تنشئ فيها مشروعًا، يطلب Supabase تسمية منظّمة أوّلًا —
+                      أي اسم يكفي، على الخطة المجّانية <span class="tok-lat">Free</span>. خطوة تحضيرية
+                      لمرّة واحدة فقط.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="36">
+                  <button class="stepvid__time" type="button">0:36</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">أنشئ المشروع</h4>
+                    <p class="stepvid__p">اكتب اسم مشروعك، واضغط <span class="tok-lat">Generate a
+                        password</span> — يُخفى بنقاط تلقائيًّا، <strong>انسخه واحفظه فورًا</strong> فهو
+                      لا يُعرض مرّة أخرى. اختر أقرب <span class="tok-lat">Region</span> لك، ثم <span
+                        class="tok-lat">Create new project</span>.</p>
+                  </div>
+                </li>
+                <li class="stepvid__divider">اربط الـMCP</li>
+                <li class="stepvid__step" data-t="56">
+                  <button class="stepvid__time" type="button">0:56</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">اضغط Connect واختر Claude Code</h4>
+                    <p class="stepvid__p">من داخل مشروعك اضغط <span class="tok-lat">Connect</span> أعلى
+                      الصفحة، اختر تبويب <span class="tok-lat">MCP</span>، ومن <span class="tok-lat">Client</span> اختر
+                      <span class="tok-lat">Claude Code</span>.
+                    </p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="62">
+                  <button class="stepvid__time" type="button">1:02</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">اضبط خيارات الربط</h4>
+                    <p class="stepvid__p">تأكّد أن <span class="tok-code">read-only</span> مُطفأ (يحتاج
+                      Claude ينشئ جداول لا يقرأها فقط)، و <span class="tok-code">Storage</span> مُطفأة
+                      افتراضيًا — اتركها كذلك. <strong>اختياري:</strong> تقدر توقف مجموعات ثانية ما
+                      تحتاجها الآن (مثل <span class="tok-code">docs</span> أو <span class="tok-code">branching</span>)
+                      لتقليل عدد الأدوات.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="70">
+                  <button class="stepvid__time" type="button">1:10</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">انسخ الأمر وأعطه لـClaude</h4>
+                    <p class="stepvid__p">انسخ أمر <span class="tok-code">claude mcp add</span> الظاهر في
+                      الصفحة، والصقه في محادثتك — Claude ينفّذه.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="85">
+                  <button class="stepvid__time" type="button">1:25</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">وثّق دخولك من موجه أوامر منفصلة</h4>
+                    <p class="stepvid__p"><strong>هذه الخطوة لك وحدك</strong> — تحتاج هويّتك، فلا يقدر
+                      Claude ينفّذها بدلاً عنك: افتح موجه أوامر عادية (لا من داخل المحادثة)، اكتب <span
+                        class="tok-code">claude</span>، وبعدها <span class="tok-code">/mcp</span>، اختر
+                      <span class="tok-lat">supabase</span>، ثم <span class="tok-lat">Authenticate</span>
+                      — يفتح لك المتصفّح لتوافق.
+                    </p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="140">
+                  <button class="stepvid__time" type="button">2:20</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">تحقّق أوّل مرّة</h4>
+                    <p class="stepvid__p">اطلب من Claude يتأكّد — يخبرك أن التوثيق نجح، لكن الأداة تحتاج
+                      إعادة تشغيل المحرّر لتُحمَّل في جلستك الحالية.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="160">
+                  <button class="stepvid__time" type="button">2:40</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">أعِد التشغيل وتحقّق مرّة ثانية</h4>
+                    <p class="stepvid__p">أغلق Antigravity بالكامل وشغّله من جديد، ثم اطلب من Claude
+                      يتحقّق مرّة ثانية — يجرّب الأداة فعليًّا بطلب عرض جداول قاعدة بياناتك قبل ما يؤكّد
+                      لك النجاح.</p>
+                  </div>
+                </li>
+              </ol>
             </div>
           </div>
         </div>
@@ -2300,82 +2970,77 @@
         </footer>
       </section>
 
-      <!-- ═══ 41 — 6ب) ربط Supabase MCP ═══════════════════════════════════════════════════════════ -->
-      <section class="sag-slide sag-media deck-slide">
-        <div class="sag-slide__head sag-media__head">
-          <h2 class="sag-slide__title">6ب) ثم اربط الـMCP</h2>
-          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
-        </div>
-        <div class="sag-slide__body">
-          <div class="sag-media__inner">
-            <div class="sag-media-frame">
-              <div class="sag-media-frame__box">
-                <div class="sag-media-frame__ph">
-                  <span class="i i-database" style="font-size:40px"></span><span>14-supabase-mcp.png</span>
-                </div>
-              </div>
-              <p class="sag-media-frame__caption">التكامل ظاهرًا متّصلًا بعد <span class="tok-code">/mcp</span></p>
-            </div>
-            <div class="sag-media__side">
-              <p class="sag-media__instruction"><span class="tok-lat">Connect</span> ← تبويب <span
-                  class="tok-lat">MCP</span> ← العميل <span class="tok-lat">Claude Code</span></p>
-              <article class="card card--accent">
-                <div class="card__top"><span class="card__icon"><span class="i i-shield-check"></span></span>
-                  <h3 class="card__title card__title--sm">خياران مهمّان</h3>
-                </div>
-                <p class="card__note card__note--sm"><span class="tok-code">read-only</span> <strong>مُطفأ</strong> —
-                  Claude ينشئ الجداول لا يقرأها فقط.</p>
-                <p class="card__note card__note--sm"><span class="tok-code">Storage</span> <strong>مُطفأة</strong> — لا
-                  تمنح صلاحيات لا تحتاجها.</p>
-              </article>
-              <article class="card card--state">
-                <div class="card__top"><span class="card__icon"><span class="i i-users"></span></span>
-                  <h3 class="card__title card__title--sm">هذه الخطوة لك وحدك</h3>
-                </div>
-                <p class="card__note card__note--sm"><span class="tok-code">/mcp</span> ← <span
-                    class="tok-lat">Authenticate</span> ← وافق في متصفّحك. يحتاج هويّتك أنت.</p>
-              </article>
-            </div>
-          </div>
-        </div>
-        <footer class="sag-slide__foot">
-          <div class="deck-foot">
-            <div class="deck-foot__side">
-              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
-                  alt="ساج التقنية"></div>
-              <span class="deck-foot__num">اليوم 1</span>
-            </div><span class="deck-foot__num">41</span>
-          </div>
-        </footer>
-      </section>
-
-      <!-- ═══ 42 — 14.1 إنشاء مستودعك ═════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 39 — 14.1 إنشاء مستودعك ══════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide" data-anchor="repo-create">
         <div class="sag-slide__head sag-media__head">
-          <h2 class="sag-slide__title">أنشئ مستودعك على GitHub</h2>
+          <h2 class="sag-slide__title">أنشئ مستودعك على GitHub وسلّم الفكرة لـ Claude</h2>
           <span class="sag-badge"><span class="sag-badge__num">14.1</span> التهيئة والهيكل</span>
         </div>
         <div class="sag-slide__body">
-          <div class="sag-media__inner">
-            <div class="sag-media-frame">
-              <div class="sag-media-frame__box">
-                <div class="sag-media-frame__ph">
-                  <span class="i i-git-branch" style="font-size:40px"></span><span>15-github-new-repo.png</span>
-                </div>
-              </div>
-              <p class="sag-media-frame__caption">نموذج <span class="tok-lat">github.com/new</span></p>
+          <div class="stepvid">
+            <div class="stepvid__video">
+              <video class="stepvid__player" controls preload="metadata" src="media/github.mp4"></video>
             </div>
-            <div class="sag-media__side">
-              <p class="sag-media__instruction">المستودع يحمل <strong>وثائقك وكودك معًا</strong>.</p>
-              <article class="card card--state">
-                <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
-                  <h3 class="card__title card__title--sm">لا تتظاهر بالفهم</h3>
-                </div>
-                <p class="card__note card__note--sm">في النموذج خيارات تبدو بريئة (مثل «أضِف <span
-                    class="tok-lat">README</span>») لكنها تُسبّب تعارضًا عند رفع مشروع موجود.</p>
-                <p class="card__note card__note--sm"><strong>اسأل Claude عمّا تتركه فارغًا</strong> — «لم أفهم ما تقصده
-                  بـ…» أمر مشروع تمامًا.</p>
-              </article>
+            <div class="stepvid__steps">
+              <ol class="stepvid__list">
+                <li class="stepvid__step" data-t="0">
+                  <button class="stepvid__time" type="button">0:00</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">اطلب من Claude خطوات إنشاء المستودع</h4>
+                    <p class="stepvid__p">قل له مثلاً «عطني خطوات إنشاء مستودع على GitHub» — يتحقّق أوّلًا
+                      أن هويّتك في Git مضبوطة من شريحة سابقة.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="9">
+                  <button class="stepvid__time" type="button">0:09</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">راجع الخطوات وانسخ اسمًا مقترحًا</h4>
+                    <p class="stepvid__p">يعطيك Claude خطوات إنشاء المستودع كاملة، مع اسم قصير مقترح (مثل
+                      <span class="tok-code">my-booking-app</span>) — انسخه.
+                    </p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="33">
+                  <button class="stepvid__time" type="button">0:33</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">أنشئ المستودع على GitHub</h4>
+                    <p class="stepvid__p">افتح <span class="tok-lat">github.com/new</span>، الصق الاسم،
+                      اختر <span class="tok-lat">Private</span>، و<strong>اترك الثلاثة الآتية فارغة
+                        تمامًا</strong>: <span class="tok-lat">Add a README file</span>، <span class="tok-lat">Add
+                        .gitignore</span>، <span class="tok-lat">Choose a
+                        license</span> — تفعيلها يسبّب تعارضًا عند أوّل رفع. اضغط <span class="tok-lat">Create
+                        repository</span>.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="41">
+                  <button class="stepvid__time" type="button">0:41</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">انسخ الرابط وأعطه لـ Claude مع فكرة مشروعك</h4>
+                    <p class="stepvid__p">انسخ رابط مستودعك (ينتهي بـ <span class="tok-code">.git</span>)،
+                      والصقه في نفس الرسالة مع جملة واحدة بسيطة عن فكرة منتجك.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="70">
+                  <button class="stepvid__time" type="button">1:10</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يتحقّق Claude من بيئتك ويجهّز خطة</h4>
+                    <p class="stepvid__p">يتأكّد أن الأدوات اللي يحتاجها التطبيق (مثل <span
+                        class="tok-lat">Node.js</span>) موجودة على جهازك — لو ناقصة، يخبرك ويعطيك خطوات
+                      تثبيتها أوّلًا قبل ما يكمل.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="78">
+                  <button class="stepvid__time" type="button">1:18</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">راجع الخطة واختر كيف تكمل</h4>
+                    <p class="stepvid__p">يعرض عليك Claude ملخّصًا بسيطًا لما سيبنيه، ثم يسألك: <span
+                        class="tok-lat">Yes, and auto-accept</span> (ينفّذ كل شي تلقائيًّا)، أو <span
+                        class="tok-lat">Yes, and manually approve edits</span> (يعرض عليك كل تعديل
+                      لتوافق عليه)، أو <span class="tok-lat">No, keep planning</span> (لو تبي تعدّل
+                      الخطة أوّلًا).</p>
+                  </div>
+                </li>
+              </ol>
             </div>
           </div>
         </div>
@@ -2390,7 +3055,7 @@
         </footer>
       </section>
 
-      <!-- ═══ 43 — 14.1 Claude يهيّئ تطبيقك ═══════════════════════════════════════════════════════ -->
+      <!-- ═══ 40 — 14.1 Claude يهيّئ تطبيقك ════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-anchor="claude-scaffold">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">14.1</span> التهيئة والهيكل</span>
@@ -2398,27 +3063,21 @@
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
-          <div class="bento" data-cols="4">
+          <div class="bento" data-cols="3">
             <article class="card card--accent">
               <div class="card__top"><span class="card__num">1</span>
-                <h3 class="card__title card__title--sm">ألصق مفاتيحك في المحادثة</h3>
-              </div>
-              <p class="card__note card__note--sm">Claude يكتبها في ملف الأسرار — <strong>لا تفتحه أنت</strong>.</p>
-            </article>
-            <article class="card">
-              <div class="card__top"><span class="card__num">2</span>
                 <h3 class="card__title card__title--sm">اطلب تهيئة الهيكل</h3>
               </div>
               <p class="card__note card__note--sm">وربطه بقاعدة البيانات.</p>
             </article>
             <article class="card">
-              <div class="card__top"><span class="card__num">3</span>
+              <div class="card__top"><span class="card__num">2</span>
                 <h3 class="card__title card__title--sm">شغّل التطبيق</h3>
               </div>
               <p class="card__note card__note--sm">وافتح صفحة تسجيل الدخول.</p>
             </article>
             <article class="card card--state">
-              <div class="card__top"><span class="card__num">4</span>
+              <div class="card__top"><span class="card__num">3</span>
                 <h3 class="card__title card__title--sm">احفظ وارفع</h3>
               </div>
               <p class="card__note card__note--sm">commit ثم push.</p>
@@ -2428,8 +3087,8 @@
             <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
               <h3 class="card__title card__title--sm">صياغة مقترحة تعطيها لـ Claude</h3>
             </div>
-            <p class="card__note">«هيّئ هيكل تطبيقي واربطه بقاعدة البيانات. هذه مفاتيحي: […]. <strong>اعرض لي أولًا
-                ملخّصًا بسيطًا بلا مصطلحات لأوافق</strong>، ثم نفّذه وشغّل التطبيق وأخبرني كيف أفتحه.»</p>
+            <p class="card__note">«هيّئ هيكل تطبيقي واربطه بقاعدة البيانات. <strong>اعرض لي أولًا ملخّصًا بسيطًا
+                بلا مصطلحات لأوافق</strong>، ثم نفّذه وشغّل التطبيق وأخبرني كيف أفتحه.»</p>
           </article>
         </div>
         <footer class="sag-slide__foot">
@@ -2443,7 +3102,7 @@
         </footer>
       </section>
 
-      <!-- ═══ 44 — ماذا سترى حين يعمل ═════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 41 — ماذا سترى حين يعمل ══════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide">
         <div class="sag-slide__head sag-media__head">
           <h2 class="sag-slide__title">هذا ما سترى حين يعمل</h2>
@@ -2474,7 +3133,7 @@
         </footer>
       </section>
 
-      <!-- ═══ 45 — دورك الآن 1/2 ══════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 42 — دورك الآن 1/2 ═══════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-anchor="your-turn" data-surface="dark">
         <div class="sag-slide__head">
           <span class="sag-badge">عمل المتدربين</span>
@@ -2515,7 +3174,7 @@
         </footer>
       </section>
 
-      <!-- ═══ 46 — دورك الآن 2/2 ══════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 43 — دورك الآن 2/2 ═══════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-surface="dark">
         <div class="sag-slide__head">
           <span class="sag-badge">عمل المتدربين</span>
@@ -2553,7 +3212,7 @@
         </footer>
       </section>
 
-      <!-- ═══ 47 — أول حفظ ورفع ═══════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 44 — أول حفظ ورفع ════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide" data-anchor="commit-push">
         <div class="sag-slide__head sag-media__head">
           <h2 class="sag-slide__title">أول حفظ ورفع</h2>
@@ -2594,7 +3253,7 @@
         </footer>
       </section>
 
-      <!-- ═══ 48 — مراجعة اليوم ═══════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 45 — مراجعة اليوم ════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-anchor="day-review">
         <div class="sag-slide__head">
           <span class="sag-badge">مراجعة وعرض التقدم</span>
@@ -2638,7 +3297,7 @@
         </footer>
       </section>
 
-      <!-- ═══ 49 — إن بقي لديك وقت (8.1) ══════════════════════════════════════════════════════════ -->
+      <!-- ═══ 46 — إن بقي لديك وقت (8.1) ═══════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">8.1</span> تعريف المشكلة والهدف والغايات</span>
@@ -2677,7 +3336,7 @@
         </footer>
       </section>
 
-      <!-- ═══ 50 — غدًا ═══════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 47 — غدًا ════════════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-closing deck-slide" data-surface="dark">
         <div class="sag-slide__head">
           <h2 class="sag-slide__title">غدًا — اليوم الثاني</h2>

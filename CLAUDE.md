@@ -69,7 +69,7 @@ Never drop trainees into a sequence of steps without first telling them, plainly
 **A.6.7 Vocabulary — fixed choices.**
 - **مشروع, not منتج.** «مشاريع رقمية» not «منتجات رقمية»; «مشروعك» not «منتجك». Applies everywhere in trainee-facing text.
 - **The colloquial «what» is «ايش», not «وايش».** The و is a separate conjunction: keep it only where the sentence genuinely joins something (a list, two clauses), and never at the start of a title, a task row, or a clause after an em-dash or colon.
-- **Do not call anything «دليل».** The deck *is* the curriculum, so there is no separate guide to refer to. Say «المعسكر» / «القسم N» / «الحزمة» instead.
+- **Do not call anything «دليل».** The deck *is* the curriculum, so there is no separate guide to refer to. Say «الدورة» / «القسم N» / «الحزمة» instead.
 
 **A.6.7.1 Address ONE trainee, always in the singular.**
 Every trainee builds **their own project, alone**. There is no group work, no pair work, and no «نحن» that includes Claude — Claude is a tool the trainee operates, not the other half of a team. So trainee-facing text never uses a second-person plural or dual: no «تشتغلون»، «وصلتم»، «توصلون»، «أنتم»، «سوا»، «معًا» *when the other party is Claude*. Say what the trainee does and name Claude separately: «في كل مهمّة عليك شغل، وعلى Claude شغل» — not «تشتغلون سوا». The one place a plural is correct is the **trainer** and the trainees in a live session («ننجزها معًا الآن» in §7.10), because that really is a room working through something together.
@@ -82,6 +82,27 @@ Task rows in a §6.N block ship **unchecked** and are **clickable** — trainees
 
 **A.6.10 Working method.**
 Slides are revised **gradually, a few at a time**. When asked to fix a slide, fix *that* slide against A.6.1–A.6.9 and leave the rest alone; then say which slides most need the same treatment next.
+
+**A.6.11 Examples first — and calibrate the dose to the topic's weight.**
+Examples always beat abstraction, but *how much* of a section rides on its example is a judgement,
+not a constant. Two doses:
+- **Clarifying example — the default, most content.** The trainee can already follow the sentence;
+  the example only makes it concrete. It lives *inside* the explanation: one line, one card, a real
+  number. Do not spend a slide on it.
+- **Gateway example — rare, and deliberate.** The concept is heavy, abstract or technical relative
+  to the trainee's level, and the sentence defining it means nothing to someone who has not watched
+  the thing happen. Here the example *is* the road in: open on a concrete situation the trainee
+  already lives, walk it as a sequence of actions (A.6.6), **never name the concept while the story
+  runs**, and only in the closing line reveal that what they just watched is what the term means.
+  The next slide then explains the concept by pointing back at that same example, part by part.
+
+**How to pick:** if the trainee could understand the definition on its own, it is clarifying. If the
+definition would land as noise until they have seen it happen, it is a gateway — and then it is
+worth a whole slide. §7.5 (MCP) is the worked case: slide 24 is the Gmail story with MCP unnamed
+until its last line; slide 25 names the parts by reflecting them back onto it.
+
+Over-dosing a light topic is a real cost — it burns slides and reading time and buys nothing. Weigh
+each topic on its own; most do not clear the bar.
 
 ---
 

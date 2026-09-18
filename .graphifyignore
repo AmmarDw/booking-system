@@ -4,3 +4,19 @@ archive/
 # Owner: raw personal draft notebook - explicitly marked "not meant for any LLM or AI
 # usage or analysis" on its first line. Excluded so graphify never re-ingests it.
 notebook.txt
+
+# Deck runtime chrome — the slides themselves call these «ما يخصّك — ملفات تشغيل
+# الشرائح». Fonts, line icons and brand art carry no knowledge, and each image
+# costs a vision subagent. deck.js / deck.css stay in the graph; they are code.
+project-package/slides/assets/icons/
+project-package/slides/assets/fonts/
+project-package/slides/assets/brand/
+project-package/slides/media/
+
+# The logo, delivered in four formats. LOGO_Sag/ASSETS.md already describes every
+# variant in text, so the binaries add nothing but 17 vision calls.
+LOGO_Sag/JPG/
+LOGO_Sag/PNG/
+LOGO_Sag/SVG/
+LOGO_Sag/PDF/
+SAG_Lab_Logo_Transparent.png

@@ -286,7 +286,7 @@ const cover = [
   new Paragraph({ spacing: { before: 2600, after: 0 }, alignment: AlignmentType.CENTER, bidirectional: true,
     children: [new TextRun({ text: 'خارطة الطريق والمنهج', font: FONT, size: 56, bold: true, color: ACCENT, rightToLeft: true })] }),
   new Paragraph({ spacing: { before: 160, after: 0 }, alignment: AlignmentType.CENTER, bidirectional: true,
-    children: [new TextRun({ text: 'معسكر بناء المنتجات الأولية (MVP) باستخدام Claude', font: FONT, size: 28, color: '1F2937', rightToLeft: true })] }),
+    children: [new TextRun({ text: 'دورة بناء المنتجات الأولية (MVP) باستخدام Claude', font: FONT, size: 28, color: '1F2937', rightToLeft: true })] }),
   new Paragraph({ spacing: { before: 400, after: 0 }, alignment: AlignmentType.CENTER, bidirectional: true,
     children: [new TextRun({ text: '10 أيام · 4 ساعات يوميًّا · 29 مهمّة', font: FONT, size: 24, color: MUTED, rightToLeft: true })] }),
   new Paragraph({ spacing: { before: 900 }, alignment: AlignmentType.CENTER, bidirectional: true,
@@ -300,7 +300,7 @@ const cover = [
 
 const doc = new Document({
   creator: 'SAG Tech Bootcamp',
-  title: 'خارطة الطريق والمنهج — معسكر MVP',
+  title: 'خارطة الطريق والمنهج — دورة MVP',
   description: 'Arabic bootcamp roadmap and curriculum',
   features: { updateFields: true },
   numbering: {

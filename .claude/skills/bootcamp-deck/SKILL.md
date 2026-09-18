@@ -82,6 +82,15 @@ then stop. Depth beyond that is Claude's job; on a slide it costs comprehension 
 - **One trainee, singular, always.** Each trainee builds their own project alone. A second-person plural reads as «me and the other trainees» even when you meant «me and Claude» — and «me and Claude» is wrong too, because Claude is a tool the trainee operates, not half of a team. Never «تشتغلون» / «وصلتم» / «توصلون» / «أنتم» / «سوا» with Claude as the other party. Name the two sides instead: «في كل مهمّة عليك شغل، وعلى Claude شغل». The exception is the **trainer** plus the room in a live session («ننجزها معًا الآن», §7.10), which is genuinely collective.
 - **Concrete examples only.** «لو عندك متجر وتبغى تعرف كم طلب وصلك اليوم» beats «مثال على استعلام
   البيانات». If an example cannot be made concrete, it is not understood well enough to teach.
+- **Calibrate how much of a topic rides on its example.** Examples always beat abstraction, but the
+  dose is a judgement. Most content wants a *clarifying* example — one line, one card, a real number,
+  inside the explanation. A topic that is heavy or technical relative to the trainee's level wants a
+  *gateway* example instead: open on a situation the trainee already lives, walk it as a sequence,
+  **never name the concept while the story runs**, and reveal in the closing line that what they
+  just watched is what the term means — then explain the concept on the next slide by pointing back
+  at it. Test: could the trainee understand the definition cold? Then clarifying. Would the
+  definition land as noise first? Then gateway, and it earns a slide. §7.5 (MCP) is the worked case;
+  most topics do not clear the bar, and over-dosing a light one buys nothing. (CLAUDE.md A.6.11.)
 - **Show the flow before the work.** Never drop trainees into a sequence of steps without first
   saying plainly what the sequence is for and what order it runs in. Be neutral about the medium —
   some of these framings belong on a slide, others are just something the trainer says. Decide per
@@ -96,7 +105,7 @@ then stop. Depth beyond that is Claude's job; on a slide it costs comprehension 
 | Use | Never | Why |
 |---|---|---|
 | مشروع · مشروعك | منتج · منتجك | trainees build projects, not products |
-| المعسكر · القسم N · الحزمة | دليل | the deck *is* the curriculum; there is no separate guide |
+| الدورة · القسم N · الحزمة | دليل | the deck *is* the curriculum; there is no separate guide |
 | منهج (= curriculum) | محتوى, where curriculum is meant | — |
 | محتوى الملفات · فهرس المحتويات | منهج | these are *file contents* and a *table of contents* |
 | ايش | وش · ويش · ووش · وايش *as the default* | the colloquial "what" is **ايش**; the و is a separate conjunction, not part of it |
@@ -105,7 +114,7 @@ then stop. Depth beyond that is Claude's job; on a slide it costs comprehension 
 | ربط / يربط, until §7.5 defines التكامل | التكاملات, before slide 23 | ربط is the plainer word, and the noun is not introduced yet |
 
 That fourth row is why terminology sweeps are **semantic, never `sed`**. Read every candidate in
-place before changing it. A blind swap on «صمّم محتوى المعسكر ومنهجه» yields «صمّم منهج المعسكر
+place before changing it. A blind swap on «صمّم محتوى الدورة ومنهجه» yields «صمّم منهج الدورة
 ومنهجه».
 
 «ايش» is the one that keeps being got wrong. It is **و + ايش**, two words. Write «ايش» unless a conjunction is genuinely needed at that point in the sentence — in a list («مين هو، وايش دوره، ووين وصلتم») or joining two clauses («ايش يقدّمه وايش ما يقدّمه»). After an em-dash, after a colon, or at the start of a title or clause there is nothing to join, so the و is simply wrong. Audit with `/وايش/` and read every hit in place; the correct count is small.

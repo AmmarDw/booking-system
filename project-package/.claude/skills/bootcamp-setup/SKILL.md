@@ -1,9 +1,9 @@
 ---
 name: bootcamp-setup
-description: "تهيئة أدوات المعسكر: إنشاء مشروع قاعدة البيانات (Supabase) بحقوله، وربط تكاملات MCP (context7، Supabase MCP، chrome-devtools، Vercel MCP) بالأوامر الدقيقة وترتيبها، وما ينفّذه Claude مقابل ما ينفّذه المتدرّب بنفسه. استخدمها عند القسم 7.10 من ملف خارطة الطريق، أو كلّما أنشأ المتدرّب مشروع قاعدة بيانات، أو طلب ربط تكامل، أو ذكر مفتاح API، أو قال إن أداةً لا تعمل. Use when creating the Supabase project, connecting an MCP integration, installing bootcamp tools, or verifying a connection."
+description: "تهيئة أدوات الدورة: إنشاء مشروع قاعدة البيانات (Supabase) بحقوله، وربط تكاملات MCP (context7، Supabase MCP، chrome-devtools، Vercel MCP) بالأوامر الدقيقة وترتيبها، وما ينفّذه Claude مقابل ما ينفّذه المتدرّب بنفسه. استخدمها عند القسم 7.10 من ملف خارطة الطريق، أو كلّما أنشأ المتدرّب مشروع قاعدة بيانات، أو طلب ربط تكامل، أو ذكر مفتاح API، أو قال إن أداةً لا تعمل. Use when creating the Supabase project, connecting an MCP integration, installing bootcamp tools, or verifying a connection."
 ---
 
-# تهيئة أدوات المعسكر وربط التكاملات
+# تهيئة أدوات الدورة وربط التكاملات
 
 هذا **دليل التنفيذ الخاص بك أنت (Claude)** — المتدرّب لا يقرأه. أمّا الخطوات التي يراها المتدرّب فهي في القسم **7.10** من ملف خارطة الطريق (`bootcamp_roadmap_and_curriculum.md`).
 
@@ -43,7 +43,7 @@ description: "تهيئة أدوات المعسكر: إنشاء مشروع قاع
 claude mcp add --scope user --header "Authorization: Bearer <KEY>" --transport http context7 https://mcp.context7.com/mcp
 ```
 
-- `--scope user` مقصود: التوثيق المحدّث نافع في كل مشاريع المتدرّب لا في مشروع المعسكر وحده.
+- `--scope user` مقصود: التوثيق المحدّث نافع في كل مشاريع المتدرّب لا في مشروع الدورة وحده.
 - على PowerShell أبقِ قيمة `--header` بين علامتَي اقتباس مزدوجتين كما هي أعلاه.
 - الاتصال البعيد يعمل **بلا مفتاح** لكن بحدّ استخدام منخفض (anonymous rate limit)؛ ولهذا نستخدم مفتاحًا.
 
@@ -51,7 +51,7 @@ claude mcp add --scope user --header "Authorization: Bearer <KEY>" --transport h
 
 ## 3. إنشاء مشروع Supabase — **قبل** ربط الـMCP
 
-**الحسابات متطلّب مسبق** (GitHub · Supabase · منصّة النشر · بريد فعّال) يجهّزها المتدرّب قبل المعسكر. أمّا **مشروع** Supabase فيُنشأ الآن، **ولا بدّ منه قبل الخطوة التالية** لأن الـMCP يحتاج مشروعًا يشير إليه.
+**الحسابات متطلّب مسبق** (GitHub · Supabase · منصّة النشر · بريد فعّال) يجهّزها المتدرّب قبل الدورة. أمّا **مشروع** Supabase فيُنشأ الآن، **ولا بدّ منه قبل الخطوة التالية** لأن الـMCP يحتاج مشروعًا يشير إليه.
 
 وجّه المتدرّب في <https://supabase.com/dashboard> ← **New project**:
 
@@ -61,7 +61,7 @@ claude mcp add --scope user --header "Authorization: Bearer <KEY>" --transport h
 | **Project name** | اسم منتجه — حروف صغيرة وشرطات |
 | **Database password** | ⚠ **انسخها واحفظها الآن في مكان آمن** — لا تُعرض مرّة أخرى، واستعادتها تتطلّب إعادة تعيين |
 | **Region** | الأقرب جغرافيًّا لمستخدميه (يقلّل البطء) |
-| **Plan** | **Free** يكفي للمعسكر بالكامل |
+| **Plan** | **Free** يكفي للدورة بالكامل |
 
 التجهيز يستغرق دقيقة أو دقيقتين. بعده تجد بيانات الاتصال في **Project Settings**: نصّ الاتصال بقاعدة البيانات (connection string)، ورابط الـAPI ومفاتيحه (publishable keys).
 
@@ -108,4 +108,4 @@ claude mcp add --scope project --transport http supabase "https://mcp.supabase.c
 
 ## 7. بعد أي ربط ناجح
 
-أضِف الأداة إلى **جدول الأدوات** في `PRODUCT.md` (القسم 10) — الجدول يُحدَّث أوّلًا بأوّل لا في نهاية المعسكر — وحدِّث سجلّ التقدّم في `CLAUDE.md`.
+أضِف الأداة إلى **جدول الأدوات** في `PRODUCT.md` (القسم 10) — الجدول يُحدَّث أوّلًا بأوّل لا في نهاية الدورة — وحدِّث سجلّ التقدّم في `CLAUDE.md`.

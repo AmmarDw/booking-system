@@ -141,38 +141,131 @@
   }
 
 
-  /* ── pausable GIF ────────────────────────────────────────────────
-     A GIF exposes no playback API. Drawing the <img> into a canvas copies the
-     frame that is CURRENTLY on screen, so swapping to that canvas freezes the
-     animation where the presenter sees it, not back at frame 0. */
+  /* ── pausable screen recording ────────────────────────────────────────────────
+     Pause/play for the screen recordings. Everything about why this is a
+     <video> and not a GIF is in initGifs below. */
   var GIF_PAUSE = 'إيقاف مؤقّت';
   var GIF_PLAY  = 'تشغيل';
 
   function initGifs() {
     Array.prototype.forEach.call(document.querySelectorAll('.gifbox'), function (box) {
-      var img = box.querySelector('img');
-      var cv = box.querySelector('canvas');
+      var vid = box.querySelector('video');
+      var btn = box.querySelector('.gifbox__btn');
       var label = box.querySelector('.gifbox__label');
-      if (!img || !cv) return;
+
+      /* A GIF cannot be paused. The old approach drew the <img> into a canvas
+         on the assumption that this copies the frame currently on screen;
+         measured in Chromium, drawImage() returns byte-identical output at
+         t=0, 2.5s and 5s — it always hands back frame 0, so "pause" jumped the
+         recording back to its thumbnail. A <video> has a real playback clock
+         and stops on the frame the room is looking at, so captures that need a
+         pause control ship as MP4 (see deck/MEDIA_SHOTLIST.md). Anything left
+         as a GIF loops without a control rather than lying about pausing. */
+      if (!vid) {
+        if (btn) btn.hidden = true;
+        return;
+      }
 
       function toggle() {
-        if (box.getAttribute('data-paused') === 'true') {
-          box.setAttribute('data-paused', 'false');
-          if (label) label.textContent = GIF_PAUSE;
-        } else {
-          var w = img.naturalWidth, h = img.naturalHeight;
-          if (!w || !h) return;                  /* not decoded yet — leave it running */
-          cv.width = w; cv.height = h;
-          try { cv.getContext('2d').drawImage(img, 0, 0, w, h); }
-          catch (err) { return; }                /* never freeze on a blank canvas */
-          box.setAttribute('data-paused', 'true');
-          if (label) label.textContent = GIF_PLAY;
-        }
+        var paused = !vid.paused;
+        if (paused) vid.pause(); else vid.play();
+        box.setAttribute('data-paused', paused ? 'true' : 'false');
+        if (label) label.textContent = paused ? GIF_PLAY : GIF_PAUSE;
       }
 
       box.addEventListener('click', toggle);
-      var btn = box.querySelector('.gifbox__btn');
       if (btn) btn.addEventListener('click', function (e) { e.stopPropagation(); toggle(); });
+    });
+  }
+
+  /* ── copy-to-clipboard on install commands ───────────────────────────
+     navigator.clipboard needs a secure context (https:, or http://localhost);
+     a deck opened as a plain file:// page — the normal way this deck is
+     handed to a trainee — is not one, so it silently rejects. document
+     .execCommand('copy') on a temporary, off-screen textarea still works
+     there even though it is deprecated, so it is the fallback rather than
+     the primary path, tried only when the modern API is unavailable or
+     throws. */
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).catch(function () { fallbackCopy(text); });
+    }
+    fallbackCopy(text);
+    return Promise.resolve();
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try { document.execCommand('copy'); } catch (err) { /* nothing left to try */ }
+    document.body.removeChild(ta);
+  }
+
+  function initCopyButtons() {
+    Array.prototype.forEach.call(document.querySelectorAll('.snipbox__copy'), function (btn) {
+      var box = btn.closest('.snipbox');
+      var pre = box && box.querySelector('.snip');
+      var icon = btn.querySelector('.i');
+      if (!pre) return;
+
+      btn.addEventListener('click', function () {
+        copyText(pre.textContent).then(function () {
+          btn.setAttribute('data-copied', 'true');
+          btn.setAttribute('aria-label', 'تمّ النسخ');
+          if (icon) icon.className = 'i i-check';
+          setTimeout(function () {
+            btn.removeAttribute('data-copied');
+            btn.setAttribute('aria-label', 'نسخ الأمر');
+            if (icon) icon.className = 'i i-copy';
+          }, 1400);
+        });
+      });
+    });
+  }
+
+  /* ── step-timestamped walkthrough video ─────────────────────────────
+     Each .stepvid pairs one <video> with a scrollable list of steps; a step's
+     time badge seeks the video there and plays. timeupdate reflects the
+     reverse direction — while the video plays, the step whose timestamp it
+     has most recently passed is highlighted and scrolled into view, so the
+     two sides stay in sync whichever direction the trainee drives from. */
+  function initStepVideos() {
+    Array.prototype.forEach.call(document.querySelectorAll('.stepvid'), function (root) {
+      var video = root.querySelector('.stepvid__player');
+      var list = root.querySelector('.stepvid__list');
+      if (!video || !list) return;
+      var steps = Array.prototype.slice.call(root.querySelectorAll('.stepvid__step'));
+      var times = steps.map(function (s) { return parseFloat(s.getAttribute('data-t')); });
+
+      steps.forEach(function (step, i) {
+        var btn = step.querySelector('.stepvid__time');
+        if (!btn || isNaN(times[i])) return;
+        btn.addEventListener('click', function () {
+          video.currentTime = times[i];
+          video.play();
+        });
+      });
+
+      video.addEventListener('timeupdate', function () {
+        var current = video.currentTime;
+        var active = -1;
+        times.forEach(function (t, i) { if (!isNaN(t) && current >= t) active = i; });
+        steps.forEach(function (step, i) {
+          step.setAttribute('data-active', i === active ? 'true' : 'false');
+        });
+        if (active >= 0) {
+          var el = steps[active];
+          var elTop = el.offsetTop, elBottom = elTop + el.offsetHeight;
+          if (elTop < list.scrollTop || elBottom > list.scrollTop + list.clientHeight) {
+            el.scrollIntoView({ block: 'nearest' });
+          }
+        }
+      });
     });
   }
 
@@ -555,6 +648,8 @@
     initTips();
     initQmarks();
     initTasks();
+    initCopyButtons();
+    initStepVideos();
 
     window.deckAudit = auditAll;
     window.deckRefAudit = function () {

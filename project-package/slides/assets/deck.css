@@ -380,6 +380,10 @@ body {
   grid-column: span 2
 }
 
+.bento__span-3 {
+  grid-column: span 3
+}
+
 /* Block flow, NOT flex. A <p> keeps its UA `margin: 1em 0`, and margins do
    not collapse inside a flex container — so every extra .card__note paid the
    16px gap PLUS ~18px above PLUS ~18px below, and a card with three notes
@@ -404,6 +408,13 @@ body {
   margin-block-start: var(--sp-2)
 }
 
+/* Slide 28 packs a goal/feature funnel plus a 4-item flow into one frame;
+   the standard inter-child gap is what pushed it over. Scoped to that slide
+   alone via its anchor — every other slide keeps the normal --sp-2 gap. */
+[data-anchor="mvp-scope"] .card>*+* {
+  margin-block-start: 0
+}
+
 .card--plain {
   background: transparent;
   border: 0;
@@ -424,6 +435,15 @@ body {
   align-items: center;
   gap: var(--sp-2);
   min-width: 0
+}
+
+/* The <h3> inside .card__top keeps the UA's `margin: 1em 0`: `.card>*` zeroes
+   the card's OWN children, not the ones nested in the top row. With
+   align-items:center that margin is pure height — 41px on every card in the
+   deck, on top of the 16px `.card>*+*` gap that already separates the title
+   from the note. Zero it so the intended gap is the only gap. */
+.card__top>h3 {
+  margin-block: 0
 }
 
 .card__icon {
@@ -783,6 +803,18 @@ body {
 /* Media placeholders name the file to drop in; a filename starting with digits
    gets bidi-reordered inside RTL text ("06-desktop-usage.png" → "desktop-usage.png-06").
    Isolate it so the instruction stays readable. */
+/* A plain <video> dropped straight into a media-frame box (not the gifbox
+   pause-hack, which already does this via .gifbox) must fill the box the
+   same way the placeholder <img> it replaces did — absolutely positioned,
+   so the video's own intrinsic aspect ratio never inflates the box (and so
+   the frame, and so the slide) past whatever height the row's other column
+   already establishes. Without this, a real 16:9 recording renders taller
+   than the placeholder ever was and pushes the caption off the frame. */
+.sag-media-frame__box > video {
+  position: absolute;
+  inset: 0
+}
+
 .sag-media-frame__ph span {
   direction: ltr;
   unicode-bidi: isolate;
@@ -967,7 +999,8 @@ body {
 }
 
 .gifbox img,
-.gifbox canvas {
+.gifbox canvas,
+.gifbox video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -1021,6 +1054,17 @@ body {
    560px absorbs them without shrinking any type. */
 .sag-media__inner {
   grid-template-columns: minmax(0, 1fr) 560px
+}
+
+/* The install commands sit in the narrow sidebar column, not a wide bento
+   card — at that width a single-line .snip needs a scrollbar a presenter
+   cannot use live. Wrapping keeps every character intact and still visibly
+   copiable; only this narrow context needs it. */
+.sag-media__side .snip,
+.stepvid__body .snip {
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-x: visible
 }
 
 .sag-media__side .card__note--sm {
@@ -1133,9 +1177,320 @@ body {
   cursor: pointer
 }
 
+/* A .tok-code span that is also a real external link — same literal-string
+   look (monospace pill), plus a clickable affordance so a trainee reading
+   "antigravity.google/download" as plain instructional text can also just
+   click it, without the pill's shape or color implying "type this into a
+   terminal" the way the plain-.reflink underline would. */
+.tok-link {
+  cursor: pointer;
+  text-decoration: underline dashed;
+  text-underline-offset: 3px
+}
+
+.tok-link:hover {
+  text-decoration-style: solid
+}
+
+.tok-link:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px
+}
+
 .reflink:focus-visible {
   outline: 3px solid var(--focus-ring);
   outline-offset: 2px
+}
+
+/* ── real download link, styled as a button ──────────────────────────
+   A genuine <a href> to the actual installer URL, not a decorative shape —
+   the presenter clicks it live to start the download during the walkthrough. */
+.dlbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  background: var(--brand-primary);
+  color: var(--brand-white);
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
+  font: var(--fw-semibold) var(--fs-caption)/1 var(--font-arabic)
+}
+
+.dlbtn:hover {
+  background: var(--accent-structure)
+}
+
+.dlbtn:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px
+}
+
+.dlbtn .i {
+  font-size: 16px
+}
+
+/* ── verbatim machine-facing text ──────────────────────────
+   Quotes the exact string a model receives — an MCP tool description, an API
+   price row. Latin and left-to-right by nature, so it is isolated from the RTL
+   flow rather than inheriting it, and it keeps its own line breaks: rewrapping
+   a tool definition would stop it reading as the literal thing Claude sees.
+   Smaller than --fs-mono because these lines are long and must not wrap. */
+.snip {
+  margin: 0;
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: left;
+  font: var(--fw-medium) 25px/1.45 var(--font-mono);
+  color: var(--brand-primary);
+  background: var(--brand-snow);
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  white-space: pre;
+  overflow-x: auto
+}
+
+/* ── copy button riding on a .snip ────────────────────────────────────
+   A plain command a trainee is meant to paste, not just read — so it gets a
+   real copy affordance. The button sits OUTSIDE the <pre> (a sibling inside
+   this wrapper) so clicking it can never select/copy its own icon glyph
+   along with the command. Fixed bottom-right regardless of the page's RTL
+   flow: the command itself is a forced-LTR block, and the button's corner is
+   relative to THAT block, not to the page.
+   It floats OVER the corner rather than reserving space in the <pre> — an
+   earlier version padded the pre's own edge, which cost the slide vertical
+   room it didn't have once a command wrapped to two lines. It stays dim
+   until the box is hovered/focused so it never competes with the command
+   text for attention, and briefly overlapping the command's last characters
+   on hover is an accepted, well-understood pattern (same as GitHub's). */
+.snipbox {
+  position: relative
+}
+
+.snipbox__copy {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+  color: var(--brand-primary);
+  box-shadow: var(--lift-1);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .15s ease
+}
+
+.snipbox:hover .snipbox__copy,
+.snipbox__copy:focus-visible,
+.snipbox__copy[data-copied="true"] {
+  opacity: 1
+}
+
+.snipbox__copy:hover {
+  background: var(--brand-sky-soft)
+}
+
+.snipbox__copy[data-copied="true"] {
+  color: var(--accent-state)
+}
+
+.snipbox__copy .i {
+  font-size: 14px
+}
+
+/* ── step-timestamped walkthrough video ──────────────────────────────
+   A real screen recording of a full setup (install → fix → sign in), paired
+   with a scrollable list of steps whose time badges seek the video — used
+   instead of splitting the walkthrough across several slides. Native
+   <video controls> is used deliberately for play/pause/seek/fullscreen: the
+   browser's own scrubber already shows current time and duration and lets a
+   presenter drag it live, which is exactly what was asked for, and building
+   a custom one would only reproduce it worse.
+   Column order matches the deck's existing .sag-media__inner convention:
+   the video is first in markup, which under this RTL page lands on the
+   visual RIGHT; the steps column is second and lands on the visual LEFT. */
+.stepvid {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 620px;
+  grid-template-rows: minmax(0, 1fr);
+  gap: var(--sp-4)
+}
+
+.stepvid__video {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #0B1220;
+  box-shadow: var(--lift-2)
+}
+
+.stepvid__video video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #0B1220
+}
+
+.stepvid__steps {
+  min-height: 0;
+  display: flex;
+  flex-direction: column
+}
+
+/* padding-inline-end reserves room so the scrollbar never rides on top of
+   the time badges — a presenter needs to click those precisely. */
+.stepvid__list {
+  list-style: none;
+  margin: 0;
+  padding: 2px;
+  padding-inline-end: 10px;
+  overflow-y: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+/* Groups steps into named phases (install vs. sign-in) without splitting
+   the list — a plain label row, no time badge of its own. */
+.stepvid__divider {
+  margin: 4px 2px 0;
+  font: var(--fw-bold) var(--fs-caption)/1 var(--font-arabic);
+  color: var(--brand-primary)
+}
+
+.stepvid__divider:first-child {
+  margin-block-start: 0
+}
+
+.stepvid__step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: var(--surface-card);
+  border: var(--border-hairline);
+  transition: border-color .15s ease, background .15s ease
+}
+
+.stepvid__step[data-active="true"] {
+  border-color: var(--accent-state);
+  background: var(--brand-teal-soft)
+}
+
+.stepvid__time {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  min-width: 62px;
+  height: 30px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--brand-sky-soft);
+  color: var(--brand-primary);
+  font: var(--fw-bold) 16px/1 var(--font-mono);
+  direction: ltr;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease
+}
+
+.stepvid__time:hover {
+  background: var(--accent-structure);
+  color: var(--brand-white)
+}
+
+.stepvid__time:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px
+}
+
+.stepvid__step[data-active="true"] .stepvid__time {
+  background: var(--accent-state);
+  color: var(--brand-white)
+}
+
+.stepvid__body {
+  min-width: 0
+}
+
+.stepvid__h {
+  margin: 0 0 2px;
+  font: var(--fw-semibold) var(--fs-body)/1.3 var(--font-arabic);
+  color: var(--text-heading)
+}
+
+.stepvid__p {
+  margin: 0;
+  font: var(--fw-regular) var(--fs-caption)/1.5 var(--font-arabic);
+  color: var(--text-body)
+}
+
+/* ── a numbered sequence inside a card ──────────────────────
+   For content where the POINT is the order of the steps, which .bento cannot
+   carry — its cards read as parallel facts. The counter is authored by CSS so
+   the markup stays a plain <ol> and the numbers can never drift from it. */
+.flow {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: flow
+}
+
+.flow>li {
+  counter-increment: flow;
+  position: relative;
+  padding-inline-start: 44px;
+  font: var(--type-caption);
+  color: var(--text-body);
+  text-wrap: pretty
+}
+
+.flow>li+li {
+  margin-block-start: 10px
+}
+
+/* Four short steps read better side by side than as one tall column. */
+.flow--row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px var(--sp-3)
+}
+
+.flow--row>li+li {
+  margin-block-start: 0
+}
+
+.flow>li::before {
+  content: counter(flow);
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 3px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--brand-sky-soft);
+  color: var(--brand-primary);
+  font: var(--fw-bold) var(--fs-caption)/1 var(--font-arabic);
+  font-variant-numeric: lining-nums
 }
 
 /* ── the ؟ button ───────────────────────────────────────────────────
@@ -1529,6 +1884,14 @@ body {
   justify-self: start
 }
 
+/* The design system caps a lead at 34ch so a short hook does not run the full
+   1920px. A lead that carries a whole definition instead folds into a narrow
+   four-line column — the exact thing a trainee at the back cannot read. Opt
+   out per slide rather than lifting the cap for every one. */
+.sag-slide__lead--wide {
+  max-width: none
+}
+
 /* Four demo cards in a 2×2 need ~13px more than the default 32px grid gap
    leaves them. Reclaim it from the gap rather than from the copy — the cards
    have to stay legible enough to actually teach the affordance. */
@@ -1583,6 +1946,15 @@ body {
    size that reads from the back of a room cannot fit 1080px, and shrinking
    them until they do defeats the slide. So the tree scrolls inside its own
    box and the slide itself never moves. */
+/* An inline note after a slide title, introduced by a dash — smaller and
+   lighter than the title itself so it reads as commentary, not a second
+   headline. Used on slide 13 to explain the highlighted rows without a
+   separate line stealing vertical space. */
+.sag-slide__title--note {
+  font: var(--fw-medium) var(--fs-body)/var(--lh-title) var(--font-arabic);
+  color: var(--text-body)
+}
+
 .pkgtree {
   display: grid;
   /* Centred pair of content-width columns. The width is filled by making the
@@ -1635,6 +2007,24 @@ body {
 .pkgtree__d--mute {
   color: var(--text-caption);
   font-style: italic
+}
+
+/* The three rows the trainee actually reads (slides/, PRODUCT.md,
+   conversation_history.md) — named in the title note, picked out here so
+   they read as a group at a glance instead of being lost among 26 rows.
+   No horizontal padding on the PATH cell: the grid column is shared with
+   every other row, and inset text there would break the ├── / │ / └──
+   alignment that makes this read as a tree in the first place. Vertical
+   padding only is free to add — it cannot desync anything. */
+.pkgtree__p--read,
+.pkgtree__d--read {
+  background: var(--brand-sky-soft);
+  border-radius: var(--radius-sm);
+  padding-block: 3px
+}
+
+.pkgtree__d--read {
+  font-weight: var(--fw-medium)
 }
 
 /* the ؟ is repeated 24 times here, so it has to recede until wanted */
