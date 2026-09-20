@@ -5503,3 +5503,494 @@ I am not sure what is the best way to add this in slide 15, using the question i
 ---
 
 ## § D136 — Prompt #91
+
+**ملاحظاتك:** "Looking back at the setup steps of 7.10 «6ب) أنشئ مشروع Supabase واربط الـMCP» slide 38 and 14.1 «أنشئ مستودعك على GitHub وسلّم الفكرة لـ Claude» slide 39 you should notice that both require information about the project like «اكتب اسم مشروعك» in slide 38 and «يعطيك Claude خطوات إنشاء المستودع كاملة، مع اسم قصير مقترح» in slide 39 where at those two points claude kept providing generic names to use while only asking the trainee to provide «مع جملة واحدة بسيطة عن فكرة منتجك.» after completing supabase setup and repo generation. So you should ask the trainee to provide a brief about his idea before supabase setup which should be added to point 4 under «أ.2 بداية اليوم الأول تحديدًا» in project-package/CLAUDE.md, and I am not talking here just about asking for explicitly one phrase but more like asking the trainee to put what is his mind if he already has some information locked in to share quickly without being detailed yet since this is task 8.1, this will help claude provide a description for the repo. Since this is the correct flow of actions we must parse it to the slides as well although the recorded videos doesn't show this updated flow. I am not sure what is the best way to parse this into the existing steps of the videos since we need to add those steps while they don't appear on the videos. Should we add it as a missing step that is highlighted in yellow without a timestamp. Or a highlighted text portion of an existing step. And the late «مع جملة واحدة بسيطة عن فكرة منتجك.» should be deleted or modified, I am thinking of placing an i icon in its place saying that the project info was incorrectly introduced late in this step in the video while we adjusted that to be early in the steps.
+
+Additionally, step «انسخ الرابط وأعطه لـ Claude مع فكرة مشروعك» should state that the trainee only need to paste the repo link once where there is no need to paste it again later as it will be stored in `project-package/CLAUDE.md`
+
+We didn't mention or add any steps for installing Node.js throughout all of our planning of the course and it was flagged as required in slide 39! We must add installing Node.js as one of the 7.10 setup steps. Adding it as 7th point in 7.10 won't disturb previous steps for number change but it seems to fit better before «6) اربط تكاملَي MCP اللذين نحتاجهما من اليوم الأول», what do you think? Of course you will have to write down the detailed steps correctly in `project-package/bootcamp_roadmap_and_curriculum.md` and in the slides where the corresponding slide should follow the same video slide layout with the steps on the left side and the video placeholder on the right.
+
+It is true that `project-package/CLAUDE.md` in the recorded project (I have used a copy of project-package) didn't change by a bit from the fresh start and after generating the project file structure setup plan «راجع الخطة واختر كيف تكمل» slide 39, but the generated plan contain steps of updating this file. However, `conversation_history.md` has been spoken about in `project-package/CLAUDE.md` and defined in `project-package/.claude/rules/bootcamp-mvp-process.md` but was never instructed of when to create it! Thus in the recorded videos up to generating the plan there was no `conversation_history.md` file since it wasn't created. So I need you to instruct in `project-package/CLAUDE.md` when to create this file which I suppose should be from the beginning of the project where we don't need to deep dive into implementation in order to generate this file where it can contain few lines of short conversation at the beginning especially that as it appears from the videos the response layout of claude is completely ruined by the mix of English and Arabic terms and having all bullet points and numbered lists taking LTR for the list number or point while the text is on the other side RTL where in `conversation_history.md` the content can appear more readable because we can control how text renders by following rules of writing this document to account for Arabic text as main."
+
+---
+
+## § D136 — ترتيب اليوم الأول: نبذة الفكرة مبكّرًا، وNode.js بندًا سادسًا، وإنشاء سجلّ المحادثة
+
+أربع ثغرات حقيقية كشفتها التسجيلات، عولجت كلّها. **الشرائح صارت 48** (كانت 47) — والزيادة مطلوبة صراحةً في طلبك.
+
+### D136.1 — نبذة الفكرة تسبق Supabase بدل أن تتأخّر إلى ما بعد المستودع
+
+المشكلة كما هي في التسجيل: يُسأل المتدرّب عن **اسم مشروع** قاعدة بياناته (الشريحة 38 القديمة) ثم عن **اسم مستودع ووصفه** (39 القديمة)، وClaude في اللحظتين لا يعرف ما الذي يُبنى — فيقترح أسماء عامّة (`my-booking-app`) ويترك الوصف فارغًا. ولا تُطلب الفكرة إلا **بعدهما**، بجملة واحدة.
+
+النقطة **4** في «أ.2 بداية اليوم الأول تحديدًا» انقسمت إلى ثلاث: تذكير بالبند 6 (Node.js)، ثم **طلب النبذة**، ثم الإعلان عن البند 7. ومعها قسم جديد **أ.2.1** يضبط الطلب نفسه: لا «جملة واحدة» بل سطران أو ثلاثة بكلام حرّ (ايش تبني ولمين وكل ما استقرّ في ذهنه)؛ و**لا استجواب** — هذه ليست المهمّة 8.1، فلا أسئلة متابعة عن النطاق ولا الغايات؛ وإن لم يقرّر بعد فاسم مؤقّت ووصف عام؛ ومنها يُشتقّ اسم مشروع Supabase واسم المستودع ووصفه.
+
+وانتقل الأثر إلى مهارتَي التنفيذ: `bootcamp-setup` يقول صراحةً إن النبذة شرط قبل تسمية مشروع Supabase، و`building-features` يقول **اشتقّ الاسم والوصف واعرضهما جاهزَين** بدل أن يسأل «ايش تبي تسمّيه؟» — وحقل `Description` صار «املأه» بعد أن كان «اختياري».
+
+### D136.2 — كيف تُعرَض خطوة ليست في المقطع (سؤالك المفتوح)
+
+اخترت **الاثنين معًا**، كلًّا في موضعه الصحيح، لا واحدًا منهما:
+
+- **خطوة كاملة جديدة** (`.stepvid__step--new`، شارة «مضافة» كهرمانية، **بلا وقت**) حين يكون المطلوب **عملًا** غائبًا عن الشاشة أصلًا — كنبذة الفكرة. القائمة تُقرأ كإجراء من أعلى إلى أسفل، فدفن عمل مستقلّ داخل نصّ خطوة أخرى يعني أن يتخطّاه المتدرّب.
+- **ملاحظة داخل خطوة قائمة** (`.stepvid__fix`، شريط كهرماني جانبي) حين تكون الخطوة نفسها صحيحة لكن **محتواها تغيّر** — كالاسم المقترح الذي صار يجيء من النبذة.
+
+واللون واحد في الحالتين عمدًا، ليتعلّم المتدرّب **قاعدة واحدة**: الكهرماني يعني أن القائمة هي الصحيحة والمقطع متأخّر عنها.
+
+**ولم أستعمل أيقونة `i`** كما اقترحت: الشريحة تُعرض على جهاز عرض، وما خلف التمرير لا تراه القاعة ما لم يمرّر المدرب الفأرة عليه — وهذه ملاحظة **تصحيح لازم** لا تعريف اختياري، فلا يصحّ أن تكون مخفيّة. يضاف إلى ذلك أن `.tip` موضعها `absolute` داخل `.stepvid__list` وهي `overflow-y:auto`، فكانت ستُقصّ أصلًا.
+
+وخطوة الرابط أُفرغت من الفكرة وصار نصّها «**مرّة وحدة بس** — يحفظه Claude في `CLAUDE.md` داخل مشروعك، فما تحتاج تلصقه مرّة ثانية».
+
+### D136.3 — Node.js بندًا **6**، والربط ينتقل إلى **7**
+
+**جوابي على سؤالك:** موضعه الصحيح قبل الربط كما رجّحتَ، أي **البند 6**، لا سابعًا. لسببين:
+
+1. **الخطّ الفاصل في 7.10 هو البند 5.** ما قبله تثبيتات يعملها المتدرّب وحده، وما بعده أوّل ما ينفّذه Claude له — وهو المنطق الذي يقوم عليه «أ.2» كلّه. وNode.js تثبيت يدوي، فوضعه بعد الربط يكسر هذا الخطّ.
+2. **إعادة ترقيم 1–5 كانت ستُبطل تسجيلًا قائمًا:** `claude-code-extension.mp4` يُظهر Claude على الشاشة وهو يسرد المهامّ «حتى البند 5». فبقيت 1–5 كما هي، وتحرّك بند واحد فقط (الربط 6 ← 7).
+
+وأُضيفت **الشريحة 37** بنفس تخطيط شرائح الفيديو (الخطوات يسارًا والفيديو يمينًا) بست خطوات: لماذا نحتاجه ← صفحة التنزيل واختيار LTS (بزرّ تنزيل حقيقي) ← المثبّت بإعداداته لكل نظام ← **شاشة Tools for Native Modules تُترك بلا تفعيل** ← التحقّق من طرفية **جديدة** بـ`node -v` و`npm -v` ← ماذا لو قال «الأمر غير معروف». **ولأن المقطع لم يُصوَّر بعد**، مكانه صندوق منقّط (`.stepvid__video--soon`) وشارات الخطوات تحمل **ترتيبها** لا وقتًا (`.stepvid__mark--idx`) — زرّ `0:00` ميّت كان سيكون كذبة أسوأ من صندوق صريح. الملف المطلوب `nodejs.mp4`، مسجَّل في `MEDIA_SHOTLIST.md` بما يجب أن يظهر فيه.
+
+### D136.4 — متى يُنشأ `conversation_history.md`
+
+كان معرَّفًا في `bootcamp-mvp-process.md` §3 ومذكورًا في `CLAUDE.md`، **وبلا تعليمة إنشاء واحدة** — ولهذا لم يوجد في المشروع المسجَّل. القسم الجديد **أ.2.2** يحسمها: يُنشأ **فور أوّل ردّ من المتدرّب فيه معلومة** (تأكيده للمهامّ + نبذته)، لا قبله (ملف فارغ ضجيج) ولا عند بدء البناء.
+
+ومعه سبب كتابته وشكله كما وصفتَه: **الملف كلّه داخل `<div dir="rtl">`** كبقيّة ملفّات الحزمة، والعربية أصل والنصّ اللاتيني داخل علامات الشفرة أو غامق فلا يُفتتح به سطر قائمة — لأن هذا بالضبط ما لا يمكن ضبطه في نافذة الدردشة، حيث تنقلب أرقام القوائم إلى اليسار والنصّ إلى اليمين. وأُضيف إلى القاعدة سطر واحد فقط («لا يأتي في الحزمة — أنت من ينشئه») يحيل على أ.2.2، بلا نسخة ثانية من التفصيل.
+
+### D136.5 — بقايا صُحّحت في الطريق
+
+- **`(6.1)` ← `(2.1)`** في المنهج وفي الشريحة 36 — بقيّتان من إعادة ترقيم الأقسام في D135.
+- **«بيسويه» ← «بينفّذه»** في الشريحة 36 (فعل خليجي محض تمنعه قائمة المفردات).
+- **«البند 2» ← «البند 3»** في `building-features` لضبط هويّة Git — كانت تشير إلى تثبيت Claude Code لا إلى Git.
+- عنوانان لم يعودا يصفان ما تفعله شريحتهما: «صِف فكرتك بجملة — ودع Claude يهيّئ الباقي» ← «دع Claude يهيّئ تطبيقك — ودورك تراجع وتشغّل»، و«وسلّم الفكرة لـ Claude» ← «وسلّم رابطه لـ Claude».
+
+### التحقّق
+48 شريحة · 0 تجاوز (`deckAudit`) · كل إشارات `data-ref` تُحلّ · 0 مراسٍ مكرّرة · 0 التصاق و+لاتيني (في النصّ المعروض لا في الوسم فقط) · 0 أصل خارجي في أي `src`/`link` فالحزمة تبقى تعمل بلا إنترنت · عناصر النمط الجديد: خطوة «مضافة» واحدة، و5 ملاحظات `stepvid__fix`، وصندوق فيديو منقّط واحد، و6 شارات ترتيب · المنهج: 135 عنوانًا و312 رابطًا داخليًّا و**0 مكسور** · بنود 7.10 متسلسلة 1←7 بلا فجوة · جدول `DECK_BRIEF` 48 صفًّا كلّها بستّ خلايا.
+
+### Documents Affected
+`project-package/slides/day-01.html` · `project-package/slides/assets/deck.css` · `project-package/bootcamp_roadmap_and_curriculum.md` · `project-package/CLAUDE.md` · `project-package/.claude/rules/bootcamp-mvp-process.md` · `project-package/.claude/skills/bootcamp-setup/SKILL.md` · `project-package/.claude/skills/building-features/SKILL.md` · `deck/DECK_BRIEF.md` · `deck/MEDIA_SHOTLIST.md`
+
+### Status
+مُنجَز — عدا `nodejs.mp4` فهو بانتظار التصوير، والشريحة مبنيّة حوله وجاهزة لاستقباله.
+
+---
+
+## § D137 — Prompt #92
+
+**ملاحظاتك:** "stop using «طرفية» term since it is odd and use something like «سطر الأوامر» which is more common and if you had to distiguish between terminal and command line just use the english term terminal or powershell. I need you to go over the files and change any place that uses طرفية with سطر الأوامر and write a rule for that in @CLAUDE.md to avoid using طرفية again since I kept modifying this term before manually"
+
+---
+
+## § D137 — استبدال «الطرفية» بـ«موجّه الأوامر»/«سطر الأوامر» في كل الملفات، وقاعدة دائمة في CLAUDE.md
+
+كلمة «الطرفية» ظهرت من قبل في الحزمة والمنهج وملفّي التخطيط، رغم أن مراجعات سابقة صحّحتها يدويًّا أكثر من مرّة (ملحوظ في `conversation_history.md` §4310–4313 و§4339). هذه المرّة القاعدة تُكتب في `CLAUDE.md` نفسه حتى لا تتكرّر.
+
+### D137.1 — التصحيح، ملفًّا بملف
+
+استُبدلت كل الورودات **الحيّة** (تعليمات فعلية يتّبعها المتدرّب أو Claude):
+
+- `project-package/bootcamp_roadmap_and_curriculum.md` — 5 مواضع، كلّها تعليمات لفتح/إغلاق نافذة أوامر فعلية → «موجّه الأوامر».
+- `project-package/slides/day-01.html` — موضعان في شريحة Node.js (37) نفسها.
+- `project-package/.claude/skills/bootcamp-setup/SKILL.md` و`.../building-features/SKILL.md` — موضع واحد في كل منهما.
+- `deck/DECK_BRIEF.md` — 3 مواضع وصفية (ملاحظات تخطيط، لا اقتباسات).
+
+**استُثنيت عمدًا** ثلاث فئات، بلا تعديل:
+
+- `conversation_history.md` — سجلّ زمني تراكمي «لا يُختصر ولا يُعاد كتابته» (ميثاق العمل §3)؛ تصحيح اليوم يُسجَّل كقيد جديد، لا بإعادة كتابة الماضي.
+- `deck/DECK_BRIEF.md:38` — ملاحظة تاريخية تصف أن شريحة 19 **كانت** تحمل كلمة «الطرفية» وأُزيلت؛ تغييرها يجعل الملاحظة تكذب على نفسها (لم تُزَل «سطر الأوامر»، بل «الطرفية» بالذات).
+- `graphify-out/converted/...md` و`SAG Lab Design System/...` — الأول ملف كاش يُستبدَل تلقائيًّا عند أي تشغيل لاحق لـgraphify، والثاني حزمة تصدير مجمّدة من Claude Design غير مرتبطة بأي شيء حيّ في الحزمة أو المنهج (تحقّقتُ: لا شيء في `project-package/` أو `deck/` يستدعي ملفّيها). أُبلغِك بهما بدل تعديلهما من تلقاء نفسي.
+
+### D137.2 — الفرق بين البديلين، وأين يُستعمل كلّ منهما
+
+- **«سطر الأوامر»** للمفهوم العام (وهو ما كان مستعملًا مسبقًا في تلميح شريحة 12، بلا تغيير).
+- **«موجّه الأوامر»** لنافذة فعلية تُفتح/تُغلق/تُعاد (يطابق نمط قائم فعلًا في الشريحة 32: «أعِد فتح موجه الأوامر»).
+- **الاسم الإنجليزي مباشرة** (`Terminal`/`PowerShell`) حين يلزم تمييزه عن برنامج بعينه — كما في بطاقة شريحة 19 القائمة أصلًا.
+
+### D137.3 — القاعدة في CLAUDE.md
+
+أُضيفت إلى **§A.6.7 (المفردات — خيارات ثابتة)** في جذر `CLAUDE.md` كبند جديد يحمل نفس التمييز الثلاثي أعلاه، وينصّ صراحةً أنه يسري على الحزمة والمنهج وملفّات `.claude/skills`/`.claude/rules`.
+
+### التحقّق
+`grep -rl طرفية project-package/ deck/ CLAUDE.md` بعد التصحيح لا يُظهر إلا: الاستثناء التاريخي في `DECK_BRIEF.md:38` والقاعدة الجديدة نفسها في `CLAUDE.md` (تقتبس الكلمة لتحظرها). 48 شريحة · 0 تجاوز · 0 إشارة معلّقة، وشريحة 37 تحديدًا مُتحقَّق منها في المتصفّح بعد التعديل.
+
+### Documents Affected
+`CLAUDE.md` · `project-package/bootcamp_roadmap_and_curriculum.md` · `project-package/slides/day-01.html` · `project-package/.claude/skills/bootcamp-setup/SKILL.md` · `project-package/.claude/skills/building-features/SKILL.md` · `deck/DECK_BRIEF.md`
+
+### Status
+مُنجَز.
+
+---
+
+## § D138 — Prompt #93
+
+**ملاحظاتك:** "I have added the project-package/slides/media/node-js.mp4 video in its place and now I need you to analyze the results of gemini steps extraction with timestamps while noting extra steps that weren't mentioned in the current steps (the note for extra steps is for you, don't add it to the slides since it is irrelevent). For the extra verification step you can say to the trainee that if he doesn't want to use command prompt or if want to double check he can perform it wih recommending doing both. And for the coversation history review step mention that sometimes text display in claude code chat can be messy with arabic text due to fixed alignment so it is better to read from conversation history since we have control over its formatting and alignment.
+
+[تفريغ Gemini الزمني لفيديو node-js.mp4، ست فقرات موقّتة من ٠٠:٠٠ حتى ٠١:٥٥: (١) ٠٠:٠٠–٠٠:٢٧ خطوة إضافية — طلب تعليمات من Claude داخل المحرّر قبل فتح المتصفّح («عطني خطوات تحميل node js زي مو موجود في سلايد 37»)؛ (٢) ٠٠:٢٧–٠٠:٣٨ تنزيل Node.js من nodejs.org، تمرير إلى المثبّتات الجاهزة، تنزيل نسخة Windows 64-bit (.msi)؛ (٣) ٠٠:٣٨–٠٠:٥٤ تشغيل معالج التثبيت والضغط على Next بالتسلسل، مع الموافقة على اتفاقية الترخيص (خطوة ضمنية غير مكتوبة) وترك مربّع Tools for Native Modules بلا تفعيل قبل Install؛ (٤) ٠٠:٥٤–٠١:١٥ تحقّق يدوي من موجّه أوامر جديد من قائمة ابدأ، `node -v` أعطى v24.21.0 و`npm -v` أعطى 11.19.0؛ (٥) ٠١:١٥–٠١:٤٢ خطوة إضافية — تحقّق آلي بمساعدة الذكاء الاصطناعي: رجع للمحرّر وطلب من Claude يتحقّق («خلصت تحميل تحقق ان لم تنزيله»)، فشغّل Claude أوامر PowerShell خلف الكواليس ليؤكّد مسارات البرنامج وإصداراته؛ (٦) ٠١:٤٢–٠١:٥٥ خطوة إضافية — فتح مستكشف الملفات في الشريط الجانبي، نقر يمين على `conversation_history.md`، اختيار Open Preview، ومرور على التوثيق المولَّد لجلسة الدردشة.]"
+
+---
+
+## § D138 — تحويل شريحة Node.js إلى فيديو حقيقي بتوقيتات فعلية، وإضافة خطوتين من التسجيل
+
+الفيديو المطلوب في D136 وصل، فحُوِّلت شريحة 37 من صندوق منقّط (`.stepvid__video--soon`، شارات ترتيب) إلى فيديو حقيقي بشارات وقت حقيقية (`.stepvid__time`) — بالضبط الانتقال الذي كان معلّقًا بانتظار التصوير.
+
+### D138.1 — مطابقة الخطوات الستّ الأصلية بتوقيتاتها الحقيقية
+
+كل خطوة كانت مكتوبة سلفًا من الوصف (بلا فيديو) طابقت الحدث الفعلي في التسجيل، فبقي نصّها كما هو تقريبًا مع إضافة الوقت:
+
+- افتح صفحة التنزيل واختر LTS ← **٠:٢٧**
+- شغّل المثبّت بإعداداته الافتراضية ← **٠:٣٨** — أضفت جملة «بما فيها الموافقة على اتفاقية الترخيص» لأن هذا نقر فعلي ظهر في التسجيل ولم يكن مذكورًا في نصّي الأصلي.
+- شاشة Tools for Native Modules ← **٠:٤٦** (تقديري — استخراج Gemini جمع «تشغيل المعالج» و«اتفاقية الترخيص» و«الشاشة» في نافذة واحدة ٠:٣٨–٠:٥٤ بلا فصل بالثانية، فاخترت نقطة وسطى منطقية بدل اختراع دقّة غير موجودة في المصدر).
+- تحقّق من موجّه أوامر جديد (يدويًّا) ← **٠:٥٤** — التسجيل يطابق النصّ حرفيًّا (موجّه أوامر من قائمة ابدأ، لا PowerShell من داخل المحرّر)، فلم يحتج تعديلًا غير الوقت.
+- لو قال «الأمر غير معروف» — **بلا وقت**، لأن هذا لم يحدث في التسجيل (التثبيت نجح من أول مرّة)؛ بقيت شارتها على نمط `.stepvid__mark--idx` غير القابل للنقر بدل اختلاق توقيت.
+
+### D138.2 — خطوتان حقيقيتان أُضيفتا من التسجيل، بالضبط كما طلبت
+
+استبعدتُ فقرة واحدة (٠:٠٠–٠:٢٧، سؤال Claude عن خطوات موجودة أصلًا على نفس الشريحة) لأنها تكرار محض لا يفيد متدرّبًا يتّبع الشريحة أصلًا — هذا ما قصدته بـ«الملاحظة لك لا للشرائح». أمّا الفقرتان الأخريان فأضفتهما كخطوتين حقيقيتين بتوقيت:
+
+- **١:١٥ — أو اطلب من Claude يتحقّق نيابة عنك.** بالضبط بصياغتك: يفتح الباب لمن لا يريد فتح موجّه الأوامر بنفسه أو يريد التأكّد مرّتين، ويوصي صراحةً بعمل الطريقتين معًا لا استبدال إحداهما بالأخرى.
+- **١:٤٢ — راجع حوارك من `conversation_history.md` لا من نافذة الدردشة.** بصياغتك أيضًا: محاذاة نافذة الدردشة الثابتة تخلط العربي بالإنجليزي، بينما تنسيق الملف مضبوط لنا مسبقًا فيبقى مقروءًا — وهذا يربط مباشرة بقاعدة أ.2.2 التي أضفناها في D136 (الملف يُنشأ من أوّل ردّ بالضبط لهذا السبب).
+
+النتيجة 8 خطوات بدل 6، والصندوق المنقّط اختفى تمامًا لأن الفيديو الحقيقي حلّ محلّه.
+
+### التحقّق
+شريحة 37 وحدها: فيديو حقيقي (`media/node-js.mp4`) بدل الصندوق المنقّط · 8 خطوات، 6 منها بتوقيت حقيقي (data-t) وخطوتان بشارة ترتيب غير قابلة للنقر (لا فيديو حقيقي لها) · العرض الكامل: 48 شريحة · 0 تجاوز (`deckAudit`) · كل إشارات `data-ref` تُحلّ · 0 التصاق و+لاتيني حقيقي (الحالة الوحيدة التي طابقها الفحص كانت «ويشغّلها» — عطف منتصف جملة سليم، لا خلل) · 0 «الطرفية» في الشريحة.
+
+### Documents Affected
+`project-package/slides/day-01.html` · `deck/DECK_BRIEF.md` · `deck/MEDIA_SHOTLIST.md`
+
+### Status
+مُنجَز.
+
+---
+
+## § D139 — Prompt #94
+
+**ملاحظاتك:** "Review task 14.1: curriculum = `project-package/bootcamp_roadmap_and_curriculum.md` line 2311 under «المهمة 14.1 — التهيئة والهيكل»، skill = 14.1 section in `project-package/.claude/skills/building-features/SKILL.md`.
+
+Going back to slides 33, 34, and 40 I see no step for GitHub authentication!! Where even if the trainee would to use for his Git account the same email as in GitHub per «سجّل بريدك» step in slide 34, I don't think this would do the job of GitHub authentication and come in place of a popping up browser to GitHub's OAuth authorize page so Windows Credential Manager (via Git Credential Manager, GCM) can hands git a token silently, especially that my Git `user.email=140398386+AmmarDw@users.noreply.github.com` has always been a non-real auto email that I remember is used for anonymizing my identity so my actual email address doesn't appear publicly on GitHub.
+
+This makes me confused in the Git account creation first before GitHub where we provided steps to manually enter actual email while my Git user.email isn't a real email and does that matter for trainees (would this expose their actual emails)? how can they obtain a similar email credential as my local account on this device? are they required to?
+
+All of the above questions must be answered first in order to identify what modifications needs to be done and where: if we should modify the existing Git setup process that involve its 7.10 point 3 in the curriculum, `project-package/.claude/skills/bootcamp-setup/SKILL.md`, and corresponding 33 and 34 slides. Or we should add a GitHub OAuth step in 14.1 curriculum, skill, and corresponding slide 40 (record a video of the OAuth process and append it to the existing video and add for it a further corresponding step in the same slide).
+
+Other than the above issue of the curriculum's first step «أنشئ مستودعك على GitHub» along with its corresponding skill task description and slide 40. The curriculum's second step «أعطِ Claude بيانات قاعدتك» and its corresponding skill under «بقية المهمة» in «اجمع مفاتيح قاعدة البيانات» should be reframed to be claude's job and to be a review and check task where by this step the trainee would have already provided the necessary keys from supabase and the repo url from GitHub so only ask for them if they weren't provided earlier."
+
+---
+
+## § D139 — توثيق GitHub المفقود، والبريد البديل، وإعادة تأطير جمع مفاتيح القاعدة
+
+ملاحظتك صحيحة بالكامل، والثغرة حقيقية. تحقّقتُ من كل ادّعاء على الجهاز نفسه وفي توثيق GitHub وSupabase الرسمي قبل أي تعديل، لأن القرار كلّه يتوقّف على الإجابات.
+
+### D139.1 — الإجابات (مُتحقَّق منها، لا من الذاكرة)
+
+**١) هل يُغني `user.email` عن توثيق GitHub؟ لا — نظامان منفصلان تمامًا.**
+
+- `user.name`/`user.email` = **بيانات وصفية** تُختم داخل كل commit. Git **لا يتحقّق منها إطلاقًا**؛ تستطيع كتابة أي شيء فيها.
+- **التوثيق** = رمز (token) يثبت أنك تملك صلاحية الرفع. على ويندوز يأتي **Git Credential Manager** مع Git for Windows ويُضبط تلقائيًّا، فيفتح المتصفّح أوّل مرّة على صفحة **Authorize Git Credential Manager**، ثم يخزّن الرمز في **Windows Credential Manager** فتمرّ بقيّة عمليات الرفع صامتة.
+
+**الدليل من جهازك:** `git config --global credential.helper` → `manager`، و`cmdkey /list` يعرض `git:https://github.com` → `AmmarDw`. **هذا الرمز المخزَّن هو ما يوثّقك فعلًا**، لا البريد.
+
+**٢) لماذا لم تظهر لك صفحة OAuth أصلًا؟** لأن الرمز كان مخزّنًا من عمل سابق (يظهر في `cmdkey` إدخال قديم باسم «GitHub for Visual Studio» أيضًا). **جهاز المتدرّب الجديد سيتوقّف عندها حتمًا.** ولهذا لا يمكن أن يُظهرها `github.mp4` — بل لن تظهر حتى لو أعدت التسجيل، ما لم تحذف الاعتماد المخزَّن أوّلًا.
+
+**٣) هل يهمّ البريد؟ وهل يكشف بريد المتدرّب الحقيقي؟** البريد يدخل في كل commit ويبقى في التاريخ **للأبد**. مستودعات الدورة **خاصّة (Private)**، فلا انكشاف الآن — لكن لو جُعل المستودع عامًّا يومًا ما، انكشف البريد في كل حفظ تاريخي، وتصحيحه لاحقًا يتطلّب إعادة كتابة التاريخ.
+
+**٤) كيف يحصل المتدرّب على بريد مثل بريدك؟** GitHub ← **Settings ← Emails** ← تفعيل **«Keep my email addresses private»**. الصيغة (للحسابات المُنشأة بعد 2017-07-18) هي `ID+username@users.noreply.github.com` — وهي بالضبط صيغة بريدك. ومعها خيار **«Block command line pushes that expose my email»** الذي يرفض أي رفع يكشف البريد الخاص. *(مُتحقَّق من توثيق GitHub الرسمي: صفحة Email addresses reference وصفحة blocking-command-line-pushes.)*
+
+**٥) هل هو إلزامي؟ لا.** البريد البديل **مرتبط بالحساب فعليًّا**، فالمساهمات تُنسب للمتدرّب ويظهر اسمه وصورته كالمعتاد؛ الفرق الوحيد إخفاء البريد الحقيقي. فهو تحسين مجّاني لا شرط تشغيل.
+
+### D139.2 — القرار: التعديلان معًا، كلٌّ في موضعه الصحيح
+
+سألتَ: أنُعدّل إعداد Git في 7.10، أم نضيف خطوة OAuth في 14.1؟ **الجواب: الاثنان، لأنهما مشكلتان مختلفتان في زمنين مختلفين.**
+
+- **التوثيق ← المهمة 14.1**، لأنه لا شيء يُوثَّق قبل وجود مستودع ومحاولة رفع فعلية. وضعه في 7.10 يعني مطالبة المتدرّب بتوثيق شيء لم يُنشأ بعد.
+- **البريد البديل ← 7.10 البند 3**، لأنه تعديل على خطوة ضبط الهويّة نفسها، لا خطوة جديدة.
+
+### D139.3 — اكتشاف غيّر التنفيذ: المقطع يناقض التوصية
+
+استخرجتُ إطارًا من `git-setup.mp4` عند ١:٢٠ للتأكّد ممّا يُكتب فعلًا، فظهر `git config --global user.email "bdhu8r@gmail.com"` — **بريد Gmail حقيقي، لا البريد البديل**. فلو أضفتُ التوصية بلا ذكر ذلك، لناقض المقطعُ الشريحةَ أمام المتدرّب مباشرةً. ولهذا تقول الملاحظة صراحةً «وفي المقطع استُعمل بريد عادي».
+
+> ⚠ **وللانتباه:** ذلك البريد **مقروء بوضوح على الشاشة** في المقطع (ومعه تبويب Gmail في شريط المتصفّح). قائمة اللقطات تنصّ على استخدام حساب مؤقّت، فأفترض أنه كذلك — **لكن تأكّد**، فالمقطع يُعرض ويُوزَّع.
+
+### D139.4 — ما تغيّر
+
+**المنهج §7.10 البند 3** — قسم كامل عن البريد البديل بخطواته الأربع، وتحذير `⚠ هذه هويّة لا تسجيل دخول` يحيل إلى 14.1.
+**المنهج 14.1** — الخطوات صارت **ستًّا**: البند 2 أُعيد تأطيره («راجِع بيانات قاعدتك التي جمعها Claude» — بلاغ لا مهمّة نسخ)، و**بند 4 جديد** لتوثيق GitHub بمساريه (المتصفّح، ورمز الجهاز) وبتأكيد أنه لمرّة واحدة. وحُذفت «هذه مفاتيحي: [الصق المفاتيح]» من الصياغة المقترحة — **بقيّة قديمة** أُزيلت من الشريحة في D130 ولم تُزَل من المنهج.
+**مهارة `bootcamp-setup`** — قسم **2 جديد «هويّة Git»** (لم يكن للبند 3 أي تغطية في المهارة أصلًا)، وأُعيد ترقيم ما بعده 3→9. وصُحّح تناقض داخلي: §5 كان يقول «اطلب منه أن يلصق لك ما يلزم» وصار يقول إن Claude يجلبها بنفسه.
+**مهارة `building-features`** — قسم **⚠ جديد** لتوثيق أوّل رفع (كان سطرًا باهتًا داخل اقتباس: «وإن طُلبت مصادقة عند الرفع، وجّهه…»)، ونهي صريح عن الالتفاف بطلب رمز وصول شخصي في المحادثة. و«اجمع مفاتيح قاعدة البيانات» صار **«اجلبها بنفسك ولا تطلبها منه»** بأداتَي `get_project_url` و`get_publishable_keys`. وأُضيفت قاعدة عامة: كل ما سبق أن أعطاه المتدرّب يُقرأ من مصدره ولا يُعاد سؤاله عنه.
+**الشريحة 34** — `stepvid__fix` على خطوة البريد، وسطر على الخطوة الأخيرة يمنع الالتباس الأساسي («بطاقة اسم، مو تسجيل دخول») مع `reflink` إلى `repo-create`.
+**الشريحة 40** — خطوة `stepvid__step--new` بشارة «مضافة» بلا وقت، لأن المقطع لا يُظهرها ولا يستطيع.
+
+### D139.5 — التسجيل المطلوب، وكيف تُنتجه
+
+سجّلتُ في `MEDIA_SHOTLIST.md` طلب `github-auth.mp4`، **ومعه التحذير الحاسم**: لن يتكرّر التدفّق على جهازك لأن الرمز مخزَّن. لتصويره: **احذف الاعتماد أوّلًا** — لوحة التحكم ← Credential Manager ← Windows Credentials ← احذف `git:https://github.com` (أو `cmdkey /delete:git:https://github.com`) — ثم ارفع. وإعادة التوثيق بعدها تكرّر التدفّق نفسه، فلا شيء يُفقد. وعند وصول الملف تتحوّل الخطوة الكهرمانية إلى خطوة موقّتة.
+
+### التحقّق
+`credential.helper=manager` و`cmdkey` مُتحقَّق منهما على الجهاز · صيغة البريد البديل وخيار حظر الرفع مُتحقَّقان من توثيق GitHub الرسمي · `get_project_url`/`get_publishable_keys` مُتحقَّقان من توثيق Supabase MCP (مجموعة Development، وهي غير مُطفأة في إعدادنا) · إطار ١:٢٠ من `git-setup.mp4` مفحوص بصريًّا · 48 شريحة · 0 تجاوز · كل الإشارات تُحلّ · 0 التصاق و+لاتيني · 0 «طرفية» · المنهج 315 رابطًا داخليًّا و**0 مكسور** · خطوات 14.1 متسلسلة 1←6 · بنود مهارة `bootcamp-setup` متسلسلة 0←9.
+
+### Documents Affected
+`project-package/bootcamp_roadmap_and_curriculum.md` · `project-package/slides/day-01.html` · `project-package/.claude/skills/bootcamp-setup/SKILL.md` · `project-package/.claude/skills/building-features/SKILL.md` · `deck/DECK_BRIEF.md` · `deck/MEDIA_SHOTLIST.md`
+
+### Status
+مُنجَز — عدا `github-auth.mp4` فهو بانتظار التصوير (بحذف الاعتماد المخزَّن أوّلًا)، والخطوة مبنيّة وجاهزة لاستقباله.
+
+---
+
+## § D140 — Prompt #95
+
+**ملاحظاتك:** "All the videos I recorded were on a vmware so stop worrying about my own machine since I know that all the setup steps originally are done long ago on my device so I performed all on an empty windows 11 vmware, thus there isn't yet any github authentication on that VM so I will record the authentication step and add it. Or I might just re-record the entire video since it already contains many yellow notes.
+
+As for Git, I want you to give me the steps to remove or delete my current Git account on the VM then I will re-record «اضبط هويّتك» section of the video (git-auth.mp4) where I will first open the command prompt, copy and paste `git config --global user.name "Your Name"` from the slide, on the browser open https://github.com/ where I am already singed in, go to https://github.com/settings/profile through clicking on settings, copy my name at the top (Ammar-Dw, this is another GitHub account than I am using on this device, it is just for the VM), replace Your Name with Ammar-Dw and execute the command `git config --global user.name "Ammar-Dw"`, copy and paste `git config --global user.email "your-github-email@example.com"`, go back to the browser click on emails, scroll to the bottom and activate «Keep my email addresses private» (here mention the reason why we activated this, try to be simple and straight to the point unlike the current email privacy note you added), then copy the email under this section that follows the pattern `12345678+username@users.noreply.github.com`, replace the placholder email in the command with the copied email and execute it (mention that this is a double measure where activating the option is the first measure), then `git config --global --list` under «تأكّد من الحفظ». Rebuild the steps into the above mentioned and remove the yellow note. Make sure that excess text get wrapped since the current long email pattern pushes the steps list horizontally and adding a horizontal scroll bar."
+
+---
+
+## § D140 — إعادة بناء قسم «اضبط هويّتك»، وإصلاح تجاوز أفقي في طبقة الرموز
+
+### D140.0 — تصحيح افتراضي عن جهاز التسجيل
+
+كنت أستنتج من جهازك الشخصي (`cmdkey` يعرض اعتمادًا مخزّنًا لـGitHub) أن إعادة تصوير التوثيق تحتاج حذف الاعتماد أوّلًا. **التسجيلات كلّها على جهاز وهمي (VMware) بويندوز 11 نظيف**، فالتوثيق لم يحدث عليه أصلًا وسيظهر التدفّق طبيعيًّا. الملاحظة عن الحذف أُزيلت من قائمة اللقطات لأنها كانت تعالج مشكلة غير موجودة.
+
+### D140.1 — القسم أُعيد بناؤه: 8 خطوات تمشي مع المتصفّح
+
+التسلسل القديم (4 خطوات) كان يفترض أن المتدرّب يعرف اسمه وبريده على GitHub ويكتبهما من ذاكرته. الجديد **يأخذه إلى المصدر**: يلصق الأمر أوّلًا **بلا تنفيذ**، ثم يروح يجيب القيمة من GitHub، ثم يبدّل وينفّذ. نفس النمط مرّتين — للاسم ثم للبريد.
+
+1. افتح موجّه الأوامر · 2. الصق أمر الاسم **ولا تنفّذه** · 3. خذ اسمك من GitHub (Settings ← Profile) · 4. بدّله ونفّذ · 5. الصق أمر البريد **ولا تنفّذه** · 6. Emails ← آخر الصفحة ← فعّل «Keep my email addresses private» · 7. انسخ البريد البديل ونفّذ · 8. `--list` للتأكّد.
+
+**سبب التفعيل صار سطرين فقط** كما طلبت: «كل حفظ تسوّيه ينكتب فيه بريدك ويبقى محفوظًا في مشروعك. هذا الخيار يعطيك بريدًا بديلًا يستر بريدك الحقيقي.» — بدل الفقرة الطويلة السابقة. **والملاحظة الكهرمانية أُزيلت**، فلم يعد لها معنى: التسجيل الجديد سيُظهر هذا التسلسل نفسه، فلا فجوة بين المقطع والشريحة تحتاج تنبيهًا.
+
+**وذكر «الإجراء الثاني»** في الخطوة 7: تفعيل الخيار هو الأول، واستعمال البريد البديل هو الثاني، وكلٌّ يسند الآخر.
+
+**خطوات الهويّة بلا توقيتات** (`.stepvid__mark--idx` ١–٨) لأن `git-auth.mp4` يُعاد تسجيله؛ أمّا خطوات التثبيت (٠:٠٠–٠:٤٠، من `git.mp4` وهو لا يُعاد) فبقيت بتوقيتاتها. شارة الترتيب تقول بنفسها إنه لا يوجد ما يُقفز إليه — أفضل من توقيت ميّت يشير إلى تسلسل قديم.
+
+### D140.2 — التجاوز الأفقي: السبب الحقيقي كان في طبقة الرموز لا في الشريحة
+
+**قِسته قبل الإصلاح:** عمود الخطوات في الشريحة 34 كان `scrollWidth = 686` مقابل `clientWidth = 605`، والمتجاوز الوحيد هو خطوة «سجّل بريدك».
+
+**السبب:** `.tok-code` لم يكن يملك أي تحكّم في الكسر. وعنوان البريد البديل كلمة واحدة متّصلة عند حاسب الأسطر، فيصير هو من يحدّد `min-content` للحاوية ويدفعها. وعمود الخطوات `overflow-y:auto`، **والقصّ في CSS يسري على المحورين معًا**، فظهر شريط أفقي.
+
+**الإصلاح في `tokens/rtl.css` لا في الشريحة:** `overflow-wrap:anywhere` على `.tok-code` — و`anywhere` تحديدًا لا `break-word`، لأنها وحدها التي تُصغّر `min-content` فتسمح للصندوق بالانكماش فعلًا. والرموز القصيرة لا تتأثّر إطلاقًا: الخاصية لا تكسر إلا ما لا يتّسع. فأي رمز طويل مستقبلًا (مسار عميق، عنوان بريد) محميّ في كل الشرائح، لا في هذه وحدها.
+
+**وتبيّن أن `.snip` لم يكن جزءًا من المشكلة:** قاعدة قائمة سلفًا (`.stepvid__body .snip`) تجعله `pre-wrap` + `break-all` داخل الخطوات، فأوامر Git تلتفّ على سطرين بلا شريط. لم ألمسها.
+
+**بعد الإصلاح:** `605 = 605`، ولا قائمة خطوات واحدة في العرض كلّه (48 شريحة) تتجاوز أفقيًّا.
+
+### D140.3 — خطوات تنظيف هويّة Git على الجهاز الوهمي
+
+سُلّمت في المحادثة (أمران لإلغاء الاسم والبريد، مع بديل حذف `.gitconfig` كاملًا). **ومُتحقَّق أن `init.defaultBranch` يسكن في الإعداد النظامي** (`C:/Program Files/Git/etc/gitconfig`) لا في العامّ — فحذف `.gitconfig` لا يُفقد ضبط اسم الفرع `main` الذي اختاره المتدرّب في معالج التثبيت، وهي النقطة الوحيدة التي كانت ستجعل الحذف الكامل خطرًا.
+
+### التحقّق
+48 شريحة · 0 تجاوز رأسي (`deckAudit`) · **0 قائمة خطوات تتجاوز أفقيًّا** في العرض كلّه (كانت واحدة) · كل إشارات `data-ref` تُحلّ · 0 التصاق و+لاتيني · الشريحة 34: **13 خطوة** (5 موقّتة للتثبيت + 8 بشارة ترتيب للهويّة) و**0 ملاحظة كهرمانية** · مدد الفيديو مؤكَّدة بـ`ffprobe`: `git.mp4` = ٥٠٫٧٠ ث، `git-auth.mp4` = ٣١٫٢٣ ث، والمدموج ٨١٫٩٨ ث — فالإزاحة ٥٠٫٧ ث مؤكَّدة حسابيًّا للدمج القادم.
+
+### Documents Affected
+`project-package/slides/day-01.html` · `project-package/slides/assets/tokens/rtl.css` · `deck/DECK_BRIEF.md` · `deck/MEDIA_SHOTLIST.md`
+
+### Status
+مُنجَز — بانتظار `git-auth.mp4` الجديد و`github-auth.mp4`، والخطوات مبنيّة حولهما.
+
+---
+
+## § D141 — Prompt #96
+
+**ملاحظاتك:** "Added the new recorded git-auth.mp4 and here are the timestamps of the steps keeping in mind the steps start from 0 as it is the beginning of the video but all should add up the previous concatinated video length to obtain the correct final number: الخطوة 1 (افتح موجّه الأوامر) 00:00-00:04 · الخطوة 2 (الصق أمر الاسم — ولا تنفّذه بعد) 00:04-00:10 · الخطوة 3 (خذ اسمك من GitHub) 00:10-00:16 · الخطوة 4 (بدّل الاسم ونفّذ الأمر) 00:16-00:22 · الخطوة 5 (الصق أمر البريد — ولا تنفّذه بعد) 00:22-00:30 · الخطوة 6 (فعّل إخفاء بريدك في GitHub) 00:30-00:37 · الخطوة 7 (انسخ البريد البديل ونفّذ الأمر) 00:37-00:48 · الخطوة 8 (تأكّد من الحفظ) 00:48-00:55.
+
+`project-package/CLAUDE.md` under «أ.2 بداية اليوم الأول تحديدًا» should state that «اطلب منه نبذة سريعة عن فكرة مشروعه» comes after 7.10 7أ and a prerequisite to 7ب. Right now it appears in the steps before 7أ which is context7!"
+
+---
+
+## § D141 — دمج تسجيل الهويّة الجديد وتوقيته، وتصحيح موضع طلب النبذة
+
+### D141.1 — الدمج: نسخ التيار وحده كان مستحيلًا
+
+التسجيل الجديد **1080p** و`git.mp4` **720p**. و`-c copy` لا يصل مقطعين باختلاف أبعاد — ينتج ملفًّا يتعطّل عند نقطة الوصل أو يعرض المقطع الثاني بأبعاد الأول. (الدمج السابق نجح بنسخ التيار لأن المقطعين كانا 720p.)
+
+**الحلّ:** إعادة ترميز **`git.mp4` وحده** (رفع إلى 1080p بـ`scale=1920:1080:flags=lanczos`، x264 CRF 18)، ثم ضمّ **التسجيل الجديد بلا إعادة ترميز إطلاقًا** (نسخ تيار). فخسارة الجيل تقع على المقطع القديم منخفض الدقّة وحده، ويبقى الجديد — وهو الأهمّ وفيه نصّ طرفية ومتصفّح — أصليًّا بكامل حدّته.
+
+**التحقّق (لا افتراض):** 1521 إطارًا + 1684 = **3205** في الناتج بالضبط، والمدّة ١٠٦٫٩٢ ث. ثم طوبقت **أربعة إطارات** (120، 480، 900، 1440) من الملف الأصلي مع مقابلها في المدموج عند **+1521 إطارًا** فجاءت **متطابقة بصمةً بصمة** — فالإزاحة **٥٠٫٧٠ ث** مؤكَّدة قياسًا لا حسابًا.
+
+> **مطبّان وقعا أثناء العمل وسُجّلا هنا حتى لا يتكرّرا:**
+> 1. مسار MSYS (`/c/Users/…`) داخل ملف قائمة الدمج فسّره ffmpeg (وهو ثنائيّ ويندوز) كمسار نسبيّ فصار `C:/c/Users/…`، **وخرج ffmpeg برمز نجاح 0 رغم فشل الضمّ** — كُشف بفحص المدّة (50.74 بدل 106.92) لا بفحص رمز الخروج. المسارات المطلقة بصيغة ويندوز هي الحلّ.
+> 2. خيار `-vsync` غير معروف في هذا الإصدار، ففشل استخراج الإطارين معًا، **فتساوت بصمتا ملفّين فارغين وأعطت «متطابق» كاذبًا**. صار الفحص يتحقّق أن الملف غير فارغ قبل المقارنة، والخيار صار `-fps_mode passthrough`.
+
+### D141.2 — التوقيتات
+
+توقيتاتك من بداية المقطع + ٥٠٫٧ ث، بالتقريب لأقرب ثانية: ٠:٥١ · ٠:٥٥ · ١:٠١ · ١:٠٧ · ١:١٣ · ١:٢١ · ١:٢٨ · ١:٣٩. وكلّها تقع **داخل نافذتها** بفارق ٠٫٣ ث من بدايتها، فلا خطوة تسبق حدثها ولا تتخطّاه. وشارات الترتيب الثماني عادت أزرارًا قابلة للنقر، فلم يبقَ في العرض كلّه إلا شارتا ترتيب مقصودتان في الشريحة 37 (مفهوم، وحالة لم تقع في التسجيل).
+
+### D141.3 — ⚠ بريد حقيقي مكشوف في التسجيل
+
+أثناء التحقّق من المزامنة ظهر في إطار الفيديو أن خانة **Primary email address** تعرض `ammar.anmar.dw.2004@gmail.com` بوضوح تامّ. حدّدتُ النطاق بشريط إطارات: **٠:٣٦–٠:٤٤ من المقطع الجديد = ١:٢٧–١:٣٥ في المدموج**، نحو ثماني ثوانٍ.
+
+والمفارقة أن هذا يقع **على الشريحة التي تعلّم إخفاء البريد بالذات**. سُجِّل في قائمة اللقطات مع نطاقه الزمني، والقرار لك: طمس تلك الثواني أو إعادة تصويرها.
+
+> وملاحظة ثانية: البريد البديل الظاهر في التسجيل هو `140398386+AmmarDw@users.noreply.github.com` — **نفس معرّف الحساب** المضبوط على جهازك الأصلي. فالحساب على الجهاز الوهمي ليس حسابًا منفصلًا كما ذكرت، بل الحساب نفسه؛ وهو ما يفسّر ظهور بريد شخصي حقيقي لا بريد حساب مؤقّت.
+
+### D141.4 — موضع طلب النبذة (ملاحظتك الثانية)
+
+كانت النبذة بندًا في **ردّ اليوم الأول نفسه**، أي قبل البند 7 كلّه — ومنه 7أ (context7) الذي لا يحتاج من الفكرة شيئًا. صُحِّح الموضع: حُذف البند من قائمة الردّ الأول، وأُضيف تحذير صريح **«ولا تطلب نبذة فكرته في هذا الردّ»**، وأُعيدت صياغة **أ.2.1** بعنوان «بين البند 7أ والبند 7ب» يفتح بـ«متى تطلبها بالضبط؟ بعد أن ينجح ربط context7 (7أ) ومباشرةً قبل أن تفتح معه إنشاء مشروع Supabase (7ب)» ثم يشرح **لماذا 7ب تحديدًا**: لأن أوّل ما يطلبه 7ب اسمٌ لمشروع قاعدة البيانات.
+
+وبقيّة المواضع كانت صحيحة أصلًا ولم تحتج تعديلًا: المنهج يضع النبذة داخل 7ب، ومهارة `bootcamp-setup` تشترطها في قسم إنشاء مشروع Supabase، والشريحة 39 تحملها كخطوة «مضافة» في رأس قائمة Supabase.
+
+### التحقّق
+48 شريحة · 0 تجاوز رأسي · 0 قائمة تتجاوز أفقيًّا · كل الإشارات تُحلّ · 0 التصاق و+لاتيني · الشريحة 34: **13 خطوة كلّها موقّتة** و0 شارة ترتيب متبقّية · **لا توقيت يتجاوز مدّة فيديوه** في أي شريحة (فحص آليّ على كل `stepvid`) · الفيديو يُحمَّل فعليًّا في المتصفّح بأبعاد 1920×1080 ومدّة ١٠٦٫٩٢ ث، والقفز إلى ١:٢٨ يُضيء الخطوة المطابقة — مُجرَّب لا مُستنتَج.
+
+### Documents Affected
+`project-package/slides/media/git-setup.mp4` (أُعيد تركيبه) · `project-package/slides/day-01.html` · `project-package/CLAUDE.md` · `deck/DECK_BRIEF.md` · `deck/MEDIA_SHOTLIST.md`
+
+### Status
+مُنجَز — عدا `github-auth.mp4` فهو بانتظار التصوير، وقرار الطمس في ١:٢٧–١:٣٥.
+
+---
+
+## § D142 — Prompt #97
+
+**ملاحظاتك:** "Revealing my email for few trainees is not a big deal. I deliberately used the same GitHub account so that I can continue on it in my main device after recording its authentication on the VM.
+
+I am testing the package and when I provide the first prompt like `C:\Users\ammar\.claude\plans\validated-doodling-platypus.md` claude respond in the chat without creating the `conversation_history.md` file!!! I need you to modify the rules including `project-package/CLAUDE.md` to explicitly order for the creation of this file and using it to record each prompt-response. Even when I tell claude write in the conversation history, the response logged is shorter than the response in chat!! while it is supposed to be the exact opposite!!! Please look into the existing rules I have for this project regarding conversation history from the beginning of `conversation_history.md` file in the root and the root `CLAUDE.md`.
+
+I noticed that you keep providing the information «أوّل رفع سيتوقّف على توثيق GitHub» in `project-package/.claude/skills/building-features/SKILL.md` and «وثّق دخولك إلى GitHub — مرّة وحدة في عمر الجهاز» in slide 40 without explicitly saying to commit and push! `project-package/bootcamp_roadmap_and_curriculum.md` doesn't say either under 14.1 task in «أنشئ مستودعك على GitHub»! We must modify this to be a step to commit and push the current project to the repo as this is the project skeleton before the application skeleton."
+
+---
+
+## § D142 — إلزام سجلّ المحادثة، وخطوة الرفع المفقودة
+
+### D142.0 — بريد المقطع: قرار مُسجَّل لا تحذير قائم
+
+بريدك في التسجيل قرار صريح منك، والحساب مقصود أن يكون حسابك الحقيقي ليُحمل توثيق GitHub من الجهاز الوهمي إلى جهازك. حُوّلت الملاحظة في `MEDIA_SHOTLIST.md` و`DECK_BRIEF.md` من **تحذير ينتظر إجراءً** إلى **قرار مقبول موثّق بسببه** — فلا يعود أحد يفتحه لاحقًا على أنه عمل معلّق.
+
+### D142.1 — لماذا لم يُنشأ سجلّ المحادثة أصلًا
+
+قرأت بروتوكول الجذر (`conversation_history.md` §1) و`CLAUDE.md` القسم أ.1، ثم قارنتهما بما في الحزمة. البروتوكول في الجذر صريح تمامًا («كل المدخلات والمخرجات هنا»، «الدردشة مؤشّر لا نسخة»)، لكن نقله إلى الحزمة ضاع في ثلاث نقاط بنيوية:
+
+1. **التعليمة كانت تحت عنوان «بداية اليوم الأول تحديدًا» (أ.2.2).** فهي تُقرأ كمهمّة يوم أوّل. ورسالتك الأولى كانت **مسار ملف خطّة** لا تحية، فلم يتحقّق شرط «بداية جديدة» أصلًا، وسقط معه كل ما تحته — ومنه إنشاء الملف.
+2. **لا وجود لأمر «في كل رسالة».** ميثاق العمل (وهو المحمَّل في كل رسالة) كان **يصف** الملف بصيغة تقريرية («تُكتب مطالبة المتدرّب ثم ردّك الكامل تحتها») لا بصيغة أمر تنفيذيّ مرتّب الخطوات.
+3. **لا شيء يمنع التلخيص في الملف.** القاعدة كانت تنهى عن تلخيص **المطالبة** فقط، ولم تقل شيئًا عن تلخيص **الردّ** — وهذه بالضبط الثغرة التي أنتجت ما رأيته: ردّ مفصّل في الدردشة وخلاصته في الملف.
+
+### D142.2 — ما صار الآن
+
+**في ميثاق العمل (§3، وهو محمَّل في كل رسالة):** قُسِم إلى **3.1 الدورة الإلزامية** بأربع خطوات مرقّمة تبدأ بـ«إن لم يكن الملف موجودًا فأنشئه فورًا — **قبل** أن تردّ»، وتنصّ على أن **الترتيب مقصود**: الملف أوّلًا ثم الدردشة، لأن من يكتب الدردشة أوّلًا يختصر في الملف. و**3.2 الاختبار الذي يكشف المخالفة** — معيار قابل للتطبيق ذاتيًّا: «إن كان ردّك في الدردشة أطول ممّا في الملف، أو فيه تفصيل ليس فيه، **فقد خالفت** — أعِد كتابة قسم الملف كاملًا قبل أن تكمل». ومعه: **طلب المتدرّب للتوثيق يعني أنك نسيت، لا أنك تبدأ الآن**.
+
+**في `CLAUDE.md` الحزمة:** رُفِع القسم من تحت اليوم الأول إلى قسم مستقلّ **أ.4** يفتتح بـ«هذا القسم يسري من أوّل رسالة إلى آخر يوم — وليس خاصًّا باليوم الأول»، وينصّ أن الإنشاء يكون **عند أوّل رسالة أيًّا كانت: تحية أو سؤال أو مسار ملف أو طلب تقنيّ**. وأُضيف تنبيه في **أ.1** (وهو ما يفيق على أي رسالة أولى مهما كان شكلها)، وبند في **ب. القواعد السارية** جُعل **أوّل البنود**. فصارت التعليمة تصل من ثلاثة مداخل مستقلّة بدل مدخل واحد مشروط.
+
+### D142.3 — خطوة الرفع المفقودة
+
+ملاحظتك دقيقة: كنّا نصف **ما سيحدث** عند أوّل رفع (توقّف التوثيق) بلا أن نأمر بالرفع نفسه. فالتوثيق كان معلّقًا في الهواء، ولا شيء يقول متى يُرفع هيكل المشروع.
+
+صارت **خطوة صريحة تسبق التوثيق**، بمنطقك نفسه: المجلّد فيه الحزمة والوثائق، **وهذا هيكل المشروع ويُرفع قبل أن يُبنى التطبيق** — فتكون للمتدرّب نسخة محفوظة من البداية لا بعد كتابة الكود.
+
+- **المنهج 14.1** صار **7 خطوات**: الخطوة 2 «ارفع مشروعك الحالي — أوّل حفظ ورفع» (Claude يهيّئ Git ويربط المستودع ويكتب `.gitignore` ويحفظ ويرفع)، والخطوة 3 التوثيق **معلّقًا على ذلك الرفع بالذات**، والخطوة 7 «احفظ وارفع مرّة ثانية — الآن ومعه كود التطبيق… تمرّ بلا توقّف لأن دخولك موثّق». وأُضيف تحقّق ملموس: **افتح صفحة مستودعك وحدّثها لترى ملفّاتك**.
+- **مهارة `building-features`** أخذت قسمًا جديدًا «ارفع هيكل المشروع فورًا — قبل أن تبني التطبيق» بترتيب الأوامر صراحةً، وتنبيهًا أن `.gitignore` يُكتب **قبل** أوّل `add` لأن ما يدخل التاريخ يصعب إخراجه، وقاعدة ختامية: **رفعتان في هذه المهمّة لا واحدة** — ومن يدمجهما يترك المتدرّب بلا نسخة محفوظة طوال بناء التطبيق.
+- **الشريحة 40** صار عنوان خطوتها «ارفع هيكل مشروعك — ووثّق دخولك مرّة وحدة في عمر الجهاز»، ومعها سطر التحقّق بفتح صفحة المستودع.
+
+### التحقّق
+48 شريحة · 0 تجاوز رأسي · 0 قائمة تتجاوز أفقيًّا · كل الإشارات تُحلّ · 0 التصاق و+لاتيني · لا توقيت يتجاوز مدّة فيديوه · خطوات 14.1 متسلسلة 1←7 · عناوين `CLAUDE.md` الحزمة متسلسلة (أ.1، أ.2، أ.2.1، أ.3، أ.4، ب، ج، د) · **0 إحالة معلّقة إلى «أ.2.2»** بعد ترحيل القسم.
+
+### Documents Affected
+`project-package/.claude/rules/bootcamp-mvp-process.md` · `project-package/CLAUDE.md` · `project-package/bootcamp_roadmap_and_curriculum.md` · `project-package/.claude/skills/building-features/SKILL.md` · `project-package/slides/day-01.html` · `deck/DECK_BRIEF.md` · `deck/MEDIA_SHOTLIST.md`
+
+### Status
+مُنجَز.
+
+---
+
+## § D143 — Prompt #98
+
+**ملاحظاتك:** "I recorded a new supabase setup video and replaced the previous on project-package/slides/media/supabase.mp4 so now I need you to analyze the video extract the steps that weren't mentioned, setup correct timestamps, and remove the yellow notes since steps are now correct, maybe convert some yellow notes into actual steps like the first one."
+
+---
+
+
+## § D144 — إعادة بناء شريحة Supabase من التسجيل الحقيقي الجديد
+
+### D144.0 — كيف حُلِّل الفيديو
+
+لا يوجد تفريغ Gemini جاهز هذه المرّة (خلافًا لفيديو Node.js)، فاستخرجتُ الجدول الزمني بنفسي: قصصتُ
+`supabase.mp4` (المدّة الفعلية ٢٠١.٩٣ث ≈ ٣:٢٢) بـ`ffmpeg` إلى لوحات تلامیس (contact sheets) بدقّة ٥
+ثوانٍ أوّلًا للمسح العام، ثم بدقّة ثانيتين وثانية واحدة على مناطق الانتقال (بداية الحوار، فتح المتصفّح،
+نافذة الـConnect، التوثيق من موجّه منفصل، إعادة التشغيل) — مع قصّ الإطار على لوحة المحادثة فقط
+(٦٥٠px الأولى من عرض ١٩٢٠) لتكبير النص العربي وقراءته فعليًّا بدل تخمينه من شكل الشاشة العام.
+
+### D144.1 — ما تغيّر في الشريحة (٣٩)
+
+**تحوّلت الخطوة الأولى من "مضافة" (بلا فيديو) إلى خطوة حقيقية بتوقيت `0:00`:** التسجيل الجديد يُظهر
+فعليًّا أن Claude يسأل عن فكرة المشروع (مين المستخدمين، أي خاصية أساسية) بعد ما يتأكّد أن Node.js
+وcontext7 شغّالين — تمامًا كما وصفت الخطوة القديمة، لكنها الآن مصوّرة لا مفترضة.
+
+**خطوة جديدة كليًّا بتوقيت `0:31`:** التسجيل يُظهر Claude يقترح اسم المشروع فعليًّا (`darrisni` في
+هذا التسجيل تحديدًا — لم أستخدمه كمثال في الشريحة، أبقيت المثال القياسي «حجزلي» المستخدم في كل مكان
+آخر بالمنهج) ويلخّص الخطوات الجاية (منظّمة تلقائية، اسم المشروع، كلمة المرور، الـRegion، الخطة). هذه
+الخطوة تحلّ محلّ ملاحظة `stepvid__fix` الصفراء القديمة على خطوة «أنشئ المشروع» — فحُذفت الملاحظة
+تمامًا بدل تحويلها.
+
+**حُذفت الخطوة القديمة «اطلب من Claude يعطيك خطوات الربط»** (كانت `data-t="0"` منفصلة) لأنها اندمجت
+فعليًّا في الخطوة الأولى الجديدة — التسجيل لا يُظهر طلبًا منفصلًا، بل استمرارًا لنفس الحوار.
+
+**تفصيلان جديدان أضفتهما لخطوة «وثّق دخولك من موجه أوامر منفصلة» (الآن `1:54`):**
+1. الطريقة الملموسة المصوّرة: فتح مجلّد المشروع بمستكشف الملفات، زر يمين، `Open in Terminal` —
+   بدل الوصف العام «افتح موجّه أوامر عادية».
+2. تنبيه ثقة لمرّة واحدة (`Use this MCP server`) يظهر أوّل مرّة يشتغل فيها `claude` في المشروع بعد
+   إضافة سيرفر MCP جديد — لم يكن موثّقًا في أي مكان بالمنهج من قبل.
+
+**خطوة «سجّل الدخول في Supabase» (الآن `0:40`):** التسجيل يُظهر أن Claude (عبر Antigravity) يفتح
+المتصفّح تلقائيًّا بنفسه، لا أن المتدرّب يفتح `supabase.com` يدويًّا — عدّلت النصّ ليطابق.
+
+**خطوة «أنشئ المشروع» (الآن `1:00`):** أضفتُ جملة عن ترك خيارات الأمان الجديدة في نموذج Supabase
+(`Enable Data API`، `RLS`) على حالتها الافتراضية — عناصر واجهة لم تكن موجودة في التسجيل القديم.
+
+**بقيّة الخطوات** (سجّل الدخول → أنشئ منظّمة → Connect → اضبط الخيارات → انسخ الأمر → تحقّق أوّل مرّة
+→ أعِد التشغيل وتحقّق مرّة ثانية) **طابقت المحتوى القديم فعليًّا** — احتاجت توقيتًا جديدًا فقط، لا
+تغييرًا في النصّ. توقيت «أعِد التشغيل وتحقّق مرّة ثانية» (`2:44`) مطابق شبه حرفي لما يقوله Claude في
+الفيديو نفسه.
+
+**النتيجة:** 11 خطوة بدل 12، صفر `stepvid__fix`، صفر `stepvid__step--new` — كل خطوة في الشريحة الآن
+مرتبطة بلحظة حقيقية في الفيديو.
+
+### D144.2 — خطأ التصاق اكتُشف وأُصلح أثناء التحقّق
+
+كتبتُ سهوًا «Node.js وcontext7» (و ملتصقة مباشرة بكلمة لاتينية) في مسودّتي الأولى — رصدته أداة تدقيق
+الالتصاق (`/و(?:<[^>]+>)*[A-Za-z]/`) في الفحص الشامل بعد الحفظ، فأصلحته إلى «Node.js و context7»
+(مسافة، لأنها أداة عطف عادية بين اسمين لاتينيين، لا زوجًا ثابتًا يستحقّ `&`).
+
+### التحقّق
+48 شريحة · 0 تجاوز رأسي (`deckAudit`) · 0 إشارة معلّقة (`deckRefAudit`) · 0 التصاق و+لاتيني على كامل
+الملف · 0 قائمة خطوات تتجاوز أفقيًّا · 0 بقايا «طرفية» · تأكّدت يدويًّا أن زر التوقيت `1:54` يُحرّك
+الفيديو فعليًّا إلى الثانية 114 (تزامن الأزرار مع الفيديو سليم).
+
+### Documents Affected
+`project-package/slides/day-01.html` (شريحة 39) · `deck/DECK_BRIEF.md` (صفّ 39) ·
+`deck/MEDIA_SHOTLIST.md` (فقرة `supabase.mp4` وصفّها في الجدول)
+
+### Status
+مُنجَز.
+
+---
+
+## § D145 — Prompt #100
+
+**Prompt:** "I replaced the project-package/slides/media/github.mp4 with the new recorded one. I noticed you take too much time to analyze videos and extract steps so I returned to gemini to extract the steps and providing it the previous steps to rely on initially. [Gemini prompt + response with 5 timestamped steps for slide 40, noting the env-check and plan-review steps did not occur in this clip]. please update the steps properly (don't just copy and paste from gemini response but consider its suggested content). Stop logging into conversation_history.md in Arabic! use English as you do here in the chat"
+
+---
+
+## § D145 — Rebuilt slide 40 from the new github.mp4, switched this log to English
+
+**Note on language:** from this entry on, this file is written in English, matching chat. Nothing in the actual rules mandated Arabic here — the root CLAUDE.md's context protocol never specified a language — I'd just drifted into Arabic by habit while spending most of this session writing Arabic-facing deck content. That habit doesn't carry a reason, so it stops now. (This is unrelated to `project-package/CLAUDE.md` §A.4, which *does* mandate Arabic for the trainee's own `conversation_history.md` — that one has a real reason, spelled out there, and stays as-is.)
+
+### What changed on slide 40
+
+Video duration is now 114.77s (≈1:54), matching Gemini's last step end exactly — the whole clip is accounted for, unlike the Supabase video which ran past its described steps.
+
+Went through Gemini's 5-step breakdown against the *existing* step content rather than pasting it in wholesale, since Gemini only saw the steps I gave it (the old text), not the deck's actual markup or the `stepvid__fix`/`stepvid__step--new` conventions:
+
+- **Step "راجع الخطوات وانسخ اسمًا مقترحًا"** (now `0:29`, was `0:09`): its `stepvid__fix` note said the old recording showed a generic name because Claude didn't know the idea yet. Gemini's summary of this step in the new clip ("copied the suggested repo name `darrisni`") confirms the name now comes from the trainee's brief already — the discrepancy the fix-note flagged no longer exists, so I deleted the note instead of keeping it, and folded the corrected fact into the main step text.
+- **Step "انسخ رابط مستودعك وأعطه لـ Claude"** (now `1:08`, was `0:41`): same situation — its `stepvid__fix` note said the project idea used to be typed here alongside the link, but now happens earlier (Supabase steps). Gemini's summary of the new clip ("copied the link and pasted it directly") confirms this is already true on screen, so the note is now redundant. Deleted it, left the main text (which was already correct) alone.
+- **Step "ارفع هيكل مشروعك — ووثّق دخولك"** (now `1:16`, was a `stepvid__step--new` "added" placeholder with no video at all): Gemini's summary of the new clip matches this step's existing text almost verbatim (git init/push in the background, an auth window appearing, browser OAuth succeeding, refreshing GitHub to confirm the files). This step is real on screen now, so it became a normal timestamped step — dropped the `stepvid__step--new` class, the "مضافة" badge, and the trailing "not in this clip" paragraph.
+- **Steps "يتحقّق Claude من بيئتك ويجهّز خطة" and "راجع الخطة واختر كيف تكمل"** (previously real timestamps `1:10`/`1:18` from the *old* video): Gemini explicitly flagged that neither happens in the new clip — Claude runs the git setup directly without an environment check or a plan-approval prompt. That tracks: those two steps are actually part of *later* sub-steps of this same task (after reviewing the DB info Claude gathered from Supabase), not something that happens right after pasting the repo link — so a clip focused only on repo creation + skeleton push wouldn't show them. Converted both to `stepvid__step--new` ("مضافة") placeholders, replacing their now-inapplicable `stepvid__fix` notes (calibrated to the old video's Node.js-missing detour) with a plain note on when they actually happen.
+
+Net effect: no content was invented — every timestamp and every kept sentence traces to either the existing step text (when Gemini confirmed it already matches) or Gemini's description of the new clip (when something changed). Nothing was copy-pasted from the Gemini response's Arabic phrasing directly; I rewrote each step in the deck's own established style.
+
+### Verification
+48 slides · 0 vertical overflow (`deckAudit`) · 0 dangling refs (`deckRefAudit`) · 0 و+Latin glue on the full file · 0 horizontally-scrolling step lists · visually confirmed both slide-40 screen states (top of list and the two trailing "مضافة" steps) render cleanly with no clipping.
+
+### Documents affected
+`project-package/slides/day-01.html` (slide 40 only)
+
+### Status
+Done.
+
+---
+
+## § D146 — Prompt #101

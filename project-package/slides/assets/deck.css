@@ -1442,6 +1442,89 @@ body {
   color: var(--text-body)
 }
 
+/* ── where the recording and the corrected flow differ ──────────────
+   The captures were made before the order of the steps was fixed, and
+   re-shooting a 3-minute take to move one instruction is not worth it. Two
+   kinds of divergence exist, so two marks — both amber, so the trainee
+   learns ONE rule (amber = the list is right, the video is behind) instead
+   of two:
+     --new   a whole action that has to happen and is nowhere on screen. It
+             is a real row in the sequence, in its correct position, because
+             a trainee follows the list and would simply skip an action
+             buried inside another step's prose.
+     __fix   an on-screen step that still happens, but whose content moved.
+   A step with no data-t needs no JS change: initStepVideos() already skips
+   NaN timestamps on both the click side and the timeupdate side, so the
+   row can never be seeked to and never steals the active highlight. */
+.stepvid__step--new {
+  border-color: var(--state-warning);
+  background: var(--state-warning-soft)
+}
+
+/* Same box as .stepvid__time so the steps column keeps one gutter, but a
+   span not a button — there is no moment in the video to seek to. */
+.stepvid__mark {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  min-width: 62px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: var(--radius-pill);
+  background: var(--state-warning);
+  color: var(--brand-white);
+  font: var(--fw-bold) 18px/1 var(--font-arabic)
+}
+
+.stepvid__fix {
+  margin: 6px 0 0;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border-inline-start: 3px solid var(--state-warning);
+  background: var(--state-warning-soft);
+  font: var(--fw-regular) var(--fs-caption)/1.5 var(--font-arabic);
+  color: var(--text-body)
+}
+
+.stepvid__fix strong {
+  color: var(--state-warning)
+}
+
+/* ── a stepvid whose recording does not exist yet ───────────────────
+   The steps are known and correct before the capture is made, so the slide
+   ships with them and reserves the video's place rather than waiting. The
+   badges carry the step's ORDER, not a timestamp, because there is nothing
+   to seek to — a dead 0:00 button would be a worse lie than an honest box. */
+.stepvid__video--soon {
+  display: grid;
+  place-items: center;
+  padding: var(--sp-4);
+  background: var(--surface-card);
+  border: 3px dashed var(--accent-structure);
+  box-shadow: none
+}
+
+.stepvid__soon {
+  margin: 0;
+  text-align: center;
+  font: var(--fw-semibold) var(--fs-body)/1.5 var(--font-arabic);
+  color: var(--text-caption)
+}
+
+.stepvid__soon .i {
+  display: block;
+  margin-block-end: var(--sp-2);
+  font-size: 46px;
+  color: var(--accent-structure)
+}
+
+.stepvid__mark--idx {
+  min-width: 40px;
+  background: var(--brand-sky-soft);
+  color: var(--brand-primary);
+  font: var(--fw-bold) 17px/1 var(--font-mono)
+}
+
 /* ── a numbered sequence inside a card ──────────────────────
    For content where the POINT is the order of the steps, which .bento cannot
    carry — its cards read as parallel facts. The counter is authored by CSS so

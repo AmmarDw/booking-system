@@ -2127,11 +2127,11 @@ send_email
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
-          <h2 class="sag-slide__title">قبل ما نبدأ: ستّ أدوات تُجهّز على جهازك، مرّة واحدة بس</h2>
+          <h2 class="sag-slide__title">قبل ما نبدأ: سبع أدوات تُجهّز على جهازك، مرّة واحدة بس</h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
-          <div class="bento" data-cols="3">
+          <div class="bento" data-cols="4">
             <article class="card card--accent">
               <div class="card__top"><span class="card__num">1</span>
                 <h3 class="card__title card__title--sm">Claude Desktop</h3>
@@ -2168,8 +2168,14 @@ send_email
               </div>
               <p class="card__note card__note--sm">داخل المحرّر.</p>
             </article>
-            <article class="card card--state">
+            <article class="card">
               <div class="card__top"><span class="card__num">6</span>
+                <h3 class="card__title card__title--sm">Node.js</h3>
+              </div>
+              <p class="card__note card__note--sm">البرنامج اللي يشغّل تطبيقك على جهازك.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__num">7</span>
                 <h3 class="card__title card__title--sm">ربط context7 و Supabase</h3>
               </div>
               <p class="card__note card__note--sm">الأولى بمقطع مسجّل، والثانية معي مباشرة.</p>
@@ -2177,7 +2183,7 @@ send_email
           </div>
           <div class="card card--plain">
             <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
-              أمشي معك على الستّة كلّها، بمقاطع مسجّلة جاهزة لأغلبها، وأنفّذ ربط <span class="tok-lat">Supabase</span>
+              أمشي معك على السبعة كلّها، بمقاطع مسجّلة جاهزة لأغلبها، وأنفّذ ربط <span class="tok-lat">Supabase</span>
               مباشرة أمامك.
             </p>
           </div>
@@ -2480,39 +2486,77 @@ send_email
                 <li class="stepvid__step" data-t="51">
                   <button class="stepvid__time" type="button">0:51</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">افتح موجه الأوامر</h4>
-                    <p class="stepvid__p">نفس نافذة PowerShell.</p>
+                    <h4 class="stepvid__h">افتح موجّه الأوامر</h4>
+                    <p class="stepvid__p">نفس نافذة <span class="tok-lat">PowerShell</span>.</p>
                   </div>
                 </li>
-                <li class="stepvid__step" data-t="53">
-                  <button class="stepvid__time" type="button">0:53</button>
+                <li class="stepvid__step" data-t="55">
+                  <button class="stepvid__time" type="button">0:55</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">سجّل اسمك</h4>
+                    <h4 class="stepvid__h">الصق أمر الاسم — ولا تنفّذه بعد</h4>
                     <div class="snipbox">
                       <pre class="snip" dir="ltr">git config --global user.name "Your Name"</pre>
                       <button class="snipbox__copy" type="button" aria-label="نسخ الأمر"><span
                           class="i i-copy"></span></button>
                     </div>
-                    <p class="stepvid__p">بدّل «Your Name» باسمك الحقيقي، فهو يظهر كمؤلّف على كل حفظ (<span
-                        class="tok-lat">commit</span>) تنفّذه.</p>
+                    <p class="stepvid__p">ناقصك الاسم نفسه — نجيبه من <span class="tok-lat">GitHub</span> في
+                      الخطوة الجاية.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="61">
+                  <button class="stepvid__time" type="button">1:01</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">خذ اسمك من GitHub</h4>
+                    <p class="stepvid__p">افتح <span class="tok-lat">github.com</span> وأنت مسجّل دخول، اضغط
+                      <span class="tok-lat">Settings</span> ← صفحة <span class="tok-lat">Profile</span>، وانسخ
+                      اسمك من أعلى الصفحة.</p>
                   </div>
                 </li>
                 <li class="stepvid__step" data-t="67">
                   <button class="stepvid__time" type="button">1:07</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">سجّل بريدك</h4>
+                    <h4 class="stepvid__h">بدّل الاسم ونفّذ الأمر</h4>
+                    <p class="stepvid__p">حطّ الاسم اللي نسخته مكان «<span class="tok-lat">Your Name</span>»
+                      واضغط <span class="tok-lat">Enter</span>. هذا الاسم يظهر كمؤلّف على كل حفظ (<span
+                        class="tok-lat">commit</span>) تنفّذه.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="73">
+                  <button class="stepvid__time" type="button">1:13</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">الصق أمر البريد — ولا تنفّذه بعد</h4>
                     <div class="snipbox">
                       <pre class="snip" dir="ltr">git config --global user.email "your-github-email@example.com"</pre>
                       <button class="snipbox__copy" type="button" aria-label="نسخ الأمر"><span
                           class="i i-copy"></span></button>
                     </div>
-                    <p class="stepvid__p"><strong>مهم:</strong> استخدم نفس بريد <span class="tok-lat">GitHub</span>
-                      بالضبط، وإلا ما يربط الحفظ باسمك ويظهر من شخص
-                      مجهول.</p>
+                    <p class="stepvid__p">نجيب البريد من <span class="tok-lat">GitHub</span> كمان — بس مو بريدك
+                      الحقيقي.</p>
                   </div>
                 </li>
-                <li class="stepvid__step" data-t="76">
-                  <button class="stepvid__time" type="button">1:16</button>
+                <li class="stepvid__step" data-t="81">
+                  <button class="stepvid__time" type="button">1:21</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">فعّل إخفاء بريدك في GitHub</h4>
+                    <p class="stepvid__p">من نفس الإعدادات اضغط <span class="tok-lat">Emails</span>، انزل لآخر
+                      الصفحة، وفعّل «<span class="tok-lat">Keep my email addresses private</span>».</p>
+                    <p class="stepvid__p"><strong>ليش؟</strong> كل حفظ تسوّيه ينكتب فيه بريدك ويبقى محفوظًا في
+                      مشروعك. هذا الخيار يعطيك بريدًا بديلًا يستر بريدك الحقيقي.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="88">
+                  <button class="stepvid__time" type="button">1:28</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">انسخ البريد البديل ونفّذ الأمر</h4>
+                    <p class="stepvid__p">تحت نفس الخيار تلقى بريدًا شكله
+                      <span class="tok-code">12345678+username@users.noreply.github.com</span> — حطّه مكان
+                      البريد في الأمر واضغط <span class="tok-lat">Enter</span>.</p>
+                    <p class="stepvid__p">وهذا <strong>إجراء ثانٍ</strong>: تفعيل الخيار هو الأول، واستعمال
+                      البريد البديل هنا هو الثاني — كل واحد يسند الثاني.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="99">
+                  <button class="stepvid__time" type="button">1:39</button>
                   <div class="stepvid__body">
                     <h4 class="stepvid__h">تأكّد من الحفظ</h4>
                     <div class="snipbox">
@@ -2521,8 +2565,12 @@ send_email
                           class="i i-copy"></span></button>
                     </div>
                     <p class="stepvid__p">تلقى بالنتيجة <span class="tok-code">user.name=</span> واسمك، و
-                      <span class="tok-code">user.email=</span> وبريدك.
+                      <span class="tok-code">user.email=</span> وبريدك البديل.
                     </p>
+                    <p class="stepvid__p"><strong>وانتبه:</strong> هذي <strong>بطاقة اسم</strong> تنختم على كل
+                      حفظ — مو تسجيل دخول لـ<span class="tok-lat">GitHub</span>. الدخول الحقيقي يصير أوّل مرّة
+                      ترفع مشروعك، في <span class="reflink" data-ref="repo-create" tabindex="0">المهمة
+                        14.1</span>.</p>
                   </div>
                 </li>
               </ol>
@@ -2748,8 +2796,10 @@ send_email
                     <h4 class="stepvid__h">اقرأ ردّه الأوّل كاملًا</h4>
                     <p class="stepvid__p">يرحّب بك أوّلًا («وعليكم السلام، أهلًا بك! أنا مساعدك في دورة بناء
                       وإطلاق المنتجات التقنية...»)، ثم يسرد كل ما يفترض أنك أنهيته بنفسك قبل الآن — من شرح
-                      المفاهيم (6.1) إلى نفس هذا البند (5). أكّد له إنك خلّصتها، ويخبرك وقتها بأوّل شي
-                      بيسويه لك (ربط تكاملَي MCP في البند 6).</p>
+                      المفاهيم (2.1) إلى نفس هذا البند (5). أكّد له إنك خلّصتها.</p>
+                    <p class="stepvid__fix"><strong>مو في المقطع:</strong> بعد تأكيدك، يذكّرك إن البند 6
+                      (تثبيت <span class="tok-lat">Node.js</span>) باقي عليك أنت، ويطلب منك نبذة سريعة عن
+                      فكرة مشروعك — وبعدها يبدأ شغله من البند 7.</p>
                   </div>
                 </li>
               </ol>
@@ -2767,10 +2817,131 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 37 — 6أ) ربط context7 ════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 37 — 6) ثبّت Node.js ══════════════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide" data-anchor="nodejs">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">6) ثبّت Node.js — البرنامج اللي يشغّل تطبيقك</h2>
+          <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="stepvid">
+            <div class="stepvid__video">
+              <video class="stepvid__player" controls preload="metadata" src="media/node-js.mp4"></video>
+            </div>
+            <div class="stepvid__steps">
+              <ol class="stepvid__list">
+                <li class="stepvid__step">
+                  <span class="stepvid__mark stepvid__mark--idx">1</span>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">ليش نحتاجه أصلًا؟</h4>
+                    <p class="stepvid__p">تطبيقك مكتوب بلغة ما يفهمها جهازك مباشرةً، و <span
+                        class="tok-lat">Node.js</span> هو اللي يقرأها ويشغّلها. بدونه ما يفتح التطبيق ولو كان
+                      الكود كامل وصحيح — وأوّل مرّة نحتاجه هو اليوم، لمّا يشغّل <span class="tok-lat">Claude</span>
+                      تطبيقك ويعطيك رابط تفتحه.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="27">
+                  <button class="stepvid__time" type="button">0:27</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">افتح صفحة التنزيل واختر <span class="tok-lat">LTS</span></h4>
+                    <p class="stepvid__p">هي النسخة طويلة الدعم، الأثبت، ومختارة لك افتراضيًّا — ما تحتاج
+                      تغيّر شي.</p>
+                    <a class="dlbtn" href="https://nodejs.org/en/download" target="_blank" rel="noopener"><span
+                        class="i i-download"></span> nodejs.org/en/download</a>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="38">
+                  <button class="stepvid__time" type="button">0:38</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">شغّل المثبّت بإعداداته الافتراضية</h4>
+                    <p class="stepvid__p">على <strong>Windows</strong> نزّل <span class="tok-lat">Windows
+                        Installer (.msi)</span>، وعلى <strong>macOS</strong> نزّل <span class="tok-lat">macOS
+                        Installer (.pkg)</span>. في الحالتين اضغط <span class="tok-lat">Next</span> على كل
+                      الشاشات — بما فيها الموافقة على اتفاقية الترخيص (<span class="tok-lat">License
+                        Agreement</span>) — ثم <span class="tok-lat">Install</span>. أمّا على
+                      <strong>Linux</strong> فالصفحة نفسها تعطيك أمر توزيعتك.
+                    </p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="46">
+                  <button class="stepvid__time" type="button">0:46</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">شاشة <span class="tok-lat">Tools for Native Modules</span> — لا
+                      تفعّلها</h4>
+                    <p class="stepvid__p">تمرّ عليك شاشة فيها مربّع اختيار لتثبيت أدوات إضافية. <strong>اتركه
+                        بلا تفعيل</strong>، وهو الوضع الافتراضي أصلًا — تفعيله يبدأ تنزيلًا طويلًا لأدوات ما
+                      نحتاجها في الدورة.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="54">
+                  <button class="stepvid__time" type="button">0:54</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">تحقّق من <strong>موجّه أوامر جديد</strong></h4>
+                    <p class="stepvid__p">المهمّ إنه جديد — النوافذ المفتوحة قبل التثبيت ما تشوف البرنامج.
+                      اكتب الأمرين، وإن ظهر رقمان فأنت جاهز:</p>
+                    <div class="snipbox">
+                      <pre class="snip" dir="ltr">node -v</pre>
+                      <button class="snipbox__copy" type="button" aria-label="نسخ الأمر"><span
+                          class="i i-copy"></span></button>
+                    </div>
+                    <div class="snipbox">
+                      <pre class="snip" dir="ltr">npm -v</pre>
+                      <button class="snipbox__copy" type="button" aria-label="نسخ الأمر"><span
+                          class="i i-copy"></span></button>
+                    </div>
+                  </div>
+                </li>
+                <li class="stepvid__step">
+                  <span class="stepvid__mark stepvid__mark--idx">6</span>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">لو قال «الأمر غير معروف»</h4>
+                    <p class="stepvid__p">أغلق موجّه الأوامر وافتح وحدة جديدة وجرّب ثانية. ولو استمرّ، أعد تشغيل
+                      الجهاز — نفس منطق مشكلة المسار اللي مرّت علينا في البند 2.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="75">
+                  <button class="stepvid__time" type="button">1:15</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">أو اطلب من <span class="tok-lat">Claude</span> يتحقّق نيابة عنك</h4>
+                    <p class="stepvid__p">ما تحب تفتح موجّه الأوامر بنفسك، أو تبي تتأكّد مرّتين؟ قل له
+                      «تحقّقت من تثبيت <span class="tok-lat">Node.js</span>؟» — يشغّل هو الأمرين خلف الكواليس
+                      ويؤكّد لك النتيجة. <strong>الأفضل تسوي الطريقتين معًا</strong> — يدويًّا ومع
+                      <span class="tok-lat">Claude</span> — عشان تتأكّد بثقة كاملة.
+                    </p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="102">
+                  <button class="stepvid__time" type="button">1:42</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">راجع حوارك من <span class="tok-code">conversation_history.md</span>
+                      لا من نافذة الدردشة</h4>
+                    <p class="stepvid__p">من الشريط الجانبي، بزر يمين على الملف ثم <span class="tok-lat">Open
+                        Preview</span>. أحيانًا يختلط عرض النص داخل نافذة الدردشة نفسها
+                      بسبب محاذاة ثابتة ما تفرّق بين العربي والإنجليزي، بينما
+                      <span class="tok-code">conversation_history.md</span> تنسيقه مضبوط لنا مسبقًا فيبقى
+                      مرتّبًا وسهل القراءة.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 1</span>
+            </div><span class="deck-foot__num">39</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 38 — 7أ) ربط context7 ════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide">
         <div class="sag-slide__head sag-media__head">
-          <h2 class="sag-slide__title">6أ) اربط context7 — التوثيق المحدّث</h2>
+          <h2 class="sag-slide__title">7أ) اربط context7 — التوثيق المحدّث</h2>
           <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
         </div>
         <div class="sag-slide__body">
@@ -2847,10 +3018,10 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 38 — 6ب) أنشئ مشروع Supabase واربط الـMCP ════════════════════════════════════════════════════ -->
+      <!-- ═══ 39 — 7ب) أنشئ مشروع Supabase واربط الـMCP ════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide">
         <div class="sag-slide__head sag-media__head">
-          <h2 class="sag-slide__title">6ب) أنشئ مشروع Supabase واربط الـMCP</h2>
+          <h2 class="sag-slide__title">7ب) أنشئ مشروع Supabase واربط الـMCP</h2>
           <span class="sag-badge"><span class="sag-badge__num">7.10</span> تهيئة أدوات العمل</span>
         </div>
         <div class="sag-slide__body">
@@ -2864,21 +3035,40 @@ send_email
                 <li class="stepvid__step" data-t="0">
                   <button class="stepvid__time" type="button">0:00</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">اطلب من Claude يعطيك خطوات الربط</h4>
-                    <p class="stepvid__p">قل له مثلاً «احتاجك تعطيني خطوات مفصّلة عشان أسجّل دخول كمستخدم
-                      على Supabase وأنشئ مشروعًا جديدًا وأربطه معاك».</p>
-                  </div>
-                </li>
-                <li class="stepvid__step" data-t="15">
-                  <button class="stepvid__time" type="button">0:15</button>
-                  <div class="stepvid__body">
-                    <h4 class="stepvid__h">سجّل الدخول في Supabase</h4>
-                    <p class="stepvid__p">افتح <span class="tok-lat">supabase.com</span>، وسجّل بحساب
-                      GitHub (أو Google).</p>
+                    <h4 class="stepvid__h">اسأل عن الخطوة الجاية — وجاوب Claude على سؤاله</h4>
+                    <p class="stepvid__p">بعد ما يتأكّد أن Node.js و context7 شغّالين، يسألك Claude عن فكرة
+                      مشروعك: مين المستخدمين، وايش الخاصية الأساسية — عشان يقترح لك اسم مناسب لمشروع
+                      <span class="tok-lat">Supabase</span> (ولمستودع <span class="tok-lat">GitHub</span>
+                      بعدين). اكتب له سطرين بكلامك العادي: ايش تبني، ولمين. ولا تطول — تعريف مشروعك عمل
+                      يوم كامل نأخذه في القسم 8.
+                    </p>
+                    <p class="stepvid__p"><strong>مثال يكفي:</strong> «أبي أبني موقع يخلّي الزبون يحجز موعد عند
+                      صالون حلاقة، والحلّاق يشوف مواعيده. اسمه المبدئي حجزلي.»</p>
                   </div>
                 </li>
                 <li class="stepvid__step" data-t="31">
                   <button class="stepvid__time" type="button">0:31</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يقترح لك Claude اسم المشروع، ويلخّص الخطوات الجاية</h4>
+                    <p class="stepvid__p">من فكرتك، يقترح <span class="tok-lat">Claude</span> اسمًا مناسبًا
+                      لمشروع <span class="tok-lat">Supabase</span> — خذه كما هو، ولا تخترع اسمًا من مختلف.
+                      ويعطيك خلاصة الخطوات الجاية: منظّمة تُنشأ تلقائيًا أوّل مرّة، اسم المشروع (اللي
+                      اقترحه لك)، كلمة مرور قاعدة البيانات (تولّدها بنفسك بالخطوة الجاية)، أقرب
+                      <span class="tok-lat">Region</span> لمستخدميك، والخطة <span
+                        class="tok-lat">Free</span>.
+                    </p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="40">
+                  <button class="stepvid__time" type="button">0:40</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">سجّل الدخول في Supabase</h4>
+                    <p class="stepvid__p">يفتح لك <span class="tok-lat">Claude</span> صفحة تسجيل الدخول
+                      تلقائيًا — سجّل بحساب <span class="tok-lat">GitHub</span>.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="54">
+                  <button class="stepvid__time" type="button">0:54</button>
                   <div class="stepvid__body">
                     <h4 class="stepvid__h">أنشئ منظّمة (Organization) إن طُلب منك</h4>
                     <p class="stepvid__p">أوّل مرّة تنشئ فيها مشروعًا، يطلب Supabase تسمية منظّمة أوّلًا —
@@ -2886,19 +3076,21 @@ send_email
                       لمرّة واحدة فقط.</p>
                   </div>
                 </li>
-                <li class="stepvid__step" data-t="36">
-                  <button class="stepvid__time" type="button">0:36</button>
+                <li class="stepvid__step" data-t="60">
+                  <button class="stepvid__time" type="button">1:00</button>
                   <div class="stepvid__body">
                     <h4 class="stepvid__h">أنشئ المشروع</h4>
-                    <p class="stepvid__p">اكتب اسم مشروعك، واضغط <span class="tok-lat">Generate a
-                        password</span> — يُخفى بنقاط تلقائيًّا، <strong>انسخه واحفظه فورًا</strong> فهو
-                      لا يُعرض مرّة أخرى. اختر أقرب <span class="tok-lat">Region</span> لك، ثم <span
-                        class="tok-lat">Create new project</span>.</p>
+                    <p class="stepvid__p">الصق اسم مشروعك اللي اقترحه Claude، واضغط <span
+                        class="tok-lat">Generate a password</span> — يُخفى بنقاط تلقائيًّا،
+                      <strong>انسخه واحفظه فورًا</strong> فهو لا يُعرض مرّة أخرى. اختر أقرب
+                      <span class="tok-lat">Region</span> لك، واترك خيارات الأمان
+                      (<span class="tok-lat">Enable Data API</span>، <span class="tok-lat">RLS</span>)
+                      على حالتها الافتراضية، ثم <span class="tok-lat">Create new project</span>.</p>
                   </div>
                 </li>
                 <li class="stepvid__divider">اربط الـMCP</li>
-                <li class="stepvid__step" data-t="56">
-                  <button class="stepvid__time" type="button">0:56</button>
+                <li class="stepvid__step" data-t="90">
+                  <button class="stepvid__time" type="button">1:30</button>
                   <div class="stepvid__body">
                     <h4 class="stepvid__h">اضغط Connect واختر Claude Code</h4>
                     <p class="stepvid__p">من داخل مشروعك اضغط <span class="tok-lat">Connect</span> أعلى
@@ -2907,8 +3099,8 @@ send_email
                     </p>
                   </div>
                 </li>
-                <li class="stepvid__step" data-t="62">
-                  <button class="stepvid__time" type="button">1:02</button>
+                <li class="stepvid__step" data-t="92">
+                  <button class="stepvid__time" type="button">1:32</button>
                   <div class="stepvid__body">
                     <h4 class="stepvid__h">اضبط خيارات الربط</h4>
                     <p class="stepvid__p">تأكّد أن <span class="tok-code">read-only</span> مُطفأ (يحتاج
@@ -2918,36 +3110,39 @@ send_email
                       لتقليل عدد الأدوات.</p>
                   </div>
                 </li>
-                <li class="stepvid__step" data-t="70">
-                  <button class="stepvid__time" type="button">1:10</button>
+                <li class="stepvid__step" data-t="98">
+                  <button class="stepvid__time" type="button">1:38</button>
                   <div class="stepvid__body">
                     <h4 class="stepvid__h">انسخ الأمر وأعطه لـClaude</h4>
                     <p class="stepvid__p">انسخ أمر <span class="tok-code">claude mcp add</span> الظاهر في
                       الصفحة، والصقه في محادثتك — Claude ينفّذه.</p>
                   </div>
                 </li>
-                <li class="stepvid__step" data-t="85">
-                  <button class="stepvid__time" type="button">1:25</button>
+                <li class="stepvid__step" data-t="114">
+                  <button class="stepvid__time" type="button">1:54</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">وثّق دخولك من موجه أوامر منفصلة</h4>
+                    <h4 class="stepvid__h">وثّق دخولك من موجه أوامر منفصل</h4>
                     <p class="stepvid__p"><strong>هذه الخطوة لك وحدك</strong> — تحتاج هويّتك، فلا يقدر
-                      Claude ينفّذها بدلاً عنك: افتح موجه أوامر عادية (لا من داخل المحادثة)، اكتب <span
-                        class="tok-code">claude</span>، وبعدها <span class="tok-code">/mcp</span>، اختر
+                      Claude ينفّذها بدلاً عنك: افتح مجلّد مشروعك، زر يمين، واختر <span
+                        class="tok-lat">Open in Terminal</span> (أو افتح موجه أوامر عادية وانتقل إليه
+                      بنفسك)، واكتب <span class="tok-code">claude</span> أوّل مرّة يشتغل فيها بعد
+                      إضافة السيرفر، يسألك تثق فيه أو لا — اختر <span class="tok-lat">Use this MCP
+                        server</span>. بعدها اكتب <span class="tok-code">/mcp</span>، اختر
                       <span class="tok-lat">supabase</span>، ثم <span class="tok-lat">Authenticate</span>
                       — يفتح لك المتصفّح لتوافق.
                     </p>
                   </div>
                 </li>
-                <li class="stepvid__step" data-t="140">
-                  <button class="stepvid__time" type="button">2:20</button>
+                <li class="stepvid__step" data-t="154">
+                  <button class="stepvid__time" type="button">2:34</button>
                   <div class="stepvid__body">
                     <h4 class="stepvid__h">تحقّق أوّل مرّة</h4>
                     <p class="stepvid__p">اطلب من Claude يتأكّد — يخبرك أن التوثيق نجح، لكن الأداة تحتاج
                       إعادة تشغيل المحرّر لتُحمَّل في جلستك الحالية.</p>
                   </div>
                 </li>
-                <li class="stepvid__step" data-t="160">
-                  <button class="stepvid__time" type="button">2:40</button>
+                <li class="stepvid__step" data-t="164">
+                  <button class="stepvid__time" type="button">2:44</button>
                   <div class="stepvid__body">
                     <h4 class="stepvid__h">أعِد التشغيل وتحقّق مرّة ثانية</h4>
                     <p class="stepvid__p">أغلق Antigravity بالكامل وشغّله من جديد، ثم اطلب من Claude
@@ -2970,10 +3165,10 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 39 — 14.1 إنشاء مستودعك ══════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 40 — 14.1 إنشاء مستودعك ══════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide" data-anchor="repo-create">
         <div class="sag-slide__head sag-media__head">
-          <h2 class="sag-slide__title">أنشئ مستودعك على GitHub وسلّم الفكرة لـ Claude</h2>
+          <h2 class="sag-slide__title">أنشئ مستودعك على GitHub وسلّم رابطه لـ Claude</h2>
           <span class="sag-badge"><span class="sag-badge__num">14.1</span> التهيئة والهيكل</span>
         </div>
         <div class="sag-slide__body">
@@ -2991,17 +3186,18 @@ send_email
                       أن هويّتك في Git مضبوطة من شريحة سابقة.</p>
                   </div>
                 </li>
-                <li class="stepvid__step" data-t="9">
-                  <button class="stepvid__time" type="button">0:09</button>
+                <li class="stepvid__step" data-t="29">
+                  <button class="stepvid__time" type="button">0:29</button>
                   <div class="stepvid__body">
                     <h4 class="stepvid__h">راجع الخطوات وانسخ اسمًا مقترحًا</h4>
-                    <p class="stepvid__p">يعطيك Claude خطوات إنشاء المستودع كاملة، مع اسم قصير مقترح (مثل
-                      <span class="tok-code">my-booking-app</span>) — انسخه.
+                    <p class="stepvid__p">يعطيك Claude خطوات إنشاء المستودع كاملة، مع اسم قصير مقترح —
+                      يجيك من فكرتك اللي عطيته إيّاها قبل شوي (مو اسمًا عامًّا)، ومعه وصف للمستودع.
+                      انسخ الاسم.
                     </p>
                   </div>
                 </li>
-                <li class="stepvid__step" data-t="33">
-                  <button class="stepvid__time" type="button">0:33</button>
+                <li class="stepvid__step" data-t="47">
+                  <button class="stepvid__time" type="button">0:47</button>
                   <div class="stepvid__body">
                     <h4 class="stepvid__h">أنشئ المستودع على GitHub</h4>
                     <p class="stepvid__p">افتح <span class="tok-lat">github.com/new</span>، الصق الاسم،
@@ -3012,25 +3208,52 @@ send_email
                         repository</span>.</p>
                   </div>
                 </li>
-                <li class="stepvid__step" data-t="41">
-                  <button class="stepvid__time" type="button">0:41</button>
+                <li class="stepvid__step" data-t="68">
+                  <button class="stepvid__time" type="button">1:08</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">انسخ الرابط وأعطه لـ Claude مع فكرة مشروعك</h4>
-                    <p class="stepvid__p">انسخ رابط مستودعك (ينتهي بـ <span class="tok-code">.git</span>)،
-                      والصقه في نفس الرسالة مع جملة واحدة بسيطة عن فكرة منتجك.</p>
+                    <h4 class="stepvid__h">انسخ رابط مستودعك وأعطه لـ Claude</h4>
+                    <p class="stepvid__p">انسخ رابط مستودعك (ينتهي بـ <span class="tok-code">.git</span>)
+                      والصقه في المحادثة. <strong>مرّة وحدة بس</strong> — يحفظه <span class="tok-lat">Claude</span> في
+                      <span class="tok-code">CLAUDE.md</span> داخل مشروعك،
+                      فما تحتاج تلصقه مرّة ثانية بعدين.
+                    </p>
                   </div>
                 </li>
-                <li class="stepvid__step" data-t="70">
-                  <button class="stepvid__time" type="button">1:10</button>
+                <li class="stepvid__step" data-t="76">
+                  <button class="stepvid__time" type="button">1:16</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">ارفع هيكل مشروعك — ووثّق دخولك مرّة وحدة في عمر الجهاز</h4>
+                    <p class="stepvid__p">مجلّدك مو فاضي: فيه الحزمة ووثائقك. <strong>هذا هيكل مشروعك، ويُرفع
+                        قبل ما يُبنى التطبيق</strong> — عشان يكون لك نسخة محفوظة من البداية.
+                      <span class="tok-lat">Claude</span> يسوّيها كلّها: يهيّئ
+                      <span class="tok-lat">Git</span>، ويربطه بمستودعك، ويكتب
+                      <span class="tok-code">.gitignore</span>، ثم يحفظ ويرفع.</p>
+                    <p class="stepvid__p">وعند هذا الرفع بالذات يوقف <span class="tok-lat">Git</span>، لأنه ما
+                      يعرف بعد إنك صاحب الحساب. <strong>هذي الخطوة لك وحدك</strong> — تحتاج هويّتك، فما يقدر
+                      ينفّذها بدالك:</p>
+                    <p class="stepvid__p">يفتح لك المتصفّح صفحة <span class="tok-lat">Authorize Git Credential
+                        Manager</span> ← سجّل الدخول لو طُلب منك ← اضغط <span class="tok-lat">Authorize</span>.
+                      وأحيانًا يعطيك بدالها رمزًا قصيرًا مع رابط
+                      <span class="tok-code">github.com/login/device</span> — افتح الرابط والصق الرمز.</p>
+                    <p class="stepvid__p"><strong>وما تتكرّر بعدها أبدًا:</strong> ينحفظ الإذن في مدير بيانات
+                      الاعتماد بجهازك، فكل رفع جاي يمرّ صامت.</p>
+                    <p class="stepvid__p"><strong>وتأكّد بنفسك:</strong> افتح صفحة مستودعك على
+                      <span class="tok-lat">GitHub</span> وحدّثها — لازم تشوف ملفّاتك فيها الآن.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step stepvid__step--new">
+                  <span class="stepvid__mark">مضافة</span>
                   <div class="stepvid__body">
                     <h4 class="stepvid__h">يتحقّق Claude من بيئتك ويجهّز خطة</h4>
-                    <p class="stepvid__p">يتأكّد أن الأدوات اللي يحتاجها التطبيق (مثل <span
-                        class="tok-lat">Node.js</span>) موجودة على جهازك — لو ناقصة، يخبرك ويعطيك خطوات
-                      تثبيتها أوّلًا قبل ما يكمل.</p>
+                    <p class="stepvid__p">يتأكّد أن الأدوات اللي يحتاجها التطبيق موجودة على جهازك — وأهمّها
+                      <span class="tok-lat">Node.js</span>.
+                    </p>
+                    <p class="stepvid__p">هذي الخطوة <strong>مو في هذا المقطع</strong> — تصير بعدين، بعد ما
+                      تراجع بيانات قاعدتك وتوافق على خطته (الخطوتان الجايتان في هذه المهمّة).</p>
                   </div>
                 </li>
-                <li class="stepvid__step" data-t="78">
-                  <button class="stepvid__time" type="button">1:18</button>
+                <li class="stepvid__step stepvid__step--new">
+                  <span class="stepvid__mark">مضافة</span>
                   <div class="stepvid__body">
                     <h4 class="stepvid__h">راجع الخطة واختر كيف تكمل</h4>
                     <p class="stepvid__p">يعرض عليك Claude ملخّصًا بسيطًا لما سيبنيه، ثم يسألك: <span
@@ -3038,6 +3261,8 @@ send_email
                         class="tok-lat">Yes, and manually approve edits</span> (يعرض عليك كل تعديل
                       لتوافق عليه)، أو <span class="tok-lat">No, keep planning</span> (لو تبي تعدّل
                       الخطة أوّلًا).</p>
+                    <p class="stepvid__p">هذي الخطوة <strong>مو في هذا المقطع</strong> — تصير في نفس الرسالة
+                      اللي تراجع فيها الخطوة السابقة.</p>
                   </div>
                 </li>
               </ol>
@@ -3055,11 +3280,11 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 40 — 14.1 Claude يهيّئ تطبيقك ════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 41 — 14.1 Claude يهيّئ تطبيقك ════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-anchor="claude-scaffold">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">14.1</span> التهيئة والهيكل</span>
-          <h2 class="sag-slide__title">صِف فكرتك بجملة — ودع Claude يهيّئ الباقي</h2>
+          <h2 class="sag-slide__title">دع Claude يهيّئ تطبيقك — ودورك تراجع وتشغّل</h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
@@ -3087,8 +3312,8 @@ send_email
             <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
               <h3 class="card__title card__title--sm">صياغة مقترحة تعطيها لـ Claude</h3>
             </div>
-            <p class="card__note">«هيّئ هيكل تطبيقي واربطه بقاعدة البيانات. <strong>اعرض لي أولًا ملخّصًا بسيطًا
-                بلا مصطلحات لأوافق</strong>، ثم نفّذه وشغّل التطبيق وأخبرني كيف أفتحه.»</p>
+            <p class="card__note">«هيّئ هيكل الموقع واربطه بقاعدة البيانات. <strong>اعرض لي أولًا ملخّصًا بسيطًا للخطة
+                بلا مصطلحات تقنية لمراجعته والموافقة</strong>، ثم نفّذ الخطة وشغّل الموقع وأخبرني كيف أفتحه.»</p>
           </article>
         </div>
         <footer class="sag-slide__foot">
@@ -3102,7 +3327,7 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 41 — ماذا سترى حين يعمل ══════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 42 — ماذا سترى حين يعمل ══════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide">
         <div class="sag-slide__head sag-media__head">
           <h2 class="sag-slide__title">هذا ما سترى حين يعمل</h2>
@@ -3133,7 +3358,7 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 42 — دورك الآن 1/2 ═══════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 43 — دورك الآن 1/2 ═══════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-anchor="your-turn" data-surface="dark">
         <div class="sag-slide__head">
           <span class="sag-badge">عمل المتدربين</span>
@@ -3146,7 +3371,7 @@ send_email
               <div class="card__top"><span class="card__num">1</span>
                 <h3 class="card__title card__title--sm">أكمل التثبيت</h3>
               </div>
-              <p class="card__note card__note--sm">البنود 1 إلى 5.</p>
+              <p class="card__note card__note--sm">البنود 1 إلى 6 — ومنها Node.js.</p>
             </article>
             <article class="card">
               <div class="card__top"><span class="card__num">2</span>
@@ -3174,7 +3399,7 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 43 — دورك الآن 2/2 ═══════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 44 — دورك الآن 2/2 ═══════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-surface="dark">
         <div class="sag-slide__head">
           <span class="sag-badge">عمل المتدربين</span>
@@ -3191,9 +3416,9 @@ send_email
             </article>
             <article class="card card--accent">
               <div class="card__top"><span class="card__num">2</span>
-                <h3 class="card__title card__title--sm">صِف فكرتك بجملة واحدة</h3>
+                <h3 class="card__title card__title--sm">دع Claude يهيّئ التطبيق</h3>
               </div>
-              <p class="card__note card__note--sm">ودع Claude يهيّئ التطبيق.</p>
+              <p class="card__note card__note--sm">من النبذة اللي عطيته إيّاها.</p>
             </article>
             <article class="card card--state">
               <div class="card__top"><span class="card__num">3</span>
@@ -3212,7 +3437,7 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 44 — أول حفظ ورفع ════════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 45 — أول حفظ ورفع ════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide" data-anchor="commit-push">
         <div class="sag-slide__head sag-media__head">
           <h2 class="sag-slide__title">أول حفظ ورفع</h2>
@@ -3253,7 +3478,7 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 45 — مراجعة اليوم ════════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 46 — مراجعة اليوم ════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-anchor="day-review">
         <div class="sag-slide__head">
           <span class="sag-badge">مراجعة وعرض التقدم</span>
@@ -3297,7 +3522,7 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 46 — إن بقي لديك وقت (8.1) ═══════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 47 — إن بقي لديك وقت (8.1) ═══════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">8.1</span> تعريف المشكلة والهدف والغايات</span>
@@ -3336,7 +3561,7 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 47 — غدًا ════════════════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 48 — غدًا ════════════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-closing deck-slide" data-surface="dark">
         <div class="sag-slide__head">
           <h2 class="sag-slide__title">غدًا — اليوم الثاني</h2>

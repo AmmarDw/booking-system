@@ -5,9 +5,17 @@
 
 /* Wrap every Latin fragment sitting inside an Arabic line. */
 .tok-lat{direction:ltr;unicode-bidi:isolate;font-family:var(--font-latin);font-weight:var(--fw-semibold)}
-/* Shell commands, paths, file names inline in Arabic prose. */
+/* Shell commands, paths, file names inline in Arabic prose.
+   overflow-wrap:anywhere because a long unbroken token (a noreply email, a
+   deep path) is one word to the line breaker: without it the token sets the
+   container's min-content width and pushes a horizontal scrollbar onto
+   whatever holds it — measured on the steps column, which is overflow-y:auto
+   and therefore clips on BOTH axes. `anywhere` (not `break-word`) is the one
+   that also shrinks min-content, which is what actually lets the box narrow.
+   Short tokens are unaffected: it only breaks what would not fit. */
 .tok-code{direction:ltr;unicode-bidi:isolate;font-family:var(--font-mono);font-size:.92em;
-  background:var(--brand-snow);color:var(--brand-primary);border-radius:6px;padding:.06em .38em}
+  background:var(--brand-snow);color:var(--brand-primary);border-radius:6px;padding:.06em .38em;
+  overflow-wrap:anywhere}
 [data-surface="dark"] .tok-code{background:#1B2E56;color:#CFE8F3}
 /* Digits: Arabic-Indic numerals in Arabic copy, Latin digits in code/tables. */
 .tok-num-ar{font-feature-settings:"lnum" 0}
