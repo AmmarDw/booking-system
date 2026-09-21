@@ -5994,3 +5994,51 @@ Done.
 ---
 
 ## § D146 — Prompt #101
+
+**Prompt:** "Commit and push the current repo. I recorded a video for the second part of task 14.1 ... replace those scattered slides for the remainings of task 14.1 into one normal video slide ... triple the speed of the following sections ... [4 ranges] ... Slide 16 says that claude will create /app folder ... it placed the application code in the root folder ... place code files under /application directory no matter what language or framework ... implementation plan was in Arabic but content default to ltr ... Each response from claude must be divided into two separate parts ... As for the update of PRODUCT.md ... it was terrible."
+
+---
+
+## § D146 — initial-build slide + four package defects found in trainee-test
+
+### For you
+
+**Committed and pushed first** (`095d577`), then did the work. Local and remote HEAD match.
+
+**The video** is now **2:24** (was 3:15). Your four ranges sped 3×. I also dropped the audio track entirely — it measured **−91 dB**, i.e. digitally silent, so it was costing file size for nothing. 49 MB → 11 MB.
+
+**Slides 41 and 42 are gone, replaced by one video slide** (deck is now **47 slides**). The two `مضافة` placeholder steps stranded on slide 40 moved onto it as real timestamped steps. The new slide has **16 steps under 3 dividers**, and I corrected a real error the old slides carried: they told the trainee to commit and push, but the recording shows **Claude doing it itself**. The step at 0:50 is the one that matters most — the browser opening by itself under "يتم التحكم في Chrome من خلال برنامج اختبار مبرمج" is the single most alarming thing a trainee will see, so it gets a full explanation instead of a passing mention.
+
+**Four package defects fixed** — all four traced to the trainee-test run, which is the same session as your recording:
+
+1. **Code in the root.** `§ 12` of that log has Claude stating its own belief in writing: *«الحزمة الافتراضية للدورة (التي تضع كود التطبيق في جذر المشروع مباشرة)»*. It thought root was the rule, because the only place naming a folder said *«مجلّد واحد (**مثل** `app/`)»* — an example, not a requirement — and the step that actually scaffolds named **no folder at all**. `application/` is now a hard rule in five files, covering any language/framework and the split-project case.
+2. **Arabic plan rendered LTR** — now a rule that every Arabic file you write opens with `<div dir="rtl">`, with plan-mode called out as the spot it gets forgotten.
+3. **Responses bury you** — the two-part split is now a top-level rule applying to chat, the history log, and plans alike.
+4. **`PRODUCT.md`** — §1 gains a `1.0 نبذة سريعة` that must be filled the moment you give your idea, and §7 gains a pages+paths table.
+
+**One judgement call you should know about:** the video shows you typing the corrective prompt «انقل كل ملفات الكود الى مجلد جديد اسمه application» at 1:31. After fix #1 no trainee will ever need that, so the step carries a yellow note saying so rather than pretending it is a normal part of the flow.
+
+**Not touched:** `C:\Users\ammar\future-dev\claude\trainee-test\PRODUCT.md` itself. It is your sandbox and you will re-run it; fixing the artifact would not prove the package fix works. Re-test from scratch to confirm.
+
+### Technical details — you do not need to read this
+
+**Video analysis.** No Gemini transcript this time for the fine steps; Gemini's 4-part breakdown was too coarse, as you said. I derived the timeline myself from ffmpeg contact sheets at 5s/2s/1s, cropped to the chat pane to read the Arabic, then cross-checked every step against `trainee-test/conversation_history.md` §§ 11–12, which is a written transcript of the same session. That cross-check is what revealed the video spans *two* prompts (the build, then the corrective `application` move), not one.
+
+**Re-encode.** Single `filter_complex`: 9 `trim`/`setpts` segments concatenated, `-an`, x264 CRF 18 preset slow, `+faststart`. Mapping function verified against the segment table: 195.43 → 144.10 predicted, 144.13 actual (one frame). `drawtext` segfaults in this ffmpeg build (no fontconfig) so frame labelling was dropped; `xstack` silently ignores `2*h0` layout expressions, so comparison tiles use `concat`+`tile` instead.
+
+**Timestamps** were not taken from the arithmetic alone — every one was verified by extracting that frame from the re-encoded file. Four needed nudging off the computed value: plan display 16→18, browser-visible 47→50, `cd application` 93→96, login 135→137. The 3× regions compress ~3s of source into ~1s of output, so seek precision inside them is inherently coarse; all 16 steps sit at points I confirmed visually.
+
+**Deck.** `data-anchor="claude-scaffold"` was carried onto the new slide because `day-01.html:347` deep-links to it via `data-ref`; deleting the anchor would have dangled that ref. Banner comments renumbered 43+ → 42+ (footer numbers are written by `deck.js:622` from slide index, so no hand-bumping). Verified in chrome-devtools: **47 slides · 0 overflow · 0 dangling refs · 0 horizontal scroll · 0 و+Latin glue · no «طرفية» · no «مضافة» · every `data-t` inside its video duration** (initial-build max 137 < 144.13).
+
+**Section renumbering.** The new rule went in as **§5** with old 5→6, 6→7, deliberately leaving §4 alone because `project-package/CLAUDE.md:144` cites «ميثاق العمل القسم 4» for the tech stack. Verified that citation still resolves.
+
+**`app/` sweep.** The only surviving `app/` mentions are: the new rule itself (saying *not* to use that name), Next.js's internal `app/[locale]/` in `i18n-directionality.md`, a macOS draw.io path, and two historical `app/backend/.env` quotes in the curriculum's trainer blocks. No instruction names `app/` as a destination.
+
+**Files touched:** `project-package/slides/day-01.html` · `project-package/slides/media/initial-build.mp4` · `.claude/rules/bootcamp-mvp-process.md` · `.claude/skills/{building-features,deploying,defining-mvp}/SKILL.md` · `project-package/{CLAUDE.md,PRODUCT.md,bootcamp_roadmap_and_curriculum.md}` · `deck/{DECK_BRIEF.md,MEDIA_SHOTLIST.md}`
+
+### Status
+Done.
+
+---
+
+## § D147 — Prompt #102

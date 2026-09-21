@@ -19,12 +19,12 @@ I cannot capture these: they are installers, browser dialogs and account screens
   `context7-redacted.mp4` note below.)
 - Prefer **light OS theme** — it matches the deck's light surfaces and reads better projected.
 
-## ⚠ Reconciled against the built deck (48 slides)
+## ⚠ Reconciled against the built deck (47 slides)
 
 `project-package/slides/day-01.html` consumes **12 media slots**. Capture these first — they each have a slide waiting:
 
-~~`06-desktop-usage.mp4`~~ (تم) · ~~`node-js.mp4`~~ (تم) ·
-`16-app-running.png` · `17-first-commit.png`
+~~`06-desktop-usage.mp4`~~ (تم) · ~~`node-js.mp4`~~ (تم) · ~~`initial-build.mp4`~~ (تم) ·
+~~`16-app-running.png`~~ (لم تعد لازمة — `initial-build.mp4` يغطّيها) · `17-first-commit.png`
 
 **Eight shots are done, delivered under their own names rather than the placeholders below** —
 each of these turned out better as one continuous recording than as the still frames originally
@@ -150,7 +150,8 @@ Tell me if you'd rather that become a real media slide and I'll restructure the 
 | 12 | ✅ `context7-redacted.mp4` | MP4 | any | Ask Claude for the steps → sign in to context7.com → create + copy an API key → paste it back → restart the editor → Claude tests the connection with a real doc lookup before confirming. One continuous take, 1:49 long. **Blurred 0:56–1:46** (`gblur`) to cover a real API key visible in the raw recording — see the ⚠ note above. Replaced `12-context7-apikey.png` (never captured) | 38 |
 | 13e | ✅ `supabase.mp4` | MP4 | any | Ask what's next → answer Claude's question about the project idea → Claude proposes the project name and recaps the plan → sign in (agent opens the browser itself) via GitHub → create an organization → create the project (password stays masked; security toggles left default) → Connect → MCP → Claude Code → adjust feature groups → copy the setup command → authenticate from a separate terminal (Open in Terminal, one-time trust prompt, browser OAuth) → verify, restart, verify again with a real table listing. One continuous take, re-recorded in full, 3:22 long. Replaced `13-supabase-newproject.png` and `14-supabase-mcp.png` (never captured) | 39 |
 | 15e | ✅ `github.mp4` | MP4 | any | Ask Claude for the steps (it checks your Git identity first) → copy a suggested repo name → create it on GitHub (Private, README/.gitignore/license left blank) → hand back the URL + a one-line product idea → Claude checks your environment (**caught a real missing Node.js — new, previously undocumented**) → writes an actual plan file and presents the three real accept-plan choices. One continuous take, 1:24 long. Replaced `15-github-new-repo.png` (never captured) | 40 |
-| 16 | `16-app-running.png` | PNG | any | The scaffolded app running in a browser on `localhost`, **sign-in page open** | 42 |
+| 16a | ✅ `initial-build.mp4` | MP4 | any | The whole second half of task 14.1, one continuous take: issue the scaffold prompt with the "plain-language plan first" condition → Claude researches via context7 → plan appears in its two parts → approve `Yes, and auto-accept` → Claude builds into `application/` → **Chrome opens by itself under the "controlled by automated test software" banner** (chrome-devtools over MCP) → Claude fills the signup form, retries on server rejection, logs in, checks `/dashboard` is really protected → stops the server and **commits and pushes by itself** → summary → trainee opens the terminal, `cd application`, `npm run dev`, `localhost:3000`, signs up for real, confirms via the Supabase Auth email, logs in to the dashboard. **Edited:** four stretches sped 3× (orig 0:09–0:24, 0:42–1:28, 1:39–1:45, 1:59–2:09) → 3:15 becomes **2:24**; the silent audio track was dropped entirely (−91 dB, nothing to hear). Replaced `16-app-running.png` and the two card-only slides | 41 |
+| 16 | ~~`16-app-running.png`~~ **superseded** | — | — | **No longer needed.** Slide 42 («ماذا سترى حين يعمل») was deleted and merged into the new slide 41, whose `initial-build.mp4` shows the running app for real. Original request kept for the record: | The scaffolded app running in a browser on `localhost`, **sign-in page open** | 42 |
 | 17 | `17-first-commit.png` | PNG | any | Terminal after a successful first `commit` + `push`, and the repo showing the files on GitHub | 45 |
 
 ## Optional but worth it

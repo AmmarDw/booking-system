@@ -56,7 +56,7 @@ claude mcp add --transport http vercel https://mcp.vercel.com
 ## 3. المهمة 16.2 — أوّل نشر
 
 1. `vercel link` — يُنشئ مجلّد `.vercel`؛ **تأكّد أنه في `.gitignore`** قبل أي رفع.
-2. اضبط **مجلّد الجذر (Root Directory)** على مجلّد التطبيق (`app/`).
+2. اضبط **مجلّد الجذر (Root Directory)** على مجلّد التطبيق — **`application`** (وإن كان المشروع منفصلًا فعلى `application/frontend`).
 3. أضِف **مفاتيح الإنتاج**: `vercel env add <NAME> production` — اتصال قاعدة البيانات وأي خدمة خارجية. **قبل النشر لا بعده.**
 4. `vercel --prod`
 5. سلّم **الرابط الفعلي** للمتدرّب.

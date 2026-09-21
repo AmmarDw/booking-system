@@ -1171,7 +1171,7 @@
             <code class="pkgtree__p pkgtree__p--read">├── conversation_history.md</code>
             <span class="pkgtree__d pkgtree__d--read">سجلّ المحادثة — ينشئه Claude<button class="qmark" type="button"
                 data-term="pkg-history" aria-label="شرح">؟</button></span>
-            <code class="pkgtree__p">└── app/</code>
+            <code class="pkgtree__p">└── application/</code>
             <span class="pkgtree__d">مجلّد تطبيقك — ينشئه Claude<button class="qmark" type="button" data-term="pkg-app"
                 aria-label="شرح">؟</button></span>
           </div>
@@ -1235,9 +1235,10 @@
             أحد.</div>
           <div data-term="pkg-history" data-title="conversation_history.md">سجلّ كل أمر أرسلته وكل ردّ وصلك، يكتبه <span
               class='tok-lat'>Claude</span> بنفسه بعد أول رسالة (ما راح تلقاه عند التحميل). ما هو مطلوب منك تتابعه، لكنه
-            مرجعك لو احتجت تعرف كيف وصلتوا لقرار — وهو اللي يحفظ سياق مشروعك لو بدأت محادثة جديدة.</div>
-          <div data-term="pkg-app" data-title="app/">مجلّد تطبيقك نفسه. يهيّئه <span class='tok-lat'>Claude</span> في
-            اليوم الأول، وما راح تلقاه عند التحميل.</div>
+            مرجعك لو احتجت تعرف كيف وصلت لقرار — وهو اللي يحفظ سياق مشروعك لو بدأت محادثة جديدة.</div>
+          <div data-term="pkg-app" data-title="application/">مجلّد تطبيقك نفسه — <strong>كل كود مشروعك يسكن
+            فيه</strong>، وتبقى وثائقك في الجذر برّا. يهيّئه <span class='tok-lat'>Claude</span> في اليوم الأول، وما راح
+            تلقاه عند التحميل.</div>
         </template>
         <footer class="sag-slide__foot">
           <div class="deck-foot">
@@ -3241,31 +3242,7 @@ send_email
                       <span class="tok-lat">GitHub</span> وحدّثها — لازم تشوف ملفّاتك فيها الآن.</p>
                   </div>
                 </li>
-                <li class="stepvid__step stepvid__step--new">
-                  <span class="stepvid__mark">مضافة</span>
-                  <div class="stepvid__body">
-                    <h4 class="stepvid__h">يتحقّق Claude من بيئتك ويجهّز خطة</h4>
-                    <p class="stepvid__p">يتأكّد أن الأدوات اللي يحتاجها التطبيق موجودة على جهازك — وأهمّها
-                      <span class="tok-lat">Node.js</span>.
-                    </p>
-                    <p class="stepvid__p">هذي الخطوة <strong>مو في هذا المقطع</strong> — تصير بعدين، بعد ما
-                      تراجع بيانات قاعدتك وتوافق على خطته (الخطوتان الجايتان في هذه المهمّة).</p>
-                  </div>
-                </li>
-                <li class="stepvid__step stepvid__step--new">
-                  <span class="stepvid__mark">مضافة</span>
-                  <div class="stepvid__body">
-                    <h4 class="stepvid__h">راجع الخطة واختر كيف تكمل</h4>
-                    <p class="stepvid__p">يعرض عليك Claude ملخّصًا بسيطًا لما سيبنيه، ثم يسألك: <span
-                        class="tok-lat">Yes, and auto-accept</span> (ينفّذ كل شي تلقائيًّا)، أو <span
-                        class="tok-lat">Yes, and manually approve edits</span> (يعرض عليك كل تعديل
-                      لتوافق عليه)، أو <span class="tok-lat">No, keep planning</span> (لو تبي تعدّل
-                      الخطة أوّلًا).</p>
-                    <p class="stepvid__p">هذي الخطوة <strong>مو في هذا المقطع</strong> — تصير في نفس الرسالة
-                      اللي تراجع فيها الخطوة السابقة.</p>
-                  </div>
-                </li>
-              </ol>
+                              </ol>
             </div>
           </div>
         </div>
@@ -3280,71 +3257,178 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 41 — 14.1 Claude يهيّئ تطبيقك ════════════════════════════════════════════════════════════════ -->
-      <section class="sag-slide deck-slide" data-anchor="claude-scaffold">
-        <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">14.1</span> التهيئة والهيكل</span>
-          <h2 class="sag-slide__title">دع Claude يهيّئ تطبيقك — ودورك تراجع وتشغّل</h2>
-          <div class="sag-slide__rule"></div>
-        </div>
-        <div class="sag-slide__body">
-          <div class="bento" data-cols="3">
-            <article class="card card--accent">
-              <div class="card__top"><span class="card__num">1</span>
-                <h3 class="card__title card__title--sm">اطلب تهيئة الهيكل</h3>
-              </div>
-              <p class="card__note card__note--sm">وربطه بقاعدة البيانات.</p>
-            </article>
-            <article class="card">
-              <div class="card__top"><span class="card__num">2</span>
-                <h3 class="card__title card__title--sm">شغّل التطبيق</h3>
-              </div>
-              <p class="card__note card__note--sm">وافتح صفحة تسجيل الدخول.</p>
-            </article>
-            <article class="card card--state">
-              <div class="card__top"><span class="card__num">3</span>
-                <h3 class="card__title card__title--sm">احفظ وارفع</h3>
-              </div>
-              <p class="card__note card__note--sm">commit ثم push.</p>
-            </article>
-          </div>
-          <article class="card">
-            <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
-              <h3 class="card__title card__title--sm">صياغة مقترحة تعطيها لـ Claude</h3>
-            </div>
-            <p class="card__note">«هيّئ هيكل الموقع واربطه بقاعدة البيانات. <strong>اعرض لي أولًا ملخّصًا بسيطًا للخطة
-                بلا مصطلحات تقنية لمراجعته والموافقة</strong>، ثم نفّذ الخطة وشغّل الموقع وأخبرني كيف أفتحه.»</p>
-          </article>
-        </div>
-        <footer class="sag-slide__foot">
-          <div class="deck-foot">
-            <div class="deck-foot__side">
-              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
-                  alt="ساج التقنية"></div>
-              <span class="deck-foot__num">اليوم 1</span>
-            </div><span class="deck-foot__num">43</span>
-          </div>
-        </footer>
-      </section>
-
-      <!-- ═══ 42 — ماذا سترى حين يعمل ══════════════════════════════════════════════════════════════════════ -->
-      <section class="sag-slide sag-media deck-slide">
+      <!-- ═══ 41 — 14.1 Claude يبني ويختبر ═════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide" data-anchor="claude-scaffold">
         <div class="sag-slide__head sag-media__head">
-          <h2 class="sag-slide__title">هذا ما سترى حين يعمل</h2>
+          <h2 class="sag-slide__title">Claude يبني تطبيقك ويختبره بنفسه — وأنت تشغّله وتجرّبه</h2>
           <span class="sag-badge"><span class="sag-badge__num">14.1</span> التهيئة والهيكل</span>
         </div>
         <div class="sag-slide__body">
-          <div class="sag-media__inner" data-layout="stacked">
-            <div class="sag-media-frame">
-              <div class="sag-media-frame__box">
-                <div class="sag-media-frame__ph">
-                  <span class="i i-circle-check" style="font-size:40px"></span><span>16-app-running.png</span>
-                </div>
-              </div>
-              <p class="sag-media-frame__caption">التطبيق يعمل محلّيًّا وصفحة تسجيل الدخول مفتوحة</p>
+          <div class="stepvid">
+            <div class="stepvid__video">
+              <video class="stepvid__player" controls preload="metadata" src="media/initial-build.mp4"></video>
             </div>
-            <p class="sag-media__instruction"><strong>مخرَج اليوم:</strong> تطبيقك يعمل على جهازك، وصفحة تسجيل الدخول
-              تفتح. لم يعمل من أول مرّة؟ <strong>هذا طبيعي</strong> — أخبر Claude بالخطأ وسيصلحه.</p>
+            <div class="stepvid__steps">
+              <ol class="stepvid__list">
+                <li class="stepvid__divider">أعطِ الأمر ووافق على الخطة</li>
+                <li class="stepvid__step" data-t="0">
+                  <button class="stepvid__time" type="button">0:00</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">أعطِ الأمر — واشترط خطة مبسّطة أوّلًا</h4>
+                    <p class="stepvid__p">قل له: «هيّئ هيكل الموقع واربطه بقاعدة البيانات. اعرض لي أوّلًا ملخّصًا بسيطًا
+                      للخطة بلا مصطلحات تقنية لمراجعته والموافقة، ثم نفّذ الخطة وشغّل الموقع وأخبرني كيف
+                      أفتحه.»</p>
+                    <p class="stepvid__p">الشرط اللي في النصّ هو اللي يخلّيه يوقف ويستأذنك قبل ما يبني — بدونه بيبدأ طوّالي.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="6">
+                  <button class="stepvid__time" type="button">0:06</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يراجع التوثيق المحدّث قبل ما يخطّط</h4>
+                    <p class="stepvid__p">قبل ما يكتب أي سطر، يسأل <span class="tok-lat">context7</span> عن آخر توثيق للأدوات اللي
+                      بيستخدمها — عشان ما يبني على معلومة قديمة. ما تحتاج تطلب منه هذا، يسوّيه لحاله.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="18">
+                  <button class="stepvid__time" type="button">0:18</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">تطلع الخطة بقسمين — اقرأ الأوّل بس</h4>
+                    <p class="stepvid__p"><strong>«ماذا سنبني الآن؟»</strong> بلغة عادية بلا مصطلحات — هذا قسمك أنت. وتحته
+                      <strong>«تفاصيل تقنية — لا يلزمك قراءتها»</strong> وهذا شغله هو.</p>
+                    <p class="stepvid__p">راجع الأوّل، ولو فيه شي ناقص أو فهمه غلط قل له قبل ما توافق — تعديل الخطة أسهل
+                      من تعديل موقع مبنيّ.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="32">
+                  <button class="stepvid__time" type="button">0:32</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">وافق على الخطة</h4>
+                    <p class="stepvid__p">اختر <span class="tok-lat">Yes, and auto-accept</span> عشان ينفّذ كل شي بلا ما يوقفك عند كل
+                      تعديل. ولو تبي تشوف كل خطوة بعينك، اختر <span class="tok-lat">Yes, and manually approve edits</span>.</p>
+                  </div>
+                </li>
+                <li class="stepvid__divider">Claude يبني ويختبر بنفسه</li>
+                <li class="stepvid__step" data-t="33">
+                  <button class="stepvid__time" type="button">0:33</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يبني الهيكل ويربطه بقاعدة بياناتك</h4>
+                    <p class="stepvid__p">ينشئ ملفّات الموقع داخل مجلّد <span class="tok-code">application</span>، ويربطه بمشروع
+                      <span class="tok-lat">Supabase</span> اللي أنشأته، ويبني صفحات التسجيل والدخول. بيانات القاعدة يجيبها
+                      بنفسه من الربط، ما يسألك عنها.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="50">
+                  <button class="stepvid__time" type="button">0:50</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">ينفتح متصفّح لحاله — وهذا طبيعيّ</h4>
+                    <p class="stepvid__p">فجأة بينفتح متصفّح قدّامك، وفوقه شريط مكتوب فيه <strong>«يتم التحكم في
+                        Chrome من خلال برنامج اختبار مبرمج»</strong>. ما صار شي غلط وما أحد دخل على
+                      جهازك.</p>
+                    <p class="stepvid__p">هذا <span class="tok-lat">Claude</span> يفتح موقعك بنفسه عشان يجرّبه — يضغط الأزرار
+                      ويعبّي النماذج زي ما تسوّي أنت. الأداة اللي تخلّيه يقدر اسمها
+                      <span class="tok-code">chrome-devtools</span>، وهي وحدة من الأدوات اللي ربطتها في القسم 7.10.</p>
+                    <p class="stepvid__p"><strong>خلّه يكمّل ولا تسكّر النافذة</strong> — هذا هو الاختبار اللي يوفّر عليك
+                      اكتشاف الأعطال بنفسك بعدين.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="56">
+                  <button class="stepvid__time" type="button">0:56</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يعبّي النماذج ويعيد المحاولة لو انرفضت</h4>
+                    <p class="stepvid__p">يسجّل حسابًا تجريبيًّا فعليًّا. ولو طلعت له رسالة حمراء «تعذّر إنشاء الحساب»
+                      ما يوقف — يعيد بمعطيات ثانية.</p>
+                    <p class="stepvid__p">وهذا الرفض نفسه <strong>دليل إن الربط شغّال</strong>، لأنه جا من خادم قاعدة
+                      بياناتك الحقيقيّ مو من الصفحة.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="71">
+                  <button class="stepvid__time" type="button">1:11</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يوصل للوحة التحكم ويتأكّد إنها محميّة</h4>
+                    <p class="stepvid__p">يسجّل دخول، ويوصل لصفحة «أهلًا بك»، ويسجّل خروج، ثم <strong>يحاول يفتح نفس
+                        الصفحة بلا تسجيل دخول</strong> — ولازم ترفض وترجّعه لصفحة الدخول.</p>
+                    <p class="stepvid__p">هذي هي الحماية الحقيقية: الصفحة نفسها ترفض، مو مجرّد إخفاء زرّ من الواجهة.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="77">
+                  <button class="stepvid__time" type="button">1:17</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يوقف الخادم، ويحفظ ويرفع بنفسه</h4>
+                    <p class="stepvid__p">يقفل خادم التجربة عشان ما يزاحمك لمّا تشغّل أنت، ثم يحفظ الكود ويرفعه على
+                      مستودعك، ويتأكّد إن اللي على <span class="tok-lat">GitHub</span> مطابق للي عندك.</p>
+                    <p class="stepvid__p"><strong>الرفع مو شغلك هنا</strong> — هو يسوّيه. دورك يجي بعد شوي: تشغّل الموقع
+                      وتجرّبه.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="83">
+                  <button class="stepvid__time" type="button">1:23</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يعطيك ملخّصًا: ايش انبنى وكيف تفتحه</h4>
+                    <p class="stepvid__p">يختم بملخّص قصير بلغة عادية: الصفحات اللي انبنت، وأمر التشغيل، والرابط.
+                      هذا الملخّص هو اللي بتمشي عليه في الخطوات الجاية.</p>
+                  </div>
+                </li>
+                <li class="stepvid__divider">شغّله على جهازك وجرّبه</li>
+                <li class="stepvid__step" data-t="91">
+                  <button class="stepvid__time" type="button">1:31</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">افتح موجّه الأوامر من داخل المحرّر</h4>
+                    <p class="stepvid__p">من شريط القوائم فوق: <span class="tok-lat">Terminal</span> ← <span class="tok-lat">New
+                        Terminal</span>. بينفتح لك سطر أوامر تحت، وأنت في مجلّد مشروعك أصلًا.</p>
+                    <p class="stepvid__fix"><strong>تغيّر عن المقطع:</strong> في التسجيل تشوف المدرب يطلب من
+                      <span class="tok-lat">Claude</span> ينقل الكود إلى مجلّد <span class="tok-code">application</span> — أنت ما تحتاج
+                      تطلبها، لأن <span class="tok-lat">Claude</span> يحطّ الكود هناك من البداية.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="96">
+                  <button class="stepvid__time" type="button">1:36</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">ادخل مجلّد التطبيق وشغّله</h4>
+                    <p class="stepvid__p">اكتب <span class="tok-code">cd application</span> ثم <span class="tok-code">npm run dev</span>.
+                      الأوّل يدخّلك مجلّد الكود، والثاني يشغّل الموقع على جهازك.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="107">
+                  <button class="stepvid__time" type="button">1:47</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">افتح الرابط — هذي صفحتك</h4>
+                    <p class="stepvid__p">لمّا يطلع لك <span class="tok-lat">Ready</span>، افتح
+                      <span class="tok-code">http://localhost:3000</span> في متصفّحك. بتشوف صفحتك الرئيسية باسم
+                      مشروعك ووصفه، وزرّين: تسجيل الدخول وإنشاء حساب.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="111">
+                  <button class="stepvid__time" type="button">1:51</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">سجّل حساب جديد بنفسك</h4>
+                    <p class="stepvid__p">اضغط «إنشاء حساب»، واكتب بريدك الحقيقيّ وكلمة مرور. هذي أوّل مرّة
+                      تستخدم فيها مشروعك زي ما بيستخدمه أي زائر.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="121">
+                  <button class="stepvid__time" type="button">2:01</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">افتح بريدك واضغط رابط التأكيد</h4>
+                    <p class="stepvid__p">بتطلع لك صفحة «تحقّق من بريدك الإلكتروني». افتح بريدك، بتلقى رسالة من
+                      <span class="tok-lat">Supabase Auth</span> عنوانها <span class="tok-lat">Confirm your email
+                        address</span> — اضغط الرابط اللي فيها.</p>
+                    <p class="stepvid__p">هذي خطوة أمان <strong>جاهزة من <span class="tok-lat">Supabase</span></strong>، ما بناها
+                      أحد — تتأكّد إن البريد ملك صاحبه فعلًا.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="137">
+                  <button class="stepvid__time" type="button">2:17</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">سجّل الدخول — ومخرَج اليوم قدّامك</h4>
+                    <p class="stepvid__p">ارجع للموقع وسجّل دخولك، بتوصل للوحة التحكم وفيها بريدك وزرّ خروج.</p>
+                    <p class="stepvid__p"><strong>هذا مخرَج اليوم:</strong> موقعك شغّال على جهازك، ومربوط بقاعدة
+                      بياناتك، وتقدر تسجّل فيه وتدخل.</p>
+                    <p class="stepvid__p">ما اشتغل من أوّل مرّة؟ <strong>هذا طبيعيّ</strong> — قل لـ <span class="tok-lat">Claude</span>
+                      ايش طلع لك بالضبط وهو يصلّحه.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
           </div>
         </div>
         <footer class="sag-slide__foot">
@@ -3353,12 +3437,12 @@ send_email
               <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
                   alt="ساج التقنية"></div>
               <span class="deck-foot__num">اليوم 1</span>
-            </div><span class="deck-foot__num">44</span>
+            </div><span class="deck-foot__num">41</span>
           </div>
         </footer>
       </section>
 
-      <!-- ═══ 43 — دورك الآن 1/2 ═══════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 42 — دورك الآن 1/2 ═══════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-anchor="your-turn" data-surface="dark">
         <div class="sag-slide__head">
           <span class="sag-badge">عمل المتدربين</span>
@@ -3399,7 +3483,7 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 44 — دورك الآن 2/2 ═══════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 43 — دورك الآن 2/2 ═══════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-surface="dark">
         <div class="sag-slide__head">
           <span class="sag-badge">عمل المتدربين</span>
@@ -3437,7 +3521,7 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 45 — أول حفظ ورفع ════════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 44 — أول حفظ ورفع ════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide" data-anchor="commit-push">
         <div class="sag-slide__head sag-media__head">
           <h2 class="sag-slide__title">أول حفظ ورفع</h2>
@@ -3478,7 +3562,7 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 46 — مراجعة اليوم ════════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 45 — مراجعة اليوم ════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-anchor="day-review">
         <div class="sag-slide__head">
           <span class="sag-badge">مراجعة وعرض التقدم</span>
@@ -3522,7 +3606,7 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 47 — إن بقي لديك وقت (8.1) ═══════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 46 — إن بقي لديك وقت (8.1) ═══════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">8.1</span> تعريف المشكلة والهدف والغايات</span>
@@ -3561,7 +3645,7 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 48 — غدًا ════════════════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 47 — غدًا ════════════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-closing deck-slide" data-surface="dark">
         <div class="sag-slide__head">
           <h2 class="sag-slide__title">غدًا — اليوم الثاني</h2>
