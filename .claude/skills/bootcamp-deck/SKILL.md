@@ -24,9 +24,16 @@ both wrapped in a plain `tok-code` span instead of the components §4 below docu
 
 ## Before you touch a slide
 
-Read `references/deck-anatomy.md` for the component, token and interaction inventory. Read
-`references/archived-plan-2026-09-08.md` only if you need the historical *why* behind a structural
-decision — it is an unvetted dump with known errors, flagged in its own header.
+| Reference | Read it when |
+|---|---|
+| `references/deck-anatomy.md` | **Always.** Every component, with the `day-01.html` line range to copy from. Nothing here should be authored from scratch — Day 1 already built it |
+| `references/day-deck-recipe.md` | Building or extending a `day-NN.html` for days 2–10 |
+| `references/showcase-strategy.md` | Deciding what fills «شرح المفاهيم», or what BookIt material exists for a section |
+| `references/archived-plan-2026-09-08.md` | Only for historical *why* — an unvetted dump with known errors, flagged in its own header |
+
+**Day 1 cost ~47 turns of iteration. Days 2–10 should not.** The single biggest time sink is
+re-inventing a component that exists. Before writing markup, find it in `deck-anatomy.md` and copy
+the real thing.
 
 Then hold these four in mind, because they are what reviews actually fail on.
 
@@ -156,6 +163,10 @@ then stop. Depth beyond that is Claude's job; on a slide it costs comprehension 
 | محتوى الملفات · فهرس المحتويات | منهج | these are *file contents* and a *table of contents* |
 | ايش | وش · ويش · ووش · وايش *as the default* | the colloquial "what" is **ايش**; the و is a separate conjunction, not part of it |
 | يقدّم · يعمل · ينفّذ | يسوّي | Gulf-only verb; the register stays spoken without it |
+| سطر الأوامر (the concept) · موجّه الأوامر (a window you open) · `Terminal`/`PowerShell` (a named program) | الطرفية | reads as stilted; it was hand-corrected out of the deck repeatedly before the rule was written down |
+| مجموعة شرائح | بلوك | no English words spelled in Arabic letters |
+| ملفات تشغيل الشرائح | ما يخصّك | never phrase something as beneath the trainee |
+| خصائص | مجالات · نقاط · عناصر نطاق | the scope list is **خصائص** derived from **غايات** — the terminology box bans every synonym |
 | مشروع الأولي — **except** «المنتج التقني الأولي (MVP)» | منتج, anywhere else | منتج survives only as the *P* in Minimum Viable Product, and in the programme's own name |
 | ربط / يربط, until §7.5 defines التكامل | التكاملات, before slide 23 | ربط is the plainer word, and the noun is not introduced yet |
 
@@ -171,6 +182,35 @@ place before changing it. A blind swap on «صمّم محتوى الدورة و�
 own title) and ربط is the *act* of connecting one. Do not unify them. The rule that matters is
 ordering: a slide before §7.5 must say ربط الأدوات الخارجية, because a trainee meeting «التكاملات»
 cold has been given a term nobody defined.
+
+### Four more that keep being got wrong
+
+- **Every task row opens with a verb.** «المشكلة والهدف والغايات» is a label, not a task —
+  «**تحديد** المشكلة والهدف والغايات» is. A vague row gets rewritten to name its actual output:
+  «بقيّة أصحاب المصلحة» → «تحديد الخدمات الخارجية والأطراف المتأثّرة بمشروعك».
+- **A title states the takeaway, in spoken Arabic.** A compressed فصحى title is a register failure:
+  «حدّان يتجدّدان — لا رصيد لا نهائي» became «رصيدك يتجدّد لحاله، بس فيه حدّين لازم تعرفهم». And a
+  title must still describe the slide *after* the slide changes — two went stale unnoticed.
+- **Never use a term before the slide that defines it.** «التكاملات» appeared 15 slides before §7.5
+  defined it; «متطلّب» belongs to §10 and must not leak into §8. If the concept is genuinely needed
+  earlier, that is a signal to reorder — not to define it twice. A **gateway example's badge and
+  title can spoil its own reveal**: slide 24 withholds "MCP" until its last line, so its badge had
+  to change too.
+- **No invented quantitative anchors.** «45 رسالة قصيرة» was fabricated. If a number cannot be
+  sourced, delete it and record why so it cannot drift back. Prefer a measurable anchor (a 300-line
+  file ≈ 4k tokens) over a rate.
+
+### Bidi: four mechanical rules
+
+- **End an Arabic sentence with an Arabic word.** A sentence ending in a Latin word puts the full
+  stop at the wrong end (`. read_email`).
+- **A neutral character after an isolated Latin run jumps to the other end.** Reorder so the Latin
+  token lands last in its clause.
+- **Never chain `A ← B` inside one `tok-lat`** — it reads left-to-right and reverses the order for
+  an Arabic reader. Use two elements joined by an Arabic verb: «افتح **Settings** ثم اختر **Usage**».
+  An arrow cannot fix this; a verb can.
+- **An LTR number box in an RTL table cell glues to the Arabic** («8.1المشكلة») — needs
+  `text-align: end` and a `min-width`.
 
 ### Never glue an Arabic و to a Latin word
 
@@ -262,9 +302,11 @@ these and report what you found:
 2. `project-package/bootcamp_roadmap_and_curriculum.md` — the authoring source. Headings here own
    GitHub anchors, so **renaming a heading breaks every link to it** unless the TOC entry and every
    cross-reference move with it.
-3. `deck/DECK_BRIEF.md` and `deck/MEDIA_SHOTLIST.md` — the slide-by-slide plan and the capture
-   list. `deck/` now holds *only* these planning docs; the slides themselves live in the package.
-   Both carry slide numbers that go stale the moment a slide is inserted.
+3. **One brief per day** in `deck/` — `DECK_BRIEF.md` is Day 1's (named before the convention
+   existed), then `day-02-brief.md` and so on. Plus `deck/MEDIA_SHOTLIST.md`, which is Day-1-only
+   because Day 1 is the recording-heavy day. `deck/` holds *only* these planning docs; the slides
+   themselves live in the package. All of them carry slide numbers that go stale the moment a slide
+   is inserted.
 
 ### The `.docx` is retired
 
@@ -313,5 +355,34 @@ Run all of these and report each result rather than asserting success.
 Slides are revised **gradually, a few at a time**. When asked to fix a slide, fix *that* slide
 against everything above and leave the rest alone — then say which slides most need the same
 treatment next. That closing recommendation is part of the deliverable.
+
+**A reported defect is a sample, not the bug.** Named one badly-styled slide → five more had the
+same fault. Named three bad task rows → eleven were wrong. Fix the instance, then enumerate the
+whole class and report both counts: how many you checked, how many you found.
+
+**Verification scope tracks edit scope.** `deckAudit()` and `deckRefAudit()` are whole-deck and
+free — always run them. Full *text* sweeps across every slide are for deck-wide changes only:
+a terminology unification, a new styling rule, a `deck.css` edit. Opening every reply with a
+50-slide verification after touching one slide is waste, and it was called out as waste.
+
+**But a new styling rule earns one deck-wide sweep** — the rule is new, so nothing before it was
+built to comply. Then record what deliberately stays as-is, so the next sweep does not re-flag it.
+
+**Redundant content gets deleted, not reworded.** When told something is already covered elsewhere,
+delete it; do not rescue it with a rewrite and a distinction. Then fix the grid's `data-cols` and
+hunt the orphaned sentences that referenced it.
+
+**Bump banner numbers before inserting, never after.** Renumber every `<!-- ═══ N — … -->` at or
+above the insertion point *first*, then splice the new slide in with its own hardcoded banner.
+Doing it the other way round catches the new slide's own banner in the same pass. Back up before
+the splice. Deletions are the mirror operation.
+
+**Validate the validator.** Before trusting a custom audit script, prove it fails on a
+deliberately-broken input. One reported 55 phantom broken links because its slug rules did not match
+GitHub's; the real count was zero.
+
+**ffmpeg exit code 0 is not success.** Verify by duration, frame count or pixel comparison. A
+mangled path once produced a silently truncated file at exit 0, and a bad flag produced two empty
+frames that compared as "identical".
 
 Report honestly. If a measurement contradicts something you said earlier, say so plainly and move on.

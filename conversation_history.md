@@ -6332,3 +6332,128 @@ Done.
 ---
 
 ## § D151 — Prompt #106
+
+**Prompt:** "Now that day 1 slides is fully finished I need you to go over the conversation history we have had for building those slides, that includes the chat in the current open session and the conversation_history.md file. Make sure that all the next slides won't reinvent the wheal and refer to day 1 slides in terms of building the slides and coding it through reusing the already built formatting and styling for so many sections and variations. All to be present in the slides building skill. Afterwards I need you to plan for day 2 slides completely in the deepest level of details to avoid spending quarter the time spent on day 1 slides because we have 9 days to go! Make sure to reference all necessary files during the planning and the execution as well not only in planning!"
+
+**Follow-up in discussion (answers to the planning questions):** the user corrected a wrong assumption of mine — every day 2–10 runs **both** «شرح المفاهيم» (explanation, carries the showcase) **and** «تطبيق مباشر مع المدرب» (the trainer executing that day's steps live in Claude Code). They are not alternatives, and Day 1 is the only exception because its first session is course preparation that cannot be re-executed live. The decision that follows: **BookIt fills «شرح المفاهيم» for days 2–10; darrisni carries the live session.** Committed to for now, to be reviewed later — the fallback, if it goes badly, is to record days on darrisni and start a fresh project for live sessions. The user also asked for a full BookIt analysis across the whole course (docs, the build conversation, the design system, the generated Claude Design screens, git/GitHub history for a possible incremental replay, and the Vercel/Render deployment state), and chose the `chatlog` component over video for conversation content.
+
+---
+
+
+## § D151 — Reusable deck machinery, the BookIt showcase decision, and Day 2 built
+
+### For you
+
+**Day 2 is built: 21 slides, no overflow, no broken links, and it needed no recordings at all.**
+
+Before building it I turned everything Day 1 taught us into three reference files, so days 3–10 do
+not repeat the same 47 rounds of correction:
+
+- **`deck-anatomy.md`** — rewritten from scratch. It was badly out of date: it described components
+  that had been renamed and did not mention the two that carry most of Day 1. It is now a
+  copy-paste catalog — every component with the exact Day-1 line range to copy from.
+- **`day-deck-recipe.md`** — new. The fixed slide skeleton every day 2–10 follows, the 215-minute
+  rule, the build order, and what does *not* carry across days.
+- **`showcase-strategy.md`** — new. Records the BookIt/darrisni split and, section by section,
+  exactly what BookIt material exists.
+
+**On BookIt** — you said it felt "almost useless at this point." That is true of its *build
+process* and not true of the rest. Its thinking artifacts are the strongest material you have, and
+they are stack-independent: a problem statement, a roles table, an ERD do not care that BookIt ran
+on Spring Boot. Section by section it is RICH for §8, §9, §10, §11, §13 and §14, and partial only
+for §15 and §16.
+
+**On replaying BookIt's git history:** technically it would work — 19 clean commits with
+self-describing milestone messages, and the database migrations arrive incrementally so replaying
+forward works naturally. **I recommend against it.** The obstacle is not your versioning, it is the
+stack: replaying puts Maven commands and a two-server setup on screen that no trainee will ever
+run. High effort, wrong lesson. I have written it up as a decision deferred to Day 6, when §14 is
+actually built, rather than closing it now.
+
+**Two things you should know:** there are **zero screenshots or recordings of BookIt anywhere** in
+the repo, so any BookIt visual is net-new work either way. And BookIt's deployment is currently
+down — the Render free tier expired with the backend and its database. That only matters if §16
+uses BookIt, and the plan is that §16 is taught on darrisni.
+
+**The new component.** Your instinct about showing a conversation instead of a video was right, and
+cheap: I built `chatlog`, which reuses the existing video-slide layout and swaps the player for a
+real transcript. Steps on one side, the conversation on the other; clicking a step scrolls to its
+message and highlights both. Day 2 uses it three times.
+
+**Five defects fixed along the way**, all found while reading the sources:
+- The curriculum banned the word «مجالات» but then used it itself; so did `PRODUCT.md` and two
+  skills. All corrected to «خصائص».
+- `PRODUCT.md`'s roles table had two columns where the curriculum and the skill both specify three
+  — Day 2 would have taught a three-column table into a two-column destination.
+- The activity diagram still said "weekends shadowed", which an explicit decision had reversed.
+
+**What Day 2 covers:** the day's tasks and goals, a self-contained recap of الغاية/الخاصية, the two
+§8 tasks, the three scope lists, stakeholders and roles, then the BookIt walkthrough — the free-form
+description becoming a formal definition, the correction round that deleted the separate provider
+entity, the scope that was derived rather than collected, the three roles, the overlap question that
+was discovered too late during the real build, and the Google Meet question that changed the
+system's design. Then your checklist, the review, and tomorrow.
+
+### Technical details — you do not need to read this
+
+**Part A — references.** `deck-anatomy.md` rewritten (~470 lines): page shell, five frame types with
+class strings and line ranges, every component with minimal markup, the three explanation
+affordances and when to use which, the complete 22-icon list, effective type tokens after
+`deck.css:333-340`, the `deck.js` contract including the deliberate `initRefs`-before-`initTasks`
+ordering, and ~25 hard constraints. Added one the catalog did not know: **`resolveRef` searches only
+the current document**, so `data-ref` cannot cross day files — this is why Day 2 restates
+الغاية/الخاصية instead of linking to Day 1's `mvp-scope`.
+
+`SKILL.md` gained a reference table at the top, four vocabulary bans (طرفية with its three-way
+replacement, transliterated English, judgemental phrasing, «مجالات»), four register rules
+(verb-initial task rows, spoken-Arabic titles, no term before its defining slide, no invented
+numbers), four bidi mechanics, and six working-method rules (verification scope tracks edit scope; a
+reported defect is a sample; delete rather than reword duplicates; bump banners before inserting;
+validate the validator; ffmpeg exit 0 is not success).
+
+**Part B — `chatlog`.** `deck.css`: `.stepvid__chat` mirrors `.stepvid__video`'s box but scrolls;
+`.chatlog__msg[data-who]` with a `::before` label from `data-label` so the turn is named rather than
+carried by colour alone (a washed-out projector converges the two surfaces); `.chatlog__cut` for
+elisions. `deck.js`: `initChatLogs()` (~35 lines) pairs `data-msg` on a step with a message id,
+sets `data-active` on both, and moves the panel's own `scrollTop` rather than calling
+`scrollIntoView` — which would scroll the slide itself when the panel is already at an extreme.
+Steps carry `stepvid__mark--idx` badges, never a dead `0:00` button.
+
+**Part C — `day-02.html`**, 21 slides, ten anchors, every `data-ref` resolving within the file.
+Session totals 48+58+82+27 = 215, matching curriculum line 68.
+
+**Overflow work on slide 18.** First build left ~40% dead space; adding the two ready-to-paste
+prompt cards filled it but tripped the guard by 2.8px. Trimming the prompt text changed nothing
+(the lines did not re-wrap), so the fix was structural: fold the checkbox-mechanics hint into the
+two column notes, removing a whole block and its 32px gap.
+
+**Register sweep on the new file** caught three real violations I had introduced — one «يسوّي», two
+و+Latin glues — plus two `وايش` openings (a card title and a note), which the rule forbids at the
+start of a title or clause. All fixed.
+
+**Verified:** Day 2 — 21 slides · `deckAudit()` `[]` · `deckRefAudit()` `[]` · no horizontal scroll ·
+no remote assets · no `.snip`/`.kbd` on a dark surface · و+Latin glue 0 · «طرفية» 0 · «يسوّي» 0 ·
+«مجالات» 0. **Day 1 re-verified after the shared-asset changes** — still 49 slides, `[]`, `[]`.
+chatlog exercised in the browser (step↔message pairing, scroll clamping at the panel end, last
+message fully visible at max scroll). Checkbox sync exercised: ticking `d2-mvp` on slide 3 cascaded
+to its four children on slide 18 and both instances read `true`; unticking one child dropped both
+parents to `partial`; `d2-users` and `d2-push` stayed untouched.
+
+**Not done, deliberately:** the Day-1 work was committed first as its own checkpoint (`e870c67`) so
+Day 2 lands separately. Nothing was pushed.
+
+### Documents affected
+`.claude/skills/bootcamp-deck/SKILL.md` · `references/deck-anatomy.md` (rewritten) ·
+`references/day-deck-recipe.md` (new) · `references/showcase-strategy.md` (new) ·
+`project-package/slides/day-02.html` (new) · `project-package/slides/assets/deck.css` ·
+`project-package/slides/assets/deck.js` · `project-package/bootcamp_roadmap_and_curriculum.md` ·
+`project-package/PRODUCT.md` · `project-package/.claude/skills/defining-mvp/SKILL.md` ·
+`project-package/.claude/skills/writing-requirements/SKILL.md` ·
+`diagrams/consumer_booking_activity.drawio` · `deck/day-02-brief.md` (new)
+
+### Status
+Done.
+
+---
+
+## § D152 — Prompt #107

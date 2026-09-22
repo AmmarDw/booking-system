@@ -269,6 +269,60 @@
     });
   }
 
+  /* ── the same component, driven by a transcript instead of a video ───
+     Not every thing a trainee must see is a screen doing something. A
+     definition, a scope list, a roles table — those are produced by a
+     CONVERSATION, and the lesson is the shape of it: messy notes in, a
+     formatted artifact out, a correction round between. There is nothing to
+     film, so the step list points at messages instead of timestamps.
+
+     `data-msg` on the step names the id of a `.chatlog__msg`. Clicking the
+     step scrolls that message into view and highlights both sides — the
+     same two-way pairing the video gives, minus the clock. Scrolling is
+     manual here on purpose: a conversation has no playhead, and the room
+     reads at its own pace.
+
+     Steps carry a `.stepvid__mark--idx` badge rather than a `.stepvid__time`
+     button, because a dead 0:00 button is a worse lie than an honest
+     ordinal. */
+  function initChatLogs() {
+    Array.prototype.forEach.call(document.querySelectorAll('.stepvid__chat'), function (chat) {
+      var root = chat.closest('.stepvid');
+      var list = root && root.querySelector('.stepvid__list');
+      if (!list) return;
+      var steps = Array.prototype.slice.call(root.querySelectorAll('.stepvid__step'));
+
+      function activate(step) {
+        var id = step.getAttribute('data-msg');
+        var msg = id && chat.querySelector('#' + id);
+
+        steps.forEach(function (s) {
+          s.setAttribute('data-active', s === step ? 'true' : 'false');
+        });
+        Array.prototype.forEach.call(chat.querySelectorAll('.chatlog__msg'), function (m) {
+          m.setAttribute('data-active', m === msg ? 'true' : 'false');
+        });
+
+        /* scrollIntoView on the message would scroll the SLIDE too when the
+           panel is already at its extreme; move the panel's own scrollTop. */
+        if (msg) chat.scrollTop = Math.max(0, msg.offsetTop - chat.offsetTop - 16);
+      }
+
+      steps.forEach(function (step) {
+        if (!step.getAttribute('data-msg')) return;   /* a step with no message is inert */
+        step.setAttribute('tabindex', '0');
+        step.addEventListener('click', function () { activate(step); });
+        step.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            activate(step);
+            e.preventDefault();
+            e.stopPropagation();   /* Space also pages the deck — not while reading */
+          }
+        });
+      });
+    });
+  }
+
   /* ── section references: one attribute, two behaviours ─────────────
      A task row shows what the section DOES ("نتعرّف على Claude — وايش الفرق…"),
      not what it is CALLED. The canonical name still has to be reachable, and
@@ -739,6 +793,7 @@
     initTasks();
     initCopyButtons();
     initStepVideos();
+    initChatLogs();
 
     window.deckAudit = auditAll;
     window.deckRefAudit = function () {

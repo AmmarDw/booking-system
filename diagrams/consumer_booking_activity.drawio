@@ -37,7 +37,7 @@
         </mxCell>
 
         <!-- System: show calendar -->
-        <mxCell id="calendar" value="Show calendar&#10;(availability-pressure colors,&#10;weekends shadowed)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="calendar" value="Show calendar&#10;(availability-pressure colors,&#10;days with no free slots shadowed)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
           <mxGeometry x="450" y="520" width="240" height="60" as="geometry" />
         </mxCell>
 
