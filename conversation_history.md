@@ -6042,3 +6042,293 @@ Done.
 ---
 
 ## § D147 — Prompt #102
+
+**Prompt:** "Since we had to use chrome-devtools in second part of task 14.1 in slide 41, we must include it as one of the 7.10 7) connect necessary MCP where is should be right after 6) Node.js installation being 7أ) pushing the other two MCPs. I recorded the tutorial video and placed it here `project-package/slides/media/chrome-devtools.mp4`. Make sure that wherever it is mentioned to perform this setup on whatever day to be moved to here and make sure this happens in all related files and report me in short what files have been found connected with this chrome-devtools and have been updated, use graphify for easier search I think this would help. Make sure that commands are styled correctly as previous commands in the slides. Steps with timestamps: 00:00-00:04 Launch PowerShell / 00:04-00:08 Verify Marketplace Configuration (`claude plugin marketplace list`, confirm `claude-plugins-official` listed) / 00:08-00:20 Install the Plugin (`claude plugin install chrome-devtools-mcp@claude-plugins-official`, ~15s wait, confirmation `Successfully installed plugin: chrome-devtools-mcp@claude-plugins-official (scope: user)`) / 00:20-00:29 Verify Connection Status (`claude mcp list`, find `plugin:chrome-devtools-mcp:chrome-devtools: npx chrome-devtools-mcp@1.9.0 - ✔ Connected`, close PowerShell)."
+
+---
+
+
+## § D147 — Moved chrome-devtools setup from task 14.2 to §7.10 item 7 (day one)
+
+### For you
+
+Searched every file in `project-package/` for "chrome-devtools" (case-insensitive) directly rather than running the full graphify pipeline — this is a literal-text sweep across ~15 known markdown/HTML files, not an unfamiliar codebase needing relationship discovery, so a direct grep is both faster and more exhaustive than spinning up graphify's install/AST/semantic-extraction pipeline for something graphify isn't really built for. It found **6 files mentioning chrome-devtools**; **5 needed changes**, one (`testing-and-security/SKILL.md`) already only described *using* the tool post-connection and needed nothing:
+
+1. **`bootcamp_roadmap_and_curriculum.md`** — the trainee-facing file. §7.10 item 7 is now "اربط تكاملات MCP التي نحتاجها" (was dual "تكاملَي...اللذين", now plural for three). New **أ) chrome-devtools** sub-section with your four real steps and commands, inserted before context7 (now **ب**) and Supabase (now **ج**). Removed chrome-devtools entirely from task 14.2's two duration rows, and moved its 6+8 minutes into the adjacent Supabase-table-building rows in the *same* bands so no session total changed. Added chrome-devtools' own ~1-minute cost to §7.10's two duration breakdowns the same way — by trimming a matching minute off the generic "install everything" bucket, which already carries much bigger slack (its own text says "5–40 د"). Net effect: every stated total in the file (32 د, 30 د, ~58 د, ~84 د, the 215-minute day) is **unchanged** — nothing was quietly inflated to fit a new step in.
+2. **`CLAUDE.md`** (project-package root) — the brief-request timing logic in §أ.2.1 references context7 and Supabase by letter (to know when to ask for the trainee's project brief); relabeled 7أ→7ب and 7ب→7ج throughout. The logic itself didn't change — chrome-devtools needs no project info, so its arrival before context7 doesn't affect *when* the brief gets asked for.
+3. **`.claude/skills/bootcamp-setup/SKILL.md`** — this is where you actually execute the connection. New §4 "chrome-devtools" inserted right after §3 (Node.js), everything after renumbered (old 4→10 became 5→10). Added one row to the §1 capability table: this is the *only* one of the three day-one integrations where the trainee, not you, runs the commands — not because of identity, but because `claude plugin install` opens an interactive confirmation screen your Bash tool can't drive. §7's old "التكاملان المؤجَّلان" (the two deferred integrations) is now §8 "التكامل المؤجَّل" (singular) — Vercel MCP alone.
+4. **`.claude/skills/building-features/SKILL.md`** — task 14.2's step list used to open with "اربط chrome-devtools" as literally its first instruction; removed, since it's already connected by the time a trainee reaches day 6. Also fixed a dangling "7.10 البند 7ب" reference (Supabase) to "7ج".
+5. **`project-package/slides/day-01.html`** — new slide 38, its own `stepvid` video slide on your `chrome-devtools.mp4`, positioned between Node.js (37) and context7 (now 39). Deck grew from 47 to 48 slides; every subsequent banner comment and the context7/Supabase slide titles (7أ→7ب, 7ب→7ج) were updated. Session-badge durations on slide 6 (32 د / 30 د) are untouched, matching the curriculum's zero-net-change reallocation.
+
+I also verified against the official Claude Code plugin-marketplace docs (fetched live) that `claude plugin install` genuinely does open an interactive confirmation view — that's the real, sourced reason the trainee runs this one themselves, not a guess, and it's stated on the slide and in the skill file so it doesn't read as a contradiction of "Claude writes the connection commands" on the other two integrations.
+
+**One thing your video incidentally resolved:** while cross-checking slide numbers I found `MEDIA_SHOTLIST.md` was still carrying an open request for a separate `github-auth.mp4` capture (the GitHub OAuth page). Your re-recorded `github.mp4` already shows that live at 1:16 — so I marked that request superseded rather than leaving a stale, now-pointless ask sitting in the file.
+
+### Technical details — you do not need to read this
+
+**Why the "why do I type this" line matters:** item 7's own overview sentence in the curriculum ("دورك هنا بسيط: Claude هو من يكتب أوامر الربط، لا تحتاج تكتب أمرًا بنفسك") would directly contradict the chrome-devtools sub-section if left unqualified, since its four commands are typed by the trainee. Rewrote the overview to name the exception explicitly, and repeated the same one-line justification inside the sub-section's own first step and again on the slide's first step, so it's visible wherever a reader might land.
+
+**The zero-net-time-change trick:** §7.10's two duration lines (188/199) reduce the generic "تثبيت الأدوات" bucket by exactly 1 minute (18→17) and add a new "ربط chrome-devtools 1 د" bucket, so 17+1+6+8=32 and 17+1+12=30 — both totals identical to before. Task 14.2's two rows lose their chrome-devtools bucket (6 د, 8 د) entirely, with that time folded into the adjacent "إنشاء الجداول" bucket in the same band (16→22, 30→38), keeping the ~58 د and ~84 د band totals — and the day's fixed 215-minute total (asserted at line 68 of the curriculum) — untouched. This was a deliberate choice over touching the 215 invariant, which is stated as fixed across every day of the curriculum, not just this one.
+
+**Deck insertion mechanics.** Same pattern as prior slide insertions this session: bump every `<!-- ═══ N —` banner comment ≥38 by 1 *before* inserting the new slide's own hardcoded "38" banner (inserting first and bumping after would have caught the new slide's own banner in the same regex pass — caught this on the first run and fixed the script before executing). Footer page numbers are written by `deck.js` from slide index, so no manual renumbering there. Caught and fixed one و+Latin glue I introduced ("وClaude" in the new slide's first step) via the standard post-edit sweep.
+
+**Verified:** 48 slides · 0 vertical overflow · 0 dangling refs · 0 و+Latin glue · no horizontal scroll · chrome-devtools slide's `data-t` values (0/4/8/20) all inside its 29.4s video · context7 and Supabase slide titles and footer numbers confirmed correct in a live render · every `MEDIA_SHOTLIST.md` row's trailing slide-number cross-checked against the deck's actual post-insertion positions (33, 31, 32, 34, 35, 36, 34, 37, 39, 38, 40, 41, 42, 42, 45 — all correct) · `DECK_BRIEF.md`'s 48 rows confirmed sequential 1→48 · package-wide grep confirms zero stray "7أ) context7" or "7ب) Supabase" labels remain anywhere.
+
+### Documents affected
+`project-package/bootcamp_roadmap_and_curriculum.md` · `project-package/CLAUDE.md` · `project-package/.claude/skills/bootcamp-setup/SKILL.md` · `project-package/.claude/skills/building-features/SKILL.md` · `project-package/slides/day-01.html` · `project-package/slides/media/chrome-devtools.mp4` (new) · `deck/DECK_BRIEF.md` · `deck/MEDIA_SHOTLIST.md`
+
+### Status
+Done.
+
+---
+
+## § D148 — Prompt #103
+
+**Prompt:** "There is a step that was skipped in slide 38. After "تأكّد من إعداد المتجر" there should be a step:
+If `claude-plugins-official` isn't listed, add it:
+
+```powershell
+claude plugin marketplace add anthropics/claude-plugins-official
+```
+
+didn't I fucking said to use the same styling formatting of commands used in the other slides, why didn't you!!!? Go to slide 34 and see how command `git config --global user.name "Your Name"` is styled with the copy button and a new line and use the same exact style for all commands in slide 38 for:
+claude plugin marketplace
+claude plugin install chrome-devtools-mcp@claude-plugins-official
+claude mcp list
+I am not sure if you added another command in "تحقّق من الاتصال" step.
+
+Style commands output with the same exact style but without the copy button:
+claude-plugins-official
+Successfully installed plugin: chrome-devtools-mcp@claude-plugins-official (scope: user)
+chrome-devtools … ✔ Connected
+
+Add rules for styling of both commands and their outputs in the slides creation skill and make sure that each time a modification or update happen on slides that this skill is invoked, not only when generating brand new slides.
+
+After you finish that, scan all the slides and make sure that those styling rules are applied and wherever they aren't, please make sure to apply them."
+
+---
+
+
+## § D148 — Fixed slide 38's command/output styling, hardened the deck skill against a repeat, and swept the whole deck for the same mistake
+
+### For you
+
+Slide 38 (chrome-devtools) now matches slide 34's style exactly: every command the trainee types is a monospace box with a copy button, every line of output is the same box **without** a copy button, and the missing "what if the store isn't there yet" step is back in, marked with the amber "مضافة" tag used elsewhere in the deck for a real step that isn't shown in the recording.
+
+While fixing slide 38 I also checked the rest of the deck for the exact same mistake — a command or its output written as plain inline text instead of the proper box — and found it in **five more places**, now fixed the same way:
+
+1. **Slide 32** (Claude Code install) — the "try `claude` again" verification step.
+2. **Slide 33** (Git install) — the `git --version` check on the macOS and Linux cards, and `sudo apt install git` on Linux.
+3. **Slide 34** (Git identity) — the `git --version` check step.
+4. **Slide 40** (Supabase) — typing `claude` and `/mcp` while authenticating the database connection.
+5. **Slide 42** (Claude builds your app) — `cd application` and `npm run dev`.
+
+I did **not** box a few other things that look similar but aren't the same case: a Windows folder path, an email address, and an API key prefix that are all *examples* (yours will look similar but won't be that exact text), and a command Supabase's own website displays (the trainee copies it from there, not from the slide) — none of these are a fixed string the deck can print and have it stay correct. Website addresses to open in a browser (like `localhost:3000`) are also a different thing from a command, so I left those as they were — that's a separate, not-yet-requested question about link styling, not a command/output miss.
+
+So the deck skill itself doesn't let this slip through again, I added a permanent rule to it: commands and their output now have a documented, mandatory component each, with the exact same slide-34 example baked into the rule, and it's now part of the standard checklist run after every slide edit. I also made the skill's own trigger description explicit that **any** touch to a slide — a one-line fix, not just a brand-new slide — must go through it first.
+
+Checked everything by actually opening the deck in a browser afterward: all 48 slides still fit their frame with nothing cut off, no broken internal links, and I screenshotted the five fixed slides to confirm the boxes render and read correctly.
+
+### Technical details — you do not need to read this
+
+**Slide 38 changes** (`project-package/slides/day-01.html`): step "تأكّد من إعداد المتجر" (data-t=4) now has a `.snipbox` for `claude plugin marketplace list` and a bare `.snip` (no `.snipbox` wrapper, no copy button) for the output line `claude-plugins-official`. New `<li class="stepvid__step stepvid__step--new">` inserted right after it — `<span class="stepvid__mark">مضافة</span>` in place of a time button, no `data-t` attribute at all (confirmed via `deck.js:243` that `parseFloat(null)` → `NaN`, which `initStepVideos()` already skips on both the click-binding and timeupdate-highlight paths, so omitting the attribute is sufficient, no JS change needed) — containing the `claude plugin marketplace add anthropics/claude-plugins-official` snipbox. Step "ثبّت الإضافة" (data-t=8): command boxed, `Successfully installed plugin: chrome-devtools-mcp@claude-plugins-official (scope: user)` as a bare output `.snip`. Step "تحقّق من الاتصال" (data-t=20): `claude mcp list` boxed; `chrome-devtools … ✔ Connected` as bare output; `Run /reload-plugins to activate` as bare output (this is the CLI's own message, quoted verbatim, same treatment as the install-success message); then, since `/reload-plugins` is itself something the trainee actually types (into the chat, not PowerShell), it also got its own `.snipbox` — this resolves your "not sure if I added another command" flag: there wasn't a missed terminal command, but this one chat-typed command was still sitting as a bare inline `tok-code` span and is now boxed too.
+
+**Skill changes** (`.claude/skills/bootcamp-deck/SKILL.md`): frontmatter `description` now states explicitly that a same-slide fix is the same trigger as a new slide, no edit is "too small." Added a line near the top of the body reinforcing the same point and naming this exact incident as the example. Added a new "### 4." point (renumbered the section intro from "three" to "four") documenting the `.snipbox` (command, copy button) vs. bare `.snip` (output, no copy button) distinction, with slide 34's command and slide 38's output as the worked examples, plus the rule for a `stepvid__step--new` conditional step. Added a matching line to the "Verification checklist" section at the bottom: grep the touched slide for `tok-code` after any command/output edit and confirm every remaining hit is a passing mention, not a command or output string in disguise.
+
+**Deck-wide sweep methodology:** grepped every `tok-code` occurrence in `day-01.html` (41 hits) and read each one in context to classify it as either (a) a command/output that should be a `.snip` block — 8 of these, now fixed across slides 32/33/34/38/40/42 — or (b) a legitimate passing mention (a file name, a UI toggle label, an illustrative pattern with a placeholder, a term already shown in a `.snip` block just above it) that correctly stays inline. Confirmed via `deck.css` (`.sag-media__side .snip, .stepvid__body .snip { white-space: pre-wrap; word-break: break-all; overflow-x: visible }`) that a long command wraps cleanly inside the narrow stepvid column instead of needing horizontal scroll, which is why the multi-line `chrome-devtools-mcp@claude-plugins-official` install command renders fine in a fixed-width box.
+
+**Overflow risk check:** the git-install slide (33) is a 3-column bento card grid, not a scrollable stepvid list, so adding three new boxes there (one on macOS, two on Linux) carried real overflow risk unlike the stepvid-based fixes (whose `.stepvid__list` scrolls internally and can't overflow the slide frame). Verified live in the browser after editing — plenty of vertical room left under the cards, `deckAudit()` still returns `[]`.
+
+**Verified:** `window.deckAudit()` → `[]` (0 of 48 slides overflow) · `window.deckRefAudit()` → `[]` (0 dangling refs) · و+Latin-glue regex sweep → 0 matches · «طرفية» sweep → 0 matches · live screenshots of slides 33, 38 (both scroll positions), 32, 40, and 42 all confirm the boxes render, wrap, and read correctly with the copy icon present on commands and absent on output.
+
+### Documents affected
+`project-package/slides/day-01.html` · `.claude/skills/bootcamp-deck/SKILL.md`
+
+### Status
+Done.
+
+---
+
+## § D149 — Prompt #104
+
+**Prompt:** Slide 30: retitle card 7 to «ربط أدوات MCP», list all three integrations in it, drop «الأولى بمقطع مسجّل، والثانية معي مباشرة» and «لأغلبها، وأنفّذ ربط Supabase مباشرة أمامك» from the footer note. Then finalize the last slides: add session-break slides (like slide 29) before «تطبيق مع المدرب», «عملك على مشروعك» and «مراجعة وعرض التقدم» — not before «شرح المفاهيم» since the day starts there — and add this as a rule in the slide-generation skill so it applies to every day. Add a «عملك على مشروعك» break after slide 42. Rewrite the current slide 43: it throws scattered points with no task numbers and no links; it must be the detail view of slide 7's task «7.10 · تجهّز جهازك أنت وتربط التكاملات», styled close to slide 7, with that task as a level-1 checkbox linking to slide 30, indented level-2 subtasks (1→31, 2→32, 3→33, 4→35, 5→36, 6→37, 7 = ربط تكاملات MCP) and level-3 sub-subtasks under 7 (أ→38, ب→39, ج→40), each with its own checkbox and shortcut. Checking a parent checks everything under it and vice versa; all tasks sync across slides (ticking 7.10 on slide 7 ticks it and its children on 43, and the reverse). Mention in the «عملك على مشروعك» break that trainees can now tick everything from the first two sessions. Don't confuse «7.10 · تجهّز جهازك أنت وتربط التكاملات» with «7.10 · نستعرض خطوات تجهيز الجهاز أمامك». One slide, two columns: «هيّئ جهازك» for the 7.10 task, «شغّل تطبيقك» for «14.1 · تنشئ مستودعك وتشغّل مشروعك على جهازك» (level-2: أنشئ مستودعك على GitHub → 41, بناء تطبيقك بـ Claude → 42) plus level-1 «أول حفظ ورفع … (commit & push)» → slide 43 (new location). Why is the commit&push slide at 45? Move it after slide 42, before the break slide. Timing comments like «30 دقيقة — وتتفاوت بحسب جهازك» go under the tasks in their column. Add another break before the current slide 46. In slide 46, append to «تطبيقك يعمل» the text `كما هو في قسم "شغّله على جهازك وجرّبه"` with the quoted part shortcutting to slide 42. Remove or replace the «ملف الأسرار غير مرفوع» box unless it can be simplified to the standards with steps/details. Reword slide 47 and parts of 48 to the white-dialect standard. Slide 48 is too compressed while there is empty space — use bento boxes or bullets.
+
+---
+
+
+## § D149 — Day-1 tail finalized: session breaks, a real 7.10 checklist, and hierarchical synced task checkboxes
+
+### For you
+
+The last third of Day 1 now reads as three clearly-marked sessions instead of content that just runs
+on. **The deck went from 48 to 49 slides.**
+
+**What moved and what's new**
+
+- **«أول حفظ ورفع» moved from 45 to 43**, right after Claude builds the app. You were right that it
+  was misplaced: the trainer demonstrates it, so it belongs with the demo slides, before the work
+  session opens — not stranded after the trainee-work slides.
+- **Two new break slides**, built exactly like slide 29: one before «عملك على مشروعك» (now 44) and
+  one before «مراجعة وعرض التقدم» (now 46). The first one also tells the trainee that ticking off
+  the finished tasks is their own job — nothing else on the deck said so.
+- **The old «دورك الآن ١/٢ + ٢/٢» pair became one slide** (now 45), two columns as you asked.
+
+**The new checklist slide (45)**
+
+Left column «هيّئ جهازك» holds the 7.10 task with all seven setup steps under it, and the three MCP
+integrations nested one level deeper under step 7. Right column «شغّل تطبيقك» holds the 14.1 task
+with its two steps, plus «أول حفظ ورفع» as its own main task. Every row links to the slide that
+teaches it (Ctrl + click), and the timing notes sit under each column.
+
+**The checkboxes now behave like a real checklist.** Tick a big task and everything under it ticks.
+Tick all the children and the parent ticks itself. Tick part of them and the parent shows a **dash**
+instead of a check, so a half-finished task no longer looks identical to an untouched one — you
+picked that option and it is visibly useful on screen.
+
+**And they stay in sync across slides.** Ticking «7.10 · تجهّز جهازك أنت» on slide 7 ticks it on
+slide 45 along with all eleven rows underneath it, and unticking anything on 45 updates slide 7. I
+tested this in the browser rather than assuming it: ticked from slide 7, confirmed all descendants
+on 45 turned green, unticked one grandchild, confirmed both ancestors dropped to the dash on both
+slides, reloaded, confirmed everything survived. The two different 7.10 tasks stayed independent
+throughout, as you warned.
+
+**The other slides**
+
+- **Slide 30** — card 7 is «ربط أدوات MCP» listing all three. I used the deck's own 7أ/ب/ج order
+  (chrome-devtools، context7، Supabase) rather than the order in your message, so the card matches
+  slides 38/39/40 — say the word if you would rather have your order. Both stale sentences are gone.
+- **Slide 47 (was 46)** — «تطبيقك يشتغل» now points at «شغّله على جهازك وجرّبه» on slide 42. The
+  secrets box is simplified as you chose: open your repo page, look for a file called `.env`, it
+  should not be there, it holds your database keys and Claude set things up so it never uploads.
+- **Slide 48 (was 47)** — reworded to the spoken register.
+- **Slide 49 (was 48)** — relaid out as cards, and **a real error fixed**: it still said «تكاملاك
+  مربوطان» (two integrations) when there are three now. That was left over from before
+  chrome-devtools was added.
+
+**Two things I fixed that you did not ask about**, both the same stale claim you were removing from
+slide 30: slide 29 and slide 7 both still said some setup steps are done live rather than recorded.
+And three slides used «يسوّي», a Gulf-only verb the deck's own vocabulary rule bans.
+
+**Rules added to the slide skill** so this holds for every future day: the three-session-break
+requirement, and how the nested/synced task checkboxes work.
+
+### Technical details — you do not need to read this
+
+**Checkbox engine** (`assets/deck.js`, `initTasks()` rewritten). Previously state was keyed by the
+row's label text and `paint()` ran once at init, so two rows sharing a label never agreed and there
+was no parent concept. Now: `keyOf()` prefers an explicit `data-task-key` and falls back to the old
+label-text key (so every pre-existing row keeps working untouched); one pass builds `byKey` (key →
+**all** elements across every slide), `childrenOf` and `parentOf`. `paintKey()` repaints every
+element sharing a key — that single change is what produces cross-slide sync. `setSubtree()`
+cascades down, `rollUp()` recomputes ancestors (all → true, none → false, else `'partial'`), and a
+post-order `recompute()` runs once after loading from `localStorage` so a parent's stored value is
+re-derived rather than trusted. Hierarchy is expressed by `data-parent` on a **flat** list, not by
+nesting — nesting `.task` elements would break the `.tasks` flex column and the `.task` grid.
+
+**CSS** (`assets/deck.css`): `.task--l2`/`.task--l3` indent via `margin-inline-start` and shrink the
+row (24px mark, `--fs-caption` label, 5px padding); `.tasks--tree` tightens the gap to 6px, scoped
+so slides 6 and 7 keep their measured 10px. `.task[data-done="partial"]` overrides `--i` on the mark
+icon with an inline minus SVG — the icons are CSS masks (`icons.css:4`), so the glyph swaps with no
+markup change and no edit to the generated icon sheet. Also `aria-checked="mixed"` for the partial
+state. `.sess__note--foot` cancels `.sess__note`'s negative top margin for notes placed under a list
+rather than under a heading.
+
+**Ten new `data-anchor`s** (`setup-map`, `tool-desktop`, `tool-claude-code`, `tool-git`, `tool-ide`,
+`mcp-chrome`, `mcp-context7`, `mcp-supabase`; `extension` and `nodejs` already existed). Necessary
+because every setup slide carries badge `7.10`, so `data-ref="7.10"` resolved by badge number to the
+*first* one and all ten were individually unreachable. `resolveRef` checks anchors before badges, so
+slide 7's other 7.10 row still lands on slide 30 unchanged.
+
+**Slide 45 is light, not dark** (the old 43/44 were `data-surface="dark"`). Under the dark surface
+`--surface-card` flips but `.task[data-done="true"]`'s pale-teal fill does not, so white
+`--text-heading` would have become unreadable on every ticked row. The dark break slide immediately
+before it already signals the session change. Documented in the skill.
+
+**Splice mechanics.** Same ordering discipline as previous insertions: bump the trailing banner
+comments on the original text **first**, then splice the new block in, so the regex can never catch
+a banner the insertion itself introduced. Backup taken before the splice.
+
+**Overflow fight on slide 45.** First build overflowed. My first diagnostic wrongly blamed the
+`.tip` hover overlays (52px) — the guard already rejects absolutely-positioned subtrees
+(`deck.js:46`), and my ad-hoc script simply failed to replicate that exclusion. Re-running a faithful
+copy of `boxOverflow`'s walker showed a single genuine culprit: the hint card's `card__note` 2.9px
+past the body. Fixed by trimming the two column notes by a line each (shortening the hint text alone
+did not drop a line). Final: `deckAudit()` returns `[]`.
+
+**Verified:** 49 slides · `deckAudit()` `[]` · `deckRefAudit()` `[]` · all 19 anchors land on the
+intended slide numbers · no horizontal scroll on any slide · no remote asset references (offline
+safe) · و+Latin glue 0 · «طرفية» 0 · «يسوّي» 0 · cascade / rollup / partial / cross-slide sync /
+reload persistence / Ctrl+click-navigates-without-ticking all exercised in the browser · screenshots
+read for slides 7, 30, 43, 44, 45, 46, 47, 49.
+
+**Planning docs:** `DECK_BRIEF.md` header 48→49 and rows 43–49 rewritten (all 49 rows verified
+sequential); `MEDIA_SHOTLIST.md` header 48→49, `17-first-commit.png` 45→43, and a pre-existing error
+corrected — a bullet said `github.mp4` is on slide 40 when its own table row correctly said 41.
+Curriculum needed no change: line 199's «التكاملَين الباقيَين» is correct, meaning the two remaining
+after chrome-devtools.
+
+### Documents affected
+`project-package/slides/day-01.html` · `project-package/slides/assets/deck.js` ·
+`project-package/slides/assets/deck.css` · `.claude/skills/bootcamp-deck/SKILL.md` ·
+`deck/DECK_BRIEF.md` · `deck/MEDIA_SHOTLIST.md`
+
+### Status
+Done.
+
+---
+
+## § D150 — Prompt #105
+
+**Prompt:** "finally finished the last part of day 1 slides, slide 43 finished recording the video @project-package/slides/media/push-1.mp4 so please update this slide correctly. here are the steps extracted by gemini: [4-step timestamped breakdown — 00:00-00:18 asking Claude to verify the GitHub push; 00:18-00:27 Claude checks the repo in the background and confirms `.env` and `node_modules` were deliberately excluded; 00:27-00:39 manual review on GitHub, refreshing the repo page and opening the `application` folder; 00:39-00:47 comparing the editor's file tree against GitHub to confirm `.env.local` exists locally only]."
+
+---
+
+
+## § D150 — Slide 43 rebuilt from the real `push-1.mp4` recording
+
+### For you
+
+Slide 43 («تأكّد من أول حفظ ورفعك», was «أول حفظ ورفع») now shows your real recording instead of the
+placeholder image it had before. Same four steps as your Gemini breakdown, reworded to match how the
+rest of the deck talks: ask Claude to confirm the push → Claude checks in the background and tells
+you it deliberately left out `.env` and `node_modules` → you refresh GitHub yourself and open the
+`application` folder → you compare the editor's file list against GitHub to confirm `.env.local`
+never left your machine.
+
+One thing I changed beyond your video: slide 47's end-of-day "check the secrets file" card said
+`.env` — your recording shows the real file is named `.env.local`, so I updated that card to match,
+otherwise the two slides would've named the same file two different ways.
+
+### Technical details — you do not need to read this
+
+Checked `push-1.mp4`: 1920×1080, 46.97s, silent audio track (−91 dB, same as `initial-build.mp4`
+before its edit) — left untouched since nothing here needs speeding up or trimming, so there was no
+reason to re-encode and strip it (unlike `initial-build.mp4`, which was already being re-encoded for
+its 3× sections anyway).
+
+Rebuilt the slide from the old `sag-media` + placeholder-image + side-card layout into the deck's
+standard `stepvid` component (video left, scrollable timestamped steps right) — the same pattern as
+slides 38/41/42. All four `tok-code` mentions in the new steps (`.env`, `node_modules`,
+`application`, `.env.local`) are passing mentions of file/folder names, not commands or output the
+trainee types or matches against, so per last session's rule they stay inline rather than becoming
+`.snip` boxes — grepped the touched slide afterward to confirm no hit needed boxing.
+
+**Verified:** 49 slides · `deckAudit()` → `[]` · `deckRefAudit()` → `[]` · و+Latin glue 0 · «طرفية» 0
+· «يسوّي» 0 · screenshots read for slides 43 and 47.
+
+**Planning docs:** `DECK_BRIEF.md` row 43 rewritten (still 49 rows, sequential). `MEDIA_SHOTLIST.md`:
+outstanding-capture list now empty (`17-first-commit.png` marked superseded, same pattern as
+`16-app-running.png` and `github-auth.mp4` earlier this project), new table row `17a` for
+`push-1.mp4`, old row 17 kept for the record per the file's own convention. Row 16a's `initial-build.mp4`
+description already correctly says "commits and pushes by itself" happens inside slide 42 — so slide
+43's job is specifically the after-the-fact verification, not a duplicate of that push.
+
+### Documents affected
+`project-package/slides/day-01.html` · `deck/DECK_BRIEF.md` · `deck/MEDIA_SHOTLIST.md`
+
+### Status
+Done.
+
+---
+
+## § D151 — Prompt #106

@@ -898,6 +898,13 @@ body {
   text-wrap: pretty
 }
 
+/* Same note, but sitting UNDER the task list rather than under the heading —
+   the negative top margin is there to hug a heading and would pull this one
+   into the last row. */
+.sess__note--foot {
+  margin-block-start: var(--sp-2)
+}
+
 .tasks {
   display: flex;
   flex-direction: column;
@@ -981,6 +988,63 @@ body {
 .task--free .task__d {
   color: var(--accent-state);
   font-weight: var(--fw-bold)
+}
+
+/* ── nested task rows ───────────────────────────────────────────────
+   A parent task and its subtasks are sibling rows, not nested elements —
+   the indent and the smaller box are what carry the hierarchy. That is not
+   only cosmetic: the setup column runs eleven rows deep, and at the full
+   .task height it measures ~860px against a body of ~800px, so it would be
+   silently clipped. Compact sub-rows bring the same eleven rows to ~490px. */
+/* Scoped to the nested list, not .tasks itself: the flat day-plan lists on
+   slides 6 and 7 are already measured at the 10px gap and must not move. */
+.tasks--tree {
+  gap: 6px
+}
+
+.task--l2,
+.task--l3 {
+  padding: 5px var(--sp-2)
+}
+
+.task--l2 {
+  margin-inline-start: var(--sp-4)
+}
+
+.task--l3 {
+  margin-inline-start: calc(var(--sp-4) * 2)
+}
+
+.task--l2 .task__mark,
+.task--l3 .task__mark {
+  width: 24px;
+  height: 24px;
+  font-size: 14px
+}
+
+.task--l2 .task__t,
+.task--l3 .task__t {
+  font-size: var(--fs-caption)
+}
+
+/* ── a parent whose children are only partly done ───────────────────
+   Without this the rollup is invisible: a half-finished parent would look
+   exactly like an untouched one. The icons are CSS masks (--i on .i in
+   icons.css), so swapping the variable swaps the glyph — check to dash —
+   with no markup change and no edit to the generated icon sheet. */
+.task[data-done="partial"] {
+  background: var(--brand-sky-soft);
+  border-color: var(--accent-structure)
+}
+
+.task[data-done="partial"] .task__mark {
+  background: var(--accent-structure);
+  border-color: var(--accent-structure);
+  color: #fff
+}
+
+.task[data-done="partial"] .task__mark .i {
+  --i: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%3E%20%3Cpath%20d%3D%22M6%2012h12%22%20%2F%3E%20%3C%2Fsvg%3E")
 }
 
 /* ── pausable GIF ───────────────────────────────────────────────────

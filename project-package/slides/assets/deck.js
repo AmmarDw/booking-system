@@ -528,8 +528,27 @@
   /* ── live task checkboxes (CLAUDE.md A.6.9) ────────────────────────
      The day-plan rows in a §6.N block are ticked by the trainee as the day
      goes, so every .task is a real checkbox: click, Space or Enter toggles
-     it. State is keyed by the task's own label rather than its position, so
-     reordering slides never loses a tick, and it survives a reload. */
+     it. State survives a reload.
+
+     Three things beyond a plain checkbox, all driven by attributes so the
+     markup stays a flat list (nesting .task rows would break the .tasks
+     flex column and the .task grid):
+
+       data-task-key   an explicit id for the row. Rows without one fall back
+                       to their own label text, exactly as before — so every
+                       existing row keeps working untouched.
+       data-parent     the key of the row this one rolls up into.
+
+     The SAME key may appear on several slides: slide 7 lists «تجهّز جهازك
+     أنت» as one line of the day plan, and the work-session slide breaks the
+     same task into eleven rows. They are one task, so ticking either must
+     move both — which is why state is keyed, every element sharing a key is
+     repainted together, and the parent/child maps are built over KEYS, not
+     over elements. A parent ticked on the day-plan slide therefore cascades
+     into children that live on a different slide entirely.
+
+     A parent is never ticked directly by the rollup: it is 'partial' (a dash)
+     while some children are done, and only a full house flips it to true. */
   function initTasks() {
     var KEY = 'sag-deck:' + (location.pathname.split('/').pop() || 'deck') + ':tasks';
     var store = {};
@@ -539,23 +558,91 @@
       try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) { /* private mode */ }
     }
 
-    Array.prototype.forEach.call(document.querySelectorAll('.task'), function (task) {
+    var tasks = Array.prototype.slice.call(document.querySelectorAll('.task'));
+    var byKey = {};        /* key -> [element, …] — the cross-slide sync    */
+    var childrenOf = {};   /* key -> [childKey, …]                          */
+    var parentOf = {};     /* key -> parentKey                              */
+
+    function keyOf(task) {
+      var explicit = task.getAttribute('data-task-key');
+      if (explicit) return explicit;
       var labelEl = task.querySelector('.task__t');
-      var label = (labelEl || task).textContent.replace(/\s+/g, ' ').trim();
+      return (labelEl || task).textContent.replace(/\s+/g, ' ').trim();
+    }
 
-      function paint(done) {
-        task.setAttribute('data-done', done ? 'true' : 'false');
-        task.setAttribute('aria-checked', done ? 'true' : 'false');
+    tasks.forEach(function (task) {
+      var key = keyOf(task);
+      task.setAttribute('data-key', key);
+      (byKey[key] = byKey[key] || []).push(task);
+
+      var parent = task.getAttribute('data-parent');
+      if (parent) {
+        parentOf[key] = parent;
+        var kids = childrenOf[parent] = childrenOf[parent] || [];
+        if (kids.indexOf(key) === -1) kids.push(key);
       }
+    });
 
+    function paintKey(key) {
+      var state = store[key];
+      var done = state === true ? 'true' : (state === 'partial' ? 'partial' : 'false');
+      var aria = state === true ? 'true' : (state === 'partial' ? 'mixed' : 'false');
+      (byKey[key] || []).forEach(function (el) {
+        el.setAttribute('data-done', done);
+        el.setAttribute('aria-checked', aria);
+      });
+    }
+
+    function paintAll() { Object.keys(byKey).forEach(paintKey); }
+
+    /* Checking a parent checks everything under it; unchecking clears it. */
+    function setSubtree(key, done) {
+      store[key] = done;
+      (childrenOf[key] || []).forEach(function (c) { setSubtree(c, done); });
+    }
+
+    function recompute(key) {
+      var kids = childrenOf[key];
+      if (!kids || !kids.length) return;
+      kids.forEach(recompute);            /* post-order: children settle first */
+      var all = true, none = true;
+      kids.forEach(function (k) {
+        if (store[k] === true) none = false;
+        else { all = false; if (store[k] === 'partial') none = false; }
+      });
+      store[key] = all ? true : (none ? false : 'partial');
+    }
+
+    function rollUp(key) {
+      var p = parentOf[key];
+      while (p) {
+        var kids = childrenOf[p], all = true, none = true;
+        kids.forEach(function (k) {
+          if (store[k] === true) none = false;
+          else { all = false; if (store[k] === 'partial') none = false; }
+        });
+        store[p] = all ? true : (none ? false : 'partial');
+        p = parentOf[p];
+      }
+    }
+
+    /* Normalise what came out of localStorage: a parent's stored value is
+       derived, so recompute it from the children rather than trusting it. */
+    Object.keys(childrenOf).forEach(function (key) {
+      if (!parentOf[key]) recompute(key);
+    });
+
+    tasks.forEach(function (task) {
+      var key = task.getAttribute('data-key');
       task.setAttribute('role', 'checkbox');
       task.setAttribute('tabindex', '0');
-      paint(store[label] === true);
 
       function toggle() {
-        var now = task.getAttribute('data-done') !== 'true';
-        paint(now);
-        store[label] = now;
+        /* A 'partial' parent fills in rather than clearing — the trainee
+           reaching for it means "the rest is done too", not "undo". */
+        setSubtree(key, store[key] !== true);
+        rollUp(key);
+        paintAll();
         persist();
       }
 
@@ -580,6 +667,8 @@
         }
       });
     });
+
+    paintAll();
   }
 
   /* ── idle-hide the presenter HUD ───────────────────────────────────

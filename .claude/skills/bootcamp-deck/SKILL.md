@@ -1,6 +1,6 @@
 ---
 name: bootcamp-deck
-description: Build and revise the SAG Lab Arabic bootcamp presentation decks (project-package/slides/day-NN.html) — the slides ARE the curriculum and the only thing trainees read. Use this whenever the user asks to add, fix, decompress, reword, restyle, or reorder a slide, add a day to the deck, touch project-package/slides/assets/*, or sync DECK_BRIEF.md / MEDIA_SHOTLIST.md. Also use it when they mention curriculum sections, task rows, the overflow guard, slide numbering, or the Arabic register of trainee-facing text — even if they never say the word "deck" or name a file.
+description: Build and revise the SAG Lab Arabic bootcamp presentation decks (project-package/slides/day-NN.html) — the slides ARE the curriculum and the only thing trainees read. Use this for EVERY touch to a slide, new or existing — creating a slide, inserting a missing step, fixing one line of wording, restyling a command, reordering, or deleting one. There is no edit too small to invoke it for; a one-line fix on an already-shipped slide is the same trigger as building a new one. Use this whenever the user asks to add, fix, decompress, reword, restyle, or reorder a slide, add a day to the deck, touch project-package/slides/assets/*, or sync DECK_BRIEF.md / MEDIA_SHOTLIST.md. Also use it when they mention curriculum sections, task rows, the overflow guard, slide numbering, command/output styling, or the Arabic register of trainee-facing text — even if they never say the word "deck" or name a file.
 ---
 
 # Bootcamp deck
@@ -14,6 +14,12 @@ package — `CLAUDE.md`, `.claude/`, `bootcamp_roadmap_and_curriculum.md` — is
 not to a person. So any trainee-facing content must be **on a slide, complete**, with no "see
 section N of the guide" dependency.
 
+**Any edit counts, not just new slides.** Fixing one command's styling, inserting a missed step, or
+rewording a sentence on an already-shipped slide goes through everything below exactly like building
+one from scratch — read this file before the edit, not after a review catches what it would have
+caught. A slide edited without it is how the chrome-devtools slide shipped with commands and output
+both wrapped in a plain `tok-code` span instead of the components §4 below documents.
+
 ---
 
 ## Before you touch a slide
@@ -22,7 +28,7 @@ Read `references/deck-anatomy.md` for the component, token and interaction inven
 `references/archived-plan-2026-09-08.md` only if you need the historical *why* behind a structural
 decision — it is an unvetted dump with known errors, flagged in its own header.
 
-Then hold these three in mind, because they are what reviews actually fail on.
+Then hold these four in mind, because they are what reviews actually fail on.
 
 ### 1. The overflow guard is the gate, not a formality
 
@@ -58,6 +64,46 @@ line into a card title, convert a lead paragraph to a compact callout, tighten a
 `--sp-2`, or reclaim dead space with `align-content: safe center`. The `safe` keyword is
 load-bearing — plain `center` overflows equally in both directions, pushing content out through the
 *top* of the frame where trimming below can never recover it.
+
+### 4. Commands and their output ride on fixed components — never a bare `tok-code` span
+
+A trainee is meant to **paste** a command and to **recognise** output when it appears on their own
+screen; an inline `<span class="tok-code">` mid-sentence serves neither, and gives a full command no
+copy affordance at all. Two components exist for exactly this, side by side in the same step:
+
+**Something the trainee types or pastes** — a full `.snipbox`, copy button included, built exactly
+like slide 34's `git config --global user.name "Your Name"`:
+
+```html
+<div class="snipbox">
+  <pre class="snip" dir="ltr">claude mcp list</pre>
+  <button class="snipbox__copy" type="button" aria-label="نسخ الأمر"><span class="i i-copy"></span></button>
+</div>
+```
+
+**Output the trainee reads and matches against, but never copies** — the same `.snip` box, with
+**no** `.snipbox` wrapper and **no** copy button, exactly like the tool-description and pricing
+blocks already on the deck:
+
+```html
+<pre class="snip" dir="ltr">chrome-devtools … ✔ Connected</pre>
+```
+
+The test is "does this step ask the trainee to reproduce this string," not length or how code-like it
+looks — a single bare word the trainee must find inside a longer list (`claude-plugins-official`) is
+still output, not a command, and gets the bare `.snip`. Reserve inline `tok-code` for a short, passing
+*mention* of a name — a file, a flag, a command referred to but not being issued right in this step —
+never for a string the step is actually asking the trainee to type or locate.
+
+A conditional action the recording doesn't show (an "if it isn't listed, add it" branch) still gets
+its own full `stepvid__step--new` row — amber "مضافة" mark, no `data-t`, in its correct sequence
+position — never folded as a parenthetical into the step before or after it. See
+`references/deck-anatomy.md` for the exact markup and why an omitted `data-t` is enough for
+`initStepVideos()` to skip it safely.
+
+This is not a one-time fix: **after any command- or output-bearing edit, grep the slide you just
+touched for `tok-code` and confirm every remaining hit is a passing mention, not a command or an
+output string that should be a `.snip` block.**
 
 ---
 
@@ -137,6 +183,76 @@ the markup form misses cases that only glue after tags are stripped.
 
 ---
 
+## Every day has three session-break slides
+
+A day runs four sessions — شرح المفاهيم · تطبيق مع المدرب · عملك على مشروعك · مراجعة وعرض التقدم —
+and **each of the last three opens with a break slide**. Not the first: the day opens on شرح
+المفاهيم, and a "we are starting now" slide in front of the very first thing is not a transition.
+
+Without them a trainee following the deck cannot tell the session changed, because nothing else on
+screen marks it. This is a per-day structural requirement, not a Day-1 detail.
+
+The component is fixed — a full-bleed quote frame, footer carrying **only** the session badge (no
+logo, no day label):
+
+```html
+<section class="sag-slide sag-quote deck-slide" data-tone="rule" data-surface="dark">
+  <div class="sag-quote__inner">
+    <div class="sag-quote__mark"></div>
+    <p class="sag-quote__text">من هنا نبدأ: عملك على مشروعك</p>
+    <p class="sag-quote__attr">…one plain line saying what actually happens in this session…</p>
+  </div>
+  <footer class="sag-slide__foot">
+    <div class="deck-foot">
+      <div class="deck-foot__side"><span class="sag-badge">عملك على مشروعك</span></div>
+      <span class="deck-foot__num">44</span>
+    </div>
+  </footer>
+</section>
+```
+
+These three are the only legitimate `sag-quote` use that is not a real pull-quote. The `__attr` line
+is the place to say something the session needs and nothing else covers — the عملك على مشروعك break
+is where the trainee is told that ticking the finished tasks is **their** job.
+
+---
+
+## Task rows: keys, nesting, and cross-slide sync
+
+`.task` rows are checkboxes (A.6.9). Three attributes drive everything, and the markup stays a
+**flat** list — nesting `.task` elements would break the `.tasks` flex column and the `.task` grid:
+
+| attribute | meaning |
+|---|---|
+| `data-task-key` | explicit id. Omit it and the row keys off its own label text, as rows always have |
+| `data-parent` | the key this row rolls up into |
+| `class="task--l2"` / `task--l3` | indent + compact sizing for depth 2 and 3 |
+
+**State is keyed, and every element sharing a key repaints together.** That is the whole point: the
+day-plan slide lists «7.10 · تجهّز جهازك أنت» as one line and the work-session slide breaks the same
+task into eleven rows — one task, two places, and ticking either moves both. The parent/child maps
+are built over **keys**, not elements, so a parent ticked on one slide cascades into children that
+live on a different slide entirely.
+
+A parent is never ticked by the rollup alone: it shows `partial` (a dash) while some children are
+done and flips to a check only on a full house. Clicking a `partial` parent fills it in.
+
+Two traps:
+
+- **Give rows that must sync an explicit `data-task-key`.** Matching on label text across slides is
+  brittle — a `؟` qmark button's text is part of the label, so two rows that *look* identical are
+  not. Adding a key to an existing row orphans whatever was stored under its old label-derived key;
+  harmless between cohorts, but know that it happens.
+- **Two rows can look alike and be different tasks.** Day 1 carries «7.10 · نستعرض خطوات تجهيز
+  الجهاز أمامك» (trainer demos) and «7.10 · تجهّز جهازك أنت» (trainee does it). Same section, two
+  tasks, two keys — never merge them.
+
+Task rows assume a **light** surface: `[data-done="true"]` paints a pale teal that white
+`--text-heading` would vanish into. Put a checklist on a light slide, and let the break slide before
+it carry the dark.
+
+---
+
 ## The three surfaces that must stay in sync
 
 A wording change on a slide usually lives in more than one file. After any content edit, grep all of
@@ -176,6 +292,13 @@ Run all of these and report each result rather than asserting success.
 - [ ] `window.deckAudit()` → `N slides, none overflow`, on the real page via chrome-devtools
 - [ ] Interactive behaviours exercised in a browser, not reasoned about
 - [ ] No task row opens with a و-word
+- [ ] Every typed command is a `.snipbox` with a copy button; every output line is a bare `.snip`
+      with none; grep the touched slide(s) for `tok-code` and confirm no hit is really a command or
+      output string in disguise
+- [ ] Each of the last three sessions is preceded by its break slide
+- [ ] Checkbox hierarchy exercised in the browser: parent cascades down, children roll a parent up
+      to `partial` then to a check, the same key agrees on **both** slides it appears on, state
+      survives a reload, and Ctrl+click navigates without ticking
 - [ ] `.md` anchor check → 0 broken links
 - [ ] `.docx` structure: table / heading / bookmark / hyperlink counts unchanged, all TOC anchors
       resolve, `jc=right` = 0, 14 of 15 zip entries byte-identical
