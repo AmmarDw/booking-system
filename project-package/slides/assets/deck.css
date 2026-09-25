@@ -408,13 +408,6 @@ body {
   margin-block-start: var(--sp-2)
 }
 
-/* Slide 28 packs a goal/feature funnel plus a 4-item flow into one frame;
-   the standard inter-child gap is what pushed it over. Scoped to that slide
-   alone via its anchor — every other slide keeps the normal --sp-2 gap. */
-[data-anchor="mvp-scope"] .card>*+* {
-  margin-block-start: 0
-}
-
 .card--plain {
   background: transparent;
   border: 0;
@@ -841,6 +834,19 @@ body {
    `justify-content` only did anything while .card was a flex column. */
 .bento>.card {
   align-content: safe center
+}
+
+/* Two slides carry the same block in both decks but pair it with different
+   amounts of surrounding content, so one instance fills the frame and the
+   other leaves a band of trailing space that reads as unfinished. Centring
+   distributes it. `safe` is what lets one rule serve every instance: where the
+   content already fills the frame it falls back to start, instead of pushing
+   the first line out through the TOP where trimming below can never catch it.
+   Day-2 slide 5 (flow alone) and Day-1 slide 48 (questions alone) are the two
+   that actually need it; Day-1 slide 28 and Day-2 slide 7 are full and no-op. */
+[data-anchor="task-81"] .sag-slide__body,
+.sag-slide__body:has(> .stageflow) {
+  justify-content: safe center
 }
 
 /* Media side column: width is set with the type block above (560px). */
@@ -1720,6 +1726,169 @@ body {
   font-variant-numeric: lining-nums
 }
 
+/* Four elicitation questions, one per row, each with a one-line gloss.
+   A question alone is not self-evident to someone who has never defined a
+   project before — and two questions crammed onto one line is exactly the
+   failure this replaced. .flow gives the numbering; this only sizes the
+   question above its gloss. */
+.flow--ask>li {
+  font: var(--type-body);
+  color: var(--text-heading)
+}
+
+.flow--ask>li+li {
+  margin-block-start: var(--sp-2)
+}
+
+.flow--ask .ask__g {
+  display: block;
+  margin-block-start: 3px;
+  font: var(--type-caption);
+  color: var(--text-caption);
+  text-wrap: pretty
+}
+
+/* ── the method pipeline (.stageflow) ────────────────────────────────
+   Task 8.1 used to open by teaching a vocabulary — غاية versus خاصية —
+   before the trainee had written a word. That inverts the course's own
+   rule (Day-1 slide 12: write first, organise after) and it put Claude's
+   internal machinery on a trainee-facing slide. This component replaces
+   the taxonomy with a road: four stages, and only the first is the
+   trainee's job.
+
+   Horizontal on purpose. The deck is 1920 wide and the frame height is the
+   scarce axis, so four stages across the width cost ~200px where a stack
+   costs ~500 — which is what lets slide 28 still carry its objectives and
+   its rule strip. Reading order is right-to-left like the Arabic, so stage
+   1 lands rightmost with no override: the grid inherits `direction`.
+
+   The two loop badges are the point of the whole graphic. Without them the
+   flow reads as a one-way conveyor, and a trainee who has to correct Claude
+   concludes they failed. With them, correcting is visibly part of the design. */
+.stageflow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--sp-4);
+  row-gap: var(--sp-2);
+  align-items: stretch
+}
+
+.stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--radius-md);
+  background: var(--surface-card);
+  border: var(--border-hairline);
+  box-shadow: var(--lift-1)
+}
+
+/* Stage 1 is the trainee's only contribution. The surface carries that, not
+   a sentence claiming it — the eye reaches it first. */
+.stage--you {
+  background: var(--brand-teal-soft);
+  border-color: var(--accent-state)
+}
+
+/* The connector sits in the gap on each stage's inline-END, which under RTL
+   is its right — between it and the stage before it. A chevron built from
+   two borders, not a glyph: no icon exists for one, and a Unicode arrow
+   would be reordered by the bidi algorithm. */
+.stage+.stage::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: calc(var(--sp-4) / -2 - 6px);
+  inset-block-start: 50%;
+  width: 13px;
+  height: 13px;
+  border-block-start: 3px solid var(--accent-structure);
+  border-inline-end: 3px solid var(--accent-structure);
+  transform: translateY(-50%) rotate(-45deg)
+}
+
+.stage__n {
+  align-self: flex-start;
+  min-width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  padding: 0 8px;
+  border-radius: var(--radius-pill);
+  background: var(--brand-sky-soft);
+  color: var(--brand-primary);
+  font: var(--fw-bold) 17px/1 var(--font-arabic)
+}
+
+.stage--you .stage__n {
+  background: var(--accent-state);
+  color: var(--brand-white)
+}
+
+.stage__t {
+  margin: 0;
+  font: var(--fw-bold) var(--fs-body)/1.3 var(--font-arabic);
+  color: var(--text-heading)
+}
+
+.stage__d {
+  margin: 0;
+  font: var(--fw-regular) var(--fs-caption)/1.45 var(--font-arabic);
+  color: var(--text-body);
+  text-wrap: pretty
+}
+
+/* The review gate. ⟲ is a literal glyph because the icon set has no rotate
+   mask; isolate stops the bidi algorithm dragging it into the Arabic run —
+   the same treatment .qmark gives its ؟. */
+.stage__loop {
+  margin-block-start: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--brand-sky-soft);
+  font: var(--fw-medium) 20px/1.35 var(--font-arabic);
+  color: var(--brand-primary)
+}
+
+.stage__loop b {
+  flex: 0 0 auto;
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--accent-structure)
+}
+
+/* The worked example, in the SAME four columns, so each line sits under the
+   stage it belongs to and the mapping needs no explaining. */
+.stageflow__eg {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--sp-4);
+  margin-block-start: var(--sp-1);
+  padding-block-start: var(--sp-1);
+  border-block-start: 2px dashed var(--rule-hairline)
+}
+
+.stageflow__eg p {
+  margin: 0;
+  font: var(--fw-regular) var(--fs-caption)/1.4 var(--font-arabic);
+  color: var(--text-caption);
+  text-wrap: pretty
+}
+
+.stageflow__eg .stageflow__egl {
+  grid-column: 1 / -1;
+  margin-block-end: -6px;
+  font-weight: var(--fw-bold);
+  color: var(--brand-primary)
+}
+
 /* ── the ؟ button ───────────────────────────────────────────────────
    A real Arabic ؟ rather than a Lucide mask: the icon set has no question
    mark, and a mirrored Latin "?" is the wrong glyph in an RTL deck. isolate
@@ -2243,6 +2412,24 @@ body {
    every other row, and inset text there would break the ├── / │ / └──
    alignment that makes this read as a tree in the first place. Vertical
    padding only is free to add — it cannot desync anything. */
+/* A third state: a file the trainee WRITES, not one they read. --read is
+   sky (consult this), --write is teal (this one is yours to fill). Without
+   the distinction the notebook would read as just more reading. */
+/* --write vs --read differ only by tint (#DDF6F3 vs #DCEFF6), which the eye
+   cannot separate at this size. Weight is what actually marks the one file the
+   trainee writes in, so the title legend can promise something visible. */
+.pkgtree__p--write,
+.pkgtree__d--write {
+  background: var(--brand-teal-soft);
+  border-radius: var(--radius-sm);
+  padding-block: 3px;
+  font-weight: var(--fw-bold)
+}
+
+.pkgtree__d--write {
+  font-weight: var(--fw-medium)
+}
+
 .pkgtree__p--read,
 .pkgtree__d--read {
   background: var(--brand-sky-soft);
@@ -2254,7 +2441,7 @@ body {
   font-weight: var(--fw-medium)
 }
 
-/* the ؟ is repeated 24 times here, so it has to recede until wanted */
+/* the ؟ is repeated 25 times here, so it has to recede until wanted */
 .pkgtree .qmark {
   margin-inline-start: .3em;
   width: 1.3em;

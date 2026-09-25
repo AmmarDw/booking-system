@@ -1,38 +1,63 @@
 # Showcase strategy — which project fills «شرح المفاهيم», and in what form
 
-Settled 2026-09-22. Committed to for days 2–10, reviewable later.
+**Reversed 2026-09-25.** The 2026-09-22 split (BookIt showcases, darrisni goes live) is dead. Read
+the new one below; the old arrangement survives only as the appendix, because its BookIt inventory
+is still a useful reference.
 
 ---
 
 ## The split
 
-| Session | Project | Why |
+| Session | Project | Form |
 |---|---|---|
-| **«شرح المفاهيم»** — the showcase | **BookIt** | Finished, richly documented, and its thinking artifacts are stack-independent |
-| **«تطبيق مباشر مع المدرب»** — live | **darrisni** (`C:\Users\ammar\future-dev\claude\trainee-test`) | On the course's own stack, built with the actual trainee package |
+| **«شرح المفاهيم»** — the showcase | **darrisni** (`C:\Users\ammar\future-dev\claude\trainee-test`) | **Recorded video**, made on the course's own stack with the actual trainee package |
+| **«تطبيق مباشر مع المدرب»** — live | ⚠ **unassigned — a third project is still needed** | The trainer re-runs the same steps live |
 
-Both sessions run **every** day 2–10. The choice above is about which project *supplies the
-material*, not about skipping a session.
+### Why BookIt lost the showcase
 
-**The trade-off that was accepted:** darrisni is used for the live session, so it is *not* producing
-recordings. If that turns out wrong, the fallback is to record days on darrisni and start a fresh
-project for live sessions.
+**A finished project cannot demonstrate a process.** BookIt can only ever show a *conversation that
+already happened*. A trainee watching a replay of someone else's finished thinking has nothing to
+copy — they see a result, not a method. That is what made its slides read as confusing, and it is
+not fixable by picking better excerpts.
 
-### Why not BookIt for the live session
-It is finished. Its build cannot be performed again.
+darrisni has the opposite property: it is being built *on the stack the trainee uses*, with the same
+`PRODUCT.md`, the same `notebook.txt`, the same skills. Every recording is a thing the trainee will
+literally repeat.
 
-### Why not darrisni for the showcase
-It would mean building each day on darrisni *in advance* to record it, which is the same work as the
-live session done twice.
+### The cost this incurs, stated plainly
 
-### Why BookIt's wrong stack does not disqualify it here
-BookIt is Spring Boot + a separate Next.js + native Postgres + Docker/Render. The course teaches one
-Next.js app + Supabase + Vercel in `application/`. That mismatch **matters enormously for process
-steps and not at all for thinking artifacts**. A problem statement, a scope split, a roles table, an
-ERD, a user journey — none of them care what framework shipped underneath. Days 2–6 are almost
-entirely thinking work, which is exactly where BookIt is strongest.
+darrisni is now spent on recordings, so **it cannot also be the live project** — the live session
+needs a project whose next step is genuinely unperformed. That project has **not been chosen yet**.
+Until it is, «تطبيق مباشر مع المدرب» has no source. This is the open item; do not plan around it as
+if it were solved.
 
-It bites from §14 onward. See the open question at the bottom.
+### How the two sessions are delivered
+
+They are **interleaved, per section** — not two blocks:
+
+> explain §A → play §A's recording → trainer re-runs §A live → explain §B → …
+
+Which is why days 2–10 have **no «تطبيق مع المدرب» break slide**. See `day-deck-recipe.md`.
+
+---
+
+## What exists today
+
+| Recording | Covers | Length | Status |
+|---|---|---|---|
+| `project-package/slides/media/tasks-81-82.mp4` | Tasks 8.1 + 8.2, end to end on darrisni | 3:24 | **Shipped** — Day-2 slide 9 |
+| `project-package/slides/media/tasks-91-92.mp4` | Tasks 9.1 + 9.2, end to end on darrisni | 1:49 | **Shipped** — Day-2 slide 14 |
+
+**Filenames are lowercase-hyphen** and the deck references them by name — see `MEDIA_SHOTLIST.md`.
+The original of the above arrived as `8.1_&_8.2_tasks.mp4` and was renamed: `&` has to be escaped in
+an HTML attribute, and no other asset uses underscores.
+
+### Still to record
+
+Everything else — Day 2 is now fully covered. §9 was recorded on **2026-09-25** and, with it, the
+last BookIt material left the deck: Day-2 slides 12 and 13 were rebuilt on darrisni and slide 14's
+`chatlog` was replaced by the recording. The next gap is **Day 3** (§10 requirements, §16 first
+deploy).
 
 ---
 
@@ -40,86 +65,81 @@ It bites from §14 onward. See the open question at the bottom.
 
 | Content | Form | Note |
 |---|---|---|
-| A thinking artifact (definition, scope, roles, requirements) | **`chatlog`** — the real conversation + a formatted-output slide | Text projects badly on video; the trainee needs to *read* the before/after |
+| A task the trainee will perform | **recording**, on darrisni | The default now. It must match what the trainee will actually type |
 | A diagram | show the diagram | `diagrams/*.drawio` are presentable as-is |
-| A process on the trainee's stack | **recording**, made on darrisni | Must match what the trainee will actually type |
-| BookIt's finished app | one tour, recorded once | No progression needed — it is the "where you're heading" shot |
+| A thinking artifact with no screen work | recording of the conversation happening | Even "thinking" tasks have a screen: the prompt being written, the reply arriving, the file changing. 8.1/8.2 proved this films fine |
+| A finished app to aim at | one tour, recorded once | The "where you're heading" shot |
 
-"Showcase" does not mean "video."
-
----
-
-## What BookIt actually has, per section
-
-Verdicts from a full inventory of the repo.
-
-| § | Verdict | Best artifact |
-|---|---|---|
-| **§8** MVP definition + scope | **RICH** | `PROJECT_REPORT.md:40-42` (problem/purpose/4 objectives) + `73-82` (three scope lists); the raw notes becoming them at `conversation_history.md:124-169 → 205-238` |
-| **§9** users + stakeholders | **RICH** | 3-role table `PROJECT_REPORT.md:56-60`, paired with the live correction at `conversation_history.md:250-254 → 266-270` where the separate Provider entity is deleted |
-| **§10** requirements | **RICH** | 16 EARS requirements with priority matrix, user story and Gherkin criteria each: `PROJECT_REPORT.md:100-163`. Requirements visibly *born* from pushback at `533-541` (FR-14/15) and `844-850` (FR-16) |
-| **§11** journey + activity diagram | **RICH** | three journeys `PROJECT_REPORT.md:176-219` → `diagrams/consumer_booking_activity.drawio` |
-| **§12** design | **RICH** prompts/workflow · **PARTIAL** screens | ten ready-to-paste Claude Design prompts `PROJECT_REPORT.md:274-321` + tokens table `250-264`. Only **4** reference screens survive in `app/frontend/src/components/ds/screens-reference/`; the 9 generated screens have **no exports and no recorded URLs** — the shipped pages under `app/frontend/src/app/` stand in |
-| **§13** data model | **RICH** | `diagrams/erd.drawio` — 8 entities, cardinality-labelled, drawn from the live `V1__init_schema.sql`; the `SystemSetting` → `AppSettings` redesign argument at `conversation_history.md:554-562` |
-| **§14** implementation | **RICH** | `implementation_plan.md:71-161` — M0–M6.3 maps one-to-one onto tasks 14.1–14.7, with acceptance criteria and real bug callouts |
-| **§15** testing + security | **PARTIAL** | Report §9 is an empty stub, but the per-milestone verification blocks are real — the RBAC curl matrix at `conversation_history.md:1064-1067` |
-| **§16** deployment | **PARTIAL** | Report §10 never written; `render.yaml`, `app/backend/Dockerfile` and `app/frontend/.vercel/project.json` are showable as-is; the Vercel-CLI story only at `conversation_history.md:1625` |
-
-**Zero BookIt screenshots or recordings exist anywhere in the repo.** Any BookIt visual is net-new
-work. The only images are SAG Lab logos.
-
----
-
-## Where the curated excerpts already are
-
-The curriculum's «ما كتبه المدرب» collapsibles are **already** trimmed, translated showcase
-material — use them before re-reading `conversation_history.md`:
-
-| Collapsible | Lines in `bootcamp_roadmap_and_curriculum.md` |
-|---|---|
-| 8.1 steps 1–4 — free-form notes → definition | 1187–1216 |
-| 8.1 step 5 — the correction round | 1220–1234 |
-| 8.2 steps 1–3 — scope derived, not collected | 1272–1287 |
-| 8.2 step 4 — the 3–5 limit, and why the trainer broke it | 1289–1296 |
-| 9.1 steps 1–5 — roles + the representation decision | 1380–1395 |
-| 9.1 step 3 — the overlap question | 1414–1427 |
-| 9.2 steps 1+3 — the external service that changed the design | 1443–1460 |
+**The `chatlog` component is dead.** It was built for BookIt conversation replays. Its last instance
+(Day-2 slide 14) was replaced by `tasks-91-92.mp4` on 2026-09-25, so **no deck uses it any more** —
+though its CSS and JS are still in `deck.css`/`deck.js`, deliberately left in place rather than
+ripped out. **Do not author new `chatlog` slides.** A recording of the same exchange teaches more.
 
 ---
 
 ## Trainer-example discipline
 
-Binding rule from `CLAUDE.md` §A.5, and it applies to slides as much as to the curriculum:
+Binding rule from `CLAUDE.md` §A.5, and it applies to recordings as much as to text:
 
-- **Product only.** Exclude anything about building *this course* — choosing the project from the
-  brochure, the agenda, the report structure, authoring tooling. The bootcamp brain-dump at
-  `conversation_history.md:39-120` is out for this reason.
-- **Excerpt at the clause level, not the prompt level.** Build-era prompts mix product and process in
-  the same message.
-- **Drop trainer-stack specifics** — Spring Boot metadata, the backend/frontend split, the monorepo
-  layout, Maven, Flyway. A trainee on Next.js + Supabase never meets them.
+- **Product only.** Exclude anything about building *this course* — choosing the project, the agenda,
+  the report structure, authoring tooling.
+- **Drop trainer-stack specifics.** With darrisni this mostly stops being a problem: it *is* the
+  trainee stack. As of 2026-09-25 no BookIt material survives in any deck, so this rule now only
+  guards against reintroducing it.
 - When unsure whether an excerpt qualifies, ask.
+
+**One discipline, learned from the first recording: a step must match the delivered cut, not the
+underlying session.** The real 8.1/8.2 session included a correction round — the trainer caught that
+the ready-made prompt asked for one merged paragraph and had it split into two — but the trainer
+edited that back-and-forth **out** of `tasks-81-82.mp4` on purpose, to keep the video from confusing
+trainees with a mistake that no longer exists in the deck. A step authored from the written session
+log alone (`conversation_history.md`/`PRODUCT.md`) can describe something that is true of the session
+but not actually visible in the video that ships — check the frames at the step's own timestamp, not
+just the transcript, before writing it.
+
+**Separately, a recording can also show a wording the deck has since moved past** (a stale slide, not
+an edited-out moment) — say so in a `stepvid__fix` note rather than re-recording. No current step
+needs one; the note stays here as the pattern for when one does.
 
 ---
 
-## Open, deferred to Day 6
+## Resolved: the §14 clone-and-replay question
 
-**Does §14 get an incremental BookIt clone-and-replay?**
+**Moot — dropped.** The old plan deferred to Day 6 the question of whether §14 gets an incremental
+BookIt clone-and-replay. It does not: §14 will be recorded on the live-session project like every
+other section. The objection that killed it was always the stack (Maven, a two-server local setup,
+native Postgres — none of which a trainee runs), and that objection stands regardless of feasibility.
 
-Feasibility was checked and it is **technically sound**: 19 clean commits (`23a5db0` M0 →
-`7efdd6b`), self-describing milestone messages, Flyway `V1`–`V7` arriving incrementally so a fresh
-DB replays forward naturally, 164 tracked files with no build artifacts committed. No tags, but the
-messages are enough.
+**Also noted:** BookIt's deployment is down (Render free tier expired). It no longer matters — §16 is
+taught on the course stack.
 
-**The objection is not the versioning, it is the stack.** Replaying M0→M6 puts Maven commands, a
-two-server local setup and native Postgres on screen — none of which a trainee will ever run. High
-effort (fresh DB per checkpoint, env vars, Google OAuth credentials), and it demonstrates the wrong
-process.
+---
 
-Decide at Day 6, when §14 is actually being built. The alternative for §14 is a `chatlog` of the
-real M-milestone conversations plus darrisni recordings for the steps the trainee actually performs.
+# Appendix — the BookIt inventory (historical)
 
-**Also deferred:** BookIt's deployment is currently down — the Render free tier expired, taking the
-backend and its DB container with it. Only matters if §16 uses BookIt; the plan is that §16 is taught
-on darrisni (Vercel, the course stack). If a BookIt tour is wanted anyway, run it locally and expose
-it with ngrok for that one recording.
+BookIt is **no longer a showcase source, and no deck slide draws on it any more** (the last two,
+Day-2 slides 13 and 14, were rebuilt on darrisni on 2026-09-25). This table is kept only because it
+is an accurate map of what the repo holds. Use it as a reference, not as a plan.
+
+| § | Verdict | Best artifact |
+|---|---|---|
+| **§8** MVP definition + scope | RICH | `PROJECT_REPORT.md:40-42` (problem/purpose/4 objectives) + `73-82` (three scope lists) |
+| **§9** users + stakeholders | RICH | 3-role table `PROJECT_REPORT.md:56-60`, with the live correction at `conversation_history.md:250-254 → 266-270` deleting the separate Provider entity |
+| **§10** requirements | RICH | 16 EARS requirements with priority, user story and Gherkin each: `PROJECT_REPORT.md:100-163` |
+| **§11** journey + activity diagram | RICH | three journeys `PROJECT_REPORT.md:176-219` → `diagrams/consumer_booking_activity.drawio` |
+| **§12** design | RICH prompts · PARTIAL screens | ten Claude Design prompts `PROJECT_REPORT.md:274-321`; only 4 reference screens survive |
+| **§13** data model | RICH | `diagrams/erd.drawio` — 8 entities, drawn from the live `V1__init_schema.sql` |
+| **§14** implementation | RICH | `implementation_plan.md:71-161` — M0–M6.3 maps onto tasks 14.1–14.7 |
+| **§15** testing + security | PARTIAL | Report §9 is a stub; the RBAC curl matrix at `conversation_history.md:1064-1067` is real |
+| **§16** deployment | PARTIAL | Report §10 never written; `render.yaml` and the Vercel project file are showable |
+
+**Zero BookIt screenshots or recordings exist.** Any BookIt visual is net-new work.
+
+The curriculum's «ما كتبه المدرب» collapsibles remain trimmed, translated BookIt excerpts:
+
+| Collapsible | Lines in `bootcamp_roadmap_and_curriculum.md` |
+|---|---|
+| 8.1 steps 1–4 · the correction round | 1187–1216 · 1220–1234 |
+| 8.2 steps 1–3 · the 3–5 limit | 1272–1287 · 1289–1296 |
+| 9.1 steps 1–5 · the overlap question | 1380–1395 · 1414–1427 |
+| 9.2 steps 1+3 | 1443–1460 |

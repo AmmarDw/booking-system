@@ -3,6 +3,8 @@ name: bootcamp-setup
 description: "تهيئة أدوات الدورة: تثبيت Node.js والتحقّق منه، وإنشاء مشروع قاعدة البيانات (Supabase) بحقوله، وربط تكاملات MCP (chrome-devtools، context7، Supabase MCP، Vercel MCP) بالأوامر الدقيقة وترتيبها، وما ينفّذه Claude مقابل ما ينفّذه المتدرّب بنفسه. استخدمها عند القسم 7.10 من ملف خارطة الطريق، أو كلّما أنشأ المتدرّب مشروع قاعدة بيانات، أو طلب ربط تكامل، أو ذكر مفتاح API، أو قال إن أداةً لا تعمل، أو فشل أمر npm. Use when creating the Supabase project, connecting an MCP integration, installing or verifying Node.js, installing bootcamp tools, or verifying a connection."
 ---
 
+<div dir="rtl">
+
 # تهيئة أدوات الدورة وربط التكاملات
 
 هذا **دليل التنفيذ الخاص بك أنت (Claude)** — المتدرّب لا يقرأه. أمّا الخطوات التي يراها المتدرّب فهي في القسم **7.10** من ملف خارطة الطريق (`bootcamp_roadmap_and_curriculum.md`).
@@ -155,3 +157,5 @@ claude mcp add --scope project --transport http supabase "https://mcp.supabase.c
 ## 10. بعد أي ربط ناجح
 
 أضِف الأداة إلى **جدول الأدوات** في `PRODUCT.md` (القسم 10) — الجدول يُحدَّث أوّلًا بأوّل لا في نهاية الدورة — وحدِّث سجلّ التقدّم في `CLAUDE.md`.
+
+</div>

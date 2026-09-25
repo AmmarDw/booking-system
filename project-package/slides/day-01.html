@@ -557,7 +557,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><span class="tmap__n">8.1</span>تحديد المشكلة والهدف والغايات</td>
+                  <td><span class="tmap__n">8.1</span>تحديد المشكلة والهدف</td>
                   <td><span class="tmap__b tmap__b--decide">تقرّر وتوصف</span></td>
                   <td class="tmap__day">1 ثم 2</td>
                 </tr>
@@ -1091,8 +1091,8 @@
       <section class="sag-slide deck-slide" data-anchor="package">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">6</span> حزمة المشروع</span>
-          <h2 class="sag-slide__title">ايش الملفات اللي تحتويها الحزمة — <span class="sag-slide__title--note">الملفات
-              الملوّنة هي اللي تقرأها أنت، ركّز عليها — قابلة لإعادة الاستخدام</span></h2>
+          <h2 class="sag-slide__title">ايش الملفات اللي تحتويها الحزمة — <span class="sag-slide__title--note">الملوّن
+              يهمّك · العريض تكتب فيه أنت · الرمادي ما تفتحه أصلًا</span></h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
@@ -1174,6 +1174,9 @@
             <code class="pkgtree__p pkgtree__p--read">├── conversation_history.md</code>
             <span class="pkgtree__d pkgtree__d--read">سجلّ المحادثة — ينشئه Claude<button class="qmark" type="button"
                 data-term="pkg-history" aria-label="شرح">؟</button></span>
+            <code class="pkgtree__p pkgtree__p--write">├── notebook.txt</code>
+            <span class="pkgtree__d pkgtree__d--write">دفترك أنت — تكتب فيه مسودّاتك<button class="qmark"
+                type="button" data-term="pkg-notebook" aria-label="شرح">؟</button></span>
             <code class="pkgtree__p">└── application/</code>
             <span class="pkgtree__d">مجلّد تطبيقك — ينشئه Claude<button class="qmark" type="button" data-term="pkg-app"
                 aria-label="شرح">؟</button></span>
@@ -1239,6 +1242,12 @@
           <div data-term="pkg-history" data-title="conversation_history.md">سجلّ كل أمر أرسلته وكل ردّ وصلك، يكتبه <span
               class='tok-lat'>Claude</span> بنفسه بعد أول رسالة (ما راح تلقاه عند التحميل). ما هو مطلوب منك تتابعه، لكنه
             مرجعك لو احتجت تعرف كيف وصلت لقرار — وهو اللي يحفظ سياق مشروعك لو بدأت محادثة جديدة.</div>
+          <div data-term="pkg-notebook" data-title="notebook.txt">دفترك الشخصي. تفتحه بضغطتين فيفتح
+            في المفكّرة (<span class="tok-lat">Notepad</span>)، وتكتب فيه مسودّاتك بأي شكل — بلا تنسيق ولا
+            ترتيب.
+            <br><br>وأوّل ما يجهز كلامك، تنسخه وتلصقه في محادثتك مع <span class="tok-lat">Claude</span>.
+            <br><br><strong>وما يقرؤه أحد غيرك:</strong> لا <span class="tok-lat">Claude</span> يفتحه، ولا يُرفع مع
+            مشروعك.</div>
           <div data-term="pkg-app" data-title="application/">مجلّد تطبيقك نفسه — <strong>كل كود مشروعك يسكن
               فيه</strong>، وتبقى وثائقك في الجذر برّا. يهيّئه <span class='tok-lat'>Claude</span> في اليوم الأول، وما
             راح
@@ -2047,54 +2056,59 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 28 — سؤالا القسم: الغاية والخاصية (8) ════════════════════════════════════════════════════════ -->
+      <!-- ═══ 28 — من كلامك إلى خطة مشروعك (8) ═══════════════════════════════ -->
       <section class="sag-slide deck-slide" data-anchor="mvp-scope">
         <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">8</span> التعريف بالـMVP ونطاقه</span>
-          <h2 class="sag-slide__title">هذا القسم يجاوب على سؤالين: ليش تبني مشروعك، وايش بالضبط بتبنيه</h2>
+          <span class="sag-badge"><span class="sag-badge__num">8</span> التعريف بالمشروع ونطاقه</span>
+          <h2 class="sag-slide__title">من كلامك العادي، إلى خطة مشروعك</h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
-          <p class="sag-slide__lead sag-slide__lead--wide">وهو أوّل قسم تكتبه عن مشروعك. لكل سؤال منهما
-            مهمّة مستقلّة، والفرق بينهما هو اللي يخلّيك تعرف وين تحطّ كل فكرة تجيك.</p>
-          <div class="bento" data-cols="2">
-            <article class="card card--accent">
-              <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
-                <h3 class="card__title">الغاية — ليش تبنيه</h3>
-              </div>
-              <p class="card__note">نتيجة تبي مشروعك يوصّلها للناس. تُقاس بالأثر: صار ولّا ما صار؟</p>
-              <p class="card__note card__note--sm"><strong>من مشروع الحجوزات:</strong> «يحجز العميل بنفسه على
-                وقت متاح فعلًا، بدون ما يتراسل مع أحد».</p>
-            </article>
-            <article class="card card--state">
-              <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
-                <h3 class="card__title">الخاصية — ايش بتبني</h3>
-              </div>
-              <p class="card__note">شي ملموس يُبنى فعلًا. يُقاس بوجوده: انبنى ولّا ما انبنى؟</p>
-              <p class="card__note card__note--sm"><strong>من مشروع الحجوزات:</strong> «تقويم يعرض أيّام كل شهر
-                وكم موعد متاح في كل يوم».</p>
-            </article>
+          <p class="sag-slide__lead sag-slide__lead--wide">المدخل الصحيح مو «ايش بتبني» — المدخل هو
+            <strong>ايش المشكلة اللي تبي تحلّها</strong>. ومن هنا تمشي بقيّة الطريق:</p>
+          <div class="stageflow">
+            <div class="stage stage--you">
+              <span class="stage__n">١</span>
+              <h3 class="stage__t">تجاوب بكلامك العادي</h3>
+              <p class="stage__d">تحكي عن فكرتك وعن المشكلة اللي تشوفها — بلا صياغة ولا ترتيب.
+                <strong>هذا كل شغلك.</strong></p>
+            </div>
+            <div class="stage">
+              <span class="stage__n">٢</span>
+              <h3 class="stage__t">Claude يصوغ المسوّدة</h3>
+              <p class="stage__d">يطلّع من كلامك: المشكلة، والهدف، والنتائج اللي تبي مشروعك يوصّلها.</p>
+              <p class="stage__loop"><b>⟲</b> تقرأ وتصوّب. مرّة أو مرّتين، وهذا طبيعي.</p>
+            </div>
+            <div class="stage">
+              <span class="stage__n">٣</span>
+              <h3 class="stage__t">ومنها يطلّع الخصائص</h3>
+              <p class="stage__d">من نفس الكلام، يطلّع <strong>3 إلى 5 خصائص</strong> — وهي نطاق مشروعك.</p>
+              <p class="stage__loop"><b>⟲</b> تقرّر: ايش يدخل، وايش يطلع برّا، وايش يتأجّل.</p>
+            </div>
+            <div class="stage">
+              <span class="stage__n">٤</span>
+              <h3 class="stage__t">وبعدين — القسم 10</h3>
+              <p class="stage__d">تفاصيل كل خاصية وحدة وحدة. الشاشات والأزرار مكانها هناك، مو هنا.</p>
+            </div>
+            <div class="stageflow__eg">
+              <p class="stageflow__egl">مثال — تطبيق بسيط لتتبّع المخزون:</p>
+              <p>«الكميات تضيع منّي، وما أدري إلا بعد ما ينفد الصنف.»</p>
+              <p>المشكلة: ما فيه طريقة تبيّن الكمية الحقيقية أوّلًا بأوّل.</p>
+              <p>جرد يبيّن كل صنف وكميته · تنبيه قبل النفاد.</p>
+              <p>كل حقل في شاشة الجرد، وكل زرّ فيها.</p>
+            </div>
           </div>
           <article class="card card--accent">
             <div class="card__top"><span class="card__icon"><span class="i i-rocket"></span></span>
-              <h3 class="card__title card__title--sm">وهذي غايات مشروع الحجوزات الأربع، بترتيب تجربة العميل</h3>
+              <h3 class="card__title card__title--sm">وهذي النتائج الأربع اللي طلّعها Claude من كلام المدرب في مشروع الحجوزات</h3>
             </div>
             <ol class="flow flow--row">
               <li>يشوف العميل مواعيد الخدمات المتاحة ويحجز بنفسه.</li>
               <li>ما يقدر اثنين يحجزون نفس الموعد عند نفس مقدّم الخدمة.</li>
-              <li>مقدّم الخدمة يفتح مواعيد لشهر كامل بخطوة وحدة.</li>
+              <li>مقدّم الخدمة والمشرف يفتحون مواعيد لشهر كامل بخطوة وحدة.</li>
               <li>كل حجز يوصل منه إيميل تأكيد وفيه رابط الاجتماع.</li>
             </ol>
-            <p class="card__note card__note--sm">لاحظ إن كل وحدة <strong>نتيجة</strong> يعيشها المستخدم، مو شاشة ولا
-              زرّ.
-              والشاشات والأزرار تجي بعدين في <strong>النطاق</strong>، اللي يُشتقّ من هذه الغايات نفسها.</p>
-          </article>
-          <article class="card" style="border-inline-start:5px solid var(--state-warning)">
-            <p class="card__note"><span class="i i-alert-triangle" style="color:var(--state-warning)"></span>
-              <strong>قاعدة الدورة:</strong> تكتب من <strong>3 إلى 5 غايات</strong> توضّح ليش تبني
-              مشروعك، ثم نحولها ل <strong>3 إلى 5 خصائص</strong> والي هي نطاقك الفعلي. أي شي زيادة يروح
-              لـ«خطة التطوير المستقبلية» — هذا اللي يضمن إنك تخلّص مشروعك في وقت الدورة.
-            </p>
+            <p class="card__note card__note--sm"><strong>قاعدة الدورة:</strong> من <strong>3 إلى 5 خصائص</strong>، وهي نطاقك — وأي زيادة تتأجّل.</p>
           </article>
         </div>
         <footer class="sag-slide__foot">
@@ -2108,7 +2122,6 @@ send_email
           </div>
         </footer>
       </section>
-
 
       <!-- ═══ 29 — بداية جلسة تطبيق مع المدرب ══════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-quote deck-slide" data-tone="rule" data-surface="dark">
@@ -3775,11 +3788,18 @@ send_email
                 Claude يبني ويحفظ ويرفع، ودورك إنك تجرّب في المتصفّح وتقول له ايش تبي تغيّر.</p>
             </div>
           </div>
-          <div class="card card--plain">
-            <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
-              خلّص كل اللي تحت مهمّة كبيرة، وعلامتها تنحطّ لحالها — وعلامة «–» معناها إنك في النص.
-              <strong>Ctrl + نقرة</strong> على أي مهمّة تودّيك لشريحتها.
-            </p>
+          <div class="bento" data-cols="2">
+            <article class="card card--accent">
+              <p class="card__note card__note--sm"><strong>صياغة جاهزة لـ Claude:</strong> «هيّئ هيكل
+                تطبيقي واربطه بقاعدة البيانات، واعرض لي ملخّصًا بسيطًا بلا مصطلحات لأوافق، ثم شغّله
+                وقل لي كيف أفتحه».</p>
+            </article>
+            <article class="card card--plain">
+              <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
+                خلّص كل اللي تحت مهمّة كبيرة، وعلامتها تنحطّ لحالها — وعلامة «–» معناها إنك في النص.
+                <strong>Ctrl + نقرة</strong> على أي مهمّة تودّيك لشريحتها.
+              </p>
+            </article>
           </div>
         </div>
         <footer class="sag-slide__foot">
@@ -3857,31 +3877,39 @@ send_email
         </footer>
       </section>
 
-      <!-- ═══ 48 — إن بقي لديك وقت (8.1) ═══════════════════════════════════════════════════════════════════ -->
-      <section class="sag-slide deck-slide">
+      <!-- ═══ 48 — 8.1 ابدأ بفكرتك ════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-anchor="task-81">
         <div class="sag-slide__head">
-          <span class="sag-badge"><span class="sag-badge__num">8.1</span> تعريف المشكلة والهدف والغايات</span>
-          <h2 class="sag-slide__title">باقي عندك وقت؟ ابدأ بفكرتك</h2>
+          <span class="sag-badge"><span class="sag-badge__num">8.1</span> تعريف المشكلة والهدف</span>
+          <h2 class="sag-slide__title">فكرتك في أربعة أسئلة — جاوب بكلامك أنت</h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
-          <p class="sag-slide__lead"><strong>ما لها وقت محدّد</strong> — إذا خلّصت اللي فوق، ابدأ تجمع ملاحظاتك عن
-            فكرة مشروعك. وتكمّلها بكرة.</p>
-          <div class="bento" data-cols="2">
-            <article class="card card--accent">
-              <div class="card__top"><span class="card__icon"><span class="i i-lightbulb"></span></span>
-                <h3 class="card__title card__title--sm">اكتب على راحتك</h3>
-              </div>
-              <p class="card__note">ايش المشكلة اللي يحلّها مشروعك؟ ولمين؟ وايش اللي يخلّيه مفيد؟ <strong>بلا صيغة
-                  رسمية</strong> — كلام عادي زي ما يجي.</p>
-            </article>
-            <article class="card card--state">
-              <div class="card__top"><span class="card__icon"><span class="i i-info"></span></span>
-                <h3 class="card__title card__title--sm">واللي ما أنت متأكّد منه، قُله</h3>
-              </div>
-              <p class="card__note">«لسّه ما قرّرت كيف تطلع هذي الصفحة» <strong>معلومة مفيدة، مو نقص</strong>.
-                والصياغة شغل <span class="tok-lat">Claude</span> بعدين، مو شغلك أنت.</p>
-            </article>
+          <p class="sag-slide__lead sag-slide__lead--wide"><strong>ما لها وقت محدّد — ابدأ اليوم،
+              وتكمّلها بكرة.</strong> إذا خلّصت اللي فوق وبقي عندك وقت، افتح دفترك وابدأ.</p>
+          <ol class="flow flow--ask">
+            <li>مين الشخص اللي يعاني من هذي المشكلة اليوم؟ وكيف يتصرّف حاليًا بدون مشروعك؟
+              <span class="ask__g">ممكن تسمِ شخص معين كمثال، واكتب ايش يعمل اليوم بدال مشروعك — الطريقة اللي
+                يتدبّر بها الآن هي المشكلة نفسها.</span>
+            </li>
+            <li>لو اشتغل مشروعك عدل، ايش اللي بيتغيّر في يوم هذا الشخص؟
+              <span class="ask__g">هذا أهمّ سؤال في الصفحة. جاوب عليه بنتيجة يعيشها هو، مو بشي تبنيه أنت.</span>
+            </li>
+            <li>ايش الشي اللي لو ما عمله مشروعك، ما صار له معنى؟
+              <span class="ask__g">هذي النواة. كل شي غيرها قابل للتأجيل.</span>
+            </li>
+            <li>ايش اللي تتخيّله في مشروعك؟ صفحات، شاشات، أي شي جاك في بالك — اكتبه.
+              <span class="ask__g">نعم، الشاشات مرحّب فيها هنا. المدرب نفسه بدأ بوصف صفحات، و Claude طلّع منها
+                الباقي.</span>
+            </li>
+          </ol>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-file-text" style="color:var(--accent-structure)"></span>
+              <strong>اكتبها في دفترك:</strong> في مجلّد مشروعك فيه ملف اسمه
+              <span class="tok-code">notebook.txt</span> — اضغط عليه مرتين فيفتح لك في المفكّرة
+              (<span class="tok-lat">Notepad</span>)، وفيه نفس الأسئلة وتحت كل واحد فراغ تكتب فيه. <strong>بلا صيغة
+                رسمية — كلام عادي زي ما يجي.</strong> واللي ما أنت متأكّد منه، قُله — فهذا معلومة
+              مفيدة، مو نقص.</p>
           </div>
         </div>
         <footer class="sag-slide__foot">
@@ -3890,7 +3918,8 @@ send_email
               <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
                   alt="ساج التقنية"></div>
               <span class="deck-foot__num">اليوم 1</span>
-            </div><span class="deck-foot__num">49</span>
+            </div>
+            <span class="deck-foot__num">48</span>
           </div>
         </footer>
       </section>

@@ -15,9 +15,11 @@ much smaller and all share the skeleton below.
  2  مهامّ اليوم — شرح المفاهيم + تطبيق مع المدرب      2 × .sess
  3  مهامّ اليوم — عملك على مشروعك + مراجعة            2 × .sess
  4  أهداف اليوم                 ← goals LAST, never first
-    … شرح المفاهيم content slides …
- ▸  فاصل: تطبيق مع المدرب       sag-quote, dark, badge-only footer
-    … showcase slides (chatlog or stepvid) …
+    … §A theory slides …
+ ▶  المقطع: §A                  stepvid — the recording of §A's tasks
+    (trainer re-runs §A live here — no slide)
+    … §B theory slides …
+ ▶  المقطع: §B                  stepvid
  ▸  فاصل: عملك على مشروعك       ← carries the "ticking is your job" line
     دورك الآن                   nested task checklist, LIGHT surface
  ▸  فاصل: مراجعة وعرض التقدم
@@ -25,19 +27,24 @@ much smaller and all share the skeleton below.
     غدًا — اليوم N+1
 ```
 
-Three break slides, never four: the day *opens* on شرح المفاهيم, and a "we start now" slide in front
-of the first thing is not a transition.
+**Two break slides from Day 2, never three.** «شرح المفاهيم» and «تطبيق مع المدرب» are delivered
+interleaved — explain a section, play its recording, re-run it live — so there is no transition to
+mark between them. The day also *opens* on شرح المفاهيم, and a "we start now" slide in front of the
+first thing is not a transition either. (Day 1 is the exception and keeps three.)
 
 ---
 
-## Both sessions run every day
+## Both sessions run every day — and they run together
 
-- **«شرح المفاهيم»** — explanation and tutoring. Carries the **showcase**: a recording, or a
-  conversation replay, of the same tasks being done for real.
-- **«تطبيق مباشر مع المدرب»** — the trainer opens Claude Code and executes *that day's* steps live.
+The order is fixed and repeats per section:
 
-They are not alternatives; every day 2–10 has both. **Day 1 is the only exception** — its first
-session is course preparation that cannot be re-executed live.
+1. **«شرح المفاهيم»** — the trainer explains that section's concepts from the theory slides.
+2. **The recording** — a `stepvid` slide of those same tasks performed for real on a live project.
+3. **«تطبيق مباشر مع المدرب»** — the trainer executes the same steps live, in front of the room.
+
+Then the next section repeats all three. They are not alternatives and they are not two blocks: the
+deck interleaves them, which is why there is no break slide between them. **Day 1 is the only
+exception** — its first session is course preparation that cannot be re-executed live.
 
 Which project fills which slot, and what material exists per section, is in
 [`showcase-strategy.md`](showcase-strategy.md).

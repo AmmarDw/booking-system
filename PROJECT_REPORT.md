@@ -39,7 +39,9 @@
 **④ Our Project.**
 - **Problem:** Service providers (consultants, clinics, tutors) and their clients lack a simple shared way to see real availability and book a specific time with a specific provider; bookings and confirmations are handled manually.
 - **Purpose:** A booking & appointment management system where consumers browse services, pick a date and an available provider slot, book it, and receive an email confirmation with a Google Meet link; admins and providers manage services and availability.
-- **Objectives:** (1) let consumers self-serve bookings against real provider availability; (2) prevent double-booking by binding slots to providers across services; (3) give admins easy bulk availability management; (4) confirm each booking by email with a meeting link.
+- **Objectives:** (1) let consumers self-serve bookings against real provider availability; (2) prevent double-booking by binding slots to providers across services; (3) let providers bulk-generate their own availability and admins do so for any provider; (4) confirm each booking by email with a meeting link.
+
+> *Note on objective (3).* This originally read “give admins easy bulk availability management” — admin-only. That was the pre-correction wording: during the build the trainer corrected it so bulk generation belongs to **providers (their own slots) and admins (any provider)**, which is what shipped. The correction itself is part of the teaching material in curriculum §8, so the original phrasing is recorded here rather than silently overwritten.
 
 ---
 

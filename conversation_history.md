@@ -6457,3 +6457,356 @@ Done.
 ---
 
 ## § D152 — Prompt #107
+
+**Prompt:** "there are lots of violations happended and lots of things gone wrong, you must analyze @temp.md and read it carefully to know exactly what I am talking about and fixe everything"
+
+`temp.md` is a 695-line read-only audit of task 8.1: Part I is a refactoring spec, Part II the
+evidence behind it, Part III a record of decisions already taken that must not be re-opened.
+
+**Answers given in discussion:** RTL wrapper sweep — finish all remaining skill files; the notebook
+seed — ship the ignore rule and force-add the template; the flow graphic — horizontal, reading
+right→left; `curriculum:1705` — fix it too.
+
+---
+
+
+## § D152 — The task-8.1 refactor: one vocabulary, one method slide, one notebook
+
+### For you
+
+**The problem the audit found, in one sentence:** before a trainee wrote a single word about their
+idea, task 8.1 made them learn a classification system («غاية» vs «خاصية») and a derivation order
+(objectives first, features second). Both of those are *Claude's* internal machinery. You are a
+software engineer and that distinction still lost you — a non-technical trainee had no chance. It
+also contradicted the course's own rule, already on Day-1 slide 12: «اكتب كل اللي في بالك أوّل،
+وبعدين رتّبه».
+
+**What the trainee sees now.** Task 8.1 is four plain questions they answer in their own words, on
+one slide that looks identical on Day 1 and Day 2 — only the status line changes («ابدأ اليوم» →
+«أكمل اللي بدأته أمس»). No taxonomy, no classification, no ordering rule. They are now explicitly
+*invited* to describe pages and screens — the old text forbade exactly the thing you yourself did
+when you defined the booking system, and that Day-2 slide 11 holds up as the good example.
+
+**A new file they write in: `project-package/notebook.txt`.** Plain Notepad, no formatting, opens
+with a double-click. Its header tells them it is theirs alone, that it is excluded from GitHub, and
+tells Claude in writing never to read it. That last part matters for a practical reason: half-formed
+drafts are expensive to read and worth nothing. They copy across what is ready when it is ready.
+
+**A new graphic replaces the two definition cards on Day-1 slide 28.** Four stages reading
+right-to-left — you answer → Claude drafts → features come out of the same words → the details wait
+for section 10 — with two ⟲ badges marking the points where you read and correct. The first stage is
+tinted differently because it is the only one that is your work; the layout carries that, not a
+sentence claiming it. Underneath, the same four columns carry a worked inventory-app example, so the
+mapping needs no explaining. Section 8 was the only section with no generic example; it has one now.
+
+**The counting rule is fixed.** «3 إلى 5» now attaches to خصائص and to nothing else, anywhere in the
+package. Objectives are never counted.
+
+**One factual correction carried through.** Objective (3) of the booking system said bulk
+availability generation was an admin capability. Your own correction during the real build made it a
+provider capability too, and the deck already showed the corrected version while the written
+material still showed the old one — so a trainer reading from one and presenting from the other
+would have said two different things. Both now match. `PROJECT_REPORT.md` is corrected *and*
+annotated with what it originally said, because it is a graded historical artifact and the record of
+the change is part of its value.
+
+**Both decks were opened in a real browser and checked, not eyeballed.** Day 1: 49 slides, none
+overflow, all 45 internal links resolve. Day 2: 22 slides, none overflow, all 19 links resolve. The
+three-level task checkboxes were exercised: ticking «7.10» on the day-plan slide ticks all seven
+sub-tasks and all three MCP sub-sub-tasks on the work slide, and un-ticking one grandchild puts both
+ancestors into the half-done «–» state on **both** slides at once.
+
+### تفاصيل تقنية — technical detail, you don't need to read this
+
+**The Vocabulary Law (temp.md §2).** خاصية is the countable unit and carries the ordinary industry
+sense of *feature*; the 3–5 limit binds to it alone; غاية is demoted to a mid-sentence gloss or a
+word inside a question, never a title, card heading, column header, checkbox label, counted list or
+half of a comparison; no غاية-vs-خاصية comparison survives anywhere; and «الأهداف» was deliberately
+*not* introduced as the replacement noun, because it collides with «الهدف» — «النتائج» or a question
+with no noun is used instead.
+
+Final sweep: `3–5 غاي` → 0 hits. Bare `مجالات` → 0 hits. All 19 surviving `غاي` occurrences were read
+in place and confirmed to sit mid-sentence or inside a question. The seven `الأهداف` hits are all the
+pre-existing section title «الأهداف التدريبية», not the outcomes noun.
+
+**The 8.1 heading was renamed** («تعريف المشكلة والهدف والغايات» → «تعريف المشكلة والهدف») — it was
+the most visible instance of the banned construction, and a heading owns a GitHub anchor, so all 8
+anchors and 5 cross-reference titles moved in the same pass. An anchor checker was written to prove
+nothing broke: 311 links / 248 headings / **0 broken**, identical to the pre-edit baseline. Its first
+version produced 46 phantom failures because `str.isalnum()` returns False for Arabic combining
+marks, so shadda was being stripped from slugs while GitHub keeps it; the self-test only proved the
+checker *caught* a bad link, never that it *accepted* a good one. Fixed by preserving the Mn/Mc
+categories and making the self-test two-sided.
+
+**New `.stageflow` component** in `deck.css`. No arrow, chevron, connector or loop primitive existed
+anywhere in the 2307 lines of CSS or the 22 icons, so it was built: a 4-column grid, connectors drawn
+from two CSS borders (no glyph — a Unicode arrow gets reordered by the bidi algorithm), and ⟲ with
+`unicode-bidi: isolate`, the same treatment `.qmark` already gives its ؟. The markup block is
+**byte-identical** between Day-1 slide 28 and Day-2 slide 5, verified by extracting both and diffing
+(sha `79f273a31ed1` on each), not by reading them.
+
+**Three real bugs were found only because the decks were opened in a browser:**
+
+1. `.stageflow__eg` is a grid child but had no `grid-column: 1 / -1`, so the example row was crammed
+   into one of four columns and ballooned to 346px. Adding the span took 202px off slide 28.
+2. The chevrons pointed **up**, and the fourth hung off the left edge of the flow instead of sitting
+   between two stages. Both were RTL inversions: `inset-inline-end` resolves to the *left* side and
+   `border-inline-start` to the *right* border, so the connector was positioned after each stage
+   instead of before it and built from the wrong two edges. Now `inset-inline-start` +
+   `border-inline-end`.
+3. Slide 45 overflowed because of the prompt card this refactor added to it; Day-2 slide 7 likewise.
+   Both were fixed by compacting content, not by shrinking type.
+
+**Overflow work.** Slide 28 started 89px over after the rebuild. Recovered by turning the 3–5 rule
+into the one-line strip the plan actually called for (it had shipped as a 3-line note), plus
+token-clean spacing: `.stageflow` row-gap → `--sp-2` (the column gap stays `--sp-4`, because the
+chevron is positioned with `calc(var(--sp-4)/-2 - 6px)` and would detach), `.stage` vertical padding
+→ `--sp-1`, `.stage__loop` vertical padding → 4px, `.stageflow__eg` spacing → `--sp-1`. The §2.1.6
+framing sentence was kept verbatim rather than trimmed to save a line. Slide 45's prompt card lost
+its title row and took the label inline. Day-2 slide 7's two hand-off notes went from two lines each
+to one.
+
+A `safe center` rule was added for the 8.1 slide bodies and any stageflow-bearing body — Day-1 48 and
+Day-2 5 were leaving 150–250px of trailing dead space. `safe` is what lets one rule serve every
+instance: where content already fills the frame it falls back to `start` rather than pushing the
+first line out through the top. This follows the precedent and the reasoning already written into
+`.bento`.
+
+The `[data-anchor="mvp-scope"] .card>*+*{margin-block-start:0}` override was **removed** — it existed
+only because the old overfull slide 28 had four cards; the rebuilt slide has one, and the override
+would now just look broken.
+
+**Skills.** `defining-mvp` lost the row that taught Claude a feature is screen-sized, and gained a
+size calibration (a خاصية is journey-sized — «لوحة تحكم مشتركة», not «شاشة إضافة منتج»), two standing
+rules (never ask the trainee to classify anything; never reject input for arriving feature-shaped),
+and a new §2.5 documenting that 8.1 spans two days and is not the Day-1 نبذة. `defining-users:29` had
+it backwards — it called a screen a خاصية and claimed a خاصية does not survive a redesign;
+corrected. `designing-screens` was read in full and is **clean** — it never uses «خاصية», «نطاق» or
+«3–5», and already requires every screen to trace to a journey step or a requirement. Eight skills
+gained the `<div dir="rtl">` wrapper; **`drawio` was deliberately excluded** because it contains zero
+Arabic characters and wrapping an English document would be a defect.
+
+**One gap this refactor created and then closed:** the ⚠ never-read-`notebook.txt` rule was written
+into `defining-mvp/SKILL.md`, which only loads on demand during section 8 — but the file exists from
+Day 1. It is now also a standing rule in `project-package/CLAUDE.md`, which is always loaded.
+
+**A false record was corrected.** `deck/day-02-brief.md:66-68` claimed `defining-mvp` had been
+de-«مجالات»-ed. It had not — lines 3, 50 and 60 still said it. The sweep that "verified" it had
+grepped the two-word phrase «مجالات أساسية» and so missed every bare use. Both the files and the
+false record are fixed, with the lesson written into the brief: *a narrow grep that returns clean is
+not proof; grep the bare term.*
+
+**A fourth bug, found by measuring instead of trusting the legend.** Slide 16's new `notebook.txt`
+row uses a `--write` modifier whose tint is `#DDF6F3` against the `--read` rows' `#DCEFF6` — a
+difference of (1, 7, −3) in RGB, which is distinct in code and invisible to the eye. The legend I had
+written promised «الأزرق تقرأه · الأخضر تكتب فيه», a colour distinction the render does not
+deliver. No palette change fixes it — the two soft tokens are inherently that close. So the write row
+is now **bold** (700 vs 500), and the legend describes what is actually visible: «الملوّن يهمّك ·
+العريض تكتب فيه أنت · الرمادي ما تفتحه أصلًا». A stale CSS comment counting 24 ؟ buttons was
+corrected to 25, the count after the new term entry.
+
+**Register sweep on both decks:** و+Latin glue 0/0 · «طرفية» 0 · «يسوّي» 0 · «وايش» at a clause or
+title start 0 (one was found and fixed — a card title on the new Day-2 slide 7) · no plural address.
+The five `ويش` hits on Day 1 were checked in place and are all false positives («ويشغّله», «ويشرحه»,
+«ويشوفه» — a genuine conjunction plus a verb).
+
+**Not done, and why:** nothing is committed — you have not asked for it. `notebook.txt` and
+`project-package/.gitignore` are staged (the notebook needed `git add -f` to survive its own ignore
+rule). `deck/handout/index.html` was left alone: it carries two stale references but sits outside
+temp.md §4's scope and was already three commits stale before this work. Day-2 slide 12 has no
+`data-anchor` and cannot be reached by reference — reported only, because temp.md §8 says not to
+touch slides 11–13.
+
+### Documents affected
+
+`project-package/slides/day-01.html` (slides 16, 28, 45, 48, task map) ·
+`project-package/slides/day-02.html` (21→22 slides; 5, 6, new 7, 8, 19, 21, 2, 22) ·
+`project-package/slides/assets/deck.css` (`.stageflow`, `.flow--ask`, `.pkgtree__*--write` added;
+`mvp-scope` override removed; centring rule added) ·
+`project-package/bootcamp_roadmap_and_curriculum.md` (16 edits + the 8.1 heading rename) ·
+`project-package/CLAUDE.md` · `project-package/PRODUCT.md` ·
+`project-package/notebook.txt` (new) · `project-package/.gitignore` (new) ·
+`project-package/.claude/skills/defining-mvp/SKILL.md` ·
+`project-package/.claude/skills/defining-users/SKILL.md` ·
+seven further `SKILL.md` files (RTL wrapper only) ·
+`PROJECT_REPORT.md` · `deck/DECK_BRIEF.md` · `deck/day-02-brief.md`
+
+### Status
+
+Done. Both decks verified live in Chrome: Day 1 — 49 slides, none overflow, 45/45 references
+resolve; Day 2 — 22 slides, none overflow, 19/19 references resolve.
+
+---
+
+
+## § D153 — Prompt #108
+
+**Prompt:** the showcase decision is reversed — **darrisni** now supplies recorded videos, and a
+different project (to be chosen) will carry the live «تطبيق مع المدرب». BookIt's material is
+confusing and cannot show a process. From Day 2 the two teaching sessions run **together**: explain
+the theory, play the recording of that part, then re-execute it live — so the «تطبيق مع المدرب»
+break slide is no longer needed and only «عملك على مشروعك» and «مراجعة وعرض التقدم» keep theirs.
+
+Specific asks, explicitly "not limited to them at all — you must figure out what needs to be
+updated, refer to older plans and the decision that was changed, and maybe git history or latest
+conversation history":
+
+- Slide 2's «8 · مهمّتا القسم» row must open **slide 5**, even though that slide repeats Day 1.
+- Slide 6's title is vague — suggest alternatives to choose from.
+- Define «الرحلة الأساسية» with a `؟`/i icon, say which day it is worked on, and do the same for
+  «رحلة»; also point back to `notebook.txt` here, in a small font under the title, adding nothing
+  removed.
+- The recording's «خارج النطاق» and «خطة التطوير» came out identical. That is acceptable but must
+  be **explained** — some people have no instant idea what belongs out of scope entirely rather than
+  merely deferred — and slide 8's warning tone should come down.
+- **After slide 8 comes the recording**, replacing slides 12, 13 and 14 (the «خصائص المدرب طلعت ستّ»
+  warning is no longer needed). Map those slides' steps onto what the video actually does, without
+  forcing them and without pasting the supplied timestamp list as-is; review the frames to keep the
+  content accurate, and be neutral and correct. Video:
+  `project-package/slides/media/8.1_&_8.2_tasks.mp4`.
+- Introduce **competitor research** as an extra amber step with no timespan: if you are unsure what
+  you want — or even if you are sure — ask Claude to research projects with the same or a close idea,
+  to borrow from them or to work out how you differ. Skippable.
+- Slide 9 explains «كيان» in a `؟` without ever mentioning it — move it to slide 15 for now, and fix
+  slide 15's bottom note, which assumes the trainee already knows the term.
+- Slide 19's «اكتب المشكلة والهدف بكلامك» and «اكتب ايش بيتغيّر في يوم مستخدمك» must refer to slide
+  7, not 1.
+
+**Answers given in planning:** slide 6 title → «مهمّتان: وحدة تعرّف مشروعك، ووحدة ترسم حدوده» ·
+«الرحلة الأساسية» defined on the slide that actually uses it · agenda keeps two `.sess` blocks plus
+an interleave note · §9 slides stay as they are for now.
+
+---
+
+
+## § D153 — The showcase reversal: one recording replaces three BookIt slides, and the two sessions merge
+
+### For you
+
+**Day 2 is now 19 slides, down from 22.** The «تطبيق مع المدرب» break slide is gone, three BookIt
+slides are gone, and one recording slide took their place — sitting right after slide 8, so the deck
+reads the way the day is actually delivered: explain §8 → watch §8 → do §8 live → explain §9 → …
+
+**Your recording is on slide 9, with thirteen steps.** Clicking any step jumps the video to that
+moment. It keeps everything the three retired slides were teaching, but now the trainee watches it
+happen instead of reading that it happened:
+
+- the scope is **derived** from answer 4, not collected again — this is literally on screen in the
+  recording, which is the single best thing in it;
+- Claude hands back the definition and **does not write it to the file yet** — it is waiting for you,
+  and that is the correction round;
+- Claude hit a real gap (nobody had said who enters the teachers' availability) and **asked instead
+  of assuming**, offering (أ) and (ب).
+
+The six-features warning is dropped: darrisni landed on **five**, inside the limit, so it had nothing
+left to warn about.
+
+**The competitor-research step is in, as an amber row with no timestamp** — the deck's established
+way of saying "the list is telling you something the video does not show". It says plainly that it is
+optional and can be skipped. This idea existed **nowhere** in the package before, so I also taught it
+to Claude in the `defining-mvp` skill — otherwise a trainee could ask for it and get something
+improvised.
+
+**The out-of-scope question is answered where it is asked.** Slide 8's warning tone is down («أسهل
+قائمة تُترك فاضية — وهي مو كذلك»), and the card now says the thing that was missing: the difference
+between the last two lists is **intent, not content**. They usually hold the same items and that is
+normal; what belongs in «خارج النطاق» *alone* is what you never intend to build — «ما بنصير وسيط
+دفع». The same explanation went into the curriculum and the skill so all three agree.
+
+**«الرحلة الأساسية» is now defined where it is actually used** — slide 8, not 7, because that is the
+only slide that says it — and the window names **Day 4** as where the journey gets drawn. The «كيان»
+window moved off slide 10, which never used the word, onto slide 12, which does; slide 12's note now
+introduces the idea before leaning on it.
+
+**Slide 7 names your notebook under the title**, in small type, with nothing removed.
+
+**And the "refers to slide 1" bug was real.** Any task row without a link was jumping to the cover
+slide. One line in `deck.js` fixed it for both decks at once.
+
+### تفاصيل تقنية — technical detail, you don't need to read this
+
+**The `deck.js` bug.** `resolveRef(null)` ran `slides[i].getAttribute('data-anchor') === ref` with
+`ref === null`, and `getAttribute` returns `null` for a slide with no anchor — so the comparison was
+true on the first anchorless slide, index 0. Guarded with `if (!ref) return -1;`. **Correction to my
+own earlier estimate:** I put the blast radius at 22 rows from a regex over the markup; that regex
+misses tags wrapped across lines. The live DOM count is **7** — 2 on Day 1, 5 on Day 2. Verified by
+dispatching a real ctrl+click and confirming the active slide does not move.
+
+**Frame verification changed the content three times.** The supplied timestamp summary was treated as
+a hypothesis and checked against extracted frames, and it was wrong in three ways:
+
+1. It called the notebook editor "Antigravity IDE". It is **Windows Notepad** (tabs, `Plain text`,
+   `Unix (LF)`, a character count in the status bar).
+2. It said the prompt was typed **into `PRODUCT.md`**. It is typed into the **Claude chat panel
+   inside the IDE** — a different thing, and the distinction matters to a trainee copying the move.
+3. It **missed the correction round entirely**, folding it into "the third prompt". At 2:22 the
+   trainer tells Claude the ready-made prompt itself was wrong, and has it split problem from goal in
+   both `PRODUCT.md` and the log — with Claude deliberately leaving the trainer's own quoted words
+   untouched because they are a transcript, not Claude's prose. That is the best teaching moment in
+   the video and it nearly got cut.
+
+Cross-checked throughout against `trainee-test/conversation_history.md` §13–§15 and its
+`PRODUCT.md` §1.1.
+
+**A superseded wording was still shipping in four places.** The recording shows slide 7's prompt card
+reading «فقرة قصيرة تجمع المشكلة والهدف» — the wording the trainer corrected *during* that session to
+two separate paragraphs. Slide 7 and `PRODUCT.md` had been fixed; `curriculum:1165` (tasks table),
+`curriculum:1170` (المخرَج), `curriculum:1244` (the copy-paste prompt) and **Day-2 slide 6** had not.
+All four fixed. The video still shows the old wording, so the slide carries a `stepvid__fix` saying
+the deck has since moved — the honest option, versus re-recording.
+
+**Structure.** Sections were split on their banner comments, slides 11–14 dropped, the new slide
+spliced after 8, and **all banners renumbered in one pass** — never hand-editing `deck-foot__num`,
+which `deck.js:765` owns. The first attempt asserted the wrong count (it sliced away the §9 theory
+pair); the assert caught it before anything was written. `demo-81` and `demo-82` both had exactly one
+referrer each, so both now point at the recording's `demo-8`. Slide 5 gained `data-anchor="s8-flow"`
+so the agenda row can open it.
+
+**Two overflow fixes.** The notebook note pushed slide 7's title from one line to two, costing 17px;
+shortening the note to «إجاباتك في notebook.txt» restored it. Slide 12's period immediately after the
+`؟` button rendered as «كيان؟.» — replaced with an em-dash.
+
+**The asset was renamed** from `8.1_&_8.2_tasks.mp4` to `tasks-81-82.mp4`: `&` must be escaped in an
+HTML attribute and no other asset uses underscores. Recorded in `MEDIA_SHOTLIST.md`, whose own rule
+is that the deck references files by exact name.
+
+**Verification, all run rather than asserted.** Day 1: 49 slides, none overflow, 45/45 references
+resolve. Day 2: 19 slides, none overflow, 21/21 references resolve, banners contiguous 1..19. The
+video loads from `file://` (`readyState` 4, 204.77s) and clicking the 1:30 step seeks to exactly 90s;
+the amber row has no time button and no `data-t`. The three-level checkbox cascade still works after
+the `deck.js` edit (parent ticks 7 children and 3 grandchildren; un-ticking one grandchild puts both
+ancestors to `partial`). Curriculum anchors: 311 links / 248 headings / **0 broken**, with the
+validator self-testing in both directions. Register sweep clean on both decks: و+Latin glue 0,
+«طرفية» 0, «يسوّي» 0, «مجالات» 0, «وايش» at a clause start 0 — one was found and fixed on slide 8.
+Offline: 0 remote references. The video slide's only `tok-code` hits are `notebook.txt` and
+`PRODUCT.md`, both passing file-name mentions rather than commands.
+
+**Not done, and why:** nothing committed — you have not asked. **No project is chosen for the live
+session**; that is your call and it is flagged as an open item at the top of
+`showcase-strategy.md`, not buried. Day 1 is untouched apart from the shared `deck.js` fix — the new
+model starts at Day 2 by your instruction, and Day 1's «تطبيق مع المدرب» is a separate device-setup
+walkthrough, so its three break slides stay correct. Day-2 slides 12–14 keep their BookIt content per
+your answer; slide 14 is now the last surviving `chatlog`, and the component is marked legacy — not
+removed, but no new ones should be authored.
+
+### Documents affected
+
+`project-package/slides/day-02.html` (22 → 19 slides; new slide 9; edits to 2, 5, 6, 7, 8, 10, 12, 16) ·
+`project-package/slides/assets/deck.js` (`resolveRef` null guard) ·
+`project-package/slides/media/tasks-81-82.mp4` (renamed) ·
+`project-package/bootcamp_roadmap_and_curriculum.md` (§2.2 session model, 8.1/8.2, 4 wording fixes) ·
+`project-package/.claude/skills/defining-mvp/SKILL.md` (competitor research; the scope-list overlap) ·
+`.claude/skills/bootcamp-deck/SKILL.md` (two break slides; checklist) ·
+`.claude/skills/bootcamp-deck/references/day-deck-recipe.md` (skeleton + delivery model) ·
+`.claude/skills/bootcamp-deck/references/showcase-strategy.md` (rewritten; BookIt inventory kept as an appendix) ·
+`deck/day-02-brief.md` (rewritten) · `deck/DECK_BRIEF.md` · `deck/MEDIA_SHOTLIST.md`
+
+### Status
+
+Done. Both decks verified live in Chrome; the recording plays and seeks; the null-ref fix confirmed
+by simulated ctrl+click on both days.
+
+---
+
+
+## § D154 — Prompt #109

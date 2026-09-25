@@ -1,4 +1,6 @@
-# Media shot list — Day 1
+# Media shot list
+
+**Day 1 is the bulk of this file** — it was the recording-heavy onboarding day. From **2026-09-25** days 2–10 carry recordings too: the showcase reversal made every section's tasks a recorded demo on the course stack. Day 1 first, then a section per later day.
 
 I cannot capture these: they are installers, browser dialogs and account screens on your machine.
 **You record them, drop them in `project-package/slides/media/` with the exact filename below, and I wire them in.**
@@ -167,6 +169,22 @@ Tell me if you'd rather that become a real media slide and I'll restructure the 
 | `00-hero-loop.mp4` | A 5–8 s silent loop of Claude Code building something, behind the title slide. Strong opener; skip if time is short. |
 | `04b-git-linux.png` | Only if you expect Linux trainees. |
 | `01c-claudecode-install-linux.mp4` | Same. |
+
+## Day 2 — تعريف المشروع ونطاقه
+
+Recorded on **darrisni**, the project that now supplies every «شرح المفاهيم» demo. See
+`.claude/skills/bootcamp-deck/references/showcase-strategy.md`.
+
+| # | Filename | Type | What must be visible | Slide |
+|---|---|---|---|---|
+| d2-1 | ✅ `tasks-81-82.mp4` | MP4 | Tasks 8.1 and 8.2 end to end: the four questions on the deck → `notebook.txt` open in Notepad → the ready-made prompt typed into the Claude panel inside the IDE → the notebook pasted as the معطيات → Claude returns problem/goal/outcomes **without writing to `PRODUCT.md`** → previews reviewed → approval + the 8.2 scope request → scope **derived** from answer 4, four features, and a real gap offered as two explicit options → the trainer writes one message agreeing to the scope, choosing option (أ), and approving the last two lists → five features → commit & push → the three scope lists verified in `PRODUCT.md`. **Not in this cut:** the real session's correction round (splitting the ready-made prompt's merged problem/goal paragraph into two) — the trainer edited it out on purpose; it happened, but not on screen. One continuous take, **3:24**, 1080p. Delivered as `8.1_&_8.2_tasks.mp4` and renamed — `&` must be escaped in an HTML attribute and no other asset uses underscores | 9 |
+
+| d2-2 | ✅ `tasks-91-92.mp4` | MP4 | Tasks 9.1 and 9.2 in one conversation: the deck's own roles slide → `notebook.txt` in Notepad holding three roles in plain words **and a single line** for stakeholders («email booking confirmation») → pasted into the Claude panel with **no** «make a table» / «update the file» instruction, just «ask me if you're unsure» → the `defining-users` skill firing, visible on screen → the roles table returned, with the e-mail line **reclassified** from a user to an external service → the `conversation_history.md` preview showing **nothing written to `PRODUCT.md` yet** → **Claude's two questions back**: the role-overlap question (quoting the deck slide) and the «who owns the mail account?» assumption offered for correction → the trainee's answer, and their own discovery that barring two roles per account does not bar one person opening two accounts → §2 written, **a fourth item appended to the §1.1 future plan written the day before**, commit & push → verification in the `PRODUCT.md` preview. One continuous take, **1:49**, 1080p. Delivered as `tasks-9.1-9.2.mp4` and renamed to drop the dots | 14 |
+
+**Day 2 is fully covered.** Both recordings exist; no BookIt material remains on any Day-2 slide.
+
+**Note on d2-2's first second:** it opens on the deck slide as it looked on 2026-09-25 (the BookIt
+roles table). That slide has since been rebuilt, so the step carries a `stepvid__fix` saying so.
 
 ## If a shot is missing
 

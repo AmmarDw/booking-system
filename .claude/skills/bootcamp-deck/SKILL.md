@@ -28,7 +28,7 @@ both wrapped in a plain `tok-code` span instead of the components §4 below docu
 |---|---|
 | `references/deck-anatomy.md` | **Always.** Every component, with the `day-01.html` line range to copy from. Nothing here should be authored from scratch — Day 1 already built it |
 | `references/day-deck-recipe.md` | Building or extending a `day-NN.html` for days 2–10 |
-| `references/showcase-strategy.md` | Deciding what fills «شرح المفاهيم», or what BookIt material exists for a section |
+| `references/showcase-strategy.md` | Deciding what fills «شرح المفاهيم» — which project supplies the recording, and what already exists per section |
 | `references/archived-plan-2026-09-08.md` | Only for historical *why* — an unvetted dump with known errors, flagged in its own header |
 
 **Day 1 cost ~47 turns of iteration. Days 2–10 should not.** The single biggest time sink is
@@ -223,14 +223,20 @@ the markup form misses cases that only glue after tags are stripped.
 
 ---
 
-## Every day has three session-break slides
+## Days 2–10 have two session-break slides
 
 A day runs four sessions — شرح المفاهيم · تطبيق مع المدرب · عملك على مشروعك · مراجعة وعرض التقدم —
-and **each of the last three opens with a break slide**. Not the first: the day opens on شرح
-المفاهيم, and a "we are starting now" slide in front of the very first thing is not a transition.
+but from Day 2 the **first two are delivered as one interleaved block**, section by section: the
+trainer explains a section, the recording of that same section plays, then the trainer executes it
+live. Nothing transitions between them, so only **«عملك على مشروعك»** and **«مراجعة وعرض التقدم»**
+open with a break slide. Not the first either: the day opens on شرح المفاهيم, and a "we are starting
+now" slide in front of the very first thing is not a transition.
 
-Without them a trainee following the deck cannot tell the session changed, because nothing else on
-screen marks it. This is a per-day structural requirement, not a Day-1 detail.
+**Day 1 keeps three, and that is correct.** Its «تطبيق مع المدرب» is a separate device-setup
+walkthrough, not a re-run of what was just explained. Do not "fix" it down to two.
+
+Without these slides a trainee following the deck cannot tell the session changed, because nothing
+else on screen marks it. This is a per-day structural requirement, not a Day-1 detail.
 
 The component is fixed — a full-bleed quote frame, footer carrying **only** the session badge (no
 logo, no day label):
@@ -251,7 +257,7 @@ logo, no day label):
 </section>
 ```
 
-These three are the only legitimate `sag-quote` use that is not a real pull-quote. The `__attr` line
+These break slides are the only legitimate `sag-quote` use that is not a real pull-quote. The `__attr` line
 is the place to say something the session needs and nothing else covers — the عملك على مشروعك break
 is where the trainee is told that ticking the finished tasks is **their** job.
 
@@ -337,7 +343,8 @@ Run all of these and report each result rather than asserting success.
 - [ ] Every typed command is a `.snipbox` with a copy button; every output line is a bare `.snip`
       with none; grep the touched slide(s) for `tok-code` and confirm no hit is really a command or
       output string in disguise
-- [ ] Each of the last three sessions is preceded by its break slide
+- [ ] Break slides: days 2–10 carry exactly two («عملك على مشروعك» and «مراجعة وعرض التقدم»),
+      and **no** «تطبيق مع المدرب» break; Day 1 keeps its three
 - [ ] Checkbox hierarchy exercised in the browser: parent cascades down, children roll a parent up
       to `partial` then to a check, the same key agrees on **both** slides it appears on, state
       survives a reload, and Ctrl+click navigates without ticking

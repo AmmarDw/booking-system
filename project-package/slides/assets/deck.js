@@ -349,6 +349,11 @@
 
   function resolveRef(ref) {
     var i;
+    /* A row with no `data-ref` must resolve to nothing. Without this guard the
+       anchor comparison below runs `getAttribute('data-anchor') === null`, which
+       is TRUE for the first slide that has no anchor — so every unlinked task row
+       silently jumped to slide 1 instead of staying put. */
+    if (!ref) return -1;
     for (i = 0; i < slides.length; i++) if (slides[i].getAttribute('data-anchor') === ref) return i;
     for (i = 0; i < slides.length; i++) if (slideBadge(slides[i]).num === ref) return i;
     for (i = 0; i < slides.length; i++) if (slideBadge(slides[i]).label.indexOf(ref) !== -1) return i;
