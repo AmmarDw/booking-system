@@ -56,8 +56,19 @@ an HTML attribute, and no other asset uses underscores.
 
 Everything else — Day 2 is now fully covered. §9 was recorded on **2026-09-25** and, with it, the
 last BookIt material left the deck: Day-2 slides 12 and 13 were rebuilt on darrisni and slide 14's
-`chatlog` was replaced by the recording. The next gap is **Day 3** (§10 requirements, §16 first
-deploy).
+`chatlog` was replaced by the recording.
+
+**Day 3 — two recordings, both planned and neither filmed.** The deck ships their slides now, as
+`stepvid__video--soon` placeholders carrying the expected steps (see `day-deck-recipe.md`).
+
+| Planned file | Covers | Scope decided 2026-09-25 |
+|---|---|---|
+| `media/tasks-161-162.mp4` | §16 — tasks 16.1 + 16.2, Vercel setup through first live link | Film **all of it**, signup and both browser confirmations included. ⚠ **The env-key moment must be blurred or cropped in post** — it is the first recording in the course where a real secret is on screen |
+| `media/task-101.mp4` | §10 — task 10.1, free-form notes about what the project does | Ends where Claude asks what is missing; it must **not** show the formal requirement being written (that is Day 4) |
+
+**§16 is watched, not re-run live** — deploying an already-deployed project produces nothing, and the
+account steps happen once per person. This is the per-section exception documented in
+`day-deck-recipe.md`; it applies again to §16.3 on Day 10.
 
 ---
 

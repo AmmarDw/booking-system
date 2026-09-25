@@ -135,6 +135,13 @@ then stop. Depth beyond that is Claude's job; on a slide it costs comprehension 
 - **One trainee, singular, always.** Each trainee builds their own project alone. A second-person plural reads as «me and the other trainees» even when you meant «me and Claude» — and «me and Claude» is wrong too, because Claude is a tool the trainee operates, not half of a team. Never «تشتغلون» / «وصلتم» / «توصلون» / «أنتم» / «سوا» with Claude as the other party. Name the two sides instead: «في كل مهمّة عليك شغل، وعلى Claude شغل». The exception is the **trainer** plus the room in a live session («ننجزها معًا الآن», §7.10), which is genuinely collective.
 - **Concrete examples only.** «لو عندك متجر وتبغى تعرف كم طلب وصلك اليوم» beats «مثال على استعلام
   البيانات». If an example cannot be made concrete, it is not understood well enough to teach.
+- **An example that assumes a domain the deck never established is not concrete — it only looks it.**
+  A Day-2 slide explained role overlap through «مقدّم الخدمة حجز مواعيده الخاصّة», which is vivid only
+  if you already hold a booking domain the deck had never set up — and the trainee does not. It read
+  as "assumes I know what we are talking about". **Test:** could a trainee who has read only this
+  deck, to this slide, picture the situation? If not, the example is borrowed scenery.
+  **Prefer the example that day's own recording is about to play** — the trainee is two slides from
+  watching it happen, so it costs no setup and pays twice.
 - **Calibrate how much of a topic rides on its example.** Examples always beat abstraction, but the
   dose is a judgement. Most content wants a *clarifying* example — one line, one card, a real number,
   inside the explanation. A topic that is heavy or technical relative to the trainee's level wants a
@@ -169,8 +176,15 @@ then stop. Depth beyond that is Claude's job; on a slide it costs comprehension 
 | خصائص | مجالات · نقاط · عناصر نطاق | the scope list is **خصائص** derived from **غايات** — the terminology box bans every synonym |
 | مشروع الأولي — **except** «المنتج التقني الأولي (MVP)» | منتج, anywhere else | منتج survives only as the *P* in Minimum Viable Product, and in the programme's own name |
 | ربط / يربط, until §7.5 defines التكامل | التكاملات, before slide 23 | ربط is the plainer word, and the noun is not introduced yet |
+| موعد · مواعيد متاحة · يفتح مواعيد دفعة وحدة | التوفّر · التوليد الجماعي | **the concrete everyday noun beats the abstract derived one** — see the rule below the table |
 
-That fourth row is why terminology sweeps are **semantic, never `sed`**. Read every candidate in
+**Prefer the concrete everyday noun over the abstract derived noun.** التوفّر and التوليد الجماعي
+are not wrong Arabic — they are *nominalisations*, and a trainee has to unpack each one back into the
+thing it stands for before the sentence means anything. مواعيد متاحة needs no unpacking. The tell is a
+تفعّل/تفعيل-pattern noun where a plain one exists: reach for the plain one. (Reported on Day-2
+slide 12, 2026-09-25.)
+
+That row about خصائص is why terminology sweeps are **semantic, never `sed`**. Read every candidate in
 place before changing it. A blind swap on «صمّم محتوى الدورة ومنهجه» yields «صمّم منهج الدورة
 ومنهجه».
 
@@ -191,6 +205,12 @@ cold has been given a term nobody defined.
 - **A title states the takeaway, in spoken Arabic.** A compressed فصحى title is a register failure:
   «حدّان يتجدّدان — لا رصيد لا نهائي» became «رصيدك يتجدّد لحاله، بس فيه حدّين لازم تعرفهم». And a
   title must still describe the slide *after* the slide changes — two went stale unnoticed.
+- **A `؟` term window belongs on the slide that *uses* the term — not near it.** Defining «كيان» on a
+  Day-2 slide whose cards only ever said «الدور» was reported as actively confusing: the trainee reads
+  a definition, hunts the slide for the word, and does not find it. Before shipping a `؟`, grep its
+  own slide for the term. If the term is not there, the window is on the wrong slide — move it to
+  where the word is actually said, and rewrite the sentence around it so it *introduces* the idea
+  rather than assuming it.
 - **Never use a term before the slide that defines it.** «التكاملات» appeared 15 slides before §7.5
   defined it; «متطلّب» belongs to §10 and must not leak into §8. If the concept is genuinely needed
   earlier, that is a signal to reorder — not to define it twice. A **gateway example's badge and
@@ -309,10 +329,11 @@ these and report what you found:
    GitHub anchors, so **renaming a heading breaks every link to it** unless the TOC entry and every
    cross-reference move with it.
 3. **One brief per day** in `deck/` — `DECK_BRIEF.md` is Day 1's (named before the convention
-   existed), then `day-02-brief.md` and so on. Plus `deck/MEDIA_SHOTLIST.md`, which is Day-1-only
-   because Day 1 is the recording-heavy day. `deck/` holds *only* these planning docs; the slides
-   themselves live in the package. All of them carry slide numbers that go stale the moment a slide
-   is inserted.
+   existed), then `day-02-brief.md` and so on. Plus `deck/MEDIA_SHOTLIST.md`, which **covers every
+   day, not just Day 1**: Day 1 is still the bulk of it, but the 2026-09-25 showcase reversal gave
+   days 2–10 recordings of their own, and each gets a section there — including shots not yet filmed,
+   marked ⬜. `deck/` holds *only* these planning docs; the slides themselves live in the package. All
+   of them carry slide numbers that go stale the moment a slide is inserted.
 
 ### The `.docx` is retired
 
@@ -340,6 +361,13 @@ Run all of these and report each result rather than asserting success.
 - [ ] `window.deckAudit()` → `N slides, none overflow`, on the real page via chrome-devtools
 - [ ] Interactive behaviours exercised in a browser, not reasoned about
 - [ ] No task row opens with a و-word
+- [ ] Register sweep by **verb family, not one spelling** — `يسو`/`تسو`/`نسو`/`سوّ`, not just «يسوّي».
+      A clean single-spelling grep once passed a «تسوي» written minutes earlier, and the family
+      sweep's first real run found three more on Day 1. Exclude the noun «المسوّدة»; read the rest
+      in place
+- [ ] Every «صياغة مقترحة تعطيها لـ Claude» in the day's curriculum sections reaches a slide — count
+      in the curriculum, count on the deck, compare
+- [ ] Every `؟` term window sits on a slide that actually says its term
 - [ ] Every typed command is a `.snipbox` with a copy button; every output line is a bare `.snip`
       with none; grep the touched slide(s) for `tok-code` and confirm no hit is really a command or
       output string in disguise
