@@ -181,10 +181,29 @@ Recorded on **darrisni**, the project that now supplies every «شرح المف�
 
 | d2-2 | ✅ `tasks-91-92.mp4` | MP4 | Tasks 9.1 and 9.2 in one conversation: the deck's own roles slide → `notebook.txt` in Notepad holding three roles in plain words **and a single line** for stakeholders («email booking confirmation») → pasted into the Claude panel with **no** «make a table» / «update the file» instruction, just «ask me if you're unsure» → the `defining-users` skill firing, visible on screen → the roles table returned, with the e-mail line **reclassified** from a user to an external service → the `conversation_history.md` preview showing **nothing written to `PRODUCT.md` yet** → **Claude's two questions back**: the role-overlap question (quoting the deck slide) and the «who owns the mail account?» assumption offered for correction → the trainee's answer, and their own discovery that barring two roles per account does not bar one person opening two accounts → §2 written, **a fourth item appended to the §1.1 future plan written the day before**, commit & push → verification in the `PRODUCT.md` preview. One continuous take, **1:49**, 1080p. Delivered as `tasks-9.1-9.2.mp4` and renamed to drop the dots | 14 |
 
-**Day 2 is fully covered.** Both recordings exist; no BookIt material remains on any Day-2 slide.
+**Day 2 is fully covered.** Both recordings exist; no BookIt material remains on any Day-2 slide. **Day 3 is scheduled but unfilmed** — see the section below.
 
 **Note on d2-2's first second:** it opens on the deck slide as it looked on 2026-09-25 (the BookIt
 roles table). That slide has since been rebuilt, so the step carries a `stepvid__fix` saying so.
+
+## Day 3 — أوّل نشر، وبداية المتطلبات
+
+**Neither of these is filmed yet.** `day-03.html` slides 9 and 13 already ship with their full step
+lists inside `stepvid__video--soon` placeholders, so the deck is presentable today. Film these and
+they drop straight in — see `day-deck-recipe.md` §"When the recording does not exist yet".
+
+Both on **darrisni**, the project that supplies every «شرح المفاهيم» demo.
+
+| # | Filename | Type | What must be visible | Slide |
+|---|---|---|---|---|
+| d3-1 | ⬜ `tasks-161-162.mp4` | MP4 | Tasks 16.1 + 16.2 end to end. **16.1:** Vercel signup via GitHub → Claude runs `claude mcp add --transport http vercel https://mcp.vercel.com` → **the browser consent screen and your click** → `vercel login`, the confirmation link, **your second click** → Claude *verifying* the tool is connected and the account visible, rather than assuming. **16.2:** one plain-language deploy request → `vercel link` and the `.vercel` folder appearing, confirmed as git-ignored → root directory set to `application` → **production keys added before the deploy** → `vercel --prod` → if anything fails, Claude reading the log through the MCP and explaining the cause in plain words → the live URL, **opened on a phone**. Target ~4–6 min | 9 |
+| d3-2 | ⬜ `task-101.mp4` | MP4 | Task 10.1 only. The role table from 9.1 reopened → free-form notes written per role in `notebook.txt`, **in Notepad**, no formal wording anywhere → at least one explicit «ما أدري كيف يُعرض هذا» left in deliberately → pasted into the Claude panel with «**لا تصُغها بعد** — اقرأها واسألني عمّا ينقصها» → **Claude asking questions and writing nothing** → the answers → commit & push. **It must stop before any requirement is formatted** — that is Day 4. Target ~2–3 min | 13 |
+
+> ⚠ **`tasks-161-162.mp4` is the first recording in the course where a real secret reaches the
+> screen.** Production keys are typed or pasted during 16.2. **Blur or crop the value itself in
+> post** — the slide's job is to show *where* keys go and *when*, never what they are. Slide 9 step 8
+> already carries a note telling the room the blur is deliberate, so do not re-shoot to avoid it;
+> blur it. Prefer a throwaway Supabase project's keys if that is simpler than masking.
 
 ## If a shot is missing
 
