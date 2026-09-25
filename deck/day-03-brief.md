@@ -50,10 +50,10 @@ keys go, not their values — which doubles as the lesson about how Claude treat
 | 2 | مهامّ اليوم: شرح (42 د) + تطبيق (64 د) | 2 × `.sess` | — | Rows verbatim from §2.3. Footer note states the interleave **and** the §16 exception |
 | 3 | مهامّ اليوم: عملك (82 د) + مراجعة (27 د) | 2 × `.sess` | — | Note says the deploy is the longest task *because first deploys stumble* — budgeted, not a failure |
 | 4 | أهداف اليوم | 4 cards | — | **Goals last in the block.** Closes on «وما راح يكون مكتملًا — وهذا مقصود» |
-| 5 | §16 — رابط يفتحه أي أحد | 3 cards + warning | `s16-concept` | Carries the honest admission: the trainer's own project shipped only at the end, and «من هذا النقص طلعت القاعدة» |
+| 5 | §16 — رابط يفتحه أي أحد | 3 cards + warning | `s16-concept` | Carries the honest admission: the trainer's own project shipped only at the end. Warning card asks «ليش قدّمنا النشر لليوم الثالث؟» — a decision the slide just made, not a rule it assumes you know |
 | 6 | §16 — مين يعمل ايش، وبأي أداتين | 2 + 2 cards + note | `s16-who` | You = account + two confirmations. Tools note explains *why two*, and folds in the three-task map |
 | 7 | 16.1 — تهيئتك | `.flow` + prompt + snipbox | `task-161` | Ready-made prompt from curriculum:2992. The `claude mcp add` command is a **full-width** `.snipbox` |
-| 8 | 16.2 — أوّل نشر | `.flow` + prompt + 2 cards | `task-162` | Prompt from curriculum:3049. Warning card = why root-dir and keys-before-deploy are ordered steps, not luck |
+| 8 | 16.2 — أوّل نشر | `.flow` + prompt + 2 cards | `task-162` | Prompt from curriculum:3049. Warning card = why root-dir and keys-before-deploy are ordered steps, not luck. **Four `.ttip` tooltips** carry the vocabulary a non-engineer cannot infer: مجلّد الجذر · مجلّد تطبيقك · المجلّد الغلط · مفاتيح الإنتاج |
 | **9** | **▶ المقطع: §16** | **`stepvid --soon`** | `demo-16` | 11 steps, 2 dividers, 1 amber row, 1 `stepvid__fix` (the blur note) |
 | 10 | §10 — وثيقة تقول ايش يعمله مشروعك | 2 cards + note | `s10-concept` | FR = *ايش* · NFR = *كيف*. Says plainly the trainee never writes the formats |
 | 11 | §10 — من جملتك إلى متطلّب مكتمل | before → after | `s10-parts` | **The worked example.** Formats shown, never named (decision 2) |
@@ -84,6 +84,20 @@ keys go, not their values — which doubles as the lesson about how Claude treat
   overflow-x: auto`, so `claude mcp add --transport http vercel …` scrolled out of view and took the
   absolutely-positioned copy button with it. Moved to a full-width row. **Check any command over
   ~40 chars against its container width.**
+- **"We don't deploy the project, we deploy the path to it" was simply false.** Slide 5 said it to
+  make the early-deploy argument land. We *do* deploy the project — an empty version of it — and what
+  the first deploy establishes is the pipeline, which is set up, not published. Rewritten to
+  «ننشره فعلًا، بس وهو لسه شبه فاضي». **A memorable framing that misstates the mechanism is worse than
+  a plain one.**
+- **A note may not open on a question the slide has not earned.** «وليش صارت هذي قاعدة؟» presupposed
+  that the trainee already knew a rule existed and was only missing its reason — nothing before it
+  had said so. Reframed as «ليش قدّمنا النشر لليوم الثالث؟», which asks about a decision the slide has
+  just made. (The leading و was wrong too.) **Check that a rhetorical question's presupposition is
+  something an earlier slide actually established.**
+- **Name a tool as its makers name it.** «وسطر الأوامر» sat beside «أداة Vercel (MCP)» in a pair of
+  cards both described as أدوات, so the second read as a generic concept rather than the other tool.
+  It is the Vercel CLI → «وأداة سطر الأوامر التابعة لـ Vercel», and the note below now distinguishes
+  «أداة MCP» from «أداة سطر الأوامر» instead of saying «الأداة».
 - **`card__num-row` does not exist.** Invented while drafting slide 18; the real pattern is
   `card__top` with `card__num` inside. An invented class fails silently — no error, just unstyled
   markup. Same class of bug as an undefined `i-*` icon.
