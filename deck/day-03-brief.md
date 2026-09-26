@@ -14,8 +14,9 @@ own task rows, and slides 2+3 total exactly 215.
 
 **Two sections, in agenda order not numeric order: §16 النشر first, then §10 المتطلبات.**
 
-**Media: two recordings, neither filmed.** Both slides ship as `stepvid__video--soon` placeholders
-carrying their full expected step lists — see `MEDIA_SHOTLIST.md` for the capture briefs.
+**Media: one of two recordings landed and is embedded.** `deployment.mp4` (3:22) covers §16 end to
+end and is live on slide 9, time-stamped against extracted frames. Slide 13 (§10) still ships as a
+`stepvid__video--soon` placeholder — see `MEDIA_SHOTLIST.md` for its capture brief.
 
 ---
 
@@ -52,9 +53,9 @@ keys go, not their values — which doubles as the lesson about how Claude treat
 | 4 | أهداف اليوم | 4 cards | — | **Goals last in the block.** Closes on «وما راح يكون مكتملًا — وهذا مقصود» |
 | 5 | §16 — رابط يفتحه أي أحد | 3 cards + warning | `s16-concept` | Carries the honest admission: the trainer's own project shipped only at the end. Warning card asks «ليش قدّمنا النشر لليوم الثالث؟» — a decision the slide just made, not a rule it assumes you know |
 | 6 | §16 — مين يعمل ايش، وبأي أداتين | 2 + 2 cards + note | `s16-who` | You = account + two confirmations. Tools note explains *why two*, and folds in the three-task map |
-| 7 | 16.1 — تهيئتك | `.flow` + prompt + snipbox | `task-161` | Ready-made prompt from curriculum:2992. The `claude mcp add` command is a **full-width** `.snipbox` |
+| 7 | 16.1 — تهيئتك | `.flow` + prompt + 1 command card | `task-161` | Ready-made prompt from curriculum, **re-verified against extracted frames of `deployment.mp4` (2026-09-26)** — see the correction below. Step 2: Claude runs `claude mcp add` and triggers `vercel login`, **one browser confirmation**; step 3 is the real mechanism — a separate `PowerShell`, `claude` (approving a one-time "new MCP server" trust prompt), `/mcp` → `vercel` → `Authenticate`, the **same dance as Supabase on Day 1** (day-01 banner 40). Both commands share **one** full-width card — two cards overflowed by 17 px |
 | 8 | 16.2 — أوّل نشر | `.flow` + prompt + 2 cards | `task-162` | Prompt from curriculum:3049. Warning card = why root-dir and keys-before-deploy are ordered steps, not luck. **Four `.ttip` tooltips** carry the vocabulary a non-engineer cannot infer: مجلّد الجذر · مجلّد تطبيقك · المجلّد الغلط · مفاتيح الإنتاج |
-| **9** | **▶ المقطع: §16** | **`stepvid --soon`** | `demo-16` | 11 steps, 2 dividers, 1 amber row, 1 `stepvid__fix` (the blur note) |
+| **9** | **▶ المقطع: §16 — `deployment.mp4`** | **`stepvid`** | `demo-16` | **Filmed and embedded (2026-09-26).** 13 steps, 2 dividers, 2 `stepvid__fix` notes (the CLI-availability caveat on step 1, the blur note on step 8). No amber row — the one moment that would have needed one (a failed deploy) is real footage instead: a first attempt fails and Claude retries from inside `application` |
 | 10 | §10 — وثيقة تقول ايش يعمله مشروعك | 2 cards + note | `s10-concept` | FR = *ايش* · NFR = *كيف*. Says plainly the trainee never writes the formats |
 | 11 | §10 — من جملتك إلى متطلّب مكتمل | before → after | `s10-parts` | **The worked example.** Formats shown, never named (decision 2) |
 | 12 | 10.1 — ملاحظاتك الحرّة | `.flow` + prompt + note | `task-101` | Prompt from curriculum:1591. Title note names `notebook.txt` |
@@ -98,6 +99,38 @@ keys go, not their values — which doubles as the lesson about how Claude treat
   cards both described as أدوات, so the second read as a generic concept rather than the other tool.
   It is the Vercel CLI → «وأداة سطر الأوامر التابعة لـ Vercel», and the note below now distinguishes
   «أداة MCP» from «أداة سطر الأوامر» instead of saying «الأداة».
+- **A slide can be internally coherent and still describe a flow that does not exist.** Slide 7 said
+  «Claude يعطيك رابطًا، تفتحه وتؤكّده» for the MCP login. The recording shows something else entirely:
+  the trainee opens a **separate `PowerShell`**, runs `claude`, types `/mcp`, picks `vercel` →
+  `Authenticate`, and the browser opens by itself. The slide also invented a browser consent at
+  `claude mcp add`, where the recording shows none. Neither error was catchable by reading the deck —
+  only by checking it against the footage. **When a recording lands, re-verify every slide that
+  narrates it, not just the video slide.**
+- **The step the deck forgot was the one that ran first.** `deployment.mp4` opens on
+  `npm install -g vercel`, which appears in no slide, not in §16 of the curriculum, and not in 7.10's
+  Day-1 install list. A prerequisite is easiest to miss precisely because it happens before the part
+  you were thinking about.
+- **Check a fix against the rendered line, not the markup.** The corrected step-3 sentence passed
+  `deckAudit()` and still had two bidi faults visible only in a screenshot: the comma after
+  `<span class="tok-code">claude</span>` jumped to the wrong end, and the line closed on
+  `Authenticate:` — a neutral character after an isolated Latin run. Fixed by removing the comma
+  after the code token and ending the clause on «من القائمة:». **Screenshot every line that mixes
+  Arabic with a code token.**
 - **`card__num-row` does not exist.** Invented while drafting slide 18; the real pattern is
   `card__top` with `card__num` inside. An invented class fails silently — no error, just unstyled
   markup. Same class of bug as an undefined `i-*` icon.
+- **A fix made from a transcript summary can be as wrong as the bug it replaced.** The very next
+  pass on this file corrected step 2 *again*: "Claude installs the Vercel CLI" was itself unverified
+  — extracted frames show a bare `cmd.exe` window, human-typed, before Claude is ever opened. The
+  same rule that caught the original bug (verify against frames, not a summary) had to be applied a
+  second time to the fix for it. **A correction is a claim too, and needs the same evidence a bug
+  report does.**
+- **A single message can quietly do two jobs.** The trainee's real "confirm, then deploy" message
+  turned out to be *one* combined prompt covering both the 16.1 verification and the 16.2 kickoff —
+  the two ready-made prompts on slides 7 and 8 stay separate for teaching, but the video's own step 7
+  now says so honestly rather than implying two distinct sends.
+- **Proof beats a screenshot of the mechanism.** No frame shows the literal `vercel env add` call, so
+  step 8 doesn't claim one. It cites the strongest evidence that actually exists instead: a live login
+  on the deployed URL that greets the trainer by his own email — which cannot happen without a working
+  database connection. **Cite the evidence you have, not the action you'd have liked to capture.**
+

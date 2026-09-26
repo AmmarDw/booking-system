@@ -47,6 +47,7 @@ Which is why days 2–10 have **no «تطبيق مع المدرب» break slide*
 |---|---|---|---|
 | `project-package/slides/media/tasks-81-82.mp4` | Tasks 8.1 + 8.2, end to end on darrisni | 3:24 | **Shipped** — Day-2 slide 9 |
 | `project-package/slides/media/tasks-91-92.mp4` | Tasks 9.1 + 9.2, end to end on darrisni | 1:49 | **Shipped** — Day-2 slide 14 |
+| `project-package/slides/media/deployment.mp4` | Tasks 16.1 + 16.2, end to end on darrisni | 3:22 | **Shipped** — Day-3 slide 9 |
 
 **Filenames are lowercase-hyphen** and the deck references them by name — see `MEDIA_SHOTLIST.md`.
 The original of the above arrived as `8.1_&_8.2_tasks.mp4` and was renamed: `&` has to be escaped in
@@ -58,13 +59,14 @@ Everything else — Day 2 is now fully covered. §9 was recorded on **2026-09-25
 last BookIt material left the deck: Day-2 slides 12 and 13 were rebuilt on darrisni and slide 14's
 `chatlog` was replaced by the recording.
 
-**Day 3 — two recordings, both planned and neither filmed.** The deck ships their slides now, as
-`stepvid__video--soon` placeholders carrying the expected steps (see `day-deck-recipe.md`).
+**Day 3 — one of two recordings landed.** §16's `deployment.mp4` arrived 2026-09-26, was verified
+frame-by-frame (not from an auto-generated transcript — see the appendix below for why that
+distinction mattered here), and is embedded on slide 9 with real timestamps. §10's is still planned.
 
-| Planned file | Covers | Scope decided 2026-09-25 |
+| File | Covers | Status |
 |---|---|---|
-| `media/tasks-161-162.mp4` | §16 — tasks 16.1 + 16.2, Vercel setup through first live link | Film **all of it**, signup and both browser confirmations included. ⚠ **The env-key moment must be blurred or cropped in post** — it is the first recording in the course where a real secret is on screen |
-| `media/task-101.mp4` | §10 — task 10.1, free-form notes about what the project does | Ends where Claude asks what is missing; it must **not** show the formal requirement being written (that is Day 4) |
+| `media/deployment.mp4` | §16 — tasks 16.1 + 16.2, Vercel setup through first live link | **Shipped**, delivered under this name rather than the originally planned `tasks-161-162.mp4` — renaming was free since nothing referenced the placeholder yet |
+| `media/task-101.mp4` (planned) | §10 — task 10.1, free-form notes about what the project does | Not filmed. Must end where Claude asks what is missing; must **not** show the formal requirement being written (that is Day 4) |
 
 **§16 is watched, not re-run live** — deploying an already-deployed project produces nothing, and the
 account steps happen once per person. This is the per-section exception documented in
@@ -123,6 +125,19 @@ native Postgres — none of which a trainee runs), and that objection stands reg
 
 **Also noted:** BookIt's deployment is down (Render free tier expired). It no longer matters — §16 is
 taught on the course stack.
+
+---
+
+## A correction can be as unverified as the bug it fixes
+
+`deployment.mp4`'s first review pass (2026-09-26) was written from an auto-generated step-by-step of
+the footage, without extracting a single frame. It got real things wrong in both directions: it
+mis-attributed a manual, human-typed CLI install to Claude, and it flagged root directory and
+production keys as unconfirmed when both are directly evidenced on screen (a live login on the
+deployed URL greeting the trainer by his own email does not happen without a working database
+connection). The fix was corrected a second time, this time against extracted frames, before slide 9
+was time-stamped. **A correction is a claim too — it needs the same frame-level evidence a bug report
+does, not just confidence that it sounds more careful.**
 
 ---
 

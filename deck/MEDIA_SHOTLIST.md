@@ -196,14 +196,32 @@ Both on **darrisni**, the project that supplies every «شرح المفاهيم�
 
 | # | Filename | Type | What must be visible | Slide |
 |---|---|---|---|---|
-| d3-1 | ⬜ `tasks-161-162.mp4` | MP4 | Tasks 16.1 + 16.2 end to end. **16.1:** Vercel signup via GitHub → Claude runs `claude mcp add --transport http vercel https://mcp.vercel.com` → **the browser consent screen and your click** → `vercel login`, the confirmation link, **your second click** → Claude *verifying* the tool is connected and the account visible, rather than assuming. **16.2:** one plain-language deploy request → `vercel link` and the `.vercel` folder appearing, confirmed as git-ignored → root directory set to `application` → **production keys added before the deploy** → `vercel --prod` → if anything fails, Claude reading the log through the MCP and explaining the cause in plain words → the live URL, **opened on a phone**. Target ~4–6 min | 9 |
-| d3-2 | ⬜ `task-101.mp4` | MP4 | Task 10.1 only. The role table from 9.1 reopened → free-form notes written per role in `notebook.txt`, **in Notepad**, no formal wording anywhere → at least one explicit «ما أدري كيف يُعرض هذا» left in deliberately → pasted into the Claude panel with «**لا تصُغها بعد** — اقرأها واسألني عمّا ينقصها» → **Claude asking questions and writing nothing** → the answers → commit & push. **It must stop before any requirement is formatted** — that is Day 4. Target ~2–3 min | 13 |
+| d3-1 | ✅ `deployment.mp4` | MP4 | Tasks 16.1 + 16.2 end to end, verified against extracted frames (2026-09-26). **16.1:** the trainer installs the Vercel CLI himself in a bare Command Prompt, before Claude is ever opened (\`npm install -g vercel\` + \`vercel --version\`) → signs in to vercel.com via GitHub → sends the curriculum's own ready-made prompt → Claude runs \`claude mcp add\` and triggers \`vercel login\` — **one browser click** (\`Allow Access\` on an \`Authorize Device\` page) → Claude reviews the \`.mcp.json\` diff for secrets before committing → a **fresh \`claude\` session in a separate, plain terminal shows a one-time "new MCP server found" trust prompt**, then \`/mcp\` → \`vercel\` → \`Authenticate\`. **16.2:** one combined message ("confirm the link, then deploy") → Claude verifies via \`claude mcp list\` before continuing — verify, don't assume → project created and configured through the Vercel MCP tool (root directory set to \`application\`) → production keys added → **the first deploy attempt fails; Claude retries from inside the \`application\` folder and it succeeds** → Claude self-checks the live URL with an automated chrome-devtools browser before handing it over → the trainer opens it himself — a placeholder welcome page that says outright it isn't the final design → logs in and reaches a stub page reading "أهلًا بك" with his own email — live proof the database keys work → \`PRODUCT.md\` §9 opened to confirm the URL is documented. 3:22, 1080p. | 9 |
+| d3-2 | ⬜ \`task-101.mp4\` | MP4 | Task 10.1 only. The role table from 9.1 reopened → free-form notes written per role in \`notebook.txt\`, **in Notepad**, no formal wording anywhere → at least one explicit «ما أدري كيف يُعرض هذا» left in deliberately → pasted into the Claude panel with «**لا تصُغها بعد** — اقرأها واسألني عمّا ينقصها» → **Claude asking questions and writing nothing** → the answers → commit & push. **It must stop before any requirement is formatted** — that is Day 4. Target ~2–3 min | 13 |
 
-> ⚠ **`tasks-161-162.mp4` is the first recording in the course where a real secret reaches the
-> screen.** Production keys are typed or pasted during 16.2. **Blur or crop the value itself in
-> post** — the slide's job is to show *where* keys go and *when*, never what they are. Slide 9 step 8
-> already carries a note telling the room the blur is deliberate, so do not re-shoot to avoid it;
-> blur it. Prefer a throwaway Supabase project's keys if that is simpler than masking.
+> ### What the take actually contains, verified against extracted frames (2026-09-26)
+>
+> An earlier pass reviewed this file from an auto-generated summary alone, without extracting a
+> single frame — exactly the mistake this project's own discipline exists to catch. It got real
+> things wrong: it attributed the CLI install to Claude (a bare \`cmd.exe\` window shows the trainer
+> typing it himself, before Claude is opened at all); it invented a prompt that does not match what
+> is on screen (the real one is the curriculum's original, near-verbatim); and it flagged root
+> directory and production keys as unconfirmed when both are directly evidenced — a live login on
+> the deployed URL that greets the trainer by his own email address does not happen without a working
+> database connection.
+>
+> **One genuinely new finding the transcript missed entirely:** launching \`claude\` fresh in a
+> terminal after a new MCP server has been added to \`.mcp.json\` shows a one-time **"New MCP server
+> found in this project: vercel"** trust prompt, with its own three-way choice, before \`/mcp\` will
+> treat the server as usable. Neither the curriculum nor slide 7 mentioned this until now.
+>
+> **Slide 9 is fully time-stamped against this take** — 13 steps, 2 dividers, 2 \`stepvid__fix\` notes.
+> Slide 7 is corrected to match (the CLI-install and prompt-wording errors reverted, the trust-prompt
+> finding folded in). \`bootcamp_roadmap_and_curriculum.md\` §16.1 corrected the same way.
+>
+> ⚠ **This is the first recording in the course where a real secret reaches the screen.** Production
+> keys are added during 16.2. **Blur or crop the value itself in post** — the slide's job is to show
+> *where* keys go and *when*, never what they are. Slide 9's own note says the blur is deliberate.
 
 ## If a shot is missing
 

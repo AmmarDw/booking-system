@@ -375,8 +375,8 @@
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
-          <p class="sag-slide__lead sag-slide__lead--wide">هذي <strong>المهمّة الوحيدة في القسم اللي كلّها شغلك
-              أنت</strong>. المخرَج منها إن Claude يصير يملك صلاحية النشر على حسابك.</p>
+          <p class="sag-slide__lead sag-slide__lead--wide">هذي <strong>المهمّة الوحيدة في القسم اللي عليك فيها
+              شغل</strong>. المخرَج منها إن Claude يصير يملك صلاحية النشر على حسابك.</p>
           <div class="bento" data-cols="2">
             <article class="card card--accent">
               <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
@@ -385,21 +385,23 @@
               <ol class="flow">
                 <li><strong>أنشئ حساب Vercel</strong> مجانًا، وسجّل الدخول <strong>بحساب GitHub</strong> — أسهل،
                   ويربط مستودعك على طول.</li>
-                <li><strong>اربط أداة Vercel:</strong> تعطي Claude الأمر تحت، وهو ينفّذه — <strong>وتؤكّد أنت في
-                    المتصفّح</strong>.</li>
-                <li><strong>أكّد تسجيل الدخول:</strong> Claude يعطيك رابطًا، تفتحه وتؤكّده. وبهذي الخطوة يصير عنده
-                  صلاحية النشر.</li>
+                <li><strong>اربط أداة Vercel:</strong> تعطي Claude الأمر تحت فينفّذه (ويثبّت الأداة أوّلًا إن
+                  ما كانت موجودة)، ويشغّل تسجيل الدخول لحسابك — <strong>وتؤكّد أنت مرّة في المتصفّح</strong>.</li>
+                <li><strong>أكّد ربط الأداة بنفسك:</strong> من موجّه أوامر منفصل، <strong>زي ما عملت مع
+                    Supabase</strong> في اليوم الأول.</li>
               </ol>
             </article>
             <article class="card card--state">
               <div class="card__top"><span class="card__icon"><span class="i i-file-text"></span></span>
                 <h3 class="card__title card__title--sm">وهذي الصياغة اللي تعطيها</h3>
               </div>
-              <p class="card__note card__note--sm">«اربط أداة Vercel MCP، ثم شغّل تسجيل الدخول إلى Vercel وأعطني
-                رابط التأكيد لأفتحه في متصفّحي.»</p>
+              <p class="card__note card__note--sm">«اربط أداة Vercel MCP، ثم شغّل تسجيل الدخول إلى Vercel
+                وأعطني رابط التأكيد لأفتحه في متصفّحي.»</p>
               <p class="card__note card__note--sm"><strong>وقبل ما تنتقل للنشر:</strong> اطلب منه
-                <strong>يتحقّق</strong> إن الأداة مربوطة فعلًا وإنه يشوف حسابك — لا يفترض. كل اللي بعدها يعتمد على
-                هاتين الخطوتين.</p>
+                <strong>يتحقّق</strong> إن الأداة مربوطة فعلًا وإنه يشوف حسابك — لا يفترض.</p>
+              <p class="card__note card__note--sm"><span class="i i-shield-check"
+                  style="color:var(--accent-state)"></span> <strong>وما راح تكتب أي مفتاح بنفسك</strong> — تنحفظ
+                في ملف محميّ وفي إعدادات Vercel، لا في محادثتك.</p>
             </article>
           </div>
           <div class="card">
@@ -410,11 +412,15 @@
               <button class="snipbox__copy" type="button" aria-label="نسخ الأمر"><span
                   class="i i-copy"></span></button>
             </div>
-          </div>
-          <div class="card card--plain">
-            <p class="card__note"><span class="i i-shield-check" style="color:var(--accent-state)"></span>
-              <strong>وما راح تكتب أي مفتاح بنفسك.</strong> مفاتيح مشروعك تنحفظ في ملف محميّ على جهازك وفي إعدادات
-              Vercel — ولا تنكتب في المحادثة ولا في ملفّات مشروعك أبدًا.</p>
+            <p class="card__note card__note--sm"><strong>وخطوة 3 تكتبها أنت:</strong> افتح موجّه أوامر جديد
+              (<span class="tok-lat">PowerShell</span>)، وشغّل فيه <span class="tok-code">claude</span> — إذا طلع
+              تنبيه أداة جديدة وافق عليه — ثم اكتب هذا، واختر <span class="tok-lat">vercel</span> ثم
+              <span class="tok-lat">Authenticate</span> من القائمة:</p>
+            <div class="snipbox">
+              <pre class="snip" dir="ltr">/mcp</pre>
+              <button class="snipbox__copy" type="button" aria-label="نسخ الأمر"><span
+                  class="i i-copy"></span></button>
+            </div>
           </div>
         </div>
         <footer class="sag-slide__foot">
@@ -502,7 +508,7 @@
         </footer>
       </section>
 
-      <!-- ═══ 9 — المقطع: المهمّتان 16.1 و16.2 ══════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 9 — المقطع: المهمّتان 16.1 و16.2 ════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-media deck-slide" data-anchor="demo-16">
         <div class="sag-slide__head sag-media__head">
           <h2 class="sag-slide__title">من حساب فاضي إلى رابط شغّال — نشوفه كامل في المقطع</h2>
@@ -510,92 +516,105 @@
         </div>
         <div class="sag-slide__body">
           <div class="stepvid">
-            <div class="stepvid__video stepvid__video--soon">
-              <p class="stepvid__soon"><span class="i i-clock"></span>المقطع تحت التصوير — والخطوات تحت جاهزة</p>
+            <div class="stepvid__video">
+              <video class="stepvid__player" controls preload="metadata" src="media/deployment.mp4"></video>
             </div>
             <div class="stepvid__steps">
               <ol class="stepvid__list">
                 <li class="stepvid__divider">التهيئة — عملك أنت (16.1)</li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">١</span>
+                <li class="stepvid__step" data-t="8">
+                  <button class="stepvid__time" type="button">0:08</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">حساب Vercel بحساب GitHub</h4>
-                    <p class="stepvid__p">تسجيل دخول واحد يربط المستودع والمنصّة مع بعض.</p>
+                    <h4 class="stepvid__h">يثبّت أداة Vercel بنفسه، مرّة وحدة</h4>
+                    <p class="stepvid__p"><span class="tok-code">npm install -g vercel</span> في موجّه أوامر عادي، ثم يتأكّد بـ
+                      <span class="tok-code">vercel --version</span> — زي تثبيت Node.js في اليوم الأوّل، مرّة توصل وما ترجع.</p>
+                    <p class="stepvid__fix"><strong>ملاحظة:</strong> لو ما كانت أداة Vercel عندك أصلًا، اطلب من Claude يثبّتها لك بأمر واحد بدل ما تفتح موجّه أوامر بنفسك.</p>
                   </div>
                 </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">٢</span>
+                <li class="stepvid__step" data-t="20">
+                  <button class="stepvid__time" type="button">0:20</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">Claude يربط الأداة — وتؤكّد أنت</h4>
-                    <p class="stepvid__p">ينفّذ الأمر، ويفتح لك المتصفّح صفحة موافقة. الضغطة ضغطتك.</p>
+                    <h4 class="stepvid__h">يسجّل دخوله لحساب Vercel بحساب GitHub</h4>
+                    <p class="stepvid__p">صفحة دخول عادية في المتصفّح — نفس الخطوة الأولى من الشريحة السابقة.</p>
                   </div>
                 </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">٣</span>
+                <li class="stepvid__step" data-t="44">
+                  <button class="stepvid__time" type="button">0:44</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">تسجيل الدخول — والتأكيد الثاني</h4>
-                    <p class="stepvid__p">يعطيك رابطًا، تفتحه وتوافق. وبكذا خلّصت كل شغلك في القسم.</p>
+                    <h4 class="stepvid__h">يكتب نفس الصياغة الجاهزة، ويرسلها</h4>
+                    <p class="stepvid__p">نفس جملة الشريحة السابقة حرفيًا، مع أمر الربط ملصوقًا تحتها.</p>
                   </div>
                 </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">٤</span>
+                <li class="stepvid__step" data-t="62">
+                  <button class="stepvid__time" type="button">1:02</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">يتحقّق — ما يفترض</h4>
-                    <p class="stepvid__p">يسأل الأداة: هل أنا مربوط؟ وهل أشوف الحساب؟ ويعرض الجواب قبل ما يكمّل.</p>
+                    <h4 class="stepvid__h">Claude يشغّل تسجيل الدخول، وتؤكّد أنت</h4>
+                    <p class="stepvid__p">صفحة <span class="tok-lat">Authorize Device</span> تفتح من تلقاء نفسها — تضغط <span class="tok-lat">Allow Access</span> وخلصت.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="75">
+                  <button class="stepvid__time" type="button">1:15</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">Claude يربط أداة MCP، ويتحقّق قبل ما يحفظ</h4>
+                    <p class="stepvid__p">يقرأ فرق ملف الإعدادات بحثًا عن أي سرّ قبل ما يحفظه ويرفعه.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="96">
+                  <button class="stepvid__time" type="button">1:36</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">موجّه أوامر جديد — يوافق ويؤكّد الربط</h4>
+                    <p class="stepvid__p">يفتح موجّه أوامر عادي (لا امتداد المحرّر)، يشغّل <span class="tok-code">claude</span> ويوافق على أداة MCP الجديدة لما تظهر، ثم <span class="tok-code">/mcp</span> ← <span class="tok-lat">vercel</span> ← <span class="tok-lat">Authenticate</span>.</p>
                   </div>
                 </li>
                 <li class="stepvid__divider">أوّل نشر — شغل Claude (16.2)</li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">٥</span>
+                <li class="stepvid__step" data-t="134">
+                  <button class="stepvid__time" type="button">2:14</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">جملة وحدة تطلب فيها النشر</h4>
-                    <p class="stepvid__p">نفس الصياغة اللي في الشريحة السابقة — ما فيها أي أمر تقني تكتبه أنت.</p>
+                    <h4 class="stepvid__h">يرجع ويقول: تأكّد ثم انشر — بنفس الصياغة الجاهزة</h4>
+                    <p class="stepvid__p">يطلب في رسالة واحدة: يتأكّد Claude من الربط، ثم يبدأ النشر. وهو يتحقّق فعليًّا — لا يفترض — قبل ما يكمّل.</p>
                   </div>
                 </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">٦</span>
+                <li class="stepvid__step" data-t="152">
+                  <button class="stepvid__time" type="button">2:32</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">يربط المشروع — ويطلع <span class="tok-code">.vercel</span></h4>
-                    <p class="stepvid__p">مجلّد إعدادات جديد، ويتأكّد على طول إنه خارج GitHub.</p>
+                    <h4 class="stepvid__h">يهيّئ المشروع، ويضبط مجلّد الجذر والمفاتيح</h4>
+                    <p class="stepvid__p">عبر أداة Vercel يضبط مجلّد الجذر على <span class="tok-code">application</span>، ويضيف مفاتيح الإنتاج قبل النشر لا بعده.</p>
+                    <p class="stepvid__fix"><strong>في المقطع:</strong> قيم المفاتيح مموّهة عمدًا — والدليل أنّها اشتغلت فعلًا يجي بعد شوي: الدخول على الرابط الحيّ وصل لقاعدة البيانات فعلًا.</p>
                   </div>
                 </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">٧</span>
+                <li class="stepvid__step" data-t="158">
+                  <button class="stepvid__time" type="button">2:38</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">يضبط مجلّد الجذر</h4>
-                    <p class="stepvid__p">يوجّه Vercel لمجلّد التطبيق بالضبط، لا لجذر المستودع.</p>
+                    <h4 class="stepvid__h">أوّل محاولة تفشل — فيعيدها وتنجح</h4>
+                    <p class="stepvid__p">يعيد النشر من داخل مجلّد <span class="tok-code">application</span> نفسه — وتنجح. أوّل نشر يتعثّر كثير، وهذا عادي ومحسوب في وقت الجلسة.</p>
                   </div>
                 </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">٨</span>
+                <li class="stepvid__step" data-t="162">
+                  <button class="stepvid__time" type="button">2:42</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">يضيف المفاتيح — قبل النشر لا بعده</h4>
-                    <p class="stepvid__p">مفاتيح قاعدة البيانات تدخل في إعدادات Vercel.</p>
-                    <p class="stepvid__fix"><strong>في المقطع:</strong> قيم المفاتيح مموّهة عمدًا — تشوف
-                      <strong>مكانها</strong> لا قيمتها. وهذي نفس القاعدة اللي يمشي عليها Claude معك.</p>
+                    <h4 class="stepvid__h">يتحقّق من الرابط بنفسه قبل ما يسلّمك إيّاه</h4>
+                    <p class="stepvid__p">يفتح متصفّحًا آليًا بنفسه عبر أداة الفحص، ويتأكّد أن صفحة الدخول تفتح فعلًا — تحقّق، لا افتراض.</p>
                   </div>
                 </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">٩</span>
+                <li class="stepvid__step" data-t="182">
+                  <button class="stepvid__time" type="button">3:02</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">ينشر، ويقرأ السجلّ لو تعثّر</h4>
-                    <p class="stepvid__p">وهنا تبين فايدة الأداة: سبب العطل مكتوب، مو مخمّن.</p>
+                    <h4 class="stepvid__h">يفتح الرابط في متصفّحه هو</h4>
+                    <p class="stepvid__p">صفحة ترحيب مؤقّتة تفتح، ومكتوب عليها صراحة: هذا الشكل النهائي يأتي لاحقًا — وهذا بالضبط ما قاله Claude لك من قبل.</p>
                   </div>
                 </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">١٠</span>
+                <li class="stepvid__step" data-t="191">
+                  <button class="stepvid__time" type="button">3:11</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">الرابط — ويُفتح من الجوال</h4>
-                    <p class="stepvid__p">صفحة بسيطة تفتح. وهذا هو المخرَج المطلوب اليوم.</p>
+                    <h4 class="stepvid__h">يسجّل دخول، وتطلع له «أهلًا بك» باسم بريده</h4>
+                    <p class="stepvid__p">وهذا الدليل الحقيقي: لو مفاتيح قاعدة البيانات ما اشتغلت، ما كان الدخول رجّع اسمه.</p>
                   </div>
                 </li>
-                <li class="stepvid__step stepvid__step--new">
-                  <span class="stepvid__mark">مضافة</span>
+                <li class="stepvid__step" data-t="198">
+                  <button class="stepvid__time" type="button">3:18</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">ولو فشل نشرك أنت</h4>
-                    <p class="stepvid__p">قل له: «اقرأ السجلّ وقل لي ايش فشل وليش بلغة بسيطة، ثم أصلحه وأعد
-                      المحاولة». <strong>ولا تقرأ السجلّ أنت.</strong> أول نشر يتعثّر كثير، وهذا عادي ومحسوب في
-                      وقت الجلسة.</p>
+                    <h4 class="stepvid__h">يفتح PRODUCT.md، ويتأكّد أن الرابط انكتب</h4>
+                    <p class="stepvid__p">قسم «النشر» في ملفّ مشروعه صار فيه الرابط الحيّ، مع ملاحظة واضحة: هذا هيكل أوّلي، مو الشكل النهائي.</p>
                   </div>
                 </li>
               </ol>
