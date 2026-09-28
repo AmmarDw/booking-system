@@ -228,6 +228,32 @@
     });
   }
 
+  /* ── copy-the-whole-prompt button on a .promptbox ─────────────────────
+     Mirrors initCopyButtons() but the source text is a literal data-copy
+     attribute, not a sibling .snip's rendered text — the prompt mixes RTL
+     narration with LTR commands, and DOM text order would not match what
+     should actually be pasted to Claude. */
+  function initPromptCopyButtons() {
+    Array.prototype.forEach.call(document.querySelectorAll('.promptbox__copy'), function (btn) {
+      var text = btn.getAttribute('data-copy');
+      var icon = btn.querySelector('.i');
+      if (!text) return;
+
+      btn.addEventListener('click', function () {
+        copyText(text).then(function () {
+          btn.setAttribute('data-copied', 'true');
+          btn.setAttribute('aria-label', 'تمّ النسخ');
+          if (icon) icon.className = 'i i-check';
+          setTimeout(function () {
+            btn.removeAttribute('data-copied');
+            btn.setAttribute('aria-label', 'نسخ الصياغة كاملة');
+            if (icon) icon.className = 'i i-copy';
+          }, 1400);
+        });
+      });
+    });
+  }
+
   /* ── step-timestamped walkthrough video ─────────────────────────────
      Each .stepvid pairs one <video> with a scrollable list of steps; a step's
      time badge seeks the video there and plays. timeupdate reflects the
@@ -797,6 +823,7 @@
     initQmarks();
     initTasks();
     initCopyButtons();
+    initPromptCopyButtons();
     initStepVideos();
     initChatLogs();
 

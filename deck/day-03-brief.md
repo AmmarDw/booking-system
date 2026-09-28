@@ -5,18 +5,27 @@ The slide-by-slide record of `project-package/slides/day-03.html`.
 **Source of truth:** `project-package/bootcamp_roadmap_and_curriculum.md` §2.3 plus §16 and §10.
 If this brief and the curriculum disagree, the curriculum wins.
 
-**18 slides.** Built 2026-09-25, the first day assembled against the hardened
-`day-deck-recipe.md` rather than by copying Day 2 by eye.
+**22 slides.** Built 2026-09-25 against the hardened `day-deck-recipe.md`; **rebalanced and
+extended 2026-09-28** when §10's formats theory and task 10.2 moved in from Day 4.
 
-**Day 3 budget:** شرح المفاهيم 42 د · تطبيق مع المدرب 64 د · عمل المتدربين 82 د · مراجعة 27 د =
+**Day 3 budget:** شرح المفاهيم 65 د · تطبيق مع المدرب 56 د · عمل المتدربين 72 د · مراجعة 22 د =
 **215 د** (+ استراحة 25 د). Verified live: every session's declared duration equals the sum of its
-own task rows, and slides 2+3 total exactly 215.
+own task rows, slides 2+3 total exactly 215, and slide 19's two `.sess` totals (25 + 47) re-split
+the same 72 د.
+
+> **The rebalance.** §16 was massively over-budgeted: 52 د to *watch* a 3:21 recording with 13 steps,
+> and 67 د for a trainee to run one-time account-bound setup. Cut to **26 د** and **30 د**, freeing
+> 63 د. Day 4 then handed over 71 د (formats 26 · 10.2 live 18 · 10.2 trainee work 22 · 10.2 review
+> 5), and the 8 د difference came off the two commit&push rows (−5, "most but not all" as
+> instructed), §10's concept row (−2, since the formats section now follows it immediately) and Q&A
+> (−1). **Day 3 is now the day functional requirements finish**, not merely start.
 
 **Two sections, in agenda order not numeric order: §16 النشر first, then §10 المتطلبات.**
 
-**Media: one of two recordings landed and is embedded.** `deployment.mp4` (3:22) covers §16 end to
-end and is live on slide 9, time-stamped against extracted frames. Slide 13 (§10) still ships as a
-`stepvid__video--soon` placeholder — see `MEDIA_SHOTLIST.md` for its capture brief.
+**Media: both §16 and §10.1 are filmed and embedded.** `deployment.mp4` (3:22) on slide 9;
+`task-10.1.mp4` (6:16) on slide 15, 15 steps across 4 dividers, every timestamp confirmed against
+its own extracted frame. Slide 17 is a new `stepvid__video--soon` placeholder for the 10.2 review
+round — see `MEDIA_SHOTLIST.md`.
 
 ---
 
@@ -29,12 +38,17 @@ out loud on slide 2's session note and in slide 9's badge («نشوفه بس، �
 dropped live third reads as an omission. This is the general rule now written into
 `day-deck-recipe.md`, so §16.3 on Day 10 inherits it.
 
-**2. §10 shows one fully worked example but never names its formats.** The curriculum is explicit
-that EARS/Gherkin are explained on **Day 4** «قبل أن تكتبها مباشرةً», while the deck rule forbids
-using a term before the slide that defines it. Slide 11 resolves both: it shows the store-owner note
-turning into a complete requirement — ID, priority, the عندما…يجب على النظام sentence, the story,
-the acceptance line — and names none of it. It closes on «ولا تحفظ شكلها — تشوفها بكرة اسمًا اسمًا».
-Day 4 then names what trainees have already watched happen.
+**2. ~~§10 never names its formats~~ — REVERSED 2026-09-28.** The old decision deferred EARS and
+Gherkin to Day 4. Day 4 no longer teaches them: the whole 26 د formats block moved to Day 3, because
+a trainee who *writes* their requirements today cannot review what Claude produced without knowing
+what its parts are called.
+
+The term-ordering rule still holds, and drives the slide order: **slide 11 stays unnamed** (it comes
+before the definition), and its closing line changed from «تشوفها بكرة اسمًا اسمًا» to «نسمّيها وحدة
+وحدة في الشريحتين الجايتين». Slide 12 then names EARS and expands it —
+**Easy Approach to Requirements Syntax**, which is expanded nowhere else in the repo — using day-01's
+MVP pattern (Arabic name · `tok-lat` acronym · `sag-slide__title--note` expansion). Slide 13 names
+the other three parts. Slide 10 gained an `SRS` `.ttip`, since day-01's gloss cannot cross decks.
 
 **3. The §16 recording will film everything, with the key values blurred.** It is the first
 recording in the course where a real secret appears on screen. Step 8 of slide 9 carries a
@@ -48,23 +62,27 @@ keys go, not their values — which doubles as the lesson about how Claude treat
 | # | Slide | Component | Anchor | Notes |
 |---|---|---|---|---|
 | 1 | الغلاف — اليوم الثالث | `sag-title` dark | — | |
-| 2 | مهامّ اليوم: شرح (42 د) + تطبيق (64 د) | 2 × `.sess` | — | Rows verbatim from §2.3. Footer note states the interleave **and** the §16 exception |
-| 3 | مهامّ اليوم: عملك (82 د) + مراجعة (27 د) | 2 × `.sess` | — | Note says the deploy is the longest task *because first deploys stumble* — budgeted, not a failure |
-| 4 | أهداف اليوم | 4 cards | — | **Goals last in the block.** Closes on «وما راح يكون مكتملًا — وهذا مقصود» |
-| 5 | §16 — رابط يفتحه أي أحد | 3 cards + warning | `s16-concept` | Carries the honest admission: the trainer's own project shipped only at the end. Warning card asks «ليش قدّمنا النشر لليوم الثالث؟» — a decision the slide just made, not a rule it assumes you know |
-| 6 | §16 — مين يعمل ايش، وبأي أداتين | 2 + 2 cards + note | `s16-who` | You = account + two confirmations. Tools note explains *why two*, and folds in the three-task map |
-| 7 | 16.1 — تهيئتك | `.flow` + prompt + 1 command card | `task-161` | Ready-made prompt from curriculum, **re-verified against extracted frames of `deployment.mp4` (2026-09-26)** — see the correction below. Step 2: Claude runs `claude mcp add` and triggers `vercel login`, **one browser confirmation**; step 3 is the real mechanism — a separate `PowerShell`, `claude` (approving a one-time "new MCP server" trust prompt), `/mcp` → `vercel` → `Authenticate`, the **same dance as Supabase on Day 1** (day-01 banner 40). Both commands share **one** full-width card — two cards overflowed by 17 px |
-| 8 | 16.2 — أوّل نشر | `.flow` + prompt + 2 cards | `task-162` | Prompt from curriculum:3049. Warning card = why root-dir and keys-before-deploy are ordered steps, not luck. **Four `.ttip` tooltips** carry the vocabulary a non-engineer cannot infer: مجلّد الجذر · مجلّد تطبيقك · المجلّد الغلط · مفاتيح الإنتاج |
-| **9** | **▶ المقطع: §16 — `deployment.mp4`** | **`stepvid`** | `demo-16` | **Filmed and embedded (2026-09-26).** 13 steps, 2 dividers, 2 `stepvid__fix` notes (the CLI-availability caveat on step 1, the blur note on step 8). No amber row — the one moment that would have needed one (a failed deploy) is real footage instead: a first attempt fails and Claude retries from inside `application` |
-| 10 | §10 — وثيقة تقول ايش يعمله مشروعك | 2 cards + note | `s10-concept` | FR = *ايش* · NFR = *كيف*. Says plainly the trainee never writes the formats |
-| 11 | §10 — من جملتك إلى متطلّب مكتمل | before → after | `s10-parts` | **The worked example.** Formats shown, never named (decision 2) |
-| 12 | 10.1 — ملاحظاتك الحرّة | `.flow` + prompt + note | `task-101` | Prompt from curriculum:1591. Title note names `notebook.txt` |
-| **13** | **▶ المقطع: 10.1** | **`stepvid --soon`** | `demo-10` | 8 steps, 1 amber row (the unhappy paths) |
-| 14 | ▸ فاصل: عملك على مشروعك | `sag-quote` dark | — | |
-| 15 | دورك الآن | 2 × `.sess` nested + note | `your-turn` | Sub-tasks `data-ref` to slides 7, 8, 12 |
-| 16 | ▸ فاصل: مراجعة وعرض التقدم | `sag-quote` dark | — | |
-| 17 | مخرَج اليوم | 3 cards + quote | `day-review` | |
-| 18 | غدًا — اليوم الرابع | `sag-closing` dark | — | §10 completion + §11 رحلة المستخدم |
+| 2 | مهامّ اليوم: شرح (65 د) + تطبيق (56 د) | 2 × `.sess` | — | Rows verbatim from §2.3. Gained the 26 د formats row and the 18 د 10.2 row; §16's two rows cut 42→21 and 10→5 |
+| 3 | مهامّ اليوم: عملك (72 د) + مراجعة (22 د) | 2 × `.sess` | — | **Note rewritten:** the longest row is no longer the deploy (15 د) but 10.1+10.2 at 44 د, so «أطولها نشرك أنت» became «أطولها متطلباتك». New `d3-rev-reqs` review row |
+| 4 | أهداف اليوم | 4 cards | — | **Goals last in the block.** Card 2 now promises متطلباتك الوظيفية **كاملة**, not «نبدأ اليوم ونكمّل بكرة» |
+| 5 | §16 — رابط يفتحه أي أحد | 3 cards + warning | `s16-concept` | Carries the honest admission: the trainer's own project shipped only at the end |
+| 6 | §16 — مين يعمل ايش، وبأي أداتين | 2 + 2 cards + note | `s16-who` | You = account + two confirmations. Tools note explains *why two* |
+| 7 | 16.1 — تهيئتك | 1 `.card` + `.flow flow--tight`, 4 steps | `task-161` | Rebuilt 2026-09-26 into one container with the combined `.promptbox` prompt (CLI install + MCP link in one paste, 4 nested `.snipbox` commands). Closed a ~97 px overflow with a scoped `.flow--tight` + `.snip--sm` rather than shrinking base components |
+| 8 | 16.2 — أوّل نشر | `.flow` + prompt + 2 cards | `task-162` | Prompt opens with the verification clause slide 7's step 4 points at. **Four `.ttip`s** carry the vocabulary a non-engineer cannot infer |
+| **9** | **▶ المقطع: §16 — `deployment.mp4`** | **`stepvid`** | `demo-16` | 13 steps, 2 dividers, 2 `stepvid__fix`. Step 1's note says the filmed manual CLI install is the *fallback*; slide 7 teaches Claude doing it |
+| 10 | §10 — وثيقة تقول ايش يعمله مشروعك | 2 cards + note | `s10-concept` | FR = *ايش* · NFR = *كيف*. **Gained an `SRS` `.ttip`** — day-01 has one but `data-ref` cannot cross decks |
+| 11 | §10 — من جملتك إلى متطلّب مكتمل | before → after | `s10-parts` | **The worked example, still unnamed** — it precedes the definition. Closing line now points two slides ahead, not to tomorrow |
+| **12** | **§10 — صيغة `EARS`: أربعة قوالب** | 4 cards + note | `s10-ears` | **NEW.** Expands **Easy Approach to Requirements Syntax** in a `sag-slide__title--note`, MVP-style — the acronym is expanded nowhere else in the repo. One concrete store example per pattern; the warning-bordered 4th card is the unwanted-behaviour one, flagged as the most-forgotten |
+| **13** | **§10 — القصة والقبول والأولوية** | 2 + 2 cards + warning | `s10-story` | **NEW.** The other three parts. Closes on «لو طلعت كلها 10/10 فما رتّبت شي» |
+| 14 | 10.1 — ملاحظاتك الحرّة | `.flow` + prompt + note | `task-101` | **Gained the options lesson:** what comes back is questions *with options* — you pick, you don't compose — plus the exact sentence to send if it comes back as prose |
+| **15** | **▶ المقطع: 10.1 + صياغة 10.2 — `task-10.1.mp4`** | **`stepvid`** | `demo-10` | **Filmed and embedded (2026-09-28).** 6:16, 15 steps, 4 dividers, 1 `stepvid__fix`. Covers 10.1 end-to-end **and** the FR-writing half of 10.2. Opens on a manual `/compact` — glossed inline in step 1 since 7.8 is now Day 5 |
+| **16** | **10.2 — صياغة المتطلبات** | 2 + 2 cards | `task-102` | **NEW.** The ready-made prompt, فحص الجودة as the four review questions, the three-conflicts story, and «توقّع جولتين أو ثلاث» |
+| **17** | **▶ المقطع: جولة المراجعة** | **`stepvid --soon`** | `demo-102` | **NEW placeholder.** 6 ordinal steps + 1 amber row (the priority sweep). Filmed only if the review half gets its own take |
+| 18 | ▸ فاصل: عملك على مشروعك | `sag-quote` dark | — | |
+| 19 | دورك الآن | 2 × `.sess` nested + note | `your-turn` | Sessions re-split 25 / 47. Two new L2 rows under `d3-notes` for the 10.2 half; `d3-push` finally got the `data-ref` it was missing, so the slide's own «Ctrl + نقرة على أي مهمّة» promise is true for every row |
+| 20 | ▸ فاصل: مراجعة وعرض التقدم | `sag-quote` dark | — | |
+| 21 | مخرَج اليوم | 3 cards + quote | `day-review` | Middle card is now «متطلباتك مكتوبة ومراجَعة», not just notes coverage |
+| 22 | غدًا — اليوم الرابع | `sag-closing` dark | — | **Rewritten:** tomorrow is §10.3 صفات الجودة + §11 رحلة المستخدم. The old card promising «نسمّي الصيغ اللي شفتها اليوم بأسمائها» is gone — that happens today now |
 
 ---
 
@@ -133,4 +151,30 @@ keys go, not their values — which doubles as the lesson about how Claude treat
   step 8 doesn't claim one. It cites the strongest evidence that actually exists instead: a live login
   on the deployed URL that greets the trainer by his own email — which cannot happen without a working
   database connection. **Cite the evidence you have, not the action you'd have liked to capture.**
+
+### From the 2026-09-28 rebalance and `task-10.1.mp4`
+
+- **A budget can be wrong by 2× and never get questioned, because it sums to 215.** §16's 52 د of
+  watching and 67 د of one-time setup were internally consistent and arithmetically perfect. What
+  exposed them was asking a different question — *how long does it take to watch 13 steps?* — not
+  re-checking the sum. **The invariant that a day totals 215 د validates nothing about whether any
+  individual row is sane.**
+- **Moving content between days moves its vocabulary debt with it.** Pulling the formats block to
+  Day 3 silently invalidated three things on slides that nobody edited: slide 11's «تشوفها بكرة», the
+  closing slide's promise that tomorrow names the formats, and Day 2's forward-preview saying Day 3
+  merely *starts* requirements. **After a cross-day move, grep both decks for every forward
+  reference to the day you moved from.**
+- **`innerText` only sees the active slide.** A register sweep over `document.body.innerText`
+  returned zero EARS and zero SRS mentions on a deck that has both — because 21 of 22 slides are
+  hidden. It also hid every real waw+Latin glue. **Sweep `textContent`, never `innerText`**, and
+  cross-check against the raw markup, which catches what neither renders.
+- **Not every regex hit is a violation, and the difference matters.** This pass flagged 11 «منتج»
+  (all of them the store example's literal *merchandise*, which is correct) and 2 «وايش» (both
+  genuine list-joins, which the rule explicitly permits). **Read every hit in place** — the
+  vocabulary rules are semantic, and a blind fix would have broken correct Arabic.
+- **The recording is the evidence that a package rule is missing.** Two package defects were not
+  visible anywhere in the repo, only in the footage: gap-questions arriving as prose (the trainee had
+  to *ask* for options) and 32 requirements rendering as one garbled LTR line each. Both are now
+  written into `writing-requirements/SKILL.md`, and the RTL rule was widened from
+  `conversation_history.md` to every Arabic `.md` in `bootcamp-mvp-process.md` §5.2.
 

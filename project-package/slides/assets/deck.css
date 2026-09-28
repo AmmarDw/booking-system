@@ -1376,6 +1376,73 @@ body {
   font-size: 14px
 }
 
+/* ── multi-command prompt copied as one paste ─────────────────────────
+   Some ready-made prompts must hand Claude literal commands, not just
+   narration, so a trainee whose Claude skips a step can run that one
+   command by hand. The whole block copies as a single paste through its
+   own bigger button; each embedded command keeps its own normal .snipbox
+   copy button for that manual fallback. The big button reads a literal
+   data-copy string rather than scanning rendered text — the block mixes
+   RTL narration with LTR commands, so DOM text order would not match
+   what Claude should actually receive. */
+.promptbox {
+  position: relative;
+  background: var(--brand-snow);
+  border: var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  padding-right: 50px
+}
+
+.promptbox>* {
+  margin-block: 0
+}
+
+.promptbox>*+* {
+  margin-block-start: 4px
+}
+
+.snip--sm {
+  font-size: 20px;
+  padding: 6px 10px
+}
+
+.promptbox .card__note--sm {
+  line-height: 1.3
+}
+
+.promptbox__copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+  color: var(--brand-primary);
+  box-shadow: var(--lift-1);
+  cursor: pointer
+}
+
+.promptbox__copy:hover {
+  background: var(--brand-sky-soft)
+}
+
+.promptbox__copy[data-copied="true"] {
+  color: var(--accent-state)
+}
+
+.promptbox__copy .i {
+  font-size: 18px
+}
+
+.flow>li>.promptbox {
+  margin-block-start: 8px
+}
+
 /* ── step-timestamped walkthrough video ──────────────────────────────
    A real screen recording of a full setup (install → fix → sign in), paired
    with a scrollable list of steps whose time badges seek the video — used
@@ -1697,6 +1764,16 @@ body {
 
 .flow>li+li {
   margin-block-start: 10px
+}
+
+/* Scoped to a single content-heavy card (slide 7) rather than loosening
+   .flow deck-wide. */
+.flow--tight>li {
+  line-height: 1.4
+}
+
+.flow--tight>li+li {
+  margin-block-start: 6px
 }
 
 /* Four short steps read better side by side than as one tall column. */

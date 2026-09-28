@@ -48,6 +48,7 @@ Which is why days 2–10 have **no «تطبيق مع المدرب» break slide*
 | `project-package/slides/media/tasks-81-82.mp4` | Tasks 8.1 + 8.2, end to end on darrisni | 3:24 | **Shipped** — Day-2 slide 9 |
 | `project-package/slides/media/tasks-91-92.mp4` | Tasks 9.1 + 9.2, end to end on darrisni | 1:49 | **Shipped** — Day-2 slide 14 |
 | `project-package/slides/media/deployment.mp4` | Tasks 16.1 + 16.2, end to end on darrisni | 3:22 | **Shipped** — Day-3 slide 9 |
+| `project-package/slides/media/task-10.1.mp4` | Task 10.1 **and the FR half of 10.2**, on darrisni | 6:16 | **Shipped** — Day-3 slide 15 |
 
 **Filenames are lowercase-hyphen** and the deck references them by name — see `MEDIA_SHOTLIST.md`.
 The original of the above arrived as `8.1_&_8.2_tasks.mp4` and was renamed: `&` has to be escaped in
@@ -59,14 +60,21 @@ Everything else — Day 2 is now fully covered. §9 was recorded on **2026-09-25
 last BookIt material left the deck: Day-2 slides 12 and 13 were rebuilt on darrisni and slide 14's
 `chatlog` was replaced by the recording.
 
-**Day 3 — one of two recordings landed.** §16's `deployment.mp4` arrived 2026-09-26, was verified
-frame-by-frame (not from an auto-generated transcript — see the appendix below for why that
-distinction mattered here), and is embedded on slide 9 with real timestamps. §10's is still planned.
+**Day 3 — both planned recordings landed; one optional third is open.** §16's `deployment.mp4`
+arrived 2026-09-26 and §10's `task-10.1.mp4` on 2026-09-28. Both were verified frame-by-frame (not
+from an auto-generated transcript — see the appendix below for why that distinction mattered here)
+and are embedded with real timestamps.
 
 | File | Covers | Status |
 |---|---|---|
-| `media/deployment.mp4` | §16 — tasks 16.1 + 16.2, Vercel setup through first live link | **Shipped**, delivered under this name rather than the originally planned `tasks-161-162.mp4` — renaming was free since nothing referenced the placeholder yet |
-| `media/task-101.mp4` (planned) | §10 — task 10.1, free-form notes about what the project does | Not filmed. Must end where Claude asks what is missing; must **not** show the formal requirement being written (that is Day 4) |
+| `media/deployment.mp4` | §16 — tasks 16.1 + 16.2, Vercel setup through first live link | **Shipped** (slide 9), delivered under this name rather than the planned `tasks-161-162.mp4` — renaming was free since nothing referenced the placeholder yet |
+| `media/task-10.1.mp4` | §10 — task 10.1 **plus the FR-writing half of 10.2** | **Shipped** (slide 15), 6:16. Delivered wider than its brief, which said «must **not** show the formal requirement being written (that is Day 4)» — but Day 4 no longer owns that: the formats block and 10.2 moved to Day 3 in the 2026-09-28 rebalance, so the take is correctly scoped after all |
+| `media/task-102-review.mp4` (optional) | §10 — the 10.2 **review round** only | Not filmed, and **not yet decided**. Slide 17 ships as a `stepvid__video--soon` placeholder carrying its steps either way |
+
+> **A take can outrun its brief and still be right — check the curriculum before re-cutting.**
+> `task-10.1.mp4` violated an explicit "must not" in its own capture brief. The brief was stale, not
+> the recording: the day boundary had moved underneath it. **When footage contradicts a shotlist
+> entry, re-read the curriculum before assuming the footage is wrong.**
 
 **§16 is watched, not re-run live** — deploying an already-deployed project produces nothing, and the
 account steps happen once per person. This is the per-section exception documented in
