@@ -232,6 +232,17 @@ cold has been given a term nobody defined.
 - **An LTR number box in an RTL table cell glues to the Arabic** («8.1المشكلة») — needs
   `text-align: end` and a `min-width`.
 
+### Numerals: Latin digits only, everywhere — never ١٢٣
+
+Write every digit as `1 2 3` — never as Arabic-Indic `١ ٢ ٣`. This applies to step badges
+(`<span class="stage__n">1</span>`, not `١`), ordinals inside card titles («1 · عام» not «١ · عام»),
+timestamps in captions, durations, IDs — every digit on every slide. Mixed scripts on the same page
+read as inconsistent, and Arabic-Indic digits also reorder unpredictably next to Latin tokens in RTL
+text, which the bidi rules above already have to fight. One script, one set of digits, always.
+
+Audit with `/[٠-٩]/` over the HTML; found on Day 1 and Day 2's `stage__n` badges and Day 3's EARS
+card ordinals as of 2026-09-29 — fix on next touch of those slides, not proactively.
+
 ### Never glue an Arabic و to a Latin word
 
 `وpush` and `وSupabase` render as one run and read as a typo. Either use `&` when the و joins two

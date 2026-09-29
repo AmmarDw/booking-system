@@ -159,14 +159,19 @@
                       class="i i-check"></span></span>
                   <span class="task__t">16.2 · أوّل نشر على رابط حيّ</span><span class="task__d">15 د</span>
                 </div>
-                <div class="task" data-task-key="d3-notes" data-ref="your-turn"><span class="task__mark"><span
+                <div class="task" data-task-key="d3-notes-101" data-ref="your-turn"><span class="task__mark"><span
                       class="i i-check"></span></span>
-                  <span class="task__t">10.1 ثم 10.2 · ملاحظاتك، ثم متطلباتك الوظيفية كاملة</span><span
-                    class="task__d">44 د</span>
+                  <span class="task__t">10.1 · ملاحظاتك عن وظائف مشروعك</span><span
+                    class="task__d">14 د</span>
+                </div>
+                <div class="task" data-task-key="d3-notes-102" data-ref="your-turn"><span class="task__mark"><span
+                      class="i i-check"></span></span>
+                  <span class="task__t">10.2 · متطلباتك الوظيفية كاملة</span><span
+                    class="task__d">30 د</span>
                 </div>
                 <div class="task" data-task-key="d3-push" data-ref="your-turn"><span class="task__mark"><span
                       class="i i-check"></span></span>
-                  <span class="task__t">تحفظ شغلك وترفعه (commit &amp; push)</span><span class="task__d">3 د</span>
+                  <span class="task__t">تحفظ شغلك وترفعه</span><span class="task__d">3 د</span>
                 </div>
               </div>
             </div>
@@ -688,29 +693,30 @@ claude mcp list"><span class="i i-copy"></span></button>
         </div>
         <div class="sag-slide__body">
           <p class="sag-slide__lead sag-slide__lead--wide">في القسم 8 قرّرت <strong>ايش يدخل في مشروعك</strong>. الحين
-            نحوّل كل خاصية إلى وصف دقيق: ايش تعمل بالضبط، ومتى نعتبرها خلصت.</p>
+            نفصل كل خاصية إلى متطلبات بوصف دقيق، كل متطلّب يجاوب على: ايش يعمل بالضبط، ومتى نعتبره خلص.</p>
+          <p class="sag-slide__lead sag-slide__lead--wide">وتنقسم المتطلبات إلى نوعين:</p>
           <div class="bento" data-cols="2">
             <article class="card card--accent">
               <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
                 <h3 class="card__title card__title--sm">متطلبات وظيفية — <em>ايش</em> يعمل</h3>
               </div>
-              <p class="card__note card__note--sm">وظائف ملموسة تقدر تجرّبها بنفسك: «يعرض قائمة الخدمات»، «يرسل بريد
-                تأكيد».</p>
-              <p class="card__note card__note--sm">وهذي اللي نشتغل عليها اليوم وبكرة.</p>
+              <p class="card__note card__note--sm"><strong>(EARS)</strong> عندما يختار المدرّس المواد أو الاختبارات
+                التي يدرّسها، يجب على النظام أن يحفظها ويعرضه في نتائج تصفّح كل مادّة اختارها.</p>
+              <p class="card__note card__note--sm">مثال حقيقي من مشروع «درّسني» — منصّة ربط طلاب بمدرّسين خصوصيين.</p>
             </article>
             <article class="card card--state">
               <div class="card__top"><span class="card__icon"><span class="i i-shield-check"></span></span>
                 <h3 class="card__title card__title--sm">وغير وظيفية — <em>كيف</em> يعملها</h3>
               </div>
-              <p class="card__note card__note--sm">صفات جودة: يفتح بسرعة، يحمي بيانات المستخدم، ما يطيح لو دخل عليه
-                ناس كثير.</p>
+              <p class="card__note card__note--sm">صفات جودة، مو وظيفة: «يجب أن يعرض النظام تقويم الشهر خلال ثانيتين
+                على اتصال جيّد» — أداء، لا وظيفة جديدة.</p>
               <p class="card__note card__note--sm">وهذي أكثر شي ينساه الناس، فأفردنا لها مهمّة لحالها في اليوم 4.</p>
             </article>
           </div>
           <div class="card card--plain">
             <p class="card__note"><span class="i i-lightbulb" style="color:var(--accent-state)"></span>
-              <strong>وليش نتعب على هذا أصلًا؟</strong> لأن متطلّبًا واضحًا يقدر يُختبر هو اللي يوجّه Claude وهو
-              يبني، وهو اللي يخلّيك تعرف <strong>متى خلص كل جزء</strong> بدل ما تخمّن.</p>
+              <strong>وليش نتعب على هذا أصلًا؟</strong> لأن متطلب واضح قابل للاختبار هو اللي يوجّه Claude خلال
+              البناء، وهو اللي يخلّيك تعرف <strong>متى خلص كل جزء</strong> بدل ما تخمّن.</p>
           </div>
         </div>
         <footer class="sag-slide__foot">
@@ -737,27 +743,31 @@ claude mcp list"><span class="i i-copy"></span></button>
               <div class="card__top"><span class="card__icon"><span class="i i-file-text"></span></span>
                 <h3 class="card__title card__title--sm">اللي كتبته أنت</h3>
               </div>
-              <p class="card__note">«صاحب المتجر يضيف منتجات، ويبي تنبيه قبل ما ينفد أي منتج.»</p>
-              <p class="card__note card__note--sm">جملة وحدة، بكلام عادي، بلا أي ترتيب.</p>
+              <p class="card__note">«لازم يقدر [المدرّس] بسهولة يضيف مواعيد كثيرة، من خلال توفير صفحة إضافة مواعيد
+                فاضية للحصص يقدر يحدّد فيها المواعيد المتاح فيها باليوم، ويقدر يحدّد أن هذه المواعيد تكون لأي أيام في
+                الأسبوع، ومن تاريخ كم لكم تنطبق.»</p>
+              <p class="card__note card__note--sm">مقطع وحد من ملاحظات حرّة، بكلام عادي، بلا أي ترتيب.</p>
             </article>
             <article class="card card--state">
               <div class="card__top"><span class="card__icon"><span class="i i-circle-check"></span></span>
                 <h3 class="card__title card__title--sm">واللي رجّعه Claude</h3>
               </div>
-              <p class="card__note card__note--sm"><strong>FR-1</strong> · رئيسي ✓ · الأولوية 8/10</p>
-              <p class="card__note card__note--sm"><strong>عندما</strong> يضيف صاحب المتجر منتجًا، <strong>يجب على
-                  النظام</strong> أن يحفظه ويعرضه في المخزون.</p>
-              <p class="card__note card__note--sm"><strong>القصة:</strong> بصفتي صاحب متجر، أريد إضافة منتج، حتى يظهر
-                في مخزوني.</p>
-              <p class="card__note card__note--sm"><strong>القبول:</strong> بافتراض أنني في صفحة المخزون، عندما أضيف
-                منتجًا باسم وكمية، فإنّ المنتج يظهر بالكمية الصحيحة.</p>
+              <p class="card__note card__note--sm"><strong>FR-6</strong> · رئيسي ✓ · الأولوية 10/10</p>
+              <p class="card__note card__note--sm"><strong>عندما</strong> يحدّد المدرّس أيامًا من الأسبوع، ومدى
+                تواريخ، ونطاق وقت لكل يوم، <strong>يجب على النظام أن</strong> يولّد كل المواعيد المتاحة المطابقة داخل
+                ذلك المدى، بطول ساعة واحدة للموعد.</p>
+              <p class="card__note card__note--sm"><strong>القصة:</strong> بصفتي مدرّسًا، أريد إضافة مواعيدي المتاحة
+                دفعةً واحدة لعدّة أسابيع، حتى لا أضيف كل موعد يدويًّا.</p>
+              <p class="card__note card__note--sm"><strong>القبول:</strong> بافتراض أنني اخترت الأحد والثلاثاء، بنطاق
+                16:00–19:00 لكل يوم منهما، عندما أحفظ، فإنّ النظام يولّد كل موعد بطول ساعة داخل ذلك النطاق في كلا
+                اليومين فقط.</p>
             </article>
           </div>
           <div class="card card--plain">
             <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
               <strong>أربعة أشياء يحملها كل متطلّب:</strong> صيغة ثابتة تمنع الغموض · قصة تربطه بفايدة لمستخدم حقيقي
-              · معيار يقول <strong>متى نعتبره تمّ</strong> · ورقم أولوية. <strong>ولا تحفظ شكلها</strong> — نسمّيها
-              وحدة وحدة في الشريحتين الجايتين، والمهمّ الحين إنك عرفت ايش يطلع من جملتك.</p>
+              · معيار يقول <strong>متى نعتبره تمّ</strong> · ورقم أولوية. نسمّيها وحدة وحدة في الشريحتين الجايتين،
+              والمهمّ الحين إنك عرفت ايش يطلع من جملتك.</p>
           </div>
         </div>
         <footer class="sag-slide__foot">
@@ -786,39 +796,40 @@ claude mcp list"><span class="i i-copy"></span></button>
           <div class="bento" data-cols="2">
             <article class="card card--accent">
               <div class="card__top"><span class="card__icon"><span class="i i-shield-check"></span></span>
-                <h3 class="card__title card__title--sm">١ · عام — يسري دائمًا</h3>
+                <h3 class="card__title card__title--sm">1 · عام — يسري دائمًا</h3>
               </div>
               <p class="card__note card__note--sm"><strong>يجب على النظام أن</strong> [يعمل كذا].</p>
-              <p class="card__note card__note--sm">«يجب على النظام أن يحفظ كلمات المرور مشفّرة.» — بلا شرط ولا لحظة
-                معيّنة.</p>
+              <p class="card__note card__note--sm"><strong>مثال حقيقي (FR-1):</strong> «يجب على النظام أن يربط كل حساب
+                بدور واحد فقط، يُحدَّد عند الإنشاء ولا يتغيّر بعده.» — بلا شرط ولا لحظة معيّنة.</p>
             </article>
             <article class="card card--state">
               <div class="card__top"><span class="card__icon"><span class="i i-circle-check"></span></span>
-                <h3 class="card__title card__title--sm">٢ · مدفوع بحدث — فيه لحظة تشغّله</h3>
+                <h3 class="card__title card__title--sm">2 · مدفوع بحدث — فيه لحظة تشغّله</h3>
               </div>
               <p class="card__note card__note--sm"><strong>عندما</strong> [يصير كذا]، <strong>يجب على النظام أن</strong>
                 [يعمل كذا].</p>
-              <p class="card__note card__note--sm">«عندما يضيف صاحب المتجر منتجًا، يجب على النظام أن يعرضه في
-                المخزون.»</p>
+              <p class="card__note card__note--sm"><strong>مثال حقيقي (FR-8):</strong> «عندما يختار الطالب مادّة في
+                صفحة الحجز، يجب على النظام أن يعرض قائمة المدرّسين الذين يدرّسون تلك المادة.»</p>
             </article>
             <article class="card card--accent">
               <div class="card__top"><span class="card__icon"><span class="i i-users"></span></span>
-                <h3 class="card__title card__title--sm">٣ · مدفوع بحالة — طول ما الوضع قائم</h3>
+                <h3 class="card__title card__title--sm">3 · مدفوع بحالة — طول ما الوضع قائم</h3>
               </div>
               <p class="card__note card__note--sm"><strong>أثناء</strong> [الحالة]، <strong>يجب على النظام أن</strong>
                 [يعمل كذا].</p>
-              <p class="card__note card__note--sm">«أثناء نفاد المنتج، يجب على النظام أن يخفي زرّ الشراء.»</p>
+              <p class="card__note card__note--sm"><strong>مثال حقيقي (FR-24):</strong> «أثناء كون الحصّة منتهية، يجب
+                على النظام أن يتيح للطالب تقييم المدرّس بالنجوم مرّة واحدة فقط.»</p>
             </article>
             <article class="card" style="border-inline-start:5px solid var(--state-warning)">
               <div class="card__top"><span class="card__icon"
                   style="background:var(--state-warning-soft);color:var(--state-warning)"><span
                     class="i i-alert-triangle"></span></span>
-                <h3 class="card__title card__title--sm">٤ · سلوك غير مرغوب — لمّا تروح غلط</h3>
+                <h3 class="card__title card__title--sm">4 · سلوك غير مرغوب — لمّا تروح غلط</h3>
               </div>
               <p class="card__note card__note--sm"><strong>إذا</strong> [صار كذا]، <strong>فعندئذٍ يجب على النظام
                   أن</strong> [يعمل كذا].</p>
-              <p class="card__note card__note--sm">«إذا أخطأ الزائر كلمة المرور ثلاث مرّات، فعندئذٍ يجب على النظام أن
-                يقفل المحاولة عشر دقائق.»</p>
+              <p class="card__note card__note--sm"><strong>مثال حقيقي (FR-12):</strong> «إذا لم يطابق أي مدرّس ما اختاره
+                الطالب، فعندئذٍ يجب على النظام أن يعرض رسالة واضحة بعدم وجود مدرّس متاح.»</p>
             </article>
           </div>
           <div class="card card--plain">
@@ -842,7 +853,7 @@ claude mcp list"><span class="i i-copy"></span></button>
       <section class="sag-slide deck-slide" data-anchor="s10-story">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">10</span> صيغ كتابة المتطلبات</span>
-          <h2 class="sag-slide__title">مع كل متطلّب ثلاثة أشياء ثانية</h2>
+          <h2 class="sag-slide__title">مع كل متطلّب أربعة أشياء ثانية</h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
@@ -853,7 +864,8 @@ claude mcp list"><span class="i i-copy"></span></button>
               </div>
               <p class="card__note card__note--sm"><strong>بصفتي</strong> [دور]، <strong>أريد</strong> [كذا]،
                 <strong>حتى</strong> [الفايدة].</p>
-              <p class="card__note card__note--sm">«بصفتي صاحب متجر، أريد إضافة منتج، حتى يظهر في مخزوني.»</p>
+              <p class="card__note card__note--sm"><strong>مثال حقيقي:</strong> «بصفتي طالبًا، أريد تصفّح المدرّسين
+                حسب المادة، حتى أجد من يدرّس ما أحتاجه بلا بحث عشوائي في تويتر وتيليجرام.»</p>
               <p class="card__note card__note--sm">ولو ما قدرت تكمّل «حتى…»، فالمتطلّب غالبًا ما أحد يحتاجه.</p>
             </article>
             <article class="card card--state">
@@ -862,8 +874,9 @@ claude mcp list"><span class="i i-copy"></span></button>
               </div>
               <p class="card__note card__note--sm"><strong>بافتراض</strong> [الوضع]، <strong>عندما</strong> [تعمل كذا]،
                 <strong>فإنّ</strong> [النتيجة].</p>
-              <p class="card__note card__note--sm">«بافتراض أنني في صفحة المخزون، عندما أضيف منتجًا باسم وكمية، فإنّ
-                المنتج يظهر بالكمية الصحيحة.»</p>
+              <p class="card__note card__note--sm"><strong>مثال حقيقي:</strong> «بافتراض أنني في صفحة «احجز حصّة»
+                واخترت «قدرات»، عندما تُعرض النتائج، فإنّ كل بطاقة مدرّس تحمل اسمه ومتوسّط نجومه، ولا يظهر فيها مدرّس
+                لا يدرّس «قدرات».»</p>
               <p class="card__note card__note--sm">وهذي الجملة اللي <strong>تجرّبها بنفسك</strong> في الواجهة
                 بعدين.</p>
             </article>
@@ -875,7 +888,7 @@ claude mcp list"><span class="i i-copy"></span></button>
               </div>
               <p class="card__note card__note--sm">أرقام بسيطة متسلسلة: <span class="tok-lat">FR-1</span>،
                 <span class="tok-lat">FR-2</span> للوظيفية · <span class="tok-lat">NFR-1</span> لغير الوظيفية. تقول
-                «عدّل رقم 7» بدل ما تعيد وصفه.</p>
+                «عدّل FR-7» بدل ما تعيد وصفه.</p>
             </article>
             <article class="card">
               <div class="card__top"><span class="card__icon"><span class="i i-cloud-upload"></span></span>
@@ -936,7 +949,7 @@ claude mcp list"><span class="i i-copy"></span></button>
               <p class="card__note card__note--sm"><strong>ولاحظ ايش طلبته:</strong> ما طلبت متطلبات — طلبت أسئلة.
                 الصياغة المبكّرة تثبّت فهمًا ناقصًا، فنأخّرها عمدًا.</p>
               <p class="card__note card__note--sm"><strong>واللي يرجع لك أسئلة معها خيارات جاهزة</strong> — تختار
-                بنقرة، ما تؤلّف قرارًا من عندك. ولو رجعت لك فقرات طويلة بلا خيارات واضحة، قل له:
+                بنقرة، أو تكتب خيار مخصص من عندك. ولو رجعت لك فقرات طويلة بلا خيارات واضحة، قل له:
                 «<strong>صُغها أسئلة واضحة مع خيارات</strong>».</p>
             </article>
           </div>
@@ -974,9 +987,11 @@ claude mcp list"><span class="i i-copy"></span></button>
                 <li class="stepvid__step" data-t="8">
                   <button class="stepvid__time" type="button">0:08</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">يضغط المحادثة، ثم يسأل عن المهمّة الجاية</h4>
-                    <p class="stepvid__p">يبدأ بأمر <span class="tok-code">/compact</span> عشان يفضّي مساحة في المحادثة، ثم يقول لـ Claude وين وصل ويسأله: ايش المهمة الجاية وايش خطواتها.</p>
-                    <p class="stepvid__p"><strong>والضغط معناه</strong> إن Claude يلخّص أقدم جزء من المحادثة عشان تكمّل بلا ما تمتلئ — تفصيله في اليوم الخامس.</p>
+                    <h4 class="stepvid__h">يسأل عن المهمّة الجاية</h4>
+                    <p class="stepvid__p">يفتح بأمر <span class="tok-code">/compact</span><span class="ttip ttip--icon"
+                        tabindex="0" data-tip-title="compact"
+                        data-tip="أمر يقول لـ Claude يلخّص أقدم جزء من المحادثة عشان تكمّل بلا ما تمتلئ. تفصيله في اليوم الخامس — هنا بس شفته يُستخدم."><span
+                          class="i i-info"></span></span>، ثم يسأل Claude وين وصل وايش المهمة الجاية وخطواتها.</p>
                   </div>
                 </li>
                 <li class="stepvid__step" data-t="35">
@@ -1004,8 +1019,9 @@ claude mcp list"><span class="i i-copy"></span></button>
                 <li class="stepvid__step" data-t="140">
                   <button class="stepvid__time" type="button">2:20</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">المتدرّب يفتح المعاينة ويقرأ الأسئلة</h4>
-                    <p class="stepvid__p">يقرأها في معاينة الملفّ لا في المحادثة — أوسع وأريح للقراءة الطويلة.</p>
+                    <h4 class="stepvid__h">المتدرّب يفتح معاينة سجلّ المحادثة ويقرأ الأسئلة فيها</h4>
+                    <p class="stepvid__p">يفتح معاينة ملفّ <span class="tok-code">conversation_history.md</span> ويقرأ
+                      ردّ Claude فيه — أوسع وأريح للقراءة الطويلة من نافذة المحادثة نفسها.</p>
                     <p class="stepvid__fix"><strong>في المقطع:</strong> الأسئلة رجعت فقرات طويلة، والخيار مدفون في آخر جملة — فما عرف المتدرّب ايش المطلوب منه يقرّره. <strong>والمفروض ترجع أسئلة بخيارات من أوّل مرّة</strong>، وهذا اللي صار عليه العمل بعد المقطع.</p>
                   </div>
                 </li>
@@ -1021,6 +1037,8 @@ claude mcp list"><span class="i i-copy"></span></button>
                   <div class="stepvid__body">
                     <h4 class="stepvid__h">يطلب صراحة: صُغها أسئلة مع خيارات</h4>
                     <p class="stepvid__p">يكتب حرفيًّا: «لم أفهم بعض النقاط، واحتاجك أن تصيغها كسؤال واضح مع خيارات». <strong>وهذي جملة احفظها</strong> — تنفعك كل ما رجع لك شرح طويل بدل قرار واضح.</p>
+                    <p class="stepvid__p"><strong>وفي نفس الرسالة</strong> يعطي Claude إجاباته على التعارضين والنواقص
+                      الأولى مباشرة — وهذي بالضبط اللحظة اللي الشريحة الجاية (10.2) تشرحها بالتفصيل.</p>
                   </div>
                 </li>
                 <li class="stepvid__divider">الأسئلة بخيارات، ثم الخطة</li>
@@ -1039,19 +1057,14 @@ claude mcp list"><span class="i i-copy"></span></button>
                     <p class="stepvid__p">تفتح في نصف الشاشة، وأوّل قسم فيها «ماذا سنفعل الآن؟ بلا مصطلحات تقنية» — تقرأه وتوافق أو تعدّل.</p>
                   </div>
                 </li>
-                <li class="stepvid__step" data-t="280">
-                  <button class="stepvid__time" type="button">4:40</button>
-                  <div class="stepvid__body">
-                    <h4 class="stepvid__h">يكتشف تعارضًا ثالثًا وهو يخطّط</h4>
-                    <p class="stepvid__p">وصف «مشرف» في جدول الأدوار كان لا يزال يمنحه الصلاحية اللي قرّر المتدرّب حذفها قبل شوي. <strong>المراجعة ما تنتهي عند أوّل جولة.</strong></p>
-                  </div>
-                </li>
                 <li class="stepvid__divider">الصياغة والمراجعة (10.2)</li>
                 <li class="stepvid__step" data-t="292">
                   <button class="stepvid__time" type="button">4:52</button>
                   <div class="stepvid__body">
                     <h4 class="stepvid__h">32 متطلّبًا، والنطاق يتصحّح، ويحفظ ويرفع</h4>
-                    <p class="stepvid__p">يكتب المتطلبات كاملة، ويصحّح التعارضات الثلاثة في ملفّ المشروع، ثم يحفظ ويرفع.</p>
+                    <p class="stepvid__p">يكتب المتطلبات كاملة، ويصحّح ثلاثة تعارضات مع قرارات سابقة في ملفّ المشروع —
+                      ثالثها اكتشفه Claude بنفسه وهو يكتب الخطة، دون أن يُطلب منه — ثم يحفظ ويرفع.
+                      <strong>المراجعة ما تنتهي عند أوّل جولة.</strong></p>
                     <p class="stepvid__p"><strong>وينبّه على ثلاث نقاط قبل ما تراجع</strong> — منها إنها صارت 32 لا 28 كما توقّع، ويشرح ليش زادت ثلاثة.</p>
                   </div>
                 </li>
@@ -1112,11 +1125,13 @@ claude mcp list"><span class="i i-copy"></span></button>
               <div class="card__top"><span class="card__icon"><span class="i i-file-text"></span></span>
                 <h3 class="card__title card__title--sm">وهذي الصياغة اللي تعطيها</h3>
               </div>
-              <p class="card__note card__note--sm">«إليك ملاحظاتي: [الصقها]، وهذي خصائص مشروعي من تحديد النطاق:
-                [الصقها]. اقترح متطلبات وظيفية بصيغة <span class="tok-lat">EARS</span> مع قصة مستخدم ومعايير قبول
-                لكلٍّ، ووسم رئيسي/أولوية.</p>
+              <p class="card__note card__note--sm"><strong>وهذا نفس المكان اللي وقفنا عنده بالضبط</strong> — بعد ما
+                جاوبت على تعارضات وأسئلة المقطع السابق (10.1)، لا ملاحظات عامة جديدة.</p>
+              <p class="card__note card__note--sm">«إليك ملاحظاتي: [الصقها]. اكتب متطلبات وظيفية بصيغة
+                <span class="tok-lat">EARS</span> مع قصة مستخدم ومعايير قبول لكلٍّ، ووسم رئيسي/أولوية.</p>
               <p class="card__note card__note--sm">اكتب كل متطلّب <strong>مكتملًا في مكان واحد</strong>،
                 و<strong>نبّهني إن تعارض أي متطلّب مع ما اتّفقنا عليه سابقًا</strong>.»</p>
+              <p class="card__note card__note--sm">ما تحتاج تلصق نطاق مشروعك — Claude يرجع له في ملفّ مشروعك بنفسه.</p>
             </article>
             <article class="card card--accent">
               <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
@@ -1145,10 +1160,11 @@ claude mcp list"><span class="i i-copy"></span></button>
               <div class="card__top"><span class="card__icon"><span class="i i-circle-check"></span></span>
                 <h3 class="card__title card__title--sm">وكيف تراجع نتيجتك</h3>
               </div>
-              <p class="card__note card__note--sm"><strong>توقّع جولتين أو ثلاث</strong> — نادرًا ما تكتمل من أوّل
-                مرّة، والتكرار هنا مو إخفاق.</p>
-              <p class="card__note card__note--sm">وافتح الملفّ <strong>معروضًا</strong> وتأكّد إنه مقروء. لو الشكل
-                مزعجك، قل له — زي ما صار في المقطع.</p>
+              <p class="card__note card__note--sm">افتح الملفّ <strong>معروضًا</strong> واقرأ كل متطلّب — لا الملخّص بس.
+                لو فيه شي ناقص أو غلط، اذكر رقمه (<strong>FR-#</strong>) واكتب ملاحظتك، ثم اقرأ تعديل Claude وشوف هل
+                رضيت.</p>
+              <p class="card__note card__note--sm"><strong>وأحيانًا تكون الصياغة الأولى تمام من غير أي تعديل</strong>
+                — وأحيانًا تحتاج جولتين أو ثلاث. كلا الحالتين طبيعي تمامًا.</p>
             </article>
           </div>
         </div>
@@ -1163,86 +1179,7 @@ claude mcp list"><span class="i i-copy"></span></button>
         </footer>
       </section>
 
-      <!-- ═══ 17 — المقطع: جولة مراجعة المتطلبات ═══════════════════════════════════════════════════════════ -->
-      <section class="sag-slide sag-media deck-slide" data-anchor="demo-102">
-        <div class="sag-slide__head sag-media__head">
-          <h2 class="sag-slide__title">جولة المراجعة — نشوفها على نفس المشروع</h2>
-          <span class="sag-badge"><span class="sag-badge__num">10.2</span> المراجعة</span>
-        </div>
-        <div class="sag-slide__body">
-          <div class="stepvid">
-            <div class="stepvid__video stepvid__video--soon">
-              <p class="stepvid__soon"><span class="i i-clock"></span>المقطع تحت التصوير — والخطوات تحت جاهزة</p>
-            </div>
-            <div class="stepvid__steps">
-              <ol class="stepvid__list">
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">١</span>
-                  <div class="stepvid__body">
-                    <h4 class="stepvid__h">يفتح المتطلبات ويقرأها وحدة وحدة</h4>
-                    <p class="stepvid__p">معروضة لا خامّة، ومن أوّلها لآخرها — لا يقرأ الملخّص بس.</p>
-                  </div>
-                </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">٢</span>
-                  <div class="stepvid__body">
-                    <h4 class="stepvid__h">يلاقي تفصيلًا ناقشوه وما ظهر</h4>
-                    <p class="stepvid__p">يقوله بكلامه: «ما ذكرت إطلاقًا كذا» — وما يحتاج يعرف أي متطلّب ينقصه.</p>
-                  </div>
-                </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">٣</span>
-                  <div class="stepvid__body">
-                    <h4 class="stepvid__h">ثم يلاقي متطلّبًا يناقض قرارًا سابقًا</h4>
-                    <p class="stepvid__p">اقتراح بدا معقولًا، لكنه يلغي حرّية أعطاها لدور ثاني قبل يومين.</p>
-                  </div>
-                </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">٤</span>
-                  <div class="stepvid__body">
-                    <h4 class="stepvid__h">يعطي ملاحظاته دفعة وحدة</h4>
-                    <p class="stepvid__p">أضِف هذا، واحذف ذاك، وعدّل هذي — بكلام عادي، بلا صيغ.</p>
-                  </div>
-                </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">٥</span>
-                  <div class="stepvid__body">
-                    <h4 class="stepvid__h">Claude يعدّل ويقول ايش تغيّر بالضبط</h4>
-                    <p class="stepvid__p">ما يكتفي بـ«تمّ» — يسمّي كل متطلّب مسّه وليش.</p>
-                  </div>
-                </li>
-                <li class="stepvid__step stepvid__step--new">
-                  <span class="stepvid__mark">مضافة</span>
-                  <div class="stepvid__body">
-                    <h4 class="stepvid__h">افحص الأولويات قبل ما تختم</h4>
-                    <p class="stepvid__p">لو طلعت كلها 10/10 فما ترتّب شي. اطلب توزيعها، وراجع أنت: ايش اللي لو ما
-                      وصل يعتبر مشروعك ناقصًا؟</p>
-                  </div>
-                </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">٦</span>
-                  <div class="stepvid__body">
-                    <h4 class="stepvid__h">حفظ ورفع</h4>
-                    <p class="stepvid__p">وينتهي اليوم الثالث: رابط شغّال، ومتطلبات وظيفية كاملة.</p>
-                  </div>
-                </li>
-              </ol>
-            </div>
-          </div>
-        </div>
-        <footer class="sag-slide__foot">
-          <div class="deck-foot">
-            <div class="deck-foot__side">
-              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
-                  alt="ساج التقنية"></div>
-              <span class="deck-foot__num">اليوم 3</span>
-            </div>
-            <span class="deck-foot__num">17</span>
-          </div>
-        </footer>
-      </section>
-
-      <!-- ═══ 18 — فاصل: عملك على مشروعك ═══════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 17 — فاصل: عملك على مشروعك ═══════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-quote deck-slide" data-tone="rule" data-surface="dark">
         <div class="sag-quote__inner">
           <div class="sag-quote__mark"></div>
@@ -1255,12 +1192,12 @@ claude mcp list"><span class="i i-copy"></span></button>
             <div class="deck-foot__side">
               <span class="sag-badge">عملك على مشروعك</span>
             </div>
-            <span class="deck-foot__num">18</span>
+            <span class="deck-foot__num">17</span>
           </div>
         </footer>
       </section>
 
-      <!-- ═══ 19 — دورك الآن ═══════════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 18 — دورك الآن ═══════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-anchor="your-turn">
         <div class="sag-slide__head">
           <span class="sag-badge">عملك على مشروعك</span>
@@ -1305,30 +1242,35 @@ claude mcp list"><span class="i i-copy"></span></button>
               <div class="sess__head"><span class="sess__name">اكتب متطلباتك</span><span class="sess__d">47 د</span>
               </div>
               <div class="tasks tasks--tree">
-                <div class="task" data-task-key="d3-notes" data-ref="task-101"><span class="task__mark"><span
+                <div class="task" data-task-key="d3-notes-101" data-ref="task-101"><span class="task__mark"><span
                       class="i i-check"></span></span>
-                  <span class="task__t">10.1 ثم 10.2 · ملاحظاتك، ثم متطلباتك الوظيفية كاملة</span><span
-                    class="task__d">44 د</span>
+                  <span class="task__t">10.1 · ملاحظاتك عن وظائف مشروعك</span><span
+                    class="task__d">14 د</span>
                 </div>
-                <div class="task task--l2" data-task-key="d3-notes-roles" data-parent="d3-notes"
+                <div class="task task--l2" data-task-key="d3-notes-roles" data-parent="d3-notes-101"
                   data-ref="task-101"><span class="task__mark"><span class="i i-check"></span></span>
                   <span class="task__t">مُرّ على كل دور واكتب ايش يجي يعمله</span>
                 </div>
-                <div class="task task--l2" data-task-key="d3-notes-ask" data-parent="d3-notes"
+                <div class="task task--l2" data-task-key="d3-notes-ask" data-parent="d3-notes-101"
                   data-ref="task-101"><span class="task__mark"><span class="i i-check"></span></span>
                   <span class="task__t">سلّمها وقل «لا تصُغها بعد — اسألني»</span>
                 </div>
-                <div class="task task--l2" data-task-key="d3-notes-answer" data-parent="d3-notes"
+                <div class="task" data-task-key="d3-notes-102" data-ref="task-102"><span class="task__mark"><span
+                      class="i i-check"></span></span>
+                  <span class="task__t">10.2 · متطلباتك الوظيفية كاملة</span><span
+                    class="task__d">30 د</span>
+                </div>
+                <div class="task task--l2" data-task-key="d3-notes-answer" data-parent="d3-notes-102"
                   data-ref="task-102"><span class="task__mark"><span class="i i-check"></span></span>
                   <span class="task__t">اختر من خياراته، ثم اطلب الصياغة</span>
                 </div>
-                <div class="task task--l2" data-task-key="d3-notes-review" data-parent="d3-notes"
+                <div class="task task--l2" data-task-key="d3-notes-review" data-parent="d3-notes-102"
                   data-ref="task-102"><span class="task__mark"><span class="i i-check"></span></span>
                   <span class="task__t">اقرأ كل متطلّب وأعطِ ملاحظاتك — وكرّر</span>
                 </div>
                 <div class="task" data-task-key="d3-push" data-ref="your-turn"><span class="task__mark"><span
                       class="i i-check"></span></span>
-                  <span class="task__t">تحفظ شغلك وترفعه (commit &amp; push)</span><span class="task__d">3 د</span>
+                  <span class="task__t">تحفظ شغلك وترفعه</span><span class="task__d">3 د</span>
                 </div>
               </div>
               <p class="sess__note sess__note--foot">تعثّرت؟ ارفع يدك — المدرب يمرّ عليك. وعلامة «–» على مهمّة كبيرة
@@ -1340,7 +1282,7 @@ claude mcp list"><span class="i i-copy"></span></button>
               <strong>الصياغات الجاهزة كاملة في شرائح المهامّ</strong> — اضغط <strong>Ctrl + نقرة</strong> على أي
               مهمّة فوق وتودّيك لها. وباختصار: للنشر «انشر مشروعي وأضف المفاتيح <strong>قبل</strong> النشر» ·
               وللملاحظات «هذي ملاحظاتي الحرّة: [الصقها]. <strong>لا تصُغها بعد</strong> — اسألني عمّا ينقصها» ·
-              وبعد ما تجاوب: «اقترح متطلبات وظيفية، و<strong>نبّهني إن تعارض شي مع اللي اتّفقنا عليه</strong>».</p>
+              وبعد ما تجاوب: «اكتب متطلبات وظيفية، و<strong>نبّهني إن تعارض شي مع اللي اتّفقنا عليه</strong>».</p>
           </div>
         </div>
         <footer class="sag-slide__foot">
@@ -1349,12 +1291,12 @@ claude mcp list"><span class="i i-copy"></span></button>
               <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
                   alt="ساج التقنية"></div>
               <span class="deck-foot__num">اليوم 3</span>
-            </div><span class="deck-foot__num">19</span>
+            </div><span class="deck-foot__num">18</span>
           </div>
         </footer>
       </section>
 
-      <!-- ═══ 20 — فاصل: مراجعة وعرض التقدم ════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 19 — فاصل: مراجعة وعرض التقدم ════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-quote deck-slide" data-tone="rule" data-surface="dark">
         <div class="sag-quote__inner">
           <div class="sag-quote__mark"></div>
@@ -1367,12 +1309,12 @@ claude mcp list"><span class="i i-copy"></span></button>
             <div class="deck-foot__side">
               <span class="sag-badge">مراجعة وعرض التقدم</span>
             </div>
-            <span class="deck-foot__num">20</span>
+            <span class="deck-foot__num">19</span>
           </div>
         </footer>
       </section>
 
-      <!-- ═══ 21 — مراجعة اليوم ════════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 20 — مراجعة اليوم ════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-anchor="day-review">
         <div class="sag-slide__head">
           <span class="sag-badge">مراجعة وعرض التقدم</span>
@@ -1414,12 +1356,12 @@ claude mcp list"><span class="i i-copy"></span></button>
               <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
                   alt="ساج التقنية"></div>
               <span class="deck-foot__num">اليوم 3</span>
-            </div><span class="deck-foot__num">21</span>
+            </div><span class="deck-foot__num">20</span>
           </div>
         </footer>
       </section>
 
-      <!-- ═══ 22 — غدًا ════════════════════════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 21 — غدًا ════════════════════════════════════════════════════════════════════════════════════ -->
       <section class="sag-slide sag-closing deck-slide" data-surface="dark">
         <div class="sag-slide__head">
           <h2 class="sag-slide__title">غدًا — اليوم الرابع</h2>
@@ -1488,7 +1430,7 @@ claude mcp list"><span class="i i-copy"></span></button>
               <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
                   alt="ساج التقنية"></div>
             </div>
-            <span class="deck-foot__num">22</span>
+            <span class="deck-foot__num">21</span>
           </div>
         </footer>
       </section>
@@ -1498,7 +1440,7 @@ claude mcp list"><span class="i i-copy"></span></button>
 
   <div class="deck-hud">
     <button data-act="prev" title="السابق">‹</button>
-    <span class="deck-hud__pos">1 / 22</span>
+    <span class="deck-hud__pos">1 / 21</span>
     <button data-act="next" title="التالي">›</button>
     <button data-act="full" title="ملء الشاشة">⛶</button>
   </div>
