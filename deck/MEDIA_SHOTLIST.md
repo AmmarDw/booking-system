@@ -221,6 +221,21 @@ roles table). That slide has since been rebuilt, so the step carries a `stepvid_
 > keys are added during 16.2. **Blur or crop the value itself in post** — the slide's job is to show
 > *where* keys go and *when*, never what they are. Slide 9's own note says the blur is deliberate.
 
+## Day 4 — إكمال المتطلبات، رحلة المستخدم، وتأليف أوّل مهارة
+
+**Neither filmed yet.** `day-04.html` ships both as `stepvid__video--soon` placeholders with full
+step lists, so the deck is presentable today. Film these and they drop straight in.
+
+| # | Filename | Type | What must be visible | Slide |
+|---|---|---|---|---|
+| d4-1 | ⬜ `task-103-11.mp4` | MP4 | §10.3 (NFR) then §11 (user journey) on darrisni, one continuous take: the ready-made NFR prompt sent → Claude proposes ~6 quality attributes with numeric metrics → the trainer drops one that doesn't apply to his project → the free-form journey description ("from opening the page to booking confirmed") → **Claude asks about an unhappy-path branch the trainer didn't mention** (is the visitor logged in at this step?) → the journey re-rendered as an activity diagram, shown as an image not a file → swimlanes collapsed to colour-coding because they'd have crowded otherwise, with the trainer's own reasoning stated on screen → matching every text step to a diagram node → commit & push. Target ~5–6 min | 9 |
+| d4-2 | ⬜ `skill-from-scratch.mp4` | MP4 | **The load-bearing recording of this day.** A brand-new Claude Desktop session, Code tab, `Environment: Local`, opened on darrisni's folder — not the trainer's four-day working session. The starter prompt pasted in full. The `authoring-skills` skill asking the six slots one at a time, **each with a suggested answer drafted from `PRODUCT.md`**, the trainer accepting some and editing one. Handoff to `/skill-creator`, which asks local-vs-global and writes the file. **Then a fresh third session** to test it — and it must **fail on the first run** (a description too narrow to trigger, or a similar realistic miss), so the fix-the-description beat in slide 16's `stepvid__step--new` row has real footage to point at, not an invented one. Final successful run on a real input, showing the actual output file. Target ~7–9 min, and **do not cut the failure** — it is the only moment in the whole day that teaches iteration | 16 |
+
+> **Recording order matters for d4-2:** capture the *real* first failure rather than staging one.
+> Anthropic's own guidance and this project's own §5.1.1 lesson (Day 3) both rest on the same point —
+> a skill's `description` is a guess until tested, and the honest miss is more convincing on camera
+> than a scripted one.
+
 ## If a shot is missing
 
 The deck degrades gracefully: `media-frame` falls back to the step's Arabic caption on a `--brand-snow`

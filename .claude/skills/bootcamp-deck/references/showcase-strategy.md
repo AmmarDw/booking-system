@@ -81,6 +81,28 @@ nothing demo-worthy in it, so its placeholder slide was deleted rather than left
 account steps happen once per person. This is the per-section exception documented in
 `day-deck-recipe.md`; it applies again to §16.3 on Day 10.
 
+**Day 4 — neither recording exists yet.** Built 2026-09-30, the first Day-4 deck. Two slots, both on
+darrisni, per `deck/MEDIA_SHOTLIST.md`:
+
+| File | Covers | Status |
+|---|---|---|
+| `media/task-103-11.mp4` | §10.3 (NFR) then §11 — the NFR prompt, then the journey written and diagrammed | Not filmed. Slide 9 ships `--soon` |
+| `media/skill-from-scratch.mp4` | §7.11.3 — a skill authored end to end in a **new** Claude Desktop session, then tested and fixed | Not filmed. Slide 16 ships `--soon` |
+
+**`skill-from-scratch.mp4` has one hard capture requirement: the first test run must genuinely fail.**
+The shot list is explicit about this rather than leaving it implicit — a `stepvid__step--new` row on
+slide 16 depends on real footage of the skill's description not triggering on its first honest test,
+not a staged miss. This is the same "a description is a guess until tested" lesson already in
+`writing-requirements/SKILL.md` §5.1.1 from the Day-3 recording, now showing up a second time in a
+different section — worth treating as a pattern, not a coincidence, if it recurs again.
+
+**§7.11 is a new kind of section for this showcase strategy: the recording teaches a general method
+(authoring a skill), not a fixed curriculum task.** Unlike every other recorded section, the *specific*
+skill demoed («جولة قبل العرض») is one menu option among eight — the recording's job is to prove the
+six-slot method works end to end, not to be the only skill a trainee could plausibly build. Do not
+generalise this exception to other sections without checking whether the same "one method, many valid
+instances" shape actually applies.
+
 ---
 
 ## Choosing the form, per content type
