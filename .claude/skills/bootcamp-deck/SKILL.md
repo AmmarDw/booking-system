@@ -112,6 +112,41 @@ This is not a one-time fix: **after any command- or output-bearing edit, grep th
 touched for `tok-code` and confirm every remaining hit is a passing mention, not a command or an
 output string that should be a `.snip` block.**
 
+### 5. A stepvid's timestamps are a claim about the video — verify each one against an actual frame
+
+A `data-t` value and the step text next to it assert "at this second, the recording shows this."
+That claim is either true or it is not — there is no estimating it. This has gone wrong twice already
+and been caught both times by the same fix, so treat it as a recurring hazard, not a one-off:
+
+- **`deployment.mp4`** — an early pass built its step list from a transcript instead of the video
+  itself.
+- **`tasks-10.3-11.1-11.2.mp4` (slide 9)** — a later pass sampled the video on a fixed 8-second grid
+  and eyeballed the thumbnails to place steps. The user's exact words: *"Your timing is completely
+  wrong!!"* Rebuilding it against frames extracted at the user's own corrected timestamps fixed it.
+
+**The failure mode in both cases is the same: a low-resolution, widely-spaced sample stands in for
+the actual frame.** A coarse contact sheet (one frame every 5–10 seconds, scaled down to fit a grid)
+is a fine tool for finding *where* something happens, but its thumbnails are too small and too sparse
+to read Arabic UI text reliably — a blurry cell can be misread as content that was never on screen at
+that second. One such misreading surfaced while building `task-7.11.mp4`'s step list: a contact-sheet
+thumbnail looked like it showed a "test the login with a wrong password" prompt, which would have
+contradicted the skill's own documented rule against ever typing a password. A full-resolution frame
+extracted at that exact second showed something else entirely, and the step was written correctly
+instead — but only because the full-resolution check happened *before* the step was written, not
+after.
+
+**So the procedure is always two passes, never one:**
+
+1. **Coarse pass** — a contact sheet (`tile=NxN` at `fps=1/N`) to find the rough shape of the
+   recording and the approximate second each beat happens.
+2. **Verification pass** — for every timestamp that will actually be written into `data-t`, extract
+   that one second as a full-resolution single frame (`ffmpeg -ss <t> -frames:v 1`, no heavy
+   downscale) and read it before typing the step's title or description. Never promote a coarse-pass
+   guess straight into a `data-t` value.
+
+If a transcript, a prior summary, or your own memory of "about a minute in" is the only source for a
+timestamp, that timestamp is not yet verified — extract the frame first.
+
 ---
 
 ## Writing the Arabic
@@ -231,6 +266,13 @@ cold has been given a term nobody defined.
   An arrow cannot fix this; a verb can.
 - **An LTR number box in an RTL table cell glues to the Arabic** («8.1المشكلة») — needs
   `text-align: end` and a `min-width`.
+- **A dimension pair joined by `×` flips inside Arabic text even when both numbers are plain Latin
+  digits.** «1200×630» between two Arabic runs renders backwards — the `×` sits at the RTL paragraph
+  level between two LTR runs, so bidi reordering reverses the pair. An isolating span around the whole
+  token does not reliably fix this either. The working fix is to not write it as a joined pair at all:
+  say it in words instead — «عرضها 1200 وارتفاعها 630» — which sidesteps the hazard rather than
+  patching it. Same risk applies to any `A×B`-shaped token inside Arabic prose (resolutions, ratios,
+  coordinate pairs); word it out the same way.
 
 ### Numerals: Latin digits only, everywhere — never ١٢٣
 

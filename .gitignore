@@ -34,3 +34,9 @@ graphify-out/.chunks_prev_run/
 # task-10.1.mp4 is 208.5 MB (roughly double the limit) — re-encode or move
 # to Git LFS before ever removing this line.
 project-package/slides/media/task-10.1.mp4
+
+# Same 100 MiB problem, Day-4's two recordings: task-7.11.mp4 is 107.2 MiB,
+# tasks-10.3-11.1-11.2.mp4 is 152.2 MiB — re-encode or move to Git LFS
+# before ever removing this line.
+project-package/slides/media/task-7.11.mp4
+project-package/slides/media/tasks-10.3-11.1-11.2.mp4

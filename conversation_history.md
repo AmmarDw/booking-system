@@ -7226,3 +7226,1362 @@ menu, and §6's split; the build order after that is the curriculum, then the pa
 
 
 ## § D155 — Prompt #110
+
+The video of slide 9 is ready `project-package/slides/media/tasks-10.3-11.1-11.2.mp4`. Analyze the
+following notes and fixes, perform them, then extract the steps and write them.
+
+**Slide 7:**
+
+- When you say «اكتبها نصًّا» then put a copy block of the structured steps, you are basically asking
+  the trainee to copy it into his notebook and write with this format structure — unlike what's
+  actually intended, where we ask the trainee to only write in a generic note form, and we only
+  showcase the structured form for his reference, to expect what Claude will generate for him and to
+  understand how to read it.
+- For 11.1 you are only showing «الصيغة الموحّدة» without an example, so put the generated user
+  journey of the trainee-test as the example.
+- Make the two boxes of 11.1 and 11.2 stack on each other vertically, each having an entire row.
+  Inside the 11.1 box add two boxes just like the current copiable one but without the copy button,
+  each taking a column — one for the current «الصيغة الموحّدة», the other for the example. This box
+  displays the content LTR, so switch to RTL since this is Arabic text, not a command in English.
+  Make the example box scrollable to avoid overflow. Get the example from
+  `C:\Users\ammar\future-dev\claude\trainee-test\PRODUCT.md` line 419.
+
+---
+
+## § D156 — Slide 7 rebuilt around the real example; slide 9 cut from the delivered recording
+
+### Slide 7 — three fixes, one conceptual, two structural
+
+**The conceptual fix first, because it changed what the box is *for*.** The old card paired
+«اكتبها نصًّا» with a `.snipbox` (copy button included) holding the unified-format template. A copy
+button is an instruction — "take this, reproduce it" — and that is backwards from what §11.1 actually
+asks: the trainee writes *free-form* notes in their own notebook; the unified format is what
+**Claude** hands back, not a shape the trainee fills in by hand. Fixed two ways: the lead sentence
+now says this outright («الصيغة تحت **Claude يرجّعها لك** — مو شي تكتبه أنت»), and both reference
+boxes lost their `.snipbox` wrapper and copy button entirely — per the house convention already in
+`bootcamp-deck/SKILL.md` ("does this step ask the trainee to reproduce this string" — no, here it
+never does), they are now bare `.snip` blocks, read-only reference material.
+
+**The structural rebuild.** 11.1 and 11.2 now each take a full row (removed the wrapping
+`.bento[data-cols=2]` that sat them side by side). Inside 11.1, a new 2-column bento holds the
+template on one side and, on the other, the **real** journey — the full 22-step `darrisni` booking
+flow, copied verbatim from `trainee-test/PRODUCT.md:419-452` (confirmed by reading that file directly,
+not from memory).
+
+**Two CSS additions in `assets/deck.css`, both because `.snip` is built for a different job.**
+`.snip`'s base rule forces `direction:ltr` — a stronger author rule than an element's own `dir="rtl"`
+attribute, which the UA maps at lower cascade priority and loses the fight. The existing template box
+already carried `dir="rtl"` and it was **silently doing nothing** — confirmed by grepping for any
+`.snip[dir="rtl"]` override and finding none. New modifier `.snip--rtl` (`direction:rtl; text-align:
+right`) actually fixes it. Second: the real example runs 22 lines, which would blow the slide's frame
+if printed at full height — `.snip--scroll` caps it and lets it scroll. The overflow guard in
+`deck.js` explicitly measures a scroll container's *own* box, not what's clipped inside it, so this
+is the sanctioned way to show a long reference without spending slide budget on it.
+
+**A mechanical discovery while chasing the overflow number down.** `window.deckAudit()` flagged this
+slide after the rebuild. The two reference boxes sit in a 2-column bento with (implicit)
+equal-height stretching, so the scrollable example's row height has a *floor* set by its shorter,
+non-scrolling sibling (the 7-line template, ~250px) — shrinking `.snip--scroll`'s `max-height` past
+that floor does nothing further, which is why the first 45px cut moved the needle by only ~5px and
+the next 60px cut moved it by zero. **The actual fix was trimming the surrounding prose** (one lead
+sentence, one merged pair of paragraphs in the 11.2 card), which is a generalizable lesson for any
+future two-column reference bento: when one column won't shrink further, the lever is somewhere
+else in the stack, not in that column.
+
+**A second bug caught only by screenshotting, not by the overflow guard:** `.snip`'s base rule is
+`white-space: pre` with `overflow-x: auto` — built for a one-line shell command that must never wrap.
+Dropped onto 22 lines of Arabic prose, this produced a slide with a working *vertical* scrollbar and
+an ugly, un-asked-for *horizontal* one (several lines, e.g. step 14, run long). `deckAudit()` is blind
+to this because it only measures border boxes, not readability. Fixed by adding `white-space:
+pre-wrap` to `.snip--rtl` — manual line breaks survive, long lines wrap, only the vertical scrollbar
+remains. Re-verified via `window.deckAudit()` → `[]` after each of the three passes (structural
+rebuild, overflow fix, wrap fix).
+
+### Slide 9 — the real recording, frame-verified, not transcribed
+
+`ffprobe` confirms the delivered file is 359.33s (5:59). Rather than trust an auto-generated
+transcript — the exact mistake `showcase-strategy.md` already recorded once for `deployment.mp4` —
+every timestamp below was pulled from an extracted frame via `ffmpeg -ss <t> -frames:v 1`, read as an
+image, and read in context. One frame every 8 seconds across the full recording first (45 frames),
+then four more targeted pulls to confirm the exact pasted-prompt wording and the paste moment.
+
+**Verified timeline** (seconds, matching the `data-t` values now on the slide):
+
+| t | What's actually on screen |
+|---|---|
+| 16 | The §10.3 prompt is sent, verbatim close to the curriculum's own: asks for NFRs covering performance/security/reliability/usability/portability, a numeric metric per one, explained simply, "ask me if you have any doubt" |
+| 48 | `Preview PRODUCT.md` — NFR-1 through NFR-5 visible, each with a metric and a plain-language gloss |
+| 64 | `notebook.txt` open in Notepad — free-form booking-flow notes being typed, no structure |
+| 96 | The same notebook, now with ~30,000 characters selected — about to be copied |
+| 112 | An `AskUserQuestion` panel, 4 tabs (مشرف يحجز لنفسه / توضيح اليوم / لا يوجد مدرّس / العودة بعد التسجيل) — Claude asking with concrete options on the *first* pass, the §5.1.1 lesson from Day 3 holding here too |
+| 128 | A visible diff writing `PRODUCT.md` §4.1 — the exact unified-format text later confirmed at `PRODUCT.md:419` |
+| 176 | Full review of the written journey — steps through 22, FR references inline, secondary flows named and deliberately deferred, §4.2 (the diagram) still a placeholder |
+| 192 | The §11.2 prompt sent — convert to an activity diagram via `draw.io`, colors over crossing lanes, a legend required |
+| 208 | `Bash: Delete the intermediate .drawio source since the PNG has embedded diagram XML` — Claude renders, then deletes the source, keeping only the image |
+| 224 | The finished PNG opens — full diagram, start to end |
+| 240 | The trainee asks for the `.drawio` file back anyway ("I want to open it in the desktop app or their site") — Claude recovers it **from inside the PNG's own embedded XML**, confirming it's pixel-identical to what was rendered, not a redraw |
+| 256–272 | Opened externally in `app.diagrams.net` — a real, editable file; a legend box explains every shape/color (oval = start/end, two colors = who performs the step, orange diamond = decision) |
+| 336 | Back in `Preview PRODUCT.md`, §4.2 marked complete: Claude's own written QA — every numbered step has a matching node, every decision's branches are labeled, and it caught and fixed a visual overlap on the step-14 return path before presenting it |
+
+14 steps across 3 dividers (صفات الجودة · رحلة المستخدم نصًّا · تحويلها مخطّطًا) — written up at
+those exact timestamps, `src` pointed at the real file, placeholder markup removed. One
+`stepvid__fix` note added on the AskUserQuestion step, flagging the options-first behavior as the
+payoff of the Day-3 fix rather than a new thing. Re-verified in a live render (`chrome-devtools` MCP):
+video loads and reports `5:59`, every step scrolls into view, a seek-by-click test on the 11.2-prompt
+step (`data-t="192"`) moved `video.currentTime` to exactly `192`.
+
+### One unrelated register slip caught by the sweep, fixed in passing
+
+A deck-wide `/و(?:<[^>]+>)*[A-Za-z]/` + verb-family sweep (run after the slide 7/9 work, to make sure
+neither edit introduced one) turned up `سوّيتها بيدك 3 مرّات على الأقلّ؟` on slide 14's own-idea gate
+— the banned يسوّي-family verb, not something either of today's edits touched, but caught in the same
+pass. Fixed to `نفّذتها بيدك 3 مرّات على الأقلّ؟`, matching the house vocabulary table's
+يقدّم/يعمل/ينفّذ-not-يسوّي rule. Everything else the sweep found was a false positive on inspection
+(`تسوء`, `مسوّدة` ×2) and left alone.
+
+### Sync files updated
+
+- `deck/MEDIA_SHOTLIST.md` — `tasks-10.3-11.1-11.2.mp4` marked shipped (slide 9), actual filename
+  corrected from the planning-stage placeholder `task-103-11.mp4`.
+- `deck/day-04-brief.md` — slide 7 and slide 9 rows updated to describe what actually shipped; the
+  "neither recording exists yet" line now reads one shipped, one (`skill-from-scratch.mp4`) still
+  pending.
+- `.claude/skills/bootcamp-deck/references/showcase-strategy.md` — Day 4 table's first row moved from
+  "not filmed" to shipped, with the real filename and duration.
+
+### Verification run
+
+`window.deckAudit()` → `[]` (21 slides) after the final pass · `window.deckRefAudit()` → `[]` ·
+register sweep (و+Latin glue, «الطرفية», يسوّي-family, waw-opening titles) → one real hit, fixed,
+rest false positives · video seek test passed · screenshots of slides 7 and 9 read directly, not just
+measured.
+
+### Explicitly not done
+
+Not touching slide 16 / `skill-from-scratch.mp4` — that recording still doesn't exist. Not re-opening
+any other Day-4 slide beyond what this request named.
+
+---
+
+## § D157 — Prompt #111
+
+Slide 9: Your timing is completely wrong!! For starters why are you beginning the first step at
+second 16 instead of 0!? This is the actual timestamps for each step:
+
+```
+1: 0 - 33s
+2: 34s - 39s
+3: 40s - 1:44
+4: 1:45 - 2:04
+5: 2:05 - 2:19
+6: 2:20 - 2:47
+7: 2:48 - 3:05
+8: 3:06 - 3:14
+9: 3:15 - 3:41
+10: 3:42 - 3:50
+11: 3:51 - 4:05
+12: 4:06 - 4:30
+13: 4:31 - 4:42
+14: 4:43 - end
+```
+
+By the way the step «Claude يراجع دقّته بنفسه، ويصلح ما يلاحظه» you mentioned here is wrong and
+irrelevant! I need you to replace it by the actual step in the video where I am tracing the
+generated diagram with each possible path.
+
+Modify line 94 in `project-package/.claude/skills/user-journey/SKILL.md` to say to return both an
+image and `.drawio` files of the diagram in case the trainee wants to fix the diagram. And add a
+rule to generate the diagram with the writing direction right to left because the generated diagram
+was set to automatic which rendered the text left to right mistakenly!
+
+---
+
+## § D158 — Re-verified slide 9 against the user's own timestamps, not mine
+
+### What was wrong, and why
+
+My §D156 timestamps came from sampling the video every 8 seconds on a fixed grid, then eyeballing
+which content landed nearest each sample — a weaker method than it looked, because it never checked
+whether a sample frame actually sat *inside* the content it was labeling, only that it was the
+closest one I had pulled. The user's boundaries are the real scene cuts. Re-verified every one of
+them by re-extracting frames at the user's exact second offsets, using **fast-seek-then-accurate-seek**
+(`ffmpeg -ss <t-10> -i file -ss 10 -frames:v 1`) rather than a single `-ss` before `-i` — the earlier
+method is known to drift to the nearest keyframe on sparse-keyframe screen recordings, which is
+exactly what produced the garbled ordering I hit midway through this pass (a "fix" appearing to
+happen before the "build" that caused it). Once reseeked accurately, every frame fell in the right
+chronological order.
+
+**The bigger miss:** the self-correction I'd described as step 14 (`Claude يراجع دقّته بنفسه...`)
+is real footage — it just happens at **3:42 (now step 10)**, not at the end. At 3:15 Claude fetches
+the drawio XML reference, builds the diagram, reviews a downscaled copy of its own render, and
+silently fixes one routing ambiguity; at 3:42 it catches a **second, more concrete bug** by comparing
+exported crops — the return edge from step 14 to decision 11 was auto-routed through step 15's box —
+fixes the edge's `exitX/exitY/entryX/entryY` anchors directly in the `.drawio` XML, re-exports, and
+narrates the fix before declaring §11 complete. Neither of these is what's on screen in the real
+final 76 seconds (4:43–end), which is the trainer **panning the rendered diagram in `draw.io` itself,
+node by node and branch by branch** — exactly what the user named. That confusion is exactly why
+frame-level re-verification against the user's own cuts mattered more than defending my first pass.
+
+### Slide 9 — rebuilt against the 14 user-given boundaries
+
+All 14 `data-t` values now equal the *start* second of each boundary (0, 34, 40, 105, 125, 140, 168,
+186, 195, 222, 231, 246, 271, 283) — not my earlier approximations. Content per step, re-derived from
+the accurately-reseeked frames:
+
+- **1–2 (0–39s):** opens on the trainer's own slide 5 (visible as the video's poster frame — confirms
+  the deck is open in a browser tab the whole session), sends the §10.3 prompt, reviews the seven
+  NFRs.
+- **3–7 (40–185s):** reads the deck's §11 concept slide, writes the journey free-form in
+  `notebook.txt`, pastes it with the §11.1 prompt, Claude asks four branch questions by
+  `AskUserQuestion` (options on the first pass — the §5.1.1 lesson holding), writes the unified-format
+  journey and verifies its own render, then the trainee reviews the full 22 steps.
+- **8–10 (186–230s):** sends the §11.2 prompt, Claude builds the diagram and fixes the step-14 routing
+  bug across two self-checks, then declares §11 complete.
+- **11–13 (231–282s):** the trainee asks for the `.drawio` file back; Claude recovers it from the
+  PNG's embedded XML and proves it's byte-identical (matching MD5) before handing it over; opens it
+  for real in `draw.io`, reviewing the legend.
+- **14 (283–end):** traces the live diagram box by box and branch by branch — the rejection paths,
+  all three login-status branches, the now-fixed step-14 edge — confirming every path actually
+  terminates. This is the step the user asked for in place of the misplaced self-QA description.
+
+One `stepvid__fix` note kept (step 5, the options-on-first-pass callout) since it survived re-checking
+against the correct timestamp. Re-verified live: `window.deckAudit()` → `[]`, 14 steps counted via
+`querySelectorAll('[data-t]')`, and a seek-by-click test on `data-t="283"` moved `video.currentTime`
+to exactly `283` with the step list auto-scrolling to it.
+
+### Two bugs the re-edit itself introduced, caught by the same sweep that always runs after a slide edit
+
+- A new step title read **«يجيب، وClaude يكتب الرحلة...»** — a fresh و+Latin glue, introduced by this
+  very edit. Caught by the standing `/و(?:<[^>]+>)*[A-Za-z]/` sweep, fixed to «يجيب على الأسئلة، و
+  Claude يكتب الرحلة ويتحقّق من عرضها».
+- Slide 7 (the §11.1/§11.2 reference slide touched last turn) overflowed by ~2px after this
+  turn's separate `user-journey/SKILL.md` change forced a wording update to its 11.2 card (see below)
+  — tightened the card's sentence by a few words; `window.deckAudit()` → `[]` again after.
+
+### `user-journey/SKILL.md` — two changes, both in §4 "التحويل إلى مخطط"
+
+- **Line 94** ("اعرض الناتج... كصورة، لا كملف يفتحه بنفسك") rewritten: Claude now hands the trainee
+  **both** the image (for quick review) **and** the `.drawio` file itself, so they can open and edit
+  it later in `draw.io` if they want to. This reverses the file deliberately before — the real session
+  showed exactly this gap: the trainer had to ask for the file back after Claude had already deleted
+  the intermediate source, and Claude's own note-to-self in that session ("سجّلت هذا الدرس لا
+  يتكرّر") is now codified as a standing rule instead of living only in one trainee's project history.
+- **New rule, same section:** set the diagram's writing direction **explicitly** to RTL on every node
+  and label — never leave it on automatic detection. The real recording's diagram rendered its
+  Arabic text left-to-right because direction was left to automatic inference; this is now a named
+  failure mode in the skill, not just a one-off fix buried in one project's `.drawio` file.
+- **§3.3 touched for consistency**, since it still said "show the diagram as an image — don't ask the
+  trainee to open a file," which §4's new rule directly contradicts. Reworded to match: image first,
+  file alongside it, opening it is the trainee's call.
+- **Deck consistency check, not separately requested but a direct consequence:** slide 7's own 11.2
+  card repeated the now-superseded "image, not a file you open yourself" claim verbatim. Updated it
+  to match the skill's new behavior, which is what forced this turn's slide-7 overflow fix above.
+
+### Verification
+
+`window.deckAudit()` → `[]` (21 slides) · `window.deckRefAudit()` → `[]` · register sweep (و+Latin
+glue, يسوّي-family, «الطرفية») → zero real hits after the one fix above · 14 `data-t` values confirmed
+against the user's literal boundaries, not rounded or re-estimated · seek-by-click test passed on the
+new final step.
+
+### Explicitly not done
+
+Not re-filming anything — all content changes are to the existing, already-shipped recording's
+captions/step descriptions, not to the video itself. Not touching `skill-from-scratch.mp4` (slide 16,
+still unfilmed). Not committing — no commit instruction given this turn.
+
+---
+
+## § D159 — Prompt #112
+
+**Slide 12:** The information you provided about `internal-comms` and `a11y-debugging` is extremely
+shallow and directly contradicts our decision! We decided to provide the comparison on the slide and
+explain it, where we must use the identified framework in slide 13 as factors of comparison, where
+you must provide an answer to each question by **explicitly quoting it from the corresponding skill
+file** to maintain accuracy, and only translate the quoted parts without changing the meaning or
+summarizing. If you want to summarize then concatenate quoted content with a summary description for
+accuracy. Make sure the comparison is clear and well described. Please refer to the discussion to
+understand that you made a mistake.
+
+I honestly don't understand what the first skill does! Provide more information about each skill
+other than its internal structure and usage — like **from where can it be installed and how?** From
+my understanding `a11y-debugging` comes bundled by default with the chrome dev-tools MCP server, but
+I have no clue how it is being used and triggered: I don't get any results when I type
+`/a11y-debugging` in either Claude Desktop or the Claude Code Antigravity extension, but only in the
+Claude Code CLI! And I don't understand from where we can install `internal-comms` correctly and
+officially, without entering the same hazard of installing the entire chrome dev-tools repo — while
+the correct way was to install the cache only, and prevent trainees from going through that
+complexity.
+
+I understand that all of this is a lot of content, but you must realize that you ignored all of it!
+To contain this information in our slides, make slide 12's two boxes bigger to cover the empty space
+of the slide vertically, and make the content scrollable if necessary to contain all the content —
+so **don't consider overflowing a limitation factor of the text length**.
+
+Add the rest of the content that I asked for (other than the comparison) in slide 13's existing
+«مهارة بإجراء فقط» and «مهارة تشغّل أداة» boxes, but format it correctly to reflect that the added
+content is about the specific skills. For the «الخانات الستّ» box, move steps 4 to 6 to the left side
+of the box, making the content distributed in two columns to provide more vertical space. And extend
+the existing content of «مهارة بإجراء فقط» and «مهارة تشغّل أداة» to make the description simpler to
+understand by explaining a bit more.
+
+---
+
+## § D160 — Slide 12 rebuilt from the actual skill files; three shipped facts were wrong
+
+### Why the first version failed
+
+It was a **summary wearing a comparison's clothes**: two bullets per skill, no shared axis, and no
+evidence. The decision on record (§D154, and the plan's Q2) was a *presented, explained* comparison
+using the six-slot frame as the comparison axis. Two bullets cannot do that, and the proof is that
+the single most basic question — *what does `internal-comms` actually do?* — went unanswered on the
+slide.
+
+**And reading the two `SKILL.md` files instead of recalling them turned up three shipped errors:**
+
+| Shipped claim | Reality |
+|---|---|
+| Both skills are «من Anthropic نفسها» | `a11y-debugging` is **Google's** — it ships inside the `chrome-devtools-mcp` plugin from the Chrome DevTools team. Only `internal-comms` is Anthropic's. |
+| Both are «بلا كود إطلاقًا» | `internal-comms` genuinely has **zero** code fences across all five of its files (verified by `grep -c`). `a11y-debugging` has **two**, plus a 92-line `references/a11y-snippets.md` of JavaScript. |
+| «الاثنتان تحملان البنية نفسها» — presented as the whole lesson | True but shallow. The sharper, verifiable fact: **each leaves a *different* slot empty.** `internal-comms` has the human gate and no success criterion; `a11y-debugging` has a measurable success criterion and no human gate. |
+
+That third one is the slide's real payoff and it had been missed entirely — two official published
+skills, neither complete, which makes the 238-skill statistic on slide 13 concrete in two cases the
+trainee has just read.
+
+### The installation question — researched on disk, not assumed
+
+The user's two install questions were the part most completely ignored, and answering them required
+reading the local plugin state rather than guessing:
+
+- **`internal-comms`** lives in the `anthropics/skills` repo and is **not** installed on this machine
+  as an active skill — it sits in the cloned marketplace only, which is why it never appears in the
+  session's skill list. Parsing `.claude-plugin/marketplace.json` shows it belongs to the
+  **`example-skills`** plugin (alongside `skill-creator`, `brand-guidelines`, `mcp-builder` and nine
+  others). So the honest install is two commands:
+  `/plugin marketplace add anthropics/skills` then
+  `/plugin install example-skills@anthropic-agent-skills`.
+- **`a11y-debugging`** is confirmed bundled, exactly as the user suspected. It is one of **seven**
+  skills under `chrome-devtools-mcp/1.9.0/skills/`, and the plugin's `plugin.json` declares no
+  `skills` key at all — they are auto-discovered from the directory. One command gets all of it:
+  `/plugin install chrome-devtools-mcp@claude-plugins-official`.
+- **And the "hazard" the user named is real and measurable.** The installed cache for that plugin is
+  the entire upstream Node repository — `node_modules/`, `src/`, `tests/`, a 271KB
+  `package-lock.json`, a 132KB `CHANGELOG.md`, rollup and eslint configs — because the plugin's
+  actual payload is an MCP server (`npx chrome-devtools-mcp@1.9.0`) and the skills ride along. Set
+  against `internal-comms`'s five small markdown files, the pair now sits at opposite ends of an
+  install-cost axis, which is itself worth teaching rather than hiding.
+
+### The trigger confusion — the answer is slot 1, so that is where it went
+
+`/a11y-debugging` returning nothing is **expected behaviour, not a broken install**. A skill's
+`description` *is* its trigger: Claude reads the available descriptions and loads the matching skill
+when a request fits. There is no slash command to invoke. (Plugin skills additionally namespace as
+`plugin:skill`, so even a slash form would not be the bare name.) The per-environment difference the
+user hit on top of that — CLI yes, Desktop Code tab and the editor extension no — is the same
+registry-scope split this project already documented in its own `CLAUDE.md` for `/skill-creator` and
+`/deep-research`.
+
+Rather than bolt this on as a note, it went into **slot 1 of the six-slot card on slide 13**, which is
+precisely the slot that *means* "the sentence that triggers it": «متى تشتغل؟ — الجملة اللي تُشغّلها.
+**ما تناديها بأمر** — Claude يقرأ هذي الجملة ويشغّلها وحده.» The curriculum gets the longer version,
+including the per-environment caveat.
+
+### What slide 12 is now
+
+Two full-height cards side by side, each **scrollable** (the user explicitly lifted overflow as a
+constraint), dissecting one skill against all six slots. Every answer is a **translated quote from
+that skill's own file**, tinted so it reads as quoted material, with a plain Arabic gloss underneath
+only where a quote alone would not land for a non-programmer — the concatenation the user asked for.
+A slot the skill does not fill gets an **amber number instead of a teal one**, so the two gaps are
+visible at a glance instead of buried in prose.
+
+Two new CSS blocks carry it, both documented in place: `.card--scroll` (the deck's third sanctioned
+scroller, after the ؟ window and `.pkgtree`, and justified by the same "this slide is consulted, not
+glanced at" reasoning) and `.slots` / `.slot__q` / `.slot__g` / `.slot__n--gap`.
+
+### What slide 13 is now
+
+- **The six slots split into two columns** (1–3 right, 4–6 left) via a nested `.bento` with
+  `counter-reset:flow 3` on the second list so numbering continues rather than restarting. This is
+  what freed the vertical space the rest of the slide needed.
+- **Both type cards extended** with a plainer explanation of what the type *means*, then that type's
+  real example — origin, how it is installed, and its real `/plugin` command in a `.snipbox` with a
+  working copy button (three of them; all verified wired and one click-tested end to end).
+
+### Three bugs found while building, all by measurement rather than reasoning
+
+1. **Slide 12 overflowed even though both scroll cards were correctly bounded** (678px box,
+   1175/1241px content, `overflow-y:auto` confirmed). The culprit was the closing note being squeezed
+   to 51px around a 91px paragraph. Fixed with `flex:0 0 auto` on the note so the bento absorbs the
+   difference instead.
+2. **An element can spill out of its own card without `deckAudit()` saying a word.** The guard
+   measures each slide's *body*; a paragraph escaping through a card's bottom border still sits
+   inside the body, so it passes. On slide 13 two cards were spilling by 121px and 100px — visibly
+   broken in the screenshot, clean in the audit. Wrote a per-card child-bottom check to catch it and
+   ran it deck-wide; it is a dozen lines and is now recorded in the brief as worth re-running after
+   any edit that grows a card inside a `.bento`.
+3. **Slide 13 had literally zero slack** (239 + 340 + 118 + two 32px gaps = 761 = the body height
+   exactly), so trimming prose alone could not have fixed it. Used the deck skill's own sanctioned
+   remedy — tightening the body gap from `--sp-3` to `--sp-2` — which freed 32px and brought the
+   worst spill from 19px to sub-pixel.
+
+### Sync surfaces
+
+- **`bootcamp_roadmap_and_curriculum.md` §7.11** — the comparison table was rebuilt on the same
+  six-slot axis with the same quotes, the "both from Anthropic" error corrected, origin and install
+  rows added, and two blockquotes added: the "neither is complete" payoff and the "a skill is not
+  called by a command" operational note. Anchor check → **0 broken across 144 headings / 328 links**,
+  and the checker was validated against a deliberately poisoned input first (it correctly reported 1).
+- **`deck/day-04-brief.md`** — slide 12 and 13 rows rewritten; decision #1 rewritten to record the
+  three corrected facts; six new lessons added to "What the build caught".
+
+### Verification
+
+`window.deckAudit()` → `[]` (21 slides) · `window.deckRefAudit()` → `[]` · per-card spill check →
+`[]` · register sweep (و+Latin glue in markup **and** rendered text, يسوّي-family, «الطرفية»,
+«وايش», waw-opening titles) → all zero · Arabic-Indic digit sweep → zero · remote-asset sweep → zero
+(deck stays fully offline) · every `tok-code` on both touched slides confirmed to be a passing
+mention (file names, tool names, `pageId`, `scores`) with all three real commands in `.snipbox`es ·
+copy button click-tested (state flips to `data-copied`, icon to check, label to «تمّ النسخ») ·
+**no regression** on Day 1 (49 slides) or Day 3 (21 slides) after the shared `deck.css` change.
+
+### Explicitly not done
+
+Did not reorder slides 12 and 13 — slide 12 presents the six questions concretely and slide 13 names
+and generalises them, which is the gateway-example ordering the deck already uses for §7.5. Did not
+touch slide 14's gate or the menu. Not committing — no commit instruction given this turn.
+
+---
+
+## § D161 — Prompt #113
+
+**Slide 14:**
+
+* "البوّابة — أي «لا» يعني خذ من القائمة" is vague.
+
+* The list is it so badly represented that even the minimum existing content from the curriculum
+  didn't get mapped into the slide!! How to you expect trainees to understand what the hell are
+  those options exactly!? Each item of that list must be well explained better than from the
+  curriculum. I didn't understand what do you mean by "نصّ العرض التقديمي" at all! To provide more
+  space consider making the "البوّابة — أي «لا» يعني خذ من القائمة" at the top taking all the width
+  and splitting its questions into two columns. Then the list box taking the rest of the vertical
+  space and the entire slide width where to provide more space make the list scrollable and maybe
+  for better formatting use a table. Each item from the list must have a question mark icon when
+  clicked should display a brief but clear answer of the six framework questions from slide 13 to
+  further explain the suggested idea for a skill where if the trainee picks it he might build his
+  own version of it and extend/complete answering the framework questions. For "بطاقة المشاركة"
+  idea, I added an image into the slides directory `project-package/slides/assets/Open-Graph-tags.jpg`
+  which I need you to analyze and explain in the question mark icon what this image represent and
+  make the description of this image clickable and end it with click to view image.
+
+* Lastly extend the content of "البوّابة — أي «لا» يعني خذ من القائمة" to explain it more.
+
+---
+
+## § D162 — Slide 14 rebuilt: the menu now carries the framework it is judged by
+
+### For you
+
+Slide 14 was a list of eight labels sitting two slides after the course taught a six-question
+framework — so it asked the trainee to *choose* using a tool the slide never applied. It is now two
+things: a full-width gate that says plainly what it is testing, and a real table of the eight ideas
+where **every row has a ؟ that opens that idea's six answers already filled in**. Those answers are
+a starting point, not a finished skill — the trainee picks one and extends it, which is the whole
+point of the block.
+
+Three named fixes:
+
+- **The gate's title was vague because the card never said what the seven questions judge.** It now
+  says it in the first line: they do not judge whether the idea is good, they judge whether it
+  **finishes today**. Every question also carries its own one-clause reason, and the seven sit in
+  two columns.
+- **«نصّ العرض التقديمي» reads as *the text on your slides*** — which is not what it is. Renamed
+  **«نصّ كلامك يوم العرض»** in the deck, the curriculum, and `authoring-skills/SKILL.md`, and its ؟
+  opens with the distinction spelled out: «مو شرائح ولا تصميم».
+- **The Open-Graph image** is described inside the «بطاقة المشاركة» window, and the description is
+  itself the link, ending «اضغط لعرض الصورة.»
+
+### What the image actually shows
+
+One news link (`worldnews.com`, an article about Eddie Redmayne) pasted into **five** places:
+two Facebook posts in different card styles, a WhatsApp message, a post on X, and an email/message
+client. Every one of them rendered a preview card carrying **the same image, the same headline, the
+same description, and the same site name** — only the card's shape changes per platform. Nobody
+typed any of that text; each platform read it from the same hidden tags in the page. That is exactly
+what the «بطاقة المشاركة» skill adds, so the screenshot is the whole lesson in one picture — which
+is why the description is the click target rather than sitting next to a separate link.
+
+### What is on the slide now
+
+**Card 1 — the gate** (`flex:0 0 auto`, full width, amber inline-start border). Lead paragraph
+stating what the questions test and the «any one «لا»» rule and that everything in the menu already
+passed them. Then seven questions in a `.bento data-cols="2"`, 1–4 on the right and 5–7 on the left,
+numbering kept continuous with `style="counter-reset:flow 4"` on the second `<ol>` — the same trick
+slide 13's six slots use.
+
+**Card 2 — the menu** (`card--state card--scroll`, full width). One note line that explains the ؟
+and carries the «اكتب اختيارك الآن» pre-commitment, then **two `.pick` tables side by side**, rows
+1–4 and 5–8, each with its own `المهارة / مخرَجها / النوع` header. Type is a pill — teal
+«تشغّل أداة», snow «إجراء فقط» — matching slide 13's two types by name.
+
+**Eight `؟` windows**, one `<template class="terms" data-wide="true">` holding all of them. Each
+entry answers all six slots using the existing `.slots` / `.slot__n` / `.slot__k` / `.slot__q` /
+`.slot__g` components built for slide 12, so the visual grammar is identical to where the framework
+was taught: the trigger sentence renders in accent colour as a quote, the other five in body colour.
+Slot 6 always ends with a concrete `مثالها:`. Three carry content beyond the six slots where it is
+load-bearing: «فرز البريد» states in slot 3 that the Gmail connection is *the one sanctioned
+exception* to gate question 4 and why (it happens before the session, not in it) and in slot 4 the
+hard prohibition «ولا تردّ على أحد ولا تحذف شيئًا — التقرير فقط»; «سجلّ القرارات» carries «ولا تحذف
+قرارًا قديمًا أبدًا»; «بطاقة المشاركة» carries the image.
+
+### New CSS
+
+`.pick` (+ `__n`, `__name`, `__t`, `--proc`, `--tool`) and `.imglink` (+ `__cta`), both added after
+the `.slots` block in `deck.css`. `.pick th` is `position: sticky; top: 0` against the
+`.card--scroll` box — the card *is* the scroll container, so the header sticks with no JS and no
+extra wrapper. `.pick__n` copies `.tmap__n`'s `direction:ltr; unicode-bidi:isolate; text-align:end`
+for the known reason: a plain inline span collapses against the bidi isolate boundary and the number
+glues to the name.
+
+### Three things the build caught
+
+1. **The scroll the prompt asked for turned out to be the worse answer.** One table inside the
+   scrolling card showed **4 of 8 rows** — technically compliant, useless in a room. Splitting into
+   two side-by-side `.pick` tables fits all eight with 12px to spare. Getting there took three
+   measured passes: `th` padding 5→3px, `td` 7→5→4px, font 23→22px, dropping the bento's 10px top
+   margin, and trimming two gate "why" clauses from two rendered lines to one. Measured, not
+   guessed — the binding constraint was the 4-item gate column at 152px, which no amount of
+   shortening the 3-item column could move. `card--scroll` stays on as a guard; nothing scrolls.
+2. **`1200×630` renders backwards.** Inside RTL text the `×` resolves to the paragraph's RTL level
+   between two LTR number runs, so a Latin eye reads `630×1200`. Rewritten as
+   «عرضها 1200 وارتفاعها 630» — plainer for the audience *and* bidi-proof, better than an isolating
+   span.
+3. **The anchor checker was the wrong thing to validate.** An ad-hoc slugifier reported 6 broken
+   links — all و+Latin headings, and all **identical in `HEAD`**, so they are its own false
+   positives, the same phantom class the deck skill warns about. What actually settled the question
+   was diffing the heading list and the `](#…)` link list against `HEAD`: 259 and 328, byte-identical
+   both ways, so the edit could not have broken an anchor.
+
+### Sync surfaces
+
+- `project-package/bootcamp_roadmap_and_curriculum.md` §7.11.1 — gate rewritten with the
+  "does it finish today" framing and a why on every question; menu row 8 renamed; a blockquote added
+  pointing at the ؟ windows for each idea's six starting answers.
+- `project-package/.claude/skills/authoring-skills/SKILL.md` — menu row 8 renamed to match.
+- `deck/day-04-brief.md` — slide 14 row rewritten; seven new lessons.
+
+### Verification
+
+`window.deckAudit()` → `[]` (21 slides) · `window.deckRefAudit()` → `[]` · per-card child-bottom
+spill check → `[]` · menu card clipping → `-1px` (fits) · register sweep on rendered text *and*
+markup (و+Latin glue, Arabic-Indic digits, يسوّي-family, «الطرفية», «وش/ويش», plural address) → all
+zero · all 7 «وايش» hits read in place and confirmed to be genuine conjunctions (lists or two joined
+questions), none at a clause or title start · no Arabic sentence ending in a Latin token on the new
+slide · every `tok-code`/`tok-lat` on slide 14 confirmed a passing mention (`PRODUCT.md`,
+`chrome-devtools`) — the slide issues no commands, so no `.snipbox` is required · ؟ window
+click-tested: opens, 8 entries, `data-wide` applied, the clicked entry highlighted and scrolled to ·
+image link resolves to the real file · remote-asset sweep → zero · **no regression** on Day 1
+(49 slides) or Day 3 (21 slides) after the shared `deck.css` change.
+
+### Flagged, not fixed — pre-existing, other slides
+
+Per the deck skill's "fix that slide, leave the rest alone" rule, three register hits on slides this
+turn did not touch: **«منتجي»/«منتج»** in the copyable prompt text on slide 5 (§10.3) and slide 11
+(§11.1) and in slide 18's recap, where the vocabulary rule wants «مشروعي»; and **«الدليل»/«أدلّة»**
+on slide 11 (§7.7) describing what a skill is. The دليل ban exists so trainees are never pointed at
+a separate guide, and this is a different sense of the word — but it is still the banned token, so
+it is worth a decision rather than a silent pass. These are the slides most needing the same
+treatment next.
+
+### Explicitly not done
+
+Did not mirror all 48 six-slot answers into the curriculum — the deck is what trainees read, and
+duplicating them invites drift; the curriculum points at the ؟ windows instead. Did not touch slides
+12, 13, or 15. Not committing — no commit instruction given this turn.
+
+---
+
+## § D163 — Prompt #114
+
+What do you mean by "ومعها ملفّ مقتطفات جاهزة بجوارها" and "«الأدوات المرتبطة بصفحة… تحتاج معامل pageId.»" in slide 12? If you will keep them then modify the content to be in a simpler understandable format since I am unable to understand what do they mean, it is true that I told you not to change or summarize quoted content but that doesn't mean to translate it literally but rather interpreting it in an understandable format.
+
+Slide 13:
+I need you to rethink about the commands you provided for internal-comms since it seems they install a bunch of other things as well. Read the following conversation to know what I am talking about. And I have a question, would installing with those commands really add the skill-creator skill? because from exploring this skill on claude desktop - which comes by default in it - I noticed that it contains lots of assets which seems pointless due to being duplicate with the existing one in claude desktop just stored in another place that claude code extension can reach to natively. Regardless that we originally rely on the one on claude desktop.
+
+> **Prompt:** what are the commands to setup internal-comm skill for claude code
+>
+> **Response:** Run `npx @skills-hub-ai/cli install anthropic-internal-comms --target claude-code` in your project root to set up the internal communications skill for Claude Code. [1](https://skills-hub.ai/skills/anthropic-internal-comms)
+>
+> Installation Methods
+> - **CLI Automated Setup:** Run the terminal command:
+>   ```bash
+>   npx @skills-hub-ai/cli install anthropic-internal-comms --target claude-code
+>   ```
+>   يُرجى استخدام الرمز البرمجي بحذر.
+>   This writes the `SKILL.md` file to `~/.claude/skills/anthropic-internal-comms/` and updates your `.skills.json` lockfile.
+> - **Direct Claude Code Command:** If your version of the CLI supports native installation, run:
+>   ```text
+>   /install-skill internal-comms
+>   ```
+>   يُرجى استخدام الرمز البرمجي بحذر.
+> - **Manual Setup:** Create the directory and file structure manually in your project folder:
+>   ```bash
+>   mkdir -p .claude/skills/internal-comms
+>   ```
+>   يُرجى استخدام الرمز البرمجي بحذر.
+>   Then place the corresponding `SKILL.md` configuration inside that folder.
+>   [1](https://www.beningo.com/claude-code-skills-embedded-developers/), [2](https://www.astromvp.com/blog/claude-internal-comms-skill), [3](https://skills-hub.ai/skills/anthropic-internal-comms)
+>
+> If you want, let me know:
+> - Do you want to configure this globally or just for a single project?
+> - Are you looking for help writing a custom trigger or prompt for it?
+>
+> I can help you tailor the setup.
+>
+> **Prompt:** can it be installed with:
+> ```
+> /plugin marketplace add anthropics/skills
+>
+> /plugin install example-skills@anthropic-agent-skills
+> ```
+> answer in english
+>
+> **Response:** Yes, it can be installed exactly that way.
+>
+> The internal-comms skill is one of the official open-source skills maintained by Anthropic. It is packaged directly inside the `example-skills` bundle within their official repository.
+> [1](https://github.com/anthropics/skills/issues/189), [2](https://claude-world.com/articles/anthropic-official-skills-complete-guide/), [3](https://converter.brightcoding.dev/blog/anthropicsskills-the-revolutionary-claude-enhancement-toolkit)
+>
+> Executing those precise commands in your Claude Code terminal will register the marketplace and install the package:
+> [1](https://systemprompt.io/guides/getting-started-anthropic-marketplace), [2](https://skillsllm.com/skill/anthropics-skills)
+> ```text
+> /plugin marketplace add anthropics/skills
+>
+> /plugin install example-skills@anthropic-agent-skills
+> ```
+> يُرجى استخدام الرمز البرمجي بحذر.
+>
+> 💡 **Important Details to Know:**
+> - **Bundled Installation:** Because `internal-comms` is packaged inside `example-skills` along with other demonstration templates (like `skill-creator` and `webapp-testing`), installing this plugin will load the entire bundle.
+>   [1](https://github.com/anthropics/skills/issues/189), [2](https://www.reddit.com/r/ClaudeCode/comments/1rj8xao/anthropic_updated_the_skillcreator_skill_has/)
+> - **Token Note:** Be aware that installing both `document-skills` and `example-skills` from the `anthropic-agent-skills` marketplace can sometimes cause skill overlaps or duplicate context bloat. If you only need communication capabilities, keeping just the `example-skills` package active is recommended. [1](https://github.com/anthropics/skills/issues/189)
+> - **Activation:** Once installed, you don't need any special commands to trigger it. Simply converse naturally with Claude Code (e.g., "Help me draft an internal announcement using the internal-comms skill"), and it will dynamically reference the instructions. [1](https://github.com/anthropics/skills), [2](https://skillsllm.com/skill/anthropics-skills)
+>
+> Would you like to know how to verify if the skill successfully loaded using the `/plugins` or `/skills` commands? I can also help you look at the specific formatting guidelines the internal communications skill enforces. [1](https://www.youtube.com/watch?v=lrVITugugiE)
+
+And for "a11y-debugging" what do you mean by "وتنزل ملفّات الأداة كاملة — فحجمها أكبر بكثير من الأولى:" and the command "/plugin install chrome-devtools-mcp@claude-plugins-official"? do you mean the installation of the entire mcp server locally instead of the cache? I don't understand how is the skill a11y-debugging used if we install the entire mcp server or if we install the cache only? I don't feel it is a good idea to share with the trainees the command to install the entire repo of the mcp server since not only it will complicate them but I still don't understand why would someone consider doing that instead of installing the cache? is there positive points of doing this? is it to have the ability to modify the mcp server or customize it which also seems pointless?
+
+Don't decide yet what to do about the commands, ask me first with your suggestions.
+
+---
+
+## § D163 — Slide 12 clarified; slide 13's install commands investigated on disk, decision deferred to the user
+
+### For you
+
+Fixed slide 12's two confusing phrases — both are now a plain-language line directly under the
+original quote, not a replacement of it. And on slide 13, before touching anything, I went and
+checked what those install commands actually do on a real machine, because the pasted conversation
+you quoted cites sources (`skills-hub.ai`, `claude-world.com`, `astromvp.com`,
+`converter.brightcoding.dev`, `systemprompt.io`, `skillsllm.com`) that do not look like anything
+Anthropic publishes — that pattern (confident answer, plausible-sounding links, invented commands
+like `/install-skill`) is the signature of an AI fabricating citations, not real documentation. So I
+did not treat it as a source; I opened the actual plugin registry and marketplace files on this
+machine instead.
+
+**What I verified, concretely:**
+
+- **Yes — `example-skills@anthropic-agent-skills` really does bundle `skill-creator` together with
+  `internal-comms`.** The real marketplace manifest lists 12 skills under that one plugin:
+  `algorithmic-art`, `brand-guidelines`, `canvas-design`, `doc-coauthoring`, `frontend-design`,
+  `internal-comms`, `mcp-builder`, `skill-creator`, `slack-gif-creator`, `theme-factory`,
+  `web-artifacts-builder`, `webapp-testing`. There is no way to install one without the other 11 —
+  the plugin is the unit of installation, not the skill.
+- **The size mismatch is real and measurable.** `internal-comms` itself is 36KB / 6 files. The
+  bundle it ships inside is **13MB** — `canvas-design` alone is 5.6MB / 83 files. So the command
+  installs roughly 360× the content needed for the one 32-line skill the slide is about.
+- **Your instinct about the Desktop copy is also correct, and for a reason worth naming precisely.**
+  The `skill-creator` that comes with Claude Desktop is synced at the **account** level — a different
+  mechanism entirely from a Claude Code plugin. Installing `example-skills` in Claude Code would
+  create a **second, independent copy** in `~/.claude/plugins/cache/`, reachable only by Claude Code,
+  not by the Desktop session that already has it. Whether that's "duplicate and pointless" or
+  "a separate copy for a separate tool" depends on whether the course ever needs `skill-creator`
+  callable *from inside Claude Code* — which it doesn't; the authoring-skills block runs in Desktop.
+- **For `chrome-devtools-mcp`: it is not "install locally" vs "install a cache" — there's only one
+  path, and it's bigger than either framing suggests.** The plugin's cache is a full git clone of the
+  upstream `ChromeDevTools/chrome-devtools-mcp` GitHub repo: source, tests, build config, a
+  132KB changelog, and a `node_modules` with **396 top-level packages and ~29,400 files** — the
+  project's own build/test tooling. None of that is what actually runs the MCP server: the real
+  server launches via `npx chrome-devtools-mcp@1.9.0` (visible in the plugin's own `plugin.json`),
+  which `npx` fetches from the published npm package at the moment it starts — a completely separate
+  path from this cached source tree. So there is no deliberate "full install for customization"
+  option being offered here; the oversized download is just what cloning the dev repo pulls in as a
+  side effect of how this one plugin happens to be packaged. There is nothing to gain from it over a
+  hypothetical leaner package — it's not a tradeoff the trainee is making, it's just what this
+  specific plugin's source layout is.
+
+### Options for slide 13 — your call, nothing changed yet
+
+I'm asking before deciding anything, as you said. Three independent decisions:
+
+1. **internal-comms:** keep the `/plugin install example-skills@...` command as-is (accurate, but
+   pulls 13MB for a 36KB skill) — or drop the install command from the slide entirely and describe
+   the skill by content only, noting installation is the trainer's job, not something to hand
+   trainees a command for.
+2. **a11y-debugging / chrome-devtools-mcp:** keep the `/plugin install chrome-devtools-mcp@...`
+   command (it's already installed from Day 1 for the MCP connection itself, so by Day 4 a trainee
+   who followed the course has it anyway) — or drop the command from slide 13 and just say "already
+   connected since Day 1," since re-showing the install command here implies it's a new/separate
+   action when it isn't.
+3. **Whether to say any of this bundling/size detail to trainees at all**, or keep it as something
+   only this slide's commands reflect, with no on-slide commentary about bundle size (that level of
+   plugin-internals is arguably past what CLAUDE.md's "what it is · what it does · when" ceiling
+   wants for this audience).
+
+### What's already done (no decision needed)
+
+- **Slide 12, top line (a11y-debugging card):** now reads "91 سطرًا في ملفّها الرئيسي، وملفّ ثانٍ
+  فيه أكواد JavaScript جاهزة تستخدمها عند الحاجة — فهي ليست بلا كود مثل الأولى" — states plainly
+  that there are two files and names what the second one is for, while keeping the "not zero-code
+  like the first" contrast that's the point of putting them side by side.
+- **Slide 12, slot 3 (ايش تحتاج؟):** the "ملفّ مقتطفات جاهزة بجوارها" phrase now says what the
+  snippets file is *for* — "تستدعيها المهارة لفحوص لا تكفيها الأدوات وحدها — مثل قياس حجم زرّ
+  باللمس، أو التحقّق من تباين لونين" — concrete, matches CLAUDE.md's example rule. The `pageId`
+  line is **unchanged as a quote** (per your instruction not to alter quoted content) but now has a
+  plain-language line directly after it: "يعني: المتصفّح قد يفتح أكثر من صفحة في آن واحد، فكل أمر
+  لازم يحدّد لأيّ صفحة بالضبط يقصد — برقم تعريف تلك الصفحة." This is the exact pattern you asked
+  for — concatenate the quote with a plain description, don't replace or summarize it.
+
+### Verification
+
+`window.deckAudit()` → `[]` (21 slides) · `window.deckRefAudit()` → `[]` · both edits read correctly
+in the rendered deck (screenshotted, scrolled to slot 3) · no other slide touched.
+
+### Explicitly not done
+
+Did not touch any install command on slide 13 — waiting on your answers to the three questions
+above. Did not touch the curriculum or `authoring-skills/SKILL.md` (both currently mirror slide 13's
+commands, so they'll need the same decision applied once you choose). Not committing.
+
+---
+
+## § D164 — Prompt #115
+
+**User's answers to the three deferred questions (via AskUserQuestion):**
+
+1. *internal-comms command:* "add a command to install the 36KB internal-comms skill only, or if
+   there isn't a direct command to do it or an easy to run command then bounce to instructions on
+   adding it to claude desktop (settings -> skills -> search for it -> click add) where it is
+   stright forward and doesn't bundle with it anything unessecery but add a note that adding it in
+   this way will only be accessable through claude desktop."
+2. *a11y-debugging command:* "keep the command but before it among the text say that it is already
+   installed for you from day 1"
+3. *Mention the bundling/size issue on the slide?* "No — keep it out of the slide (Recommended)"
+
+---
+
+## § D164 — Slide 13 commands corrected: a verified single-skill install path replaces the 13MB bundle
+
+### For you
+
+Before picking a branch of your first answer, I tested whether a direct, bundle-free command
+actually exists — and it does. `npx giget@latest gh:anthropics/skills/skills/internal-comms
+.claude/skills/internal-comms` pulls **only** the skill's own folder from the same official public
+repo: verified by actually running it — 36KB, 3 items (`SKILL.md`, `LICENSE.txt`, `examples/`),
+nothing else. So your first branch applies, not the Desktop fallback: slide 13's `internal-comms`
+card now shows that one command instead of the two `/plugin` commands that pulled the 12-skill, 13MB
+bundle.
+
+For `a11y-debugging`, kept `/plugin install chrome-devtools-mcp@claude-plugins-official` exactly as
+it was, and added the framing you asked for directly before it: **"وهذي عندك مثبَّتة فعلًا من اليوم
+الأوّل لمّا ربطت الأداة"** (you already have this installed from Day 1, when you connected the
+tool) — so the slide no longer implies this is a new step.
+
+No mention of bundle size or the 13MB/full-repo-clone finding was added anywhere — per your third
+answer, that stays as something I verified to make the decision, not slide content.
+
+### What changed, exactly
+
+**Slide 13 (`s711-slots`), `internal-comms` card:**
+- Removed both `/plugin marketplace add anthropics/skills` and
+  `/plugin install example-skills@anthropic-agent-skills`.
+- Added: `npx giget@latest gh:anthropics/skills/skills/internal-comms .claude/skills/internal-comms`,
+  with a line underneath stating the real, measured result: "ينزل مجلّدها وحده — 36 كيلوبايت لا غير
+  — داخل مجلّد مهاراتك."
+
+**Slide 13, `a11y-debugging` card:**
+- Same command kept. Prose rewritten to lead with "وهذي عندك مثبَّتة فعلًا من اليوم الأوّل لمّا
+  ربطت الأداة — نفس الأمر جاب معه سبع مهارات، هذي إحداها:" instead of presenting the install as
+  something to do now.
+
+**Curriculum (`bootcamp_roadmap_and_curriculum.md`, §7.11 comparison table)** — kept in sync:
+- "كيف تُثبَّت؟" row: same `giget` command for `internal-comms`; same "مثبَّتة عندك فعلًا من اليوم
+  الأوّل" framing for `a11y-debugging`.
+- Also synced the "الحجم والكود" and "3. ايش تحتاج؟" rows to the same plain-language fixes already
+  made to slide 12 last turn (the snippets-file purpose, and the `pageId` quote followed by a plain
+  gloss) — these rows had been carrying the same unclear phrasing the user flagged on the slide, just
+  not yet caught there.
+
+### Why giget, not a manual copy or the Desktop route
+
+`giget` is a real, actively maintained package (used by `nuxi init` and similar scaffolding tools)
+that fetches one subdirectory of a GitHub repo without its git history — exactly the shape of this
+problem, since `anthropics/skills` is one big repo and `internal-comms` is one of its subfolders.
+Tested live rather than assumed, given this whole correction started from a different AI inventing
+commands with fake citations — the standing lesson of this session is verify the artifact, don't
+trust a plausible-sounding answer.
+
+I did not add `giget` to CLAUDE.md's root "Tools available" list or curriculum §17 — that registry
+is for tools used across the course's own authoring or instructional workflow (context7, chrome-
+devtools MCP, skill-creator). This is a single command inside one explanatory slide card, the same
+status as the `/plugin install ...` commands already there, which also aren't separately registered.
+
+### Verification
+
+`window.deckAudit()` → `[]` (21 slides) · `window.deckRefAudit()` → `[]` · register sweep (و+Latin
+glue, Arabic-Indic digits, يسوّي-family, «الطرفية») → all zero on the full file · curriculum heading
+list (259) and `](#…)` link list (328) diffed against `HEAD` → byte-identical both ways, so no
+anchor could have broken · the `giget` command itself execution-tested in the scratchpad directory
+before being written to the slide, not just read from a doc · no `deck.css` changes this turn, so no
+Day 1/3 regression risk.
+
+### Explicitly not done
+
+Did not add a "no label-writing" style caveat or any other content beyond what was asked. Did not
+touch `authoring-skills/SKILL.md` — it doesn't reference these two install commands (only its own
+menu of trainee skill ideas), so nothing there needed syncing. Not committing.
+
+---
+
+## § D165 — Prompt #116
+
+Slide 13 " لا شيء فيها يمنع تخطّي خطوة" and "خَف من الحذف، لا من القصر." aren't clear.
+
+I am super confused right now! I found out that I can't call /skill-creator from code tap of claude desktop but only from claude tap!!! I mean both taps are in claude desktop so why would the skill-creator only be visible to normal claude, I don't even know the difference between using normal claude tap or code.
+
+For the steps of exploring the skills in slid 15 a user can just choose settings then go straight to skills option no need to go through capabilities and stuff.
+
+---
+
+## § D165 — The `/skill-creator` confusion was our own bug: skills are never called by a slash command, and we had been writing it as one
+
+### For you
+
+Your discovery is actually correct and important, and it exposed a real inconsistency we'd been
+shipping: **Claude Code's "Code" tab and the normal "Claude" tab in Claude Desktop are two separate
+products with two separate skill systems — not two views onto the same thing.**
+
+- **The normal Claude tab** is the regular chat product. Its "Skills" (Settings → Capabilities →
+  Skills) are account-level, and that tab's compose box has its own `/` picker for attaching one —
+  that's a feature of *that* product's UI, unrelated to Claude Code.
+- **The Code tab is Claude Code itself** (a different product, running inside the same window). Its
+  skills come from a completely different place — `.claude/skills/` folders or plugins installed via
+  `/plugin install` — and, as we already established on slides 12–13 for `internal-comms` and
+  `a11y-debugging`, **Claude Code skills are never triggered by typing their name as a command.**
+  They trigger automatically when your request matches the skill's description.
+
+So `/skill-creator` doing nothing in the Code tab isn't a bug in Claude Desktop — it's the same rule
+we already taught applying to our own example. Typing a skill's name with a slash was never going to
+work there; the only thing a slash command can do in Code is something registered as an actual CLI
+command, like `/plugin install skill-creator@claude-plugins-official`. And separately, even if
+`skill-creator` is toggled on under account Settings, that toggle only affects the *normal* tab — it
+does nothing for the Code tab, because the two don't share a skill registry at all.
+
+**This means our own course materials had the same bug** — in several places we wrote
+`` `/skill-creator` `` as if it were a command to invoke, including in the **exact text the trainee
+pastes into their live Claude Code session**. If a trainee's pasted prompt told Claude to
+"سلّم البناء لمهارة /skill-creator", a literal reading could have Claude try to run a command that
+doesn't exist, instead of just using the skill naturally. That's now fixed everywhere.
+
+### What changed
+
+**Slide 13 — the two unclear lines, rewritten as the actual finding, not a compressed label:**
+- "94% لا شيء فيها يمنع تخطّي خطوة" → **"94% منها ما فيها ما يجبر Claude يلتزم بكل خطواتها — يقدر
+  يتخطّى خطوة ولا أحد يلاحظ"** (nothing in 94% of them forces Claude to follow every step — it can
+  skip one and nobody notices).
+- "خَف من الحذف، لا من القصر." → **"القصر مو المشكلة — النقص هو المشكلة."** (short isn't the
+  problem — missing something is), stated plainly instead of as a terse aphorism.
+
+**Slide 15 — step 2 rewritten, dropping the account-Settings check entirely** (which answers your
+third point too — not just "skip Capabilities," the whole account-Settings path doesn't apply here
+and is gone): it now says plainly that Code and the normal Claude tab are separate systems, and the
+one real action is running `/plugin install skill-creator@claude-plugins-official` **inside the Code
+tab itself** — confirmed a lean, standalone, 270KB/21-file plugin, no bundling problem like
+`example-skills` had.
+
+**Every `` `/skill-creator` `` reference rewritten to drop the slash and say "use the skill," not
+"call the command"** — across `authoring-skills/SKILL.md` (frontmatter description, §4 heading, and
+critically **the actual runtime instruction Claude follows when executing this skill**, which now
+also states explicitly "لا تناديها بأمر... صِغ طلبك كوصف لما تريده فتُشغَّل تلقائيًّا"), the
+curriculum (§7.11's pre-work note, task table, §7.11.2's output line, and **the starter-prompt
+blockquote — the literal text pasted into a live session**), the project's own `CLAUDE.md` tools
+table, slide 15's `.promptbox` (both the `data-copy` clipboard text and the visible paragraph), and
+slide 16's step heading. `deck/day-04-brief.md` and `deck/MEDIA_SHOTLIST.md` fixed for consistency.
+
+### Verification
+
+`grep -c '/skill-creator'` → `0` across all six touched files · `window.deckAudit()` → `[]` (21
+slides) · `window.deckRefAudit()` → `[]` · curriculum heading list (259) and `](#…)` link list (328)
+diffed against `HEAD` → byte-identical, no anchor broken · register sweep (و+Latin glue, Arabic-Indic
+digits, يسوّي-family) on the full file → zero · slides 13, 15, 16 screenshotted and read in full.
+
+### Explicitly not done
+
+Did not rename or relabel the Desktop tabs themselves beyond what you already named them ("تبويب
+Code" / "تبويب Claude العادي") — I have no way to verify the exact current UI chrome from here, so I
+kept the explanation to the architectural fact (two separate skill systems), which is what actually
+explains your observation, rather than asserting UI details I can't check. Not committing.
+
+---
+
+## § D166 — Prompt #117
+
+I just open a new chat in claude code via claude desktop and asked "do you have access to the skill-creator" and it answered:
+`Yes, I do! **`anthropic-skills:skill-creator`** is available. I can invoke it with the Skill tool whenever you want to create a new skill.
+
+What would you like to build?`
+meaning the skill creator is actually accessable and I tried from the UI it can be added in the prompt and referenced exactly to it but not by typing the slash but by clicking on the plus sign -> plugins - > choose the skill from document skills. And this didn't need no setup, it comes by installing claude desktop by default. So revert all the wrong changes to reflect this fact. Make sure to scan for any reference to this issue and make sure the information is corrected!
+
+---
+
+## § D166 — The "needs installing" claim was my own error — `skill-creator` ships by default, and this project's own CLAUDE.md already said so
+
+### For you
+
+You're right, and I should have caught this myself: `project-package/CLAUDE.md` (this project's own
+reference file) already had the correct fact on record, from before this session even started —
+**"trainees ... get `skill-creator` natively in Claude Desktop."** Last turn I overrode that with a
+conclusion drawn from the wrong evidence: I checked *this terminal session's own* plugin cache (which
+doesn't have `skill-creator` installed) and the *public marketplace listing* (which shows it as an
+installable plugin), and concluded trainees would need to install it too. That doesn't follow — this
+session's limitation was already flagged, in the very same file, as **local to this session alone**,
+not a fact about Claude Desktop. I shouldn't have reasoned past a standing, already-verified note
+with inference from a different environment. Your direct test (asking Claude Code itself, and finding
+the `+ → Plugins` picker) is exactly the kind of verification that settles it, and it confirms the
+file was right all along.
+
+### What was wrong, and what it's corrected to
+
+**Slide 15, step 2** — was: "ثبّت `skill-creator` من داخل هذا التبويب نفسه... فـ`skill-creator` تحتاج
+تثبيتًا هنا بالذات" with a `/plugin install skill-creator@claude-plugins-official` snipbox. That
+entire premise (it needs installing) was wrong. Now: **"`skill-creator` موجودة عندك مسبقًا — تأتي مع
+Claude Desktop بلا أي تثبيت."** States it works on its own when you describe your task, and names the
+explicit-attach path you found: **`+ ← Plugins ← اخترها من القائمة`**. Keeps the one part that was
+genuinely correct and still matters — typing `/skill-creator` as text does nothing, because it's a
+skill that gets *used*, not a command that gets *typed*.
+
+**Curriculum §7.11 pre-work note, item 2** — same wrong premise, same fix: states default
+availability plainly, names the `+ → Plugins` path, keeps the "not a typed command" fact.
+
+**`deck/day-04-brief.md`, slide 15's row** — updated to describe the corrected content instead of
+"the `skill-creator` availability check with its `.snipbox` fallback command."
+
+### What I checked and left alone, because it was already right
+
+- **`project-package/CLAUDE.md` line 29** (the "Note on `/deep-research` and `/skill-creator`"
+  paragraph) — already correct, untouched.
+- **`authoring-skills/SKILL.md`** — its instruction to "استخدم مهارة `skill-creator`... لا تناديها
+  بأمر" never claimed installation was required; it only said not to type it as a command, which
+  remains true. No change needed.
+- Every other mention of `skill-creator` across the curriculum, `CLAUDE.md`'s tools table, and
+  `deck/MEDIA_SHOTLIST.md` only names it as *the skill that builds the file* — none of them asserted
+  an install step, so none needed correcting.
+
+### Scan performed
+
+`grep -rn skill-creator` across `project-package/` and `deck/` — every hit reviewed individually (17
+matches). Only the two locations above asserted the wrong "needs installing" premise; both fixed.
+Re-grepped afterward for `/plugin install skill-creator` across `project-package/` → zero remaining.
+
+### Verification
+
+`window.deckAudit()` → `[]` (21 slides) · `window.deckRefAudit()` → `[]` · slide 15 screenshotted,
+reads correctly, no overflow · curriculum heading list (259) and `](#…)` link list (328) diffed
+against `HEAD` → byte-identical, no anchor broken · register sweep (و+Latin glue, Arabic-Indic
+digits) on the full slide file → zero.
+
+### Explicitly not done
+
+Did not touch `conversation_history.md`'s past entries (D164–D165) — those are a historical record of
+what was concluded and why at the time, not something to rewrite; this entry is the correction going
+forward, per the file's own append-only convention. Not committing.
+
+---
+
+## § D167 — Prompt #118
+
+@project-package/.claude/skills/authoring-skills/SKILL.md  under "2. القائمة" doesn't mention anything about the initial answers we provided in slide 14 in the question mark icons. I know that claude must have visibility over the curriculum and the slides of each task but the answers originally aren't in the curriculum and it is very risky, unreliable, and incorrect in terms of what we are teaching to rely only on what claude is supposed to do when a trainee picks a skill from the menu that claude should first read the existing initial answers without explicatly asking it to do so in the skill and pointing it percisly where each skill initial answers are written in @project-package/slides/day-04.html , so you can go ahead and see the range of answers content for each skill idea and write down from line # to line # as a new column in the table under "2. القائمة" in the skill. You can start looking in the html file from line 1115. It might be better to add this column to the curriculum's table as well under "المهمة 7.11.1".
+
+---
+
+## § D167 — Line-range column added to `authoring-skills/SKILL.md`'s §2 table; curriculum deliberately NOT changed, and here's why
+
+### For you
+
+You're right that this was a real gap: §2's table named each menu idea by a one-line description
+only, and nothing told Claude where the six pre-written answers for that idea actually live. Nothing
+in `SKILL.md` would have led Claude to `day-04.html` on its own — exactly the "risky, unreliable"
+failure mode you named.
+
+**Fixed, precisely, by reading the actual file rather than estimating:** found and verified the exact
+opening/closing line of each of the 8 `<div data-term="...">` blocks inside day-04.html's
+`<template class="terms">` (starts line 1115), confirmed each range by checking that line *A* is
+that idea's own opening tag and line *B* is its closing `</div>` — not a neighboring block's. Added
+as a fifth column in §2's table:
+
+| # | المهارة | نطاق الأسطر |
+|---|---|---|
+| 1 | جولة قبل العرض | 1117–1156 |
+| 2 | ملاحظات التقدّم الأسبوعية | 1158–1194 |
+| 3 | سجلّ القرارات | 1196–1232 |
+| 4 | نصّ اختبار يدويّ | 1234–1270 |
+| 5 | منشور الإطلاق | 1272–1309 |
+| 6 | بطاقة المشاركة | 1311–1357 |
+| 7 | فرز البريد | 1359–1396 |
+| 8 | نصّ كلامك يوم العرض | 1398–1436 |
+
+And added an explicit **إلزاميّ** instruction right after the table: once the trainee picks an idea
+from this list, Claude must actually open that line range in `day-04.html` and read it — not assume
+its content from the idea's name and output description. Also updated §3's instruction so it
+explicitly branches: an idea from §2 → build the suggested answer on what was just read from the
+slide; an idea from §1 (the trainee's own) → build it from `PRODUCT.md`, as before. Previously §3
+only mentioned `PRODUCT.md`, which silently dropped the slide's answers as a source entirely.
+
+### Why the curriculum table is NOT getting the same column
+
+I'd flag this rather than just do it: adding a raw HTML line-range column to
+`bootcamp_roadmap_and_curriculum.md`'s copy of this table would be giving a **trainee** a pointer
+into slide markup they're never meant to open — this project's own file-boundary rule
+(`bootcamp-mvp-process.md` §1) states the curriculum's job is *"what does the trainee see and do"*,
+and CLAUDE.md's own working rule is explicit that a trainee is never asked to read a file or its
+internals. A line-number reference serves Claude's navigation, not the trainee's task, so it doesn't
+belong in the file whose whole contract is being trainee-facing.
+
+The curriculum already has the trainee-side equivalent, and it was already correct: the blockquote
+right under its own copy of this table says *"تجدها على الشريحة نفسها: اضغط علامة ؟ بجانب اسم
+الفكرة"* — telling the trainee to click the `؟` on the slide, which is the only interaction they
+actually need. Nothing was missing on that side. I left the curriculum table untouched.
+
+### Verification
+
+Each of the 8 ranges re-checked programmatically against the live file: line *A* contains that
+exact `data-term="..."` opening tag, line *B* is a bare `</div>` closing it — all 8 passed. Register
+sweep on the edited `SKILL.md` (و+Latin glue, Arabic-Indic digits) → zero.
+
+### Explicitly not done
+
+Did not touch `bootcamp_roadmap_and_curriculum.md` — see above. Did not touch slide 14 itself (no
+reason to; the line numbers describe its current state, not something that needed changing). Not
+committing.
+
+---
+
+## § D168 — Prompt #119
+
+under "3. الخانات الستّ" from @project-package/.claude/skills/authoring-skills/SKILL.md modify "اقترح إجابة جاهزة لكل سؤال" to suggestion multiple answers so that the trainee can custome the final built skill depending on his choice as another facor beside the possibility of having the trainee's own project from PRODUCT.md to be another factor.
+For "#7 (فرز البريد) يحتاج ربط Gmail مسبقًا" if chosen they the first steps would be for you to help him establish this connection with proper steps.
+In slide 15 provide two prepared prompts:
+one if the trainee choses a skill idea from the menu where the flow would be as I specified earlier where claude would refer to the intial answers along with suggesting various different completion answers that can contribute to produce the trainee's own version of the skill along with his project specific specs if related.
+the other if the trainee decided to build a skill from his own idea where the prompt should include part that should be replaced with the answer of the gate questions from slide 14.
+
+---
+
+## § D168 — Multiple-answer suggestions, active Gmail setup, and two starter prompts on slide 15
+
+### For you
+
+Three changes, all in service of the same goal: the trainee ends up with *their* skill, not a copy
+identical to everyone else who picked the same menu idea.
+
+**`authoring-skills/SKILL.md` §3** — "اقترح إجابة جاهزة لكل سؤال" (suggest one ready answer) became
+**"اقترح عدّة إجابات محتملة لكل سؤال"** (2–4 options, the same limit `AskUserQuestion` already
+enforces), built from two factors together: for a menu idea, one option stays close to the slide's
+original answer, another is rebuilt around the trainee's own `PRODUCT.md` details, and a third (when
+it fits) takes the skill in a different reasonable direction; for the trainee's own idea, the options
+vary based on `PRODUCT.md` and their own description. The trainee still only picks or edits — never
+starts blank — but now from real alternatives instead of one fixed draft.
+
+**§2's Gmail constraint** — was passive ("verify it's connected, don't assume"), with no instruction
+for what to do if it *isn't*. Now: if a trainee picks «فرز البريد» and Gmail isn't connected yet,
+Claude's first move is to walk them through connecting it — Settings ← Connectors ← Gmail ← Connect,
+one Google approval screen, a minute or three — reusing the exact path already documented in the
+§7.11 pre-work note, before continuing with the rest of §3 for that idea.
+
+**Slide 15 — two prompts, not one.** Built around the same split you described:
+- **Menu-idea prompt**: names a `[رقم واسم الفكرة من القائمة]` blank, and explicitly tells Claude to
+  read that idea's initial answers from the slide (per last turn's line-range table) and propose
+  several different completions — some close to the original, some shaped by the trainee's own
+  project — for the trainee to choose from or edit.
+- **Own-idea prompt**: carries two blanks — `[صف فكرتك بجملة أو جملتين]` and
+  `[الصق هنا إجاباتك السبع من الشريحة الماضية]` — so the trainee pastes their slide-14 gate answers
+  directly into the prompt, and Claude is told to gate the idea with those answers first before
+  suggesting variations built on `PRODUCT.md`.
+
+Both keep the same shared opening ("هذه جلسة جديدة... اتّبع مهارة authoring-skills...") so the
+existing one-line teaser on the "دورك الآن" recap slide stays accurate without needing its own edit.
+
+### What broke and how it was fixed
+
+Adding the second `.promptbox` overflowed slide 15 by 17px. Fixed with the slide's standard two-step
+remedy: tightened the body gap `--sp-3` → `--sp-2` (the same fix used on slide 13 earlier), then
+trimmed one now-redundant intro line ("صياغتان جاهزتان...") by folding its meaning into each
+promptbox's own existing label ("اخترت فكرة من القائمة؟ الصق هذي فور فتح الجلسة:" /
+"عندك فكرتك الخاصّة؟ الصق هذي بدلًا منها:") — no information lost, one line of vertical space
+recovered.
+
+### Curriculum synced
+
+§7.11.2's steps and "نفّذها أنت" checklist now describe choosing between two prompts; both full
+prompt texts added as two blockquotes (mirroring the deck exactly, per this project's own
+deliberate-redundancy rule for copyable prompt templates); step 4 updated to describe multiple
+suggested answers instead of one. Did not touch §7.11.1's Gmail table annotation — that's already
+covered by the existing pre-work note telling the trainee to connect it themselves before the
+session; the *active-help-if-not-connected* behavior is Claude's own runtime fallback and belongs in
+the skill file, not the trainee-facing curriculum.
+
+### Verification
+
+`window.deckAudit()` → `[]` (21 slides) · `window.deckRefAudit()` → `[]` · per-card/promptbox spill
+check → `[]` · both `.promptbox__copy` buttons confirmed present with distinct `data-copy` text ·
+register sweep on both edited files (و+Latin glue, Arabic-Indic digits, يسوّي-family) → zero new hits
+(36 pre-existing و+Latin matches elsewhere in the curriculum, none from this edit) · curriculum
+anchor diff against `HEAD` → the only change is two new links to the already-valid
+`#المهمة-7111--اختر-مهارتك-وافحصها` anchor, confirmed resolvable; zero headings changed.
+
+### Explicitly not done
+
+Did not touch slides 12–14 or §7.11.1's menu table. Not committing.
+
+---
+
+## § D169 — Prompt #120
+
+Look I forgot to sync all the changes from project-package into C:\Users\ammar\future-dev\claude\trainee-test
+So now I need you to scan all files that have changed and been modified or updated in our package but weren't parsed to the trainee-test project, make sure to cover all files and you must keep in mind that a lot of files in the trainee-test project have also been modified, updated, (specially PRODUCT.md and CLAUDE.md) or added (.claude/skills/pre-demo-tour/SKILL.md) so you must make sure to maintain all of that in addition to adding the newly added parts of project-package without missing with the trainee-test specific content.
+after you finish tell me if it is a good idea to test the new skill in the existing session on antigravity extension which is seperate from the new session on claude desktop used to generate this skill.
+
+---
+
+## § D169 — Syncing `project-package` → `trainee-test` without touching a single trainee-owned byte
+
+### For you
+
+The sync is done. **Nine files landed, one line was merged by hand, and nothing the trainee owns was
+touched.**
+
+The job split cleanly once I established which side of each file was actually newer, by reading the
+real diffs rather than trusting timestamps:
+
+**Copied wholesale (package is authoritative; every trainee-test line was just an older copy of the
+same file — verified, not assumed):**
+
+| File | What arrived |
+|---|---|
+| `.claude/skills/authoring-skills/SKILL.md` | §2's line-range column, the إلزاميّ read instruction, §3's multi-answer logic, §2's active Gmail help, the `/skill-creator`→`skill-creator` fixes |
+| `.claude/skills/user-journey/SKILL.md` | the `.drawio` handover + the explicit-RTL rule |
+| `.claude/skills/writing-requirements/SKILL.md` | "don't assume the number of rounds" + the "read scope/roles from `PRODUCT.md` yourself" note |
+| `bootcamp_roadmap_and_curriculum.md` | all of §7.11 as it now stands — the two-skill comparison table, the corrected `skill-creator` availability note, the gate's explanations, the 8th menu idea's rename, the two starter prompts |
+| `slides/assets/deck.css` | `.card--scroll`, `.slots`/`.slot__*`, `.pick*`, `.imglink*` — trainee-test had **zero** CSS the package lacked, so this was a strict superset |
+| `slides/day-03.html` | the 22→21 slide drop, the درّسني examples replacing متجر, the ١→1 numerals, the split 10.1/10.2 task keys |
+| `slides/day-04.html` | the whole day, 1174→1823 lines |
+| `slides/assets/Open-Graph-tags.jpg` | **new** — slide 14's بطاقة المشاركة term window links to it |
+| `slides/media/tasks-10.3-11.1-11.2.mp4` | **new** — 159 MB, the only media file trainee-test was missing |
+
+**Merged by hand, one line only — `CLAUDE.md`.** This was the one file where both sides had changed.
+The diff showed exactly one package-owned line (the tools-table row for `authoring-skills`, still
+saying `/skill-creator` with a slash) and nothing else; lines 126–142 are the trainee's own progress
+ledger — اليوم 4، درّسني، the Vercel URL، the per-section status notes including the `pre-demo-tour`
+entry. I edited **only** line 113 and left the ledger byte-for-byte intact.
+
+**Deliberately left alone, each for its own reason:**
+
+- **`PRODUCT.md`** — entirely the trainee's. 551 lines vs the package template's 145, and the
+  template itself hasn't changed since before the last sync, so there was nothing to merge *in*.
+- **`.gitignore`** — trainee-test's is a **superset**: it grew during the real build (Next.js,
+  Supabase, Vercel entries) and already ends with the package's three `notebook.txt` lines. Copying
+  the package's 3-line version over it would have been a regression.
+- **`notebook.txt`** — the trainee's personal 47 KB notebook; the package ships a 1 KB blank one.
+- **`.mcp.json`**, **`.claude/settings.local.json`**, **`.claude/skills/pre-demo-tour/`**,
+  **`application/`**, **`diagrams/`**, **`conversation_history.md`** — trainee-only, no package
+  counterpart.
+
+**One thing I changed on purpose:** the package files are CRLF, every file already in trainee-test is
+LF. I normalised each copy to LF on the way in, so trainee-test's git shows the real content change
+instead of marking all 3,367 curriculum lines as modified.
+
+### Verification
+
+Re-ran the full recursive diff afterwards. The **only** remaining differences are exactly the four
+trainee-owned files above plus the three trainee-only paths — i.e. every package-owned file is now
+identical on both sides. Then, on the trainee-test copies specifically:
+
+- every `assets/` and `media/` reference across all four decks resolves to a file on disk → 0 missing
+- `day-04.html`: 21 slides · `deckAudit()` → `[]` · `deckRefAudit()` → `[]` · 2 `.promptbox__copy`
+  buttons · 8 `.pick` rows · 8 `؟` triggers matched to 8 term blocks, none dangling ·
+  the بطاقة المشاركة window's `assets/Open-Graph-tags.jpg` link resolves
+- `day-03.html`: 21 slides · `deckAudit()` → `[]` · `deckRefAudit()` → `[]` · both videos resolve
+- CRLF count on all eight synced text files → 0
+- trainee-test `git status` shows `PRODUCT.md`, `notebook.txt`, `.gitignore` and `conversation_history.md`
+  in exactly the state they were in before I started
+
+Backup of all eight pre-overwrite files kept in the session scratchpad under `tt-backup/`.
+
+### Explicitly not done
+
+Nothing committed in either repo. Did not touch `application/`, `diagrams/`, or the `pre-demo-tour`
+skill the trainee session generated.
+
+---
+
+## § D170 — Prompt #121
+
+finally the video @project-package/slides/media/task-7.11.mp4 of slide 16 is done, now please extract the steps with correct timestamps this time and finalize day 4 slides since we are done. After you finish, as always, run the pass over the mistakes happened and decisions taken and make sure they are all mapped to the necessery files and rules.
+
+---
+
+## § D170 — Slide 16 rebuilt from the real recording, Day 4 finalized, and a durable fix for the timestamp mistake that nearly repeated itself
+
+### For you
+
+Slide 16 now carries the real 5:30 recording, with every step verified against an actual extracted
+frame — not sampled, not transcribed, not guessed from a contact sheet. Day 4's deck has no remaining
+placeholder video anywhere.
+
+**What the recording actually shows, end to end:**
+
+- Opens on slide 15 itself on screen, then Claude Desktop (Code tab, Local, darrisni) with the
+  menu-idea starter prompt pasted for idea 1, «جولة قبل العرض».
+- `authoring-skills` asks the six slots, **each with 2–4 suggested answers** — confirming last turn's
+  fix actually works in practice — including a genuine multi-select question (stop-points) where the
+  trainer picks beyond the single "Recommended" box.
+- Handoff to `skill-creator`, which asks two questions of its own (where to save — local; how to test
+  — the full loop), then builds four files **and runs its own with/without-skill comparison against
+  the real live site**, visible in its own automation-controlled browser tab — a part of
+  `skill-creator`'s flow this course's own skill is explicitly supposed to never suppress.
+- **Then, in a second session in a different tool entirely — Antigravity, not Claude Desktop** — the
+  trainer writes a plain request, never naming the skill: «احتاجك تختبرلي الموقع وتاخذ جولة عليه
+  وتتأكّد انو شغّال صح بمختلف الأحجام». The skill auto-triggers, greps exactly the two `PRODUCT.md`
+  sections its own steps name, fires its real "before starting" gate and its real "before saving"
+  gate, and the whole tour turns up **one genuine finding**: the 404 page renders in Next.js's default
+  English, not Arabic. Report rendered to HTML for an RTL check, then opened for real.
+- Closes with the trainer asking Claude to fix that one finding directly — a new Arabic 404 page,
+  tested locally, committed and pushed touching only the two intended files. The skill itself never
+  touches code; it only found the problem. That boundary, stated in the skill's own first paragraph,
+  is now visible on screen rather than just asserted.
+
+**The planned "first-run failure" never happened, so the deck no longer claims one.** The shot list
+had required staging-free footage of a genuine trigger miss, for the same reason Day 3's video
+justified it (`writing-requirements/SKILL.md` §5.1.1 — a description is a guess until tested). The
+real second session simply worked on the first unnamed try. Slide 16's placeholder
+`stepvid__step--new` "fix the description" row is gone — not kept as an aspirational beat the footage
+never supported.
+
+### The mistake that almost happened again, and why it's now a written rule instead of a close call
+
+Building this stepvid's timestamps, a coarse 5-second contact sheet produced a thumbnail that read as
+"test the login with a wrong password" — which would have directly contradicted the skill's own
+documented rule against ever typing a password. Extracting that exact second as a full-resolution
+frame showed something unrelated; the misread thumbnail never made it into the slide. But this is the
+**third** time this exact failure shape has shown up this project (`deployment.mp4`'s transcript-only
+build, then slide 9's "Your timing is completely wrong!!" correction from fixed-grid eyeballing, now
+this near-miss) — and until today it only existed as narrative in `conversation_history.md`, never as
+an actual rule anyone would read before building the next stepvid. Fixed by adding **§5** to
+`.claude/skills/bootcamp-deck/SKILL.md`: a two-pass procedure (coarse contact sheet to find the shape,
+then a full-resolution single-frame extraction at every second that will actually become a `data-t`
+value), with all three instances cited as evidence it recurs.
+
+### Other decisions from this build now mapped to durable files, not just history
+
+- **The `1200×630`-style bidi bug** (two Latin numbers joined by `×` flipping inside Arabic text) is
+  now bidi rule **5** in the same `SKILL.md` — it was fixed once, by instinct, but never written down,
+  so the next person to write a dimension pair in Arabic prose had no way to know the hazard existed.
+- **The skill-creator installation mistake** (§D166 — concluding trainees needed to install it, by
+  reasoning from this session's own plugin cache rather than Claude Desktop) is now a named, dated
+  lesson directly under the note it overrode, in the top-level `CLAUDE.md`: check whether this file
+  already has a verified note before asserting an environment-dependent fact, and if the claim is
+  about a different environment, verify there rather than inferring from here. The stale "synced via
+  claude.ai account or the marketplace" framing in the same tools line was also corrected — confirmed
+  moot by this very recording, where `skill-creator` ran with no install step in sight.
+- **D160's three wrong shipped facts about slide 12** (authorship, code presence, and the shallow
+  "same structure" framing) were already fixed at the time by reading the actual skill files instead
+  of recalling them — no new standing rule needed, since that fix didn't recur afterward the way the
+  timestamp one did.
+
+### Propagation
+
+`project-package/slides/day-04.html` and the new `task-7.11.mp4` copied into `trainee-test/`
+(CRLF→LF normalised on the HTML, matching the standing sync convention). `trainee-test/CLAUDE.md`'s
+own §7.11 ledger row updated from "awaiting your own test" to the real, completed outcome the
+recording documents. `deck/MEDIA_SHOTLIST.md`, `deck/day-04-brief.md`, and
+`.claude/skills/bootcamp-deck/references/showcase-strategy.md` all updated to mark both Day-4 videos
+shipped and to carry the corrected d4-2 description.
+
+### Verification
+
+Full-file `window.deckAudit()` → `[]` (21 slides) · `window.deckRefAudit()` → `[]` on both the
+`project-package` and `trainee-test` copies · per-card/promptbox spill check across the **whole** deck
+→ `[]` · task-key cross-slide sync re-checked (`d4-*` keys each 1–2 as expected, zero duplicates) ·
+register sweep on the full file (Arabic-Indic digits, و+Latin glue, يسوّي-family, «الطرفية», «وايش»
+clause-start) → zero violations, all 7 «وايش» hits confirmed genuine mid-sentence conjunctions ·
+`<video src>` and all 13 `data-t` values confirmed present and distinct on both copies · every cited
+timestamp re-verified against its own extracted frame before being written, per the new §5 procedure
+it was written to enforce.
+
+### Explicitly not done
+
+Did not touch slides 1–15 or 17–21 beyond the verification pass (none needed changes). Did not
+re-film or alter `tasks-10.3-11.1-11.2.mp4` or slide 9. Not committing in either repository.
+
+---
+
+## § D171 — Prompt #122
+
+day 4 Slide 16:
+Step "تبني أربعة ملفّات، وتفتح الموقع الحيّ فعليًّا لتختبر نفسها" is wrong about building four files! The only file built for the skill is C:\Users\ammar\future-dev\claude\trainee-test\.claude\skills\pre-demo-tour\SKILL.md and the files C:\Users\ammar\future-dev\claude\trainee-test\demo-tours are generated when I run the skill in another session not this test in the step running by skill-creator! The files in the frame are Edited files except for the SKILL.md file.
+
+The section "الاختبار الحقيقي — أداة أخرى، وطلب عادي بلا اسم" and step "في أداة مختلفة تمامًا — لا نفس الجلسة التي بنى فيها المهارة" saying "أداة أخرى" and "أداة مختلفة تمامًا" is completely wrong!!! I am testing in a separate session as you said "ا نفس الجلسة التي بنى فيها المهارة" but it has nothing todo with another tool because:
+A. we are testing a skill not a tool!
+B. we are testing the same skill we just built!
+So what you are saying is wrong thus confusing!!
+
+---
+
+## § D171 — Two factual errors on slide 16 corrected: "four files" was never true, and "أداة" was the wrong word entirely
+
+### For you
+
+Both catches are right, and the second one is sharper than a wording nitpick — it's a real vocabulary
+collision with something this exact section already teaches.
+
+**"Builds four files" never happened.** Rereading the frame at 1:30 more carefully: `skill-creator`
+creates exactly **one** file — `.claude/skills/pre-demo-tour/SKILL.md`. The "4 files" badge in that
+frame was a mix of edits to its own bookkeeping (`conversation_history.md` and similar), not four
+files that make up the skill. And `demo-tours/` doesn't exist yet at this point in the recording at
+all — those screenshots and the report are the *output of running the skill*, generated later in the
+second session, not something `skill-creator` produces while building it. Fixed: the step now says
+«تبني ملفّ المهارة الواحد» (builds the skill's one file) and adds a line making the timing explicit —
+the report and photos come later, when the skill actually runs.
+
+**"أداة" was a real category error, not just an awkward word.** This exact slide — and slide 13 two
+slides earlier — teaches the course's own vocabulary: **إجراء** (a procedure-only skill) versus
+**أداة** (a skill that drives an external tool, like `chrome-devtools`). Using «أداة أخرى» to mean
+"a different *application*" (Antigravity instead of Claude Desktop) borrows a word this section
+already assigned a specific technical meaning to, and the result reads as if a different *kind of
+skill* were being tested — not the same skill, in a plain second session, on a different program.
+Fixed by dropping "أداة" from this slide entirely in that sense: the divider now reads «نفس المهارة،
+ببرنامج آخر وطلب عادي بلا اسمها», and the step itself opens with «نفس المهارة بالضبط» before naming
+the program — Antigravity, not Claude Desktop — removing both the vocabulary collision and any doubt
+about whether this is the same skill being tested.
+
+### Verification
+
+`window.deckAudit()` → `[]` · `window.deckRefAudit()` → `[]` · grepped the whole slide for `أداة` —
+zero remaining uses in this sense · re-synced the corrected `day-04.html` to `trainee-test`.
+
+### Explicitly not done
+
+Did not touch any other step on slide 16 — both were accurate on review. Not committing.
+
+---
+
+## § D172 — Prompt #123

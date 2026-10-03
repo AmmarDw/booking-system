@@ -310,11 +310,11 @@
             <p class="card__note card__note--sm"><span class="i i-file-text" style="color:var(--accent-state)"></span>
               <strong>وهذي الصياغة اللي تعطيها:</strong> «اقترح لي متطلبات غير وظيفية تناسب منتجي تحديدًا — مُرّ على
               الأداء والأمان والموثوقية وسهولة الاستخدام وقابلية النقل، <strong>واقترح فقط ما يحتاجه منتجي فعلًا</strong>،
-              مع <strong>مقياس رقميّ</strong> لكل واحد حيثما أمكن. واشرح لي كلًّا منها بجملة بسيطة.»</p>
+              مع <strong>مقياس رقميّ</strong> لكل واحد حيثما أمكن. واشرح لي كلًّا منها بجملة بسيطة. واسألني في حال عندك اي اشتباه أو شكوك.»</p>
           </div>
           <div class="card card--plain">
             <p class="card__note"><span class="i i-lightbulb" style="color:var(--accent-state)"></span>
-              <strong>«خلال ثانيتين» لا «سريع».</strong> هذا الفرق بين متطلّب وأمنية. راجع كل صفة تقترحها Claude:
+              <strong>«خلال ثانيتين» لا «سريع».</strong> هذا الفرق بين متطلّب وأُمنية. راجع كل صفة يقترحها Claude:
               هل فيها رقم تقدر تتحقّق منه؟</p>
           </div>
         </div>
@@ -354,7 +354,7 @@
                       class="i i-info"></span></span></h3>
               </div>
               <p class="card__note card__note--sm">يكشف الخطوات والقرارات مبكّرًا — خصوصًا <strong>التفرّعات اللي
-                  تنساها</strong> وأنت متخيّل المسار السعيد وحده.</p>
+                  تنساها</strong> وأنت متخيّل المسار المثالي وحده.</p>
             </article>
           </div>
           <div class="card card--plain">
@@ -382,33 +382,70 @@
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
-          <div class="bento" data-cols="2">
-            <article class="card card--accent">
-              <div class="card__top"><span class="card__icon"><span class="i i-file-text"></span></span>
-                <h3 class="card__title card__title--sm">11.1 · اكتبها نصًّا</h3>
-              </div>
-              <p class="card__note card__note--sm">الفاعل، والخطوات مرقّمة، وأي قرار له فرعان على الأقلّ:</p>
-              <div class="snipbox">
-                <pre class="snip snip--sm" dir="rtl">الرحلة: &lt;اسمها&gt;
+          <article class="card card--accent">
+            <div class="card__top"><span class="card__icon"><span class="i i-file-text"></span></span>
+              <h3 class="card__title card__title--sm">11.1 · اكتبها نصًّا</h3>
+            </div>
+            <p class="card__note card__note--sm">اكتب رحلتك في دفترك بكلامك العادي، بلا شكل محدَّد. الصيغة تحت
+              <strong>Claude يرجّعها لك</strong> — مو شي تكتبه أنت:</p>
+            <div class="bento" data-cols="2">
+              <div class="card card--plain">
+                <p class="card__note card__note--sm"><strong>الصيغة الموحّدة</strong></p>
+                <pre class="snip snip--sm snip--rtl" dir="rtl">الرحلة: &lt;اسمها&gt;
 الفاعل: &lt;من يقوم بها&gt;
 البداية
 1. &lt;خطوة&gt;
 2. قرار: &lt;سؤال؟&gt;
    - إذا كذا ← اذهب 3
 النهاية</pre>
-                <button class="snipbox__copy" type="button" aria-label="نسخ الصيغة"><span
-                    class="i i-copy"></span></button>
               </div>
-            </article>
-            <article class="card card--state">
-              <div class="card__top"><span class="card__icon"><span class="i i-circle-check"></span></span>
-                <h3 class="card__title card__title--sm">11.2 · حوّلها مخطّطًا</h3>
+              <div class="card card--plain">
+                <p class="card__note card__note--sm"><strong>مثال حقيقي، من مشروع تجريبي</strong></p>
+                <pre class="snip snip--sm snip--rtl snip--scroll" dir="rtl">الرحلة: حجز حصّة
+الفاعل: حاجز (طالب أو مشرف) — المدرّس يُمنع عند هذه الرحلة
+
+البداية
+1. فتح الصفحة الرئيسية العامّة لـ«درّسني»
+2. الانتقال إلى صفحة «احجز حصّة»
+3. عرض كل المواد والاختبارات المتاحة
+4. اختيار مادّة أو اختبار معيّن
+5. قرار: هل يوجد مدرّس يدرّس هذه المادة؟
+   - إذا لا  ← عرض رسالة «لا يوجد مدرّس متاح» ← النهاية
+   - إذا نعم ← اذهب إلى الخطوة 6
+6. عرض قائمة المدرّسين الذين يدرّسون المادّة المختارة
+7. الانتقال إلى أداة التصفية وتحديد مدى تاريخ، والضغط على «تصفية»
+8. قرار: هل يوجد مدرّس ضمن القائمة عنده موعد متاح واحد على الأقلّ خلال المدى المحدَّد؟
+   - إذا لا  ← عرض رسالة «لا يوجد مدرّس متاح» مع اقتراح توسيع المدى ← النهاية
+   - إذا نعم ← اذهب إلى الخطوة 9
+9. عرض قائمة المدرّسين المطابقين للمادّة والمدى الزمني (الاسم، التقييم، عدد المواعيد المتاحة)
+10. اختيار مدرّس من القائمة والضغط على «حجز حصّة»
+11. قرار: ما حالة تسجيل الدخول؟
+    - إذا مسجَّل بدور طالب أو مشرف ← اذهب إلى الخطوة 15
+    - إذا مسجَّل بدور مدرّس          ← عرض تنبيه «لا يمكن الحجز من حساب مدرّس» ← النهاية
+    - إذا غير مسجَّل الدخول          ← اذهب إلى الخطوة 12
+12. التوجيه إلى صفحة تسجيل الدخول
+13. تسجيل الدخول أو إنشاء حساب جديد
+14. العودة إلى صفحة الحجز (لا إلى صفحة الحجز الفعلية مباشرة، بل إلى تقييم الدور من جديد) ← اذهب إلى الخطوة 11
+15. الانتقال إلى صفحة الحجز
+16. اختيار التاريخ من التقويم، ضمن المدى الذي صُفِّي به سابقًا (لا تاريخ اليوم فقط)
+17. اختيار الموعد، أو المواعيد المتتالية المتاحة في التاريخ المختار
+18. حساب السعر النهائي (سعر الساعة × عدد المواعيد) وعرضه
+19. تأكيد الحجز
+20. تثبيت الحجز فورًا، وعرض إشعار نجاح يتضمّن المدرّس والتاريخ والساعة ويختفي تلقائيًّا بعد 20 ثانية
+21. التوجيه إلى صفحة «حصصي» للحاجز، وفيها الحصّة المحجوزة
+22. إرسال بريد تأكيد الحجز إلى الحاجز (طالب أو مشرف) وإلى المدرّس
+النهاية</pre>
               </div>
-              <p class="card__note card__note--sm">Claude يرسمه عبر مهارة <span class="tok-lat">draw.io</span>، ويعرضه
-                لك <strong>صورة</strong> — لا ملفًّا تفتحه بنفسك.</p>
-              <p class="card__note card__note--sm">راجعا معًا: هل كل فرع ينتهي؟ هل فيه خطوة معلّقة بلا وصلة؟</p>
-            </article>
-          </div>
+            </div>
+          </article>
+          <article class="card card--state">
+            <div class="card__top"><span class="card__icon"><span class="i i-circle-check"></span></span>
+              <h3 class="card__title card__title--sm">11.2 · حوّلها مخطّطًا</h3>
+            </div>
+            <p class="card__note card__note--sm">Claude يرسمه عبر مهارة <span class="tok-lat">draw.io</span>، ويعطيك
+              <strong>صورة للمراجعة</strong> وملفّ المخطّط معها لو احتجت تعدّله لاحقًا. راجعا معًا: هل كل فرع ينتهي؟
+              هل فيه خطوة معلّقة بلا وصلة؟</p>
+          </article>
           <div class="card card--plain">
             <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
               <strong>أهمّ ما تسأل عنه:</strong> ماذا لو لم يكن مسجّل الدخول؟ ماذا لو لم يجد ما يبحث عنه؟ وإن انقطعت
@@ -452,14 +489,14 @@
             <div class="card card--state">
               <p class="card__note card__note--sm"><span class="i i-file-text" style="color:var(--accent-state)"></span>
                 <strong>11.1 — وهذي الصياغة اللي تعطيها:</strong> «هذي رحلة المستخدم الأساسية لمنتجي بكلماتي: [صفها].
-                صُغها بالصيغة الموحّدة، <strong>واسألني عن أي تفرّع لم أذكره</strong> — خصوصًا ماذا لو لم يكن المستخدم
+                أرجع لملف PRODUCT.md لمراجعة المتطلبات وصيغ رحلة المستخدم بالصيغة الموحّدة، <strong>واسألني عن أي تفرّع لم أذكره</strong> — خصوصًا ماذا لو لم يكن المستخدم
                 مسجّلًا، أو لم يجد ما يبحث عنه.»</p>
             </div>
             <div class="card card--state">
               <p class="card__note card__note--sm"><span class="i i-git-branch" style="color:var(--accent-state)"></span>
                 <strong>11.2 — وبعدها هذي:</strong> «حوّل نصّ رحلتي إلى <strong>مخطّط نشاط</strong> عبر مهارة
                 <span class="tok-lat">draw.io</span>، بمسار لكل طرف، وعُقد قرار للتفرّعات. <strong>وأبقِه بسيطًا
-                  مقروءًا</strong> — ولو رأيت المسارات ستُعقّده، استخدم الألوان بدلًا منها. اعرضه عليّ صورة.»</p>
+                  مقروءًا</strong> — ولو رأيت المسارات ستُعقّده، استخدم الألوان بدلًا منها. تأكد من إضافة مفتاح مخطط النشاط لعرض ماذا يعني كل شكل ولون وغيره. وتأكد ان يكون اتجاه النص من اليمين لليسار.»</p>
             </div>
           </div>
         </div>
@@ -482,58 +519,125 @@
         </div>
         <div class="sag-slide__body">
           <div class="stepvid">
-            <div class="stepvid__video stepvid__video--soon">
-              <p class="stepvid__soon"><span class="i i-clock"></span>المقطع تحت التصوير — والخطوات تحت جاهزة</p>
+            <div class="stepvid__video">
+              <video class="stepvid__player" controls preload="metadata" src="media/tasks-10.3-11.1-11.2.mp4"></video>
             </div>
             <div class="stepvid__steps">
               <ol class="stepvid__list">
                 <li class="stepvid__divider">صفات الجودة (10.3)</li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">1</span>
+                <li class="stepvid__step" data-t="0">
+                  <button class="stepvid__time" type="button">0:00</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">يطلب من Claude يقترح صفات الجودة</h4>
-                    <p class="stepvid__p">الصياغة الجاهزة حرفيًّا — بلا تحديد صفة بعينها، يترك لـClaude يمرّ على
-                      الخمس.</p>
+                    <h4 class="stepvid__h">يفتح شريحة 10.3 ليقرأ الصياغة، ثم يرسلها</h4>
+                    <p class="stepvid__p">نفس جملة الشريحة السابقة حرفيًّا — يطلب من Claude يقترح صفات جودة تناسب
+                      مشروعه فقط، ولكل واحدة مقياس رقمي.</p>
                   </div>
                 </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">2</span>
+                <li class="stepvid__step" data-t="34">
+                  <button class="stepvid__time" type="button">0:34</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">يراجع كل مقياس، ويحذف ما لا يخصّه</h4>
-                    <p class="stepvid__p">Claude يقترح ستّة، والمدرب يحذف واحدًا لا يخصّ مشروعه ويبقي الباقي بأرقام
-                      واضحة.</p>
+                    <h4 class="stepvid__h">النتيجة: سبع صفات، كل واحدة بمقياس وتفسير بسيط</h4>
+                    <p class="stepvid__p">يراجعها في معاينة <span class="tok-code">PRODUCT.md</span> — كل صفة برقم،
+                      ومعيار دقيق، وجملة بلغة عادية تشرحها.</p>
                   </div>
                 </li>
                 <li class="stepvid__divider">رحلة المستخدم نصًّا (11.1)</li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">3</span>
+                <li class="stepvid__step" data-t="40">
+                  <button class="stepvid__time" type="button">0:40</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">يصف رحلته الأساسية بكلامه</h4>
-                    <p class="stepvid__p">من فتح الصفحة إلى تحقيق الهدف — بلا صيغة، بكلام عادي.</p>
+                    <h4 class="stepvid__h">يقرأ شريحة 11 (المفهوم)، ثم يكتب رحلته في دفتره</h4>
+                    <p class="stepvid__p">في <span class="tok-code">notebook.txt</span>، بلا شكل ولا ترتيب — رحلة
+                      الحجز كاملة، خطوة بخطوة، من أوّلها لآخرها.</p>
                   </div>
                 </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">4</span>
+                <li class="stepvid__step" data-t="105">
+                  <button class="stepvid__time" type="button">1:45</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">Claude يسأل عن تفرّع نسيه المدرب</h4>
-                    <p class="stepvid__p">تحديدًا: ماذا لو لم يكن مسجّل الدخول عند هذه الخطوة؟ — والمدرب يجاوب
-                      ويحدّد أين يعود بعدها.</p>
+                    <h4 class="stepvid__h">ينسخ كلامه، ويضيف صياغة 11.1 الجاهزة، ويرسلها</h4>
+                    <p class="stepvid__p">نفس نصّ الدفتر، بلا تعديل — فقط مضافًا إليه طلب المراجعة والسؤال عن أي
+                      تفرّع ناقص.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="125">
+                  <button class="stepvid__time" type="button">2:05</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">Claude يسأل عن أربعة تفرّعات غير واضحة — بخيارات، لا بسؤال مفتوح</h4>
+                    <p class="stepvid__p">أربعة أسئلة في تبويبات منفصلة، كل واحد بخيارات جاهزة يختار منها.</p>
+                    <p class="stepvid__fix"><strong>لاحظ:</strong> يسأل بخيارات من أوّل مرّة — بلا جولة تصحيح قبلها.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="140">
+                  <button class="stepvid__time" type="button">2:20</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يجيب على الأسئلة، و Claude يكتب الرحلة ويتحقّق من عرضها</h4>
+                    <p class="stepvid__p">نفس كلام المدرّب حرفيًّا، معاد ترتيبه في <span class="tok-code">PRODUCT.md</span>
+                      — رقم لكل خطوة وفرع لكل قرار — ثم يفتح معاينة فعلية ليتأكّد أن الشكل سليم، لا افتراضًا.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="168">
+                  <button class="stepvid__time" type="button">2:48</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يراجع النتيجة الكاملة، 22 خطوة</h4>
+                    <p class="stepvid__p">رحلات ثانوية (مثل الإلغاء والتقييم) تُذكر لكن تُؤجَّل عمدًا — لأنها ليست
+                      الرحلة الأساسية.</p>
                   </div>
                 </li>
                 <li class="stepvid__divider">تحويلها مخطّطًا (11.2)</li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">5</span>
+                <li class="stepvid__step" data-t="186">
+                  <button class="stepvid__time" type="button">3:06</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">المخطّط يظهر صورة، لا ملفًّا</h4>
-                    <p class="stepvid__p">مسارات ملوّنة بدل مسارات منفصلة — لأن المسارات كانت ستزدحم، والمدرب يشرح
-                      ليش اختار كذا.</p>
+                    <h4 class="stepvid__h">يرسل الصياغة الجاهزة: حوّلها مخطّط نشاط</h4>
+                    <p class="stepvid__p">عبر مهارة <span class="tok-lat">draw.io</span>، بالألوان بدل المسارات
+                      المتشابكة، ومفتاح يشرح الرموز.</p>
                   </div>
                 </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">6</span>
+                <li class="stepvid__step" data-t="195">
+                  <button class="stepvid__time" type="button">3:15</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">يطابق المخطّط مع النصّ، ويحفظ ويرفع</h4>
-                    <p class="stepvid__p">كل خطوة في النصّ لها عقدة في المخطّط — ثم حفظ ورفع.</p>
+                    <h4 class="stepvid__h">Claude يرسم المخطّط، ويكتشف ويصلح خطأً في أحد مساراته بنفسه</h4>
+                    <p class="stepvid__p">يراجع صورة مصغّرة من رسمه، فيلاحظ أن خطّ العودة من خطوة 14 إلى القرار 11
+                      يبدو متّصلًا بصندوق خطوة 15 بالخطأ — توجيهًا آليًّا غير دقيق — فيصحّحه ويصدّر النسخة من جديد.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="222">
+                  <button class="stepvid__time" type="button">3:42</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يراجع المخطّط كاملًا مرّة أخيرة، ويعلن اكتمال القسم 11</h4>
+                    <p class="stepvid__p">كل خطوة من النصّ صارت صندوقًا، وكل قرار معيّنًا له فرعان على الأقلّ — القسم
+                      التالي بحسب خطّة اليوم هو التصميم.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="231">
+                  <button class="stepvid__time" type="button">3:51</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يطلب الملفّ الأصلي أيضًا — لو احتاج يعدّله بنفسه</h4>
+                    <p class="stepvid__p">Claude يستخرجه من داخل الصورة نفسها، بلا أي فرق في الشكل — الصورة كانت
+                      تحمل الملفّ بداخلها طول الوقت.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="246">
+                  <button class="stepvid__time" type="button">4:06</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يتحقّق أن الملفّ المُستخرج مطابق للصورة المحفوظة تمامًا</h4>
+                    <p class="stepvid__p">يصدّره صورةً من جديد، ويقارن بصمتها الرقمية بالصورة المرفوعة فعليًّا —
+                      تطابقتا حرفيًّا، فهو نفس الملفّ الأصلي لا نسخة جديدة.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="271">
+                  <button class="stepvid__time" type="button">4:31</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يفتحه في <span class="tok-lat">draw.io</span> — ملفّ حقيقي قابل للتعديل</h4>
+                    <p class="stepvid__p">ليس مجرّد صورة ساكنة: نفس البرنامج الذي يفتح به أي مخطّط آخر، ومفتاح المخطّط
+                      يشرح كل شكل ولون — دائرة للبداية والنهاية، مربّعان بلونين لمن ينفّذ كل خطوة، ومعيّن برتقالي لكل
+                      قرار.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="283">
+                  <button class="stepvid__time" type="button">4:43</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يتتبّع المخطّط خطوة بخطوة، بكل مساراته المحتملة</h4>
+                    <p class="stepvid__p">يمرّ على كل صندوق وكل قرار بالترتيب — فروع الرفض، وحالات تسجيل الدخول
+                      الثلاث، والخطّ المصحَّح من خطوة 14 — حتى يتأكّد بعينه أن كل مسار ينتهي صح.</p>
                   </div>
                 </li>
               </ol>
@@ -657,35 +761,146 @@
       <section class="sag-slide deck-slide" data-anchor="s711-concept">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">7.11</span> تأليف مهارتك الخاصة</span>
-          <h2 class="sag-slide__title">مهارتان حقيقيتان — بنفس البنية، رغم اختلاف العمل كلّيًّا</h2>
+          <h2 class="sag-slide__title">مهارتان حقيقيتان على نفس الأسئلة الستّة — ولا وحدة منهما كاملة</h2>
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body">
-          <p class="sag-slide__lead sag-slide__lead--wide">طوال الدورة تستخدم مهارات جاهزة. <strong>من هنا تؤلّف
-              مهارتك أنت</strong> — بمساعدة Claude، لمهمّة تتكرّر في عملك حتى بعد الدورة.</p>
           <div class="bento" data-cols="2">
-            <article class="card card--accent">
+            <article class="card card--accent card--scroll">
               <div class="card__top"><span class="card__icon"><span class="i i-file-text"></span></span>
-                <h3 class="card__title card__title--sm"><span class="tok-lat">internal-comms</span> — 32 سطرًا فقط</h3>
+                <h3 class="card__title card__title--sm"><span class="tok-lat">internal-comms</span></h3>
               </div>
-              <p class="card__note card__note--sm">مهارة من <span class="tok-lat">Anthropic</span> نفسها، <strong>بلا
-                  كود إطلاقًا</strong>.</p>
-              <p class="card__note card__note--sm">تحدّد نوع الرسالة المطلوبة، ثم تحمّل ملفّ الإرشاد المطابق
-                وتتّبعه حرفيًّا.</p>
+              <p class="card__note card__note--sm">من <span class="tok-lat">Anthropic</span> · 32 سطرًا ·
+                <strong>صفر كود</strong> في ملفّاتها الخمسة كلّها · تكتب مراسلات الشركة الداخلية بالشكل المعتمد
+                عندها.</p>
+              <ol class="slots">
+                <li class="slot"><span class="slot__n">1</span>
+                  <div>
+                    <span class="slot__k">متى تشتغل؟</span>
+                    <p class="slot__q">«على Claude أن يستخدم هذه المهارة كلّما طُلب منه كتابة نوع من المراسلات
+                      الداخلية: تقارير حالة، تحديثات للإدارة، نشرات الشركة، أسئلة شائعة، تقارير أعطال، تحديثات
+                      مشاريع…»</p>
+                    <p class="slot__g">ما تناديها بأمر (ما يحتاج تكتب اسمها عشان تشتغل). هذي الجملة نفسها هي اللي تشغّلها — يكفي تطلب «اكتب لي تحديث
+                      هذا الأسبوع» فتشتغل وحدها.</p>
+                  </div>
+                </li>
+                <li class="slot"><span class="slot__n">2</span>
+                  <div>
+                    <span class="slot__k">ايش تعمل؟</span>
+                    <p class="slot__q">«مجموعة موارد تساعدني على كتابة كل أنواع المراسلات الداخلية، بالصيغ التي
+                      تفضّلها شركتي.»</p>
+                    <p class="slot__g">يعني: ما تعرف تكتب أحسن منك — تعرف <strong>الشكل المعتمد</strong> عندكم
+                      وتفرضه كل مرّة، فما تطلع رسالتان بشكلين.</p>
+                  </div>
+                </li>
+                <li class="slot"><span class="slot__n">3</span>
+                  <div>
+                    <span class="slot__k">ايش تحتاج؟</span>
+                    <p class="slot__g">أربعة ملفّات نصّية بجوارها، ولا أداة ولا حساب ولا إنترنت:
+                      <span class="tok-code">3p-updates.md</span> · <span class="tok-code">company-newsletter.md</span>
+                      · <span class="tok-code">faq-answers.md</span> · <span class="tok-code">general-comms.md</span></p>
+                  </div>
+                </li>
+                <li class="slot"><span class="slot__n">4</span>
+                  <div>
+                    <span class="slot__k">الخطوات — ثلاث</span>
+                    <p class="slot__q">«1) حدِّد نوع المراسلة من الطلب.<br>2) حمِّل ملفّ الإرشادات المناسب من مجلّد
+                      <span class="tok-code">examples/</span>.<br>3) اتبع التعليمات المحدّدة في ذلك الملفّ من ناحية
+                      التنسيق والنبرة وجمع المحتوى.»</p>
+                  </div>
+                </li>
+                <li class="slot"><span class="slot__n">5</span>
+                  <div>
+                    <span class="slot__k">وين تقف وتسألك؟ — موجودة</span>
+                    <p class="slot__q">«إن لم يطابق نوع المراسلة أيّ إرشاد موجود، اطلب توضيحًا أو سياقًا إضافيًّا عن
+                      الصيغة المطلوبة.»</p>
+                    <p class="slot__g">سطر واحد يمنعها تخترع شكلًا من عندها بدل ما تسأل.</p>
+                  </div>
+                </li>
+                <li class="slot"><span class="slot__n slot__n--gap">6</span>
+                  <div>
+                    <span class="slot__k">متى نعتبرها نجحت + مثال؟ — ناقصة</span>
+                    <p class="slot__g">ما فيها ولا سطر يقول متى تُعتبر ناجحة، ولا مثال مكتمل (مدخل ← مخرَج) داخل
+                      الملفّ.</p>
+                  </div>
+                </li>
+              </ol>
             </article>
-            <article class="card card--state">
+            <article class="card card--state card--scroll">
               <div class="card__top"><span class="card__icon"><span class="i i-wrench"></span></span>
-                <h3 class="card__title card__title--sm"><span class="tok-lat">a11y-debugging</span> — 91 سطرًا</h3>
+                <h3 class="card__title card__title--sm"><span class="tok-lat">a11y-debugging</span></h3>
               </div>
-              <p class="card__note card__note--sm">مهارة رسمية أيضًا، <strong>بلا كود إطلاقًا</strong> — تشغّل فحص
-                إمكانية الوصول عبر المتصفّح.</p>
-              <p class="card__note card__note--sm">تستدعي أداة الفحص، تحفظ نتيجتها، ثم تفلترها وتشرحها.</p>
+              <p class="card__note card__note--sm">من فريق <span class="tok-lat">Chrome DevTools</span> · 91 سطرًا
+                في ملفّها الرئيسي، <strong>وملفّ ثانٍ فيه أكواد <span class="tok-lat">JavaScript</span> جاهزة</strong>
+                تستخدمها عند الحاجة — <strong>فهي ليست بلا كود مثل الأولى</strong> · تفحص موقعًا حيًّا وتكتب لك
+                عيوبه.</p>
+              <ol class="slots">
+                <li class="slot"><span class="slot__n">1</span>
+                  <div>
+                    <span class="slot__k">متى تشتغل؟</span>
+                    <p class="slot__q">«استخدمها عند اختبار <span class="tok-lat">HTML</span> الدلالي، وتسميات
+                      <span class="tok-lat">ARIA</span>، وحالات التركيز، والتنقّل بلوحة المفاتيح، وأحجام مناطق اللمس،
+                      وتباين الألوان.»</p>
+                    <p class="slot__g">نفس الشي — ما تناديها بأمر. تقول «افحص صفحتي لمستخدم يتصفّح بلوحة المفاتيح
+                      وحدها» فتشتغل.</p>
+                  </div>
+                </li>
+                <li class="slot"><span class="slot__n">2</span>
+                  <div>
+                    <span class="slot__k">ايش تعمل؟</span>
+                    <p class="slot__q">«تستخدم <span class="tok-lat">Chrome DevTools MCP</span> لتشخيص وتدقيق إمكانية
+                      الوصول اعتمادًا على إرشادات <span class="tok-lat">web.dev</span>.»</p>
+                    <p class="slot__g">إمكانية الوصول = هل يقدر يستعمل موقعك شخص يتنقّل بلوحة المفاتيح وحدها، أو
+                      يسمع الصفحة بقارئ شاشة، أو عينه ما تميّز لونين متقاربين.</p>
+                  </div>
+                </li>
+                <li class="slot"><span class="slot__n">3</span>
+                  <div>
+                    <span class="slot__k">ايش تحتاج؟</span>
+                    <p class="slot__g">أداة موصولة فعلًا — خادم <span class="tok-code">chrome-devtools</span> وأدواته:
+                      <span class="tok-code">lighthouse_audit</span>، <span class="tok-code">take_snapshot</span>،
+                      <span class="tok-code">list_console_messages</span>، <span class="tok-code">press_key</span>.
+                      ومعها ملفّ ثانٍ فيه أسطر كود جاهزة تستدعيها المهارة لفحوص لا تكفيها الأدوات وحدها — مثل قياس
+                      حجم زرّ باللمس، أو التحقّق من تباين لونين.</p>
+                    <p class="slot__q">«الأدوات المرتبطة بصفحة… تحتاج معامل <span class="tok-code">pageId</span>.»</p>
+                    <p class="slot__g">يعني: المتصفّح قد يفتح أكثر من صفحة في آن واحد، فكل أمر لازم يحدّد لأيّ صفحة
+                      بالضبط يقصد — برقم تعريف تلك الصفحة.</p>
+                  </div>
+                </li>
+                <li class="slot"><span class="slot__n">4</span>
+                  <div>
+                    <span class="slot__k">الخطوات — ثمانية</span>
+                    <p class="slot__g">فحص آليّ بـ<span class="tok-lat">Lighthouse</span> · تنبيهات المتصفّح · البنية
+                      والعناوين · التسميات والنماذج · التركيز ولوحة المفاتيح · مناطق اللمس · تباين الألوان · فحوص
+                      عامّة للصفحة.</p>
+                    <p class="slot__g"><strong>ثمانية — أكثر من الحدّ اللي بناخذه بعد شوي (من 3 إلى 7).</strong>
+                      مهارة رسمية منشورة، وتتجاوزه.</p>
+                  </div>
+                </li>
+                <li class="slot"><span class="slot__n slot__n--gap">5</span>
+                  <div>
+                    <span class="slot__k">وين تقف وتسألك؟ — ناقصة</span>
+                    <p class="slot__g">فيها قسم «معالجة المشكلات» يقترح بدائل حين يفشل الفحص — لكنه بديل تمشي عليه
+                      وحدها، لا نقطة تتوقّف فيها وتسألك أنت.</p>
+                  </div>
+                </li>
+                <li class="slot"><span class="slot__n">6</span>
+                  <div>
+                    <span class="slot__k">متى نعتبرها نجحت + مثال؟ — موجودة</span>
+                    <p class="slot__q">«راجِع <span class="tok-code">scores</span> (مقياس من 0 إلى 1). أي نتيجة أقلّ
+                      من 1 تعني وجود مخالفات.»</p>
+                    <p class="slot__g">معيار رقميّ تحكم به بنفسك، ومعه في الملفّ سطر جاهز يستخرج قائمة الفحوص
+                      الفاشلة.</p>
+                  </div>
+                </li>
+              </ol>
             </article>
           </div>
-          <div class="card card--plain">
+          <div class="card card--plain" style="flex:0 0 auto">
             <p class="card__note"><span class="i i-circle-check" style="color:var(--accent-state)"></span>
-              <strong>رغم اختلاف عملهما كلّيًّا، الاثنتان تحملان البنية نفسها:</strong> جملة تقول متى تعمل، خطوات
-              مرقّمة، ونقطة تسأل فيها إن لزم. هذي البنية هي اللي تملؤها أنت — بغضّ النظر عن نوع مهارتك.</p>
+              <strong>الاثنتان رسميّتان ومنشورتان — ومع ذلك كل وحدة ناقصها خانة:</strong> الأولى فيها نقطة توقّف وما
+              فيها معيار نجاح، والثانية فيها معيار نجاح وما فيها نقطة توقّف. والأسئلة الستّة اللي قارنّا بها هي نفسها
+              اللي تملؤها أنت — مرتّبةً في الشريحة الجاية.</p>
           </div>
         </div>
         <footer class="sag-slide__foot">
@@ -706,40 +921,63 @@
           <h2 class="sag-slide__title">ستّ خانات تملؤها — ونوعان فقط تحتاجهما اليوم</h2>
           <div class="sag-slide__rule"></div>
         </div>
-        <div class="sag-slide__body">
+        <div class="sag-slide__body" style="gap:var(--sp-2)">
           <article class="card card--accent">
             <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
               <h3 class="card__title card__title--sm">الخانات الستّ</h3>
             </div>
-            <ol class="flow flow--tight">
-              <li><strong>متى تشتغل؟</strong> — الجملة اللي تُشغّلها.</li>
-              <li><strong>ايش تعمل؟</strong> — بجملة وحدة.</li>
-              <li><strong>ايش تحتاج؟</strong> — أداة أو ملفّ (هذي وحدها تختلف حسب النوع).</li>
-              <li><strong>الخطوات</strong> — من 3 إلى 7، مرقّمة.</li>
-              <li><strong>وين تقف وتسألك؟</strong> — أكثر ما يُنسى فعلًا.</li>
-              <li><strong>متى نعتبرها نجحت + مثال واحد.</strong></li>
-            </ol>
+            <div class="bento" data-cols="2">
+              <ol class="flow flow--tight">
+                <li><strong>متى تشتغل؟</strong> — الجملة اللي تُشغّلها. <strong>ما تناديها بأمر</strong> — Claude
+                  يقرأ هذي الجملة ويشغّلها وحده.</li>
+                <li><strong>ايش تعمل؟</strong> — بجملة وحدة.</li>
+                <li><strong>ايش تحتاج؟</strong> — أداة أو ملفّ (هذي وحدها تختلف حسب النوع).</li>
+              </ol>
+              <ol class="flow flow--tight" style="counter-reset:flow 3">
+                <li><strong>الخطوات</strong> — من 3 إلى 7، مرقّمة.</li>
+                <li><strong>وين تقف وتسألك؟</strong> — أكثر ما يُنسى فعلًا.</li>
+                <li><strong>متى نعتبرها نجحت + مثال واحد.</strong></li>
+              </ol>
+            </div>
           </article>
           <div class="bento" data-cols="2">
             <article class="card">
               <div class="card__top"><span class="card__icon"><span class="i i-file-text"></span></span>
                 <h3 class="card__title card__title--sm">مهارة بإجراء فقط</h3>
               </div>
-              <p class="card__note card__note--sm">تحدّد كيف يُكتب شيء أو يُصاغ، بلا أداة خارجية. مثل
-                <span class="tok-lat">internal-comms</span>.</p>
+              <p class="card__note card__note--sm">تعليمات مكتوبة وبس: اشتغل بهذي الطريقة وبهذا الترتيب — بلا أي
+                أداة. فائدتها إنها <strong>تثبّت أسلوبًا يتكرّر</strong>، فما تطلع النتيجة بشكل كل مرّة.</p>
+              <p class="card__note card__note--sm"><strong>مثالها <span class="tok-lat">internal-comms</span></strong>
+                — من مستودع <span class="tok-lat">Anthropic</span> العلني. أسرع طريقة تجيبها بملفّاتها فقط، بلا أي
+                شيء زائد:</p>
+              <div class="snipbox">
+                <pre class="snip snip--sm" dir="ltr">npx giget@latest gh:anthropics/skills/skills/internal-comms .claude/skills/internal-comms</pre>
+                <button class="snipbox__copy" type="button" aria-label="نسخ الأمر"><span
+                    class="i i-copy"></span></button>
+              </div>
+              <p class="card__note card__note--sm">ينزل مجلّدها وحده — 36 كيلوبايت لا غير — داخل مجلّد مهاراتك.</p>
             </article>
             <article class="card">
               <div class="card__top"><span class="card__icon"><span class="i i-wrench"></span></span>
                 <h3 class="card__title card__title--sm">مهارة تشغّل أداة</h3>
               </div>
-              <p class="card__note card__note--sm">تستدعي أداة موصولة فعلًا بمشروعك بترتيب ثابت. مثل
-                <span class="tok-lat">a11y-debugging</span>.</p>
+              <p class="card__note card__note--sm">نفس الشي، بس <strong>تنادي أداة موصولة</strong> بترتيب ثابت: افتح
+                الصفحة، افحصها، احفظ النتيجة. المهارة ما هي الأداة؛ هي <strong>طريقة استعمالها</strong>.</p>
+              <p class="card__note card__note--sm"><strong>مثالها <span class="tok-lat">a11y-debugging</span></strong>
+                — تجي <strong>داخل</strong> إضافة أداة Chrome DevTools، ما تُثبَّت وحدها. <strong>وهذي عندك مثبَّتة فعلًا من اليوم
+                الأوّل</strong> لمّا ربطت الأداة — نفس الأمر جاب معه سبع مهارات، هذي إحداها:</p>
+              <div class="snipbox">
+                <pre class="snip snip--sm" dir="ltr">/plugin install chrome-devtools-mcp@claude-plugins-official</pre>
+                <button class="snipbox__copy" type="button" aria-label="نسخ الأمر"><span
+                    class="i i-copy"></span></button>
+              </div>
             </article>
           </div>
           <div class="card" style="border-inline-start:5px solid var(--state-warning)">
             <p class="card__note card__note--sm"><span class="i i-alert-triangle" style="color:var(--state-warning)"></span>
-              <strong>دراسة فحصت 238 مهارة منشورة:</strong> أقلّ من 1% كانت طويلة أكثر من اللازم، لكن 94% لا شيء
-              فيها يمنع تخطّي خطوة، و77% لا تسأل إنسانًا عن شيء إطلاقًا. <strong>خَف من الحذف، لا من القصر.</strong></p>
+              <strong>دراسة فحصت 238 مهارة منشورة:</strong> أقلّ من 1% كانت طويلة أكثر من اللازم. لكن 94% منها ما
+              فيها ما يجبر Claude يلتزم بكل خطواتها — يقدر يتخطّى خطوة ولا أحد يلاحظ، و77% ما فيها نقطة توقّف تسأل
+              فيها إنسانًا عن شيء. <strong>يعني: القصر مو المشكلة — النقص هو المشكلة.</strong></p>
           </div>
         </div>
         <footer class="sag-slide__foot">
@@ -760,46 +998,443 @@
           <h2 class="sag-slide__title">فكرتك؟ افحصها بسبعة أسئلة — أو اختر من القائمة</h2>
           <div class="sag-slide__rule"></div>
         </div>
-        <div class="sag-slide__body">
-          <div class="bento" data-cols="2">
-            <article class="card" style="border-inline-start:5px solid var(--state-warning)">
-              <div class="card__top"><span class="card__icon"
-                  style="background:var(--state-warning-soft);color:var(--state-warning)"><span
-                    class="i i-alert-triangle"></span></span>
-                <h3 class="card__title card__title--sm">البوّابة — أي «لا» يعني خذ من القائمة</h3>
-              </div>
+        <div class="sag-slide__body" style="gap:var(--sp-2)">
+          <article class="card" style="flex:0 0 auto;border-inline-start:5px solid var(--state-warning)">
+            <div class="card__top"><span class="card__icon"
+                style="background:var(--state-warning-soft);color:var(--state-warning)"><span
+                  class="i i-alert-triangle"></span></span>
+              <h3 class="card__title card__title--sm">البوّابة — سبعة أسئلة تمرّ عليها فكرتك أنت</h3>
+            </div>
+            <p class="card__note card__note--sm">هذي الأسئلة ما تحكم إن كانت فكرتك حلوة ولا لا — تحكم إن كانت
+              <strong>تخلص اليوم</strong>. جاوب عليها كلّها؛ <strong>أي «لا» وحدة</strong> تعني أجّل فكرتك وخذ
+              وحدة من القائمة تحت — وكلّها عبرت نفس السبعة سلفًا.</p>
+            <div class="bento" data-cols="2">
               <ol class="flow flow--tight">
-                <li>سوّيتها بيدك 3 مرّات على الأقلّ؟</li>
-                <li>تقول متى تعمل بجملة «استخدمها حين…»؟</li>
-                <li>خطواتها من 3 إلى 7؟</li>
-                <li>بلا حساب جديد ولا مفتاح جديد؟</li>
-                <li>مخرَجها ملفّ تحكم عليه في أقلّ من دقيقة؟</li>
-                <li>تقدر تقول «تكون صحيحة إذا ___»؟</li>
-                <li>عندك مثال حقيقي جاهز تلصقه؟</li>
+                <li><strong>نفّذتها بيدك 3 مرّات على الأقلّ؟</strong> — وإلا فأنت تخترع إجراءً، ما توثّقه.</li>
+                <li><strong>تقدر تبدأ وصفها بـ«استخدمها حين…»؟</strong> — هذي الجملة هي اللي تشغّلها.</li>
+                <li><strong>خطواتها من 3 إلى 7؟</strong> — أكثر من 7، خذ أوّل خمس خطوات بس.</li>
+                <li><strong>بلا حساب جديد ولا مفتاح جديد؟</strong> — التسجيل في خدمة جديدة ياكل وقت البناء.</li>
               </ol>
-            </article>
-            <article class="card card--state">
-              <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
-                <h3 class="card__title card__title--sm">القائمة — مفحوصة سلفًا</h3>
-              </div>
-              <ul class="flow flow--tight">
-                <li><strong>جولة قبل العرض</strong> — صور من رابطك + تقرير (أداة)</li>
-                <li>ملاحظات التقدّم الأسبوعية (إجراء)</li>
-                <li>سجلّ القرارات (إجراء)</li>
-                <li>نصّ اختبار يدويّ من رحلتك (إجراء)</li>
-                <li>منشور الإطلاق (إجراء)</li>
-                <li>بطاقة المشاركة — رابطك على واتساب (أداة)</li>
-                <li>فرز البريد — يحتاج Gmail موصولًا سلفًا (أداة)</li>
-                <li>نصّ العرض التقديمي لليوم 10 (إجراء)</li>
-              </ul>
-            </article>
-          </div>
-          <div class="card card--plain">
-            <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
-              <strong>اكتب اختيارك الآن</strong> — قبل الشريحة الجاية، ولا تُعِد النظر فيه بعد أن تبدأ. المثال
-              اللي يشرحه المقطع هو <strong>«جولة قبل العرض»</strong> نفسها — أسهل خيار لو تعثّرت: ألّف نفس اللي شفته.</p>
-          </div>
+              <ol class="flow flow--tight" style="counter-reset:flow 4">
+                <li><strong>مخرَجها ملفّ تحكم عليه بعينك في أقلّ من دقيقة؟</strong> — كلام في الدردشة ما تقدر
+                  تحكم عليه.</li>
+                <li><strong>تقدر تقول «تكون صحيحة إذا ___» في سطر؟</strong> — بلا هذا السطر ما عندك معيار.</li>
+                <li><strong>عندك مثال حقيقي واحد جاهز تلصقه؟</strong> — المثال يوضّح الشكل المطلوب.</li>
+              </ol>
+            </div>
+          </article>
+          <article class="card card--state card--scroll">
+            <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
+              <h3 class="card__title card__title--sm">القائمة — ثمان أفكار مفحوصة سلفًا</h3>
+            </div>
+            <p class="card__note card__note--sm">اضغط <strong>؟</strong> جنب أي فكرة تشوف إجاباتها الستّ جاهزة
+              تبني فوقها نسختك. <strong>واكتب اختيارك الآن</strong>، ولا تُعِد النظر فيه بعد ما تبدأ.</p>
+            <div class="bento" data-cols="2">
+              <table class="pick">
+                <thead>
+                  <tr>
+                    <th>المهارة</th>
+                    <th>مخرَجها</th>
+                    <th>النوع</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="pick__n">1</span> <span class="pick__name">جولة قبل العرض</span><button
+                        class="qmark" type="button" data-term="tour" aria-label="تفاصيل: جولة قبل العرض">؟</button>
+                    </td>
+                    <td>صور من رابطك + تقرير بما يحتاج إصلاحًا</td>
+                    <td><span class="pick__t pick__t--tool">تشغّل أداة</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="pick__n">2</span> <span class="pick__name">ملاحظات التقدّم</span><button
+                        class="qmark" type="button" data-term="weekly" aria-label="تفاصيل: ملاحظات التقدّم الأسبوعية">؟</button>
+                    </td>
+                    <td>ملفّ أسبوعي: أنجزت / تعطّل / التالي</td>
+                    <td><span class="pick__t pick__t--proc">إجراء فقط</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="pick__n">3</span> <span class="pick__name">سجلّ القرارات</span><button
+                        class="qmark" type="button" data-term="decisions" aria-label="تفاصيل: سجلّ القرارات">؟</button>
+                    </td>
+                    <td>ملفّ يُلحق به كل قرار وسببه</td>
+                    <td><span class="pick__t pick__t--proc">إجراء فقط</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="pick__n">4</span> <span class="pick__name">نصّ اختبار يدويّ</span><button
+                        class="qmark" type="button" data-term="testscript" aria-label="تفاصيل: نصّ اختبار يدويّ">؟</button>
+                    </td>
+                    <td>جدول: خطوة / نتيجة متوقّعة / نجح أو فشل</td>
+                    <td><span class="pick__t pick__t--proc">إجراء فقط</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="pick">
+                <thead>
+                  <tr>
+                    <th>المهارة</th>
+                    <th>مخرَجها</th>
+                    <th>النوع</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="pick__n">5</span> <span class="pick__name">منشور الإطلاق</span><button
+                        class="qmark" type="button" data-term="launch" aria-label="تفاصيل: منشور الإطلاق">؟</button>
+                    </td>
+                    <td>ثلاث صيغ إعلان بعدّاد حروف</td>
+                    <td><span class="pick__t pick__t--proc">إجراء فقط</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="pick__n">6</span> <span class="pick__name">بطاقة المشاركة</span><button
+                        class="qmark" type="button" data-term="ogcard" aria-label="تفاصيل: بطاقة المشاركة">؟</button>
+                    </td>
+                    <td>بطاقة تطلع مع رابطك في واتساب</td>
+                    <td><span class="pick__t pick__t--tool">تشغّل أداة</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="pick__n">7</span> <span class="pick__name">فرز البريد</span><button
+                        class="qmark" type="button" data-term="triage" aria-label="تفاصيل: فرز البريد">؟</button>
+                    </td>
+                    <td>تقرير: يحتاج ردًّا / للمرجع / بانتظار</td>
+                    <td><span class="pick__t pick__t--tool">تشغّل أداة</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="pick__n">8</span> <span class="pick__name">نصّ كلامك يوم العرض</span><button
+                        class="qmark" type="button" data-term="demoscript" aria-label="تفاصيل: نصّ كلامك يوم العرض">؟</button>
+                    </td>
+                    <td>كلامك يوم العرض، بعمود وقت</td>
+                    <td><span class="pick__t pick__t--proc">إجراء فقط</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
         </div>
+
+        <template class="terms" data-wide="true"
+          data-title="أفكار القائمة — إجابات ابتدائية على الخانات الستّ، تكمّلها أنت">
+          <div data-term="tour" data-title="1 · جولة قبل العرض — مهارة تشغّل أداة">
+            <ol class="slots">
+              <li class="slot"><span class="slot__n">1</span>
+                <div><span class="slot__k">متى تشتغل؟</span>
+                  <p class="slot__q">«استخدمها كل ما نشرت تحديثًا على رابطي الحيّ وأبي أعرف ايش يبيّن غلط قبل ما
+                    أعرضه على أحد.»</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">2</span>
+                <div><span class="slot__k">ايش تعمل؟</span>
+                  <p class="slot__g">تفتح رابط مشروعك بثلاثة أحجام شاشة — جوال وتابلت ولابتوب — وتصوّر كل صفحة،
+                    وتكتب تقريرًا بما يحتاج إصلاحًا.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">3</span>
+                <div><span class="slot__k">ايش تحتاج؟</span>
+                  <p class="slot__g">أداة <span class="tok-lat">chrome-devtools</span> الموصولة من اليوم الأوّل،
+                    ورابط مشروعك المنشور من اليوم 3.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">4</span>
+                <div><span class="slot__k">الخطوات</span>
+                  <p class="slot__g">1) افتح الرابط. 2) كرّر على الأحجام الثلاثة. 3) صوّر كل صفحة. 4) احفظ الصور
+                    في مجلّد باسم تاريخ اليوم. 5) اكتب التقرير مرتّبًا من الأهمّ.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">5</span>
+                <div><span class="slot__k">وين تقف وتسألك؟</span>
+                  <p class="slot__g">قبل ما تبدأ: ايش الصفحات اللي تمرّ عليها؟ وبعد التقرير: ايش تصلحه الحين
+                    وايش تأجّله؟</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">6</span>
+                <div><span class="slot__k">متى نعتبرها نجحت + مثال</span>
+                  <p class="slot__g">طلع مجلّد فيه صور بأسماء واضحة وملفّ تقرير مؤرَّخ، وفيه عطل واحد حقيقي على
+                    الأقلّ ما كنت منتبهًا له. <strong>مثالها:</strong> صفحتك الرئيسية على الجوال.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div data-term="weekly" data-title="2 · ملاحظات التقدّم الأسبوعية — مهارة بإجراء فقط">
+            <ol class="slots">
+              <li class="slot"><span class="slot__n">1</span>
+                <div><span class="slot__k">متى تشتغل؟</span>
+                  <p class="slot__q">«استخدمها آخر كل أسبوع لمّا أبي ألخّص ايش خلّصت وايش باقي عليّ.»</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">2</span>
+                <div><span class="slot__k">ايش تعمل؟</span>
+                  <p class="slot__g">ملفّ أسبوعي واحد في ثلاث فقرات: أنجزت، وتعطّل، والخطوة الجاية.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">3</span>
+                <div><span class="slot__k">ايش تحتاج؟</span>
+                  <p class="slot__g">لا أداة. ملفّ <span class="tok-code">PRODUCT.md</span> وسجلّ المحادثة —
+                    الاثنان عندك أصلًا.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">4</span>
+                <div><span class="slot__k">الخطوات</span>
+                  <p class="slot__g">1) اقرأ حالة المشروع. 2) اطّلع على اللي تغيّر هذا الأسبوع. 3) اكتب الفقرات
+                    الثلاث. 4) احفظ الملفّ باسم فيه رقم الأسبوع.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">5</span>
+                <div><span class="slot__k">وين تقف وتسألك؟</span>
+                  <p class="slot__g">قبل الحفظ: فيه شي خارج المشروع تبي تضيفه؟ وايش اللي تعتبره «تعطّل» فعلًا؟</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">6</span>
+                <div><span class="slot__k">متى نعتبرها نجحت + مثال</span>
+                  <p class="slot__g">تقرأ الملفّ في أقلّ من دقيقة وتعرف وين وصلت، بلا ما ترجع لأي مكان ثاني.
+                    <strong>مثالها:</strong> أسبوعك اللي راح.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div data-term="decisions" data-title="3 · سجلّ القرارات — مهارة بإجراء فقط">
+            <ol class="slots">
+              <li class="slot"><span class="slot__n">1</span>
+                <div><span class="slot__k">متى تشتغل؟</span>
+                  <p class="slot__q">«استخدمها كل ما أخذت قرارًا يغيّر شكل المشروع أو نطاقه.»</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">2</span>
+                <div><span class="slot__k">ايش تعمل؟</span>
+                  <p class="slot__g">تضيف سطرًا في ملفّ واحد: القرار، وتاريخه، وليش أخذته، وايش تغيّر بسببه.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">3</span>
+                <div><span class="slot__k">ايش تحتاج؟</span>
+                  <p class="slot__g">لا أداة. ملفّ واحد يُضاف في آخره ولا يُعاد كتابته.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">4</span>
+                <div><span class="slot__k">الخطوات</span>
+                  <p class="slot__g">1) اسأل عن القرار بكلام صاحبه. 2) صِغه في سطر. 3) اكتب السبب والبديل اللي
+                    انرفض. 4) أضفه في آخر الملفّ بتاريخه — <strong>ولا تحذف قرارًا قديمًا أبدًا</strong>.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">5</span>
+                <div><span class="slot__k">وين تقف وتسألك؟</span>
+                  <p class="slot__g">لو القرار يناقض قرارًا موجودًا في الملفّ: قف واسأل — نلغي القديم ولا
+                    نعدّله؟</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">6</span>
+                <div><span class="slot__k">متى نعتبرها نجحت + مثال</span>
+                  <p class="slot__g">بعد شهر ترجع للملفّ وتعرف ليش اخترت هذا الشي، بدل ما تحاول تتذكّر.
+                    <strong>مثالها:</strong> ليش أجّلت خاصيّة من نطاق مشروعك.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div data-term="testscript" data-title="4 · نصّ اختبار يدويّ — مهارة بإجراء فقط">
+            <ol class="slots">
+              <li class="slot"><span class="slot__n">1</span>
+                <div><span class="slot__k">متى تشتغل؟</span>
+                  <p class="slot__q">«استخدمها كل ما خلّصنا خاصيّة جديدة وأبي أجرّبها بنفسي بترتيب مضبوط.»</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">2</span>
+                <div><span class="slot__k">ايش تعمل؟</span>
+                  <p class="slot__g">تحوّل رحلة المستخدم إلى جدول: الخطوة، والنتيجة المتوقّعة، وخانة فاضية تعلّم
+                    فيها نجح أو فشل.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">3</span>
+                <div><span class="slot__k">ايش تحتاج؟</span>
+                  <p class="slot__g">لا أداة. مخطّط رحلتك من القسم 11 — اللي تبنيه اليوم نفسه.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">4</span>
+                <div><span class="slot__k">الخطوات</span>
+                  <p class="slot__g">1) خذ مسارًا واحدًا من المخطّط. 2) فكّكه خطوة خطوة. 3) اكتب لكل خطوة
+                    نتيجتها المتوقّعة بلغة المستخدم. 4) أضف المسارات البديلة. 5) احفظ الجدول.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">5</span>
+                <div><span class="slot__k">وين تقف وتسألك؟</span>
+                  <p class="slot__g">أي مسار تبي تختبر؟ كلّها مرّة وحدة يطلع جدول طويل ما أحد يقراه.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">6</span>
+                <div><span class="slot__k">متى نعتبرها نجحت + مثال</span>
+                  <p class="slot__g">تمسك الجدول وتمشي عليه على الشاشة بلا ما تسأل «وبعدين؟» ولا مرّة.
+                    <strong>مثالها:</strong> مسار التسجيل من أوّله لآخره.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div data-term="launch" data-title="5 · منشور الإطلاق — مهارة بإجراء فقط">
+            <ol class="slots">
+              <li class="slot"><span class="slot__n">1</span>
+                <div><span class="slot__k">متى تشتغل؟</span>
+                  <p class="slot__q">«استخدمها لمّا أبي أعلن مشروعي أو تحديث فيه على منصّة تواصل اجتماعي.»</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">2</span>
+                <div><span class="slot__k">ايش تعمل؟</span>
+                  <p class="slot__g">ثلاث صيغ لنفس الخبر، بأطوال مختلفة حسب المنصة: وحدة قصيرة، ووحدة مهنية أطول،
+                    ورسالة تبعثها لأصحابك — ومع كلٍّ عدّاد حروفها.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">3</span>
+                <div><span class="slot__k">ايش تحتاج؟</span>
+                  <p class="slot__g">لا أداة. ملفّ <span class="tok-code">PRODUCT.md</span> — منه تاخذ اسم
+                    مشروعك ولمن هو وايش يحلّ.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">4</span>
+                <div><span class="slot__k">الخطوات</span>
+                  <p class="slot__g">1) اقرأ <span class="tok-code">PRODUCT.md</span>. 2) اكتب الصيغ الثلاث.
+                    3) حُطّ عدّاد الحروف تحت كلٍّ. 4) احفظها في ملفّ واحد.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">5</span>
+                <div><span class="slot__k">وين تقف وتسألك؟</span>
+                  <p class="slot__g">قبل الكتابة: النبرة رسمية ولا عادية؟ وبعد الصيغ الثلاث: أي وحدة نعدّلها؟</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">6</span>
+                <div><span class="slot__k">متى نعتبرها نجحت + مثال</span>
+                  <p class="slot__g">تنسخ وحدة منها وتنشرها كما هي، بلا تعديل حرف. <strong>مثالها:</strong>
+                    إعلان أن مشروعك صار على الإنترنت.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div data-term="ogcard" data-title="6 · بطاقة المشاركة — مهارة تشغّل أداة">
+            <ol class="slots">
+              <li class="slot"><span class="slot__n">1</span>
+                <div><span class="slot__k">متى تشتغل؟</span>
+                  <p class="slot__q">«استخدمها لمّا أرسل رابط مشروعي لأحد وأبي يطلع له بصورة وعنوان، بدل رابط
+                    أزرق فاضي.»</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">2</span>
+                <div><span class="slot__k">ايش تعمل؟</span>
+                  <p class="slot__g">تضيف في صفحة مشروعك معلومات مخفيّة — عنوان ووصف وصورة — تقراها واتساب
+                    ولينكدإن ومنصّة X وتبني منها البطاقة.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">3</span>
+                <div><span class="slot__k">ايش تحتاج؟</span>
+                  <p class="slot__g">ملفّ <span class="tok-code">PRODUCT.md</span> للعنوان والوصف، وصورة وحدة،
+                    وأداة <span class="tok-lat">chrome-devtools</span> تتأكّد أن الصفحة صارت تحملها فعلًا.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">4</span>
+                <div><span class="slot__k">الخطوات</span>
+                  <p class="slot__g">1) اقرأ <span class="tok-code">PRODUCT.md</span>. 2) اكتب عنوانًا ووصفًا
+                    قصيرًا. 3) جهّز صورة عرضها 1200 وارتفاعها 630. 4) أضف المعلومات في صفحتك. 5) افحص الصفحة وتأكّد
+                    أنها ظهرت.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">5</span>
+                <div><span class="slot__k">وين تقف وتسألك؟</span>
+                  <p class="slot__g">أي صورة تبيها في البطاقة؟ والوصف سطر ولا سطرين؟</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">6</span>
+                <div><span class="slot__k">متى نعتبرها نجحت + مثال</span>
+                  <p class="slot__g">تلصق رابطك في واتساب وتشوف البطاقة تطلع بعينك.</p>
+                </div>
+              </li>
+            </ol>
+            <a class="imglink" href="assets/Open-Graph-tags.png" target="_blank" rel="noopener">
+              <strong>المثال بالصورة:</strong> أداة فحص عامة اسمها Open Graph Tester — تضع فيها رابط أي موقع
+              فتعرض لك معاينة بطاقته في كل منصّة قبل أن ترسله لأحد. <strong>نفس الصورة ونفس العنوان يظهران في
+              فيسبوك ولينكدإن ومنصّة X</strong>، وكل منصّة بس ترتّب شكل البطاقة بطريقتها الخاصّة. وهذي بالضبط
+              الخطوة الخامسة من المهارة: تفحص الصفحة وتتأكّد أن المعاينة صارت تطلع صحيحة قبل ما تعلن أنها خلصت.
+              <span class="imglink__cta">اضغط لعرض الصورة.</span>
+            </a>
+          </div>
+
+          <div data-term="triage" data-title="7 · فرز البريد — مهارة تشغّل أداة">
+            <ol class="slots">
+              <li class="slot"><span class="slot__n">1</span>
+                <div><span class="slot__k">متى تشتغل؟</span>
+                  <p class="slot__q">«استخدمها أوّل الصباح لمّا أبي أعرف ايش في بريدي يحتاج ردًّا اليوم.»</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">2</span>
+                <div><span class="slot__k">ايش تعمل؟</span>
+                  <p class="slot__g">تقرأ بريد اليوم وتكتب تقريرًا يصنّفه ثلاث خانات: يحتاج ردًّا منك، وللمرجع
+                    بس، وأنت بانتظار ردّ غيرك.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">3</span>
+                <div><span class="slot__k">ايش تحتاج؟</span>
+                  <p class="slot__g">بريد Gmail موصولًا بحسابك <strong>قبل</strong> الجلسة. وهذا الاستثناء
+                    الوحيد على شرط «بلا حساب جديد» في البوّابة — لأن الربط يصير قبلها لا فيها.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">4</span>
+                <div><span class="slot__k">الخطوات</span>
+                  <p class="slot__g">1) اجلب رسائل اليوم. 2) صنّف كل رسالة في وحدة من الثلاث. 3) اكتب لكلٍّ
+                    سطرًا: من، والموضوع، والمطلوب. 4) احفظ التقرير بتاريخ اليوم.
+                    <strong>ولا تردّ على أحد ولا تحذف شيئًا — التقرير فقط.</strong></p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">5</span>
+                <div><span class="slot__k">وين تقف وتسألك؟</span>
+                  <p class="slot__g">لو رسالة ما وضح تصنيفها، اسأل بدل ما تخمّن.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">6</span>
+                <div><span class="slot__k">متى نعتبرها نجحت + مثال</span>
+                  <p class="slot__g">تقرأ خانة «يحتاج ردًّا» وتعرف شغل يومك في نصف دقيقة، بلا ما تفتح البريد.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div data-term="demoscript" data-title="8 · نصّ كلامك يوم العرض — مهارة بإجراء فقط">
+            <ol class="slots">
+              <li class="slot"><span class="slot__n">1</span>
+                <div><span class="slot__k">متى تشتغل؟</span>
+                  <p class="slot__q">«استخدمها لمّا أجهّز عرضي النهائي وأبي أعرف ايش أقول بالضبط وبأي ترتيب.»</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">2</span>
+                <div><span class="slot__k">ايش تعمل؟</span>
+                  <p class="slot__g">تكتب لك <strong>الكلام اللي تقوله بلسانك</strong> وأنت واقف تعرض مشروعك في
+                    اليوم 10 — مو شرائح ولا تصميم، بل نصّ مقسّم مقاطع، وجنب كل مقطع كم دقيقة ياخذ.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">3</span>
+                <div><span class="slot__k">ايش تحتاج؟</span>
+                  <p class="slot__g">لا أداة. ملفّ <span class="tok-code">PRODUCT.md</span>، ومخطّط رحلتك،
+                    ورابطك الحيّ.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">4</span>
+                <div><span class="slot__k">الخطوات</span>
+                  <p class="slot__g">1) حدّد كم دقيقة العرض كلّه. 2) قسّمه مقاطع: المشكلة، والحلّ، وعرض حيّ،
+                    وايش تعلّمت. 3) اكتب كلام كل مقطع كما يُقال لا كما يُكتب. 4) حُطّ عمود الوقت. 5) اجمع
+                    الأوقات وتأكّد أنها ما تعدّت المسموح.</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">5</span>
+                <div><span class="slot__k">وين تقف وتسألك؟</span>
+                  <p class="slot__g">كم دقيقة عندك؟ وايش الجزء اللي تبي تركّز عليه أكثر؟</p>
+                </div>
+              </li>
+              <li class="slot"><span class="slot__n">6</span>
+                <div><span class="slot__k">متى نعتبرها نجحت + مثال</span>
+                  <p class="slot__g">تقراه بصوت عالٍ ومعك ساعة، وتخلص داخل الوقت من أوّل مرّة.
+                    <strong>مثالها:</strong> مقطع «المشكلة» في دقيقة وحدة.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </template>
+
         <footer class="sag-slide__foot">
           <div class="deck-foot">
             <div class="deck-foot__side">
@@ -815,10 +1450,10 @@
       <section class="sag-slide deck-slide" data-anchor="task-7112">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">7.11.2</span> جاوب على الخانات الستّ</span>
-          <h2 class="sag-slide__title">جلسة جديدة على Claude Desktop، وصياغة واحدة تبدأها</h2>
+          <h2 class="sag-slide__title">جلسة جديدة على Claude Desktop — اختر صياغتك وابدأ</h2>
           <div class="sag-slide__rule"></div>
         </div>
-        <div class="sag-slide__body">
+        <div class="sag-slide__body" style="gap:var(--sp-2)">
           <article class="card card--accent">
             <div class="card__top"><span class="card__icon"><span class="i i-terminal"></span></span>
               <h3 class="card__title card__title--sm">قبل أن تبدأ — ثلاث خطوات</h3>
@@ -826,27 +1461,40 @@
             <ol class="flow flow--tight">
               <li><strong>افتح Claude Desktop ← تبويب Code ← Environment: Local</strong>، واختر مجلّد مشروعك —
                 <strong>Local تحديدًا</strong>، وإلا مهاراتك المحلّية غير مرئية.</li>
-              <li><strong>تأكّد أن <span class="tok-lat">skill-creator</span> متاحة</strong> لحسابك (من الموقع:
-                Settings ← Capabilities، ثم Customize ← Skills). ولو لم تجدها:
-                <div class="snipbox">
-                  <pre class="snip snip--sm" dir="ltr">/plugin install skill-creator@claude-plugins-official</pre>
-                  <button class="snipbox__copy" type="button" aria-label="نسخ الأمر"><span
-                      class="i i-copy"></span></button>
-                </div>
-              </li>
+              <li><strong><span class="tok-lat">skill-creator</span> موجودة عندك مسبقًا</strong> — تأتي مع
+                Claude Desktop بلا أي تثبيت. تشتغل من نفسها لمّا تصف طلبك، أو تحدّدها بنفسك من صندوق الكتابة:
+                <strong>+</strong> ← <strong>Plugins</strong> ← اخترها من القائمة. <strong>ما تُكتب بأمر
+                (<span class="tok-code">/skill-creator</span> ما يفعل شيئًا)</strong> — هي مهارة تُستخدَم لا
+                أمر يُكتب.</li>
               <li><strong>اخترت «فرز البريد»؟</strong> اربط Gmail من الإعدادات <strong>قبل</strong> الجلسة.</li>
             </ol>
           </article>
           <div class="promptbox">
-            <button class="promptbox__copy" type="button" aria-label="نسخ الصياغة كاملة"
-              data-copy="هذه جلسة جديدة لغرض واحد فقط: تأليف أوّل مهارة لي. لا تقرأ ملفّات مشروعي كاملة ولا تحلّل الكود — لا حاجة لذلك هنا؛ إن احتجت خلفية عن مشروعي فاكتفِ بـ PRODUCT.md. اتّبع مهارة authoring-skills: اسألني أسئلتها الستّ واقترح لي إجابات لكلٍّ منها بناءً على مشروعي، ثم بعد أن نتّفق على الإجابات سلّم البناء لمهارة /skill-creator."><span
+            <button class="promptbox__copy" type="button" aria-label="نسخ صياغة فكرة من القائمة"
+              data-copy="هذه جلسة جديدة لغرض واحد فقط: تأليف أوّل مهارة لي، من فكرة اخترتها من القائمة. لا تقرأ ملفّات مشروعي كاملة ولا تحلّل الكود — اكتفِ بـ PRODUCT.md عند الحاجة. فكرتي: [رقم واسم الفكرة من القائمة]. اتّبع مهارة authoring-skills: اقرأ إجاباتها الابتدائية لهذي الفكرة من الشريحة، واقترح لي عدّة صيغ مختلفة لكل سؤال من الأسئلة الستّة — بعضها قريب من الإجابة الأصلية، وبعضها مبنيّ على تفاصيل مشروعي أنا — لأختار منها أو أعدّلها، ثم بعد أن نتّفق استخدم مهارة skill-creator لتبني الملفّ."><span
                 class="i i-copy"></span></button>
-            <p class="card__note card__note--sm"><strong>الصق هذي الصياغة</strong> فور فتح الجلسة:</p>
-            <p class="card__note card__note--sm">«هذه جلسة جديدة لغرض واحد فقط: تأليف أوّل مهارة لي. <strong>لا تقرأ
-                ملفّات مشروعي كاملة ولا تحلّل الكود</strong> — إن احتجت خلفية فاكتفِ بـ <span
-                class="tok-code">PRODUCT.md</span>. اتّبع مهارة <span class="tok-lat">authoring-skills</span>:
-              <strong>اسألني أسئلتها الستّ واقترح لي إجابات</strong> بناءً على مشروعي، ثم سلّم البناء لمهارة
-              <span class="tok-lat">/skill-creator</span>.»</p>
+            <p class="card__note card__note--sm"><strong>اخترت فكرة من القائمة؟</strong> الصق هذي فور فتح الجلسة:</p>
+            <p class="card__note card__note--sm">«هذه جلسة جديدة لغرض واحد فقط: تأليف أوّل مهارة لي، من فكرة اخترتها
+                من القائمة. <strong>لا تقرأ ملفّات مشروعي كاملة ولا تحلّل الكود</strong> — اكتفِ بـ
+                <span class="tok-code">PRODUCT.md</span> عند الحاجة. فكرتي: <span class="tok-code">[رقم واسم الفكرة
+                من القائمة]</span>. اتّبع مهارة <span class="tok-lat">authoring-skills</span>: <strong>اقرأ إجاباتها
+                الابتدائية لهذي الفكرة من الشريحة، واقترح لي عدّة صيغ مختلفة</strong> لكل سؤال من الأسئلة الستّة —
+                بعضها قريب من الإجابة الأصلية، وبعضها مبنيّ على تفاصيل مشروعي أنا — لأختار منها أو أعدّلها، ثم استخدم
+                مهارة <span class="tok-lat">skill-creator</span> لتبني الملفّ.»</p>
+          </div>
+          <div class="promptbox">
+            <button class="promptbox__copy" type="button" aria-label="نسخ صياغة فكرة خاصّة"
+              data-copy="هذه جلسة جديدة لغرض واحد فقط: تأليف أوّل مهارة لي، من فكرة خاصّة بي. لا تقرأ ملفّات مشروعي كاملة ولا تحلّل الكود — اكتفِ بـ PRODUCT.md عند الحاجة. فكرتي: [صف فكرتك بجملة أو جملتين]. وإجاباتي على أسئلة البوّابة السبعة: [الصق هنا إجاباتك السبع من الشريحة الماضية]. اتّبع مهارة authoring-skills: افحص فكرتي بهذي الإجابات أوّلًا، ثم اقترح لي عدّة صيغ مختلفة لكل سؤال من الأسئلة الستّة بناءً على PRODUCT.md ووصفي لفكرتي، لأختار منها أو أعدّلها، ثم بعد أن نتّفق استخدم مهارة skill-creator لتبني الملفّ."><span
+                class="i i-copy"></span></button>
+            <p class="card__note card__note--sm"><strong>عندك فكرتك الخاصّة؟</strong> الصق هذي بدلًا منها:</p>
+            <p class="card__note card__note--sm">«هذه جلسة جديدة لغرض واحد فقط: تأليف أوّل مهارة لي، من فكرة خاصّة
+                بي. <strong>لا تقرأ ملفّات مشروعي كاملة ولا تحلّل الكود</strong> — اكتفِ بـ
+                <span class="tok-code">PRODUCT.md</span> عند الحاجة. فكرتي: <span class="tok-code">[صف فكرتك بجملة
+                أو جملتين]</span>. وإجاباتي على أسئلة البوّابة السبعة: <span class="tok-code">[الصق هنا إجاباتك
+                السبع من الشريحة الماضية]</span>. اتّبع مهارة <span class="tok-lat">authoring-skills</span>:
+                <strong>افحص فكرتي بهذي الإجابات أوّلًا</strong>، ثم اقترح لي عدّة صيغ مختلفة لكل سؤال من الأسئلة
+                الستّة بناءً على <span class="tok-code">PRODUCT.md</span> ووصفي لفكرتي، لأختار منها أو أعدّلها، ثم
+                استخدم مهارة <span class="tok-lat">skill-creator</span> لتبني الملفّ.»</p>
           </div>
           <div class="card card--plain">
             <p class="card__note"><span class="i i-lightbulb" style="color:var(--accent-state)"></span>
@@ -873,56 +1521,116 @@
         </div>
         <div class="sag-slide__body">
           <div class="stepvid">
-            <div class="stepvid__video stepvid__video--soon">
-              <p class="stepvid__soon"><span class="i i-clock"></span>المقطع تحت التصوير — والخطوات تحت جاهزة</p>
+            <div class="stepvid__video">
+              <video class="stepvid__player" controls preload="metadata" src="media/task-7.11.mp4"></video>
             </div>
             <div class="stepvid__steps">
               <ol class="stepvid__list">
                 <li class="stepvid__divider">جلسة جديدة، والخانات الستّ</li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">1</span>
+                <li class="stepvid__step" data-t="0">
+                  <button class="stepvid__time" type="button">0:00</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">يفتح Code على Local، ويلصق الصياغة</h4>
-                    <p class="stepvid__p">جلسة جديدة تمامًا، لا محادثة المشروع القديمة.</p>
+                    <h4 class="stepvid__h">يفتح شريحة 15 على الشاشة، يتذكّر خطواتها الثلاث</h4>
+                    <p class="stepvid__p">نفس الشريحة التي شاهدها قبل قليل — <span class="tok-lat">Local</span>،
+                      <span class="tok-lat">skill-creator</span> جاهزة بلا تثبيت، وبدون أمر خاص.</p>
                   </div>
                 </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">2</span>
+                <li class="stepvid__step" data-t="15">
+                  <button class="stepvid__time" type="button">0:15</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">مهارة authoring-skills تسأل وتقترح</h4>
-                    <p class="stepvid__p">ستّة أسئلة، كل واحد ومعه إجابة مقترحة من <span class="tok-code">PRODUCT.md</span>
-                      — المدرب يختار أو يعدّل.</p>
+                    <h4 class="stepvid__h">يفتح Code على Local في مشروعه، ويلصق صياغة فكرة رقم 1</h4>
+                    <p class="stepvid__p">«جولة قبل العرض» — نفس الصياغة من الشريحة الماضية، بلا أي تعديل.</p>
                   </div>
                 </li>
-                <li class="stepvid__divider">التسليم والبناء</li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">3</span>
+                <li class="stepvid__step" data-t="35">
+                  <button class="stepvid__time" type="button">0:35</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h"><span class="tok-lat">/skill-creator</span> يبني الملفّ فعليًّا</h4>
-                    <p class="stepvid__p">يسأل أين يُحفظ — محلّي لهذا المشروع أو عامّ لكل مشاريعه.</p>
+                    <h4 class="stepvid__h">مهارة authoring-skills تسأل الأسئلة الستّ، كل سؤال وعدّة إجابات</h4>
+                    <p class="stepvid__p">من 2 إلى 4 خيارات لكل سؤال — واحد قريب من فكرة القائمة، وآخر مبنيّ على
+                      مشروعه هو تحديدًا.</p>
                   </div>
                 </li>
-                <li class="stepvid__divider">الاختبار الأوّل — وأوّل عطل</li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">4</span>
+                <li class="stepvid__step" data-t="45">
+                  <button class="stepvid__time" type="button">0:45</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">يجرّبها في جلسة جديدة أخرى</h4>
-                    <p class="stepvid__p">على مدخل حقيقي من مشروعه — لا مثال وهميّ.</p>
+                    <h4 class="stepvid__h">سؤال نقاط التوقّف مختلف: فيه صناديق متعدّدة، لا خيارًا واحدًا</h4>
+                    <p class="stepvid__p">«اختر واحدًا على الأقلّ، ويمكنك أكثر» — لأن مهارة واحدة قد تحتاج تتوقّف عند
+                      أكثر من نقطة.</p>
                   </div>
                 </li>
-                <li class="stepvid__step stepvid__step--new">
-                  <span class="stepvid__mark">مضافة</span>
+                <li class="stepvid__divider">التسليم — مهارة skill-creator تبني وتختبر</li>
+                <li class="stepvid__step" data-t="65">
+                  <button class="stepvid__time" type="button">1:05</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">تعثّرت، فيعدّل الوصف لا المحتوى</h4>
-                    <p class="stepvid__p">المهارة لم تُستدعَ من أوّل مرّة — والشكّ الأوّل في «متى تعمل» لا في
-                      خطواتها.</p>
+                    <h4 class="stepvid__h">بعد اعتماد الإجابات الستّ، تُستدعى مهارة <span class="tok-lat">skill-creator</span>
+                      من نفسها</h4>
+                    <p class="stepvid__p">تسليم مباشر داخل نفس الجلسة، بلا خطوة يدويّة من المدرّب.</p>
                   </div>
                 </li>
-                <li class="stepvid__step">
-                  <span class="stepvid__mark stepvid__mark--idx">5</span>
+                <li class="stepvid__step" data-t="70">
+                  <button class="stepvid__time" type="button">1:10</button>
                   <div class="stepvid__body">
-                    <h4 class="stepvid__h">تعمل، ويرى مخرَجًا حقيقيًّا</h4>
-                    <p class="stepvid__p">صور وتقرير — يفتحه ويحكم عليه بعينه.</p>
+                    <h4 class="stepvid__h">تسأل سؤالين: أين تُحفظ، وكيف تُجرَّب أوّل مرّة</h4>
+                    <p class="stepvid__p">محلّيًّا لهذا المشروع وحده (Recommended)، وحلقة اختبار كاملة قبل أن تُسلَّم
+                      جاهزة.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="90">
+                  <button class="stepvid__time" type="button">1:30</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">تبني ملفّ المهارة الواحد، وتفتح الموقع الحيّ فعليًّا لتختبره</h4>
+                    <p class="stepvid__p">تقارن تشغيل المهارة وتعطيلها على نفس الصفحات — بمتصفّح حقيقي، لا تخمينًا.
+                      الصور والتقرير نفسها تولَّد لاحقًا، حين تشتغل المهارة فعلًا على مشروع المتدرّب.</p>
+                  </div>
+                </li>
+                <li class="stepvid__divider">الاختبار الحقيقي — نفس المهارة، ببرنامج آخر وطلب عادي بلا اسمها</li>
+                <li class="stepvid__step" data-t="160">
+                  <button class="stepvid__time" type="button">2:40</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">في جلسة جديدة على برنامج آخر — Antigravity لا Claude Desktop</h4>
+                    <p class="stepvid__p">نفس المهارة بالضبط، بلا أي أثر من الجلسة التي بنتها؛ يكتب طلبًا عاديًّا:
+                      «احتاجك تختبرلي الموقع وتاخذ جولة عليه وتتأكّد انو شغّال صح بمختلف الأحجام» — بلا ذكر اسمها.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="170">
+                  <button class="stepvid__time" type="button">2:50</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">المهارة تشتغل من نفسها، وتقرأ بالضبط ما تقوله خطوتها الأولى</h4>
+                    <p class="stepvid__p">تبحث في <span class="tok-code">PRODUCT.md</span> عن الرابط الحيّ وجدول
+                      الصفحات فقط — لا تقرأ الملفّ كاملًا.</p>
+                    <p class="stepvid__fix"><strong>لاحظ:</strong> لم يُكتب اسمها في أي مكان — الوصف وحده كان كافيًا.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="175">
+                  <button class="stepvid__time" type="button">2:55</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">تتوقّف وتسأل قبل أي زيارة فعليّة</h4>
+                    <p class="stepvid__p">تعرض خطّتها: أربع صفحات بمقاسين، صفحة غير موجودة عمدًا، والصفحة المحميّة
+                      كزائر غير مسجَّل فقط.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="195">
+                  <button class="stepvid__time" type="button">3:15</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">بعد الجولة: نتيجة حقيقية، وبند واحد لا أكثر</h4>
+                    <p class="stepvid__p">تتوقّف ثانيةً قبل الحفظ: صفحة الخطأ 404 تظهر بالإنجليزية الافتراضية، وبقيّة
+                      الصفحات سليمة تمامًا.</p>
+                  </div>
+                </li>
+                <li class="stepvid__divider">المخرَج — ونقلة أبعد منه</li>
+                <li class="stepvid__step" data-t="210">
+                  <button class="stepvid__time" type="button">3:30</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">التقرير محفوظ بتاريخه، وصوره الثماني معه</h4>
+                    <p class="stepvid__p">يفتحه فيجد نصًّا عربيًّا سليم الاتجاه، وصورة حقيقية لكل صفحة بمقاسَيها.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="275">
+                  <button class="stepvid__time" type="button">4:35</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يطلب إصلاح ما وجدته المهارة، فيصلحه Claude فعليًّا</h4>
+                    <p class="stepvid__p">صفحة 404 عربية جديدة، اختُبرت محلّيًّا، وحُفظت ورُفعت بلا لمس أي ملفّ آخر —
+                      والمهارة نفسها لم تلمس كودًا؛ هي من كشفت فقط.</p>
                   </div>
                 </li>
               </ol>

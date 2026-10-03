@@ -110,7 +110,7 @@
 | `.claude/skills/defining-users` | الأدوار وأصحاب المصلحة (9) |
 | `.claude/skills/writing-requirements` | كتابة المتطلبات ومعايير القبول (10) |
 | `.claude/skills/user-journey` | رحلة المستخدم ومخطط النشاط (11) |
-| `.claude/skills/authoring-skills` | تأليف مهارة المتدرّب الخاصة، بمساعدة `/skill-creator` (7.11) |
+| `.claude/skills/authoring-skills` | تأليف مهارة المتدرّب الخاصة، بمساعدة مهارة `skill-creator` (7.11) |
 | `.claude/skills/designing-screens` | تصميم الشاشات عبر Claude Design (12) |
 | `.claude/skills/drawio` | رسم مخططات الرحلة والـERD (11، 13) |
 | `.claude/skills/building-features` | دورة بناء الوظائف واختبارها (14) |

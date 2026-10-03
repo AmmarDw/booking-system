@@ -423,6 +423,214 @@ body {
   border-inline-start: 5px solid var(--accent-state)
 }
 
+/* ── a card that scrolls, deliberately ────────────────────────────────
+   The deck's third sanctioned scroller, after the ؟ window and .pkgtree,
+   and for the same reason both of those exist: the slide is CONSULTED,
+   not glanced at. Slide 12 dissects two real published skills against the
+   six-slot frame, quoting each skill's own words — shrinking that until it
+   fits would turn the evidence back into the summary it is meant to
+   replace. The overflow guard measures a scroll container's own box and
+   skips its subtree, so a bounded card is the supported way to carry more
+   text than a frame holds. min-height:0 is load-bearing: without it a grid
+   item refuses to shrink below its content and the scrollbar never
+   appears. */
+.card--scroll {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain
+}
+
+.card--scroll::-webkit-scrollbar {
+  width: 10px
+}
+
+.card--scroll::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: var(--surface-card-line)
+}
+
+.card--scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-structure)
+}
+
+/* ── a skill taken apart, one slot at a time ──────────────────────────
+   Slide 12 answers the six slots for two real skills, and the comparison
+   is only trustworthy if each answer is the skill file's OWN sentence
+   rather than a paraphrase of it. So a slot carries a translated quote
+   (.slot__q, tinted so it reads as quoted material) and, where the quote
+   alone would not land for a non-programmer, a plain gloss beneath it
+   (.slot__g).
+   A slot the real skill simply does not fill gets an amber number instead
+   of a teal one. That absence IS the lesson the slide is built on — both
+   skills are published and official and each still leaves a slot empty —
+   so it has to be visible at a glance, not buried in prose. */
+.slots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2)
+}
+
+.slot {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--sp-2);
+  align-items: start
+}
+
+.slot__n {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--brand-sky-soft);
+  color: var(--brand-primary);
+  font: var(--fw-bold) 17px/1 var(--font-mono)
+}
+
+.slot__n--gap {
+  background: var(--state-warning-soft);
+  color: var(--state-warning)
+}
+
+.slot__k {
+  display: block;
+  font: var(--fw-bold) var(--fs-caption)/1.35 var(--font-arabic);
+  color: var(--text-heading)
+}
+
+.slot__q {
+  margin: 4px 0 0;
+  font: var(--fw-medium) 23px/1.5 var(--font-arabic);
+  color: var(--accent-structure);
+  text-wrap: pretty
+}
+
+.slot__g {
+  margin: 3px 0 0;
+  font: var(--fw-regular) 22px/1.5 var(--font-arabic);
+  color: var(--text-body);
+  text-wrap: pretty
+}
+
+/* ── the skill-menu table (slide 14) ───────────────────────────────
+   Eight pre-vetted ideas the trainee picks one of. A table rather than a
+   list because the choice is a comparison across three columns — output,
+   type, number — and a bullet list makes the reader hold all of that in
+   their head. Each row's ؟ opens that idea's own six-slot sketch, so the
+   row stays one line and the depth lives in the window.
+   It scrolls inside its card: the menu owns the slide's lower half, and
+   the rows must never be trimmed to make eight fit. */
+.pick {
+  width: 100%;
+  border-collapse: collapse;
+  font: var(--fw-regular) 22px/1.4 var(--font-arabic)
+}
+
+/* Sticky against the .card--scroll box, so the header survives the scroll
+   that the eighth row forces. */
+.pick th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 3px 12px;
+  text-align: start;
+  background: var(--brand-white);
+  border-block-end: 2px solid var(--accent-structure);
+  font: var(--fw-bold) 21px/1.3 var(--font-arabic);
+  color: var(--text-heading)
+}
+
+.pick td {
+  padding: 4px 12px;
+  border-block-end: 1px solid var(--brand-snow-line);
+  vertical-align: middle
+}
+
+.pick tbody tr:hover {
+  background: var(--brand-snow)
+}
+
+/* Same reason as .tmap__n: a plain inline span collapses against the bidi
+   isolate boundary and the number glues to the name. */
+.pick__n {
+  display: inline-block;
+  min-width: 26px;
+  font: var(--fw-bold) 21px/1 var(--font-latin);
+  color: var(--accent-structure);
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: end
+}
+
+.pick__name {
+  font-weight: var(--fw-semibold);
+  color: var(--text-heading)
+}
+
+.pick__t {
+  display: inline-block;
+  min-width: 112px;
+  padding: 2px 12px;
+  border-radius: var(--radius-pill);
+  text-align: center;
+  font: var(--fw-bold) 19px/1.4 var(--font-arabic);
+  white-space: nowrap
+}
+
+.pick__t--proc {
+  background: var(--brand-snow);
+  color: var(--text-heading);
+  border: 1px solid var(--brand-snow-line)
+}
+
+.pick__t--tool {
+  background: var(--brand-sky-soft);
+  color: var(--brand-primary)
+}
+
+.pick th:nth-child(4),
+.pick td:nth-child(4) {
+  width: 1%;
+  white-space: nowrap
+}
+
+/* ── a paragraph that is itself the link to its own screenshot ───────
+   Inside the ؟ window. The Open-Graph idea is the one menu item whose
+   point is visual, so the sentence describing the picture and the way to
+   open it are the same target — a trainee cannot read the description and
+   miss that there is a picture behind it. */
+.imglink {
+  display: block;
+  margin: 10px 0 0;
+  padding: var(--sp-2);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--accent-structure);
+  background: var(--brand-sky-soft);
+  color: var(--text-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .15s ease, border-style .15s ease
+}
+
+.imglink:hover {
+  background: var(--brand-white);
+  border-style: solid
+}
+
+.imglink:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px
+}
+
+.imglink__cta {
+  font-weight: var(--fw-bold);
+  color: var(--accent-structure)
+}
+
 .card__top {
   display: flex;
   align-items: center;
@@ -1405,6 +1613,29 @@ body {
 .snip--sm {
   font-size: 20px;
   padding: 6px 10px
+}
+
+/* ── a trainee's own Arabic text riding on .snip ───────────────────────
+   .snip assumes a machine-facing LTR string, so its base rule forces
+   direction:ltr — a stronger author rule than the dir="rtl" attribute
+   alone, which the UA maps at lower cascade priority and loses to .snip.
+   A reference format or a real example is a human's Arabic, not a
+   command, and must read right-to-left like everything else on the slide. */
+.snip--rtl {
+  direction: rtl;
+  text-align: right;
+  white-space: pre-wrap;
+  overflow-x: hidden
+}
+
+/* ── a long reference quote, capped so it never grows the slide ────────
+   A real multi-step example can run past what the frame budget allows.
+   The overflow guard explicitly measures a scroll container's OWN box,
+   not the content clipped inside it, so capping height here is the
+   sanctioned way to show the full example without eating slide space. */
+.snip--scroll {
+  max-height: 195px;
+  overflow-y: auto
 }
 
 .promptbox .card__note--sm {

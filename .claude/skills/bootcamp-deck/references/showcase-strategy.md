@@ -81,20 +81,24 @@ nothing demo-worthy in it, so its placeholder slide was deleted rather than left
 account steps happen once per person. This is the per-section exception documented in
 `day-deck-recipe.md`; it applies again to §16.3 on Day 10.
 
-**Day 4 — neither recording exists yet.** Built 2026-09-30, the first Day-4 deck. Two slots, both on
+**Day 4 — two of two recordings shipped.** Built 2026-09-30, the first Day-4 deck. Two slots, both on
 darrisni, per `deck/MEDIA_SHOTLIST.md`:
 
 | File | Covers | Status |
 |---|---|---|
-| `media/task-103-11.mp4` | §10.3 (NFR) then §11 — the NFR prompt, then the journey written and diagrammed | Not filmed. Slide 9 ships `--soon` |
-| `media/skill-from-scratch.mp4` | §7.11.3 — a skill authored end to end in a **new** Claude Desktop session, then tested and fixed | Not filmed. Slide 16 ships `--soon` |
+| `media/tasks-10.3-11.1-11.2.mp4` | §10.3 (NFR) then §11 — the NFR prompt, then the journey written and diagrammed | **Shipped 2026-10-01** (slide 9), 5:59, frame-verified, 14 steps. Delivered under a different name than planned — `task-103-11.mp4` was never referenced anywhere yet, so the rename was free |
+| `media/task-7.11.mp4` | §7.11.3 — a skill authored end to end in Claude Desktop, then tested in a **second, different tool** | **Shipped 2026-10-02** (slide 16), 5:30, frame-verified, 13 steps. Delivered under a different name than planned — `skill-from-scratch.mp4` was never referenced anywhere yet, so the rename was free, same as d4-1 |
 
-**`skill-from-scratch.mp4` has one hard capture requirement: the first test run must genuinely fail.**
-The shot list is explicit about this rather than leaving it implicit — a `stepvid__step--new` row on
-slide 16 depends on real footage of the skill's description not triggering on its first honest test,
-not a staged miss. This is the same "a description is a guess until tested" lesson already in
-`writing-requirements/SKILL.md` §5.1.1 from the Day-3 recording, now showing up a second time in a
-different section — worth treating as a pattern, not a coincidence, if it recurs again.
+**The hard capture requirement — "the first test run must genuinely fail" — turned out not to be met,
+and that is the correct outcome, not a miss.** The shot list asked for real footage of the skill's
+description failing to trigger, planning a `stepvid__step--new` row on slide 16 around it, on the same
+"a description is a guess until tested" reasoning already in `writing-requirements/SKILL.md` §5.1.1
+from the Day-3 recording. The real second session — a plain, unnamed request, in a different tool
+(Antigravity) than the one that built the skill — triggered correctly on the first try. Slide 16 was
+rebuilt to match that footage, and the planned failure row was removed rather than kept as an
+unsupported claim. **The lesson generalises in both directions: a recorded "it broke" beat needs real
+breakage, and a recorded "it worked" beat needs an honestly unscripted test — not a staged one either
+way.**
 
 **§7.11 is a new kind of section for this showcase strategy: the recording teaches a general method
 (authoring a skill), not a fixed curriculum task.** Unlike every other recorded section, the *specific*
