@@ -107,6 +107,25 @@ six-slot method works end to end, not to be the only skill a trainee could plaus
 generalise this exception to other sections without checking whether the same "one method, many valid
 instances" shape actually applies.
 
+**Day 5 — neither recording shipped yet.** Built 2026-10-03. Two slots, split at the tool boundary —
+§12 crosses two different tools (Claude Code writes the prompts, Claude Design builds and generates),
+so the curriculum's single 46 د تطبيق row was split in two (18 + 28 د) to give each its own recording
+and its own slide, per `deck/MEDIA_SHOTLIST.md`:
+
+| File | Covers | Status |
+|---|---|---|
+| `media/task-12.1-12.2.mp4` | 12.1 (screen inventory from the §11 journey) then 12.2 (Claude Code writes the design-system + per-screen prompts) | **Not yet filmed** (slide 10), `stepvid__video--soon` |
+| `media/task-12.3-12.4.mp4` | 12.3 (build the Design System–type project) then 12.4 (generate screens, select-system-first, copy-answers rule) | **Not yet filmed** (slide 14), `stepvid__video--soon` |
+
+**d5-2 will be the first Day 1–5 asset recorded entirely inside a browser tool (Claude Design) rather
+than an editor.** Flag this for whoever holds the camera — the capture setup (screen region, zoom
+level) differs from every prior recording, which all showed an editor or terminal.
+
+**§12 is not a one-time/account-bound section**, so it does **not** get the "watched, not re-run"
+treatment §16 and §7.11.3 get. The default interleaved pattern applies: explain → watch the recording
+→ the trainer re-executes the same steps live — which is why the agenda's تطبيق rows (18 + 28 د) carry
+no «يُشاهَد ولا يُعاد تنفيذه» note, unlike 7.11.3's row on Day 4.
+
 ---
 
 ## Choosing the form, per content type

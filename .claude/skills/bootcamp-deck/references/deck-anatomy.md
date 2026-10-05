@@ -280,6 +280,41 @@ The test is "does this step ask the trainee to reproduce this string" — not le
 it looks. A single bare word they must find in a longer list is still **output**. Inline `tok-code`
 is only for a passing *mention*.
 
+### `.promptbox` — a prepared prompt the trainee hands to Claude
+
+```html
+<div class="promptbox">
+  <button class="promptbox__copy" type="button" aria-label="نسخ صياغة الاستخراج"
+    data-copy="…the exact Arabic sentence, same text as the visible paragraph below…"><span
+      class="i i-copy"></span></button>
+  <p class="card__note card__note--sm"><strong>الصياغة اللي تعطيها لـ Claude لتبدأ:</strong></p>
+  <p class="card__note card__note--sm">«…the same sentence, for reading before copying…»</p>
+</div>
+```
+
+Real instances: `day-05.html` slides `task-121` and `task-121-gap`. Use it wherever a step's whole
+point is "copy this and paste it to Claude" — not a `.snipbox` (that's for a short command or search
+phrase) and not a quoted `card--plain` paragraph (that's for reading, with no copy affordance).
+`data-copy` and the visible paragraph **must carry the same wording** — update both together or they
+drift.
+
+**⚠ A prepared prompt must tell Claude where the data lives now, not which task produced it.** By the
+time any `.promptbox` or the curriculum's matching «صياغة مقترحة» runs, the data it needs has already
+been written into `PRODUCT.md` (this package's whole point — `PRODUCT.md` is the current state, not
+`conversation_history.md`). Pointing the prompt at a **task number** ("من رحلتي (11.1) ومتطلّباتي
+(10.2)") asks Claude to reconstruct the data from a finished process instead of reading its one
+canonical location, and reads the same way to the trainee, who has no reason to know what "11.1" means
+by the time they're on a later task. **Point at the `PRODUCT.md` section instead** — "من رحلتي (القسم 4
+في `PRODUCT.md`) ومتطلّباتي (القسم 3 في `PRODUCT.md`)". Caught on Day 5: slide 8's extraction prompt
+shipped with the task-number version.
+
+**Exception — only when no section exists yet to point at.** A prompt for the task that *first*
+produces a `PRODUCT.md` section (there's nothing in it yet) has nothing to reference; referencing the
+task's own stated inputs, or nothing at all, is fine there. This is also not about forbidding task
+numbers entirely — "تعتمد على المهمة 11.1" in a task's metadata line is sequencing information, not an
+instruction to Claude about where to pull data from; only the *data-location* reference inside the
+prompt text itself is what this rule governs.
+
 ### Media frame (image or plain video, no step list)
 
 ```html

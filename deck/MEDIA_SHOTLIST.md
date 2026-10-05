@@ -238,6 +238,17 @@ roles table). That slide has since been rebuilt, so the step carries a `stepvid_
 > dropped rather than kept as fiction. The same honesty principle cuts both ways: don't stage a
 > failure, and don't narrate one that didn't happen either.
 
+## Day 5 — التصميم
+
+**Neither filmed yet.** `day-05.html` ships both recordings as `stepvid__video--soon` placeholders,
+each with ordinal-badged steps instead of timestamps — the day-deck-recipe's documented pattern for
+building a slide before its capture exists.
+
+| # | Filename | Type | What must be visible | Slide |
+|---|---|---|---|---|
+| d5-1 | ✅ `tasks_12.1_12.2.mp4` | MP4 | any | 12.1: Claude reads `PRODUCT.md` §§3–4 and extracts the screen inventory, asking clarifying and gap questions live via `AskUserQuestion` as it builds its plan (a modal-vs-page decision, several screen-vs-section gaps) — then presents the full inventory as a plan for approval, which is where the trainee's three-pass review actually happens. After approval, Claude asks for visual identity and defers the final elicitation question until the inventory is written to `PRODUCT.md`; the trainee picks a palette on colorhunt.co and the Cairo font on fonts.google.com, confirms RTL+LTR with Arabic as default, Claude writes and pushes `PRODUCT.md` §5 (verified rendered first via a chrome-devtools screenshot), then the trainee reviews the written file and answers the final gap (a missed booking-page behavior) while asking to move straight into 12.2 in plan mode. 12.2: Claude enters plan mode, presents its command-writing plan built from `PRODUCT.md` §5, then writes the design-system command and one command per screen. One continuous take, 6:23 long. Timestamped in the slide's step list (5 steps across both tasks, each verified against an extracted frame, not estimated). | 13 |
+| d5-2 | ✅ `tasks_12.3_12.4.mp4` | MP4 | any | 12.3: creates a Design System–type project in Claude Design, pastes the system command already written in `PRODUCT.md` §5, reviews the generated tokens/components/interaction-states. 12.4: for every screen in the inventory — new conversation (design system auto-attached since it's the most recent one), paste that screen's command copied from `PRODUCT.md` §5, repeat. Shows 11 screens generated this way (Home, Book Session, Tutor Profile, Booking Page, Login, Signup, My Sessions, My Schedule, Admin Dashboard, Admin Subjects, plus one more), each consistent with the design system. Closing beat: once all screens are done, the trainee asks Claude Code in one message to write every conversation's name and link into `PRODUCT.md` §5 at once (a batch handoff, not per-screen as slide 16 prescribes — worth reconciling); Claude Code opens a browser preview via chrome-devtools to visually confirm the written command blocks render correctly under RTL, closes it, then commits and pushes (verified via `rev-parse HEAD`/`ls-remote`). One continuous take, 7:06 long. Timestamped in the slide's step list (7 steps across both tasks, each verified against an extracted frame — one `-ss`-seek contact sheet was caught giving wrong labels and rebuilt with `trim` before any timestamp was written). | 17 |
+
 ## If a shot is missing
 
 The deck degrades gracefully: `media-frame` falls back to the step's Arabic caption on a `--brand-snow`

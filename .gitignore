@@ -40,3 +40,9 @@ project-package/slides/media/task-10.1.mp4
 # before ever removing this line.
 project-package/slides/media/task-7.11.mp4
 project-package/slides/media/tasks-10.3-11.1-11.2.mp4
+
+# Same 100 MiB problem, Day-5's two recordings: tasks_12.1_12.2.mp4 is
+# 181.3 MiB, tasks_12.3_12.4.mp4 is 198.8 MiB — re-encode or move to Git
+# LFS before ever removing this line.
+project-package/slides/media/tasks_12.1_12.2.mp4
+project-package/slides/media/tasks_12.3_12.4.mp4

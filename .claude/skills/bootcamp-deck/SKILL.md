@@ -123,6 +123,19 @@ and been caught both times by the same fix, so treat it as a recurring hazard, n
 - **`tasks-10.3-11.1-11.2.mp4` (slide 9)** — a later pass sampled the video on a fixed 8-second grid
   and eyeballed the thumbnails to place steps. The user's exact words: *"Your timing is completely
   wrong!!"* Rebuilding it against frames extracted at the user's own corrected timestamps fixed it.
+- **`tasks_12.1_12.2.mp4` (slide 13)** — a third, more insidious variant: **`ffmpeg -ss <t> -i …`
+  (seeking, either before or after `-i`) silently resets the decoded frames' PTS to ~0 on this file**,
+  confirmed with `showinfo` (`pts_time:0` for every non-zero requested offset). A `drawtext` overlay
+  burned onto a seeked contact sheet can still show plausible-looking, strictly-increasing labels —
+  they are just **wrong**, offset from the true time by an amount that drifts between invocations
+  depending on filter chain and tile size. Several sheets built this way *looked* internally
+  consistent and were read with confidence before a deliberate `showinfo` cross-check caught it. The
+  fix: use **`trim=start=X:end=Y`** in the filter graph instead of `-ss` for any sub-range read whose
+  labels matter — `trim` operates on the normal decoded stream with no seek discontinuity, so PTS stay
+  true (verified: `trim=start=188:end=192` reported `pts_time:188, 188.03, …`, exactly right). **Never
+  trust a seeked timestamp label again on any file without first spot-checking it against `showinfo`
+  or a `trim`-based re-extraction** — a label that "looks consistent across a whole sheet" is not
+  evidence it is correct, since a constant drift looks exactly as consistent as the truth.
 
 **The failure mode in both cases is the same: a low-resolution, widely-spaced sample stands in for
 the actual frame.** A coarse contact sheet (one frame every 5–10 seconds, scaled down to fit a grid)
