@@ -46,3 +46,8 @@ project-package/slides/media/tasks-10.3-11.1-11.2.mp4
 # LFS before ever removing this line.
 project-package/slides/media/tasks_12.1_12.2.mp4
 project-package/slides/media/tasks_12.3_12.4.mp4
+
+# Same 100 MiB problem, Day-6's tasks_13.mp4 is 153.3 MiB — re-encode or
+# move to Git LFS before ever removing this line. task_14.2.mp4 (51.5 MiB)
+# is under the limit and stays tracked.
+project-package/slides/media/tasks_13.mp4

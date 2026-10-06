@@ -47,6 +47,12 @@ It measures **border boxes** and skips inline boxes on purpose. Cairo's glyph bo
 em, so `scrollHeight > clientHeight` on any heading even when nothing is clipped. That is ink bleed;
 no amount of splitting a slide clears it. Do not "fix" the guard to use `scrollHeight`.
 
+**And the guard has a second, opposite blind spot: it has no opinion about a slide that is too
+empty.** Day 5 shipped two slides — a bare `.flow` ordered list and a two-card row — that were both
+legal and both `deckAudit()`-clean, and both visibly used under a third of the frame when
+screenshotted. The guard only flags overflow; density is invisible to it either way. **Screenshot
+every new slide and judge it by eye**, not just by what the audit prints.
+
 ### 2. The scaled-unit trap
 
 The whole 1920×1080 frame is `transform: scale(--deck-scale)`. So `getBoundingClientRect()` returns
@@ -172,6 +178,13 @@ then stop. Depth beyond that is Claude's job; on a slide it costs comprehension 
   sentences. The failure mode to avoid is telegraphic phrasing where each word is meant to carry a
   paragraph — that reads as obfuscated, not concise. «تطبيق، فعملك، فمراجعة» is the canonical
   example of what not to ship.
+  **"Never compressed" is not only about register — a compressed sentence can hide an undefined
+  test, not just read awkwardly.** Slide 11's addition rule («إن خدم شاشة موجودة فأضِفه قسمًا لها…»)
+  sounded reasonable on a fast read, but never stated *how* to tell whether something "serves" an
+  existing screen — the actual distinguishing test (does it open at its own URL, or does it just add
+  to a screen that's already there?) was missing entirely, not merely stated badly. Reading a
+  sentence back and asking **"could I apply this rule to a new case right now"** catches a missing
+  test that reading it for tone alone does not.
 - **… and never heavily dialectal.** That is the other edge, and it is the one reviews keep catching.
   Lean closer to colloquial than to فصحى, but stay inside **المحكية البيضاء** — spoken words any
   Arabic reader parses, not Gulf-only ones: يقدّم / يعمل / ينفّذ not يسوّي, ايش not وش,
@@ -425,6 +438,9 @@ bottom-up — top-down collides — and assert each row matches exactly once bef
 Run all of these and report each result rather than asserting success.
 
 - [ ] `window.deckAudit()` → `N slides, none overflow`, on the real page via chrome-devtools
+- [ ] Every new or touched slide **screenshotted and judged by eye for density** — a clean audit
+      only proves no overflow, not that the frame isn't under-used
+- [ ] Every `class="qmark"` button grepped: nothing but the `؟` glyph between its tags
 - [ ] Interactive behaviours exercised in a browser, not reasoned about
 - [ ] No task row opens with a و-word
 - [ ] Register sweep by **verb family, not one spelling** — `يسو`/`تسو`/`نسو`/`سوّ`, not just «يسوّي».
@@ -485,5 +501,47 @@ GitHub's; the real count was zero.
 **ffmpeg exit code 0 is not success.** Verify by duration, frame count or pixel comparison. A
 mangled path once produced a silently truncated file at exit 0, and a bad flag produced two empty
 frames that compared as "identical".
+
+**A standing "leave it alone" decision is not permanent — it was made under a specific scope, and a
+later explicit instruction can override it without contradicting the earlier note.** The handout was
+once deliberately left stale for three days because reconciling it sat outside that session's scope;
+a later session was explicitly asked to reconcile it, and did — that is a new, in-scope decision
+superseding an old out-of-scope one, not a reversal to flag as inconsistent. Read an old "leave it"
+note for what scope it was actually made under before assuming it still controls.
+
+**A reversed rule needs its trigger restated, not just its content — and this can go wrong twice in
+a row.** "Every screen needs an origin" kept its exact wording across a reshape, but its effective
+meaning flipped: before, it was a live check on every screen the trainee wrote; after Claude started
+extracting first, it became dead weight unless re-scoped to screens the trainee *adds*. A rule can
+look unchanged in a diff and have silently stopped doing anything — check **what population a rule
+actually fires against**, not just its text, whenever the step producing its inputs changes. This
+exact mistake shipped again one turn later, inside the very fix meant to correct the first instance
+of it: a review pass's wording ("did you add this screen") was carried straight through to a new flow
+without checking whether the trainee had actually done any adding yet at that point in it. Catching
+the pattern once does not inoculate against writing it again — ask fresh, every time a flow is
+restructured, "what has actually happened by this step," not "does this match what I already know to
+avoid."
+
+**Reviewing an AI's output and stating what only the trainee knows are different kinds of value — a
+task can satisfy the first completely and still omit the second entirely.** A review-structure
+reshape (passes, a gap list, an origin field) can genuinely improve a task while every bit of it stays
+about checking Claude's work; nothing in it asks the trainee to say what was never in the source data
+to begin with, which is the one thing no amount of extraction quality can produce. When a task's
+stated purpose is "the trainee's input matters here," counting review steps is not the same as
+checking for an actual elicitation prompt.
+
+**A list produced for someone to act on later is not the same as acting on it with them now — even
+when the list itself was the right thing to produce.** A gap list (steps or requirements with no
+matching screen) can be entirely correct and still hand the resolution work back to the trainee by
+being displayed and left — exactly the manual-matching burden an automated extraction step exists to
+remove. The fix is not a better list; it is asking what happens to each item immediately, in the same
+turn, instead of after.
+
+**The affordance a plain-language request describes often already exists under a different name.**
+Asked for "an icon that explains RTL and LTR," the literal reading suggests a new UI element; the
+actual need — click a marker next to a term, see its definition — was already the `.qmark` +
+`<template class="terms">` component (`references/deck-anatomy.md`), used earlier the same day.
+Before adding a new component for a described interaction, check whether an existing one already
+produces it under different words.
 
 Report honestly. If a measurement contradicts something you said earlier, say so plainly and move on.

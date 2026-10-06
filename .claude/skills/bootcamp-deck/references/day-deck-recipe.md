@@ -58,6 +58,13 @@ confirmations) happen once per person, ever. Re-running it in the room would be 
 
 Known cases: **§16 first deploy (Day 3)** and **§16.3 final redeploy (Day 10)**. Decided 2026-09-25.
 
+**This exception is re-earned per section — it does not carry over from a neighbouring day just
+because the neighbouring section also has a recording.** §12 (Day 5) sits right next to §7.11.3
+(Day 4), which does get the exception, but §12's own task — generating screens in Claude Design — is
+neither one-time nor account-bound: a second live generation produces a different, informative
+result every time. Check the actual test above for the section in front of you, every time, rather
+than assuming an exception propagates from whatever section happened to precede it.
+
 Two obligations when this applies:
 
 - **Say it on the slide.** The recording slide's title or badge must state it is watched, and the
@@ -145,6 +152,13 @@ Day 2, for reference: شرح 48 · تطبيق 58 · عملك 82 · مراجعة 
    three-column table and PRODUCT.md has two, one of them is wrong — fix it before shipping.
 6. Copy the skeleton, then fill it from `day-01.html` component by component.
 7. Verify (below), then sync that day's brief in `deck/` and `deck/MEDIA_SHOTLIST.md`.
+
+**A curriculum task row's own internal `·`-separated sub-durations are a legitimate cue to render as
+separate slide rows, not a reason to cram one wide row.** A single curriculum line like
+`12.1 15 د · 12.2 10 د · 12.3 12 د · 12.4 46 د` reads better as four separate `.task` rows on both
+the agenda slide and the «دورك الآن» checklist than force-fit into one row's `task__t`/`task__d`
+pair — same total, same tasks, just not crammed. This matches how every other combined curriculum
+row (`12.1 ← 12.2 ← 12.3 ← 12.4`) is already split visually elsewhere in the decks.
 
 ---
 

@@ -232,12 +232,12 @@ written command blocks render correctly under RTL, closes it, and only then comm
 
 Slide 17 is a documentary demo slide, not a prescriptive one — the same way slide 13's step 2 shows the
 trainee reconsidering the extraction plan three times rather than a clean single pass — so the step list
-here describes the batch handoff exactly as filmed, without reconciling it against slide 16's per-screen
-rule. **That reconciliation is a judgement call for the person running the bootcamp, not something to
-resolve silently inside a deck edit:** either the batch approach is the better technique and slide 16
-should be loosened to allow it, or the per-screen rule is deliberate (catches a missed answer earlier,
-before eleven screens have drifted) and the recording is a counter-example worth a note. Flagged here
-rather than decided.
+here describes the batch handoff exactly as filmed. **Decided with the user (2026-10-05): slide 16's
+per-screen rule stands** — it catches a missed Claude Design answer early, before eleven screens have
+drifted, and that early-detection argument outweighs the convenience of batching. Slide 17 does not
+change its sequence of events, but its batch-handoff step (`data-t="400"`) now adds one clause naming
+the per-screen approach as the recommended default and saying why, so the slide stops reading as a
+silent model answer and instead flags its own divergence from what slide 16 teaches.
 
 **ffmpeg's seek-resets-PTS hazard (`SKILL.md` §5, third documented case) struck again on this file.**
 Early contact sheets built with `-ss <t> -i …` produced labels that looked plausible and internally

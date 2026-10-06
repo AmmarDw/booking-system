@@ -1,0 +1,1258 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>اليوم 6 — نموذج البيانات وإنشاء الجداول | دورة بناء المشاريع الأولية</title>
+  <link rel="icon" href="assets/brand/mark-sag-tech-icon.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+
+  <div class="deck-stage">
+    <div class="deck-scaler">
+
+      <!-- ═══ 1 — الغلاف ═══════════════════════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-title deck-slide" data-surface="dark">
+        <div class="sag-title__inner">
+          <div>
+            <div class="deck-logo" data-size="hero">
+              <img src="assets/brand/logo-sag-lab.png" alt="ساج لاب">
+            </div>
+            <h1 class="sag-title__display">اليوم السادس — بيانات مشروعك تصير جداول حقيقية</h1>
+            <p class="sag-title__program">تستخرج الكيانات والعلاقات، ترسمها مخطّطًا، ثم تبنيها جداول فعلية في
+              قاعدتك</p>
+            <div class="deck-title__facts">
+              <span class="deck-fact">القسم 13 — نموذج البيانات</span>
+              <span class="deck-fact">القسم 14 — التنفيذ</span>
+              <span class="deck-fact">215 دقيقة</span>
+            </div>
+          </div>
+
+          <aside class="deck-title__aside">
+            <div class="deck-presenter-card">
+              <div class="sag-presenter">
+                <div class="sag-presenter__photo"><img src="assets/brand/presenter.png" alt="م. عمار محمد أنمار دويدري">
+                </div>
+                <div class="sag-presenter__text">
+                  <span class="deck-title__credit-kicker">إعداد وتقديم</span>
+                  <span class="sag-presenter__name">م. عمار محمد أنمار دويدري</span>
+                  <span class="sag-presenter__role tok-lat">Eng. Ammar Mohamed Anmar Dwidari</span>
+                  <span class="sag-presenter__org">صمّم منهج الدورة بالكامل</span>
+                </div>
+              </div>
+              <div class="deck-title__org">
+                <span class="deck-title__org-label">مقدم من شركة ساج التقنية</span>
+                <div class="deck-endorse" data-size="standard">
+                  <img src="assets/brand/logo-sag-tech-horizontal.png" alt="ساج التقنية — SAG TECH">
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <span class="deck-title__org-label">اليوم اللي تصير فيه بيانات مشروعك جداول حقيقية تقدر تشوفها</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 2 — مهامّ اليوم: الجلستان الأوليان ═══════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">2.6</span> أجندة اليوم 6</span>
+          <h2 class="sag-slide__title">تتعلّم نموذج البيانات، ثم تشوفه يتحوّل لجداول حقيقية</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="2">
+            <div class="sess">
+              <div class="sess__head"><span class="sess__name">شرح المفاهيم</span><span class="sess__d">46 د</span>
+              </div>
+              <p class="sess__note">الكيان والحقل والعلاقة، ثم مهامّ القسم، ثم إيقاع بناء التطبيق ومهامّه السبع.</p>
+              <div class="tasks">
+                <div class="task" data-ref="s13-concept"><span class="task__mark"><span
+                      class="i i-check"></span></span>
+                  <span class="task__t">13 · الكيان والحقل والعلاقة</span><span class="task__d">14 د</span>
+                </div>
+                <div class="task" data-ref="s13-tasks"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">13 · مهامّ هذا القسم الثلاث</span><span class="task__d">7 د</span>
+                </div>
+                <div class="task" data-ref="s14-concept"><span class="task__mark"><span
+                      class="i i-check"></span></span>
+                  <span class="task__t">14 · إيقاع البناء: خطة ← بناء ← اختبار ← تجربة ← إصلاح ← حفظ</span><span
+                    class="task__d">14 د</span>
+                </div>
+                <div class="task" data-ref="s14-tasks"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">14 · المهامّ السبع ودورة العمل الواحدة</span><span class="task__d">11 د</span>
+                </div>
+              </div>
+            </div>
+            <div class="sess">
+              <div class="sess__head"><span class="sess__name">تطبيق مع المدرب</span><span class="sess__d">58 د</span>
+              </div>
+              <p class="sess__note">نشوف مقطعين لمشروع حقيقي — استخراج البيانات ورسمها، ثم إنشاء الجداول — وينفّذ
+                المدرب الخطوات نفسها قدّامك.</p>
+              <div class="tasks">
+                <div class="task" data-ref="demo-13"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">13.1 ← 13.2 ← 13.3 · من النموذج الكامل إلى مراجعته إلى رسمه</span><span
+                    class="task__d">20 د</span>
+                </div>
+                <div class="task" data-ref="task-133"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">13.3 · راجع نتيجتك</span><span class="task__d">8 د</span>
+                </div>
+                <div class="task" data-ref="demo-142"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">14.2 · إنشاء الجداول عبر Supabase MCP</span><span class="task__d">22 د</span>
+                </div>
+                <div class="task" data-ref="task-142"><span class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">كيف تراجع نتيجة أي مهمّة</span><span class="task__d">8 د</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
+              <strong>الجلستان تمشيان مع بعض:</strong> نشرح القسم، نشوف مقطعه، ثم ينفّذه المدرب قدّامك — نموذج
+              بياناتك أوّلًا، ثم الجداول الحقيقية اللي تُنشأ منه.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">2</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 3 — مهامّ اليوم: بقيّة اليوم ══════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">2.6</span> أجندة اليوم 6</span>
+          <h2 class="sag-slide__title">بقيّة اليوم — تبني جداولك أنت، ثم تراجعها</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="2">
+            <div class="sess">
+              <div class="sess__head"><span class="sess__name">عملك على مشروعك</span><span class="sess__d">84 د</span>
+              </div>
+              <p class="sess__note">أطول جلسة في اليوم — ومنها تطلع جداول قاعدة بياناتك الحقيقية.</p>
+              <div class="tasks tasks--tree">
+                <div class="task" data-task-key="d6-131" data-ref="s13-tasks"><span class="task__mark"><span
+                      class="i i-check"></span></span>
+                  <span class="task__t">13 · نموذج البيانات (يتفاوت)</span><span
+                    class="task__d">38 د</span>
+                </div>
+                <div class="task task--l2" data-task-key="d6-c131" data-parent="d6-131" data-ref="task-131-model"><span
+                    class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">13.1 · نموذج بياناتك الكامل</span>
+                </div>
+                <div class="task task--l2" data-task-key="d6-132a" data-parent="d6-131" data-ref="task-132"><span
+                    class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">13.2 · تراجعه بثلاث مرّات بهذا الترتيب بالضبط</span>
+                </div>
+                <div class="task task--l2" data-task-key="d6-132b" data-parent="d6-131" data-ref="task-132-gap"><span
+                    class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">13.2 · الفجوة الأخيرة</span>
+                </div>
+                <div class="task task--l2" data-task-key="d6-c133" data-parent="d6-131" data-ref="task-133"><span
+                    class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">13.3 · الرسم ومراجعته</span>
+                </div>
+                <div class="task" data-task-key="d6-142" data-ref="task-142"><span class="task__mark"><span
+                      class="i i-check"></span></span>
+                  <span class="task__t">14.2 · أنشئ جداولك الحقيقية (يتفاوت)</span><span class="task__d">38 د</span>
+                </div>
+                <div class="task" data-task-key="d6-push" data-ref="your-turn"><span class="task__mark"><span
+                      class="i i-check"></span></span>
+                  <span class="task__t">تحفظ شغلك وترفعه</span><span class="task__d">8 د</span>
+                </div>
+              </div>
+            </div>
+            <div class="sess">
+              <div class="sess__head"><span class="sess__name">مراجعة وعرض التقدم</span><span
+                  class="sess__d">27 د</span>
+              </div>
+              <p class="sess__note">نتأكّد أن مخطّطك يطابق جداولك الحقيقية، وأن تطبيقك ما زال يعمل.</p>
+              <div class="tasks">
+                <div class="task" data-task-key="d6-rev-133" data-ref="day-review"><span class="task__mark"><span
+                      class="i i-check"></span></span>
+                  <span class="task__t">13.3 · راجع نتيجتك — المطابقة، ثم إعادة الرسم من جداولك</span><span
+                    class="task__d">12 د</span>
+                </div>
+                <div class="task" data-task-key="d6-rev-142" data-ref="day-review"><span class="task__mark"><span
+                      class="i i-check"></span></span>
+                  <span class="task__t">14.2 · تأكّد أن الجداول أُنشئت وأن التطبيق يعمل</span><span
+                    class="task__d">9 د</span>
+                </div>
+                <div class="task" data-task-key="d6-push2" data-ref="day-review"><span class="task__mark"><span
+                      class="i i-check"></span></span>
+                  <span class="task__t">تحفظ وترفع في نهاية اليوم</span><span class="task__d">6 د</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
+              <strong>الوقت متفاوت في المهامّ 13.1 و 13.2 و 13.3، وفي 14.2 أيضًا</strong> — يختلف حسب عدد كيانات
+              مشروعك وجداوله، تمامًا كما تفاوت توليد الشاشات بالأمس.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">3</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 4 — أهداف اليوم ═══════════════════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide">
+        <div class="sag-slide__head">
+          <span class="sag-badge">أهداف اليوم</span>
+          <h2 class="sag-slide__title">اليوم بياناتك تصير نموذجًا، ثم جداولًا حقيقية — ثلاثة أهداف</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <p class="sag-slide__lead sag-slide__lead--wide">تمرّ بيانات مشروعك اليوم بمرحلتين: تستخرجها وترسمها
+            نموذجًا، ثم تبنيها جداول فعلية في قاعدة بياناتك — بنفس الترتيب اللي بنيت فيه شاشاتك بالأمس.</p>
+          <div class="bento" data-cols="3">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-database"></span></span>
+                <h3 class="card__title card__title--sm">نموذج بيانات كامل</h3>
+              </div>
+              <p class="card__note card__note--sm">كيانات بحقولها وعلاقاتها وأصلها — مستخرجة من أدوارك ومتطلّباتك
+                ورحلتك وشاشاتك، لا مكتوبة من الصفر.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-layers"></span></span>
+                <h3 class="card__title card__title--sm">مخطّط ERD يطابق الواقع</h3>
+              </div>
+              <p class="card__note card__note--sm">مرسوم من نموذج بياناتك، ثم يُعاد رسمه من الجداول الفعلية بعد
+                إنشائها — فيبقى مرجعًا صادقًا لا مجرّد مسوّدة أوّلية.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-wrench"></span></span>
+                <h3 class="card__title card__title--sm">جداولك الحقيقية مُنشأة</h3>
+              </div>
+              <p class="card__note card__note--sm">نفس نموذج بياناتك اللي اعتمدته، لكن هذي المرّة في قاعدة بياناتك
+                فعليًّا — من مخطّط على الورق إلى جدول حقيقي يشتغل.</p>
+            </article>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">4</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 5 — القسم 13: الكيان والحقل والعلاقة ══════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-anchor="s13-concept">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">13</span> نموذج البيانات</span>
+          <h2 class="sag-slide__title">كيانك وحقله وعلاقته — قبل أي جدول حقيقي</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <p class="sag-slide__lead sag-slide__lead--wide">ترسم نموذج بياناتك اليوم، ثم تُنشئ جداوله الحقيقية في
+            نفس اليوم — المهمة 14.2 بعد قليل.</p>
+          <div class="bento" data-cols="3">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-database"></span></span>
+                <h3 class="card__title card__title--sm">الكيان</h3>
+              </div>
+              <p class="card__note card__note--sm">نوع من الأشياء يخزّن مشروعك معلومات عنها — زي الطالب أو المدرّس أو
+                الحصّة في «درّسني». كل كيان يتحوّل لاحقًا إلى <strong>جدول</strong>.</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-file-text"></span></span>
+                <h3 class="card__title card__title--sm">الحقل</h3>
+              </div>
+              <p class="card__note card__note--sm">معلومة واحدة داخل الكيان — زي اسم الطالب، أو تاريخ الحصّة. كل حقل
+                يصير <strong>عمودًا</strong> في الجدول.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-layers"></span></span>
+                <h3 class="card__title card__title--sm">العلاقة</h3>
+              </div>
+              <p class="card__note card__note--sm">كيف يرتبط كيان بآخر — مدرّس واحد له عدّة حصص <span
+                  class="tok-code">(1—N)</span>، أو مدرّس يدرّس عدّة مواد والمادة يدرّسها عدّة مدرّسين <span
+                  class="tok-code">(N:M)</span>.</p>
+            </article>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-lightbulb" style="color:var(--accent-state)"></span>
+              <strong>ترسم البيانات قبل البناء لأنه يكشف لك ايش تحتاج تخزّنه وكيف يترابط</strong> — فيصير بناء
+              قاعدة بياناتك والكود أوضح وأقلّ أخطاء.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">5</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 6 — القسم 13: مهامّ هذا القسم ═════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-anchor="s13-tasks">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">13</span> نموذج البيانات</span>
+          <h2 class="sag-slide__title">ثلاث مهامّ متتابعة — ودورك في كل واحدة</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="3">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">13.1</span>
+                <h3 class="card__title card__title--sm">نموذج بياناتك الكامل</h3>
+              </div>
+              <p class="card__note card__note--sm"><strong>Claude</strong> يستخرج كياناتك من أدوارك ومتطلّباتك
+                ورحلتك وشاشاتك، ثم يكملها فورًا بمفاتيح التعريف<button class="qmark" type="button"
+                  data-term="keyid" aria-label="شرح: مفتاح التعريف">؟</button> وجداول الربط؛ ودورك تغلق كل فجوة
+                بجوابك وقت ما تظهر.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
+                <h3 class="card__title card__title--sm">13.2 · مراجعة نموذج البيانات</h3>
+              </div>
+              <p class="card__note card__note--sm">نموذج بياناتك الكامل جاهز؛ <strong>دورك</strong> تراجعه بثلاث
+                مرّات محدّدة، ثم تقول أي بيانات بقيت في ذهنك فقط.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-layers"></span></span>
+                <h3 class="card__title card__title--sm">13.3 · الرسم ومراجعته</h3>
+              </div>
+              <p class="card__note card__note--sm">مهارة <strong>draw.io</strong> ترسمه كاملًا من البداية؛ ودورك
+                تتأكّد أن حقول كل كيان ظاهرة، ثم تطابقه بنموذج بياناتك.</p>
+            </article>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
+              <strong>وليش ثلاث مهامّ لا مهمّة واحدة؟</strong> لكلٍّ منها مُخرَج يُراجَع وحده: 13.1 مُخرَج
+              Claude الكامل، 13.2 مراجعتك له، 13.3 مطابقة المخطّط واكتماله.</p>
+          </div>
+          <template class="terms" data-title="مصطلحات هذه الشريحة">
+            <div data-term="keyid" data-title="مفتاح التعريف">رقم يميّز كل صفّ في جدولك عن بقيّة الصفوف — زي رقم
+              تعريف المستخدم، يفرّقه عن بقية المستخدمين حتى لو تشابهت أسماؤهم. <strong>Claude</strong> يضيفه
+              تلقائيًّا لكل كيان.
+              <br>وهذا غير مفتاح <span class="tok-lat">API</span> اللي أخذته في اليوم الأول: ذاك كلمة سرّ لخدمة
+              خارجية، وهذا رقم يميّز صفوف جدولك فقط.
+            </div>
+          </template>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">6</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 7 — المهمة 13.1: من الكيان إلى النموذج الكامل ═══════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-anchor="task-131">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">13.1</span> نموذج بياناتك الكامل</span>
+          <h2 class="sag-slide__title">كياناتك تُستخرج، ثم نموذج بياناتك يُكمَّل فورًا — في نفس العمل</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body" style="gap:var(--sp-2)">
+          <p class="sag-slide__lead sag-slide__lead--wide"><strong>Claude</strong> يستخرج كيانات بياناتك من أدوارك
+            (القسم 2 في <span class="tok-code">PRODUCT.md</span>) ومتطلّباتك (القسم 3) ورحلتك (القسم 4) وشاشاتك
+            (القسم 5)، ثم يكمل نموذج البيانات عليها مباشرة — بلا طلب ثانٍ منك.</p>
+          <div class="bento" data-cols="2">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
+                <h3 class="card__title card__title--sm">لكل كيان يستخرج</h3>
+              </div>
+              <ol class="flow flow--tight">
+                <li><strong>اسمه</strong></li>
+                <li><strong>ما يُحفظ عنه</strong> — بلغة عادية</li>
+                <li><strong>روابطه</strong> بكيانات أخرى</li>
+                <li><strong>أصله</strong> — دور أو متطلّب أو خطوة رحلة أو قسم شاشة</li>
+              </ol>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-wrench"></span></span>
+                <h3 class="card__title card__title--sm">ثم يكمله فورًا — بلا طلب ثانٍ</h3>
+              </div>
+              <ol class="flow flow--tight">
+                <li><strong>مفتاح تعريف</strong> لكل كيان</li>
+                <li><strong>نوع كل علاقة</strong> — <span class="tok-code">1—N</span> أو <span
+                    class="tok-code">1—1</span> أو <span class="tok-code">N:M</span></li>
+                <li><strong>جدول ربط</strong> عند الحاجة</li>
+                <li><strong>جملة شرح</strong> لكل كيان</li>
+              </ol>
+            </article>
+          </div>
+          <div class="card card--state">
+            <p class="card__note card__note--sm"><span class="i i-alert-triangle"
+                style="color:var(--accent-state)"></span>
+              <strong>ومع كل فجوة — سؤال فوري، لا قائمة تُترك.</strong> أي بيانات مذكورة بلا كيان واضح يسألك Claude
+              عنها مباشرة في نفس الردّ، بخيارات مقترحة لحلّها، فتجاوبه وقتها. الاستخراج يبقى محدودًا بما كتبته أنت
+              في أدوارك ومتطلّباتك ورحلتك وشاشاتك — فلو ما ظهر أي سؤال فجوة أبدًا، هذا يستحقّ تدقيقًا منك لا
+              اطمئنانًا.</p>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note card__note--sm"><span class="i i-database" style="color:var(--accent-structure)"></span>
+              <strong>مثال من بناء حقيقي — كيان «ملف المدرّس» في درّسني:</strong></p>
+            <div class="bento" data-cols="2" style="gap:var(--sp-3)">
+              <div>
+                <p class="card__note card__note--sm"><strong>يستخرجه:</strong> اسمه «ملف المدرّس»، وما يُحفظ عنه
+                  نبذة المدرّس وسعر ساعته، وروابطه مع كيان المستخدم، وأصله متطلّبات سعر الساعة والتصفية بالسعر
+                  وشاشة ملف المدرّس.</p>
+              </div>
+              <div>
+                <p class="card__note card__note--sm"><strong>يكمله فورًا:</strong> مفتاح تعريف خاصّ به، وعلاقته
+                  بالمستخدم <span class="tok-code">1—1</span> فبلا جدول ربط، وجملة شرح: «البيانات التي يعرضها
+                  المدرّس للطلاب ليقرّروا الحجز عنده».</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">7</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 8 — المهمة 13.1: أنواع العلاقات وجداول الربط، ثم الصياغة الكاملة ═══════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-anchor="task-131-model">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">13.1</span> نموذج بياناتك الكامل</span>
+          <h2 class="sag-slide__title">أنواع العلاقات وجداول الربط — ومثال من بناء حقيقي</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body" style="gap:var(--sp-2)">
+          <div class="bento" data-cols="2">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-git-branch"></span></span>
+                <h3 class="card__title card__title--sm">أنواع العلاقات، بمثال</h3>
+              </div>
+              <p class="card__note card__note--sm">مدرّس واحد له عدّة مواعيد <span class="tok-code">(1—N)</span>،
+                ومدرّس يدرّس عدّة مواد والمادة يدرّسها عدّة مدرّسين <span class="tok-code">(N:M)</span>.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-layers"></span></span>
+                <h3 class="card__title card__title--sm">جدول الربط — لمّا تحتاجه علاقة كثير لكثير</h3>
+              </div>
+              <p class="card__note card__note--sm">جدول يضيفه Claude تلقائيًّا لربط كيانين، ويشرح سببه بجملة — لا
+                يُمرَّر صامتًا.</p>
+            </article>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note card__note--sm"><strong>في بناء حقيقي:</strong> خرج نموذج بيانات بثمانية كيانات — المستخدمون
+              (بحقل دور)، الخدمات، ربط المستخدم بالخدمات (جدول ربط <span class="tok-code">N:M</span>)، أوقات
+              التوفّر، الحجوزات، وغيرها. جدول الربط لم يطلبه أحد — أضافه Claude لأن العلاقة كثير لكثير احتاجته
+              تقنيًّا.</p>
+          </div>
+          <div class="promptbox">
+            <button class="promptbox__copy" type="button" aria-label="نسخ صياغة النموذج الكامل"
+              data-copy="استخرج كيانات بيانات مشروعي من أدواري (القسم 2 في PRODUCT.md) ومتطلّباتي (القسم 3 في PRODUCT.md) ورحلتي (القسم 4 في PRODUCT.md) وشاشاتي (القسم 5 في PRODUCT.md) — لكل كيان اسمه وما يُحفظ عنه وروابطه وأصله. اعرض لي أصل كل كيان، واسألني فورًا عن كل بيانات مذكورة بلا كيان واضح بسؤال مباشر وخيارات مقترحة لحلّه. بعد إغلاق كل فجوة، أكمل النموذج في نفس الردّ: أضِف مفتاح تعريف لكل كيان وجداول الربط اللازمة، وحدّد نوع كل علاقة (1—N أو 1—1 أو N:M)، واشرح لي كل كيان بجملة واحدة. ثم اكتب النموذج الكامل في PRODUCT.md القسم 6."><span
+                class="i i-copy"></span></button>
+            <p class="card__note card__note--sm"><strong>الصياغة اللي تعطيها لـ Claude لتبدأ المهمّة كاملةً:</strong>
+            </p>
+            <p class="card__note card__note--sm">«استخرج كيانات بيانات مشروعي من أدواري (القسم 2 في
+              <span class="tok-code">PRODUCT.md</span>) ومتطلّباتي (القسم 3 في
+              <span class="tok-code">PRODUCT.md</span>) ورحلتي (القسم 4 في <span class="tok-code">PRODUCT.md</span>)
+              وشاشاتي (القسم 5 في <span class="tok-code">PRODUCT.md</span>) — لكل كيان اسمه وما يُحفظ عنه وروابطه
+              وأصله. اعرض لي أصل كل كيان، واسألني فورًا عن كل بيانات مذكورة بلا كيان واضح بسؤال مباشر وخيارات
+              مقترحة لحلّه. بعد إغلاق كل فجوة، أكمل النموذج في نفس الردّ: أضِف مفتاح تعريف لكل كيان وجداول الربط
+              اللازمة، وحدّد نوع كل علاقة (<span class="tok-code">1—N</span> أو <span class="tok-code">1—1</span> أو
+              <span class="tok-code">N:M</span>)، واشرح لي كل كيان بجملة واحدة. ثم اكتب النموذج الكامل في <span
+                class="tok-code">PRODUCT.md</span> القسم 6.»</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">8</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 9 — المهمة 13.2: ثلاث مراجعات ══════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-anchor="task-132">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">13.2</span> مراجعة نموذج البيانات</span>
+          <h2 class="sag-slide__title">نموذج بياناتك الكامل جاهز — تراجعه بثلاث مرّات بهذا الترتيب بالضبط</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <p class="sag-slide__lead sag-slide__lead--wide"><strong>Claude</strong> أنتج نموذج بياناتك الكامل وكتبه في
+            <span class="tok-code">PRODUCT.md</span> القسم 6 — بكياناته ومفاتيحه وعلاقاته. دورك الآن تراجعه بثلاث
+            مرّات؛ ثم في الشريحة التالية دورك الصريح: الفجوة الأخيرة.</p>
+          <div class="bento" data-cols="3">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">1</span>
+                <h3 class="card__title card__title--sm">متطلّباتك ← الكيانات</h3>
+              </div>
+              <p class="card__note card__note--sm">هل كل متطلّب في قسمك العاشر يذكر بيانات وجد لها كيانًا؟</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">2</span>
+                <h3 class="card__title card__title--sm">رحلتك وشاشاتك ← الكيانات</h3>
+              </div>
+              <p class="card__note card__note--sm">هل كل خطوة أو قسم شاشة يعرض بيانات وجد كيانه؟</p>
+            </article>
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__num">3</span>
+                <h3 class="card__title card__title--sm">الكيانات ← أصلها</h3>
+              </div>
+              <p class="card__note card__note--sm">لكل كيان، تتبّع المصدر الذي ذكره Claude — هل يستلزمه فعلًا؟ لا
+                تثق بالمذكور صامتًا.</p>
+            </article>
+          </div>
+          <div class="card card--state">
+            <p class="card__note card__note--sm"><span class="i i-shield-check"
+                style="color:var(--accent-state)"></span>
+              <strong>مثلًا:</strong> ذكر Claude أن كيانًا اسمه «الدفعة» أصله متطلّب دفع إلكتروني — تحقّق: هل
+              متطلّباتك فعلًا تنصّ عليه، أم هو خارج نطاق مشروعك؟</p>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-lightbulb" style="color:var(--accent-state)"></span>
+              <strong>المرّتان الأولى والثانية يُفترض أن تعودا نظيفتين.</strong> إن أجبتَ عن كل سؤال فجوة فورًا وقت
+              ما طرحه Claude، فلن يبقى منها شيء هنا؛ إن وجدتَ فجوة، فهذا يستحقّ شكًّا لا اطمئنانًا.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">9</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 10 — المهمة 13.2: الفجوة الأخيرة ═══════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-anchor="task-132-gap">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">13.2</span> جزء منك أنت وحدك</span>
+          <h2 class="sag-slide__title">الفجوة الأخيرة — أهمّ سؤال في هذه المهمّة</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body" style="gap:var(--sp-2)">
+          <p class="sag-slide__lead sag-slide__lead--wide">مراجعة عمل Claude مهمّة، لكنها ليست أعلى قيمة ممكنة هنا
+            — الأعلى أن تلاحظ أنت <strong>بيانات لا تزال في ذهنك فقط</strong>، وتقولها قبل أي جدول حقيقي.</p>
+          <div class="card card--accent">
+            <p class="card__note"><span class="i i-list-checks" style="color:var(--accent-structure)"></span>
+              <strong>وأنت تنظر لقائمة كياناتك، اسأل نفسك:</strong> هل فيه بيانات كنت تتخيّلها ولم تظهر في أدوارك
+              ولا متطلّباتك ولا رحلتك ولا شاشاتك؟ <strong>قلها الآن</strong> — هذه آخر لحظة تتذكّر فيها بيانات
+              مشروعك كاملةً قبل أن يُنشأ أي جدول حقيقي.</p>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note card__note--sm"><strong>مثلًا:</strong> لو كنت تبني تطبيق مخزون، وتذكّرت أثناء
+              المراجعة أنك تتخيّل حفظ «تاريخ آخر مرّة رُوجعت فيها الكمّية» لكل منتج، ولم يكن هذا في متطلّباتك ولا
+              رحلتك — هذا بالضبط الوقت المناسب لقوله.</p>
+          </div>
+          <div class="card" style="border-inline-start:5px solid var(--state-warning)">
+            <p class="card__note card__note--sm"><span class="i i-alert-triangle"
+                style="color:var(--state-warning)"></span>
+              <strong>أي بيانات ناقصة تُضاف بطريقتين، وكل واحدة أصلها مختلف.</strong> <strong>حقل داخل كيان موجود
+              أصلًا</strong> — أضِفه إليه مباشرة. <strong>كيان جديد كامل</strong> — يحتاج أصلًا كبقيّة الكيانات:
+              ربطه بمتطلّب، وإن لم يوجد متطلّب يبرّره بعد، أضِف واحدًا الآن بدل أن تُسقط الكيان.</p>
+          </div>
+          <div class="promptbox">
+            <button class="promptbox__copy" type="button" aria-label="نسخ صياغة الإضافة"
+              data-copy="فكّرت في [بيانات] ما ذكرتها قبل — تخدم [الدور/المتطلّب]، وإن ما كان فيه متطلّب يبرّرها فأضِف واحدًا لها."><span
+                class="i i-copy"></span></button>
+            <p class="card__note card__note--sm"><strong>الصياغة اللي تعطيها لما تتذكّر بيانات ناقصة:</strong></p>
+            <p class="card__note card__note--sm">«فكّرت في [بيانات] ما ذكرتها قبل — تخدم [الدور/المتطلّب]، وإن ما
+              كان فيه متطلّب يبرّرها فأضِف واحدًا لها.»</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">10</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 11 — المهمة 13.3: الرسم ومراجعته ══════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-anchor="task-133">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">13.3</span> رسم الـERD ومراجعته</span>
+          <h2 class="sag-slide__title">مخطّط كامل الحقول، مرتّب بلا تداخل بين الصناديق</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body" style="gap:var(--sp-2)">
+          <p class="sag-slide__lead sag-slide__lead--wide">تستدعي مهارة <strong>draw.io</strong> لترسم مخطّط
+            <strong>ERD</strong><button class="qmark" type="button" data-term="erd" aria-label="شرح: ERD">؟</button>:
+            صندوق لكل كيان، حقوله ظاهرة بداخله من البداية، وعلاقات موصولة بأنواعها — بلا تداخل بين الصناديق.</p>
+          <div class="bento" data-cols="2">
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-alert-triangle"></span></span>
+                <h3 class="card__title card__title--sm">تحقّق أن حقول كل كيان ظاهرة فعلًا</h3>
+              </div>
+              <p class="card__note card__note--sm">في بناء حقيقي خرجت بعض صناديق الكيانات فارغة تمامًا رغم أن
+                المخطّط بدا سليمًا من بعيد — الصناديق في أماكنها والأسهم صحيحة، لكن محتواها كان مفقودًا. انظر داخل
+                كل كيان، لا الشكل العام فقط.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-info"></span></span>
+                <h3 class="card__title card__title--sm">ما عندك برنامج draw.io؟</h3>
+              </div>
+              <p class="card__note card__note--sm">الملف يُفتح بلا أي تثبيت على <a class="tok-code tok-link"
+                  href="https://app.diagrams.net" target="_blank" rel="noopener">app.diagrams.net</a> — اختر File
+                ← Open From ← Device ← اختار ملف .drawio الي ساواه claude.</p>
+            </article>
+          </div>
+          <div class="card" style="border-inline-start:5px solid var(--accent-structure)">
+            <p class="card__note card__note--sm"><span class="i i-rocket" style="color:var(--accent-structure)"></span>
+              <strong>وبعد إنشاء جداولك في المهمة 14.2</strong> — بعد قليل اليوم — اطلب من Claude مقارنة هذا المخطّط
+              بالجداول الفعلية، وتحديث الفرق فقط إن وُجد — لا إعادة رسمه كاملًا فتخسر ترتيبك له. مخطّط لا يطابق
+              الواقع أسوأ من عدمه.</p>
+          </div>
+          <div class="promptbox">
+            <button class="promptbox__copy" type="button" aria-label="نسخ صياغة الرسم"
+              data-copy="ارسم نموذج البيانات الذي اتّفقنا عليه على شكل ERD عبر مهارة draw.io: صندوق لكل كيان بحقوله مكتوبةً داخله من البداية، بلا تداخل بين الصناديق، وعلاقات موصولة بأنواعها. ثم اعرضه عليّ."><span
+                class="i i-copy"></span></button>
+            <p class="card__note card__note--sm"><strong>الصياغة اللي تعطيها لـ Claude:</strong></p>
+            <p class="card__note card__note--sm">«ارسم نموذج البيانات الذي اتّفقنا عليه على شكل <span
+                class="tok-code">ERD</span> عبر مهارة draw.io: صندوق لكل كيان بحقوله مكتوبةً داخله من البداية، بلا
+              تداخل بين الصناديق، وعلاقات موصولة بأنواعها. ثم اعرضه عليّ.»</p>
+          </div>
+          <template class="terms" data-title="مصطلحات هذه الشريحة">
+            <div data-term="erd" data-title="ERD">اختصار <span class="tok-lat">Entity-Relationship
+                Diagram</span>، ومعناه <strong>«مخطّط الكيانات والعلاقات»</strong> — رسمة توضّح كل كيان في بياناتك
+              (صندوق بحقوله داخله) وكيف يرتبط بالكيانات الأخرى، في صورة واحدة.</div>
+          </template>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">11</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 12 — المقطع: 13.1 + 13.2 + 13.3 ═══════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide" data-anchor="demo-13">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">من نموذج البيانات الكامل إلى المخطط — المقطع كامل</h2>
+          <span class="sag-badge"><span class="sag-badge__num">13.1 + 13.2 + 13.3</span> من نموذج البيانات الكامل
+            إلى المخطط</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="stepvid">
+            <div class="stepvid__video">
+              <video class="stepvid__player" controls preload="metadata" src="media/tasks_13.mp4"></video>
+            </div>
+            <div class="stepvid__steps">
+              <ol class="stepvid__list">
+                <li class="stepvid__divider">13.1 — نموذج البيانات الكامل</li>
+                <li class="stepvid__step" data-t="0">
+                  <button class="stepvid__time" type="button">0:00</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">Claude يستخرج كيانات بياناته من أدواره ومتطلّباته ورحلته وشاشاته</h4>
+                    <p class="stepvid__p">ويعرضها بأصلها صراحةً، زائد قائمة فجوات.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="18">
+                  <button class="stepvid__time" type="button">0:18</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يسأله Claude فورًا عن كل فجوة بخيارات مقترحة</h4>
+                    <p class="stepvid__p">فيجاوبه وقتها، لا يتركها قائمة لمراجعة لاحقة.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="27">
+                  <button class="stepvid__time" type="button">0:27</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">فور إغلاق الفجوات، يكمل Claude نموذج البيانات في نفس العمل</h4>
+                    <p class="stepvid__p">مفتاح تعريف لكل كيان، وأنواع العلاقات، وجداول الربط، وشرح كل كيان بجملة.</p>
+                  </div>
+                </li>
+                <li class="stepvid__divider">13.2 — مراجعة نموذج البيانات</li>
+                <li class="stepvid__step" data-t="81">
+                  <button class="stepvid__time" type="button">1:21</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يراجع نموذج البيانات بثلاث مرّات، ثم يسأل نفسه عن الفجوة الأخيرة</h4>
+                    <p class="stepvid__p">ويقول أي بيانات ما زالت في ذهنه فقط.</p>
+                  </div>
+                </li>
+                <li class="stepvid__divider">13.3 — الرسم ومراجعته</li>
+                <li class="stepvid__step" data-t="106">
+                  <button class="stepvid__time" type="button">1:46</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يرسم Claude مخطّط ERD عبر مهارة draw.io</h4>
+                    <p class="stepvid__p">صندوق لكل كيان بحقوله داخله من البداية، بلا تداخل بينها.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="146">
+                  <button class="stepvid__time" type="button">2:26</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يتأكّد أن حقول كل كيان ظاهرة، ويطابقها بنموذج البيانات المعتمد</h4>
+                    <p class="stepvid__p">ليتأكّد أنه كامل ومطابق، لا سليم الشكل فقط.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="178">
+                  <button class="stepvid__time" type="button">2:58</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يرتّب Claude المخطّط ليخرج نظيفًا وسهل القراءة</h4>
+                    <p class="stepvid__p">يتفحّص كل صندوق وكل خطّ، ويضبط مكانه حتى يخلو المخطّط من أي ازدحام أو تقاطع.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">12</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 13 — القسم 14: تبني بمراحل صغيرة ══════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-anchor="s14-concept">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">14</span> التنفيذ</span>
+          <h2 class="sag-slide__title">تبني بمراحل صغيرة، وتراجع بالتجربة لا بقراءة الكود</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="2">
+            <article class="card card--accent">
+              <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
+                <h3 class="card__title card__title--sm">مراحل صغيرة متتابعة</h3>
+              </div>
+              <p class="card__note card__note--sm">كل مرحلة تُبنى وتُختبر وتُحفظ قبل الانتقال للتي بعدها — وهذي
+                المراحل هي مهامّ هذا القسم السبع، بعد قليل.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-circle-check"></span></span>
+                <h3 class="card__title card__title--sm">مراجعتك = تجربة المنتج</h3>
+              </div>
+              <p class="card__note card__note--sm">لست مطالبًا تقرأ سطر كود واحد — تحكم على النتيجة من خلال
+                استخدامها في الواجهة.</p>
+            </article>
+            <article class="card">
+              <div class="card__top"><span class="card__icon"><span class="i i-wrench"></span></span>
+                <h3 class="card__title card__title--sm">Claude يهيّئ المشروع نفسه</h3>
+              </div>
+              <p class="card__note card__note--sm">الهيكل، والربط بقاعدة البيانات، ومكوّنات التصميم — وما يلزمك أنت
+                حساباتك ومفاتيحك فقط.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-book-open"></span></span>
+                <h3 class="card__title card__title--sm">Claude يستخدم context7</h3>
+              </div>
+              <p class="card__note card__note--sm">يجلب توثيق المكتبات المحدّث تلقائيًّا أثناء البناء، بلا أي شيء
+                منك.</p>
+            </article>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-lightbulb" style="color:var(--accent-state)"></span>
+              <strong>ليش على مراحل؟</strong> لأن بناء كل شيء مرّة واحدة يصعب اختباره وإصلاحه — المراحل الصغيرة
+              تُبقيك مسيطرًا وتضمن أن كل جزء يعمل قبل أن تبني فوقه.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">13</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 14 — القسم 14: دورة العمل الواحدة ═════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-anchor="s14-cycle">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">14</span> التنفيذ</span>
+          <h2 class="sag-slide__title">دورة العمل الواحدة — تتكرّر في كل مهمّة بعدها</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body" style="gap:var(--sp-2)">
+          <article class="card card--accent">
+            <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
+              <h3 class="card__title card__title--sm">لكل وظيفة، نفس الخمس خطوات</h3>
+            </div>
+            <ol class="flow flow--tight">
+              <li><strong>اسحب قطعة التصميم</strong> من نظام تصميمك عبر <span class="tok-code">/design-sync</span>.</li>
+              <li><strong>يبنيها Claude كاملةً</strong> — من الواجهة إلى الخادم، موصولةً بقاعدة البيانات.</li>
+              <li><strong>يختبرها Claude</strong> — حالات اختبار آليّة، وفي المتصفّح عبر chrome-devtools.</li>
+              <li><strong>تجرّبها أنت في الواجهة</strong> وتطلب أي تعديل.</li>
+              <li><strong>تحفظ</strong> (commit &amp; push).</li>
+            </ol>
+            <p class="card__note card__note--sm"><strong>متى تحفظ؟</strong> مرّتان على الأقل: عند إتمام كل وظيفة،
+              وفي نهاية كل يوم.</p>
+          </article>
+          <div class="card card--state">
+            <p class="card__note card__note--sm"><span class="i i-shield-check"
+                style="color:var(--accent-state)"></span>
+              <strong>كيف تراجع نتيجة أي مهمّة:</strong> يختبر Claude تلقائيًّا ويبلّغك بالنتيجة، تجرّب أنت الوظيفة
+              وتجرّب حالة خاطئة أيضًا (مدخل غلط، أو وصول بلا صلاحية)، وعند أي ملاحظة تُخبر Claude ليصلحها ويعيد
+              الاختبار.</p>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
+              <strong>قبل كل مهمّة:</strong> اطلب من Claude أن يدخل وضع الخطة (plan mode) — يعرض ملخّصًا بسيطًا بلا
+              مصطلحات لما سيبنيه، فتوافق قبل التنفيذ.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">14</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 15 — القسم 14: المهامّ السبع ═══════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-anchor="s14-tasks">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">14</span> التنفيذ</span>
+          <h2 class="sag-slide__title">سبع مهامّ متتابعة — وين تقف أنت اليوم</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <article class="card card--accent">
+            <div class="card__top"><span class="card__icon"><span class="i i-list-checks"></span></span>
+              <h3 class="card__title card__title--sm">ترتيب ثابت — كل مهمّة تعتمد على التي قبلها</h3>
+            </div>
+            <ol class="flow flow--tight">
+              <li><strong>14.1 التهيئة والهيكل</strong> — تطبيقك يعمل، تسجيل الدخول جاهز <span
+                  class="tok-code">(اليوم 1 ✔)</span></li>
+              <li><strong>14.2 نموذج البيانات</strong> — جداولك تُنشأ مطابقة لنموذجك <span
+                  class="tok-code">(اليوم 6 ← أنت هنا)</span></li>
+              <li><strong>14.3 الأدوار والصلاحيات</strong> — كل صفحة وإجراء مقيّد بحسب الدور <span
+                  class="tok-code">(اليوم 7)</span></li>
+              <li><strong>14.4 تصفّح المحتوى والصفحة الرئيسية</strong> <span class="tok-code">(اليوم 7)</span></li>
+              <li><strong>14.5 الوظيفة الأساسية للمنتج</strong> — رحلتك من طرفها إلى طرفها <span
+                  class="tok-code">(اليوم 8)</span></li>
+              <li><strong>14.6 لوحة التحكم والإدارة</strong> <span class="tok-code">(اليوم 9)</span></li>
+              <li><strong>14.7 الربط بخدمة خارجية</strong> (مشروطة) <span class="tok-code">(اليوم 9)</span></li>
+            </ol>
+          </article>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-lightbulb" style="color:var(--accent-state)"></span>
+              <strong>الترتيب ليس اقتراحًا.</strong> لا تبدأ 14.3 قبل أن تعمل 14.2 — وأنت اليوم عند 14.2 بالضبط.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">15</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 16 — المهمة 14.2: إنشاء جداولك ═════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-anchor="task-142">
+        <div class="sag-slide__head">
+          <span class="sag-badge"><span class="sag-badge__num">14.2</span> نموذج البيانات</span>
+          <h2 class="sag-slide__title">جداولك الحقيقية تُنشأ الآن — نفس نموذج البيانات اللي رسمته</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body" style="gap:var(--sp-2)">
+          <p class="sag-slide__lead sag-slide__lead--wide">اطلب من <strong>Claude</strong> إنشاء الجداول مطابقةً
+            لنموذج البيانات اللي أعددته في القسم 13، عبر <strong>Supabase MCP</strong> المربوط من اليوم الأول.</p>
+          <div class="card card--plain">
+            <p class="card__note card__note--sm"><span class="i i-wrench" style="color:var(--accent-structure)"></span>
+              <strong>من الآن تبدأ تجرّب فعليًّا في المتصفّح:</strong> أداة chrome-devtools مربوطة من اليوم الأول،
+              لكن هذي أوّل مهمّة تستخدمها فيها Claude لاختبار تطبيقك حيًّا.</p>
+          </div>
+          <div class="card card--state">
+            <p class="card__note card__note--sm"><span class="i i-alert-triangle"
+                style="color:var(--accent-state)"></span>
+              <strong>«لم يظهر خطأ» لا تعني «نجح».</strong> في بناء حقيقي، أداة تهيئة الجداول لم تكن تعمل إطلاقًا —
+              دون أي رسالة خطأ. بقيت قاعدة البيانات فارغة، ولم يُكتشف ذلك إلا بالنظر فيها فعليًّا.</p>
+          </div>
+          <div class="card" style="border-inline-start:5px solid var(--accent-structure)">
+            <p class="card__note card__note--sm"><span class="i i-rocket" style="color:var(--accent-structure)"></span>
+              <strong>بعد إنشاء جداولك،</strong> اطلب من Claude مقارنة الجداول الفعلية بمخطّطك من المهمة 13.3،
+              وتحديث الفرق فقط إن وُجد — لا إعادة رسمه كاملًا من الصفر.</p>
+          </div>
+          <div class="promptbox">
+            <button class="promptbox__copy" type="button" aria-label="نسخ صياغة إنشاء الجداول"
+              data-copy="طبق مهمة 14.2 وأنشئ جداول قاعدة بياناتي مطابقةً لنموذج البيانات الذي اتفقنا عليه. بعد الإنشاء، تحقّق فعليًّا أن الجداول موجودة وأخبرني بأسمائها. وأعطيني رابط supabase لرؤية جميع جداول البيانات المنشأة مع الخطوات أذا يحتاج. ثم قارن هذه الجداول الفعلية بمخطّط الـERD الذي رسمته في المهمة 13.3 — إن وجدت فرقًا بينهما حدّثه في المخطّط فقط، وإن لم يوجد فرق فلا تلمس المخطّط ولا تعيد رسمه."><span
+                class="i i-copy"></span></button>
+            <p class="card__note card__note--sm"><strong>الصياغة اللي تعطيها لـ Claude Code:</strong></p>
+            <p class="card__note card__note--sm">«طبق مهمة 14.2 وأنشئ جداول قاعدة بياناتي مطابقةً لنموذج البيانات الذي اتفقنا عليه.
+              بعد الإنشاء، تحقّق فعليًّا أن الجداول موجودة وأخبرني بأسمائها. وأعطيني رابط supabase لرؤية جميع جداول البيانات المنشأة مع الخطوات أذا يحتاج.
+              ثم قارن هذه الجداول الفعلية بمخطّط الـ<span class="tok-code">ERD</span> الذي رسمته في المهمة 13.3 — إن وجدت فرقًا بينهما حدّثه في
+              المخطّط فقط، وإن لم يوجد فرق فلا تلمس المخطّط ولا تعيد رسمه.»</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">16</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 17 — المقطع: 14.2 ══════════════════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-media deck-slide" data-anchor="demo-142">
+        <div class="sag-slide__head sag-media__head">
+          <h2 class="sag-slide__title">إنشاء الجداول الحقيقية — المقطع كامل</h2>
+          <span class="sag-badge"><span class="sag-badge__num">14.2</span> إنشاء الجداول</span>
+        </div>
+        <div class="sag-slide__body">
+          <div class="stepvid">
+            <div class="stepvid__video">
+              <video class="stepvid__player" controls preload="metadata" src="media/task_14.2.mp4"></video>
+            </div>
+            <div class="stepvid__steps">
+              <ol class="stepvid__list">
+                <li class="stepvid__divider">14.2 — إنشاء الجداول</li>
+                <li class="stepvid__step" data-t="0">
+                  <button class="stepvid__time" type="button">0:00</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يطلب من Claude إنشاء الجداول مطابقةً لنموذج البيانات</h4>
+                    <p class="stepvid__p">عبر Supabase MCP، والتحقّق الفعلي من وجودها، ورابط لوحة Supabase لرؤيتها.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="55">
+                  <button class="stepvid__time" type="button">0:55</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يكتشف Claude أن اتصال Supabase يحتاج تجديدًا، ويكتب خطّة جاهزة فورًا</h4>
+                    <p class="stepvid__p">بدل أن يتوقّف أو يدّعي نجاحًا، يشرح العائق ويجهّز التنفيذ كاملًا فور إعادة الاتصال.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="65">
+                  <button class="stepvid__time" type="button">1:05</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يعيد المتدرّب الاتصال بخطوة واحدة بسيطة</h4>
+                    <p class="stepvid__p">أمر <span class="tok-code">/mcp</span> في Claude Code، ثم «إعادة الاتصال» — بلا نسخ أي مفتاح.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="110">
+                  <button class="stepvid__time" type="button">1:50</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">بعد تأكيد الاتصال، يفحص Claude الجداول الحالية أوّلًا قبل أي تعديل</h4>
+                    <p class="stepvid__p">لا ينفّذ مباشرة؛ يتأكّد من الحالة الفعلية قبل أن يغيّر شيئًا.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="130">
+                  <button class="stepvid__time" type="button">2:10</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">ينشئ Claude الجداول السبعة فعليًّا، ويحفظ ويرفع (commit &amp; push)</h4>
+                    <p class="stepvid__p">بعد التأكّد من نجاح الإنشاء فعلًا، لا افتراضه.</p>
+                  </div>
+                </li>
+                <li class="stepvid__step" data-t="140">
+                  <button class="stepvid__time" type="button">2:20</button>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يتحقّق المتدرّب من الجداول الحقيقية في لوحة Supabase، جدولًا جدولًا</h4>
+                    <p class="stepvid__p">كلّها هناك بأسمائها وحقولها — لا رسالة «تمّ» وحدها.</p>
+                  </div>
+                </li>
+                <li class="stepvid__divider">مقارنة المخطّط بالجداول الفعلية</li>
+                <li class="stepvid__step stepvid__step--new">
+                  <span class="stepvid__mark">مضافة</span>
+                  <div class="stepvid__body">
+                    <h4 class="stepvid__h">يطلب من Claude مقارنة الجداول الفعلية بمخطّطه، وتحديث الفرق فقط إن وُجد</h4>
+                    <p class="stepvid__p">لا إعادة رسمه كاملًا من الصفر — فهذا يفقد الترتيب الذي أنجزه قبل قليل في المهمة 13.3.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">17</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 18 — فاصل: عملك على مشروعك ═══════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-quote deck-slide" data-tone="rule" data-surface="dark">
+        <div class="sag-quote__inner">
+          <div class="sag-quote__mark"></div>
+          <p class="sag-quote__text">من هنا نبدأ: عملك على مشروعك</p>
+          <p class="sag-quote__attr">من هذي الجلسة تراجع نموذجك وترسمه، ثم تُنشئ جداولك الحقيقية. علّم على
+            المهامّ اللي خلّصتها — أنت اللي تعلّم عليها بنفسك.</p>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <span class="sag-badge">عملك على مشروعك</span>
+            </div>
+            <span class="deck-foot__num">18</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 19 — دورك الآن ════════════════════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-anchor="your-turn">
+        <div class="sag-slide__head">
+          <span class="sag-badge">عملك على مشروعك</span>
+          <h2 class="sag-slide__title">دورك الآن — علّم على كل مهمّة أوّل ما تخلّصها</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="2">
+            <div class="sess">
+              <div class="sess__head"><span class="sess__name">راجع نموذج بياناتك وارسمه</span><span
+                  class="sess__d">38 د</span>
+              </div>
+              <div class="tasks tasks--tree">
+                <div class="task" data-task-key="d6-131" data-ref="s13-tasks"><span class="task__mark"><span
+                      class="i i-check"></span></span>
+                  <span class="task__t">13 · نموذج البيانات</span><span
+                    class="task__d">38 د</span>
+                </div>
+                <div class="task task--l2" data-task-key="d6-c131" data-parent="d6-131" data-ref="task-131-model"><span
+                    class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">13.1 · نموذج بياناتك الكامل</span>
+                </div>
+                <div class="task task--l2" data-task-key="d6-132a" data-parent="d6-131" data-ref="task-132"><span
+                    class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">13.2 · تراجعه بثلاث مرّات بهذا الترتيب بالضبط</span>
+                </div>
+                <div class="task task--l2" data-task-key="d6-132b" data-parent="d6-131" data-ref="task-132-gap"><span
+                    class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">13.2 · الفجوة الأخيرة</span>
+                </div>
+                <div class="task task--l2" data-task-key="d6-c133" data-parent="d6-131" data-ref="task-133"><span
+                    class="task__mark"><span class="i i-check"></span></span>
+                  <span class="task__t">13.3 · الرسم ومراجعته</span>
+                </div>
+              </div>
+              <p class="sess__note sess__note--foot"><strong>Ctrl + نقرة</strong> على أي مهمّة فوق تودّيك لشريحتها.</p>
+            </div>
+            <div class="sess">
+              <div class="sess__head"><span class="sess__name">أنشئ جداولك الحقيقية</span><span
+                  class="sess__d">46 د</span>
+              </div>
+              <div class="tasks tasks--tree">
+                <div class="task" data-task-key="d6-142" data-ref="task-142"><span class="task__mark"><span
+                      class="i i-check"></span></span>
+                  <span class="task__t">14.2 · أنشئ جداولك (يتفاوت)</span><span class="task__d">38 د</span>
+                </div>
+                <div class="task" data-task-key="d6-push" data-ref="your-turn"><span class="task__mark"><span
+                      class="i i-check"></span></span>
+                  <span class="task__t">تحفظ شغلك وترفعه</span><span class="task__d">8 د</span>
+                </div>
+              </div>
+              <p class="sess__note sess__note--foot">تعثّرت؟ ارفع يدك — المدرب يمرّ عليك.</p>
+            </div>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-file-text" style="color:var(--accent-structure)"></span>
+              <strong>الصياغات الجاهزة كاملة في شرائح المهامّ</strong> — اضغط <strong>Ctrl + نقرة</strong> على أي
+              مهمّة فوق وتودّيك لها.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+              <span class="deck-foot__num">اليوم 6</span>
+            </div><span class="deck-foot__num">19</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 20 — فاصل: مراجعة وعرض التقدم ═════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-quote deck-slide" data-tone="rule" data-surface="dark">
+        <div class="sag-quote__inner">
+          <div class="sag-quote__mark"></div>
+          <p class="sag-quote__text">من هنا نبدأ: مراجعة وعرض التقدم</p>
+          <p class="sag-quote__attr">نراجع مطابقة نموذجك ومخطّطك، ونتأكّد أن جداولك الحقيقية مُنشأة وتطبيقك يعمل.</p>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <span class="sag-badge">مراجعة وعرض التقدم</span>
+            </div>
+            <span class="deck-foot__num">20</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 21 — مراجعة اليوم ══════════════════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide deck-slide" data-anchor="day-review">
+        <div class="sag-slide__head">
+          <span class="sag-badge">مراجعة وعرض التقدم</span>
+          <h2 class="sag-slide__title">مخرَج اليوم — تحقّق من هذه الثلاثة</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="bento" data-cols="3">
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-database"></span></span>
+                <h3 class="card__title card__title--sm">كياناتك مطابقة ومكتملة</h3>
+              </div>
+              <p class="card__note card__note--sm">كل كيان بأصله الصحيح، ولا فجوة بلا إغلاق.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-layers"></span></span>
+                <h3 class="card__title card__title--sm">مخطّطك يطابق جداولك</h3>
+              </div>
+              <p class="card__note card__note--sm">أُعيد رسمه من الجداول الفعلية بعد إنشائها، لا من نموذج البيانات
+                المكتوب فقط.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-rocket"></span></span>
+                <h3 class="card__title card__title--sm">جداولك مُنشأة وتطبيقك يعمل</h3>
+              </div>
+              <p class="card__note card__note--sm">تأكّدتَ بنفسك من أسماء الجداول — لا بقول Claude «تمّ» فقط.</p>
+            </article>
+          </div>
+          <div class="card card--plain">
+            <p class="card__note"><span class="i i-lightbulb" style="color:var(--accent-state)"></span>
+              <strong>تذكّر من بناء حقيقي:</strong> أداة تهيئة الجداول توقّفت مرّة دون أي رسالة خطأ — واكتُشف ذلك
+              فقط بالنظر في قاعدة البيانات فعليًّا. «لم يظهر خطأ» لا تعني «نجح»، اليوم ولا في أي مهمّة بعده.</p>
+          </div>
+          <div class="sag-quote__inner" style="flex:0 0 auto;gap:var(--sp-2)">
+            <div class="sag-quote__mark" style="background:var(--accent-state)"></div>
+            <p class="sag-quote__text" style="font-size:40px">صار عندك نموذج بيانات كامل، وجداول حقيقية تطابقه.</p>
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+            </div><span class="deck-foot__num">21</span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- ═══ 22 — غدًا ══════════════════════════════════════════════════════════════════════════════════════ -->
+      <section class="sag-slide sag-closing deck-slide" data-surface="dark">
+        <div class="sag-slide__head">
+          <h2 class="sag-slide__title">غدًا — اليوم السابع</h2>
+          <div class="sag-slide__rule"></div>
+        </div>
+        <div class="sag-slide__body">
+          <div class="sag-closing__inner">
+            <div class="sag-closing__group">
+              <p class="sag-closing__label"><span class="i i-circle-check"></span> ايش خلّصت اليوم</p>
+              <div class="bento" data-cols="2">
+                <article class="card">
+                  <div class="card__top"><span class="card__icon"><span class="i i-database"></span></span>
+                    <h3 class="card__title card__title--sm">نموذج بيانات كامل</h3>
+                  </div>
+                  <p class="card__note card__note--sm">كيانات مستخرجة ومراجَعة، بمفاتيحها وعلاقاتها.</p>
+                </article>
+                <article class="card">
+                  <div class="card__top"><span class="card__icon"><span class="i i-layers"></span></span>
+                    <h3 class="card__title card__title--sm">مخطّط ERD يطابق الواقع</h3>
+                  </div>
+                  <p class="card__note card__note--sm">مرسوم من الجداول الفعلية، لا من نموذج البيانات المكتوب فقط.</p>
+                </article>
+                <article class="card">
+                  <div class="card__top"><span class="card__icon"><span class="i i-wrench"></span></span>
+                    <h3 class="card__title card__title--sm">جداولك الحقيقية جاهزة</h3>
+                  </div>
+                  <p class="card__note card__note--sm">مُنشأة في قاعدة بياناتك، وتطبيقك ما زال يعمل.</p>
+                </article>
+                <article class="card">
+                  <div class="card__top"><span class="card__icon"><span class="i i-git-branch"></span></span>
+                    <h3 class="card__title card__title--sm">شغلك مرفوع</h3>
+                  </div>
+                  <p class="card__note card__note--sm">محفوظ على <span class="tok-lat">GitHub</span> مرّتين اليوم.
+                  </p>
+                </article>
+              </div>
+            </div>
+            <div class="sag-closing__group">
+              <p class="sag-closing__label"><span class="i i-calendar"></span> ايش نعمل بكرة</p>
+              <div class="bento" data-cols="1">
+                <article class="card card--accent">
+                  <div class="card__top"><span class="card__num">14.3</span>
+                    <h3 class="card__title card__title--sm">الأدوار والصلاحيات</h3>
+                  </div>
+                  <p class="card__note card__note--sm">تقيّد كل صفحة وإجراء بحسب دور المستخدم، وتفرض القيد في الخادم
+                    لا الواجهة فقط — البيانات اللي جهّزتها اليوم تصير أساس الصلاحيات بكرة.</p>
+                </article>
+                <article class="card card--accent">
+                  <div class="card__top"><span class="card__num">14.4</span>
+                    <h3 class="card__title card__title--sm">تصفّح المحتوى والصفحة الرئيسية</h3>
+                  </div>
+                  <p class="card__note card__note--sm">صفحتك الرئيسية المؤقّتة تصير بتصميمها النهائي من القسم 12، ويقدر
+                    الزائر بلا حساب يتصفّح المحتوى العام.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="deck-logo" data-size="standard" style="align-self:center">
+            <img src="assets/brand/logo-sag-lab.png" alt="ساج لاب">
+          </div>
+        </div>
+        <footer class="sag-slide__foot">
+          <div class="deck-foot">
+            <div class="deck-foot__side">
+              <div class="deck-endorse" data-size="footnote"><img src="assets/brand/logo-sag-tech-horizontal.png"
+                  alt="ساج التقنية"></div>
+            </div>
+            <span class="deck-foot__num">22</span>
+          </div>
+        </footer>
+      </section>
+
+    </div><!-- /deck-scaler -->
+  </div><!-- /deck-stage -->
+
+  <div class="deck-hud">
+    <button data-act="prev" title="السابق">‹</button>
+    <span class="deck-hud__pos">1 / 22</span>
+    <button data-act="next" title="التالي">›</button>
+    <button data-act="full" title="ملء الشاشة">⛶</button>
+  </div>
+
+  <script src="assets/deck.js"></script>
+</body>
+
+</html>

@@ -112,7 +112,8 @@
 | `.claude/skills/user-journey` | رحلة المستخدم ومخطط النشاط (11) |
 | `.claude/skills/authoring-skills` | تأليف مهارة المتدرّب الخاصة، بمساعدة مهارة `skill-creator` (7.11) |
 | `.claude/skills/designing-screens` | تصميم الشاشات عبر Claude Design (12) |
-| `.claude/skills/drawio` | رسم مخططات الرحلة والـERD (11، 13) |
+| `.claude/skills/data-model` | استخراج نموذج البيانات ونمذجته ومراجعته (13) |
+| `.claude/skills/drawio` | أداة الرسم التي يستدعيها `user-journey` و`data-model` (11، 13) |
 | `.claude/skills/building-features` | دورة بناء الوظائف واختبارها (14) |
 | `.claude/skills/testing-and-security` | الاختبار الشامل ومراجعة الأمان (15) |
 | `.claude/skills/deploying` | النشر على Vercel (16) |

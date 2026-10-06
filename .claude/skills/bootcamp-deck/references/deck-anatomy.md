@@ -383,6 +383,20 @@ so `tok-lat`, `.snip` and `<table class="tmap">` all work inside an entry.
 The `؟` glyph is a literal Arabic `؟`, not an icon — `icons.css` has none, and a mirrored Latin `?`
 is the wrong character in an RTL deck.
 
+**The `.qmark` button must contain only the `؟` glyph — never the labelled word too.**
+`<button class="qmark">مكوّنات؟</button>` renders the whole word inside the small circular badge and
+collides visually with the text sitting below it. The word stays plain text *immediately before* the
+button, exactly as in the example above (`كلمة<button class="qmark">؟</button>`); the button itself
+holds nothing else. Caught only by screenshot — `deckAudit()` checks overflow, not malformed-looking
+components, so it will not flag this. Grep any new `class="qmark"` for more than one character
+between its tags before trusting a screenshot-free review.
+
+**And a reusable `.qmark` is often the right fix for a request that doesn't mention it by name.** A
+plain-language ask like "an icon that explains RTL and LTR" describes an *interaction* (click a
+marker, see a definition), not a specific widget — and that interaction is exactly what this
+component already does. Check whether `.qmark` + `<template class="terms">` already covers a newly
+described need before inventing a second mechanism for the same job.
+
 ### `data-ref` — deep link + section name
 
 Put it on a `.task`, a `.reflink`, or a card. `deck.js` resolves it **against this deck** and builds

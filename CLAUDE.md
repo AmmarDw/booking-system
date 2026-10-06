@@ -107,6 +107,21 @@ until its last line; slide 25 names the parts by reflecting them back onto it.
 Over-dosing a light topic is a real cost — it burns slides and reading time and buys nothing. Weigh
 each topic on its own; most do not clear the bar.
 
+**A.6.12 Sparse is a failure too — A.6.2's mirror, not its exception.**
+A.6.2 forbids multiplying slides to avoid completing one properly. The opposite failure is just as
+real and the overflow guard cannot see it: a slide that is legal, `deckAudit()`-clean, and still
+visibly uses under a third of its frame when screenshotted. Density is a judgement call the audit
+makes no attempt at — it only ever flags overflow. Screenshot every new or touched slide and judge
+it by eye; a clean audit is necessary, not sufficient.
+
+**A.6.13 A rule must name the test that applies it — not just read smoothly.**
+Extends A.6.3's "never compressed": that rule is not only about register. A sentence can be
+grammatical, plain, and still omit the actual distinguishing test a reader needs to apply it to a
+new case — "if it serves an existing screen, add it as a section" sounds reasonable without ever
+saying *how* to tell whether something "serves" a screen. The check: read the rule back and ask
+"could I apply this to a case right now, cold?" If the answer requires guessing a test nobody
+stated, the rule is missing content, not merely written awkwardly — tone alone will not catch this.
+
 ---
 
 ## B. Booking System Domain Logic

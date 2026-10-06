@@ -107,24 +107,40 @@ six-slot method works end to end, not to be the only skill a trainee could plaus
 generalise this exception to other sections without checking whether the same "one method, many valid
 instances" shape actually applies.
 
-**Day 5 — neither recording shipped yet.** Built 2026-10-03. Two slots, split at the tool boundary —
-§12 crosses two different tools (Claude Code writes the prompts, Claude Design builds and generates),
-so the curriculum's single 46 د تطبيق row was split in two (18 + 28 د) to give each its own recording
-and its own slide, per `deck/MEDIA_SHOTLIST.md`:
+**Day 5 — both recordings shipped.** Built 2026-10-03, filmed 2026-10-04/05. Two slots, split at the
+tool boundary — §12 crosses two different tools (Claude Code writes the prompts, Claude Design
+builds and generates), so the curriculum's single 46 د تطبيق row was split in two (18 + 28 د) to give
+each its own recording and its own slide, per `deck/MEDIA_SHOTLIST.md`:
 
 | File | Covers | Status |
 |---|---|---|
-| `media/task-12.1-12.2.mp4` | 12.1 (screen inventory from the §11 journey) then 12.2 (Claude Code writes the design-system + per-screen prompts) | **Not yet filmed** (slide 10), `stepvid__video--soon` |
-| `media/task-12.3-12.4.mp4` | 12.3 (build the Design System–type project) then 12.4 (generate screens, select-system-first, copy-answers rule) | **Not yet filmed** (slide 14), `stepvid__video--soon` |
+| `media/tasks_12.1_12.2.mp4` | 12.1 (screen inventory extracted from §§3–4, trainee's three review passes + final gap) then 12.2 (Claude Code writes the design-system + per-screen prompts) | **Shipped**, 6:23, slide 13 (`demo-121-122`), 5 `data-t`-verified steps |
+| `media/tasks_12.3_12.4.mp4` | 12.3 (build the Design System–type project) then 12.4 (generate 11 screens, select-system-first, copy-answers rule, batch hand-off) | **Shipped**, 7:06, slide 17 (`demo-123-124`), 7 `data-t`-verified steps |
 
-**d5-2 will be the first Day 1–5 asset recorded entirely inside a browser tool (Claude Design) rather
-than an editor.** Flag this for whoever holds the camera — the capture setup (screen region, zoom
-level) differs from every prior recording, which all showed an editor or terminal.
+**d5-2 was the first Day 1–5 asset recorded entirely inside a browser tool (Claude Design) rather
+than an editor** — its capture setup (screen region, zoom level) differed from every prior recording,
+which all showed an editor or terminal. Both files are gitignored (over GitHub's 100 MiB limit, same
+convention as three earlier oversized recordings) — present on disk, not tracked in the repo.
 
 **§12 is not a one-time/account-bound section**, so it does **not** get the "watched, not re-run"
 treatment §16 and §7.11.3 get. The default interleaved pattern applies: explain → watch the recording
 → the trainer re-executes the same steps live — which is why the agenda's تطبيق rows (18 + 28 د) carry
 no «يُشاهَد ولا يُعاد تنفيذه» note, unlike 7.11.3's row on Day 4.
+
+**Day 6 — both shipped.** §13 نموذج البيانات (ERD) + §14.2 إنشاء الجداول. Two slots, split at the
+§13/§14.2 boundary (the curriculum's own 20 د and 22 د تطبيق rows), per `deck/MEDIA_SHOTLIST.md`:
+
+| File | Covers | Status |
+|---|---|---|
+| `media/tasks_13.mp4` | 13.1 (Claude extracts entities from §§2–5 with origins, closes four gaps live via `AskUserQuestion`, then — same continuous pass, no second prompt — completes the model: keys, relationship types, junction table, one-sentence explanation per entity, written to §6) → 13.2 (trainee's three review passes + final gap, shown as reading the rendered `Preview PRODUCT.md`) → 13.3 (draws the ERD via `drawio`, boxes expanded from the start with fields visible, no box-opening step, then a formatting/arranging pass) | **Shipped** 2026-10-06, 4:02, 7 `data-t`-verified steps, first at `0:00` |
+| `media/task_14.2.mp4` | 14.2 (Claude discovers the Supabase MCP connection needs renewing this session rather than silently failing, writes the full plan ready to execute, trainee reconnects in one step, Claude inspects current state before creating, creates all seven tables and pushes, trainee verifies each real table in the Supabase dashboard) | **Shipped** 2026-10-06, 2:25, 6 `data-t`-verified steps + one `stepvid__step--new` row for comparing the diagram against the real tables and updating only the diff (not in this recording) — reworded same-day from an outright "redraw" instruction, which would have discarded any manual arranging done to the diagram |
+
+**§13.1 mirrors §12.1's extract-then-verify shape** (entities are derivable from roles, requirements,
+journey and screens already on record by Day 6), but the task boundary moved in a same-day review
+before filming: 13.1 is everything Claude produces in one continuous pass (extraction through model
+completion), and 13.2 is the trainee's review alone (the three passes + the final-gap question). The
+real footage confirmed this shape. **§13 is not one-time/account-bound either** — same default
+interleaved treatment as §12, no «يُشاهَد ولا يُعاد تنفيذه» note on its agenda rows.
 
 ---
 
