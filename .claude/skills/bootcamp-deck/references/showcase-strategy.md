@@ -142,6 +142,44 @@ completion), and 13.2 is the trainee's review alone (the three passes + the fina
 real footage confirmed this shape. **§13 is not one-time/account-bound either** — same default
 interleaved treatment as §12, no «يُشاهَد ولا يُعاد تنفيذه» note on its agenda rows.
 
+**Day 7 — both shipped.** §14.3 الأدوار والصلاحيات + §14.4 تصفّح المحتوى والصفحة الرئيسية. Two
+slots, split at the curriculum's own تطبيق sub-durations (25 د · 27 د), per
+`deck/MEDIA_SHOTLIST.md`:
+
+| File | Covers | Status |
+|---|---|---|
+| `media/task_14.3.mp4` | 14.3 (Claude reads roles/permission-requirements/screen-access from §§2–3–5, enters plan mode, a first migration attempt comes back "declined" and Claude pauses to ask rather than retry blindly, resolves it as Supabase's own automatic safety warning, writes per-role RLS policies and server-side checks, tests via bash/chrome-devtools, delivers the two-part report, logs in as a role to confirm the restricted view) | ✅ Shipped 2026-10-07, 2:13 |
+| `media/task_14.4.mp4` | 14.4 (the `/design-sync` failure and its recovery, filmed as it happened: an invented design rejected by the trainee → two wrong errands (`/design-login`, `/design-sync`) → the manual per-screen download that actually works → a catch-up full-system pull, repeated a second time for `/book` → the two finished pages → the clip's one terminal moment (4:13–4:18) → its real ending, a 404 on the not-yet-built booking-confirmation page. Four `stepvid__fix` notes mark the beats the corrected instructions now prevent) | ✅ Shipped 2026-10-08, 4:34 — **gitignored, 157.3 MiB**, 16 `data-t` steps, corrected same-day against the raw footage |
+
+**⚠ A recording can document a defect the package has since fixed — label it, don't re-cut it.**
+`task_14.4.mp4` is the only Day-1–7 clip whose first half shows behaviour the trainee must *not*
+copy. The fix is four `stepvid__fix` amber notes naming each specific beat, not suppressing the
+footage: the recovery is itself the lesson (a trainee rejecting output that doesn't match their
+design is exactly the review behaviour §14 asks for). When a future correction invalidates part of a
+shipped clip, do the same — amber-note the beat, keep the clip.
+
+**§14.3 and §14.4 are not one-time/account-bound** — same default interleaved treatment, no «يُشاهَد
+ولا يُعاد تنفيذه» note. Run the test explicitly rather than inheriting it from Day 6: a second live
+run of either task on a different project produces a different, informative result every time
+(different roles, different screens), exactly the shape the test requires for the default treatment.
+
+**⚠ Day 7's role check can only be partially verified on Day 7 — carry the rest forward, don't drop
+it.** The restriction is genuinely built and server-side-enforced on Day 7 (14.3), but through Day 7
+only `/`, `/book`, `/signup`, `/login`, and a placeholder `/dashboard` exist — the role-specific pages
+a trainee would need to "open a page forbidden to another role" don't arrive until 14.5 (Day 8) and
+14.6 (Day 9). Before then, attempting that check returns **404 — not built**, which looks identical
+to **403 — not allowed** through the UI-only review the package requires (no code, no tests). Verified
+directly against the shipped footage: `task_14.4.mp4` ends at 4:32–4:33 on `/book/confirm?…` returning
+404, not a permission result.
+
+So the Day-7 deck (slides 13/19/20) establishes the idea and names the 404-vs-403 test, honestly
+scoped to what Day 7 can verify. **Days 8, 9 and 10 each carry the check forward for whatever that
+day just built** — Day 8 (14.5) is the first journey pages, Day 9 (14.6) is the first page that
+genuinely differs by role, and Day 10's §15.3 is the **first full matrix run** (every role against
+every page), not a recap of Day 7. When building those decks: write each day's role-check beat as
+genuine first-time execution against that day's new pages — never as "remember from Day 7," which
+would silently drop the days 8–9 steps and leave §15.3 looking redundant instead of cumulative.
+
 ---
 
 ## Choosing the form, per content type
