@@ -536,8 +536,8 @@
     "hash": "aedd0d068d454f541a67a9ff349b57c4"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\slides\\assets\\deck.js": {
-    "mtime": 1789449997.7390816,
-    "hash": "c3f9a43917ee60dae5b99666b70488ea"
+    "mtime": 1790455410.0655842,
+    "hash": "460eebceb836af0cd033f7e73104c810"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Floders\\components\\elements\\AgendaRow.d.ts": {
     "mtime": 1788863553.0,
@@ -756,20 +756,20 @@
     "hash": "90398ded971a21d66a34d2854f2192b2"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\CLAUDE.md": {
-    "mtime": 1789669929.4134338,
-    "hash": "f756c279ff278c0d2ef4e1efa562f9a1"
+    "mtime": 1791379673.0869517,
+    "hash": "1f4c3bc360f0a0878b1ce16ada2bc4e5"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\conversation_history.md": {
-    "mtime": 1789690415.9231982,
-    "hash": "c7462bd15f7c6dd09cedca225b37f005"
+    "mtime": 1791142871.1801407,
+    "hash": "858a0014abf824936119faf8ccc16c1d"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\implementation_plan.md": {
-    "mtime": 1784894802.9530766,
-    "hash": "e3d7e8445d3eb51b846894b51bd480ee"
+    "mtime": 1791379652.2372534,
+    "hash": "1cdac75af6a652bfcbc65d9170c47a5b"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\PROJECT_REPORT.md": {
-    "mtime": 1787988306.3368797,
-    "hash": "3d2a431f92c7b6def7079ff6193806da"
+    "mtime": 1791379650.4844491,
+    "hash": "70aa92bb9fbea454e8d75778f06247b5"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\render.yaml": {
     "mtime": 1784973093.6879284,
@@ -803,41 +803,97 @@
     "mtime": 1784729637.138764,
     "hash": "964ac89e590ca883748716c83a4f142a"
   },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\deck\\day-02-brief.md": {
+    "mtime": 1790296844.4093676,
+    "hash": "0e9a0db137561ee87d8f0158e059c69e"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\deck\\day-03-brief.md": {
+    "mtime": 1790646450.2920065,
+    "hash": "e97d08a5ce19b94e7c4aef927f2a2379"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\deck\\day-04-brief.md": {
+    "mtime": 1791008888.645338,
+    "hash": "42c96fde7e15cff27a52d352ca056af9"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\deck\\day-05-brief.md": {
+    "mtime": 1791379698.3346262,
+    "hash": "9b7846125839fe676853407e66d5c9b5"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\deck\\day-06-brief.md": {
+    "mtime": 1791294031.1158645,
+    "hash": "640affddd7babeea1029aba8a17a4c89"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\deck\\day-07-brief.md": {
+    "mtime": 1791472226.100053,
+    "hash": "18148ab89c7f4ca1db89afc1adff09aa"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\deck\\day-08-brief.md": {
+    "mtime": 1791544560.3241086,
+    "hash": "2be36a38b7e99158efc4443973ae74ef"
+  },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\deck\\DECK_BRIEF.md": {
-    "mtime": 1789690305.1147573,
-    "hash": "2c83cef7258ea0678e573eea2d76ca17"
+    "mtime": 1791011651.7831533,
+    "hash": "ea228b41f4dbbcffd30b1ac93f519428"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\deck\\DESIGN_SYSTEM_PROMPT.md": {
-    "mtime": 1788966766.7390473,
-    "hash": "0a486ccc49bb7fb367b421896ff3307e"
+    "mtime": 1791379580.894051,
+    "hash": "40e79f6d998bccd1241d5da8747acd63"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\deck\\MEDIA_SHOTLIST.md": {
-    "mtime": 1789690318.8115535,
-    "hash": "2ddfb3628b75a39d5b753e312690d896"
+    "mtime": 1791482040.4320796,
+    "hash": "b1d9367aaba6d46ee3931307a7684084"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\deck\\handout\\index.html": {
-    "mtime": 1789669929.4179478,
-    "hash": "65964751cf8be764aa09a2a448a7a785"
+    "mtime": 1791492090.0336218,
+    "hash": "b0f0c4d4c5ec6daf0f5ae93a68cb434a"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\LOGO_Sag\\ASSETS.md": {
     "mtime": 1788864662.4921343,
     "hash": "e5ef88cdce5b2ee8d87695852a8c73d2"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\bootcamp_roadmap_and_curriculum.md": {
-    "mtime": 1789690150.3316953,
-    "hash": "60c4c27c3c66676e401125e64181e857"
+    "mtime": 1791544527.406953,
+    "hash": "2e9b17fb0ba2d36a22d7897955072928"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\CLAUDE.md": {
-    "mtime": 1789690177.9318476,
-    "hash": "ac7d7e6357943841547ef684c01e32ef"
+    "mtime": 1791186801.7403939,
+    "hash": "9ad9207d627b7862bf3ed6ad9a5a6dbc"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\PRODUCT.md": {
-    "mtime": 1789669929.4074528,
-    "hash": "d14cfa3c5599d9b40f82608caae727b1"
+    "mtime": 1791471987.2523975,
+    "hash": "343136a6ca581eb0e654f79ceb370336"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\slides\\day-01.html": {
-    "mtime": 1789690002.1046703,
-    "hash": "e403edbeaa7655b926f9fa3399cc07d3"
+    "mtime": 1791492283.082755,
+    "hash": "6a1fd0640190721a6ca4abbca04f07a5"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\slides\\day-02.html": {
+    "mtime": 1790559405.2472894,
+    "hash": "e44f5a1a54c91e381c238fce7c2ea771"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\slides\\day-03.html": {
+    "mtime": 1790646157.6788797,
+    "hash": "d6379416c5b15018d5c0ea9521a2cb9f"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\slides\\day-04.html": {
+    "mtime": 1791544398.0380654,
+    "hash": "46a89b94d8682a1698b3589c7f57695c"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\slides\\day-05.html": {
+    "mtime": 1791544265.5797493,
+    "hash": "40f25259b618f256bfee793bfa3430c1"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\slides\\day-06.html": {
+    "mtime": 1791544265.5867467,
+    "hash": "602aedce7f1bf896e3c153a773be3344"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\slides\\day-07.html": {
+    "mtime": 1791543718.2769482,
+    "hash": "0789d163b41edc0797968c079f84aa89"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\slides\\day-08.html": {
+    "mtime": 1791546192.1288195,
+    "hash": "196b23e230ae2583c588d58e4c50af14"
   },
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\SAG Lab Design System\\Documents\\readme.md": {
     "mtime": 1788863949.0202525,
@@ -1102,5 +1158,9 @@
   "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\app\\frontend\\public\\window.svg": {
     "mtime": 1784729009.708601,
     "hash": "a2760511c65806022ad20adf74370ff3"
+  },
+  "C:\\Users\\ammar\\future-dev\\claude\\booking-and-appointment-management-system\\project-package\\slides\\assets\\Open-Graph-tags.png": {
+    "mtime": 1791008604.3371809,
+    "hash": "afdd124b0da55b9655d07d2464cde1a5"
   }
 }

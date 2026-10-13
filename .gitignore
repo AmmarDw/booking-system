@@ -56,3 +56,9 @@ project-package/slides/media/tasks_13.mp4
 # move to Git LFS before ever removing this line. task_14.3.mp4 (45.6 MiB)
 # is under the limit and stays tracked.
 project-package/slides/media/task_14.4.mp4
+
+# Same 100 MiB problem, Day-8's two recordings: task_14.5_part_1.mp4 is
+# 125.6 MiB, task_14.5_part_2.mp4 is 124.9 MiB — re-encode or move to Git
+# LFS before ever removing these lines.
+project-package/slides/media/task_14.5_part_1.mp4
+project-package/slides/media/task_14.5_part_2.mp4

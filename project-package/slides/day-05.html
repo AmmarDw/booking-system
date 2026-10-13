@@ -74,7 +74,7 @@
               <div class="tasks">
                 <div class="task" data-ref="s12-concept"><span class="task__mark"><span
                       class="i i-check"></span></span>
-                  <span class="task__t">12 · الأدوات الثلاث، وحدود DesignSync</span><span
+                  <span class="task__t">12 · الأدوات الثلاث، وايش ينتقل لمشروعك</span><span
                     class="task__d">18 د</span>
                 </div>
                 <div class="task" data-ref="s12-tasks"><span class="task__mark"><span class="i i-check"></span></span>
@@ -277,8 +277,8 @@
               <div class="card__top"><span class="card__icon"><span class="i i-cloud-upload"></span></span>
                 <h3 class="card__title card__title--sm">DesignSync</h3>
               </div>
-              <p class="card__note card__note--sm">جسر ينقل مكوّنات نظام التصميم من Claude Design إلى مستودع
-                مشروعك، عبر الأمر <span class="tok-code">/design-sync</span>، مكوّنًا واحدًا كل مرّة.</p>
+              <p class="card__note card__note--sm">الجسر اللي يقرأ به Claude مكوّنات نظام تصميمك وألوانه وخطوطه
+                وينقلها إلى مشروعك. <strong>يعملها بنفسه</strong> — ما عليك منها شي.</p>
             </article>
           </div>
           <div class="card card--plain">
@@ -304,7 +304,7 @@
         </footer>
       </section>
 
-      <!-- ═══ 6 — القسم 12: حدود DesignSync ═════════════════════════════════════════════════════════════════ -->
+      <!-- ═══ 6 — القسم 12: ما ينتقل إلى مشروعك وما لا ينتقل ════════════════════════════════════════════════ -->
       <section class="sag-slide deck-slide" data-anchor="s12-sync">
         <div class="sag-slide__head">
           <span class="sag-badge"><span class="sag-badge__num">12</span> التصميم</span>
@@ -318,7 +318,8 @@
                 <h3 class="card__title card__title--sm">✔ ينتقل تلقائيًّا</h3>
               </div>
               <p class="card__note card__note--sm"><strong>مكوّنات نظام التصميم</strong> — زر، حقل، بطاقة، جدول…
-                تنتقل إلى مشروعك عبر <span class="tok-code">/design-sync</span>، مكوّنًا واحدًا كل مرّة.</p>
+                مع ألوانك وخطوطك. يقرأها Claude بنفسه وينقلها لمشروعك، <strong>النظام كامل دفعة وحدة</strong>،
+                أوّل ما يحتاجها في البناء. ما عليك منها شي.</p>
             </article>
             <article class="card" style="border-inline-start:5px solid var(--state-warning)">
               <div class="card__top"><span class="card__icon"
@@ -326,8 +327,8 @@
                     class="i i-alert-triangle"></span></span>
                 <h3 class="card__title card__title--sm">✘ لا ينتقل</h3>
               </div>
-              <p class="card__note card__note--sm"><strong>الشاشات المولّدة.</strong> تبقى في Claude Design
-                مرجعًا بصريًّا تُبنى منه الصفحة في الكود لاحقًا — لا تنتقل وحدها أبدًا.</p>
+              <p class="card__note card__note--sm"><strong>الشاشات المولّدة.</strong> تبقى في Claude Design،
+                وأنت اللي تنزّل ملفّاتها وتعطيها لـClaude وقت بناء كل شاشة — ما فيه طريقة ثانية.</p>
             </article>
           </div>
           <div class="card" style="border-inline-start:5px solid var(--state-warning)">
@@ -335,7 +336,7 @@
                 style="color:var(--state-warning)"></span>
               <strong>سبب تقنيّ لا يُلتفّ عليه:</strong> DesignSync يعمل على مشاريع من نوع <strong>Design
                 System</strong> فقط، <strong>والنوع يُحدَّد عند الإنشاء ولا يتغيّر بعده.</strong> مشروع عاديّ لن
-              يصير نظام تصميم مهما فعلت — إن أنشأته عاديًّا، تعيد إنشاءه من الصفر.</p>
+              يصير نظام تصميم مهما فعلت، ولا يقدر Claude يقرأه أصلًا — إن أنشأته عاديًّا، تعيد إنشاءه من الصفر.</p>
           </div>
           <div class="card card--plain">
             <p class="card__note"><span class="i i-lightbulb" style="color:var(--accent-state)"></span>
@@ -447,10 +448,10 @@
           </div>
           <div class="promptbox">
             <button class="promptbox__copy" type="button" aria-label="نسخ صياغة الاستخراج"
-              data-copy="استخرج شاشات مشروعي من رحلتي (القسم 4 في PRODUCT.md) ومتطلّباتي (القسم 3 في PRODUCT.md) — لكل شاشة اسمها ومسارها وكيف تُفتح ومن يصل إليها وأقسامها وأصلها. ابحث أوّلًا عن أقسام أي شاشة لها أعراف معروفة واقترح أسماءها. اعرض لي أصل كل شاشة، ثم اسألني فورًا عن كل خطوة أو متطلّب بلا شاشة بسؤال مباشر وخيارات مقترحة لحلّه، وأي افتراض أخذته بنفسك دون أن تسألني."><span
+              data-copy="طبّق مهمّة 12.1: استخرج شاشات مشروعي من رحلتي (القسم 4 في PRODUCT.md) ومتطلّباتي (القسم 3 في PRODUCT.md) — لكل شاشة اسمها ومسارها وكيف تُفتح ومن يصل إليها وأقسامها وأصلها. ابحث أوّلًا عن أقسام أي شاشة لها أعراف معروفة واقترح أسماءها. اعرض لي أصل كل شاشة، ثم اسألني فورًا عن كل خطوة أو متطلّب بلا شاشة بسؤال مباشر وخيارات مقترحة لحلّه، وأي افتراض أخذته بنفسك دون أن تسألني."><span
                 class="i i-copy"></span></button>
             <p class="card__note card__note--sm"><strong>الصياغة اللي تعطيها لـ Claude لتبدأ:</strong></p>
-            <p class="card__note card__note--sm">«استخرج شاشات مشروعي من رحلتي (القسم 4 في
+            <p class="card__note card__note--sm">«طبّق مهمّة 12.1: استخرج شاشات مشروعي من رحلتي (القسم 4 في
               <span class="tok-code">PRODUCT.md</span>) ومتطلّباتي (القسم 3 في
               <span class="tok-code">PRODUCT.md</span>) — لكل شاشة اسمها ومسارها وكيف تُفتح ومن يصل إليها
               وأقسامها وأصلها. ابحث أوّلًا عن أقسام أي شاشة لها أعراف معروفة واقترح أسماءها. اعرض لي أصل
@@ -767,7 +768,7 @@
         </div>
         <div class="sag-slide__body">
           <p class="sag-slide__lead sag-slide__lead--wide">النظام يُبقي شاشاتك متّسقة، وهو <strong>الوحيد اللي
-              ينتقل إلى مشروعك</strong> عبر DesignSync.</p>
+              ينتقل إلى مشروعك تلقائيًّا</strong> — يقرأه Claude بنفسه عبر DesignSync.</p>
           <article class="card card--accent">
             <div class="card__top"><span class="card__icon"><span class="i i-palette"></span></span>
               <h3 class="card__title card__title--sm">الخطوات</h3>
@@ -848,38 +849,40 @@
           <div class="sag-slide__rule"></div>
         </div>
         <div class="sag-slide__body" style="gap:var(--sp-2)">
-          <p class="sag-slide__lead sag-slide__lead--wide">الشاشات <strong>لا تنتقل تلقائيًّا</strong> (حدود
-            DesignSync)، فتوصلها بإحدى طريقتين.</p>
+          <p class="sag-slide__lead sag-slide__lead--wide">الشاشات <strong>لا تنتقل تلقائيًّا</strong>، وما فيه
+            أمر يجيبها. تنزّل ملفّاتها بنفسك — <strong>شاشة وحدة كل مرّة</strong>، وقت بناء تلك الشاشة بالذات.</p>
           <div class="bento" data-cols="2">
-            <article class="card card--state">
-              <div class="card__top"><span class="card__icon"><span class="i i-cloud-upload"></span></span>
-                <h3 class="card__title card__title--sm">الافتراضي — شارك الرابط</h3>
-              </div>
-              <p class="card__note card__note--sm">اضغط <strong>مشاركة (share)</strong> على الشاشة، وانسخ الرابط،
-                وأعطِه لـ Claude Code وقت بناء هذي الشاشة تحديدًا.</p>
-            </article>
-            <article class="card">
+            <article class="card card--accent">
               <div class="card__top"><span class="card__icon"><span class="i i-download"></span></span>
-                <h3 class="card__title card__title--sm">عند الحاجة — حمّل الملفّات</h3>
+                <h3 class="card__title card__title--sm">خطوات التنزيل</h3>
               </div>
-              <p class="card__note card__note--sm">حمّل ملفّات الشاشة إلى مجلّد مؤقّت (مثل <span
-                  class="tok-code">design-temp/</span>) ليقرأها Claude مباشرةً.</p>
+              <p class="card__note card__note--sm">افتح رابط الشاشة ← من القائمة المنسدلة أعلى الصفحة، على الجهة
+                المقابلة لنسبة التكبير، اختر <strong>"All project files"</strong> ← نزّل الكل ما عدا مجلّد
+                <strong>"Design System"</strong> ← انقلها للمجلّد المؤقّت اللي يجهّزه لك Claude.</p>
+            </article>
+            <article class="card card--state">
+              <div class="card__top"><span class="card__icon"><span class="i i-info"></span></span>
+                <h3 class="card__title card__title--sm">ليش ما يكفي الرابط؟</h3>
+              </div>
+              <p class="card__note card__note--sm">Claude ما يقدر يفتح تصميم شاشة من رابطها. لو بنى من الرابط أو من
+                وصفه لها، يطلع شكل <strong>قريب</strong> من تصميمك مو <strong>مطابق</strong> — والفرق ما يبان إلا
+                بعد ما تُبنى الصفحة.</p>
             </article>
           </div>
           <div class="card card--plain">
             <p class="card__note"><span class="i i-lightbulb" style="color:var(--accent-state)"></span>
-              <strong>ابدأ بالرابط دائمًا</strong>، وانتقل إلى التحميل إن تحقّق أيٌّ من هذي: النتيجة غير مطابقة لما
-              رأيته، أو الشاشة كثيرة الحالات (مختار/معطّل/فارغ/خطأ)، أو الشاشة مزدحمة ببطاقات ورسم وجدول وفلاتر
-              معًا.</p>
+              <strong>واحتفظ بالرابط برضه.</strong> ما يُبنى منه، لكن تحتاجه كل ما بغيت تعدّل شاشة مبنيّة أو
+              تقارنها بتصميمها. مجلّد <span class="tok-code">"Design System"</span> ما تنزّله لأن Claude يجيبه
+              بنفسه.</p>
           </div>
           <div class="promptbox">
             <button class="promptbox__copy" type="button" aria-label="نسخ صياغة تسليم الشاشة"
-              data-copy="انتهيت من تصميم شاشة [الاسم]. هذا رابطها: [الرابط]. وهذه إجاباتي على أسئلة Claude Design أثناء التوليد: [الصق إجاباتك كما ظهرت]. احفظها لتعتمدها وقت بناء هذه الشاشة."><span
+              data-copy="طبّق مهمّة 12.4: انتهيت من تصميم شاشة [الاسم]. هذا رابطها: [الرابط]. وهذه إجاباتي على أسئلة Claude Design أثناء التوليد: [الصق إجاباتك كما ظهرت]. احفظها لتعتمدها وقت بناء هذه الشاشة، وقل لي وقتها ايش أنزّل لك."><span
                 class="i i-copy"></span></button>
             <p class="card__note card__note--sm"><strong>الصياغة اللي تعطيها بعد كل شاشة:</strong></p>
-            <p class="card__note card__note--sm">«انتهيت من تصميم شاشة [الاسم]. هذا رابطها: [الرابط].
+            <p class="card__note card__note--sm">«طبّق مهمّة 12.4: انتهيت من تصميم شاشة [الاسم]. هذا رابطها: [الرابط].
               <strong>وهذه إجاباتي على أسئلة Claude Design أثناء التوليد:</strong> [الصق إجاباتك كما ظهرت]. احفظها
-              لتعتمدها وقت بناء هذه الشاشة.»</p>
+              لتعتمدها وقت بناء هذه الشاشة، وقل لي وقتها ايش أنزّل لك.»</p>
           </div>
         </div>
         <footer class="sag-slide__foot">

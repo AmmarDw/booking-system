@@ -267,7 +267,7 @@ END
 
 #### 6.3 Claude Design Workflow (Design-System-first + DesignSync)
 
-We start by building a **Design System** project in Claude Design (tokens + core components), generate each screen from it, then pull the components into `app/frontend` via **DesignSync** (`/design-sync`, one component at a time). The generic step-by-step for trainees is in curriculum §12 (`project-package/bootcamp_roadmap_and_curriculum.md`). Paste the prompts below in order.
+We start by building a **Design System** project in Claude Design (tokens + core components), generate each screen from it, then pull the components into `app/frontend` via **DesignSync** (the tool Claude reads with directly — not the `/design-sync` command, which is the opposite direction). The generic step-by-step for trainees is in curriculum §12 (`project-package/bootcamp_roadmap_and_curriculum.md`). Paste the prompts below in order.
 
 #### 6.4 Ready-to-Paste Claude Design Prompts
 

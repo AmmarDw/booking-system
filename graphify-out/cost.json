@@ -23,8 +23,15 @@
       "input_tokens": 328352,
       "output_tokens": 53337,
       "files": 11
+    },
+    {
+      "date": "2026-10-10T14:00:29.482860+00:00",
+      "input_tokens": 2607993,
+      "output_tokens": 0,
+      "files": 28,
+      "note": "token figures are combined subagent usage (12 of 13 chunks tracked), not a true input/output split"
     }
   ],
-  "total_input_tokens": 2709049,
+  "total_input_tokens": 5317042,
   "total_output_tokens": 259207
 }

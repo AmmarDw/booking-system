@@ -308,6 +308,24 @@ by the time they're on a later task. **Point at the `PRODUCT.md` section instead
 في `PRODUCT.md`) ومتطلّباتي (القسم 3 في `PRODUCT.md`)". Caught on Day 5: slide 8's extraction prompt
 shipped with the task-number version.
 
+**⚠ And a prepared prompt for a numbered task must OPEN with that task's number** — `«طبّق مهمّة
+14.5: ابنِ الرحلة الأساسية…»`, not `«ابنِ الرحلة الأساسية…»`. Claude reads the prompt with the whole
+`building-features/SKILL.md` available but no way to tell which of its seven task sections is being
+invoked; the number is what selects the right one, with its own inputs, steps and completion check.
+Without it Claude infers the task from the sentence — and infers it from the *wording*, not the
+curriculum, so it can run a neighbouring task's steps or skip a step the section mandates. Day 8's
+14.5 prompt shipped without it while 14.3's and 14.4's had it.
+
+**This does not contradict the rule above — they govern different halves of the prompt.** The test:
+is the task number saying *what to do* or *where the data is*? `«طبّق مهمّة 14.5:»` at the front
+names the procedure to run — correct, and required. `«من رحلتي (11.1)»` in the body names where data
+came from — wrong, because the data now lives in a `PRODUCT.md` section. One prompt can and should
+carry both corrections at once: `«طبّق مهمّة 14.5: … كما وصفتها في رحلتي (القسم 4 في PRODUCT.md)»`.
+
+**Applies to a prompt that invokes a numbered task, not to every `.promptbox`.** A gap prompt
+(«فكّرت في [شاشة] ما ذكرتها…») or a session-hygiene prompt belongs to no task and takes no number —
+prefixing one with a number would be a false claim about what Claude should run.
+
 **Exception — only when no section exists yet to point at.** A prompt for the task that *first*
 produces a `PRODUCT.md` section (there's nothing in it yet) has nothing to reference; referencing the
 task's own stated inputs, or nothing at all, is fine there. This is also not about forbidding task

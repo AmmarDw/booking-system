@@ -4,7 +4,7 @@
 
 ## How to use
 1. Pick the next unchecked milestone. 2. Ask Claude to **enter plan mode** for it. 3. Approve, build, test against the milestone's acceptance criteria. 4. Use **context7** for current library docs (Spring Boot 4, Next.js 14, jjwt, google-api-services-calendar). 5. Commit at each milestone checkpoint.
-Each task is tagged **[You]** (manual) or **[Claude]** (coded). Design reaches the repo via **DesignSync** (`/design-sync`).
+Each task is tagged **[You]** (manual) or **[Claude]** (coded). Design reaches the repo via **DesignSync** (the tool Claude reads with directly — not the `/design-sync` command).
 
 ---
 

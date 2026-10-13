@@ -3,15 +3,18 @@
 ## How to use this file
 
 1. In Claude Design, create a **new project of type `Design System`**.
-   ⚠ The project type is **fixed at creation and cannot be changed later**, and `/design-sync` only
-   pulls from a Design System project. If you create a normal project you will have to start over.
+   ⚠ The project type is **fixed at creation and cannot be changed later**, and only a Design System
+   project can be read back into the repo afterward. If you create a normal project you will have to
+   start over.
 2. If the creation flow offers a starting template, pick **“Color + type pairing”** (fallback: **“Blank”**).
    **Do not pick “Slides”** — we are not generating slides here, only the components slides are built from.
 3. Paste everything below the line into a **new chat** in that project.
 4. ⚠ **If Claude Design asks you questions in a form, answer them — then copy your answers back to me.**
    I only know what I put in this prompt. Anything you decide in that form is invisible to me, and at
    build time I will assume it was noise and drop it. Paste your answers into our chat verbatim.
-5. When it finishes, tell me and we will `/design-sync` the components into the repo.
+5. When it finishes, tell me and I'll read the components into the repo myself via the DesignSync
+   tool — no command needed from you (`/design-sync` is the opposite direction: it uploads an
+   existing code library to Claude Design, which is not what we're doing here).
 
 ---
 
@@ -139,4 +142,5 @@ these specific ones, by these names:
 ## 7. Deliverable
 
 A complete design system: color tokens, type scale, spacing scale, and the 20 named components above,
-each with its states, documented so they can be pulled into a repository one at a time via `/design-sync`.
+each with its states, documented so Claude can read them into a repository directly via the
+DesignSync tool.

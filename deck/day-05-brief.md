@@ -383,3 +383,27 @@ confirming the visible frame matches the step's own description.
   there?) was missing entirely, not just unstated plainly. A.6.3's "never compressed" check isn't only
   about register — reading a sentence back and asking "could I apply this rule to a new case right now"
   catches missing tests that reading it for tone alone does not.
+
+---
+
+## 2026-10-07 — `/design-sync` mechanism corrected on slides 5, 6 and 16
+
+**Line 42's claim that the pre-existing `designing-screens/SKILL.md` "already covers the DesignSync
+limits" was true of the limits, not of the mechanism.** The skill (and these slides, built from it)
+taught that `/design-sync` is the command that pulls design-system components *into* the project. It
+is the opposite: `/design-sync` uploads an existing **code** component library *to* Claude Design, is
+blocked for Claude to run, and does not apply to this bootcamp at all (there is no local component
+library to upload — the system is born inside Claude Design). Components reach the project because
+**Claude reads them itself** with the `DesignSync` tool, automatically, once, complete — the trainee
+does nothing. Full account of how this was discovered (a real trainee build, not a desk check) and
+the corrected doctrine: `day-07-brief.md`'s matching 2026-10-07 addendum.
+
+Three sites fixed to match: the DesignSync concept card (slide 5, `s12-concept`) now describes
+Claude's own read instead of a trainee-run command; slide 6 (`s12-sync`, row 267 above) keeps its
+✔/✘ shape — components transfer automatically, screens never do — but the ✔ card's mechanism is
+corrected the same way, and the project-type-immutable warning now also notes Claude can't read a
+non-Design-System project at all; slide 16 (`task-124-handoff`) **flips its own stated default** —
+it had taught "link first, download only if the result doesn't match," which is itself one of the two
+things this correction overturns (a screen's shape was never reliably obtainable from its link alone).
+It now teaches the download as the only path, matching curriculum §12 and `designing-screens/SKILL.md`
+§3.3, and keeps the link only as a stored reference for later.

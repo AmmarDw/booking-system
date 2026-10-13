@@ -180,6 +180,37 @@ every page), not a recap of Day 7. When building those decks: write each day's r
 genuine first-time execution against that day's new pages — never as "remember from Day 7," which
 would silently drop the days 8–9 steps and leave §15.3 looking redundant instead of cumulative.
 
+**Day 8 — neither recording shipped yet.** §14.5 الوظيفة الأساسية للمنتج, the course's heaviest
+single task (a full day, 46 د تطبيق). Unlike days 5–7, the curriculum gave it no natural two-task or
+sub-duration split to film along, so the A/B boundary below was invented for pacing and written back
+into `bootcamp_roadmap_and_curriculum.md` §2.8 (`22 د · 24 د`) before the deck was built, so curriculum
+and deck agree:
+
+| File | Covers | Status |
+|---|---|---|
+| `media/task_14.5_part_1.mp4` | reads the journey from `PRODUCT.md` §4 → proposes a feature split, shown before building → trainee approves → builds the first feature end-to-end through the full work cycle → tests it → trainee tries it → commit | ✅ Shipped 2026-10-11, 4:54 — 24 `trim`-verified steps; delivered under this name, not the planned `task_14.5a.mp4`. Actually covers F1–F3, the trainee's own booking + phone-size fix, and the forbidden-case teacher test (filmed after F4, moved here on purpose, flagged with one «في المقطع:» note). **Gitignored, 125.6 MiB** |
+| `media/task_14.5_part_2.mp4` | remaining features built one at a time, same cycle, committing after each → the full end-to-end browser walk → a deliberate wrong-case mid-journey → the written journey and diagram compared against the actual build, only a real diff updated → `PRODUCT.md` §7 updated → final commit | ✅ Shipped 2026-10-11, 5:33 — 28 `trim`-verified steps. Covers F4 + its two trainee-found defects, F5 (login, home-nav fix, signup after adding name fields in Claude Design), the step-21 journey reconcile, and a final walk with a new teacher account (email-unconfirmed login rejected; ends on the `/teacher/profile` 404). **Gitignored, 124.9 MiB** |
+
+**§14.5 closes the journey-reconcile gap the Day-7 brief predicted.** `data-model/SKILL.md` §3.5
+already had a "compare the ERD to the real tables, update only the diff, never redraw" rule for after
+14.2; `user-journey/SKILL.md` had no equivalent for after 14.5 — the journey was only ever read, never
+written back, so `PRODUCT.md` §4 and `diagrams/booking-journey.drawio` could go silently stale. Fixed
+with a matching §3.6 in `user-journey/SKILL.md`, a step in `building-features/SKILL.md` §و, and a
+curriculum «راجع نتيجتك» bullet — all three say the same thing: no difference, touch nothing; a real
+difference, update only what changed, never redraw or rewrite wholesale. Slides 10, 13 and 17 each
+carry one line of this so a trainee reading only the deck (A.6.1) still gets the full instruction.
+
+**§14.5 is not one-time/account-bound** — same default interleaved treatment, no «يُشاهَد ولا يُعاد
+تنفيذه» note. A second live run on a different project's journey produces different, informative
+features every time.
+
+**The curriculum's own 14.5 `.promptbox` prompt had the Day-5-documented anti-pattern** — it told the
+trainee to `[الصق الرحلة]` (paste the journey manually) instead of pointing at its `PRODUCT.md`
+location, the exact mistake `deck-anatomy.md`'s "Point at the `PRODUCT.md` section instead" rule
+documents. Fixed in the curriculum first (now points at "القسم 4 في `PRODUCT.md`"), then mirrored
+verbatim into slide 11's `.promptbox` — both carry identical wording, per the deliberate-redundancy
+rule.
+
 ---
 
 ## Choosing the form, per content type
@@ -205,9 +236,45 @@ Binding rule from `CLAUDE.md` §A.5, and it applies to recordings as much as to 
 - **Product only.** Exclude anything about building *this course* — choosing the project, the agenda,
   the report structure, authoring tooling.
 - **Drop trainer-stack specifics.** With darrisni this mostly stops being a problem: it *is* the
-  trainee stack. As of 2026-09-25 no BookIt material survives in any deck, so this rule now only
-  guards against reintroducing it.
+  trainee stack.
 - When unsure whether an excerpt qualifies, ask.
+
+### ⚠ BookIt examples survive in the decks — and every one of them needs framing
+
+**A 2026-09-25 note here used to claim «no BookIt material survives in any deck». That was wrong,
+and it went unchecked for two weeks.** A full audit on 2026-10-08 found six BookIt-vocabulary sites
+across days 1, 2, 6, 7 and 8. Do not trust a blanket "it's all gone" claim about examples — grep
+for the nouns.
+
+**BookIt examples are allowed. Unframed ones are not.** Every recording in the course is on
+**darrisni** (tutor↔student, first named on `day-03.html:705`), so a trainee meeting «مقدّم الخدمة»
+or «شبكة الخدمات» cold tries to map it onto darrisni, fails, and reads the slide as assuming
+knowledge they were never given. The worst case shipped on `day-08.html` slide 7, whose lead opened
+«في المهمة 14.3» — which reads as *the task the trainee did yesterday on their own project*.
+
+**Two dispositions. Pick by asking whether the lesson needs the domain:**
+
+| | When | How |
+|---|---|---|
+| **Frame it** | The incident *is* the domain — «a provider could book their own slot» cannot be told without the roles | Open with **«في مشروع سابق للمدرب — نظام حجز مواعيد، مو اللي في المقاطع»**, then use the nouns freely. Put it in the slide's **lead** so the cards below inherit it; drop into the card only when the lead is occupied |
+| **Genericise it** | The lesson is domain-free and understanding the example would cost the trainee two or three prerequisite facts | Strip the nouns. The «لماذا لا…؟» filter story became «تصفية بحسب من يقدّمها» — same lesson, zero prerequisites, works for any project |
+
+**Where a story repeats across days, frame it at the earliest occurrence and have the later one call
+back** («وهذا نفس المثال اللي شفته في اليوم الثاني») rather than re-telling it as new. The
+provider-self-booking incident runs on days 2, 7 and 8; the filter question on days 7 and 8.
+
+**`day-02.html:793` is the model** — «في مشروع حجز مواعيد صار العكس», domain stated inline, sitting
+beside an explicitly darrisni card so the contrast is visible. It was right from the start.
+
+**The mirror rule for `.claude/skills/`:** a skill that tells Claude to *relay* an example to the
+trainee carries the same obligation — `building-features/SKILL.md` held the identical unframed
+filter story and had to be corrected alongside the slides. Claude-facing «watch for this» notes that
+are never quoted onward (`defining-users` §, `testing-and-security` §, `writing-requirements` §) are
+out of scope and still carry booking nouns deliberately.
+
+**Before shipping any new day:** grep the deck for
+`مقدّم الخدمة|شبكة الخدمات|التوفّر|مواعيد الخدمات|رابط الاجتماع` and read every hit in place. Each
+must sit within two lines of a framing clause, or be genericised.
 
 **One discipline, learned from the first recording: a step must match the delivered cut, not the
 underlying session.** The real 8.1/8.2 session included a correction round — the trainer caught that
