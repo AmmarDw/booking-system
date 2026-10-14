@@ -180,7 +180,7 @@ every page), not a recap of Day 7. When building those decks: write each day's r
 genuine first-time execution against that day's new pages — never as "remember from Day 7," which
 would silently drop the days 8–9 steps and leave §15.3 looking redundant instead of cumulative.
 
-**Day 8 — neither recording shipped yet.** §14.5 الوظيفة الأساسية للمنتج, the course's heaviest
+**Day 8 — both recordings shipped 2026-10-11.** §14.5 الوظيفة الأساسية للمنتج, the course's heaviest
 single task (a full day, 46 د تطبيق). Unlike days 5–7, the curriculum gave it no natural two-task or
 sub-duration split to film along, so the A/B boundary below was invented for pacing and written back
 into `bootcamp_roadmap_and_curriculum.md` §2.8 (`22 د · 24 د`) before the deck was built, so curriculum
@@ -211,6 +211,31 @@ documents. Fixed in the curriculum first (now points at "القسم 4 في `PROD
 verbatim into slide 11's `.promptbox` — both carry identical wording, per the deliberate-redundancy
 rule.
 
+
+**Day 9 — none filmed yet (deck built 2026-10-13).** §14.6 لوحة التحكم والإدارة gets **two**
+recordings, because on darrisni it builds five screens plus the «حصصي» actions; §14.7 gets one. The
+`14 د · 13 د` split for 14.6 is written back into §2.9 and the handout. The deck is provider-neutral;
+the darrisni recording uses **Gmail SMTP + an app password** (decided with the user 2026-10-11: it
+reaches any recipient with no domain).
+
+| File | Covers | Status |
+|---|---|---|
+| `media/task_14.6_part_1.mp4` | the 14.6 prompt → Claude's **inventory** of unbuilt screens and display-only actions (§5 against the §7 routes table) → the trainee approves each item's place → per-screen design download → the first role's panels built and tested per role → the trainee adds/edits/deletes → the forbidden case (another role is refused, not shown a 404) → commit | ⬜ Not filmed — slide 10, `demo-146a` |
+| `media/task_14.6_part_2.mp4` | the deferred actions made live (time-gated ones need test data Claude creates and says so) → the admin panel → whatever is left in the inventory → each role walked, a normal account refused on the admin panel → `PRODUCT.md` §7 updated, inventory empty → commit | ⬜ Not filmed — slide 11, `demo-146b` |
+| `media/task_14.7.mp4` | the 14.7 prompt → Claude reads §2's stakeholders, recommends a service → numbered clicks → the key pasted **when asked** → `.env` + `.gitignore` check → wired and tested → the trainee tests with **a recipient other than themselves** → the real gap after first wiring fixed → key-not-on-GitHub check → commit | ⬜ Not filmed — slide 15, `demo-147`. **⚠ A real secret is pasted on camera; revoke it after filming** |
+
+**§14.6 and §14.7 are not one-time/account-bound.** Same default interleaved treatment, no «يُشاهَد ولا
+يُعاد تنفيذه» note. A second live run on a different project inventories different screens and wires a
+different service. §14.7's account signup is per-person, but the build after it is not, and the
+signup is a small part of the task.
+
+**⚠ 14.6 opens with an inventory, so Day 10 must not assume screens exist that nobody built.**
+Before Day 10's deck, check the shipped d9 recordings for what the inventory actually assigned, and
+treat anything handed to "14.7 continue" as built only if the footage shows it.
+
+**Filming rules for every Day-9 clip** (from Day 8's privacy flags): a clean Chrome profile with no
+autofill, never open `qa-accounts.local.md` on camera, check email only in the test accounts' own
+inboxes, and never stage a failure.
 ---
 
 ## Choosing the form, per content type

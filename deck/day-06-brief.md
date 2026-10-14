@@ -218,3 +218,22 @@ elicitation (stating what's missing), so only the one-line description was rewor
   staleness pattern was waiting in `MEDIA_SHOTLIST.md`'s Day-5 header ("Neither filmed yet" sitting
   directly above two rows both marked ✅) — fixed in the same pass. A reference file is only as current
   as the last time something forced a re-read of it.
+
+---
+
+## Post-ship change — 2026-10-14 (slide 14, «دورة العمل الواحدة»)
+
+Slide 14's one-paragraph «كيف تراجع نتيجة أي مهمّة» became a three-step card, reusing the slide's empty
+bottom third (no slide added). The paragraph taught the loop's *shape* but not its two human halves:
+
+1. **اقرأ ردّ Claude** — the reply has two parts, the trainee reads «لك أنت» and not «تفاصيل تقنية»; any
+   line starting with «⚠» needs an answer before moving on (a decision Claude made for them, or something
+   left open).
+2. **جرّب أنت** — the function, plus a wrong case.
+3. **أخبر Claude بثلاثة أشياء** — what you did, what you expected, what appeared; the error pasted as-is.
+
+**Why here:** the Day-9 review found these taught on day 9 (as a «قراءة تقرير» block). Slide 14 is where the
+loop is formally introduced, so the habits belong to it. The same text went into the curriculum's
+«كيف تراجع نتيجة أي مهمّة» section, which every §14 task links to; the 8-minute row on slide 2/3 is unchanged.
+The «⚠» line is now a written rule in `bootcamp-mvp-process.md` §5.1, so what the slide teaches is what
+Claude does. Details in `day-09-brief.md`, «The 2026-10-14 restructure».

@@ -821,13 +821,19 @@
             <p class="card__note card__note--sm"><strong>متى تحفظ؟</strong> مرّتان على الأقل: عند إتمام كل وظيفة،
               وفي نهاية كل يوم.</p>
           </article>
-          <div class="card card--state">
-            <p class="card__note card__note--sm"><span class="i i-shield-check"
-                style="color:var(--accent-state)"></span>
-              <strong>كيف تراجع نتيجة أي مهمّة:</strong> يختبر Claude تلقائيًّا ويبلّغك بالنتيجة، تجرّب أنت الوظيفة
-              وتجرّب حالة خاطئة أيضًا (مدخل غلط، أو وصول بلا صلاحية)، وعند أي ملاحظة تُخبر Claude ليصلحها ويعيد
-              الاختبار.</p>
-          </div>
+          <article class="card card--state">
+            <div class="card__top"><span class="card__icon"><span class="i i-shield-check"></span></span>
+              <h3 class="card__title card__title--sm">كيف تراجع نتيجة أي مهمّة</h3>
+            </div>
+            <ol class="flow flow--tight">
+              <li><strong>اقرأ ردّ Claude</strong> — يختبر تلقائيًّا ويبلّغك بقسمين: «لك أنت» تقرأه دائمًا، و«تفاصيل
+                تقنية» ما يلزمك سطرًا سطرًا. أما أي سطر يبدأ بـ«⚠» فيحتاجك: قرار أخذه Claude عنك، أو شي بقي
+                مفتوحًا — ردّ عليه قبل ما تكمّل.</li>
+              <li><strong>جرّب أنت</strong> الوظيفة، وجرّب حالة خاطئة أيضًا (مدخل غلط، أو وصول بلا صلاحية).</li>
+              <li><strong>أخبر Claude بثلاثة أشياء</strong> عند أي ملاحظة: ايش عملت، وايش توقّعت، وايش ظهر فعلًا.
+                أما رسالة الخطأ فتلصقها كما هي، لا وصفك لها. ثم يصلح ويعيد الاختبار.</li>
+            </ol>
+          </article>
           <div class="card card--plain">
             <p class="card__note"><span class="i i-info" style="color:var(--accent-structure)"></span>
               <strong>قبل كل مهمّة:</strong> اطلب من Claude أن يدخل وضع الخطة (plan mode) — يعرض ملخّصًا بسيطًا بلا

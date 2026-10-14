@@ -357,6 +357,7 @@ Only instance: `day-01.html:2219-2252`.
 | `.agenda` (+ `--break`, `--main`) | day-rhythm rows | `174-193` |
 | `.idx` (+ `data-group`) | index cell; `.idx__t` is one line, ellipsised | `733-760` |
 | `.pkgtree` (+ `__p`, `__d`, `--read`, `--mute`) | the package listing; a sanctioned scroller | `1099-1180` |
+| `.tasks--scroll` (on a `.tasks` list) | a task column taller than its frame scrolls inside itself so the note under it keeps its space. Added 2026-10-14 for Day 1 slide 45's eleven-row setup column, which ran 80px over its own «30 دقيقة» note. Mirrors `.card--scroll`. Prefer trimming rows first; this is for a column that genuinely cannot shrink | `3715-3830` |
 | `.tmap` (+ `__n`, `__b--decide|review|try`) | the 29-task table; **lives inside a `<template class="terms">`** and needs `data-wide="true"` | `536-711` |
 | `.dlbtn` | real download link styled as a button; **must be an `<a href>`** | `2232` |
 | `.deck-part` | "1 / 2" marker, inline inside the `<h2>` | `907` |

@@ -1216,6 +1216,32 @@ body {
   gap: 6px
 }
 
+/* A task column taller than its frame scrolls inside itself, so the note under
+   it keeps its own space. Day 1's setup column runs eleven rows deep; without
+   this its last rows slid over the «30 دقيقة» sentence beneath it. min-height:0
+   is already on .tasks — it is what lets this flex item shrink below its
+   content so the scrollbar can appear. The 3px padding keeps the focus ring and
+   the hover border of an edge row from being clipped by the scroller; the
+   scrollbar mirrors .card--scroll. */
+.tasks--scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 3px
+}
+
+.tasks--scroll::-webkit-scrollbar {
+  width: 10px
+}
+
+.tasks--scroll::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: var(--surface-card-line)
+}
+
+.tasks--scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-structure)
+}
+
 .task--l2,
 .task--l3 {
   padding: 5px var(--sp-2)
